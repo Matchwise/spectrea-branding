@@ -230,7 +230,7 @@ export const brand = {
       family: 'Lexend',
       fallback: "'Inter', sans-serif",
       css: "'Lexend', 'Inter', sans-serif",
-      weights: { regular: 400, medium: 500 },
+      weights: { light: 300, regular: 400, medium: 500, semibold: 600 },
       defaultWeight: 400,
       usage: 'Body text, UI labels, descriptions, form labels, tooltips, buttons. Optimized for reading fluency — reduces visual crowding in dense knowledge interfaces.',
     },

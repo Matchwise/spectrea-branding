@@ -26,12 +26,12 @@ export default function Naming() {
     >
       {/* Pronunciation */}
       <Section title="Pronunciation">
-        <div className="bg-slate-50 rounded-xl p-6 flex items-center gap-6">
+        <div className="bg-stone-50 rounded-xl p-6 flex items-center gap-6">
           <div>
-            <p className="text-3xl font-bold text-slate-900 tracking-tight">{brand.name}</p>
-            <p className="text-lg font-mono text-slate-500 mt-1">{brand.pronunciation}</p>
+            <p className="text-3xl font-bold text-stone-900 tracking-tight">{brand.name}</p>
+            <p className="text-lg font-mono text-stone-500 mt-1">{brand.pronunciation}</p>
           </div>
-          <div className="text-sm text-slate-600 border-l border-slate-200 pl-6">
+          <div className="text-sm text-stone-600 border-l border-stone-200 pl-6">
             <p><strong>Spek</strong> — as in "spectacle"</p>
             <p><strong>tree</strong> — as in the word "tree"</p>
             <p><strong>uh</strong> — soft, unstressed ending</p>
@@ -41,7 +41,7 @@ export default function Naming() {
 
       {/* Etymology */}
       <Section title="Etymology">
-        <p className="text-sm text-slate-600 leading-relaxed">
+        <p className="text-sm text-stone-600 leading-relaxed">
           <strong>Spectrea</strong> is derived from <em>spectra</em> (Latin: the full range or spectrum).
           The name evokes the complete range of hidden connections that the platform reveals —
           like a prism separating light into its full spectrum, Spectrea surfaces the full
@@ -56,7 +56,7 @@ export default function Naming() {
             <h3 className="text-sm font-semibold text-emerald-700 mb-3">Correct Usage</h3>
             <ul className="space-y-2">
               {usageExamples.correct.map(ex => (
-                <li key={ex} className="text-sm text-slate-700 flex items-start gap-2">
+                <li key={ex} className="text-sm text-stone-700 flex items-start gap-2">
                   <span className="text-emerald-500 mt-0.5">&#10003;</span>
                   {ex}
                 </li>
@@ -67,7 +67,7 @@ export default function Naming() {
             <h3 className="text-sm font-semibold text-red-600 mb-3">Incorrect Usage</h3>
             <ul className="space-y-2">
               {usageExamples.incorrect.map(ex => (
-                <li key={ex} className="text-sm text-slate-500 flex items-start gap-2">
+                <li key={ex} className="text-sm text-stone-500 flex items-start gap-2">
                   <span className="text-red-400 mt-0.5">&#10007;</span>
                   {ex}
                 </li>
@@ -79,10 +79,10 @@ export default function Naming() {
 
       {/* Capitalization */}
       <Section title="Capitalization Rules">
-        <div className="text-sm text-slate-600 space-y-2">
+        <div className="text-sm text-stone-600 space-y-2">
           <p>Always capitalize the <strong>S</strong> in Spectrea — it is a proper noun.</p>
-          <p>In URLs and email addresses, use all lowercase: <code className="bg-slate-100 px-1.5 py-0.5 rounded font-mono text-xs">spectrea.com</code></p>
-          <p>In code references, follow the convention of the codebase (typically <code className="bg-slate-100 px-1.5 py-0.5 rounded font-mono text-xs">spectrea</code> in lowercase).</p>
+          <p>In URLs and email addresses, use all lowercase: <code className="bg-stone-100 px-1.5 py-0.5 rounded font-mono text-xs">spectrea.com</code></p>
+          <p>In code references, follow the convention of the codebase (typically <code className="bg-stone-100 px-1.5 py-0.5 rounded font-mono text-xs">spectrea</code> in lowercase).</p>
         </div>
       </Section>
     </PageShell>

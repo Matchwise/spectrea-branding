@@ -46,7 +46,7 @@ export default function Positioning() {
         {/* Primary */}
         <div className="border-2 border-stone-800 rounded-xl p-5 mb-4">
           <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Primary — Lead With This</span>
-          <h3 className="text-xl font-bold text-stone-900 mt-2">{brand.messaging.primary.headline}</h3>
+          <h3 className="text-xl font-semibold text-stone-900 mt-2">{brand.messaging.primary.headline}</h3>
           <p className="text-sm text-stone-600 mt-2 leading-relaxed">{brand.messaging.primary.supporting}</p>
           <span className="text-xs text-stone-400 mt-2 inline-block">Theme: {brand.messaging.primary.theme}</span>
         </div>
@@ -58,7 +58,7 @@ export default function Positioning() {
               <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">
                 Supporting Message {i + 1}
               </span>
-              <h3 className="text-base font-bold text-stone-900 mt-2">{msg.headline}</h3>
+              <h3 className="text-base font-semibold text-stone-900 mt-2">{msg.headline}</h3>
               <p className="text-sm text-stone-600 mt-1 leading-relaxed">{msg.supporting}</p>
               <span className="text-xs text-stone-400 mt-2 inline-block">Theme: {msg.theme}</span>
             </div>
@@ -74,7 +74,7 @@ export default function Positioning() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {brand.audiences.map(a => (
             <div key={a.title} className="border border-stone-200 rounded-xl p-5">
-              <h3 className="font-bold text-stone-900 mb-0.5">{a.title}</h3>
+              <h3 className="font-semibold text-stone-900 mb-0.5">{a.title}</h3>
               <p className="text-xs text-stone-400 mb-3">{a.who}</p>
               <p className="text-xs text-stone-400 uppercase tracking-wider mb-1">What they need</p>
               <p className="text-sm text-stone-600 mb-3">{a.need}</p>

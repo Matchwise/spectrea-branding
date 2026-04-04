@@ -15,7 +15,7 @@ const sections = [
   {
     group: 'Visual Identity',
     items: [
-      { label: 'Palette Explorer', path: '/color/explorer', desc: 'Choose the brand color direction' },
+      { label: 'Palette Explorer', path: '/color/overview', desc: 'Choose the brand color direction' },
       { label: 'Typography', path: '/typography/typefaces', desc: 'Typeface selection and type scale' },
       { label: 'Logo', path: '/logo/primary', desc: 'Logo system and usage guidelines' },
     ],
@@ -35,8 +35,8 @@ export default function Home() {
     <div className="max-w-3xl mx-auto px-6 py-12">
       {/* Hero */}
       <div className="mb-14">
-        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 via-teal-500 to-amber-500 flex items-center justify-center shadow-lg mb-5">
-          <span className="text-white font-bold text-2xl">S</span>
+        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand via-brand-teal to-brand-amber flex items-center justify-center shadow-lg mb-5">
+          <span className="text-white font-bold text-2xl font-heading">S</span>
         </div>
         <h1 className="text-4xl font-bold text-stone-900 tracking-tight">
           {brand.name}
@@ -131,10 +131,10 @@ export default function Home() {
                 className="group flex items-center justify-between p-4 rounded-xl border border-stone-200 hover:border-stone-300 hover:bg-stone-50 transition-all"
               >
                 <div>
-                  <p className="text-sm font-medium text-stone-900 group-hover:text-indigo-600 transition-colors">{item.label}</p>
+                  <p className="text-sm font-medium text-stone-900 group-hover:text-brand transition-colors">{item.label}</p>
                   <p className="text-xs text-stone-500 mt-0.5">{item.desc}</p>
                 </div>
-                <svg className="w-4 h-4 text-stone-300 group-hover:text-indigo-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-4 h-4 text-stone-300 group-hover:text-brand/60 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </Link>

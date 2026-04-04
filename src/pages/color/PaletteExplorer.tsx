@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import PageShell, { Section } from '../../components/layout/PageShell'
-import '../../data/brand'
+import { selectedPalette } from '../../data/brand'
 
 function Swatch({ name, hex, role, textColor = '#FFFFFF' }: { name: string; hex: string; role: string; textColor?: string }) {
   const [copied, setCopied] = useState(false)
@@ -164,7 +164,7 @@ export default function ColorOverview() {
               to={link.path}
               className="group flex flex-col p-4 rounded-xl border border-stone-200 hover:border-stone-300 hover:bg-stone-50 transition-all"
             >
-              <p className="text-sm font-medium text-stone-900 group-hover:text-blue-600 transition-colors">{link.label}</p>
+              <p className="text-sm font-medium text-stone-900 group-hover:text-brand transition-colors">{link.label}</p>
               <p className="text-xs text-stone-500 mt-0.5">{link.desc}</p>
             </Link>
           ))}

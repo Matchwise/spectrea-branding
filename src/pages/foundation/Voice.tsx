@@ -31,7 +31,7 @@ export default function Voice() {
       {/* Tech approach */}
       <Section title="Technical Language">
         <div className="bg-amber-50 rounded-xl p-5 border border-amber-200">
-          <h3 className="text-sm font-bold text-amber-900 mb-1">Approach: {voice.techApproach}</h3>
+          <h3 className="text-sm font-semibold text-amber-900 mb-1">Approach: {voice.techApproach}</h3>
           <p className="text-sm text-amber-800 leading-relaxed">{voice.techDescription}</p>
           <div className="mt-3 text-xs text-amber-700 space-y-1">
             <p><strong>Do:</strong> "Your knowledge compounds because of the underlying graph architecture."</p>

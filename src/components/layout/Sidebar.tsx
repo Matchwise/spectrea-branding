@@ -73,11 +73,11 @@ export default function Sidebar({ open, onClose }: { open: boolean; onClose: () 
         }`}
       >
         <Link to="/" className="flex items-center gap-2.5 mb-6 px-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 via-teal-500 to-amber-500 flex items-center justify-center">
-            <span className="text-white font-bold text-sm">S</span>
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand via-brand-teal to-brand-amber flex items-center justify-center">
+            <span className="text-white font-bold text-sm font-heading">S</span>
           </div>
           <div>
-            <div className="font-semibold text-stone-900 text-sm">Spectrea</div>
+            <div className="font-semibold text-stone-900 text-sm font-heading">Spectrea</div>
             <div className="text-xs text-stone-400 uppercase tracking-widest">Brand Guide</div>
           </div>
         </Link>

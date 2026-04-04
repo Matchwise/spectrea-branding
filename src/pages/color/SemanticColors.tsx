@@ -76,7 +76,7 @@ export default function SemanticColors() {
               </div>
               <div className="p-4">
                 <div className="flex items-center gap-2 mb-1">
-                  <h3 className="text-sm font-bold text-stone-900">{sc.name}</h3>
+                  <h3 className="text-sm font-semibold text-stone-900">{sc.name}</h3>
                   <span className="text-xs font-mono text-stone-400 bg-stone-100 px-1.5 py-0.5 rounded">{sc.maps}</span>
                 </div>
                 <p className="text-xs text-stone-600">{sc.usage}</p>

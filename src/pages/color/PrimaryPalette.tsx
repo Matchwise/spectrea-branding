@@ -68,8 +68,8 @@ export default function PrimaryPalette() {
           name="Cobalt" hex="#3451E0" role="hero"
           usage="Primary buttons, links, active nav items, focused inputs, key CTAs. The color that IS Spectrea. Use for the single most important action on any screen."
         />
-        <div className="mt-3 bg-blue-50 rounded-lg px-4 py-3 border border-blue-100">
-          <p className="text-xs text-blue-800">
+        <div className="mt-3 bg-brand/5 rounded-lg px-4 py-3 border border-brand/10">
+          <p className="text-xs text-brand">
             <strong>Rule:</strong> Only one Cobalt primary action per section. If everything is Cobalt, nothing stands out. When in doubt, use a ghost/outline button instead.
           </p>
         </div>
@@ -197,19 +197,19 @@ export default function PrimaryPalette() {
           </div>
           <div className="p-4 grid grid-cols-4 gap-3 text-center">
             <div>
-              <p className="text-lg font-bold text-stone-900">60%</p>
+              <p className="text-lg font-semibold text-stone-900">60%</p>
               <p className="text-xs text-stone-500">Canvas (White)</p>
             </div>
             <div>
-              <p className="text-lg font-bold text-stone-900">20%</p>
+              <p className="text-lg font-semibold text-stone-900">20%</p>
               <p className="text-xs text-stone-500">Surface (Snow)</p>
             </div>
             <div>
-              <p className="text-lg font-bold text-stone-900">10%</p>
+              <p className="text-lg font-semibold text-stone-900">10%</p>
               <p className="text-xs text-stone-500">Text & UI (Ink, Gray)</p>
             </div>
             <div>
-              <p className="text-lg font-bold text-stone-900">10%</p>
+              <p className="text-lg font-semibold text-stone-900">10%</p>
               <p className="text-xs text-stone-500">Spectrum (Cobalt + accents)</p>
             </div>
           </div>

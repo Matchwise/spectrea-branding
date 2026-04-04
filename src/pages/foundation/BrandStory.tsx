@@ -10,7 +10,7 @@ export default function BrandStory() {
     >
       {/* Etymology */}
       <Section title="Name Origin">
-        <div className="bg-gradient-to-r from-indigo-50 via-teal-50 to-amber-50 rounded-xl p-6 border border-indigo-100/50">
+        <div className="bg-gradient-to-r from-brand/5 via-brand-teal/5 to-brand-amber/5 rounded-xl p-6 border border-brand/10">
           <p className="text-3xl font-bold text-stone-900 tracking-tight">{brand.name}</p>
           <p className="text-sm text-stone-500 font-mono mt-1">{brand.pronunciation}</p>
           <p className="text-sm text-stone-600 mt-3 leading-relaxed">{brand.etymology}</p>
@@ -36,7 +36,7 @@ export default function BrandStory() {
             <span>Mission</span>
           </Tooltip>
         </h2>
-        <blockquote className="border-l-4 border-indigo-400 pl-5 py-1">
+        <blockquote className="border-l-4 border-brand pl-5 py-1">
           <p className="text-lg text-stone-700 leading-relaxed italic">{brand.mission.statement}</p>
         </blockquote>
       </Section>
@@ -74,11 +74,11 @@ export default function BrandStory() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="bg-stone-50 rounded-xl p-5 border border-stone-200">
-            <h3 className="font-bold text-stone-900 text-lg">{brand.emotionalCore.primary}</h3>
+            <h3 className="font-semibold text-stone-900 text-lg">{brand.emotionalCore.primary}</h3>
             <p className="text-sm text-stone-600 mt-2 leading-relaxed">{brand.emotionalCore.primaryDescription}</p>
           </div>
           <div className="bg-stone-50 rounded-xl p-5 border border-stone-200">
-            <h3 className="font-bold text-stone-900 text-lg">{brand.emotionalCore.secondary}</h3>
+            <h3 className="font-semibold text-stone-900 text-lg">{brand.emotionalCore.secondary}</h3>
             <p className="text-sm text-stone-600 mt-2 leading-relaxed">{brand.emotionalCore.secondaryDescription}</p>
           </div>
         </div>
@@ -96,7 +96,7 @@ export default function BrandStory() {
             <div key={v.name} className="border border-stone-200 rounded-xl p-5">
               <div className="flex items-baseline gap-3 mb-2">
                 <span className="text-xs font-bold text-stone-400">{String(i + 1).padStart(2, '0')}</span>
-                <h3 className="font-bold text-stone-900">{v.name}</h3>
+                <h3 className="font-semibold text-stone-900">{v.name}</h3>
                 <span className="text-xs font-mono text-stone-400 bg-stone-100 px-1.5 py-0.5 rounded">{v.principle}</span>
               </div>
               <p className="text-sm text-stone-600 leading-relaxed mb-2">{v.description}</p>
@@ -116,7 +116,7 @@ export default function BrandStory() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {brand.personality.map(p => (
             <div key={p.trait} className="bg-stone-50 rounded-xl p-5 border border-stone-200">
-              <h3 className="font-bold text-stone-900 mb-1">{p.trait}</h3>
+              <h3 className="font-semibold text-stone-900 mb-1">{p.trait}</h3>
               <p className="text-sm text-stone-600 leading-relaxed">{p.description}</p>
               <p className="text-xs text-amber-700 bg-amber-50 rounded-md px-2 py-1 mt-3 inline-block">
                 {p.guardrail}
@@ -158,7 +158,7 @@ export default function BrandStory() {
           </Tooltip>
         </h2>
         <div className="bg-stone-50 rounded-xl p-6 border border-stone-200">
-          <h3 className="text-xl font-bold text-stone-900">{brand.archetype}</h3>
+          <h3 className="text-xl font-semibold text-stone-900">{brand.archetype}</h3>
           <p className="text-sm text-stone-600 mt-2 leading-relaxed">{brand.archetypeDescription}</p>
           <div className="mt-4 pt-4 border-t border-stone-200">
             <p className="text-xs text-stone-400">
@@ -180,11 +180,11 @@ export default function BrandStory() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="border border-stone-200 rounded-xl p-5">
-            <h3 className="font-bold text-stone-900 mb-1">{brand.visualMetaphor.primary}</h3>
+            <h3 className="font-semibold text-stone-900 mb-1">{brand.visualMetaphor.primary}</h3>
             <p className="text-sm text-stone-600">{brand.visualMetaphor.primaryDescription}</p>
           </div>
           <div className="border border-stone-200 rounded-xl p-5">
-            <h3 className="font-bold text-stone-900 mb-1">{brand.visualMetaphor.secondary}</h3>
+            <h3 className="font-semibold text-stone-900 mb-1">{brand.visualMetaphor.secondary}</h3>
             <p className="text-sm text-stone-600">{brand.visualMetaphor.secondaryDescription}</p>
           </div>
         </div>
@@ -199,7 +199,7 @@ export default function BrandStory() {
           </Tooltip>
         </h2>
         <div className="bg-stone-50 rounded-xl p-5 border border-stone-200">
-          <h3 className="font-bold text-stone-900 mb-1">{brand.aesthetic.direction}</h3>
+          <h3 className="font-semibold text-stone-900 mb-1">{brand.aesthetic.direction}</h3>
           <p className="text-sm text-stone-600">{brand.aesthetic.description}</p>
           <p className="text-xs text-stone-400 mt-2">{brand.aesthetic.tradeoff}</p>
         </div>
