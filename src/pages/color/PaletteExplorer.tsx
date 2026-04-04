@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import PageShell, { Section } from '../../components/layout/PageShell'
-import { selectedPalette } from '../../data/brand'
+// Brand colors are hardcoded below to match selectedPalette from brand.ts
 
 function Swatch({ name, hex, role, textColor = '#FFFFFF' }: { name: string; hex: string; role: string; textColor?: string }) {
   const [copied, setCopied] = useState(false)
