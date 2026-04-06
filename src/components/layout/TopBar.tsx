@@ -1,4 +1,4 @@
-import { LuMenu } from 'react-icons/lu'
+import { TbMenu2 } from 'react-icons/tb'
 
 export default function TopBar({ onMenuToggle }: { onMenuToggle: () => void }) {
   return (
@@ -9,7 +9,7 @@ export default function TopBar({ onMenuToggle }: { onMenuToggle: () => void }) {
           className="p-2 rounded-lg hover:bg-stone-100 lg:hidden"
           aria-label="Toggle menu"
         >
-          <LuMenu size={20} className="text-stone-500" />
+          <TbMenu2 size={20} className="text-stone-500" />
         </button>
         <span className="text-sm text-stone-400">
           Spectrea Brand Guide

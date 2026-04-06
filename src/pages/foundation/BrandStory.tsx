@@ -1,7 +1,7 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
 import { brand } from '../../data/brand'
-import { LuX } from 'react-icons/lu'
+import { TbX } from 'react-icons/tb'
 
 export default function BrandStory() {
   return (
@@ -138,7 +138,7 @@ export default function BrandStory() {
           {brand.antiValues.map((av, i) => (
             <div key={i} className="flex items-start gap-3 bg-red-50/50 rounded-lg px-4 py-3 border border-red-100">
               <span className="text-red-400 mt-0.5 flex-shrink-0">
-                <LuX size={16} />
+                <TbX size={16} />
               </span>
               <div>
                 <p className="text-sm font-medium text-stone-800">{av.never}</p>

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { navigation, type NavItem } from '../../data/navigation'
 import { StaticLogo } from '../brand/SpectreaLogo'
-import { LuChevronRight } from 'react-icons/lu'
+import { TbChevronRight } from 'react-icons/tb'
 
 function NavGroup({ item }: { item: NavItem }) {
   const location = useLocation()
@@ -34,7 +34,7 @@ function NavGroup({ item }: { item: NavItem }) {
         }`}
       >
         {item.label}
-        <LuChevronRight size={16} className={`transition-transform duration-150 ${open ? 'rotate-90' : ''}`} />
+        <TbChevronRight size={16} className={`transition-transform duration-150 ${open ? 'rotate-90' : ''}`} />
       </button>
       {open && (
         <div className="ml-3 mt-1 space-y-0.5 border-l border-stone-200 pl-3">

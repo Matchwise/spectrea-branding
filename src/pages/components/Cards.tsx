@@ -1,6 +1,6 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
-import { LuChevronRight } from 'react-icons/lu'
+import { TbChevronRight } from 'react-icons/tb'
 
 export default function Cards() {
   return (
@@ -57,7 +57,7 @@ export default function Cards() {
               <p className="text-xs text-stone-500 mt-1">Explore connections between entities and claims.</p>
               <div className="flex items-center gap-1 mt-3">
                 <span className="text-xs font-medium" style={{ color: '#4271DF' }}>Open graph</span>
-                <LuChevronRight size={12} style={{ color: '#4271DF' }} />
+                <TbChevronRight size={12} style={{ color: '#4271DF' }} />
               </div>
             </div>
             <p className="text-xs text-stone-400 mt-2">Hover state: border darkens, subtle bg shift.</p>

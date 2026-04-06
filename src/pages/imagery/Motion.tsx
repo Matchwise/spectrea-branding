@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react'
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
 import { AnimatedLogo } from '../../components/brand/SpectreaLogo'
-import { LuBell, LuChevronDown, LuX } from 'react-icons/lu'
+import { TbBell, TbChevronDown, TbX } from 'react-icons/tb'
 
 /* ------------------------------------------------------------------ */
 /*  Easing SVG curves                                                  */
@@ -117,7 +117,7 @@ function FadeInDemo() {
             transition: 'opacity 200ms ease-out',
           }}
         >
-          <LuBell size={16} className="text-brand" />
+          <TbBell size={16} className="text-brand" />
           <span className="text-xs text-brand font-medium">New connection found</span>
         </div>
       </div>
@@ -143,7 +143,7 @@ function SlideDownDemo() {
           className="w-full flex items-center justify-between px-3 py-2 rounded-lg border border-stone-200 text-sm text-stone-700 bg-white hover:bg-stone-50 transition-colors"
         >
           <span className="text-xs">Select type</span>
-          <LuChevronDown
+          <TbChevronDown
             size={14}
             className="text-stone-400 transition-transform duration-200"
             style={{ transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }}
@@ -197,7 +197,7 @@ function ScaleUpDemo() {
             <div className="flex items-center justify-between mb-3">
               <p className="text-sm font-semibold text-stone-800" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Create Entity</p>
               <button onClick={() => setOpen(false)} className="text-stone-400 hover:text-stone-600 transition-colors">
-                <LuX size={16} />
+                <TbX size={16} />
               </button>
             </div>
             <p className="text-xs text-stone-500 mb-4">This modal opened with scale(0.95→1) + fade. 200ms ease-out.</p>

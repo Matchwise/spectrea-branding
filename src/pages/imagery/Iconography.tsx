@@ -1,14 +1,11 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
 
-// Primary: Lucide
-import { LuSearch, LuHouse, LuSettings, LuUser, LuBell, LuPlus, LuCheck, LuX, LuEye, LuLayers, LuStar, LuChevronRight } from 'react-icons/lu'
-
-// Fallback: Tabler (visually identical to Lucide)
-import { TbBrandGithub, TbGraph, TbNetwork, TbTopologyRing } from 'react-icons/tb'
-
-// Filled variants for active states: Phosphor fill
-import { PiBellFill, PiStarFill, PiEyeFill, PiHouseFill } from 'react-icons/pi'
+// Tabler Icons — primary icon library (outline + filled)
+import {
+  TbSearch, TbHome, TbSettings, TbUser, TbBell, TbPlus, TbCheck, TbX, TbEye, TbStack, TbStar, TbChevronRight,
+  TbBellFilled, TbStarFilled, TbEyeFilled, TbHomeFilled,
+} from 'react-icons/tb'
 
 /* ------------------------------------------------------------------ */
 /*  Page                                                               */
@@ -23,18 +20,18 @@ export default function Iconography() {
       {/* ─── The System ─── */}
       <Section>
         <h2 className="text-xl font-semibold text-stone-800 mb-4">
-          <Tooltip content="Spectrea uses react-icons as a single dependency. Lucide is the primary icon style; Tabler fills coverage gaps. Both use the same 2px rounded stroke.">
+          <Tooltip content="Spectrea uses Tabler Icons via react-icons. One library for outline and filled variants — 5,963 outline + 999 filled, all visually consistent.">
             <span>Icon System</span>
           </Tooltip>
         </h2>
         <div className="bg-stone-900 text-white rounded-xl p-6">
-          <p className="text-base font-semibold" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Lucide · Outline · Rounded · 2px Stroke</p>
+          <p className="text-base font-semibold" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Tabler · Outline · Rounded · 2px Stroke</p>
           <p className="text-sm text-stone-400 mt-2 leading-relaxed">
             Rounded caps and joins create warmth. Clean geometry reads as intelligent. The 2px stroke has presence without heaviness — grounded but not boring. Outline is the default; filled is reserved for active/selected states.
           </p>
           <div className="flex items-center gap-4 mt-4 pt-4 border-t border-stone-700">
             <div className="flex items-center gap-3">
-              {[LuSearch, LuHouse, LuSettings, LuUser, LuBell, LuPlus, LuCheck, LuX, LuEye, LuLayers, LuStar, LuChevronRight].map((Icon, i) => (
+              {[TbSearch, TbHome, TbSettings, TbUser, TbBell, TbPlus, TbCheck, TbX, TbEye, TbStack, TbStar, TbChevronRight].map((Icon, i) => (
                 <Icon key={i} size={20} className="text-stone-400" />
               ))}
             </div>
@@ -49,38 +46,33 @@ export default function Iconography() {
           <pre className="text-xs leading-relaxed" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
             <span style={{ color: '#9CA3AF' }}>{'// Install\n'}</span>
             <span style={{ color: '#F9FAFB' }}>{'npm install react-icons\n\n'}</span>
-            <span style={{ color: '#9CA3AF' }}>{'// Primary — always try Lucide first\n'}</span>
+            <span style={{ color: '#9CA3AF' }}>{'// Outline icons (default)\n'}</span>
             <span style={{ color: '#E19000' }}>{'import'}</span>
-            <span style={{ color: '#F9FAFB' }}>{' { LuSearch, LuBell, LuSettings } '}</span>
-            <span style={{ color: '#E19000' }}>{'from'}</span>
-            <span style={{ color: '#00B6A0' }}>{" 'react-icons/lu'\n\n"}</span>
-            <span style={{ color: '#9CA3AF' }}>{'// Fallback — Tabler for icons Lucide lacks\n'}</span>
-            <span style={{ color: '#E19000' }}>{'import'}</span>
-            <span style={{ color: '#F9FAFB' }}>{' { TbGraph, TbNetwork } '}</span>
+            <span style={{ color: '#F9FAFB' }}>{' { TbSearch, TbBell, TbSettings } '}</span>
             <span style={{ color: '#E19000' }}>{'from'}</span>
             <span style={{ color: '#00B6A0' }}>{" 'react-icons/tb'\n\n"}</span>
-            <span style={{ color: '#9CA3AF' }}>{'// Active states — Phosphor filled\n'}</span>
+            <span style={{ color: '#9CA3AF' }}>{'// Filled icons (active/selected states)\n'}</span>
             <span style={{ color: '#E19000' }}>{'import'}</span>
-            <span style={{ color: '#F9FAFB' }}>{' { PiBellFill, PiStarFill } '}</span>
+            <span style={{ color: '#F9FAFB' }}>{' { TbBellFilled, TbStarFilled } '}</span>
             <span style={{ color: '#E19000' }}>{'from'}</span>
-            <span style={{ color: '#00B6A0' }}>{" 'react-icons/pi'"}</span>
+            <span style={{ color: '#00B6A0' }}>{" 'react-icons/tb'"}</span>
           </pre>
         </div>
         <div className="grid grid-cols-3 gap-3 mt-4">
           <div className="bg-stone-50 rounded-lg px-3 py-2 border border-stone-100">
-            <p className="text-xs font-semibold text-stone-600">Primary</p>
-            <code className="text-[10px] text-brand font-mono">react-icons/lu</code>
-            <p className="text-xs text-stone-400 mt-0.5">1,541 icons · Lucide</p>
-          </div>
-          <div className="bg-stone-50 rounded-lg px-3 py-2 border border-stone-100">
-            <p className="text-xs font-semibold text-stone-600">Fallback</p>
+            <p className="text-xs font-semibold text-stone-600">Library</p>
             <code className="text-[10px] text-brand font-mono">react-icons/tb</code>
-            <p className="text-xs text-stone-400 mt-0.5">5,963 icons · Tabler</p>
+            <p className="text-xs text-stone-400 mt-0.5">Tabler Icons</p>
           </div>
           <div className="bg-stone-50 rounded-lg px-3 py-2 border border-stone-100">
-            <p className="text-xs font-semibold text-stone-600">Filled states</p>
-            <code className="text-[10px] text-brand font-mono">react-icons/pi</code>
-            <p className="text-xs text-stone-400 mt-0.5">9,072 icons · Phosphor</p>
+            <p className="text-xs font-semibold text-stone-600">Outline</p>
+            <code className="text-[10px] text-brand font-mono">TbSearch, TbBell…</code>
+            <p className="text-xs text-stone-400 mt-0.5">5,963 icons</p>
+          </div>
+          <div className="bg-stone-50 rounded-lg px-3 py-2 border border-stone-100">
+            <p className="text-xs font-semibold text-stone-600">Filled</p>
+            <code className="text-[10px] text-brand font-mono">TbBellFilled…</code>
+            <p className="text-xs text-stone-400 mt-0.5">999 matched variants</p>
           </div>
         </div>
       </Section>
@@ -95,13 +87,13 @@ export default function Iconography() {
         <div className="border border-stone-200 rounded-xl overflow-hidden">
           {[
             { prop: 'Style', value: 'Outline (default)', note: 'Filled only for active/selected states' },
-            { prop: 'Stroke width', value: '2px', note: 'Lucide and Tabler default. Consistent across all icons.' },
+            { prop: 'Stroke width', value: '2px', note: 'Tabler default. Consistent across all icons.' },
             { prop: 'Stroke caps', value: 'Round', note: 'Matches the brand\'s warm, approachable personality' },
             { prop: 'Stroke joins', value: 'Round', note: 'Consistent with cap style' },
             { prop: 'Grid', value: '24 × 24px', note: 'Standard size. All icons sit on this grid.' },
             { prop: 'Padding', value: '2px inset', note: 'Content stays within a 20px live area' },
             { prop: 'Corner radius', value: '2px where applicable', note: 'Slightly rounded for warmth' },
-            { prop: 'Source', value: 'react-icons (lu → tb → pi)', note: 'Lucide first, Tabler fallback, Phosphor for filled' },
+            { prop: 'Source', value: 'react-icons/tb', note: 'Tabler Icons — outline + filled from one library' },
           ].map((row, i) => (
             <div key={row.prop} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < 7 ? '1px solid #F3F4F6' : 'none' }}>
               <span className="text-sm font-medium text-stone-700">{row.prop}</span>
@@ -130,7 +122,7 @@ export default function Iconography() {
             ].map(s => (
               <div key={s.size} className="flex flex-col items-center gap-2">
                 <div className="flex items-center justify-center" style={{ width: s.size, height: s.size }}>
-                  <LuSearch size={s.size} className="text-stone-600" />
+                  <TbSearch size={s.size} className="text-stone-600" />
                 </div>
                 <span className="text-xs font-mono text-stone-500">{s.label}</span>
                 <span className="text-xs text-stone-400 text-center">{s.use}</span>
@@ -152,9 +144,9 @@ export default function Iconography() {
           ].map(c => (
             <div key={c.name} className={`${c.bg} rounded-xl p-4 text-center ${c.border ? 'border border-stone-200' : ''}`}>
               <div className="flex justify-center gap-2 mb-2" style={{ color: c.color }}>
-                <LuSearch size={20} className="text-current" />
-                <LuSettings size={20} className="text-current" />
-                <LuUser size={20} className="text-current" />
+                <TbSearch size={20} className="text-current" />
+                <TbSettings size={20} className="text-current" />
+                <TbUser size={20} className="text-current" />
               </div>
               <p className="text-xs font-semibold" style={{ color: c.border ? '#374151' : '#F9FAFB' }}>{c.name}</p>
               <p className="text-xs font-mono" style={{ color: c.border ? '#9CA3AF' : '#6B7280' }}>{c.hex}</p>
@@ -179,10 +171,10 @@ export default function Iconography() {
         <div className="border border-stone-200 rounded-xl p-6">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
             {[
-              { outline: LuBell, filled: PiBellFill, label: 'Notifications' },
-              { outline: LuStar, filled: PiStarFill, label: 'Favorites' },
-              { outline: LuEye, filled: PiEyeFill, label: 'Visibility' },
-              { outline: LuHouse, filled: PiHouseFill, label: 'Navigation' },
+              { outline: TbBell, filled: TbBellFilled, label: 'Notifications' },
+              { outline: TbStar, filled: TbStarFilled, label: 'Favorites' },
+              { outline: TbEye, filled: TbEyeFilled, label: 'Visibility' },
+              { outline: TbHome, filled: TbHomeFilled, label: 'Navigation' },
             ].map(pair => (
               <div key={pair.label} className="flex flex-col items-center gap-3">
                 <div className="flex items-center gap-4">
@@ -203,48 +195,25 @@ export default function Iconography() {
         </div>
         <div className="mt-3 bg-stone-50 rounded-lg px-4 py-3 border border-stone-200">
           <p className="text-xs text-stone-600">
-            <strong>Source:</strong> Outline from Lucide (<code className="bg-stone-100 px-1 py-0.5 rounded font-mono text-[10px]">lu</code>). Filled from Phosphor (<code className="bg-stone-100 px-1 py-0.5 rounded font-mono text-[10px]">pi</code>). Phosphor's filled variants have the closest visual match to Lucide's outlines.
+            <strong>Source:</strong> Both outline and filled from Tabler (<code className="bg-stone-100 px-1 py-0.5 rounded font-mono text-[10px]">tb</code>). Filled variants are designed to match their outlines — guaranteed visual consistency. Append <code className="bg-stone-100 px-1 py-0.5 rounded font-mono text-[10px]">Filled</code> to the icon name.
           </p>
         </div>
       </Section>
 
-      {/* ─── Fallback Demo ─── */}
+      {/* ─── Licensing ─── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">Tabler Fallback</h2>
-        <p className="text-sm text-stone-600 mb-4">When Lucide doesn't have the icon you need, Tabler's 5,963 icons fill the gap. Same 2px stroke, same rounded caps — visually indistinguishable.</p>
-        <div className="border border-stone-200 rounded-xl p-5">
-          <div className="flex items-center gap-6 flex-wrap">
-            <div className="flex flex-col items-center gap-1.5">
-              <LuSearch size={24} className="text-stone-700" />
-              <span className="text-[10px] text-stone-400">Lucide</span>
+        <h2 className="text-xl font-semibold text-stone-800 mb-4">Licensing</h2>
+        <div className="bg-stone-50 rounded-xl p-5 border border-stone-200">
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <p className="text-sm font-semibold text-stone-800">Tabler Icons</p>
+              <p className="text-xs text-stone-500 mt-1">MIT License. Free for commercial use. No attribution required in product UI.</p>
             </div>
-            <div className="flex flex-col items-center gap-1.5">
-              <LuSettings size={24} className="text-stone-700" />
-              <span className="text-[10px] text-stone-400">Lucide</span>
-            </div>
-            <div className="flex flex-col items-center gap-1.5">
-              <LuUser size={24} className="text-stone-700" />
-              <span className="text-[10px] text-stone-400">Lucide</span>
-            </div>
-            <div className="w-px h-8 bg-stone-200" />
-            <div className="flex flex-col items-center gap-1.5">
-              <TbGraph size={24} className="text-stone-700" />
-              <span className="text-[10px] text-stone-400">Tabler</span>
-            </div>
-            <div className="flex flex-col items-center gap-1.5">
-              <TbNetwork size={24} className="text-stone-700" />
-              <span className="text-[10px] text-stone-400">Tabler</span>
-            </div>
-            <div className="flex flex-col items-center gap-1.5">
-              <TbTopologyRing size={24} className="text-stone-700" />
-              <span className="text-[10px] text-stone-400">Tabler</span>
-            </div>
-            <div className="flex flex-col items-center gap-1.5">
-              <TbBrandGithub size={24} className="text-stone-700" />
-              <span className="text-[10px] text-stone-400">Tabler</span>
+            <div>
+              <p className="text-sm font-semibold text-stone-800">react-icons</p>
+              <p className="text-xs text-stone-500 mt-1">MIT License. Wrapper library. Keep license file in source (handled by node_modules).</p>
             </div>
           </div>
-          <p className="text-xs text-stone-400 mt-4">Lucide and Tabler icons side by side — same stroke, same rounding, same visual weight.</p>
         </div>
       </Section>
 
@@ -254,7 +223,7 @@ export default function Iconography() {
           <div className="border border-emerald-200 bg-emerald-50/30 rounded-xl p-5">
             <h3 className="text-sm font-semibold text-emerald-800 mb-3">Do</h3>
             <ul className="space-y-2 text-sm text-stone-700">
-              <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Import from <code className="text-xs bg-stone-100 px-1 rounded">lu</code> first, <code className="text-xs bg-stone-100 px-1 rounded">tb</code> if missing</li>
+              <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Import all icons from <code className="text-xs bg-stone-100 px-1 rounded">react-icons/tb</code></li>
               <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Pair icons with text labels for clarity</li>
               <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Use outline for default, filled for active state</li>
               <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Vertically center icons with adjacent text</li>
@@ -264,7 +233,7 @@ export default function Iconography() {
           <div className="border border-red-200 bg-red-50/30 rounded-xl p-5">
             <h3 className="text-sm font-semibold text-red-700 mb-3">Don't</h3>
             <ul className="space-y-2 text-sm text-stone-700">
-              <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Import from <code className="text-xs bg-stone-100 px-1 rounded">md</code>, <code className="text-xs bg-stone-100 px-1 rounded">bs</code>, or <code className="text-xs bg-stone-100 px-1 rounded">fa6</code> — different visual style</li>
+              <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Import from other sets (<code className="text-xs bg-stone-100 px-1 rounded">md</code>, <code className="text-xs bg-stone-100 px-1 rounded">lu</code>, <code className="text-xs bg-stone-100 px-1 rounded">bs</code>, <code className="text-xs bg-stone-100 px-1 rounded">fa6</code>) — different visual style</li>
               <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Mix outline and filled styles as decoration</li>
               <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Use icons without labels in primary navigation</li>
               <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Use spectrum colors (Teal, Amber) on decorative icons</li>

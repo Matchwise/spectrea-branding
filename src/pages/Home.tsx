@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { brand } from '../data/brand'
 import Tooltip from '../components/brand/Tooltip'
 import { Logotype } from '../components/brand/SpectreaLogo'
-import { LuChevronRight } from 'react-icons/lu'
+import { TbChevronRight } from 'react-icons/tb'
 
 const sections = [
   {
@@ -133,7 +133,7 @@ export default function Home() {
                   <p className="text-sm font-medium text-stone-900 group-hover:text-brand transition-colors">{item.label}</p>
                   <p className="text-xs text-stone-500 mt-0.5">{item.desc}</p>
                 </div>
-                <LuChevronRight size={16} className="text-stone-300 group-hover:text-brand/60 transition-colors duration-150" />
+                <TbChevronRight size={16} className="text-stone-300 group-hover:text-brand/60 transition-colors duration-150" />
               </Link>
             ))}
           </div>
