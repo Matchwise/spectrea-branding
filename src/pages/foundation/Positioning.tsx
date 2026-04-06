@@ -9,7 +9,7 @@ export default function Positioning() {
     >
       {/* Brand Positioning — elevated */}
       <Section title="Brand Positioning">
-        <div className="bg-stone-900 text-white rounded-xl p-6">
+        <div className="text-white rounded-xl p-6" style={{ backgroundColor: '#111827' }}>
           <p className="text-base leading-relaxed">{brand.positioning.brand}</p>
         </div>
       </Section>

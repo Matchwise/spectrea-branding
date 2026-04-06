@@ -15,6 +15,12 @@ export default function Social() {
           </Tooltip>
         </h2>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
+          <div className="grid grid-cols-4 bg-stone-50 border-b border-stone-200 px-4 py-2">
+            <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Platform</span>
+            <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Avatar</span>
+            <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Cover</span>
+            <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Bio</span>
+          </div>
           {[
             { platform: 'LinkedIn', avatar: 'Gradient mark (400x400px)', cover: 'Brand gradient bar + tagline on Ink background', bio: 'We connect the dots. Composable knowledge platform.' },
             { platform: 'Twitter / X', avatar: 'Gradient mark (400x400px)', cover: 'Gradient bar at bottom, tagline centered', bio: 'We connect the dots. Knowledge, connected.' },
@@ -109,7 +115,12 @@ export default function Social() {
       </Section>
 
       {/* Rules */}
-      <Section title="Social Media Rules">
+      <Section>
+        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+          <Tooltip content="These rules apply to every Spectrea social post. They keep the brand voice consistent across platforms and team members.">
+            <span>Social Media Rules</span>
+          </Tooltip>
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>

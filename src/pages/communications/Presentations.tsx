@@ -1,5 +1,6 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
+import { StaticLogo } from '../../components/brand/SpectreaLogo'
 
 export default function Presentations() {
   return (
@@ -18,13 +19,13 @@ export default function Presentations() {
           {/* Title slide */}
           <div>
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Title Slide</p>
-            <div className="rounded-xl overflow-hidden border border-stone-200 aspect-video" style={{ backgroundColor: '#111827' }}>
+            <div className="rounded-xl overflow-hidden border border-stone-200 aspect-video relative" style={{ backgroundColor: '#111827' }}>
               <div className="h-full flex flex-col items-center justify-center p-6">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{ background: 'linear-gradient(135deg, #4271DF, #00B6A0, #E19000)' }}>
-                  <span className="text-white font-semibold font-heading text-lg">S</span>
+                <div className="mb-3">
+                  <StaticLogo size={40} />
                 </div>
                 <p className="text-lg font-semibold text-center" style={{ color: '#F9FAFB', fontFamily: "'Albert Sans', sans-serif" }}>We connect the dots.</p>
-                <p className="text-xs mt-1" style={{ color: '#6B7280' }}>Composable Knowledge Platform</p>
+                <p className="text-xs mt-1" style={{ color: '#6B7280' }}>Composable knowledge platform</p>
                 <div className="absolute bottom-0 left-0 right-0 h-0.5" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
               </div>
             </div>
@@ -48,9 +49,7 @@ export default function Presentations() {
                 </div>
                 <div className="flex items-center justify-between pt-2 border-t border-stone-100">
                   <div className="flex items-center gap-1.5">
-                    <div className="w-4 h-4 rounded flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #4271DF, #00B6A0, #E19000)' }}>
-                      <span className="text-white font-semibold font-heading" style={{ fontSize: 6 }}>S</span>
-                    </div>
+                    <StaticLogo size={16} />
                     <span className="text-xs text-stone-400 font-heading">Spectrea</span>
                   </div>
                   <span className="text-xs text-stone-300">3</span>
@@ -110,13 +109,20 @@ export default function Presentations() {
       </Section>
 
       {/* Color in presentations */}
-      <Section title="Color Usage in Slides">
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <Section>
+        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+          <Tooltip content="Presentations use a restricted subset of the full color system. Only four colors appear in slides — fewer choices mean faster, more consistent deck creation.">
+            <span>Color Usage in Slides</span>
+          </Tooltip>
+        </h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {[
             { color: '#FFFFFF', name: 'White', use: 'Content slide background', textColor: '#111827', border: true },
             { color: '#111827', name: 'Ink', use: 'Emphasis / divider background', textColor: '#F9FAFB', border: false },
             { color: '#4271DF', name: 'Cobalt', use: 'Primary bullet dots, key metrics', textColor: '#FFFFFF', border: false },
             { color: '#00B6A0', name: 'Teal', use: 'Growth metrics, positive change', textColor: '#111827', border: false },
+            { color: '#E19000', name: 'Amber', use: 'Third bullet dot, attention highlights', textColor: '#111827', border: false },
+            { color: '#F24260', name: 'Rose', use: 'Critical items only — use sparingly', textColor: '#FFFFFF', border: false },
           ].map(c => (
             <div key={c.name} className="rounded-xl overflow-hidden" style={{ border: c.border ? '1px solid #E5E7EB' : 'none' }}>
               <div className="h-16 flex items-end p-2" style={{ backgroundColor: c.color }}>
@@ -128,6 +134,37 @@ export default function Presentations() {
               </div>
             </div>
           ))}
+        </div>
+      </Section>
+
+      {/* Dos & Don'ts */}
+      <Section>
+        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+          <Tooltip content="Quick reference for common slide design decisions. When in doubt, default to fewer elements and more white space.">
+            <span>Slide Dos & Don'ts</span>
+          </Tooltip>
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
+            <ul className="space-y-2 text-sm text-stone-700">
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use one idea per slide — if you need to scroll, split</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use the gradient bar on emphasis/divider slides only</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use product screenshots or data visualizations for visuals</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Keep bullet points to 3–6 per slide using spectrum dot colors</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use the small logo lockup in bottom-left of content slides</li>
+            </ul>
+          </div>
+          <div className="border rounded-xl p-5" style={{ borderColor: '#F2426025', backgroundColor: '#F2426008' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Don't</h3>
+            <ul className="space-y-2 text-sm text-stone-700">
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use backgrounds other than White or Ink (#111827)</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Add clip art, decorative icons, or stock imagery</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Put the gradient bar on content slides</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use fonts outside the three-font system (Albert Sans, Lexend, JetBrains Mono)</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Center-align body text — left-align on content slides</li>
+            </ul>
+          </div>
         </div>
       </Section>
     </PageShell>

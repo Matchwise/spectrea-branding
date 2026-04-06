@@ -1,5 +1,6 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
+import { StaticLogo } from '../../components/brand/SpectreaLogo'
 
 /* ------------------------------------------------------------------ */
 
@@ -21,7 +22,7 @@ export default function LayoutPage() {
             {/* Sidebar mock */}
             <div className="w-48 border-r border-stone-200 bg-white p-3 flex-shrink-0">
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-6 h-6 rounded-md" style={{ background: 'linear-gradient(135deg, #4271DF, #00B6A0, #E19000)' }} />
+                <StaticLogo size={24} />
                 <span className="text-xs font-heading font-semibold text-stone-900">Spectrea</span>
               </div>
               {['Overview', 'Entities', 'Graph', 'Documents', 'Settings'].map((item, i) => (

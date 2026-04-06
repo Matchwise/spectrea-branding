@@ -15,7 +15,7 @@ export default function Copy() {
             <span>Primary Tagline</span>
           </Tooltip>
         </h2>
-        <div className="bg-stone-900 text-white rounded-xl p-8 text-center">
+        <div className="text-white rounded-xl p-8 text-center" style={{ backgroundColor: '#111827' }}>
           <p className="text-3xl font-semibold" style={{ fontFamily: "'Albert Sans', sans-serif" }}>{brand.tagline.statement}</p>
           <p className="text-sm text-stone-400 mt-3 max-w-md mx-auto">{brand.tagline.usage}</p>
         </div>
@@ -71,7 +71,12 @@ export default function Copy() {
       </Section>
 
       {/* Vocabulary */}
-      <Section title="Vocabulary">
+      <Section>
+        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+          <Tooltip content="The approved vocabulary list — also documented in Voice & Tone. These words shape how Spectrea sounds across every channel.">
+            <span>Vocabulary</span>
+          </Tooltip>
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Words We Use</h3>
@@ -93,7 +98,12 @@ export default function Copy() {
       </Section>
 
       {/* Boilerplate */}
-      <Section title="Boilerplate Copy">
+      <Section>
+        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+          <Tooltip content="Pre-approved descriptions for use in press releases, partner pages, app store listings, and anywhere Spectrea needs a standard description. Copy verbatim — don't paraphrase.">
+            <span>Boilerplate Copy</span>
+          </Tooltip>
+        </h2>
         <div className="space-y-4">
           {[
             { label: 'One-liner', text: 'Spectrea is the composable knowledge platform that turns scattered information into compounding intelligence.' },
@@ -105,6 +115,37 @@ export default function Copy() {
               <p className="text-sm text-stone-700 leading-relaxed">{item.text}</p>
             </div>
           ))}
+        </div>
+      </Section>
+
+      {/* Dos & Don'ts */}
+      <Section>
+        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+          <Tooltip content="Quick reference for writing Spectrea copy. When in doubt, lead with the human benefit, not the technical feature.">
+            <span>Copy Dos & Don'ts</span>
+          </Tooltip>
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
+            <ul className="space-y-2 text-sm text-stone-700">
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Lead with the problem, then the solution</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use the approved vocabulary list</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Show what the user experiences, not what we built</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use headline formulas for consistency across authors</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Copy boilerplate text verbatim — don't paraphrase</li>
+            </ul>
+          </div>
+          <div className="border rounded-xl p-5" style={{ borderColor: '#F2426025', backgroundColor: '#F2426008' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Don't</h3>
+            <ul className="space-y-2 text-sm text-stone-700">
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use hype words — "revolutionary", "game-changer", "next-gen"</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Lead with technical architecture instead of human benefit</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use "AI-powered" as a selling point — earn the jargon</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Paraphrase boilerplate text — it's pre-approved for a reason</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use forced enthusiasm or exclamation marks in headlines</li>
+            </ul>
+          </div>
         </div>
       </Section>
     </PageShell>
