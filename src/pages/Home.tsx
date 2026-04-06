@@ -41,7 +41,7 @@ export default function Home() {
           <Logotype fontSize={48} />
         </div>
         <p className="text-lg text-stone-500">Brand Guide</p>
-        <p className="text-base text-stone-400 italic mt-3">
+        <p className="text-base text-stone-400 mt-3">
           <Tooltip content={brand.tagline.usage}>
             {brand.tagline.statement}
           </Tooltip>
@@ -127,10 +127,10 @@ export default function Home() {
               <Link
                 key={item.path}
                 to={item.path}
-                className="group flex items-center justify-between p-4 rounded-xl border border-stone-200 hover:border-stone-300 hover:bg-stone-50 transition-all"
+                className="group flex items-center justify-between p-4 rounded-xl border border-stone-200 hover:border-stone-300 hover:bg-stone-50 transition-all duration-150"
               >
                 <div>
-                  <p className="text-sm font-medium text-stone-900 group-hover:text-brand transition-colors">{item.label}</p>
+                  <p className="text-sm font-medium text-stone-900 group-hover:text-brand transition-colors duration-150">{item.label}</p>
                   <p className="text-xs text-stone-500 mt-0.5">{item.desc}</p>
                 </div>
                 <TbChevronRight size={16} className="text-stone-300 group-hover:text-brand/60 transition-colors duration-150" />

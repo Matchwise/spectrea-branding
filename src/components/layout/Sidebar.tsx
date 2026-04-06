@@ -14,7 +14,7 @@ function NavGroup({ item }: { item: NavItem }) {
     return (
       <Link
         to={item.path}
-        className={`block px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+        className={`block px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-150 ${
           location.pathname === item.path
             ? 'bg-stone-100 text-stone-900'
             : 'text-stone-500 hover:bg-stone-50 hover:text-stone-900'
@@ -29,7 +29,7 @@ function NavGroup({ item }: { item: NavItem }) {
     <div>
       <button
         onClick={() => setOpen(!open)}
-        className={`flex items-center justify-between w-full px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
+        className={`flex items-center justify-between w-full px-3 py-2 rounded-lg text-sm font-semibold transition-colors duration-150 ${
           isActive ? 'text-stone-900' : 'text-stone-400 hover:text-stone-900'
         }`}
       >
@@ -42,7 +42,7 @@ function NavGroup({ item }: { item: NavItem }) {
             <Link
               key={child.path}
               to={child.path}
-              className={`block px-3 py-1.5 rounded-md text-sm transition-colors ${
+              className={`block px-3 py-1.5 rounded-md text-sm transition-colors duration-150 ${
                 location.pathname === child.path
                   ? 'text-stone-900 font-medium bg-stone-100'
                   : 'text-stone-400 hover:text-stone-900 hover:bg-stone-50'
