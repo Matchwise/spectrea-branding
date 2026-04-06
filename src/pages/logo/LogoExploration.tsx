@@ -199,6 +199,8 @@ const LogotypeSvg = forwardRef<SVGSVGElement, LogotypeSvgProps>(
   }
 )
 
+// ─── Dot color options ────────────────────────────────────────────
+
 // ─── Asset Generator ──────────────────────────────────────────────
 
 type Layout = 'mark' | 'logotype'
@@ -230,7 +232,8 @@ function AssetGenerator() {
     if (!isLogotype) return '#111827'
     if (style.colorMode === 'white') return '#FFFFFF'
     if (style.colorMode === 'ink') return '#111827'
-    // color/grey: derive from background
+    if (style.colorMode === 'grey') return '#A3A3A3'
+    // color: derive from background
     return bg === '#111827' ? '#FFFFFF' : '#111827'
   }, [isLogotype, style, bg])
 
@@ -447,6 +450,7 @@ function AssetGenerator() {
         </div>
       </div>
 
+
       {/* Warnings */}
       {(note || jpgWarning) && (
         <div className="px-4 py-2 bg-amber-50 border-b border-amber-100 flex items-start gap-2">
@@ -483,6 +487,7 @@ function AssetGenerator() {
               size={Math.min(size, 200) * 0.6875}
               colorMode={renderColorMode}
               dotColorMode={renderDotColorMode}
+
             />
           </div>
         ) : (
@@ -564,7 +569,7 @@ export default function LogoExploration() {
               { label: 'Gradient mid', value: 'Teal #00B6A0 (t=0.5)' },
               { label: 'Gradient end', value: 'Amber #E19000 (t=1)' },
               { label: 'Interpolation', value: 'Linear RGB, two-segment (Cobalt to Teal, Teal to Amber)' },
-              { label: 'Grey (dots / watermark)', value: '#9CA3AF' },
+              { label: 'Grey (dots / watermark)', value: '#A3A3A3' },
               { label: 'Ink', value: '#111827' },
               { label: 'White', value: '#FFFFFF' },
             ].map((row, i) => (
@@ -607,9 +612,9 @@ export default function LogoExploration() {
             </div>
             {[
               { label: 'Duration', value: '3 seconds (loop)' },
-              { label: 'Draw phase', value: '0-47%, ease-out (quadratic)' },
-              { label: 'Pause (drawn)', value: '47-50%' },
-              { label: 'Undraw phase', value: '50-97%, ease-in, directional fade (15% path length)' },
+              { label: 'Draw phase', value: '0-57%, ease-out (quadratic)' },
+              { label: 'Pause (drawn)', value: '57-60%' },
+              { label: 'Undraw phase', value: '60-97%, ease-in, directional fade (15% path length)' },
               { label: 'Pause (erased)', value: '97-100%' },
               { label: 'Dots', value: 'Always visible beneath the stroke' },
             ].map((row, i) => (

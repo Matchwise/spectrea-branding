@@ -102,7 +102,7 @@ export default function Misuse() {
           </MisuseExample>
 
           {/* Colored dots */}
-          <MisuseExample title="Don't color the dots" description="In the primary treatment, dots are always grey (#9CA3AF). The spectrum color lives in the stroke only.">
+          <MisuseExample title="Don't color the dots" description="In the primary treatment, dots are always grey (#A3A3A3). The spectrum color lives in the stroke only.">
             <StaticLogo size={48} colorMode="color" />
           </MisuseExample>
 

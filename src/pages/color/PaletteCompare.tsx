@@ -115,7 +115,7 @@ function CustomLogo({ size, cobalt, teal, amber }: { size: number; cobalt: strin
       {metrics && (
         <>
           {metrics.dots.map((dot, i) => (
-            <circle key={i} cx={dot.x} cy={dot.y} r={LOGO.dotR} fill="#9CA3AF" />
+            <circle key={i} cx={dot.x} cy={dot.y} r={LOGO.dotR} fill="#A3A3A3" />
           ))}
           {Array.from({ length: 48 }, (_, i) => {
             const segStart = (strokeLen * i) / 48

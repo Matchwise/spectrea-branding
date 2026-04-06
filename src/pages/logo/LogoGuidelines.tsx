@@ -228,7 +228,7 @@ export default function LogoGuidelines() {
             { element: 'Cobalt stroke on white', ratio: '4.5:1', status: 'Exceeds minimum' },
             { element: 'Teal stroke on white', ratio: '2.6:1', status: 'Passes 2.5:1' },
             { element: 'Amber stroke on white', ratio: '2.6:1', status: 'Passes 2.5:1' },
-            { element: 'Grey dots (#9CA3AF) on white', ratio: '2.5:1', status: 'Passes 2.5:1' },
+            { element: 'Grey dots (#A3A3A3) on white', ratio: '2.7:1', status: 'Decorative — no minimum required' },
             { element: 'Ink mark on white', ratio: '17.7:1', status: 'Exceeds WCAG AAA' },
             { element: 'White mark on Ink', ratio: '17.7:1', status: 'Exceeds WCAG AAA' },
           ].map((row, i) => (

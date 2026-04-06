@@ -31,7 +31,7 @@ export function gradientColor(t: number): string {
 
 export function fillForMode(t: number, mode: ColorMode): string {
   if (mode === 'white') return '#FFFFFF'
-  if (mode === 'grey') return '#9CA3AF'
+  if (mode === 'grey') return '#A3A3A3'
   if (mode === 'ink') return '#111827'
   return gradientColor(t)
 }
@@ -74,6 +74,7 @@ export interface StaticLogoProps {
   size?: number
   colorMode?: ColorMode
   dotColorMode?: ColorMode
+  dotColor?: string
   fadeStroke?: boolean
   pathD?: string
   strokeW?: number
@@ -86,6 +87,7 @@ export const StaticLogo = forwardRef<SVGSVGElement, StaticLogoProps>(function St
   size = 64,
   colorMode = 'color',
   dotColorMode,
+  dotColor,
   fadeStroke = false,
   pathD = LOGO.pathD,
   strokeW = LOGO.strokeW,
@@ -104,7 +106,7 @@ export const StaticLogo = forwardRef<SVGSVGElement, StaticLogoProps>(function St
         <>
           {metrics.dots.map((dot, i) => (
             <circle key={i} cx={dot.x} cy={dot.y} r={dotR}
-              fill={fillForMode(dot.t, effectiveDotMode)}
+              fill={dotColor ?? fillForMode(dot.t, effectiveDotMode)}
             />
           ))}
 
@@ -186,15 +188,15 @@ export function AnimatedLogo({
 
   if (metrics) {
     const L = metrics.totalLen
-    if (progress < 0.47) {
-      const t = progress / 0.47
+    if (progress < 0.57) {
+      const t = progress / 0.57
       a = 0
       b = (1 - Math.pow(1 - t, 2)) * L
-    } else if (progress < 0.50) {
+    } else if (progress < 0.60) {
       a = 0
       b = L
     } else if (progress < 0.97) {
-      const t = (progress - 0.50) / 0.47
+      const t = (progress - 0.60) / 0.37
       a = t * t * L
       b = L
     } else {
@@ -205,7 +207,7 @@ export function AnimatedLogo({
 
   const segmentLen = b - a
   const showStroke = segmentLen > 0.5
-  const isUndrawing = progress >= 0.50 && progress < 0.97
+  const isUndrawing = progress >= 0.60 && progress < 0.97
   const fadeLen = metrics ? metrics.totalLen * 0.15 : 0
 
   return (

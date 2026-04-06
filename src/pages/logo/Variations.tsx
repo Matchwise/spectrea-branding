@@ -109,7 +109,7 @@ export default function Variations() {
             </div>
             <div className="text-center">
               <p className="text-xs font-semibold text-stone-800">Grey</p>
-              <p className="text-xs text-stone-500 mt-1">All #9CA3AF at low opacity. Watermarks only.</p>
+              <p className="text-xs text-stone-500 mt-1">All #A3A3A3 at low opacity. Watermarks only.</p>
             </div>
           </div>
         </div>

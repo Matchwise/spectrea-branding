@@ -77,7 +77,7 @@ export default function Downloads() {
             { resource: 'Body font', value: 'Lexend — Google Fonts' },
             { resource: 'Mono font', value: 'JetBrains Mono — Google Fonts' },
             { resource: 'Brand gradient', value: 'linear-gradient(135deg, #4271DF, #00B6A0, #E19000)' },
-            { resource: 'Icon library', value: 'Lucide Icons (outline, 1.5px stroke)' },
+            { resource: 'Icon library', value: 'Tabler Icons via react-icons/tb (outline, 2px stroke)' },
             { resource: 'Border radius (cards)', value: '12px (rounded-xl)' },
             { resource: 'Border radius (buttons)', value: '8px (rounded-lg)' },
           ].map((row, i) => (

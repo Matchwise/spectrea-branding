@@ -66,7 +66,7 @@ export default function PrimaryLogo() {
             <div className="space-y-3">
               <div className="bg-stone-50 rounded-lg px-4 py-3 border border-stone-100">
                 <p className="text-xs font-semibold text-stone-500 mb-1">Dots</p>
-                <p className="text-sm text-stone-700">10 dots, radius 3.5. Grey (#9CA3AF) in the primary treatment. Evenly spaced from start to end of the path.</p>
+                <p className="text-sm text-stone-700">10 dots, radius 3.5. Grey (#A3A3A3) in the primary treatment. Evenly spaced from start to end of the path.</p>
               </div>
               <div className="bg-stone-50 rounded-lg px-4 py-3 border border-stone-100">
                 <p className="text-xs font-semibold text-stone-500 mb-1">Stroke</p>
