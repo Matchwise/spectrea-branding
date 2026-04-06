@@ -161,42 +161,116 @@ export default function Iconography() {
         </div>
       </Section>
 
-      {/* ─── Outline / Filled States ─── */}
+      {/* ─── Icon States (Tiered Color) ─── */}
       <Section>
         <h2 className="text-xl font-semibold text-stone-800 mb-4">
-          <Tooltip content="Outline is the default. Filled indicates an active or selected state. This creates a clear visual language without needing color change.">
-            <span>Outline vs Filled States</span>
+          <Tooltip content="Icon states follow the tiered color system: Cobalt for responsive interaction, Ink for structural selection, semantic colors for status. See Color Application for the full framework.">
+            <span>Icon States</span>
           </Tooltip>
         </h2>
-        <div className="border border-stone-200 rounded-xl p-6">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-            {[
-              { outline: TbBell, filled: TbBellFilled, label: 'Notifications' },
-              { outline: TbStar, filled: TbStarFilled, label: 'Favorites' },
-              { outline: TbEye, filled: TbEyeFilled, label: 'Visibility' },
-              { outline: TbHome, filled: TbHomeFilled, label: 'Navigation' },
-            ].map(pair => (
-              <div key={pair.label} className="flex flex-col items-center gap-3">
-                <div className="flex items-center gap-4">
-                  <div className="flex flex-col items-center gap-1">
-                    <pair.outline size={24} className="text-stone-400" />
-                    <span className="text-[10px] text-stone-400">default</span>
-                  </div>
-                  <span className="text-stone-300 text-xs">→</span>
-                  <div className="flex flex-col items-center gap-1">
-                    <pair.filled size={24} className="text-brand" />
-                    <span className="text-[10px] text-brand">active</span>
-                  </div>
-                </div>
-                <span className="text-xs text-stone-500">{pair.label}</span>
+        <p className="text-sm text-stone-600 mb-4">Icons follow Spectrea's three-tier color system. Each tier answers a different question.</p>
+
+        <div className="space-y-4">
+          {/* Tier: Default */}
+          <div className="border border-stone-200 rounded-xl overflow-hidden">
+            <div className="px-5 py-3 bg-stone-50 border-b border-stone-100 flex items-center justify-between">
+              <div>
+                <p className="text-sm font-semibold text-stone-800">Default</p>
+                <p className="text-xs text-stone-500 mt-0.5">Resting state — no interaction, no selection, no status.</p>
               </div>
-            ))}
+              <span className="text-xs font-mono text-stone-400">Gray #9CA3AF</span>
+            </div>
+            <div className="p-5 flex items-center gap-5">
+              {[TbSearch, TbHome, TbSettings, TbUser, TbBell, TbStar, TbEye].map((Icon, i) => (
+                <Icon key={i} size={24} className="text-stone-400" />
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="mt-3 bg-stone-50 rounded-lg px-4 py-3 border border-stone-200">
-          <p className="text-xs text-stone-600">
-            <strong>Source:</strong> Both outline and filled from Tabler (<code className="bg-stone-100 px-1 py-0.5 rounded font-mono text-[10px]">tb</code>). Filled variants are designed to match their outlines — guaranteed visual consistency. Append <code className="bg-stone-100 px-1 py-0.5 rounded font-mono text-[10px]">Filled</code> to the icon name.
-          </p>
+
+          {/* Tier 1: Responsive */}
+          <div className="border border-brand/20 rounded-xl overflow-hidden">
+            <div className="px-5 py-3 bg-brand/5 border-b border-brand/10 flex items-center justify-between">
+              <div>
+                <p className="text-sm font-semibold text-stone-800">Tier 1: Responsive <span className="text-xs font-normal text-stone-500">— user interacts</span></p>
+                <p className="text-xs text-stone-500 mt-0.5">Hover, focus, press. Temporary — appears while interacting, settles when done.</p>
+              </div>
+              <span className="text-xs font-mono text-brand">Cobalt #4271DF</span>
+            </div>
+            <div className="p-5">
+              <div className="flex items-center gap-6">
+                <div className="flex items-center gap-3">
+                  <TbBell size={22} className="text-stone-400" />
+                  <span className="text-stone-300 text-xs">hover →</span>
+                  <TbBell size={22} className="text-brand" />
+                </div>
+                <div className="flex items-center gap-3">
+                  <TbStar size={22} className="text-stone-400" />
+                  <span className="text-stone-300 text-xs">hover →</span>
+                  <TbStar size={22} className="text-brand" />
+                </div>
+              </div>
+              <p className="text-xs text-stone-500 mt-3">Outline stays outline. Color changes from Gray to Cobalt. Reverts when interaction ends.</p>
+            </div>
+          </div>
+
+          {/* Tier 2: Structural */}
+          <div className="border border-stone-300 rounded-xl overflow-hidden">
+            <div className="px-5 py-3 bg-stone-100 border-b border-stone-200 flex items-center justify-between">
+              <div>
+                <p className="text-sm font-semibold text-stone-800">Tier 2: Structural <span className="text-xs font-normal text-stone-500">— persistent state</span></p>
+                <p className="text-xs text-stone-500 mt-0.5">Active page, selected item, toggled on. Persists until the state changes.</p>
+              </div>
+              <span className="text-xs font-mono text-stone-700">Ink #111827</span>
+            </div>
+            <div className="p-5">
+              <div className="flex items-center gap-8">
+                {[
+                  { outline: TbBell, filled: TbBellFilled, label: 'Notifications on' },
+                  { outline: TbStar, filled: TbStarFilled, label: 'Favorited' },
+                  { outline: TbEye, filled: TbEyeFilled, label: 'Visible' },
+                  { outline: TbHome, filled: TbHomeFilled, label: 'Current page' },
+                ].map(pair => (
+                  <div key={pair.label} className="flex flex-col items-center gap-2">
+                    <div className="flex items-center gap-3">
+                      <pair.outline size={22} className="text-stone-400" />
+                      <span className="text-stone-300 text-xs">→</span>
+                      <pair.filled size={22} className="text-stone-800" />
+                    </div>
+                    <span className="text-[10px] text-stone-400">{pair.label}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs text-stone-500 mt-3">Outline becomes filled. Color changes from Gray to Ink. Weight signals the state, not color — canvas stays neutral.</p>
+            </div>
+          </div>
+
+          {/* Tier 3: Semantic */}
+          <div className="border border-stone-200 rounded-xl overflow-hidden">
+            <div className="px-5 py-3 bg-stone-50 border-b border-stone-100 flex items-center justify-between">
+              <div>
+                <p className="text-sm font-semibold text-stone-800">Tier 3: Semantic <span className="text-xs font-normal text-stone-500">— system communicates</span></p>
+                <p className="text-xs text-stone-500 mt-0.5">Success, warning, error. The icon carries status meaning.</p>
+              </div>
+              <span className="text-xs font-mono text-stone-500">Teal / Amber / Rose</span>
+            </div>
+            <div className="p-5">
+              <div className="flex items-center gap-8">
+                <div className="flex flex-col items-center gap-1">
+                  <TbCheck size={22} style={{ color: '#00B6A0' }} />
+                  <span className="text-[10px] text-stone-400">Success</span>
+                </div>
+                <div className="flex flex-col items-center gap-1">
+                  <TbBell size={22} style={{ color: '#E19000' }} />
+                  <span className="text-[10px] text-stone-400">Warning</span>
+                </div>
+                <div className="flex flex-col items-center gap-1">
+                  <TbX size={22} style={{ color: '#F43F5E' }} />
+                  <span className="text-[10px] text-stone-400">Error</span>
+                </div>
+              </div>
+              <p className="text-xs text-stone-500 mt-3">Outline stays outline. Color matches the semantic meaning. Never use semantic colors for decoration.</p>
+            </div>
+          </div>
         </div>
       </Section>
 

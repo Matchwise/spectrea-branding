@@ -105,7 +105,7 @@ export default function PrimaryPalette() {
         </h2>
         <ColorCard
           name="Cobalt" hex="#4271DF" role="hero"
-          usage="Primary buttons, links, active nav items, focused inputs, key CTAs. The color that IS Spectrea. Use for the single most important action on any screen."
+          usage="Primary buttons, links, focused inputs, hover accents. Reactive and temporary — appears when the user interacts, settles when done. Persistent selections use Ink instead."
         />
         <div className="mt-3 bg-brand/5 rounded-lg px-4 py-3 border border-brand/10">
           <p className="text-xs text-brand">

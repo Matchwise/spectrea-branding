@@ -7,7 +7,7 @@ const semanticColors = [
     color: '#4271DF',
     light: '#EEF2FF',
     dark: '#1E3A8A',
-    usage: 'Links, primary buttons, focused inputs, active states, selected items, toggle-on states.',
+    usage: 'Links, primary buttons, focused inputs, hover accents. Responsive tier — appears during interaction, settles when done.',
     maps: 'Cobalt (hero)',
   },
   {
@@ -123,6 +123,144 @@ export default function SemanticColors() {
           <p className="text-sm text-stone-700 leading-relaxed">
             Once a color is assigned a semantic meaning, it must be used consistently. If Teal means "success" in one context and "category label" in another, users lose trust in color as a communication channel. Each semantic color should carry <strong>one meaning</strong> across the entire product.
           </p>
+        </div>
+      </Section>
+
+      {/* ─── Three-Tier Color Application ─── */}
+      <Section>
+        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+          <Tooltip content="The three-tier system governs when each color appears across all UI elements — buttons, icons, nav, cards, inputs. Each tier answers a different question about why color is present.">
+            <span>Three-Tier Color Application</span>
+          </Tooltip>
+        </h2>
+        <p className="text-sm text-stone-600 mb-5 leading-relaxed">
+          Every color in the UI exists for a reason. The three tiers map to three brand personality traits and answer three different questions.
+        </p>
+
+        {/* Tier cards */}
+        <div className="space-y-4 mb-6">
+          {/* Tier 1 */}
+          <div className="border-2 border-brand/20 rounded-xl overflow-hidden">
+            <div className="px-5 py-3 bg-brand/5 border-b border-brand/10">
+              <div className="flex items-center gap-3">
+                <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#4271DF' }} />
+                <p className="text-sm font-semibold text-stone-800">Tier 1: Responsive</p>
+                <span className="text-xs font-mono text-brand bg-brand/10 px-1.5 py-0.5 rounded">Cobalt #4271DF</span>
+              </div>
+              <p className="text-xs text-stone-500 mt-1">Personality: <strong>Perceptive</strong> — the system responds to you</p>
+            </div>
+            <div className="p-5">
+              <p className="text-xs text-stone-600 leading-relaxed mb-3">
+                Cobalt appears when the <strong>user interacts</strong>. It's temporary and reactive — present during hover, focus, and press, then settles. This keeps Cobalt rare and powerful.
+              </p>
+              <div className="border border-stone-200 rounded-lg overflow-hidden">
+                {[
+                  { element: 'Primary button', state: 'Default + hover + active', how: 'Cobalt background, darkens on hover/press' },
+                  { element: 'Link text', state: 'Default + hover', how: 'Cobalt text, underline on hover' },
+                  { element: 'Input focus', state: 'Focused', how: 'Cobalt border + ring. Reverts on blur.' },
+                  { element: 'Icon hover', state: 'Hovered', how: 'Gray → Cobalt outline. Reverts on leave.' },
+                  { element: 'Card hover', state: 'Hovered', how: 'Border darkens, subtle Cobalt accent if interactive' },
+                ].map((row, i) => (
+                  <div key={row.element} className="grid grid-cols-3 px-4 py-2" style={{ borderBottom: i < 4 ? '1px solid #F3F4F6' : 'none' }}>
+                    <span className="text-xs font-medium text-stone-700">{row.element}</span>
+                    <span className="text-xs text-stone-500">{row.state}</span>
+                    <span className="text-xs text-stone-500">{row.how}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Tier 2 */}
+          <div className="border border-stone-300 rounded-xl overflow-hidden">
+            <div className="px-5 py-3 bg-stone-100 border-b border-stone-200">
+              <div className="flex items-center gap-3">
+                <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#111827' }} />
+                <p className="text-sm font-semibold text-stone-800">Tier 2: Structural</p>
+                <span className="text-xs font-mono text-stone-600 bg-stone-200 px-1.5 py-0.5 rounded">Ink #111827</span>
+              </div>
+              <p className="text-xs text-stone-500 mt-1">Personality: <strong>Grounded</strong> — confident, understated, persistent</p>
+            </div>
+            <div className="p-5">
+              <p className="text-xs text-stone-600 leading-relaxed mb-3">
+                Ink signals <strong>persistent state</strong>. The current page, the selected tab, the toggled-on icon. These are always visible, so using a neutral tone keeps the canvas calm. Weight and fill change — not color.
+              </p>
+              <div className="border border-stone-200 rounded-lg overflow-hidden">
+                {[
+                  { element: 'Active nav item', state: 'Current page', how: 'Gray → Ink text, semibold weight, subtle background' },
+                  { element: 'Selected tab', state: 'Active tab', how: 'Gray → Ink text, bottom border or background' },
+                  { element: 'Filled icon', state: 'Toggled on', how: 'Gray outline → Ink filled. Weight signals state.' },
+                  { element: 'Active breadcrumb', state: 'Current segment', how: 'Gray → Ink text, semibold' },
+                  { element: 'Selected row', state: 'Selected item', how: 'Subtle Ink/5 background, Ink text' },
+                ].map((row, i) => (
+                  <div key={row.element} className="grid grid-cols-3 px-4 py-2" style={{ borderBottom: i < 4 ? '1px solid #F3F4F6' : 'none' }}>
+                    <span className="text-xs font-medium text-stone-700">{row.element}</span>
+                    <span className="text-xs text-stone-500">{row.state}</span>
+                    <span className="text-xs text-stone-500">{row.how}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Tier 3 */}
+          <div className="border border-stone-200 rounded-xl overflow-hidden">
+            <div className="px-5 py-3 bg-stone-50 border-b border-stone-100">
+              <div className="flex items-center gap-3">
+                <div className="flex gap-1">
+                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#00B6A0' }} />
+                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#E19000' }} />
+                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#F43F5E' }} />
+                </div>
+                <p className="text-sm font-semibold text-stone-800">Tier 3: Semantic</p>
+                <span className="text-xs font-mono text-stone-500 bg-stone-100 px-1.5 py-0.5 rounded">Teal / Amber / Rose</span>
+              </div>
+              <p className="text-xs text-stone-500 mt-1">Personality: <strong>Trustworthy</strong> — the system communicates clearly</p>
+            </div>
+            <div className="p-5">
+              <p className="text-xs text-stone-600 leading-relaxed mb-3">
+                Semantic colors appear when the <strong>system communicates status</strong>. Success, warning, error. These colors are never decorative — every appearance carries meaning that users learn to trust.
+              </p>
+              <div className="border border-stone-200 rounded-lg overflow-hidden">
+                {[
+                  { element: 'Success toast/badge', state: 'Positive outcome', how: 'Teal dot/icon + Teal-light background' },
+                  { element: 'Warning alert', state: 'Needs attention', how: 'Amber dot/icon + Amber-light background' },
+                  { element: 'Error message', state: 'Something failed', how: 'Rose dot/icon + Rose-light background' },
+                  { element: 'Destructive button', state: 'Irreversible action', how: 'Rose background, white text' },
+                  { element: 'Trend indicator', state: 'Positive/negative change', how: 'Teal for +, Rose for -, Amber for flat' },
+                ].map((row, i) => (
+                  <div key={row.element} className="grid grid-cols-3 px-4 py-2" style={{ borderBottom: i < 4 ? '1px solid #F3F4F6' : 'none' }}>
+                    <span className="text-xs font-medium text-stone-700">{row.element}</span>
+                    <span className="text-xs text-stone-500">{row.state}</span>
+                    <span className="text-xs text-stone-500">{row.how}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Decision flowchart */}
+        <div className="bg-stone-900 rounded-xl p-6 text-white">
+          <p className="text-sm font-semibold mb-4" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Decision: "What color should this be?"</p>
+          <div className="space-y-3 text-xs leading-relaxed">
+            <div className="flex gap-3">
+              <span className="text-stone-500 font-mono w-6 flex-shrink-0">1.</span>
+              <p><strong className="text-stone-300">Is the user interacting right now?</strong> <span className="text-stone-400">→ Cobalt. Hover, focus, press. Temporary.</span></p>
+            </div>
+            <div className="flex gap-3">
+              <span className="text-stone-500 font-mono w-6 flex-shrink-0">2.</span>
+              <p><strong className="text-stone-300">Is this a persistent selection or current state?</strong> <span className="text-stone-400">→ Ink. Active page, selected item, toggled on. Weight/fill change, not color.</span></p>
+            </div>
+            <div className="flex gap-3">
+              <span className="text-stone-500 font-mono w-6 flex-shrink-0">3.</span>
+              <p><strong className="text-stone-300">Is the system communicating status?</strong> <span className="text-stone-400">→ Teal (success), Amber (warning), Rose (error). Never decorative.</span></p>
+            </div>
+            <div className="flex gap-3">
+              <span className="text-stone-500 font-mono w-6 flex-shrink-0">4.</span>
+              <p><strong className="text-stone-300">None of the above?</strong> <span className="text-stone-400">→ Gray (secondary) or Ink (primary). The canvas stays neutral.</span></p>
+            </div>
+          </div>
         </div>
       </Section>
     </PageShell>
