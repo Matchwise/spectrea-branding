@@ -61,7 +61,7 @@ export default function Governance() {
             ].map(item => (
               <div key={item.step} className="flex gap-4">
                 <div className="flex-shrink-0">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold" style={{ backgroundColor: '#4271DF' }}>
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-semibold" style={{ backgroundColor: '#4271DF' }}>
                     {item.step}
                   </div>
                 </div>
@@ -85,7 +85,7 @@ export default function Governance() {
           {[
             { level: 'Minor', color: '#00B6A0', examples: 'Fix a typo, adjust a padding value, update a screenshot', approval: 'Design Lead', turnaround: 'Same day' },
             { level: 'Moderate', color: '#E19000', examples: 'Add a new component, change a secondary color variant, add an icon', approval: 'Design Lead + Brand Lead', turnaround: '1–3 days' },
-            { level: 'Major', color: '#F43F5E', examples: 'Change a primary color, modify the logo, redefine voice guidelines', approval: 'Full brand review', turnaround: '1–2 weeks' },
+            { level: 'Major', color: '#F24260', examples: 'Change a primary color, modify the logo, redefine voice guidelines', approval: 'Full brand review', turnaround: '1–2 weeks' },
           ].map((row, i) => (
             <div key={row.level} className="px-4 py-4" style={{ borderBottom: i < 2 ? '1px solid #F3F4F6' : 'none' }}>
               <div className="flex items-center gap-2 mb-1">

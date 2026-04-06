@@ -122,20 +122,20 @@ export default function TypeScale() {
           </Tooltip>
         </h2>
         <div className="space-y-4">
-          <div className="border border-red-200 bg-red-50/20 rounded-xl p-5">
-            <p className="text-xs font-semibold text-red-600 uppercase tracking-wider mb-2">Too wide (90+ chars)</p>
+          <div className="rounded-xl p-5" style={{ border: '1px solid #F2426025', backgroundColor: '#F2426008' }}>
+            <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: '#F24260' }}>Too wide (90+ chars)</p>
             <p className="text-sm text-stone-600 leading-relaxed" style={{ fontFamily: t.body.css, maxWidth: '800px' }}>
               Every document you upload enriches your knowledge graph. Connections you never noticed start surfacing. The system gets sharper — your second month is better than your first. Your second year is incomparably better.
             </p>
           </div>
-          <div className="border border-emerald-200 bg-emerald-50/20 rounded-xl p-5">
-            <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-2">Ideal (50–75 chars)</p>
+          <div className="rounded-xl p-5" style={{ border: '1px solid #00B6A025', backgroundColor: '#00B6A008' }}>
+            <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: '#00B6A0' }}>Ideal (50–75 chars)</p>
             <p className="text-sm text-stone-600 leading-relaxed" style={{ fontFamily: t.body.css, maxWidth: '540px' }}>
               Every document you upload enriches your knowledge graph. Connections you never noticed start surfacing. The system gets sharper — your second month is better than your first.
             </p>
           </div>
-          <div className="border border-red-200 bg-red-50/20 rounded-xl p-5">
-            <p className="text-xs font-semibold text-red-600 uppercase tracking-wider mb-2">Too narrow (30 chars)</p>
+          <div className="rounded-xl p-5" style={{ border: '1px solid #F2426025', backgroundColor: '#F2426008' }}>
+            <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: '#F24260' }}>Too narrow (30 chars)</p>
             <p className="text-sm text-stone-600 leading-relaxed" style={{ fontFamily: t.body.css, maxWidth: '220px' }}>
               Every document you upload enriches your knowledge graph. Connections you never noticed start surfacing.
             </p>

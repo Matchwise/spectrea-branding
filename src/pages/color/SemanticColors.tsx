@@ -3,11 +3,11 @@ import Tooltip from '../../components/brand/Tooltip'
 
 const semanticColors = [
   {
-    name: 'Primary / Interactive',
+    name: 'Primary / Info',
     color: '#4271DF',
     light: '#EEF2FF',
     dark: '#1E3A8A',
-    usage: 'Links, primary buttons, focused inputs, hover accents. Responsive tier — appears during interaction, settles when done.',
+    usage: 'Primary actions (buttons, links, focus states) and informational alerts (notable updates, system notices). Cobalt serves dual purpose — triggering actions in Tier 1 and communicating noteworthy information in Tier 3.',
     maps: 'Cobalt (hero)',
   },
   {
@@ -28,18 +28,18 @@ const semanticColors = [
   },
   {
     name: 'Error / Destructive',
-    color: '#F43F5E',
+    color: '#F24260',
     light: '#FFF1F2',
     dark: '#9F1239',
     usage: 'Error messages, destructive actions, failed states, critical alerts, form validation errors.',
     maps: 'Rose (spectrum)',
   },
   {
-    name: 'Neutral / Info',
+    name: 'Neutral',
     color: '#9CA3AF',
     light: '#F9FAFB',
     dark: '#4B5563',
-    usage: 'Informational messages, disabled states, borders, dividers, placeholder text.',
+    usage: 'Disabled states, borders, dividers, placeholder text. Passive context — present if needed, never demanding attention.',
     maps: 'Gray (muted)',
   },
 ]
@@ -105,14 +105,14 @@ export default function SemanticColors() {
             <p className="text-xs" style={{ color: '#7C4D04' }}>Confidence score below threshold (62%). Review recommended.</p>
           </div>
           {/* Error toast */}
-          <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#FFF1F2', border: '1px solid #F43F5E20' }}>
-            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#F43F5E' }} />
+          <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#FFF1F2', border: '1px solid #F2426020' }}>
+            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#F24260' }} />
             <p className="text-xs" style={{ color: '#9F1239' }}>Save failed: connection timeout. Your draft is cached locally.</p>
           </div>
           {/* Info toast */}
-          <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#F9FAFB', border: '1px solid #9CA3AF20' }}>
-            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#9CA3AF' }} />
-            <p className="text-xs" style={{ color: '#4B5563' }}>3 new documents queued for extraction. Processing will begin shortly.</p>
+          <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#EEF2FF', border: '1px solid #4271DF20' }}>
+            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#4271DF' }} />
+            <p className="text-xs" style={{ color: '#1E3A8A' }}>3 new documents queued for extraction. Processing will begin shortly.</p>
           </div>
         </div>
       </Section>
@@ -209,28 +209,32 @@ export default function SemanticColors() {
             <div className="px-5 py-3 bg-stone-50 border-b border-stone-100">
               <div className="flex items-center gap-3">
                 <div className="flex gap-1">
+                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#4271DF' }} />
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#00B6A0' }} />
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#E19000' }} />
-                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#F43F5E' }} />
+                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#F24260' }} />
+                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#9CA3AF' }} />
                 </div>
                 <p className="text-sm font-semibold text-stone-800">Tier 3: Semantic</p>
-                <span className="text-xs font-mono text-stone-500 bg-stone-100 px-1.5 py-0.5 rounded">Teal / Amber / Rose</span>
+                <span className="text-xs font-mono text-stone-500 bg-stone-100 px-1.5 py-0.5 rounded">Cobalt / Teal / Amber / Rose / Gray</span>
               </div>
               <p className="text-xs text-stone-500 mt-1">Personality: <strong>Trustworthy</strong> — the system communicates clearly</p>
             </div>
             <div className="p-5">
               <p className="text-xs text-stone-600 leading-relaxed mb-3">
-                Semantic colors appear when the <strong>system communicates status</strong>. Success, warning, error. These colors are never decorative — every appearance carries meaning that users learn to trust.
+                Semantic colors appear when the <strong>system communicates status</strong>. Info, success, warning, error. Cobalt doubles as the informational semantic color — giving notices visual weight. These colors are never decorative — every appearance carries meaning that users learn to trust.
               </p>
               <div className="border border-stone-200 rounded-lg overflow-hidden">
                 {[
+                  { element: 'Info alert / notice', state: 'Noteworthy update', how: 'Cobalt icon + Cobalt-light background' },
                   { element: 'Success toast/badge', state: 'Positive outcome', how: 'Teal dot/icon + Teal-light background' },
                   { element: 'Warning alert', state: 'Needs attention', how: 'Amber dot/icon + Amber-light background' },
                   { element: 'Error message', state: 'Something failed', how: 'Rose dot/icon + Rose-light background' },
                   { element: 'Destructive button', state: 'Irreversible action', how: 'Rose background, white text' },
                   { element: 'Trend indicator', state: 'Positive/negative change', how: 'Teal for +, Rose for -, Amber for flat' },
+                  { element: 'Neutral / disabled', state: 'Passive context', how: 'Gray text, borders, placeholders. Present if needed.' },
                 ].map((row, i) => (
-                  <div key={row.element} className="grid grid-cols-3 px-4 py-2" style={{ borderBottom: i < 4 ? '1px solid #F3F4F6' : 'none' }}>
+                  <div key={row.element} className="grid grid-cols-3 px-4 py-2" style={{ borderBottom: i < 6 ? '1px solid #F3F4F6' : 'none' }}>
                     <span className="text-xs font-medium text-stone-700">{row.element}</span>
                     <span className="text-xs text-stone-500">{row.state}</span>
                     <span className="text-xs text-stone-500">{row.how}</span>
@@ -255,11 +259,11 @@ export default function SemanticColors() {
             </div>
             <div className="flex gap-3">
               <span className="text-stone-500 font-mono w-6 flex-shrink-0">3.</span>
-              <p><strong className="text-stone-300">Is the system communicating status?</strong> <span className="text-stone-400">→ Teal (success), Amber (warning), Rose (error). Never decorative.</span></p>
+              <p><strong className="text-stone-300">Is the system communicating status?</strong> <span className="text-stone-400">→ Cobalt (info), Teal (success), Amber (warning), Rose (error). Never decorative.</span></p>
             </div>
             <div className="flex gap-3">
               <span className="text-stone-500 font-mono w-6 flex-shrink-0">4.</span>
-              <p><strong className="text-stone-300">None of the above?</strong> <span className="text-stone-400">→ Gray (secondary) or Ink (primary). The canvas stays neutral.</span></p>
+              <p><strong className="text-stone-300">None of the above?</strong> <span className="text-stone-400">→ Ink (primary text) or Gray (muted / disabled / passive). The canvas stays neutral.</span></p>
             </div>
           </div>
         </div>

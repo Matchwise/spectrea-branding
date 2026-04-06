@@ -111,22 +111,22 @@ export default function Social() {
       {/* Rules */}
       <Section title="Social Media Rules">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="border border-emerald-200 bg-emerald-50/30 rounded-xl p-5">
-            <h3 className="text-sm font-semibold text-emerald-800 mb-3">Do</h3>
+          <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
             <ul className="space-y-2 text-sm text-stone-700">
-              <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Lead with ideas, not product features</li>
-              <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Use the approved vocabulary list</li>
-              <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Keep visuals clean — dark bg + gradient accent</li>
-              <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>End with an invitation, not a hard sell</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Lead with ideas, not product features</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use the approved vocabulary list</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Keep visuals clean — dark bg + gradient accent</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>End with an invitation, not a hard sell</li>
             </ul>
           </div>
-          <div className="border border-red-200 bg-red-50/30 rounded-xl p-5">
-            <h3 className="text-sm font-semibold text-red-700 mb-3">Don't</h3>
+          <div className="border rounded-xl p-5" style={{ borderColor: '#F2426025', backgroundColor: '#F2426008' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Don't</h3>
             <ul className="space-y-2 text-sm text-stone-700">
-              <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Use hype words ("revolutionary", "game-changer")</li>
-              <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Post clickbait or engagement bait</li>
-              <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Use stock photos — use product screenshots instead</li>
-              <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Over-post — quality over frequency</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use hype words ("revolutionary", "game-changer")</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Post clickbait or engagement bait</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use stock photos — use product screenshots instead</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Over-post — quality over frequency</li>
             </ul>
           </div>
         </div>

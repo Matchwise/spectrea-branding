@@ -98,7 +98,7 @@ export default function Downloads() {
   --color-brand: #4271DF;
   --color-brand-teal: #00B6A0;
   --color-brand-amber: #E19000;
-  --color-brand-rose: #F43F5E;
+  --color-brand-rose: #F24260;
   --color-ink: #111827;
   --color-snow: #F9FAFB;
   --color-gray: #9CA3AF;

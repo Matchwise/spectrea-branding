@@ -12,7 +12,7 @@ export default function BrandStory() {
       {/* Etymology */}
       <Section title="Name Origin">
         <div className="bg-gradient-to-r from-brand/5 via-brand-teal/5 to-brand-amber/5 rounded-xl p-6 border border-brand/10">
-          <p className="text-3xl font-bold text-stone-900 tracking-tight">{brand.name}</p>
+          <p className="text-3xl font-semibold text-stone-900 tracking-tight">{brand.name}</p>
           <p className="text-sm text-stone-500 font-mono mt-1">{brand.pronunciation}</p>
           <p className="text-sm text-stone-600 mt-3 leading-relaxed">{brand.etymology}</p>
         </div>
@@ -62,7 +62,7 @@ export default function BrandStory() {
           </Tooltip>
         </h2>
         <div className="bg-stone-50 rounded-xl p-6 border border-stone-200">
-          <p className="text-2xl font-bold text-stone-900">{brand.tagline.statement}</p>
+          <p className="text-2xl font-semibold text-stone-900">{brand.tagline.statement}</p>
         </div>
       </Section>
 
@@ -96,7 +96,7 @@ export default function BrandStory() {
           {brand.values.map((v, i) => (
             <div key={v.name} className="border border-stone-200 rounded-xl p-5">
               <div className="flex items-baseline gap-3 mb-2">
-                <span className="text-xs font-bold text-stone-400">{String(i + 1).padStart(2, '0')}</span>
+                <span className="text-xs font-semibold text-stone-400">{String(i + 1).padStart(2, '0')}</span>
                 <h3 className="font-semibold text-stone-900">{v.name}</h3>
                 <span className="text-xs font-mono text-stone-400 bg-stone-100 px-1.5 py-0.5 rounded">{v.principle}</span>
               </div>
@@ -136,8 +136,8 @@ export default function BrandStory() {
         </h2>
         <div className="space-y-3">
           {brand.antiValues.map((av, i) => (
-            <div key={i} className="flex items-start gap-3 bg-red-50/50 rounded-lg px-4 py-3 border border-red-100">
-              <span className="text-red-400 mt-0.5 flex-shrink-0">
+            <div key={i} className="flex items-start gap-3 rounded-lg px-4 py-3" style={{ backgroundColor: '#F2426008', border: '1px solid #F2426015' }}>
+              <span className="mt-0.5 flex-shrink-0" style={{ color: '#F24260' }}>
                 <TbX size={16} />
               </span>
               <div>

@@ -22,7 +22,7 @@ export default function Email() {
               <p className="text-xs text-stone-400 mt-1">sarah@spectrea.com</p>
               <div className="flex items-center gap-2 mt-2">
                 <div className="w-5 h-5 rounded flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #4271DF, #00B6A0, #E19000)' }}>
-                  <span className="text-white font-bold text-xs font-heading" style={{ fontSize: 8 }}>S</span>
+                  <span className="text-white font-semibold text-xs font-heading" style={{ fontSize: 8 }}>S</span>
                 </div>
                 <span className="text-xs font-heading font-semibold text-stone-700">Spectrea</span>
                 <span className="text-xs text-stone-400">| We connect the dots.</span>
@@ -53,7 +53,7 @@ export default function Email() {
               <div className="p-5">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-6 h-6 rounded flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #4271DF, #00B6A0, #E19000)' }}>
-                    <span className="text-white font-bold font-heading" style={{ fontSize: 9 }}>S</span>
+                    <span className="text-white font-semibold font-heading" style={{ fontSize: 9 }}>S</span>
                   </div>
                   <span className="text-xs font-heading font-semibold text-stone-700">Spectrea</span>
                 </div>
@@ -72,7 +72,7 @@ export default function Email() {
               <div className="p-5" style={{ backgroundColor: '#111827' }}>
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-6 h-6 rounded flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #4271DF, #00B6A0, #E19000)' }}>
-                    <span className="text-white font-bold font-heading" style={{ fontSize: 9 }}>S</span>
+                    <span className="text-white font-semibold font-heading" style={{ fontSize: 9 }}>S</span>
                   </div>
                   <span className="text-xs font-heading font-semibold" style={{ color: '#F9FAFB' }}>Spectrea</span>
                 </div>

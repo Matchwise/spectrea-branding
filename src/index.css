@@ -7,9 +7,17 @@
 
   /* Brand colors */
   --color-brand: #4271DF;
+  --color-brand-hover: #3A63C4;
+  --color-brand-active: #3255A7;
   --color-brand-teal: #00B6A0;
+  --color-brand-teal-hover: #009E8A;
+  --color-brand-teal-active: #008775;
   --color-brand-amber: #E19000;
-  --color-brand-rose: #F43F5E;
+  --color-brand-amber-hover: #C58200;
+  --color-brand-amber-active: #A86E00;
+  --color-brand-rose: #F24260;
+  --color-brand-rose-hover: #D63B55;
+  --color-brand-rose-active: #BA3249;
 }
 
 html {
@@ -24,6 +32,12 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
+}
+
+/* Button focus ring — Amber "attention" ring with offset */
+.btn-focus:focus-visible {
+  outline: 2px solid rgba(236, 164, 30, 0.7);
+  outline-offset: 2px;
 }
 
 /* Scrollbar styling */

@@ -162,24 +162,24 @@ export default function TypeExplorer() {
       {/* Do / Don't */}
       <Section title="Typography Dos & Don'ts">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="border border-emerald-200 bg-emerald-50/30 rounded-xl p-5">
-            <h3 className="text-sm font-semibold text-emerald-800 mb-3">Do</h3>
+          <div className="rounded-xl p-5" style={{ border: '1px solid #00B6A025', backgroundColor: '#00B6A008' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
             <ul className="space-y-2 text-sm text-stone-700">
-              <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Use Albert Sans only for headings and display text</li>
-              <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Use Lexend for all body text and UI labels</li>
-              <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Use JetBrains Mono for anything code-like or data-like</li>
-              <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Maintain minimum 16px for body text on web</li>
-              <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Use Semibold 600 as the default heading weight</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use Albert Sans only for headings and display text</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use Lexend for all body text and UI labels</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use JetBrains Mono for anything code-like or data-like</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Maintain minimum 16px for body text on web</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use Semibold 600 as the default heading weight</li>
             </ul>
           </div>
-          <div className="border border-red-200 bg-red-50/30 rounded-xl p-5">
-            <h3 className="text-sm font-semibold text-red-700 mb-3">Don't</h3>
+          <div className="rounded-xl p-5" style={{ border: '1px solid #F2426025', backgroundColor: '#F2426008' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Don't</h3>
             <ul className="space-y-2 text-sm text-stone-700">
-              <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Mix in other font families — three is the maximum</li>
-              <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Use Albert Sans for long body paragraphs</li>
-              <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Use Bold 700 for anything except the logo and hero headlines</li>
-              <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Use all-caps for body text (headings only, sparingly)</li>
-              <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Go below 12px for any text (accessibility minimum)</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Mix in other font families — three is the maximum</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use Albert Sans for long body paragraphs</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use Bold 700 for anything except the logo and hero headlines</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use all-caps for body text (headings only, sparingly)</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Go below 12px for any text (accessibility minimum)</li>
             </ul>
           </div>
         </div>

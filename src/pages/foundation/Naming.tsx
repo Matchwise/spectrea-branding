@@ -28,7 +28,7 @@ export default function Naming() {
       <Section title="Pronunciation">
         <div className="bg-stone-50 rounded-xl p-6 flex items-center gap-6">
           <div>
-            <p className="text-3xl font-bold text-stone-900 tracking-tight">{brand.name}</p>
+            <p className="text-3xl font-semibold text-stone-900 tracking-tight">{brand.name}</p>
             <p className="text-lg font-mono text-stone-500 mt-1">{brand.pronunciation}</p>
           </div>
           <div className="text-sm text-stone-600 border-l border-stone-200 pl-6">
@@ -52,23 +52,23 @@ export default function Naming() {
       {/* Usage Rules */}
       <Section title="Name Usage">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="border border-emerald-200 bg-emerald-50/30 rounded-xl p-5">
-            <h3 className="text-sm font-semibold text-emerald-700 mb-3">Correct Usage</h3>
+          <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Correct Usage</h3>
             <ul className="space-y-2">
               {usageExamples.correct.map(ex => (
                 <li key={ex} className="text-sm text-stone-700 flex items-start gap-2">
-                  <span className="text-emerald-500 mt-0.5">&#10003;</span>
+                  <span className="mt-0.5" style={{ color: '#00B6A0' }}>&#10003;</span>
                   {ex}
                 </li>
               ))}
             </ul>
           </div>
-          <div className="border border-red-200 bg-red-50/30 rounded-xl p-5">
-            <h3 className="text-sm font-semibold text-red-600 mb-3">Incorrect Usage</h3>
+          <div className="border rounded-xl p-5" style={{ borderColor: '#F2426025', backgroundColor: '#F2426008' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Incorrect Usage</h3>
             <ul className="space-y-2">
               {usageExamples.incorrect.map(ex => (
                 <li key={ex} className="text-sm text-stone-500 flex items-start gap-2">
-                  <span className="text-red-400 mt-0.5">&#10007;</span>
+                  <span className="mt-0.5" style={{ color: '#F24260' }}>&#10007;</span>
                   {ex}
                 </li>
               ))}

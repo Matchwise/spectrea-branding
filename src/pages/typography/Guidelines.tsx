@@ -88,26 +88,26 @@ export default function TypographyGuidelines() {
           </Tooltip>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="border border-emerald-200 bg-emerald-50/30 rounded-xl p-5">
-            <h3 className="text-sm font-semibold text-emerald-800 mb-3">Correct</h3>
+          <div className="rounded-xl p-5" style={{ border: '1px solid #00B6A025', backgroundColor: '#00B6A008' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Correct</h3>
             <div className="space-y-3">
-              <div className="bg-white rounded-lg p-3 border border-emerald-100">
+              <div className="bg-white rounded-lg p-3" style={{ border: '1px solid #00B6A015' }}>
                 <p className="text-lg font-semibold text-stone-900" style={{ fontFamily: t.heading.css }}>Page Title</p>
                 <p className="text-sm text-stone-600" style={{ fontFamily: t.body.css }}>Body text at regular weight. Nice and readable.</p>
                 <p className="text-xs text-stone-400 mt-1" style={{ fontFamily: t.body.css }}>Caption text, lighter color, same weight.</p>
               </div>
-              <p className="text-xs text-emerald-700">Clear distinction: size + font family creates hierarchy without excessive bolding.</p>
+              <p className="text-xs" style={{ color: '#008775' }}>Clear distinction: size + font family creates hierarchy without excessive bolding.</p>
             </div>
           </div>
-          <div className="border border-red-200 bg-red-50/30 rounded-xl p-5">
-            <h3 className="text-sm font-semibold text-red-700 mb-3">Incorrect</h3>
+          <div className="rounded-xl p-5" style={{ border: '1px solid #F2426025', backgroundColor: '#F2426008' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Incorrect</h3>
             <div className="space-y-3">
-              <div className="bg-white rounded-lg p-3 border border-red-100">
+              <div className="bg-white rounded-lg p-3" style={{ border: '1px solid #F2426015' }}>
                 <p className="text-lg font-bold text-stone-900" style={{ fontFamily: t.body.css }}>Page Title in Wrong Font</p>
                 <p className="text-sm font-semibold text-stone-600" style={{ fontFamily: t.body.css }}>Body text that's too bold. Fights with the title.</p>
                 <p className="text-xs font-medium text-stone-900 mt-1" style={{ fontFamily: t.body.css }}>Caption that's too dark and heavy.</p>
               </div>
-              <p className="text-xs text-red-600">Everything competes. No clear hierarchy when body is bold and captions are medium weight.</p>
+              <p className="text-xs" style={{ color: '#F24260' }}>Everything competes. No clear hierarchy when body is bold and captions are medium weight.</p>
             </div>
           </div>
         </div>

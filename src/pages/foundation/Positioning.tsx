@@ -95,7 +95,7 @@ export default function Positioning() {
           {brand.differentiators.map((d, i) => (
             <div key={i} className="grid grid-cols-2 border-b last:border-b-0 border-stone-100">
               <div className="px-4 py-3 text-sm text-stone-700 flex items-start gap-2">
-                <span className="text-emerald-500 mt-0.5 flex-shrink-0 text-xs">&#10003;</span>
+                <span className="mt-0.5 flex-shrink-0 text-xs" style={{ color: '#00B6A0' }}>&#10003;</span>
                 {d.spectrea}
               </div>
               <div className="px-4 py-3 text-sm text-stone-400 flex items-start gap-2">

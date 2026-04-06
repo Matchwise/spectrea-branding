@@ -365,7 +365,7 @@ export const selectedPalette: PaletteOption = {
     { name: 'Cobalt', hex: '#4271DF', role: 'accent' },
     { name: 'Teal', hex: '#00B6A0', role: 'accent' },
     { name: 'Amber', hex: '#E19000', role: 'accent' },
-    { name: 'Rose', hex: '#F43F5E', role: 'accent' },
+    { name: 'Rose', hex: '#F24260', role: 'accent' },
     { name: 'White', hex: '#FFFFFF', role: 'background' },
     { name: 'Snow', hex: '#F9FAFB', role: 'surface' },
     { name: 'Ink', hex: '#111827', role: 'text' },

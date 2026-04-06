@@ -73,19 +73,19 @@ export default function Copy() {
       {/* Vocabulary */}
       <Section title="Vocabulary">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="border border-emerald-200 bg-emerald-50/30 rounded-xl p-5">
-            <h3 className="text-sm font-semibold text-emerald-800 mb-3">Words We Use</h3>
+          <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Words We Use</h3>
             <div className="flex flex-wrap gap-1.5">
               {voice.alwaysUse.map(word => (
-                <span key={word} className="text-xs bg-emerald-100 text-emerald-700 px-2 py-1 rounded-md">{word}</span>
+                <span key={word} className="text-xs px-2 py-1 rounded-md" style={{ backgroundColor: '#00B6A010', color: '#008775' }}>{word}</span>
               ))}
             </div>
           </div>
-          <div className="border border-red-200 bg-red-50/30 rounded-xl p-5">
-            <h3 className="text-sm font-semibold text-red-700 mb-3">Words We Never Use</h3>
+          <div className="border rounded-xl p-5" style={{ borderColor: '#F2426025', backgroundColor: '#F2426008' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Words We Never Use</h3>
             <div className="flex flex-wrap gap-1.5">
               {voice.neverUse.map(word => (
-                <span key={word} className="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-md line-through decoration-red-300">{word}</span>
+                <span key={word} className="text-xs px-2 py-1 rounded-md line-through" style={{ backgroundColor: '#F2426010', color: '#D63B55', textDecorationColor: '#F2426060' }}>{word}</span>
               ))}
             </div>
           </div>

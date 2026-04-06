@@ -470,7 +470,7 @@ export default function Motion() {
               'Loading spinners may remain (essential feedback)',
             ].map((rule, i) => (
               <div key={i} className="flex items-start gap-2 bg-white rounded-lg px-3 py-2 border border-stone-100">
-                <span className="text-xs font-bold text-stone-400 mt-px">{String(i + 1).padStart(2, '0')}</span>
+                <span className="text-xs font-semibold text-stone-400 mt-px">{String(i + 1).padStart(2, '0')}</span>
                 <p className="text-xs text-stone-600">{rule}</p>
               </div>
             ))}

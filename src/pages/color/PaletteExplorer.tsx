@@ -43,7 +43,7 @@ function MiniPreview({ dark }: { dark?: boolean }) {
         <p className="text-[9px] font-bold mb-0.5" style={{ color: text }}>Knowledge Overview</p>
         <p className="text-[7px] mb-2" style={{ color: muted }}>3 new connections discovered</p>
         <div className="grid grid-cols-4 gap-1 mb-2">
-          {['#4271DF', '#00B6A0', '#E19000', '#F43F5E'].map((c, i) => (
+          {['#4271DF', '#00B6A0', '#E19000', '#F24260'].map((c, i) => (
             <div key={i} className="rounded p-1" style={{ backgroundColor: surface, border: `1px solid ${border}` }}>
               <p className="text-[5px]" style={{ color: muted }}>{['Active', 'Growth', 'Pending', 'Alerts'][i]}</p>
               <p className="text-[8px] font-bold" style={{ color: text }}>{['2.8k', '+23%', '12', '3'][i]}</p>
@@ -52,7 +52,7 @@ function MiniPreview({ dark }: { dark?: boolean }) {
           ))}
         </div>
         <div className="flex gap-1">
-          {['#4271DF', '#00B6A0', '#E19000', '#F43F5E'].map((c, i) => (
+          {['#4271DF', '#00B6A0', '#E19000', '#F24260'].map((c, i) => (
             <span key={i} className="text-[5px] px-1.5 py-0.5 rounded-full" style={{ backgroundColor: c + '18', color: c, border: `1px solid ${c}30` }}>
               {['entities', 'connected', 'review', 'critical'][i]}
             </span>
@@ -76,7 +76,7 @@ export default function ColorOverview() {
           <Swatch name="Cobalt" hex="#4271DF" role="Hero" />
           <Swatch name="Teal" hex="#00B6A0" role="Spectrum" textColor="#111827" />
           <Swatch name="Amber" hex="#E19000" role="Spectrum" textColor="#111827" />
-          <Swatch name="Rose" hex="#F43F5E" role="Spectrum" />
+          <Swatch name="Rose" hex="#F24260" role="Spectrum" />
           <Swatch name="White" hex="#FFFFFF" role="Background" textColor="#9CA3AF" />
           <Swatch name="Snow" hex="#F9FAFB" role="Surface" textColor="#9CA3AF" />
           <Swatch name="Ink" hex="#111827" role="Text" />
@@ -98,7 +98,7 @@ export default function ColorOverview() {
             { color: '#4271DF', name: 'Cobalt', role: 'Hero', usage: 'Primary buttons, links, nav highlights, focused inputs, key CTAs' },
             { color: '#00B6A0', name: 'Teal', role: 'Success / Growth', usage: 'Positive states, connected status, growth indicators, completion' },
             { color: '#E19000', name: 'Amber', role: 'Warning / Attention', usage: 'Warnings, pending states, confidence scores, highlights' },
-            { color: '#F43F5E', name: 'Rose', role: 'Error / Urgency', usage: 'Errors, destructive actions, critical alerts, notification badges' },
+            { color: '#F24260', name: 'Rose', role: 'Error / Urgency', usage: 'Errors, destructive actions, critical alerts, notification badges' },
             { color: '#FFFFFF', name: 'White', role: 'Canvas', usage: 'Page background — 60% of any screen' },
             { color: '#F9FAFB', name: 'Snow', role: 'Surface', usage: 'Cards, sidebars, dropdowns — 20% of any screen' },
             { color: '#111827', name: 'Ink', role: 'Primary Text', usage: 'Headings, body copy, labels' },

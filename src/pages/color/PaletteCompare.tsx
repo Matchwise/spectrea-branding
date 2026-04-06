@@ -185,9 +185,11 @@ function HarmonyBadge({ deltaL, deltaC }: { deltaL: number; deltaC: number }) {
   const cOk = deltaC <= 0.03
   const perfect = deltaL <= 0.02 && deltaC <= 0.015
   const label = perfect ? 'Perfect' : (lOk && cOk) ? 'Harmonious' : lOk ? 'Chroma mismatch' : cOk ? 'Lightness mismatch' : 'Out of harmony'
-  const color = perfect ? 'text-emerald-600 bg-emerald-50 border-emerald-200' : (lOk && cOk) ? 'text-emerald-600 bg-emerald-50 border-emerald-200' : 'text-amber-600 bg-amber-50 border-amber-200'
+  const style = (perfect || (lOk && cOk))
+    ? { color: '#008775', backgroundColor: '#00B6A010', border: '1px solid #00B6A025' }
+    : { color: '#92400E', backgroundColor: '#FFFBEB', border: '1px solid #FDE68A' }
   return (
-    <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full border ${color}`}>
+    <span className="text-[10px] font-medium px-2 py-0.5 rounded-full" style={style}>
       {label} (dL={deltaL.toFixed(3)}, dC={deltaC.toFixed(3)})
     </span>
   )
@@ -195,68 +197,80 @@ function HarmonyBadge({ deltaL, deltaC }: { deltaL: number; deltaC: number }) {
 
 // ─── Main page ────────────────────────────────────────────────────
 
-const HUES = { cobalt: 264, teal: 180, amber: 70 }
+const HUES = { cobalt: 264, teal: 180, amber: 70, rose: 16 }
 export default function PaletteCompare() {
   // Control mode: shared sliders or per-color
-  const [mode, setMode] = useState<'shared' | 'independent'>('shared')
+  const [mode, setMode] = useState<'shared' | 'independent'>('independent')
   // Shared
   const [sharedL, setSharedL] = useState(0.65)
   const [sharedCPct, setSharedCPct] = useState(85)
-  // Independent
-  const [cobaltL, setCobaltL] = useState(0.51)
-  const [tealL, setTealL] = useState(0.70)
-  const [amberL, setAmberL] = useState(0.72)
-  const [cobaltCPct, setCobaltCPct] = useState(85)
-  const [tealCPct, setTealCPct] = useState(85)
-  const [amberCPct, setAmberCPct] = useState(85)
+  // Independent (defaults match current palette OKLCH values)
+  const [cobaltL, setCobaltL] = useState(0.575)
+  const [tealL, setTealL] = useState(0.695)
+  const [amberL, setAmberL] = useState(0.720)
+  const [roseL, setRoseL] = useState(0.645)
+  const [cobaltCPct, setCobaltCPct] = useState(75)
+  const [tealCPct, setTealCPct] = useState(100)
+  const [amberCPct, setAmberCPct] = useState(100)
+  const [roseCPct, setRoseCPct] = useState(86)
   // Chroma matching (only in shared mode)
   const [chromaMode, setChromaMode] = useState<'matched' | 'relative'>('matched')
   // Hues
   const [cobaltH, setCobaltH] = useState(HUES.cobalt)
   const [tealH, setTealH] = useState(HUES.teal)
   const [amberH, setAmberH] = useState(HUES.amber)
+  const [roseH, setRoseH] = useState(HUES.rose)
 
   const compute = useCallback(() => {
     const Lc = mode === 'shared' ? sharedL : cobaltL
     const Lt = mode === 'shared' ? sharedL : tealL
     const La = mode === 'shared' ? sharedL : amberL
+    const Lr = mode === 'shared' ? sharedL : roseL
 
     const maxCc = maxChroma(Lc, cobaltH)
     const maxCt = maxChroma(Lt, tealH)
     const maxCa = maxChroma(La, amberH)
+    const maxCr = maxChroma(Lr, roseH)
 
-    let Cc: number, Ct: number, Ca: number
+    let Cc: number, Ct: number, Ca: number, Cr: number
     if (mode === 'shared') {
       const pct = sharedCPct / 100
       if (chromaMode === 'matched') {
-        const cap = Math.min(maxCc, maxCt, maxCa)
-        Cc = Ct = Ca = cap * pct
+        const cap = Math.min(maxCc, maxCt, maxCa, maxCr)
+        Cc = Ct = Ca = Cr = cap * pct
       } else {
         Cc = maxCc * pct
         Ct = maxCt * pct
         Ca = maxCa * pct
+        Cr = maxCr * pct
       }
     } else {
-      // Independent: each color has its own chroma % of its own max
       Cc = maxCc * (cobaltCPct / 100)
       Ct = maxCt * (tealCPct / 100)
       Ca = maxCa * (amberCPct / 100)
+      Cr = maxCr * (roseCPct / 100)
     }
 
     const cobaltHex = oklchToHex(Lc, Cc, cobaltH)
     const tealHex = oklchToHex(Lt, Ct, tealH)
     const amberHex = oklchToHex(La, Ca, amberH)
+    const roseHex = oklchToHex(Lr, Cr, roseH)
 
-    const deltaL = Math.max(Math.abs(Lc - Lt), Math.abs(Lc - La), Math.abs(Lt - La))
-    const deltaC = Math.max(Math.abs(Cc - Ct), Math.abs(Cc - Ca), Math.abs(Ct - Ca))
+    const Ls = [Lc, Lt, La, Lr]
+    const Cs = [Cc, Ct, Ca, Cr]
+    const deltaL = Math.max(...Ls) - Math.min(...Ls)
+    const deltaC = Math.max(...Cs) - Math.min(...Cs)
+    const avgL = (Lc + Lt + La + Lr) / 4
+    const avgC = (Cc + Ct + Ca + Cr) / 4
 
     return {
       cobalt: { hex: cobaltHex, L: Lc, C: Cc, maxC: maxCc, h: cobaltH },
       teal: { hex: tealHex, L: Lt, C: Ct, maxC: maxCt, h: tealH },
       amber: { hex: amberHex, L: La, C: Ca, maxC: maxCa, h: amberH },
-      deltaL, deltaC,
+      rose: { hex: roseHex, L: Lr, C: Cr, maxC: maxCr, h: roseH },
+      deltaL, deltaC, avgL, avgC,
     }
-  }, [mode, sharedL, sharedCPct, cobaltL, tealL, amberL, cobaltCPct, tealCPct, amberCPct, chromaMode, cobaltH, tealH, amberH])
+  }, [mode, sharedL, sharedCPct, cobaltL, tealL, amberL, roseL, cobaltCPct, tealCPct, amberCPct, roseCPct, chromaMode, cobaltH, tealH, amberH, roseH])
 
   const result = useMemo(compute, [compute])
 
@@ -265,7 +279,8 @@ export default function PaletteCompare() {
     const c = hexToOklch('#4271DF')
     const t = hexToOklch('#00B6A0')
     const a = hexToOklch('#E19000')
-    return { cobalt: c, teal: t, amber: a }
+    const r = hexToOklch('#F24260')
+    return { cobalt: c, teal: t, amber: a, rose: r }
   }, [])
 
   return (
@@ -320,25 +335,30 @@ export default function PaletteCompare() {
                 </div>
               </>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="space-y-2">
-                  <SliderRow label="Cobalt L" value={cobaltL} min={0.4} max={0.85} step={0.005} onChange={setCobaltL} format={v => v.toFixed(3)} color={result.cobalt.hex} />
-                  <SliderRow label="Cobalt C" value={cobaltCPct} min={30} max={100} step={1} onChange={setCobaltCPct} format={v => `${Math.round(v)}%`} color={result.cobalt.hex} />
+                  <SliderRow label="Cobalt L" value={cobaltL} min={0.4} max={0.85} step={0.005} onChange={setCobaltL} format={v => v.toFixed(3)} color={result.cobalt.hex} deviation={result.cobalt.L - result.avgL} />
+                  <SliderRow label="Cobalt C" value={cobaltCPct} min={30} max={100} step={1} onChange={setCobaltCPct} format={v => `${Math.round(v)}%`} color={result.cobalt.hex} deviation={result.cobalt.C - result.avgC} />
                 </div>
                 <div className="space-y-2">
-                  <SliderRow label="Teal L" value={tealL} min={0.4} max={0.85} step={0.005} onChange={setTealL} format={v => v.toFixed(3)} color={result.teal.hex} />
-                  <SliderRow label="Teal C" value={tealCPct} min={30} max={100} step={1} onChange={setTealCPct} format={v => `${Math.round(v)}%`} color={result.teal.hex} />
+                  <SliderRow label="Teal L" value={tealL} min={0.4} max={0.85} step={0.005} onChange={setTealL} format={v => v.toFixed(3)} color={result.teal.hex} deviation={result.teal.L - result.avgL} />
+                  <SliderRow label="Teal C" value={tealCPct} min={30} max={100} step={1} onChange={setTealCPct} format={v => `${Math.round(v)}%`} color={result.teal.hex} deviation={result.teal.C - result.avgC} />
                 </div>
                 <div className="space-y-2">
-                  <SliderRow label="Amber L" value={amberL} min={0.4} max={0.85} step={0.005} onChange={setAmberL} format={v => v.toFixed(3)} color={result.amber.hex} />
-                  <SliderRow label="Amber C" value={amberCPct} min={30} max={100} step={1} onChange={setAmberCPct} format={v => `${Math.round(v)}%`} color={result.amber.hex} />
+                  <SliderRow label="Amber L" value={amberL} min={0.4} max={0.85} step={0.005} onChange={setAmberL} format={v => v.toFixed(3)} color={result.amber.hex} deviation={result.amber.L - result.avgL} />
+                  <SliderRow label="Amber C" value={amberCPct} min={30} max={100} step={1} onChange={setAmberCPct} format={v => `${Math.round(v)}%`} color={result.amber.hex} deviation={result.amber.C - result.avgC} />
+                </div>
+                <div className="space-y-2">
+                  <SliderRow label="Rose L" value={roseL} min={0.4} max={0.85} step={0.005} onChange={setRoseL} format={v => v.toFixed(3)} color={result.rose.hex} deviation={result.rose.L - result.avgL} />
+                  <SliderRow label="Rose C" value={roseCPct} min={30} max={100} step={1} onChange={setRoseCPct} format={v => `${Math.round(v)}%`} color={result.rose.hex} deviation={result.rose.C - result.avgC} />
                 </div>
               </div>
             )}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               <SliderRow label="Cobalt hue" value={cobaltH} min={220} max={300} step={1} onChange={setCobaltH} format={v => `${Math.round(v)}°`} color={result.cobalt.hex} />
               <SliderRow label="Teal hue" value={tealH} min={150} max={210} step={1} onChange={setTealH} format={v => `${Math.round(v)}°`} color={result.teal.hex} />
               <SliderRow label="Amber hue" value={amberH} min={30} max={100} step={1} onChange={setAmberH} format={v => `${Math.round(v)}°`} color={result.amber.hex} />
+              <SliderRow label="Rose hue" value={roseH} min={0} max={40} step={1} onChange={setRoseH} format={v => `${Math.round(v)}°`} color={result.rose.hex} />
             </div>
           </div>
 
@@ -350,6 +370,7 @@ export default function PaletteCompare() {
                 { name: 'Cobalt', ...result.cobalt },
                 { name: 'Teal', ...result.teal },
                 { name: 'Amber', ...result.amber },
+                { name: 'Rose', ...result.rose },
               ].map(c => (
                 <div key={c.name} className="flex-1">
                   <div className="h-16 rounded-lg border border-black/5" style={{ backgroundColor: c.hex }} />
@@ -374,24 +395,25 @@ export default function PaletteCompare() {
                 { name: 'Cobalt', hex: result.cobalt.hex },
                 { name: 'Teal', hex: result.teal.hex },
                 { name: 'Amber', hex: result.amber.hex },
+                { name: 'Rose', hex: result.rose.hex },
               ].map((c, i) => {
                 const vsWhite = contrastRatio(c.hex, '#FFFFFF')
                 const vsInk = contrastRatio(c.hex, '#111827')
                 const whiteOk = vsWhite >= 2.5
                 const inkOk = vsInk >= 2.5
                 return (
-                  <div key={c.name} className="grid grid-cols-4 px-3 py-1.5 items-center" style={{ borderBottom: i < 2 ? '1px solid #F3F4F6' : 'none' }}>
+                  <div key={c.name} className="grid grid-cols-4 px-3 py-1.5 items-center" style={{ borderBottom: i < 3 ? '1px solid #F3F4F6' : 'none' }}>
                     <div className="flex items-center gap-1.5">
                       <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: c.hex }} />
                       <span className="text-[10px] font-medium text-stone-700">{c.name}</span>
                     </div>
-                    <span className={`text-[10px] font-mono ${whiteOk ? 'text-stone-600' : 'text-red-500 font-semibold'}`}>
+                    <span className="text-[10px] font-mono" style={whiteOk ? { color: '#57534E' } : { color: '#F24260', fontWeight: 600 }}>
                       {vsWhite.toFixed(2)}:1 {whiteOk ? '' : 'FAIL'}
                     </span>
-                    <span className={`text-[10px] font-mono ${inkOk ? 'text-stone-600' : 'text-red-500 font-semibold'}`}>
+                    <span className="text-[10px] font-mono" style={inkOk ? { color: '#57534E' } : { color: '#F24260', fontWeight: 600 }}>
                       {vsInk.toFixed(2)}:1 {inkOk ? '' : 'FAIL'}
                     </span>
-                    <span className={`text-[10px] font-medium ${whiteOk && inkOk ? 'text-emerald-600' : whiteOk || inkOk ? 'text-amber-600' : 'text-red-500'}`}>
+                    <span className="text-[10px] font-medium" style={{ color: whiteOk && inkOk ? '#008775' : whiteOk || inkOk ? '#D97706' : '#F24260' }}>
                       {whiteOk && inkOk ? 'Both pass' : whiteOk ? 'White only' : inkOk ? 'Dark only' : 'Neither'}
                     </span>
                   </div>
@@ -428,9 +450,10 @@ export default function PaletteCompare() {
                   <div className="flex-1 h-8 rounded" style={{ backgroundColor: '#4271DF' }} />
                   <div className="flex-1 h-8 rounded" style={{ backgroundColor: '#00B6A0' }} />
                   <div className="flex-1 h-8 rounded" style={{ backgroundColor: '#E19000' }} />
+                  <div className="flex-1 h-8 rounded" style={{ backgroundColor: '#F24260' }} />
                 </div>
                 <GradientStrip cobalt="#4271DF" teal="#00B6A0" amber="#E19000" height={16} />
-                <p className="text-[9px] font-mono text-stone-400 mt-1">L: {current.cobalt.L.toFixed(2)} / {current.teal.L.toFixed(2)} / {current.amber.L.toFixed(2)} — dL={Math.max(Math.abs(current.cobalt.L - current.teal.L), Math.abs(current.cobalt.L - current.amber.L), Math.abs(current.teal.L - current.amber.L)).toFixed(3)}</p>
+                <p className="text-[9px] font-mono text-stone-400 mt-1">L: {current.cobalt.L.toFixed(2)} / {current.teal.L.toFixed(2)} / {current.amber.L.toFixed(2)} / {current.rose.L.toFixed(2)} — dL={Math.max(Math.abs(current.cobalt.L - current.teal.L), Math.abs(current.cobalt.L - current.amber.L), Math.abs(current.cobalt.L - current.rose.L), Math.abs(current.teal.L - current.amber.L), Math.abs(current.teal.L - current.rose.L), Math.abs(current.amber.L - current.rose.L)).toFixed(3)}</p>
               </div>
               <div>
                 <p className="text-[10px] text-stone-500 mb-1">Generated</p>
@@ -438,9 +461,10 @@ export default function PaletteCompare() {
                   <div className="flex-1 h-8 rounded" style={{ backgroundColor: result.cobalt.hex }} />
                   <div className="flex-1 h-8 rounded" style={{ backgroundColor: result.teal.hex }} />
                   <div className="flex-1 h-8 rounded" style={{ backgroundColor: result.amber.hex }} />
+                  <div className="flex-1 h-8 rounded" style={{ backgroundColor: result.rose.hex }} />
                 </div>
                 <GradientStrip cobalt={result.cobalt.hex} teal={result.teal.hex} amber={result.amber.hex} height={16} />
-                <p className="text-[9px] font-mono text-stone-400 mt-1">L: {result.cobalt.L.toFixed(2)} / {result.teal.L.toFixed(2)} / {result.amber.L.toFixed(2)} — dL={result.deltaL.toFixed(3)}</p>
+                <p className="text-[9px] font-mono text-stone-400 mt-1">L: {result.cobalt.L.toFixed(2)} / {result.teal.L.toFixed(2)} / {result.amber.L.toFixed(2)} / {result.rose.L.toFixed(2)} — dL={result.deltaL.toFixed(3)}</p>
               </div>
             </div>
           </div>
@@ -455,7 +479,7 @@ export default function PaletteCompare() {
             { metric: 'Delta L (lightness)', threshold: '< 0.04', note: 'Barely noticeable difference in perceived brightness' },
             { metric: 'Delta C (chroma)', threshold: '< 0.03', note: 'Acceptable vibrancy match across hues' },
             { metric: 'Perfect match', threshold: 'dL < 0.02, dC < 0.015', note: 'Imperceptible difference' },
-            { metric: 'Gamut limit', threshold: 'Teal hue (~180) has the tightest sRGB gamut', note: 'Teal constrains how vivid all three can be at matched lightness' },
+            { metric: 'Gamut limit', threshold: 'Teal hue (~180) has the tightest sRGB gamut', note: 'Teal constrains how vivid all four can be at matched lightness' },
           ].map((row, i) => (
             <div key={row.metric} className="flex gap-4 px-4 py-2.5" style={{ borderBottom: i < 3 ? '1px solid #F3F4F6' : 'none' }}>
               <span className="text-xs font-medium text-stone-600 w-32 flex-shrink-0">{row.metric}</span>
@@ -471,7 +495,7 @@ export default function PaletteCompare() {
 
 // ─── Slider component ─────────────────────────────────────────────
 
-function SliderRow({ label, value, min, max, step, onChange, format, color }: {
+function SliderRow({ label, value, min, max, step, onChange, format, color, deviation }: {
   label: string
   value: number
   min: number
@@ -480,6 +504,7 @@ function SliderRow({ label, value, min, max, step, onChange, format, color }: {
   onChange: (v: number) => void
   format: (v: number) => string
   color?: string
+  deviation?: number
 }) {
   return (
     <div>
@@ -488,7 +513,14 @@ function SliderRow({ label, value, min, max, step, onChange, format, color }: {
           {color && <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ backgroundColor: color }} />}
           {label}
         </label>
-        <span className="text-xs font-mono text-stone-400">{format(value)}</span>
+        <span className="text-xs font-mono text-stone-400 flex items-center gap-1.5">
+          {deviation !== undefined && Math.abs(deviation) >= 0.001 && (
+            <span className={`text-[9px] px-1 py-px rounded ${Math.abs(deviation) > 0.04 ? 'bg-amber-50 text-amber-600' : 'bg-stone-100 text-stone-400'}`}>
+              {deviation > 0 ? '+' : ''}{deviation.toFixed(3)}
+            </span>
+          )}
+          {format(value)}
+        </span>
       </div>
       <input
         type="range"

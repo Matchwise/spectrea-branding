@@ -3,15 +3,15 @@ import { StaticLogo } from '../../components/brand/SpectreaLogo'
 
 function MisuseExample({ title, description, children }: { title: string; description: string; children: React.ReactNode }) {
   return (
-    <div className="border border-red-200 rounded-xl overflow-hidden">
+    <div className="border rounded-xl overflow-hidden" style={{ borderColor: '#F2426025' }}>
       <div className="h-32 flex items-center justify-center bg-stone-50 relative">
         {children}
-        <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-red-100 flex items-center justify-center">
-          <span className="text-red-500 text-xs font-bold">&#10007;</span>
+        <div className="absolute top-2 right-2 w-6 h-6 rounded-full flex items-center justify-center" style={{ backgroundColor: '#F2426010' }}>
+          <span className="text-xs font-semibold" style={{ color: '#F24260' }}>&#10007;</span>
         </div>
       </div>
-      <div className="px-4 py-3 bg-red-50/30 border-t border-red-100">
-        <p className="text-sm font-medium text-red-700">{title}</p>
+      <div className="px-4 py-3 border-t" style={{ backgroundColor: '#F2426008', borderColor: '#F2426015' }}>
+        <p className="text-sm font-medium" style={{ color: '#BA3249' }}>{title}</p>
         <p className="text-xs text-stone-500 mt-0.5">{description}</p>
       </div>
     </div>

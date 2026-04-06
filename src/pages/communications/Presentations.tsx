@@ -21,7 +21,7 @@ export default function Presentations() {
             <div className="rounded-xl overflow-hidden border border-stone-200 aspect-video" style={{ backgroundColor: '#111827' }}>
               <div className="h-full flex flex-col items-center justify-center p-6">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{ background: 'linear-gradient(135deg, #4271DF, #00B6A0, #E19000)' }}>
-                  <span className="text-white font-bold font-heading text-lg">S</span>
+                  <span className="text-white font-semibold font-heading text-lg">S</span>
                 </div>
                 <p className="text-lg font-semibold text-center" style={{ color: '#F9FAFB', fontFamily: "'Albert Sans', sans-serif" }}>We connect the dots.</p>
                 <p className="text-xs mt-1" style={{ color: '#6B7280' }}>Composable Knowledge Platform</p>
@@ -49,7 +49,7 @@ export default function Presentations() {
                 <div className="flex items-center justify-between pt-2 border-t border-stone-100">
                   <div className="flex items-center gap-1.5">
                     <div className="w-4 h-4 rounded flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #4271DF, #00B6A0, #E19000)' }}>
-                      <span className="text-white font-bold font-heading" style={{ fontSize: 6 }}>S</span>
+                      <span className="text-white font-semibold font-heading" style={{ fontSize: 6 }}>S</span>
                     </div>
                     <span className="text-xs text-stone-400 font-heading">Spectrea</span>
                   </div>

@@ -60,7 +60,7 @@ function ColorCard({ name, hex, role, usage, textColor = '#FFFFFF' }: {
     <div className="border border-stone-200 rounded-xl overflow-hidden">
       <div className="h-24 px-4 py-3 flex flex-col justify-between" style={{ backgroundColor: hex }}>
         <div className="flex items-center justify-between">
-          <span className="text-xs font-bold" style={{ color: textColor }}>{name}</span>
+          <span className="text-xs font-semibold" style={{ color: textColor }}>{name}</span>
           <span className="text-xs font-mono px-1.5 py-0.5 rounded" style={{ color: textColor, backgroundColor: textColor + '15' }}>{role}</span>
         </div>
         <span className="text-xs font-mono" style={{ color: textColor, opacity: 0.7 }}>{hex}</span>
@@ -133,7 +133,7 @@ export default function PrimaryPalette() {
             textColor="#111827"
           />
           <ColorCard
-            name="Rose" hex="#F43F5E" role="spectrum"
+            name="Rose" hex="#F24260" role="spectrum"
             usage="Urgency, energy, importance. Use for: errors, destructive actions (delete, remove), critical alerts, high-priority indicators, notification badges."
           />
         </div>
@@ -232,7 +232,7 @@ export default function PrimaryPalette() {
             <div className="flex-[5]" style={{ backgroundColor: '#4271DF' }} />
             <div className="flex-[3]" style={{ backgroundColor: '#00B6A0' }} />
             <div className="flex-[2]" style={{ backgroundColor: '#E19000' }} />
-            <div className="flex-[2]" style={{ backgroundColor: '#F43F5E' }} />
+            <div className="flex-[2]" style={{ backgroundColor: '#F24260' }} />
           </div>
           <div className="p-4 grid grid-cols-4 gap-3 text-center">
             <div>
@@ -259,24 +259,24 @@ export default function PrimaryPalette() {
       {/* Do / Don't */}
       <Section title="Color Dos & Don'ts">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="border border-emerald-200 bg-emerald-50/30 rounded-xl p-5">
-            <h3 className="text-sm font-semibold text-emerald-800 mb-3">Do</h3>
+          <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
             <ul className="space-y-2 text-sm text-stone-700">
-              <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Use Cobalt for the single primary action per section</li>
-              <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Use spectrum colors as small, meaningful moments (tags, dots, badges)</li>
-              <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Use dark text on Teal and Amber backgrounds</li>
-              <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Let the canvas breathe — white space is a feature</li>
-              <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Use the gradient for brand moments (hero sections, logo, marketing)</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use Cobalt for the single primary action per section</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use spectrum colors as small, meaningful moments (tags, dots, badges)</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use dark text on Teal and Amber backgrounds</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Let the canvas breathe — white space is a feature</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use the gradient for brand moments (hero sections, logo, marketing)</li>
             </ul>
           </div>
-          <div className="border border-red-200 bg-red-50/30 rounded-xl p-5">
-            <h3 className="text-sm font-semibold text-red-700 mb-3">Don't</h3>
+          <div className="border rounded-xl p-5" style={{ borderColor: '#F2426025', backgroundColor: '#F2426008' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Don't</h3>
             <ul className="space-y-2 text-sm text-stone-700">
-              <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Fill large areas with accent colors — they lose meaning</li>
-              <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Use multiple Cobalt buttons in the same section</li>
-              <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Mix Teal for success AND as a decorative color — pick one meaning</li>
-              <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Use white text on Teal or Amber (insufficient contrast)</li>
-              <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Use the gradient on small UI elements — reserve for brand moments</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Fill large areas with accent colors — they lose meaning</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use multiple Cobalt buttons in the same section</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Mix Teal for success AND as a decorative color — pick one meaning</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use white text on Teal or Amber (insufficient contrast)</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use the gradient on small UI elements — reserve for brand moments</li>
             </ul>
           </div>
         </div>

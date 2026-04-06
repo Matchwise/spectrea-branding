@@ -3,15 +3,15 @@ import { StaticLogo } from '../../components/brand/SpectreaLogo'
 
 function DoExample({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="border border-emerald-200 rounded-xl overflow-hidden">
-      <div className="h-24 flex items-center justify-center bg-emerald-50/20 relative">
+    <div className="border rounded-xl overflow-hidden" style={{ borderColor: '#00B6A025' }}>
+      <div className="h-24 flex items-center justify-center relative" style={{ backgroundColor: '#00B6A008' }}>
         {children}
-        <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center">
-          <span className="text-emerald-600 text-xs font-bold">&#10003;</span>
+        <div className="absolute top-2 right-2 w-5 h-5 rounded-full flex items-center justify-center" style={{ backgroundColor: '#00B6A010' }}>
+          <span className="text-xs font-semibold" style={{ color: '#00B6A0' }}>&#10003;</span>
         </div>
       </div>
-      <div className="px-3 py-2 border-t border-emerald-100">
-        <p className="text-xs text-emerald-700">{label}</p>
+      <div className="px-3 py-2 border-t" style={{ borderColor: '#00B6A015' }}>
+        <p className="text-xs" style={{ color: '#008775' }}>{label}</p>
       </div>
     </div>
   )
@@ -19,15 +19,15 @@ function DoExample({ label, children }: { label: string; children: React.ReactNo
 
 function DontExample({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="border border-red-200 rounded-xl overflow-hidden">
-      <div className="h-24 flex items-center justify-center bg-red-50/20 relative">
+    <div className="border rounded-xl overflow-hidden" style={{ borderColor: '#F2426025' }}>
+      <div className="h-24 flex items-center justify-center relative" style={{ backgroundColor: '#F2426008' }}>
         {children}
-        <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-red-100 flex items-center justify-center">
-          <span className="text-red-500 text-xs font-bold">&#10007;</span>
+        <div className="absolute top-2 right-2 w-5 h-5 rounded-full flex items-center justify-center" style={{ backgroundColor: '#F2426010' }}>
+          <span className="text-xs font-semibold" style={{ color: '#F24260' }}>&#10007;</span>
         </div>
       </div>
-      <div className="px-3 py-2 border-t border-red-100">
-        <p className="text-xs text-red-600">{label}</p>
+      <div className="px-3 py-2 border-t" style={{ borderColor: '#F2426015' }}>
+        <p className="text-xs" style={{ color: '#D63B55' }}>{label}</p>
       </div>
     </div>
   )
@@ -235,7 +235,7 @@ export default function LogoGuidelines() {
             <div key={row.element} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
               <span className="text-sm text-stone-700">{row.element}</span>
               <span className="text-xs font-mono text-stone-600">{row.ratio}</span>
-              <span className="text-xs text-emerald-600 font-medium">{row.status}</span>
+              <span className="text-xs font-medium" style={{ color: '#00B6A0' }}>{row.status}</span>
             </div>
           ))}
         </div>

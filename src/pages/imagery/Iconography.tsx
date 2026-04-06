@@ -264,7 +264,7 @@ export default function Iconography() {
                   <span className="text-[10px] text-stone-400">Warning</span>
                 </div>
                 <div className="flex flex-col items-center gap-1">
-                  <TbX size={22} style={{ color: '#F43F5E' }} />
+                  <TbX size={22} style={{ color: '#F24260' }} />
                   <span className="text-[10px] text-stone-400">Error</span>
                 </div>
               </div>
@@ -294,24 +294,24 @@ export default function Iconography() {
       {/* ─── Do/Don't ─── */}
       <Section title="Icon Dos & Don'ts">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="border border-emerald-200 bg-emerald-50/30 rounded-xl p-5">
-            <h3 className="text-sm font-semibold text-emerald-800 mb-3">Do</h3>
+          <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
             <ul className="space-y-2 text-sm text-stone-700">
-              <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Import all icons from <code className="text-xs bg-stone-100 px-1 rounded">react-icons/tb</code></li>
-              <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Pair icons with text labels for clarity</li>
-              <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Use outline for default, filled for active state</li>
-              <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Vertically center icons with adjacent text</li>
-              <li className="flex gap-2"><span className="text-emerald-500">&#10003;</span>Use standard sizes: 16, 20, 24, 32, 48px</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Import all icons from <code className="text-xs bg-stone-100 px-1 rounded">react-icons/tb</code></li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Pair icons with text labels for clarity</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use outline for default, filled for active state</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Vertically center icons with adjacent text</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use standard sizes: 16, 20, 24, 32, 48px</li>
             </ul>
           </div>
-          <div className="border border-red-200 bg-red-50/30 rounded-xl p-5">
-            <h3 className="text-sm font-semibold text-red-700 mb-3">Don't</h3>
+          <div className="border rounded-xl p-5" style={{ borderColor: '#F2426025', backgroundColor: '#F2426008' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Don't</h3>
             <ul className="space-y-2 text-sm text-stone-700">
-              <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Import from other sets (<code className="text-xs bg-stone-100 px-1 rounded">md</code>, <code className="text-xs bg-stone-100 px-1 rounded">lu</code>, <code className="text-xs bg-stone-100 px-1 rounded">bs</code>, <code className="text-xs bg-stone-100 px-1 rounded">fa6</code>) — different visual style</li>
-              <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Mix outline and filled styles as decoration</li>
-              <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Use icons without labels in primary navigation</li>
-              <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Use spectrum colors (Teal, Amber) on decorative icons</li>
-              <li className="flex gap-2"><span className="text-red-400">&#10007;</span>Use custom sizes between the standard stops</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Import from other sets (<code className="text-xs bg-stone-100 px-1 rounded">md</code>, <code className="text-xs bg-stone-100 px-1 rounded">lu</code>, <code className="text-xs bg-stone-100 px-1 rounded">bs</code>, <code className="text-xs bg-stone-100 px-1 rounded">fa6</code>) — different visual style</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Mix outline and filled styles as decoration</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use icons without labels in primary navigation</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use spectrum colors (Teal, Amber) on decorative icons</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use custom sizes between the standard stops</li>
             </ul>
           </div>
         </div>
