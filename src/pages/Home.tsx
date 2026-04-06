@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { brand } from '../data/brand'
 import Tooltip from '../components/brand/Tooltip'
+import { Logotype } from '../components/brand/SpectreaLogo'
+import { LuChevronRight } from 'react-icons/lu'
 
 const sections = [
   {
@@ -35,13 +37,10 @@ export default function Home() {
     <div className="max-w-3xl mx-auto px-6 py-12">
       {/* Hero */}
       <div className="mb-14">
-        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand via-brand-teal to-brand-amber flex items-center justify-center shadow-lg mb-5">
-          <span className="text-white font-bold text-2xl font-heading">S</span>
+        <div className="mb-1">
+          <Logotype fontSize={48} />
         </div>
-        <h1 className="text-4xl font-bold text-stone-900 tracking-tight">
-          {brand.name}
-        </h1>
-        <p className="text-lg text-stone-500 mt-1">Brand Guide</p>
+        <p className="text-lg text-stone-500">Brand Guide</p>
         <p className="text-base text-stone-400 italic mt-3">
           <Tooltip content={brand.tagline.usage}>
             {brand.tagline.statement}
@@ -65,7 +64,7 @@ export default function Home() {
               <span className="text-stone-400">Mission</span>
             </Tooltip>
           </p>
-          <p className="text-sm text-stone-700 leading-relaxed italic">{brand.mission.statement}</p>
+          <p className="text-sm text-stone-700 leading-relaxed">{brand.mission.statement}</p>
         </div>
 
         {/* Vision */}
@@ -75,7 +74,7 @@ export default function Home() {
               <span className="text-stone-400">Vision</span>
             </Tooltip>
           </p>
-          <p className="text-sm text-stone-700 leading-relaxed italic">{brand.vision.statement}</p>
+          <p className="text-sm text-stone-700 leading-relaxed">{brand.vision.statement}</p>
         </div>
       </div>
 
@@ -134,9 +133,7 @@ export default function Home() {
                   <p className="text-sm font-medium text-stone-900 group-hover:text-brand transition-colors">{item.label}</p>
                   <p className="text-xs text-stone-500 mt-0.5">{item.desc}</p>
                 </div>
-                <svg className="w-4 h-4 text-stone-300 group-hover:text-brand/60 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
+                <LuChevronRight size={16} className="text-stone-300 group-hover:text-brand/60 transition-colors duration-150" />
               </Link>
             ))}
           </div>

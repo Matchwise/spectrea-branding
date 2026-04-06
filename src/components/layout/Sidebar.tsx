@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { navigation, type NavItem } from '../../data/navigation'
+import { StaticLogo } from '../brand/SpectreaLogo'
+import { LuChevronRight } from 'react-icons/lu'
 
 function NavGroup({ item }: { item: NavItem }) {
   const location = useLocation()
@@ -32,12 +34,7 @@ function NavGroup({ item }: { item: NavItem }) {
         }`}
       >
         {item.label}
-        <svg
-          className={`w-4 h-4 transition-transform ${open ? 'rotate-90' : ''}`}
-          fill="none" viewBox="0 0 24 24" stroke="currentColor"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
+        <LuChevronRight size={16} className={`transition-transform duration-150 ${open ? 'rotate-90' : ''}`} />
       </button>
       {open && (
         <div className="ml-3 mt-1 space-y-0.5 border-l border-stone-200 pl-3">
@@ -73,9 +70,7 @@ export default function Sidebar({ open, onClose }: { open: boolean; onClose: () 
         }`}
       >
         <Link to="/" className="flex items-center gap-2.5 mb-6 px-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand via-brand-teal to-brand-amber flex items-center justify-center">
-            <span className="text-white font-bold text-sm font-heading">S</span>
-          </div>
+          <StaticLogo size={32} colorMode="color" dotColorMode="grey" />
           <div>
             <div className="font-semibold text-stone-900 text-sm font-heading">Spectrea</div>
             <div className="text-xs text-stone-400 uppercase tracking-widest">Brand Guide</div>

@@ -3,10 +3,10 @@ import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
 
 const brandGradient = {
-  css: 'linear-gradient(135deg, #3451E0, #12B5A3, #E58D08)',
-  from: '#3451E0',
-  via: '#12B5A3',
-  to: '#E58D08',
+  css: 'linear-gradient(135deg, #4271DF, #00B6A0, #E19000)',
+  from: '#4271DF',
+  via: '#00B6A0',
+  to: '#E19000',
 }
 
 function CopyButton({ value, label }: { value: string; label: string }) {
@@ -39,8 +39,8 @@ export default function Gradients() {
           <div className="p-4">
             <p className="text-sm text-stone-700 mb-3">Cobalt → Teal → Amber at 135°. The spectrum in motion — from intelligence through growth to insight.</p>
             <div className="flex gap-2 flex-wrap">
-              <CopyButton value="linear-gradient(135deg, #3451E0, #12B5A3, #E58D08)" label="CSS: linear-gradient(135deg, #3451E0, #12B5A3, #E58D08)" />
-              <CopyButton value="background: linear-gradient(135deg, #3451E0, #12B5A3, #E58D08);" label="Copy full CSS property" />
+              <CopyButton value="linear-gradient(135deg, #4271DF, #00B6A0, #E19000)" label="CSS: linear-gradient(135deg, #4271DF, #00B6A0, #E19000)" />
+              <CopyButton value="background: linear-gradient(135deg, #4271DF, #00B6A0, #E19000);" label="Copy full CSS property" />
             </div>
           </div>
         </div>
@@ -79,27 +79,27 @@ export default function Gradients() {
         <div className="space-y-4">
           <div>
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Full spectrum (primary)</p>
-            <div className="h-10 rounded-lg" style={{ background: 'linear-gradient(135deg, #3451E0, #12B5A3, #E58D08)' }} />
+            <div className="h-10 rounded-lg" style={{ background: 'linear-gradient(135deg, #4271DF, #00B6A0, #E19000)' }} />
             <p className="text-xs font-mono text-stone-400 mt-1">135° — Cobalt → Teal → Amber</p>
           </div>
           <div>
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Horizontal</p>
-            <div className="h-10 rounded-lg" style={{ background: 'linear-gradient(90deg, #3451E0, #12B5A3, #E58D08)' }} />
+            <div className="h-10 rounded-lg" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
             <p className="text-xs font-mono text-stone-400 mt-1">90° — For horizontal bars and dividers</p>
           </div>
           <div>
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Subtle (low opacity)</p>
-            <div className="h-10 rounded-lg" style={{ background: 'linear-gradient(135deg, #3451E015, #12B5A315, #E58D0815)' }} />
+            <div className="h-10 rounded-lg" style={{ background: 'linear-gradient(135deg, #4271DF15, #00B6A015, #E1900015)' }} />
             <p className="text-xs font-mono text-stone-400 mt-1">15% opacity — For subtle background accents</p>
           </div>
           <div>
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Full spectrum with Rose</p>
-            <div className="h-10 rounded-lg" style={{ background: 'linear-gradient(135deg, #3451E0, #12B5A3, #E58D08, #F43F5E)' }} />
+            <div className="h-10 rounded-lg" style={{ background: 'linear-gradient(135deg, #4271DF, #00B6A0, #E19000, #F43F5E)' }} />
             <p className="text-xs font-mono text-stone-400 mt-1">All four spectrum colors — Use sparingly, for maximum brand expression</p>
           </div>
           <div>
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Accent bar (thin)</p>
-            <div className="h-1.5 rounded-full" style={{ background: 'linear-gradient(90deg, #3451E0, #12B5A3, #E58D08)' }} />
+            <div className="h-1.5 rounded-full" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
             <p className="text-xs font-mono text-stone-400 mt-1">For card borders, section dividers, progress indicators</p>
           </div>
         </div>

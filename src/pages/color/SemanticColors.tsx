@@ -4,7 +4,7 @@ import Tooltip from '../../components/brand/Tooltip'
 const semanticColors = [
   {
     name: 'Primary / Interactive',
-    color: '#3451E0',
+    color: '#4271DF',
     light: '#EEF2FF',
     dark: '#1E3A8A',
     usage: 'Links, primary buttons, focused inputs, active states, selected items, toggle-on states.',
@@ -12,7 +12,7 @@ const semanticColors = [
   },
   {
     name: 'Success / Positive',
-    color: '#12B5A3',
+    color: '#00B6A0',
     light: '#F0FDFA',
     dark: '#0D5E56',
     usage: 'Success messages, positive trends, completed states, connected status, verified claims.',
@@ -20,7 +20,7 @@ const semanticColors = [
   },
   {
     name: 'Warning / Attention',
-    color: '#E58D08',
+    color: '#E19000',
     light: '#FFFBEB',
     dark: '#7C4D04',
     usage: 'Warning alerts, pending states, confidence scores below threshold, approaching limits.',
@@ -95,13 +95,13 @@ export default function SemanticColors() {
       <Section title="Semantic Colors in Context">
         <div className="border border-stone-200 rounded-xl p-5 space-y-3">
           {/* Success toast */}
-          <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#F0FDFA', border: '1px solid #12B5A320' }}>
-            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#12B5A3' }} />
+          <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#F0FDFA', border: '1px solid #00B6A020' }}>
+            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#00B6A0' }} />
             <p className="text-xs" style={{ color: '#0D5E56' }}>Entity "Revenue Model" successfully created with 3 connections.</p>
           </div>
           {/* Warning toast */}
-          <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#FFFBEB', border: '1px solid #E58D0820' }}>
-            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#E58D08' }} />
+          <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#FFFBEB', border: '1px solid #E1900020' }}>
+            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#E19000' }} />
             <p className="text-xs" style={{ color: '#7C4D04' }}>Confidence score below threshold (62%). Review recommended.</p>
           </div>
           {/* Error toast */}

@@ -1,6 +1,7 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
 import { brand } from '../../data/brand'
+import { LuX } from 'react-icons/lu'
 
 export default function BrandStory() {
   return (
@@ -37,7 +38,7 @@ export default function BrandStory() {
           </Tooltip>
         </h2>
         <blockquote className="border-l-4 border-brand pl-5 py-1">
-          <p className="text-lg text-stone-700 leading-relaxed italic">{brand.mission.statement}</p>
+          <p className="text-lg text-stone-700 leading-relaxed">{brand.mission.statement}</p>
         </blockquote>
       </Section>
 
@@ -49,7 +50,7 @@ export default function BrandStory() {
           </Tooltip>
         </h2>
         <blockquote className="border-l-4 border-teal-400 pl-5 py-1">
-          <p className="text-lg text-stone-700 leading-relaxed italic">{brand.vision.statement}</p>
+          <p className="text-lg text-stone-700 leading-relaxed">{brand.vision.statement}</p>
         </blockquote>
       </Section>
 
@@ -61,7 +62,7 @@ export default function BrandStory() {
           </Tooltip>
         </h2>
         <div className="bg-stone-50 rounded-xl p-6 border border-stone-200">
-          <p className="text-2xl font-bold text-stone-900 italic">{brand.tagline.statement}</p>
+          <p className="text-2xl font-bold text-stone-900">{brand.tagline.statement}</p>
         </div>
       </Section>
 
@@ -137,9 +138,7 @@ export default function BrandStory() {
           {brand.antiValues.map((av, i) => (
             <div key={i} className="flex items-start gap-3 bg-red-50/50 rounded-lg px-4 py-3 border border-red-100">
               <span className="text-red-400 mt-0.5 flex-shrink-0">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
+                <LuX size={16} />
               </span>
               <div>
                 <p className="text-sm font-medium text-stone-800">{av.never}</p>

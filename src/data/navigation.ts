@@ -23,10 +23,11 @@ export const navigation: NavItem[] = [
     label: 'Logo',
     path: '/logo',
     children: [
-      { label: 'Primary Logo', path: '/logo/primary' },
+      { label: 'The Logo', path: '/logo/primary' },
       { label: 'Variations', path: '/logo/variations' },
       { label: 'Guidelines', path: '/logo/guidelines' },
       { label: 'Misuse', path: '/logo/misuse' },
+      { label: 'Specs & Export', path: '/logo/exploration' },
     ],
   },
   {
@@ -52,7 +53,7 @@ export const navigation: NavItem[] = [
     label: 'Imagery & Motion',
     path: '/imagery',
     children: [
-      { label: 'Photography', path: '/imagery/photography' },
+      { label: 'Abstract Imagery', path: '/imagery/photography' },
       { label: 'Iconography', path: '/imagery/iconography' },
       { label: 'Motion', path: '/imagery/motion' },
     ],

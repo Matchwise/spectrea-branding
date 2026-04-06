@@ -3,6 +3,43 @@ import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
 import { selectedPalette } from '../../data/brand'
 
+function srgbToLinear(c: number) {
+  return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4)
+}
+
+function hexToHSL(hex: string) {
+  let r = parseInt(hex.slice(1, 3), 16) / 255
+  let g = parseInt(hex.slice(3, 5), 16) / 255
+  let b = parseInt(hex.slice(5, 7), 16) / 255
+  const max = Math.max(r, g, b), min = Math.min(r, g, b)
+  let h = 0, s = 0
+  const l = (max + min) / 2
+  if (max !== min) {
+    const d = max - min
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
+    if (max === r) h = ((g - b) / d + (g < b ? 6 : 0)) / 6
+    else if (max === g) h = ((b - r) / d + 2) / 6
+    else h = ((r - g) / d + 4) / 6
+  }
+  return `${Math.round(h * 360)} / ${Math.round(s * 100)}% / ${Math.round(l * 100)}%`
+}
+
+function hexToOKLCH(hex: string) {
+  const r = srgbToLinear(parseInt(hex.slice(1, 3), 16) / 255)
+  const g = srgbToLinear(parseInt(hex.slice(3, 5), 16) / 255)
+  const b = srgbToLinear(parseInt(hex.slice(5, 7), 16) / 255)
+  const l = Math.cbrt(0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b)
+  const m = Math.cbrt(0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b)
+  const s = Math.cbrt(0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b)
+  const L = 0.2104542553 * l + 0.7936177850 * m - 0.0040720468 * s
+  const a = 1.9779984951 * l - 2.4285922050 * m + 0.4505937099 * s
+  const b2 = 0.0259040371 * l + 0.7827717662 * m - 0.8086757660 * s
+  const C = Math.sqrt(a * a + b2 * b2)
+  let h2 = Math.atan2(b2, a) * 180 / Math.PI
+  if (h2 < 0) h2 += 360
+  return `${L.toFixed(3)} / ${C.toFixed(3)} / ${Math.round(h2)}`
+}
+
 function ColorCard({ name, hex, role, usage, textColor = '#FFFFFF' }: {
   name: string; hex: string; role: string; usage: string; textColor?: string
 }) {
@@ -13,10 +50,11 @@ function ColorCard({ name, hex, role, usage, textColor = '#FFFFFF' }: {
     setTimeout(() => setCopied(null), 1500)
   }
 
-  // Convert hex to RGB
   const r = parseInt(hex.slice(1, 3), 16)
   const g = parseInt(hex.slice(3, 5), 16)
   const b = parseInt(hex.slice(5, 7), 16)
+  const hsl = hexToHSL(hex)
+  const oklch = hexToOKLCH(hex)
 
   return (
     <div className="border border-stone-200 rounded-xl overflow-hidden">
@@ -33,7 +71,8 @@ function ColorCard({ name, hex, role, usage, textColor = '#FFFFFF' }: {
           {[
             { label: 'HEX', value: hex },
             { label: 'RGB', value: `${r}, ${g}, ${b}` },
-            { label: 'CSS', value: `rgb(${r} ${g} ${b})` },
+            { label: 'HSL', value: hsl },
+            { label: 'OKLCH', value: oklch },
           ].map(f => (
             <button
               key={f.label}
@@ -65,7 +104,7 @@ export default function PrimaryPalette() {
           </Tooltip>
         </h2>
         <ColorCard
-          name="Cobalt" hex="#3451E0" role="hero"
+          name="Cobalt" hex="#4271DF" role="hero"
           usage="Primary buttons, links, active nav items, focused inputs, key CTAs. The color that IS Spectrea. Use for the single most important action on any screen."
         />
         <div className="mt-3 bg-brand/5 rounded-lg px-4 py-3 border border-brand/10">
@@ -84,12 +123,12 @@ export default function PrimaryPalette() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <ColorCard
-            name="Teal" hex="#12B5A3" role="spectrum"
+            name="Teal" hex="#00B6A0" role="spectrum"
             usage="Growth, success, positive change. Use for: success states, positive trends (+12%), completion indicators, knowledge graph nodes, 'connected' status."
             textColor="#111827"
           />
           <ColorCard
-            name="Amber" hex="#E58D08" role="spectrum"
+            name="Amber" hex="#E19000" role="spectrum"
             usage="Attention, warmth, highlights. Use for: warnings, pending states, starred/bookmarked items, confidence scores, insight badges."
             textColor="#111827"
           />
@@ -190,9 +229,9 @@ export default function PrimaryPalette() {
             <div className="flex-[60]" style={{ backgroundColor: '#FFFFFF' }} />
             <div className="flex-[20]" style={{ backgroundColor: '#F9FAFB' }} />
             <div className="flex-[8]" style={{ backgroundColor: '#9CA3AF' }} />
-            <div className="flex-[5]" style={{ backgroundColor: '#3451E0' }} />
-            <div className="flex-[3]" style={{ backgroundColor: '#12B5A3' }} />
-            <div className="flex-[2]" style={{ backgroundColor: '#E58D08' }} />
+            <div className="flex-[5]" style={{ backgroundColor: '#4271DF' }} />
+            <div className="flex-[3]" style={{ backgroundColor: '#00B6A0' }} />
+            <div className="flex-[2]" style={{ backgroundColor: '#E19000' }} />
             <div className="flex-[2]" style={{ backgroundColor: '#F43F5E' }} />
           </div>
           <div className="p-4 grid grid-cols-4 gap-3 text-center">

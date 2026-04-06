@@ -81,7 +81,7 @@ export default function TypeExplorer() {
                   <p className="text-lg font-semibold text-stone-900" style={{ fontFamily: t.heading.css }}>
                     {['2,847', '8,291', '94%'][i]}
                   </p>
-                  <p className="text-xs font-medium" style={{ fontFamily: t.body.css, color: ['#12B5A3', '#12B5A3', '#3451E0'][i] }}>
+                  <p className="text-xs font-medium" style={{ fontFamily: t.body.css, color: ['#00B6A0', '#00B6A0', '#4271DF'][i] }}>
                     {['+12%', '+23%', 'High'][i]}
                   </p>
                 </div>
@@ -112,7 +112,7 @@ export default function TypeExplorer() {
                   <p className="text-lg font-semibold" style={{ fontFamily: t.heading.css, color: '#F9FAFB' }}>
                     {['2,847', '8,291', '94%'][i]}
                   </p>
-                  <p className="text-xs font-medium" style={{ fontFamily: t.body.css, color: ['#12B5A3', '#12B5A3', '#3451E0'][i] }}>
+                  <p className="text-xs font-medium" style={{ fontFamily: t.body.css, color: ['#00B6A0', '#00B6A0', '#4271DF'][i] }}>
                     {['+12%', '+23%', 'High'][i]}
                   </p>
                 </div>

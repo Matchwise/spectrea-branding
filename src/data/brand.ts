@@ -362,16 +362,16 @@ export const selectedPalette: PaletteOption = {
   feeling: 'Intentional, structured, alive with possibility.',
   colors: [
     { name: 'Graphite', hex: '#1F2937', role: 'primary' },
-    { name: 'Cobalt', hex: '#3451E0', role: 'accent' },
-    { name: 'Teal', hex: '#12B5A3', role: 'accent' },
-    { name: 'Amber', hex: '#E58D08', role: 'accent' },
+    { name: 'Cobalt', hex: '#4271DF', role: 'accent' },
+    { name: 'Teal', hex: '#00B6A0', role: 'accent' },
+    { name: 'Amber', hex: '#E19000', role: 'accent' },
     { name: 'Rose', hex: '#F43F5E', role: 'accent' },
     { name: 'White', hex: '#FFFFFF', role: 'background' },
     { name: 'Snow', hex: '#F9FAFB', role: 'surface' },
     { name: 'Ink', hex: '#111827', role: 'text' },
     { name: 'Gray', hex: '#9CA3AF', role: 'muted' },
   ],
-  gradient: { from: '#3451E0', via: '#12B5A3', to: '#E58D08', angle: 135 },
+  gradient: { from: '#4271DF', via: '#00B6A0', to: '#E19000', angle: 135 },
   darkMode: { bg: '#111827', surface: '#1F2937', text: '#F9FAFB', muted: '#6B7280' },
 }
 
