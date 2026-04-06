@@ -151,15 +151,15 @@ export default function SemanticColors() {
             </div>
             <div className="p-5">
               <p className="text-xs text-stone-600 leading-relaxed mb-3">
-                Cobalt appears when the <strong>user interacts</strong>. It's temporary and reactive — present during hover, focus, and press, then settles. This keeps Cobalt rare and powerful.
+                Cobalt appears on <strong>action-oriented elements</strong> — things that trigger an operation or navigate to a new context. It's temporary and reactive: present during hover, focus, and press, then settles. This keeps Cobalt rare and powerful.
               </p>
               <div className="border border-stone-200 rounded-lg overflow-hidden">
                 {[
                   { element: 'Primary button', state: 'Default + hover + active', how: 'Cobalt background, darkens on hover/press' },
-                  { element: 'Link text', state: 'Default + hover', how: 'Cobalt text, underline on hover' },
+                  { element: 'Inline link', state: 'Default + hover', how: 'Cobalt text, underline on hover' },
+                  { element: 'CTA card / entry point', state: 'Hovered', how: 'Label text → Cobalt. Invites action.' },
                   { element: 'Input focus', state: 'Focused', how: 'Cobalt border + ring. Reverts on blur.' },
-                  { element: 'Icon hover', state: 'Hovered', how: 'Gray → Cobalt outline. Reverts on leave.' },
-                  { element: 'Card hover', state: 'Hovered', how: 'Border darkens, subtle Cobalt accent if interactive' },
+                  { element: 'Standalone icon', state: 'Hovered', how: 'Gray → Cobalt outline. Reverts on leave.' },
                 ].map((row, i) => (
                   <div key={row.element} className="grid grid-cols-3 px-4 py-2" style={{ borderBottom: i < 4 ? '1px solid #F3F4F6' : 'none' }}>
                     <span className="text-xs font-medium text-stone-700">{row.element}</span>
@@ -183,17 +183,18 @@ export default function SemanticColors() {
             </div>
             <div className="p-5">
               <p className="text-xs text-stone-600 leading-relaxed mb-3">
-                Ink signals <strong>persistent state</strong>. The current page, the selected tab, the toggled-on icon. These are always visible, so using a neutral tone keeps the canvas calm. Weight and fill change — not color.
+                Ink signals <strong>persistent state</strong> and <strong>structural navigation</strong>. The current page, the selected tab, the toggled-on icon — and the hover state of elements that are part of the persistent UI chrome (sidebar, tabs, breadcrumbs). These elements are always visible, so Ink keeps the canvas calm while Cobalt stays reserved for action-oriented moments.
               </p>
               <div className="border border-stone-200 rounded-lg overflow-hidden">
                 {[
                   { element: 'Active nav item', state: 'Current page', how: 'Gray → Ink text, semibold weight, subtle background' },
+                  { element: 'Nav item hover', state: 'Hovered', how: 'Gray → Ink text, subtle background. Not Cobalt.' },
                   { element: 'Selected tab', state: 'Active tab', how: 'Gray → Ink text, bottom border or background' },
                   { element: 'Filled icon', state: 'Toggled on', how: 'Gray outline → Ink filled. Weight signals state.' },
                   { element: 'Active breadcrumb', state: 'Current segment', how: 'Gray → Ink text, semibold' },
                   { element: 'Selected row', state: 'Selected item', how: 'Subtle Ink/5 background, Ink text' },
                 ].map((row, i) => (
-                  <div key={row.element} className="grid grid-cols-3 px-4 py-2" style={{ borderBottom: i < 4 ? '1px solid #F3F4F6' : 'none' }}>
+                  <div key={row.element} className="grid grid-cols-3 px-4 py-2" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
                     <span className="text-xs font-medium text-stone-700">{row.element}</span>
                     <span className="text-xs text-stone-500">{row.state}</span>
                     <span className="text-xs text-stone-500">{row.how}</span>
@@ -246,11 +247,11 @@ export default function SemanticColors() {
           <div className="space-y-3 text-xs leading-relaxed">
             <div className="flex gap-3">
               <span className="text-stone-500 font-mono w-6 flex-shrink-0">1.</span>
-              <p><strong className="text-stone-300">Is the user interacting right now?</strong> <span className="text-stone-400">→ Cobalt. Hover, focus, press. Temporary.</span></p>
+              <p><strong className="text-stone-300">Is it an action trigger?</strong> <span className="text-stone-400">→ Cobalt. Buttons, links, CTAs, input focus. Elements that DO something when clicked.</span></p>
             </div>
             <div className="flex gap-3">
               <span className="text-stone-500 font-mono w-6 flex-shrink-0">2.</span>
-              <p><strong className="text-stone-300">Is this a persistent selection or current state?</strong> <span className="text-stone-400">→ Ink. Active page, selected item, toggled on. Weight/fill change, not color.</span></p>
+              <p><strong className="text-stone-300">Is it structural UI chrome?</strong> <span className="text-stone-400">→ Ink. Sidebar nav, tabs, breadcrumbs, filled icons. Elements that show WHERE you are. Hover darkens to Ink, not Cobalt.</span></p>
             </div>
             <div className="flex gap-3">
               <span className="text-stone-500 font-mono w-6 flex-shrink-0">3.</span>
@@ -259,6 +260,28 @@ export default function SemanticColors() {
             <div className="flex gap-3">
               <span className="text-stone-500 font-mono w-6 flex-shrink-0">4.</span>
               <p><strong className="text-stone-300">None of the above?</strong> <span className="text-stone-400">→ Gray (secondary) or Ink (primary). The canvas stays neutral.</span></p>
+            </div>
+          </div>
+        </div>
+
+        {/* The hover nuance */}
+        <div className="mt-4 bg-stone-50 rounded-xl p-5 border border-stone-200">
+          <p className="text-sm font-semibold text-stone-800 mb-2">The Hover Rule</p>
+          <p className="text-xs text-stone-600 leading-relaxed mb-3">
+            Not all hovers are equal. The distinction is between elements that <strong>trigger actions</strong> and elements that <strong>navigate within persistent chrome</strong>.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="bg-white rounded-lg px-4 py-3 border border-brand/15">
+              <p className="text-xs font-semibold text-brand mb-1">Cobalt hover</p>
+              <p className="text-xs text-stone-600 leading-relaxed">
+                Buttons, inline links, CTA cards, standalone icons, entry points. These elements invite the user to <strong>take an action</strong> or <strong>go somewhere new</strong>. Cobalt says "I'm interactive, click me."
+              </p>
+            </div>
+            <div className="bg-white rounded-lg px-4 py-3 border border-stone-200">
+              <p className="text-xs font-semibold text-stone-800 mb-1">Ink hover</p>
+              <p className="text-xs text-stone-600 leading-relaxed">
+                Sidebar nav, tab bars, breadcrumbs, toolbars. These elements are <strong>always visible</strong> and show structural position. Ink hover keeps the chrome calm — Cobalt would make the sidebar feel like a row of CTAs.
+              </p>
             </div>
           </div>
         </div>
