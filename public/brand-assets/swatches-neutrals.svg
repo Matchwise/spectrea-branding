@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="732" height="146" viewBox="0 0 732 146">
+  <text x="0" y="18" font-size="11" font-weight="600" fill="#97979E" font-family="Lexend, sans-serif" letter-spacing="0.05em">WARM BLEND NEUTRALS</text>
+  <g transform="translate(0 36)">
+  <g>
+  <rect width="140" height="78" fill="#FDFDFB" stroke="#F4F4F1" stroke-width="0.5"/>
+  <rect y="78" width="140" height="32" fill="#FDFDFB" stroke="#F4F4F1" stroke-width="0.5"/>
+  <text x="10" y="92" font-size="11" font-weight="600" fill="#18181C" font-family="Lexend, sans-serif">Canvas</text>
+  <text x="10" y="104" font-size="9" fill="#97979E" font-family="JetBrains Mono, monospace">#FDFDFB</text>
+  </g>
+  </g>
+  <g transform="translate(148 36)">
+  <g>
+  <rect width="140" height="78" fill="#F4F4F1" stroke="#F4F4F1" stroke-width="0.5"/>
+  <rect y="78" width="140" height="32" fill="#FDFDFB" stroke="#F4F4F1" stroke-width="0.5"/>
+  <text x="10" y="92" font-size="11" font-weight="600" fill="#18181C" font-family="Lexend, sans-serif">Cloud</text>
+  <text x="10" y="104" font-size="9" fill="#97979E" font-family="JetBrains Mono, monospace">#F4F4F1</text>
+  </g>
+  </g>
+  <g transform="translate(296 36)">
+  <g>
+  <rect width="140" height="78" fill="#97979E" stroke="#F4F4F1" stroke-width="0.5"/>
+  <rect y="78" width="140" height="32" fill="#FDFDFB" stroke="#F4F4F1" stroke-width="0.5"/>
+  <text x="10" y="92" font-size="11" font-weight="600" fill="#18181C" font-family="Lexend, sans-serif">Pewter</text>
+  <text x="10" y="104" font-size="9" fill="#97979E" font-family="JetBrains Mono, monospace">#97979E</text>
+  </g>
+  </g>
+  <g transform="translate(444 36)">
+  <g>
+  <rect width="140" height="78" fill="#212226" stroke="#F4F4F1" stroke-width="0.5"/>
+  <rect y="78" width="140" height="32" fill="#FDFDFB" stroke="#F4F4F1" stroke-width="0.5"/>
+  <text x="10" y="92" font-size="11" font-weight="600" fill="#18181C" font-family="Lexend, sans-serif">Graphite</text>
+  <text x="10" y="104" font-size="9" fill="#97979E" font-family="JetBrains Mono, monospace">#212226</text>
+  </g>
+  </g>
+  <g transform="translate(592 36)">
+  <g>
+  <rect width="140" height="78" fill="#18181C" stroke="#F4F4F1" stroke-width="0.5"/>
+  <rect y="78" width="140" height="32" fill="#FDFDFB" stroke="#F4F4F1" stroke-width="0.5"/>
+  <text x="10" y="92" font-size="11" font-weight="600" fill="#18181C" font-family="Lexend, sans-serif">Ink</text>
+  <text x="10" y="104" font-size="9" fill="#97979E" font-family="JetBrains Mono, monospace">#18181C</text>
+  </g>
+  </g>
+</svg>

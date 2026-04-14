@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="584" height="146" viewBox="0 0 584 146">
+  <text x="0" y="18" font-size="11" font-weight="600" fill="#97979E" font-family="Lexend, sans-serif" letter-spacing="0.05em">SPECTRUM ACCENTS</text>
+  <g transform="translate(0 36)">
+  <g>
+  <rect width="140" height="78" fill="#4271DF" stroke="#F4F4F1" stroke-width="0.5"/>
+  <rect y="78" width="140" height="32" fill="#FDFDFB" stroke="#F4F4F1" stroke-width="0.5"/>
+  <text x="10" y="92" font-size="11" font-weight="600" fill="#18181C" font-family="Lexend, sans-serif">Cobalt</text>
+  <text x="10" y="104" font-size="9" fill="#97979E" font-family="JetBrains Mono, monospace">#4271DF</text>
+  </g>
+  </g>
+  <g transform="translate(148 36)">
+  <g>
+  <rect width="140" height="78" fill="#00B6A0" stroke="#F4F4F1" stroke-width="0.5"/>
+  <rect y="78" width="140" height="32" fill="#FDFDFB" stroke="#F4F4F1" stroke-width="0.5"/>
+  <text x="10" y="92" font-size="11" font-weight="600" fill="#18181C" font-family="Lexend, sans-serif">Teal</text>
+  <text x="10" y="104" font-size="9" fill="#97979E" font-family="JetBrains Mono, monospace">#00B6A0</text>
+  </g>
+  </g>
+  <g transform="translate(296 36)">
+  <g>
+  <rect width="140" height="78" fill="#E19000" stroke="#F4F4F1" stroke-width="0.5"/>
+  <rect y="78" width="140" height="32" fill="#FDFDFB" stroke="#F4F4F1" stroke-width="0.5"/>
+  <text x="10" y="92" font-size="11" font-weight="600" fill="#18181C" font-family="Lexend, sans-serif">Amber</text>
+  <text x="10" y="104" font-size="9" fill="#97979E" font-family="JetBrains Mono, monospace">#E19000</text>
+  </g>
+  </g>
+  <g transform="translate(444 36)">
+  <g>
+  <rect width="140" height="78" fill="#F24260" stroke="#F4F4F1" stroke-width="0.5"/>
+  <rect y="78" width="140" height="32" fill="#FDFDFB" stroke="#F4F4F1" stroke-width="0.5"/>
+  <text x="10" y="92" font-size="11" font-weight="600" fill="#18181C" font-family="Lexend, sans-serif">Rose</text>
+  <text x="10" y="104" font-size="9" fill="#97979E" font-family="JetBrains Mono, monospace">#F24260</text>
+  </g>
+  </g>
+</svg>

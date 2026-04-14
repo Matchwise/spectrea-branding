@@ -1,0 +1,76 @@
+# Spectrea Brand Guide
+
+> The complete brand system for Spectrea — a composable knowledge platform that turns scattered information into compounding intelligence. This index lists the canonical documents an LLM should read to understand Spectrea's voice, visual identity, logo rules, colour system, typography, and component specs.
+
+Spectrea's core metaphor is "connecting the dots" — raw scattered information passing through a prism and emerging as a continuous spectrum of insight. The brand combines spectrum accents (Cobalt, Teal, Amber, Rose) with a Warm Blend neutral palette (Canvas, Cloud, Pewter, Graphite, Ink) to feel both precise and human. Tagline: *We connect the dots.* Pronunciation: /spek-TREE-uh/.
+
+## Canonical documents
+
+- [Full brand guide (Markdown)](/brand-guide.md): The single source of truth. Covers foundation, voice, logo system (two-forms rule, 11 variants, 3 arrangements), Warm Blend colour system, gradient rules (OKLCH with sRGB fallback, 3-stop primary, 5-stop lockup, three duets), typography (Albert Sans / Lexend / JetBrains Mono), iconography (Tabler, 2px stroke), motion, components, communications, and governance. Includes inline SVG visuals for logo, swatches, gradients, and typography.
+- [Full brand guide (PDF)](/brand-guide.pdf): Printable version of the same content.
+
+## Visual assets (referenced from the Markdown)
+
+- [/brand-assets/logo-mark-cool.svg](/brand-assets/logo-mark-cool.svg): Primary S mark — Cool Duet stroke + grey dots.
+- [/brand-assets/logo-mark-ink.svg](/brand-assets/logo-mark-ink.svg): Mono ink mark.
+- [/brand-assets/logo-mark-white.svg](/brand-assets/logo-mark-white.svg): Mono white mark on Ink background.
+- [/brand-assets/logo-mark-spectrum.svg](/brand-assets/logo-mark-spectrum.svg): Full-spectrum mark (animated-frame colour).
+- [/brand-assets/logo-lockup-gradient.svg](/brand-assets/logo-lockup-gradient.svg): Gradient lockup (5-stop full-spectrum).
+- [/brand-assets/logo-lockup-ink.svg](/brand-assets/logo-lockup-ink.svg): Mono ink lockup.
+- [/brand-assets/logo-lockup-white.svg](/brand-assets/logo-lockup-white.svg): Mono white lockup on Ink.
+- [/brand-assets/swatches-spectrum.svg](/brand-assets/swatches-spectrum.svg): Cobalt / Teal / Amber / Rose swatches.
+- [/brand-assets/swatches-neutrals.svg](/brand-assets/swatches-neutrals.svg): Canvas / Cloud / Pewter / Graphite / Ink swatches.
+- [/brand-assets/swatches-bridge.svg](/brand-assets/swatches-bridge.svg): Bridge-tier tinted washes.
+- [/brand-assets/ratio-bar.svg](/brand-assets/ratio-bar.svg): 60 / 20 / 10 / 10 usage-ratio bar.
+- [/brand-assets/gradient-brand.svg](/brand-assets/gradient-brand.svg): The primary brand gradient.
+- [/brand-assets/gradient-cool-duet.svg](/brand-assets/gradient-cool-duet.svg): Cool Duet strip.
+- [/brand-assets/gradient-balanced-duet.svg](/brand-assets/gradient-balanced-duet.svg): Balanced Duet with #6FB884 bridge.
+- [/brand-assets/gradient-warm-duet.svg](/brand-assets/gradient-warm-duet.svg): Warm Duet strip.
+- [/brand-assets/gradient-full-rose.svg](/brand-assets/gradient-full-rose.svg): Full spectrum with Rose.
+- [/brand-assets/gradient-lockup.svg](/brand-assets/gradient-lockup.svg): 5-stop lockup gradient (LogotypeGradient only).
+- [/brand-assets/type-samples.svg](/brand-assets/type-samples.svg): Typography samples in Albert Sans, Lexend, JetBrains Mono.
+- [/brand-assets/type-scale.svg](/brand-assets/type-scale.svg): Type scale ladder — Display through Code.
+
+## Live interactive pages
+
+- [Brand guide home](/): Overview and navigation to every section.
+- [Brand story](/foundation/story): Mission, vision, why we exist.
+- [Positioning](/foundation/positioning): Audience, category, tactical positioning.
+- [Voice & tone](/foundation/voice): Voice formula, tone spectrum, vocabulary.
+- [Naming](/foundation/naming): Pronunciation and usage rules.
+- [Logo — The logo](/logo/primary): Anatomy, construction, animated version.
+- [Logo — Variations](/logo/variations): All 11 approved variants + 3 arrangements + decision guide.
+- [Logo — Guidelines](/logo/guidelines): Clear space, minimum size, background pairing.
+- [Logo — Misuse](/logo/misuse): What not to do.
+- [Logo — Specs & export](/logo/exploration): Technical specs and asset generator (SVG/PNG/JPG).
+- [Colour overview](/color/overview): Warm Blend palette at a glance + usage ratios.
+- [Primary palette](/color/primary): Every colour with role, hex, contrast info.
+- [Semantic colours](/color/semantic): Three-tier framework (Responsive / Structural / Semantic) + bridge tones.
+- [Gradients](/color/gradients): Brand gradient (OKLCH), duets, lockup gradient, usage rules.
+- [Typefaces](/typography/typefaces): Albert Sans, Lexend, JetBrains Mono.
+- [Type scale](/typography/scale): Complete sizing system with responsive scaling.
+- [Typography guidelines](/typography/guidelines): Hierarchy, weight rules, accessibility.
+- [Iconography](/imagery/iconography): Tabler icon system and colour rules.
+- [Motion](/imagery/motion): Durations, easing, motion philosophy.
+- [Buttons](/components/buttons): Six variants (Primary, Secondary, Ghost, Destructive, Confirm, Caution).
+- [Forms](/components/forms): Input fields, selects, checkboxes, toggles.
+- [Cards](/components/cards): Container patterns, elevation, content layout.
+- [Layout](/components/layout): Page structure, spacing scale, grid system, elevation.
+- [Copy & taglines](/communications/copy): Messaging hierarchy in practice.
+- [Social media](/communications/social): Profile setup, post templates.
+- [Email](/communications/email): Signature, transactional, marketing patterns.
+- [Presentations](/communications/presentations): Slide specs and templates.
+- [Downloads](/resources/downloads): Asset packages and CSS tokens.
+- [Governance](/resources/governance): Change process and ownership.
+
+## Key facts
+
+- **Name:** Spectrea (not "Spectre", "Spectra", or "SpectreAI").
+- **Pronunciation:** /spek-TREE-uh/.
+- **Tagline:** "We connect the dots."
+- **Category:** Composable knowledge platform.
+- **Spectrum colours:** Cobalt `#4271DF` · Teal `#00B6A0` · Amber `#E19000` · Rose `#F24260`.
+- **Warm Blend neutrals:** Canvas `#FDFDFB` · Cloud `#F4F4F1` · Pewter `#97979E` · Graphite `#212226` · Ink `#18181C`.
+- **Brand gradient:** `linear-gradient(135deg in oklch, #4271DF, #00B6A0, #E19000)` with sRGB fallback for older browsers.
+- **Lockup gradient (LogotypeGradient only):** 5-stop full spectrum with `#6FB884` intermediate at 55%.
+- **Typefaces:** Albert Sans (headings, 600/700), Lexend (body, 300/400/500), JetBrains Mono (code, 400).
