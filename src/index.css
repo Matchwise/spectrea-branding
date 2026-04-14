@@ -18,6 +18,15 @@
   --color-brand-rose: #F24260;
   --color-brand-rose-hover: #D63B55;
   --color-brand-rose-active: #BA3249;
+
+  /* Warm Blend neutrals — subtle warmth layered under the spectrum.
+     Shift is small (<2% luminance) but closes the gap between the cold
+     Tailwind grays and the warm spectrum accents. */
+  --color-canvas: #FDFDFB;   /* was #FFFFFF */
+  --color-cloud:  #F4F4F1;   /* was #F9FAFB (surface / snow) */
+  --color-pewter: #97979E;   /* was #9CA3AF (muted / gray) */
+  --color-graphite: #212226; /* was #1F2937 (dark UI) */
+  --color-ink:    #18181C;   /* was #111827 (text / dark bg) */
 }
 
 html {
@@ -40,6 +49,27 @@ h1, h2, h3, h4, h5, h6 {
   outline-offset: 2px;
 }
 
+/* ─── Canonical brand gradient ─────────────────────────────────────
+   sRGB baseline renders everywhere. Modern browsers (Chrome 111+,
+   Safari 16.2+, Firefox 117+) override with OKLCH interpolation for
+   a richer middle — the teal→amber transition stops dipping through
+   muddy olive. The @supports block silently no-ops in older browsers,
+   which keep the sRGB version. */
+.brand-gradient {
+  background: linear-gradient(135deg, #4271DF, #00B6A0, #E19000);
+}
+.brand-gradient-h {
+  background: linear-gradient(90deg, #4271DF, #00B6A0, #E19000);
+}
+@supports (background: linear-gradient(in oklch, red, blue)) {
+  .brand-gradient {
+    background: linear-gradient(135deg in oklch, #4271DF, #00B6A0, #E19000);
+  }
+  .brand-gradient-h {
+    background: linear-gradient(90deg in oklch, #4271DF, #00B6A0, #E19000);
+  }
+}
+
 /* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 6px;
@@ -50,10 +80,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #D6D6D3;  /* cloud-tinted idle thumb */
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #97979E;  /* Pewter */
 }

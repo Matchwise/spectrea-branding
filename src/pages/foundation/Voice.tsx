@@ -9,7 +9,7 @@ export default function Voice() {
     >
       {/* Voice formula */}
       <Section title="Voice Formula">
-        <div className="bg-stone-900 text-white rounded-xl p-6">
+        <div className="bg-ink text-white rounded-xl p-6">
           <p className="text-base font-medium leading-relaxed">{voice.formula}</p>
         </div>
       </Section>
@@ -46,14 +46,14 @@ export default function Voice() {
           The voice stays consistent. The tone shifts with context:
         </p>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
-          <div className="grid grid-cols-3 bg-stone-50 border-b border-stone-200 px-4 py-2">
+          <div className="hidden sm:grid grid-cols-3 bg-stone-50 border-b border-stone-200 px-4 py-2">
             <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Context</span>
             <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Tone</span>
             <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Example</span>
           </div>
           {voice.toneSpectrum.map(t => (
-            <div key={t.context} className="grid grid-cols-3 border-b last:border-b-0 border-stone-100 px-4 py-3">
-              <span className="text-sm text-stone-700 font-medium">{t.context}</span>
+            <div key={t.context} className="grid grid-cols-1 sm:grid-cols-3 gap-y-1 sm:gap-y-0 border-b last:border-b-0 border-stone-100 px-4 py-3">
+              <span className="text-sm text-stone-700 font-semibold sm:font-medium">{t.context}</span>
               <span className="text-sm text-stone-600">{t.tone}</span>
               <span className="text-xs text-stone-500 italic leading-relaxed">{t.example}</span>
             </div>

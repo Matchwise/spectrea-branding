@@ -36,15 +36,15 @@ export default function Buttons() {
     setTimeout(() => setLoading(p => ({ ...p, [key]: false })), 2000)
   }
 
-  /* Dark mode surface colors */
+  /* Dark mode surface colors — Warm Blend palette */
   const dm = {
-    bg: '#111827',
-    surface: '#1F2937',
-    border: '#4B5563',
-    text: '#F9FAFB',
-    muted: '#9CA3AF',
-    secondaryBg: '#374151',
-    secondaryHover: '#4B5563',
+    bg: '#18181C',       // Ink
+    surface: '#212226',  // Graphite
+    border: '#2E2E34',   // Graphite tint
+    text: '#F4F4F1',     // Cloud
+    muted: '#97979E',    // Pewter
+    secondaryBg: '#2E2E34',
+    secondaryHover: '#3A3A40',
   }
 
   /* Explicit hover/active colors for filled buttons */
@@ -82,13 +82,13 @@ export default function Buttons() {
         <div className="flex items-center gap-2 mb-3">
           <button
             onClick={() => setDark(false)}
-            className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${!dark ? 'bg-stone-900 text-white' : 'text-stone-400 hover:text-stone-600'}`}
+            className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${!dark ? 'bg-ink text-white' : 'text-stone-400 hover:text-stone-600'}`}
           >
             Light
           </button>
           <button
             onClick={() => setDark(true)}
-            className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${dark ? 'bg-stone-900 text-white' : 'text-stone-400 hover:text-stone-600'}`}
+            className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${dark ? 'bg-ink text-white' : 'text-stone-400 hover:text-stone-600'}`}
           >
             Dark
           </button>
@@ -98,15 +98,15 @@ export default function Buttons() {
           className="border rounded-xl p-6 transition-colors"
           style={dark
             ? { backgroundColor: dm.bg, borderColor: dm.border }
-            : { backgroundColor: '#FFFFFF', borderColor: '#E5E7EB' }
+            : { backgroundColor: '#FDFDFB', borderColor: '#E5E7EB' }
           }
         >
-          <p className="text-[10px] font-semibold uppercase tracking-wider text-center mb-5" style={{ color: dark ? dm.muted : '#9CA3AF' }}>
+          <p className="text-[10px] font-semibold uppercase tracking-wider text-center mb-5" style={{ color: dark ? dm.muted : '#97979E' }}>
             Interactive — hover, press, and focus these buttons
           </p>
 
           {/* Hierarchy variants */}
-          <p className="text-[10px] font-semibold uppercase tracking-wider mb-3" style={{ color: dark ? dm.muted : '#9CA3AF' }}>Hierarchy</p>
+          <p className="text-[10px] font-semibold uppercase tracking-wider mb-3" style={{ color: dark ? dm.muted : '#97979E' }}>Hierarchy</p>
           <div className="flex items-center gap-4 flex-wrap mb-6">
             {/* Primary */}
             <div className="flex flex-col items-center gap-2">
@@ -115,7 +115,7 @@ export default function Buttons() {
               >
                 Create Entity
               </button>
-              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#9CA3AF' }}>Primary</span>
+              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#97979E' }}>Primary</span>
             </div>
             {/* Secondary */}
             <div className="flex flex-col items-center gap-2">
@@ -123,34 +123,34 @@ export default function Buttons() {
                 className="px-4 py-2 rounded-lg text-sm font-medium transition-all btn-focus"
                 style={dark
                   ? { backgroundColor: dm.secondaryBg, color: dm.text }
-                  : { backgroundColor: '#F3F4F6', color: '#374151' }
+                  : { backgroundColor: '#F3F4F6', color: '#212226' }
                 }
                 onMouseEnter={e => e.currentTarget.style.backgroundColor = dark ? dm.secondaryHover : '#E5E7EB'}
                 onMouseLeave={e => e.currentTarget.style.backgroundColor = dark ? dm.secondaryBg : '#F3F4F6'}
               >
                 View Details
               </button>
-              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#9CA3AF' }}>Secondary</span>
+              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#97979E' }}>Secondary</span>
             </div>
             {/* Ghost */}
             <div className="flex flex-col items-center gap-2">
               <button
                 className="px-4 py-2 rounded-lg text-sm font-medium border-2 transition-all btn-focus"
                 style={dark
-                  ? { borderColor: '#9CA3AF', color: '#D1D5DB' }
-                  : { borderColor: '#D1D5DB', color: '#6B7280' }
+                  ? { borderColor: '#97979E', color: '#D1D5DB' }
+                  : { borderColor: '#D1D5DB', color: '#97979E' }
                 }
-                onMouseEnter={e => { e.currentTarget.style.backgroundColor = dark ? dm.secondaryBg : '#F9FAFB'; e.currentTarget.style.borderColor = dark ? '#D1D5DB' : '#9CA3AF' }}
-                onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.borderColor = dark ? '#9CA3AF' : '#D1D5DB' }}
+                onMouseEnter={e => { e.currentTarget.style.backgroundColor = dark ? dm.secondaryBg : '#F4F4F1'; e.currentTarget.style.borderColor = dark ? '#D1D5DB' : '#97979E' }}
+                onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.borderColor = dark ? '#97979E' : '#D1D5DB' }}
               >
                 Cancel
               </button>
-              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#9CA3AF' }}>Ghost</span>
+              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#97979E' }}>Ghost</span>
             </div>
           </div>
 
           {/* Semantic variants */}
-          <p className="text-[10px] font-semibold uppercase tracking-wider mb-3" style={{ color: dark ? dm.muted : '#9CA3AF' }}>Semantic</p>
+          <p className="text-[10px] font-semibold uppercase tracking-wider mb-3" style={{ color: dark ? dm.muted : '#97979E' }}>Semantic</p>
           <div className="flex items-center gap-4 flex-wrap">
             {/* Destructive (Rose) */}
             <div className="flex flex-col items-center gap-2">
@@ -159,7 +159,7 @@ export default function Buttons() {
               >
                 Delete
               </button>
-              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#9CA3AF' }}>Destructive</span>
+              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#97979E' }}>Destructive</span>
             </div>
             {/* Confirm (Teal) */}
             <div className="flex flex-col items-center gap-2">
@@ -168,7 +168,7 @@ export default function Buttons() {
               >
                 <TbCheck size={16} /> Verify Claim
               </button>
-              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#9CA3AF' }}>Confirm</span>
+              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#97979E' }}>Confirm</span>
             </div>
             {/* Caution (Amber) */}
             <div className="flex flex-col items-center gap-2">
@@ -177,7 +177,7 @@ export default function Buttons() {
               >
                 Override Score
               </button>
-              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#9CA3AF' }}>Caution</span>
+              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#97979E' }}>Caution</span>
             </div>
           </div>
         </div>
@@ -196,7 +196,8 @@ export default function Buttons() {
             <span>Specifications</span>
           </Tooltip>
         </h2>
-        <div className="border border-stone-200 rounded-xl overflow-hidden">
+        <div className="border border-stone-200 rounded-xl overflow-x-auto">
+          <div className="min-w-[720px]">
           <div className="grid grid-cols-6 bg-stone-50 border-b border-stone-200 px-4 py-2">
             {['Variant', 'Light Bg', 'Dark Bg', 'Text', 'Hover', 'Usage'].map(h => (
               <span key={h} className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider">{h}</span>
@@ -204,8 +205,8 @@ export default function Buttons() {
           </div>
           {[
             { variant: 'Primary', lightBg: 'Cobalt', darkBg: 'Cobalt', text: 'White', hover: '#3A63C4 / #5C87E5', usage: 'Main CTA. One per section.' },
-            { variant: 'Secondary', lightBg: 'Stone 100', darkBg: '#374151', text: 'Stone 700 / Snow', hover: 'Stone 200 / #4B5563', usage: 'Supporting actions.' },
-            { variant: 'Ghost', lightBg: 'Transparent', darkBg: 'Transparent', text: 'Stone 500 / Stone 300', hover: 'Stone 50 / #374151', usage: 'Tertiary actions. 2px border.' },
+            { variant: 'Secondary', lightBg: 'Stone 100', darkBg: 'Graphite tint', text: 'Stone 700 / Cloud', hover: 'Stone 200 / #3A3A40', usage: 'Supporting actions.' },
+            { variant: 'Ghost', lightBg: 'Transparent', darkBg: 'Transparent', text: 'Stone 500 / Stone 300', hover: 'Stone 50 / Graphite tint', usage: 'Tertiary actions. 2px border.' },
             { variant: 'Destructive', lightBg: 'Rose', darkBg: 'Rose', text: 'White', hover: '#D63B55 / #F56579', usage: 'Irreversible actions.' },
             { variant: 'Confirm', lightBg: 'Teal', darkBg: 'Teal', text: 'White', hover: '#009E8A / #20C8B2', usage: 'Verify, approve, connect.' },
             { variant: 'Caution', lightBg: 'Amber', darkBg: 'Amber', text: 'White', hover: '#C58200 / #ECA41E', usage: 'Override, merge, proceed.' },
@@ -219,9 +220,10 @@ export default function Buttons() {
               <span className="text-xs text-stone-500">{row.usage}</span>
             </div>
           ))}
+          </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 mt-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
           <div className="bg-stone-50 rounded-lg px-4 py-3 border border-stone-100">
             <p className="text-xs font-semibold text-stone-500 mb-1">Light Mode Hover</p>
             <p className="text-xs text-stone-400">Hand-picked darker shade — buttons recede into the surface on press.</p>
@@ -406,7 +408,7 @@ export default function Buttons() {
                 <span className="text-[10px] font-mono" style={{ color: dm.muted }}>Amber ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
-                <button className="px-3 py-1.5 rounded-lg text-xs font-medium border-2" style={{ borderColor: '#9CA3AF', color: '#D1D5DB', outline: '2px solid rgba(236, 164, 30, 0.7)', outlineOffset: '2px' }}>Focused</button>
+                <button className="px-3 py-1.5 rounded-lg text-xs font-medium border-2" style={{ borderColor: '#97979E', color: '#D1D5DB', outline: '2px solid rgba(236, 164, 30, 0.7)', outlineOffset: '2px' }}>Focused</button>
                 <span className="text-[10px] font-mono" style={{ color: dm.muted }}>Ghost + ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">

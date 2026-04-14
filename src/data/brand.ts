@@ -361,18 +361,18 @@ export const selectedPalette: PaletteOption = {
   story: 'A clean, neutral canvas with a deep cobalt hero and three spectrum accents. Cobalt leads primary actions with weight and intention. Teal, amber, and rose provide the spectrum — each a building block, a possibility.',
   feeling: 'Intentional, structured, alive with possibility.',
   colors: [
-    { name: 'Graphite', hex: '#1F2937', role: 'primary' },
+    { name: 'Graphite', hex: '#212226', role: 'primary' },
     { name: 'Cobalt', hex: '#4271DF', role: 'accent' },
     { name: 'Teal', hex: '#00B6A0', role: 'accent' },
     { name: 'Amber', hex: '#E19000', role: 'accent' },
     { name: 'Rose', hex: '#F24260', role: 'accent' },
-    { name: 'White', hex: '#FFFFFF', role: 'background' },
-    { name: 'Snow', hex: '#F9FAFB', role: 'surface' },
-    { name: 'Ink', hex: '#111827', role: 'text' },
-    { name: 'Gray', hex: '#9CA3AF', role: 'muted' },
+    { name: 'Canvas', hex: '#FDFDFB', role: 'background' },
+    { name: 'Cloud', hex: '#F4F4F1', role: 'surface' },
+    { name: 'Ink', hex: '#18181C', role: 'text' },
+    { name: 'Pewter', hex: '#97979E', role: 'muted' },
   ],
   gradient: { from: '#4271DF', via: '#00B6A0', to: '#E19000', angle: 135 },
-  darkMode: { bg: '#111827', surface: '#1F2937', text: '#F9FAFB', muted: '#6B7280' },
+  darkMode: { bg: '#18181C', surface: '#212226', text: '#F4F4F1', muted: '#6B6B72' },
 }
 
 // Keep finalists for reference in the explorer

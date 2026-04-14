@@ -1,6 +1,14 @@
-import { useState, useRef, useEffect, useCallback, useMemo, forwardRef } from 'react'
+import { useState, useRef, useCallback, useMemo } from 'react'
 import PageShell, { Section } from '../../components/layout/PageShell'
-import { StaticLogo, LOGO, gradientColor, fillForMode, usePathMetrics, type ColorMode } from '../../components/brand/SpectreaLogo'
+import {
+  StaticLogo,
+  Logotype,
+  LogotypeGradient,
+  LOGO,
+  gradientColor,
+  type ColorMode,
+  type MonoColorMode,
+} from '../../components/brand/SpectreaLogo'
 
 // ─── Export helpers ────────────────────────────────────────────────
 
@@ -35,7 +43,7 @@ async function downloadRaster(svgString: string, width: number, height: number, 
   await new Promise<void>((resolve) => {
     img.onload = () => {
       if (format === 'jpg') {
-        ctx.fillStyle = '#FFFFFF'
+        ctx.fillStyle = '#FDFDFB'
         ctx.fillRect(0, 0, width, height)
       }
       ctx.drawImage(img, 0, 0, width, height)
@@ -49,157 +57,135 @@ async function downloadRaster(svgString: string, width: number, height: number, 
   downloadBlob(blob, filename)
 }
 
-// ─── Generator config with rules ──────────────────────────────────
+// ─── Style catalogue ──────────────────────────────────────────────
+// Aligned with the brand rules:
+//   - Mark: Primary (Cool Duet), Full Spectrum (hero), Ink, White, Grey
+//   - Lockup: Full Spectrum (the one and only gradient) OR Mono (Ink, White)
+// Duets (cool/balanced/warm) are mark-only — they are never a lockup treatment.
 
 interface BgOption { value: string; label: string }
 
-interface MarkStyle {
+interface Style {
   id: string
   label: string
-  colorMode: ColorMode
-  dotColorMode?: ColorMode
+  /** Used for the standalone mark (StaticLogo). */
+  markColorMode: ColorMode
+  /** Used for the mono lockup (Logotype). `null` means "not available as mono
+   *  lockup"; full-spectrum routes through LogotypeGradient instead. */
+  monoLockup: MonoColorMode | null
+  /** Whether this style has a valid lockup form at all. Grey watermark is
+   *  mark-only — lockups need full readability. */
+  lockupEnabled: boolean
+  /** Whether this style can be contained inside a circle. */
+  circle: { fill: string; inner: MonoColorMode } | null
   backgrounds: BgOption[]
   defaultBg: string
   note?: string
 }
 
-const markStyles: MarkStyle[] = [
+const styles: Style[] = [
   {
-    id: 'color', label: 'Color', colorMode: 'color', dotColorMode: 'grey',
+    id: 'primary',
+    label: 'Primary (Cool Duet)',
+    markColorMode: 'cool',
+    monoLockup: null,  // Cool Duet is NOT a valid lockup — mark-only treatment
+    lockupEnabled: false,
+    circle: null,
     backgrounds: [
       { value: 'transparent', label: 'Transparent' },
-      { value: '#FFFFFF', label: 'White' },
-      { value: '#111827', label: 'Ink (dark)' },
+      { value: '#FDFDFB', label: 'Canvas' },
+      { value: '#18181C', label: 'Ink (dark)' },
     ],
     defaultBg: 'transparent',
   },
   {
-    id: 'ink', label: 'Ink', colorMode: 'ink',
+    id: 'balanced',
+    label: 'Balanced Duet',
+    markColorMode: 'balanced',
+    monoLockup: null,  // duets are mark-only
+    lockupEnabled: false,
+    circle: null,
     backgrounds: [
       { value: 'transparent', label: 'Transparent' },
-      { value: '#FFFFFF', label: 'White' },
+      { value: '#FDFDFB', label: 'Canvas' },
+      { value: '#18181C', label: 'Ink (dark)' },
+    ],
+    defaultBg: 'transparent',
+    note: 'Mark-only treatment. Use for product & ecosystem moments.',
+  },
+  {
+    id: 'warm',
+    label: 'Warm Duet',
+    markColorMode: 'warm',
+    monoLockup: null,  // duets are mark-only
+    lockupEnabled: false,
+    circle: null,
+    backgrounds: [
+      { value: 'transparent', label: 'Transparent' },
+      { value: '#FDFDFB', label: 'Canvas' },
+      { value: '#18181C', label: 'Ink (dark)' },
+    ],
+    defaultBg: 'transparent',
+    note: 'Mark-only treatment. Use for marketing, launches, attention moments.',
+  },
+  {
+    id: 'full-spectrum',
+    label: 'Full Spectrum',
+    markColorMode: 'color',
+    monoLockup: null,  // routes to LogotypeGradient for the lockup
+    lockupEnabled: true,
+    circle: null,
+    backgrounds: [
+      { value: 'transparent', label: 'Transparent' },
+      { value: '#FDFDFB', label: 'Canvas' },
+      { value: '#18181C', label: 'Ink (dark)' },
     ],
     defaultBg: 'transparent',
   },
   {
-    id: 'white', label: 'White', colorMode: 'white',
-    backgrounds: [
-      { value: '#111827', label: 'Ink (dark)' },
-      { value: 'transparent', label: 'Transparent' },
-    ],
-    defaultBg: '#111827',
-  },
-  {
-    id: 'grey', label: 'Grey (watermark)', colorMode: 'grey',
+    id: 'ink',
+    label: 'Ink',
+    markColorMode: 'ink',
+    monoLockup: 'ink',
+    lockupEnabled: true,
+    circle: { fill: '#FDFDFB', inner: 'ink' },  // ink mark in white circle (variant #11)
     backgrounds: [
       { value: 'transparent', label: 'Transparent' },
-      { value: '#FFFFFF', label: 'White' },
+      { value: '#FDFDFB', label: 'Canvas' },
     ],
     defaultBg: 'transparent',
-    note: 'Watermark use only — apply at low opacity',
+  },
+  {
+    id: 'white',
+    label: 'White',
+    markColorMode: 'white',
+    monoLockup: 'white',
+    lockupEnabled: true,
+    circle: { fill: '#18181C', inner: 'white' },  // white mark in ink circle (variant #10)
+    backgrounds: [
+      { value: '#18181C', label: 'Ink (dark)' },
+      { value: 'transparent', label: 'Transparent' },
+    ],
+    defaultBg: '#18181C',
+  },
+  {
+    id: 'grey',
+    label: 'Grey (watermark)',
+    markColorMode: 'grey',
+    monoLockup: null,
+    lockupEnabled: false,
+    circle: null,
+    backgrounds: [
+      { value: 'transparent', label: 'Transparent' },
+      { value: '#FDFDFB', label: 'Canvas' },
+    ],
+    defaultBg: 'transparent',
+    note: 'Watermark use only — apply at low opacity. No lockup form.',
   },
 ]
 
-// Circle inverts the mark: ink circle gets white mark, white circle gets ink mark
-const circleConfigs: Record<string, { circleFill: string; colorMode: ColorMode } | null> = {
-  color: null,   // no circle variant for color mark
-  ink: { circleFill: '#FFFFFF', colorMode: 'ink' },
-  white: { circleFill: '#111827', colorMode: 'white' },
-  grey: null,
-}
-
 const markSizes = [24, 32, 48, 64, 128, 256, 512, 1024]
 const logotypeSizes = [32, 48, 64, 96, 128, 256, 512]
-
-// ─── Logotype SVG (for export) ────────────────────────────────────
-
-const STROKE_SEGMENTS = 48
-const MARK_X0 = 11, MARK_X1 = 51, MARK_Y0 = 3, MARK_Y1 = 61
-const MARK_CW = MARK_X1 - MARK_X0  // 42
-const MARK_CH = MARK_Y1 - MARK_Y0  // 58
-
-interface LogotypeSvgProps {
-  height: number
-  colorMode: ColorMode
-  dotColorMode?: ColorMode
-  textColor: string
-}
-
-const LogotypeSvg = forwardRef<SVGSVGElement, LogotypeSvgProps>(
-  function LogotypeSvg({ height, colorMode, dotColorMode, textColor }, ref) {
-    const textRef = useRef<SVGTextElement>(null)
-    const [textW, setTextW] = useState<number | null>(null)
-
-    const effectiveDotMode = dotColorMode ?? colorMode
-    const { pathRef, metrics } = usePathMetrics(LOGO.pathD, LOGO.totalDots, LOGO.tailDots)
-
-    // Scale mark so its visible height = requested height
-    const scale = height / MARK_CH
-    const markW = MARK_CW * scale
-    const fontSize = height / 0.72
-    const gap = fontSize * -0.01
-    const descent = fontSize * 0.25
-    const totalH = height + descent
-
-    useEffect(() => {
-      if (textRef.current) setTextW(textRef.current.getBBox().width)
-    }, [fontSize])
-
-    const textX = markW + gap
-    const totalW = textW != null ? textX + textW + fontSize * 0.05 : textX + fontSize * 4
-
-    return (
-      <svg ref={ref} width={totalW} height={totalH} viewBox={`0 0 ${totalW} ${totalH}`} fill="none">
-        <path ref={pathRef} d={LOGO.pathD} fill="none" stroke="none" />
-
-        <defs>
-          <clipPath id="lt-clip">
-            <rect x="0" y="0" width={markW + 1} height={height + 1} />
-          </clipPath>
-        </defs>
-
-        <g clipPath="url(#lt-clip)">
-          <g transform={`translate(${-MARK_X0 * scale}, ${-MARK_Y0 * scale}) scale(${scale})`}>
-            {metrics && (
-              <>
-                {metrics.dots.map((dot, i) => (
-                  <circle key={i} cx={dot.x} cy={dot.y} r={LOGO.dotR}
-                    fill={fillForMode(dot.t, effectiveDotMode)}
-                  />
-                ))}
-                {(() => {
-                  const strokeLen = metrics.connectedLen - LOGO.strokeW / 2 + LOGO.dotR * 0.75
-                  return Array.from({ length: STROKE_SEGMENTS }, (_, i) => {
-                    const segStart = (strokeLen * i) / STROKE_SEGMENTS
-                    const segEnd = (strokeLen * (i + 1)) / STROKE_SEGMENTS
-                    const progress = (segStart + segEnd) / 2 / strokeLen
-                    const color = fillForMode(progress, colorMode)
-                    return (
-                      <path key={i} d={LOGO.pathD} fill="none" stroke={color}
-                        strokeWidth={LOGO.strokeW} strokeLinecap="round"
-                        strokeDasharray={`${segEnd - segStart + 1.5} ${metrics.totalLen}`}
-                        strokeDashoffset={-segStart}
-                      />
-                    )
-                  })
-                })()}
-              </>
-            )}
-          </g>
-        </g>
-
-        <text ref={textRef} x={textX} y={height}
-          fontFamily="'Albert Sans', sans-serif" fontWeight={600}
-          fontSize={fontSize} fill={textColor}
-        >
-          pectrea
-        </text>
-      </svg>
-    )
-  }
-)
-
-// ─── Dot color options ────────────────────────────────────────────
 
 // ─── Asset Generator ──────────────────────────────────────────────
 
@@ -211,61 +197,61 @@ function AssetGenerator() {
   const [circle, setCircle] = useState(false)
   const [size, setSize] = useState(256)
   const [format, setFormat] = useState<'svg' | 'png' | 'jpg'>('svg')
-  const [bg, setBg] = useState(markStyles[0].defaultBg)
+  const [bg, setBg] = useState(styles[0].defaultBg)
   const svgRef = useRef<SVGSVGElement>(null)
 
-  const style = markStyles[styleIdx]
+  const style = styles[styleIdx]
   const isLogotype = layout === 'logotype'
-  const circleConfig = circleConfigs[style.id]
-  const useCircle = !isLogotype && circle && circleConfig != null
 
+  // Available styles depend on layout. Logotypes require lockupEnabled.
+  const availableStyleIndexes = useMemo(
+    () => styles.map((s, i) => ({ s, i })).filter(({ s }) => !isLogotype || s.lockupEnabled).map(({ i }) => i),
+    [isLogotype],
+  )
+
+  const useCircle = !isLogotype && circle && style.circle != null
   const minSize = useCircle ? 32 : isLogotype ? 32 : 24
   const maxSize = useCircle ? 128 : 1024
 
-  // Derive the actual colorMode and circle fill
-  const renderColorMode = useCircle ? circleConfig!.colorMode : style.colorMode
-  const renderDotColorMode = useCircle ? undefined : style.dotColorMode
-  const circleFill = useCircle ? circleConfig!.circleFill : undefined
-
-  // Text color for logotype: adapt to background
-  const textColor = useMemo(() => {
-    if (!isLogotype) return '#111827'
-    if (style.colorMode === 'white') return '#FFFFFF'
-    if (style.colorMode === 'ink') return '#111827'
-    if (style.colorMode === 'grey') return '#A3A3A3'
-    // color: derive from background
-    return bg === '#111827' ? '#FFFFFF' : '#111827'
-  }, [isLogotype, style, bg])
-
-  // Circle backgrounds are the opposite of bare mark backgrounds
+  // Backgrounds depend on whether we're in circle mode.
   const backgrounds = useMemo(() => {
     if (isLogotype) return style.backgrounds
-    if (!useCircle) return style.backgrounds
-    if (circleConfig!.circleFill === '#111827') {
-      return [{ value: 'transparent', label: 'Transparent' }, { value: '#FFFFFF', label: 'White' }]
+    if (!useCircle || !style.circle) return style.backgrounds
+    // A contained mark is rendered against the OPPOSITE of its circle fill.
+    if (style.circle.fill === '#18181C') {
+      return [{ value: 'transparent', label: 'Transparent' }, { value: '#FDFDFB', label: 'Canvas' }]
     }
-    return [{ value: '#111827', label: 'Ink (dark)' }, { value: 'transparent', label: 'Transparent' }]
-  }, [style, isLogotype, useCircle, circleConfig])
+    return [{ value: '#18181C', label: 'Ink (dark)' }, { value: 'transparent', label: 'Transparent' }]
+  }, [isLogotype, useCircle, style])
 
   const allSizes = isLogotype ? logotypeSizes : markSizes
   const availableSizes = useMemo(
     () => allSizes.filter(s => s >= minSize && s <= maxSize),
-    [allSizes, minSize, maxSize]
+    [allSizes, minSize, maxSize],
   )
 
   const handleLayoutChange = useCallback((l: Layout) => {
     setLayout(l)
     setCircle(false)
+    // If switching to logotype and the current style isn't lockup-enabled,
+    // bump to the first enabled style.
+    if (l === 'logotype' && !styles[styleIdx].lockupEnabled) {
+      const first = styles.findIndex(s => s.lockupEnabled)
+      if (first >= 0) {
+        setStyleIdx(first)
+        setBg(styles[first].defaultBg)
+      }
+    }
     if (l === 'logotype') {
       setSize(prev => {
         const clamped = Math.max(32, Math.min(512, prev))
         return logotypeSizes.includes(clamped) ? clamped : 64
       })
     }
-  }, [])
+  }, [styleIdx])
 
   const handleStyleChange = useCallback((idx: number) => {
-    const s = markStyles[idx]
+    const s = styles[idx]
     setStyleIdx(idx)
     setCircle(false)
     setBg(s.defaultBg)
@@ -274,11 +260,8 @@ function AssetGenerator() {
 
   const handleCircleToggle = useCallback((on: boolean) => {
     setCircle(on)
-    if (on) {
-      const cfg = circleConfigs[style.id]
-      if (cfg) {
-        setBg(cfg.circleFill === '#111827' ? 'transparent' : '#111827')
-      }
+    if (on && style.circle) {
+      setBg(style.circle.fill === '#18181C' ? 'transparent' : '#18181C')
       setSize(prev => Math.max(32, Math.min(128, prev)))
     } else {
       setBg(style.defaultBg)
@@ -286,25 +269,34 @@ function AssetGenerator() {
     }
   }, [style])
 
-  // Force white bg for JPG if transparent is selected
   const effectiveBg = useMemo(() => {
     if (format === 'jpg' && bg === 'transparent') {
-      const whiteBg = backgrounds.find(b => b.value === '#FFFFFF')
-      return whiteBg ? '#FFFFFF' : backgrounds[0].value
+      const canvasBg = backgrounds.find(b => b.value === '#FDFDFB')
+      return canvasBg ? '#FDFDFB' : backgrounds[0].value
     }
     return bg
   }, [format, bg, backgrounds])
 
   const jpgWarning = format === 'jpg' && bg === 'transparent'
 
+  // Preview-size clamp so nothing overflows the preview area.
+  const previewMarkSize = Math.min(size, 200)
+  const previewLockupFont = Math.min(size / 0.72, 120) // height → fontSize
+
+  // ─── Export ──────────────────────────────────────────────────────
   const handleExport = useCallback(async () => {
     const svgEl = svgRef.current
     if (!svgEl) return
 
+    const namePrefix = isLogotype
+      ? `spectrea_logotype_${style.id}`
+      : `spectrea_${style.id}${useCircle ? '_circle' : ''}`
+
     if (isLogotype) {
-      // Logotype export: serialize the rendered SVG, add bg rect if needed
+      // Serialize the rendered lockup SVG directly.
       const vb = svgEl.viewBox.baseVal
-      const w = vb.width, h = vb.height
+      const w = vb.width || Number(svgEl.getAttribute('width'))
+      const h = vb.height || Number(svgEl.getAttribute('height'))
 
       const clone = svgEl.cloneNode(true) as SVGSVGElement
       clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
@@ -318,24 +310,21 @@ function AssetGenerator() {
       }
 
       const fullSvg = new XMLSerializer().serializeToString(clone)
-      const name = `spectrea_logotype_${style.id}`
 
       if (format === 'svg') {
-        downloadSvg(fullSvg, `${name}.svg`)
+        downloadSvg(fullSvg, `${namePrefix}.svg`)
       } else {
-        // Scale to export height
         const exportScale = size / h
         const exportW = Math.round(w * exportScale)
         const scaledSvg = fullSvg
           .replace(`width="${w}"`, `width="${exportW}"`)
           .replace(`height="${h}"`, `height="${size}"`)
-        await downloadRaster(scaledSvg, exportW, size, format, `${name}_${size}h.${format}`)
+        await downloadRaster(scaledSvg, exportW, size, format, `${namePrefix}_${size}h.${format}`)
       }
     } else {
-      // Mark export (same as before)
+      // Mark export: wrap the serialized StaticLogo in a fixed-size viewBox.
       const innerSvg = serializeSvg(svgEl)
       if (!innerSvg) return
-
       const parser = new DOMParser()
       const doc = parser.parseFromString(innerSvg, 'image/svg+xml')
       const innerContent = doc.documentElement.innerHTML
@@ -348,9 +337,9 @@ function AssetGenerator() {
         svgContent += `<rect width="${exportSize}" height="${exportSize}" fill="${effectiveBg}" />`
       }
 
-      if (circleFill) {
+      if (useCircle && style.circle) {
         svgContent += `<g transform="scale(${scale})">`
-        svgContent += `<circle cx="32" cy="32" r="32" fill="${circleFill}" />`
+        svgContent += `<circle cx="32" cy="32" r="32" fill="${style.circle.fill}" />`
         svgContent += `<g transform="translate(10, 10) scale(0.6875)">`
         svgContent += innerContent
         svgContent += `</g></g>`
@@ -361,25 +350,62 @@ function AssetGenerator() {
       }
 
       const fullSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="${exportSize}" height="${exportSize}" viewBox="0 0 ${exportSize} ${exportSize}">${svgContent}</svg>`
-      const name = `spectrea_${style.id}${circleFill ? '_circle' : ''}`
 
       if (format === 'svg') {
-        downloadSvg(fullSvg, `${name}.svg`)
+        downloadSvg(fullSvg, `${namePrefix}.svg`)
       } else {
-        await downloadRaster(fullSvg, size, size, format, `${name}_${size}px.${format}`)
+        await downloadRaster(fullSvg, size, size, format, `${namePrefix}_${size}px.${format}`)
       }
     }
-  }, [isLogotype, style, circleFill, size, format, effectiveBg])
+  }, [isLogotype, style, useCircle, size, format, effectiveBg])
 
   const note = useCircle
-    ? 'Circle container is for small sizes (below 48px). Use bare mark at larger sizes.'
+    ? 'Circle container is for small sizes (below 48px). Use the bare mark at larger sizes.'
     : style.note
 
   const label = isLogotype
     ? `${style.label} logotype`
     : `${style.label}${useCircle ? ' circle' : ''} mark`
 
-  const selectClass = "w-full text-sm border border-stone-300 rounded-lg px-2 py-1.5 bg-white text-stone-800"
+  const selectClass = 'w-full text-sm border border-stone-300 rounded-lg px-2 py-1.5 bg-white text-stone-800'
+
+  // ─── Render the preview ──────────────────────────────────────────
+  const preview = (() => {
+    if (isLogotype) {
+      if (style.id === 'full-spectrum') {
+        return <LogotypeGradient ref={svgRef} fontSize={previewLockupFont} />
+      }
+      if (style.monoLockup) {
+        const textColor = style.monoLockup === 'white' ? '#FDFDFB' : style.monoLockup === 'ink' ? '#18181C' : '#A3A3A3'
+        return (
+          <Logotype
+            ref={svgRef}
+            fontSize={previewLockupFont}
+            colorMode={style.monoLockup}
+            color={textColor}
+          />
+        )
+      }
+      return null
+    }
+
+    if (useCircle && style.circle) {
+      return (
+        <div
+          className="rounded-full flex items-center justify-center"
+          style={{ width: previewMarkSize, height: previewMarkSize, backgroundColor: style.circle.fill }}
+        >
+          <StaticLogo
+            ref={svgRef}
+            size={previewMarkSize * 0.6875}
+            colorMode={style.circle.inner}
+          />
+        </div>
+      )
+    }
+
+    return <StaticLogo ref={svgRef} size={previewMarkSize} colorMode={style.markColorMode} />
+  })()
 
   return (
     <div className="border border-stone-200 rounded-xl overflow-hidden">
@@ -394,13 +420,9 @@ function AssetGenerator() {
         </div>
         <div>
           <label className="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">Style</label>
-          <select
-            value={styleIdx}
-            onChange={e => handleStyleChange(Number(e.target.value))}
-            className={selectClass}
-          >
-            {markStyles.map((s, i) => (
-              <option key={s.id} value={i}>{s.label}</option>
+          <select value={styleIdx} onChange={e => handleStyleChange(Number(e.target.value))} className={selectClass}>
+            {availableStyleIndexes.map(i => (
+              <option key={styles[i].id} value={i}>{styles[i].label}</option>
             ))}
           </select>
         </div>
@@ -410,11 +432,11 @@ function AssetGenerator() {
             <select
               value={useCircle ? 'circle' : 'none'}
               onChange={e => handleCircleToggle(e.target.value === 'circle')}
-              disabled={circleConfig == null}
+              disabled={style.circle == null}
               className={`${selectClass} disabled:opacity-40`}
             >
               <option value="none">None</option>
-              <option value="circle" disabled={circleConfig == null}>Circle</option>
+              <option value="circle" disabled={style.circle == null}>Circle</option>
             </select>
           </div>
         )}
@@ -450,56 +472,29 @@ function AssetGenerator() {
         </div>
       </div>
 
-
       {/* Warnings */}
       {(note || jpgWarning) && (
         <div className="px-4 py-2 bg-amber-50 border-b border-amber-100 flex items-start gap-2">
           <span className="text-amber-500 text-xs mt-0.5">!</span>
           <div className="text-xs text-amber-700">
-            {jpgWarning && <p>JPG does not support transparency. Background will be set to {effectiveBg === '#FFFFFF' ? 'white' : 'ink'}.</p>}
+            {jpgWarning && <p>JPG does not support transparency. Background will be set to {effectiveBg === '#FDFDFB' ? 'canvas' : 'ink'}.</p>}
             {note && <p>{note}</p>}
           </div>
         </div>
       )}
 
       {/* Preview */}
-      <div className="p-8 flex flex-col items-center gap-4" style={{
-        backgroundColor: effectiveBg === 'transparent' ? undefined : effectiveBg,
-        backgroundImage: effectiveBg === 'transparent' ? 'repeating-conic-gradient(#E5E7EB 0% 25%, transparent 0% 50%)' : undefined,
-        backgroundSize: effectiveBg === 'transparent' ? '16px 16px' : undefined,
-      }}>
-        {isLogotype ? (
-          <LogotypeSvg
-            ref={svgRef}
-            height={Math.min(size, 120)}
-            colorMode={style.colorMode}
-            dotColorMode={style.dotColorMode}
-            textColor={textColor}
-          />
-        ) : circleFill ? (
-          <div className="rounded-full flex items-center justify-center" style={{
-            width: Math.min(size, 200),
-            height: Math.min(size, 200),
-            backgroundColor: circleFill,
-          }}>
-            <StaticLogo
-              ref={svgRef}
-              size={Math.min(size, 200) * 0.6875}
-              colorMode={renderColorMode}
-              dotColorMode={renderDotColorMode}
-
-            />
-          </div>
-        ) : (
-          <StaticLogo
-            ref={svgRef}
-            size={Math.min(size, 200)}
-            colorMode={renderColorMode}
-            dotColorMode={renderDotColorMode}
-          />
-        )}
-        <p className="text-xs" style={{ color: '#9CA3AF' }}>
-          {label} — {isLogotype ? `${size}px height` : `${size}x${size}px`} — {format.toUpperCase()}{effectiveBg !== 'transparent' ? ` on ${effectiveBg === '#FFFFFF' ? 'white' : 'ink'}` : ''}
+      <div
+        className="p-8 flex flex-col items-center gap-4"
+        style={{
+          backgroundColor: effectiveBg === 'transparent' ? undefined : effectiveBg,
+          backgroundImage: effectiveBg === 'transparent' ? 'repeating-conic-gradient(#E5E7EB 0% 25%, transparent 0% 50%)' : undefined,
+          backgroundSize: effectiveBg === 'transparent' ? '16px 16px' : undefined,
+        }}
+      >
+        {preview}
+        <p className="text-xs" style={{ color: '#97979E' }}>
+          {label} — {isLogotype ? `${size}px height` : `${size}x${size}px`} — {format.toUpperCase()}{effectiveBg !== 'transparent' ? ` on ${effectiveBg === '#FDFDFB' ? 'canvas' : 'ink'}` : ''}
         </p>
       </div>
 
@@ -531,7 +526,9 @@ export default function LogoExploration() {
       {/* Generator */}
       <Section>
         <h2 className="text-lg font-semibold text-stone-800 mb-4">Asset Generator</h2>
-        <p className="text-xs text-stone-500 mb-4">Only guideline-compliant combinations are available. Invalid backgrounds, sizes, and formats are prevented automatically.</p>
+        <p className="text-xs text-stone-500 mb-4">
+          Only guideline-compliant combinations are available. The logotype offers the two approved forms only — <strong>Full Spectrum</strong> (gradient) or <strong>Mono</strong> (Ink / White). Cool Duet and Grey are mark-only treatments.
+        </p>
         <AssetGenerator />
       </Section>
 
@@ -551,10 +548,10 @@ export default function LogoExploration() {
               { label: 'Dot radius', value: `${LOGO.dotR}` },
               { label: 'Stroke width', value: `${LOGO.strokeW}` },
               { label: 'Linecap', value: 'round' },
-              { label: 'Stroke segments', value: '48 (individually colored for path-following gradient)' },
+              { label: 'Stroke segments', value: '48 (individually coloured for path-following gradient)' },
               { label: 'Segment overlap', value: '+1.5 units with round caps for seamless joins' },
-            ].map((row, i) => (
-              <div key={row.label} className="flex gap-3 px-4 py-2" style={{ borderBottom: i < 8 ? '1px solid #F3F4F6' : 'none' }}>
+            ].map((row, i, arr) => (
+              <div key={row.label} className="flex gap-3 px-4 py-2" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
                 <span className="text-xs font-medium text-stone-500 w-36 flex-shrink-0">{row.label}</span>
                 <span className="text-xs font-mono text-stone-700 break-all">{row.value}</span>
               </div>
@@ -562,24 +559,27 @@ export default function LogoExploration() {
           </div>
           <div className="border border-stone-200 rounded-xl overflow-hidden">
             <div className="bg-stone-50 px-4 py-2 border-b border-stone-200">
-              <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Colors</p>
+              <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Colours</p>
             </div>
             {[
-              { label: 'Gradient start', value: 'Cobalt #4271DF (t=0)' },
-              { label: 'Gradient mid', value: 'Teal #00B6A0 (t=0.5)' },
-              { label: 'Gradient end', value: 'Amber #E19000 (t=1)' },
-              { label: 'Interpolation', value: 'Linear RGB, two-segment (Cobalt to Teal, Teal to Amber)' },
+              { label: 'Mark — Cool Duet start', value: 'Cobalt #4271DF' },
+              { label: 'Mark — Cool Duet end', value: 'Teal #00B6A0' },
+              { label: 'Lockup gradient — stop 1', value: 'Cobalt #4271DF (0%)' },
+              { label: 'Lockup gradient — stop 2', value: 'Teal #00B6A0 (33%)' },
+              { label: 'Lockup gradient — stop 3', value: '#6FB884 (55%, late-shift intermediate)' },
+              { label: 'Lockup gradient — stop 4', value: 'Amber #E19000 (66%)' },
+              { label: 'Lockup gradient — stop 5', value: 'Rose #F24260 (100%)' },
               { label: 'Grey (dots / watermark)', value: '#A3A3A3' },
-              { label: 'Ink', value: '#111827' },
-              { label: 'White', value: '#FFFFFF' },
-            ].map((row, i) => (
-              <div key={row.label} className="flex gap-3 px-4 py-2" style={{ borderBottom: i < 6 ? '1px solid #F3F4F6' : 'none' }}>
-                <span className="text-xs font-medium text-stone-500 w-36 flex-shrink-0">{row.label}</span>
+              { label: 'Ink', value: '#18181C' },
+              { label: 'Canvas / White', value: '#FDFDFB' },
+            ].map((row, i, arr) => (
+              <div key={row.label} className="flex gap-3 px-4 py-2" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
+                <span className="text-xs font-medium text-stone-500 w-40 flex-shrink-0">{row.label}</span>
                 <span className="text-xs font-mono text-stone-700">{row.value}</span>
               </div>
             ))}
             <div className="px-4 py-3 border-t border-stone-100">
-              <p className="text-xs font-medium text-stone-500 mb-2">Gradient preview</p>
+              <p className="text-xs font-medium text-stone-500 mb-2">Full-spectrum preview (mark `color` mode)</p>
               <div className="h-4 rounded-full overflow-hidden flex">
                 {Array.from({ length: 48 }, (_, i) => (
                   <div key={i} className="flex-1" style={{ backgroundColor: gradientColor(i / 47) }} />
@@ -596,11 +596,13 @@ export default function LogoExploration() {
             {[
               { label: 'Typeface', value: 'Albert Sans' },
               { label: 'Weight', value: 'Semibold (600)' },
-              { label: 'Descriptor style', value: 'Uppercase, tracking-widest, Grey #9CA3AF' },
-              { label: 'Logotype', value: 'Mark replaces "S", cropped to visual bounds, cap-height aligned' },
-              { label: 'Logotype min size', value: '36px font-size' },
-            ].map((row, i) => (
-              <div key={row.label} className="flex gap-3 px-4 py-2" style={{ borderBottom: i < 4 ? '1px solid #F3F4F6' : 'none' }}>
+              { label: 'Case', value: 'ALL CAPS' },
+              { label: 'Tracking', value: '0.02em' },
+              { label: 'Descriptor style', value: 'Uppercase, tracking-widest, Pewter #97979E' },
+              { label: 'Lockup composition', value: 'Mark replaces "S", cropped to visual bounds, cap-height aligned' },
+              { label: 'Logotype min size', value: '32px font-size' },
+            ].map((row, i, arr) => (
+              <div key={row.label} className="flex gap-3 px-4 py-2" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
                 <span className="text-xs font-medium text-stone-500 w-36 flex-shrink-0">{row.label}</span>
                 <span className="text-xs font-mono text-stone-700">{row.value}</span>
               </div>
@@ -616,9 +618,9 @@ export default function LogoExploration() {
               { label: 'Pause (drawn)', value: '57-60%' },
               { label: 'Undraw phase', value: '60-97%, ease-in, directional fade (15% path length)' },
               { label: 'Pause (erased)', value: '97-100%' },
-              { label: 'Dots', value: 'Always visible beneath the stroke' },
-            ].map((row, i) => (
-              <div key={row.label} className="flex gap-3 px-4 py-2" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
+              { label: 'Dots', value: 'Always grey, visible beneath the stroke' },
+            ].map((row, i, arr) => (
+              <div key={row.label} className="flex gap-3 px-4 py-2" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
                 <span className="text-xs font-medium text-stone-500 w-36 flex-shrink-0">{row.label}</span>
                 <span className="text-xs font-mono text-stone-700">{row.value}</span>
               </div>
@@ -626,7 +628,6 @@ export default function LogoExploration() {
           </div>
         </div>
       </Section>
-
     </PageShell>
   )
 }

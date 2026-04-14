@@ -19,11 +19,11 @@ export default function Tooltip({ content, children }: TooltipProps) {
         ?
       </span>
       <span
-        className="absolute left-0 bottom-full mb-2 z-50 w-64 px-3 py-2 text-xs text-white bg-stone-900 rounded-lg shadow-lg leading-relaxed pointer-events-none transition-opacity duration-150"
+        className="absolute left-0 bottom-full mb-2 z-50 w-64 px-3 py-2 text-xs text-white bg-ink rounded-lg shadow-lg leading-relaxed pointer-events-none transition-opacity duration-150"
         style={{ opacity: visible ? 1 : 0 }}
       >
         {content}
-        <span className="absolute left-4 top-full w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[5px] border-t-stone-900" />
+        <span className="absolute left-4 top-full w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[5px] border-t-ink" />
       </span>
     </span>
   )

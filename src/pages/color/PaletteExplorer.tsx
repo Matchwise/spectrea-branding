@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import PageShell, { Section } from '../../components/layout/PageShell'
 // Brand colors are hardcoded below to match selectedPalette from brand.ts
 
-function Swatch({ name, hex, role, textColor = '#FFFFFF' }: { name: string; hex: string; role: string; textColor?: string }) {
+function Swatch({ name, hex, role, textColor = '#FDFDFB' }: { name: string; hex: string; role: string; textColor?: string }) {
   const [copied, setCopied] = useState(false)
   return (
     <button
@@ -21,11 +21,11 @@ function Swatch({ name, hex, role, textColor = '#FFFFFF' }: { name: string; hex:
 }
 
 function MiniPreview({ dark }: { dark?: boolean }) {
-  const bg = dark ? '#111827' : '#FFFFFF'
-  const surface = dark ? '#1F2937' : '#F9FAFB'
-  const text = dark ? '#F9FAFB' : '#111827'
-  const muted = dark ? '#6B7280' : '#9CA3AF'
-  const border = dark ? '#6B728020' : '#11182708'
+  const bg = dark ? '#18181C' : '#FDFDFB'
+  const surface = dark ? '#212226' : '#F4F4F1'
+  const text = dark ? '#F4F4F1' : '#18181C'
+  const muted = dark ? '#6B6B72' : '#97979E'
+  const border = dark ? '#97979E20' : '#18181C08'
 
   return (
     <div className="rounded-lg overflow-hidden text-left" style={{ backgroundColor: bg, border: `1px solid ${border}` }}>
@@ -33,7 +33,7 @@ function MiniPreview({ dark }: { dark?: boolean }) {
       <div className="flex items-center px-3 py-1.5" style={{ borderBottom: `1px solid ${border}` }}>
         <div className="flex items-center gap-1">
           <div className="w-3.5 h-3.5 rounded" style={{ background: 'linear-gradient(135deg, #4271DF, #00B6A0, #E19000)' }} />
-          <span className="text-[8px] font-bold" style={{ color: text }}>Spectrea</span>
+          <span className="text-[8px] font-bold" style={{ color: text }}>SPECTREA</span>
         </div>
         <div className="flex-1" />
         <span className="text-[7px] px-1.5 py-0.5 rounded text-white" style={{ backgroundColor: '#4271DF' }}>Sign Up</span>
@@ -74,21 +74,21 @@ export default function ColorOverview() {
       <Section title="Palette at a Glance">
         <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-3">
           <Swatch name="Cobalt" hex="#4271DF" role="Hero" />
-          <Swatch name="Teal" hex="#00B6A0" role="Spectrum" textColor="#111827" />
-          <Swatch name="Amber" hex="#E19000" role="Spectrum" textColor="#111827" />
+          <Swatch name="Teal" hex="#00B6A0" role="Spectrum" textColor="#18181C" />
+          <Swatch name="Amber" hex="#E19000" role="Spectrum" textColor="#18181C" />
           <Swatch name="Rose" hex="#F24260" role="Spectrum" />
-          <Swatch name="White" hex="#FFFFFF" role="Background" textColor="#9CA3AF" />
-          <Swatch name="Snow" hex="#F9FAFB" role="Surface" textColor="#9CA3AF" />
-          <Swatch name="Ink" hex="#111827" role="Text" />
-          <Swatch name="Graphite" hex="#1F2937" role="Primary" />
-          <Swatch name="Gray" hex="#9CA3AF" role="Muted" textColor="#111827" />
+          <Swatch name="Canvas" hex="#FDFDFB" role="Background" textColor="#97979E" />
+          <Swatch name="Cloud" hex="#F4F4F1" role="Surface" textColor="#97979E" />
+          <Swatch name="Ink" hex="#18181C" role="Text" />
+          <Swatch name="Graphite" hex="#212226" role="Primary" />
+          <Swatch name="Pewter" hex="#97979E" role="Muted" textColor="#18181C" />
         </div>
       </Section>
 
       {/* Brand gradient */}
       <Section title="Brand Gradient">
-        <div className="h-3 rounded-full" style={{ background: 'linear-gradient(135deg, #4271DF, #00B6A0, #E19000)' }} />
-        <p className="text-xs text-stone-400 mt-1.5 font-mono">Cobalt → Teal → Amber at 135°</p>
+        <div className="h-3 rounded-full brand-gradient" />
+        <p className="text-xs text-stone-400 mt-1.5 font-mono">Cobalt → Teal → Amber at 135°, OKLCH-interpolated with sRGB fallback. Rose extends it for maximum-expression moments; a 5-stop with #6FB884 intermediate is reserved for the lockup.</p>
       </Section>
 
       {/* Color roles summary */}
@@ -99,13 +99,13 @@ export default function ColorOverview() {
             { color: '#00B6A0', name: 'Teal', role: 'Success / Growth', usage: 'Positive states, connected status, growth indicators, completion' },
             { color: '#E19000', name: 'Amber', role: 'Warning / Attention', usage: 'Warnings, pending states, confidence scores, highlights' },
             { color: '#F24260', name: 'Rose', role: 'Error / Urgency', usage: 'Errors, destructive actions, critical alerts, notification badges' },
-            { color: '#FFFFFF', name: 'White', role: 'Canvas', usage: 'Page background — 60% of any screen' },
-            { color: '#F9FAFB', name: 'Snow', role: 'Surface', usage: 'Cards, sidebars, dropdowns — 20% of any screen' },
-            { color: '#111827', name: 'Ink', role: 'Primary Text', usage: 'Headings, body copy, labels' },
-            { color: '#9CA3AF', name: 'Gray', role: 'Secondary Text', usage: 'Captions, placeholders, timestamps, helper text' },
+            { color: '#FDFDFB', name: 'Canvas', role: 'Background', usage: 'Page background — 60% of any screen' },
+            { color: '#F4F4F1', name: 'Cloud', role: 'Surface', usage: 'Cards, sidebars, dropdowns — 20% of any screen' },
+            { color: '#18181C', name: 'Ink', role: 'Primary Text', usage: 'Headings, body copy, labels' },
+            { color: '#97979E', name: 'Pewter', role: 'Secondary Text', usage: 'Captions, placeholders, timestamps, helper text' },
           ].map((c, i) => (
             <div key={c.name} className="flex items-center gap-3 px-4 py-2.5" style={{ borderBottom: i < 7 ? '1px solid #F3F4F6' : 'none' }}>
-              <div className="w-5 h-5 rounded flex-shrink-0" style={{ backgroundColor: c.color, border: c.color === '#FFFFFF' ? '1px solid #E5E7EB' : 'none' }} />
+              <div className="w-5 h-5 rounded flex-shrink-0" style={{ backgroundColor: c.color, border: c.color === '#FDFDFB' ? '1px solid #E5E7EB' : 'none' }} />
               <div className="w-16 flex-shrink-0">
                 <p className="text-xs font-medium text-stone-800">{c.name}</p>
               </div>
@@ -140,7 +140,7 @@ export default function ColorOverview() {
             'Spectrum colors appear as small, purposeful moments — tags, dots, badges — not large fills',
             'Use dark text on Teal and Amber backgrounds (white text has insufficient contrast)',
             'The gradient is for brand moments only — hero sections, logo, marketing. Never on buttons or small UI',
-            'Canvas dominates: 60% White, 20% Snow, 10% Text, 10% Spectrum',
+            'Neutrals dominate: 60% Canvas, 20% Cloud, 10% Text, 10% Spectrum',
             'Each semantic color carries one consistent meaning — never reuse a color for decoration',
           ].map((rule, i) => (
             <div key={i} className="flex items-start gap-2 bg-stone-50 rounded-lg px-3 py-2.5 border border-stone-100">

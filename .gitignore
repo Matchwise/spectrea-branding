@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 tsconfig.tsbuildinfo
 .playwright-mcp/
+.claude/
+
+# Ad-hoc screenshot dumps at repo root
+/*.png

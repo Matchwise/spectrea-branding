@@ -12,7 +12,7 @@ function EasingCurve({ name, d, color = '#4271DF' }: { name: string; d: string; 
   return (
     <div className="flex flex-col items-center gap-2">
       <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-        <rect x="0" y="0" width="80" height="80" rx="8" fill="#F9FAFB" stroke="#E5E7EB" strokeWidth="1" />
+        <rect x="0" y="0" width="80" height="80" rx="8" fill="#F4F4F1" stroke="#E5E7EB" strokeWidth="1" />
         {/* Axes */}
         <line x1="12" y1="68" x2="68" y2="68" stroke="#E5E7EB" strokeWidth="1" />
         <line x1="12" y1="12" x2="12" y2="68" stroke="#E5E7EB" strokeWidth="1" />
@@ -268,7 +268,7 @@ export default function Motion() {
             <span>Motion Philosophy</span>
           </Tooltip>
         </h2>
-        <div className="bg-stone-900 text-white rounded-xl p-6">
+        <div className="bg-ink text-white rounded-xl p-6">
           <p className="text-base font-semibold" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Purposeful, Subtle, Natural</p>
           <p className="text-sm text-stone-400 mt-2 leading-relaxed">
             Every animation must answer: "What does this help the user understand?" If the answer is "nothing," remove it. Motion should feel like the interface is alive and responsive, not performing.
@@ -401,7 +401,7 @@ export default function Motion() {
             </div>
           </div>
           <div className="border border-stone-200 rounded-xl overflow-hidden">
-            <div className="bg-stone-900 p-8 flex items-center justify-center">
+            <div className="bg-ink p-8 flex items-center justify-center">
               <AnimatedLogo size={160} duration={3} dotColorMode="grey" />
             </div>
             <div className="px-4 py-3 bg-stone-50 border-t border-stone-100">
@@ -429,29 +429,29 @@ export default function Motion() {
       {/* ─── CSS Reference ─── */}
       <Section>
         <h2 className="text-xl font-semibold text-stone-800 mb-4">CSS Reference</h2>
-        <div className="bg-stone-900 rounded-xl p-5 overflow-x-auto">
+        <div className="bg-ink rounded-xl p-5 overflow-x-auto">
           <pre className="text-xs leading-relaxed" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-            <span style={{ color: '#9CA3AF' }}>{'/* Duration tokens */\n'}</span>
-            <span style={{ color: '#F9FAFB' }}>{'--duration-instant: 100ms;\n'}</span>
-            <span style={{ color: '#F9FAFB' }}>{'--duration-quick:   150ms;\n'}</span>
-            <span style={{ color: '#F9FAFB' }}>{'--duration-normal:  200ms;\n'}</span>
-            <span style={{ color: '#F9FAFB' }}>{'--duration-slow:    300ms;\n\n'}</span>
-            <span style={{ color: '#9CA3AF' }}>{'/* Easing tokens */\n'}</span>
-            <span style={{ color: '#F9FAFB' }}>{'--ease-out:    cubic-bezier(0, 0, 0.2, 1);\n'}</span>
-            <span style={{ color: '#F9FAFB' }}>{'--ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);\n\n'}</span>
-            <span style={{ color: '#9CA3AF' }}>{'/* Common patterns */\n'}</span>
+            <span style={{ color: '#97979E' }}>{'/* Duration tokens */\n'}</span>
+            <span style={{ color: '#F4F4F1' }}>{'--duration-instant: 100ms;\n'}</span>
+            <span style={{ color: '#F4F4F1' }}>{'--duration-quick:   150ms;\n'}</span>
+            <span style={{ color: '#F4F4F1' }}>{'--duration-normal:  200ms;\n'}</span>
+            <span style={{ color: '#F4F4F1' }}>{'--duration-slow:    300ms;\n\n'}</span>
+            <span style={{ color: '#97979E' }}>{'/* Easing tokens */\n'}</span>
+            <span style={{ color: '#F4F4F1' }}>{'--ease-out:    cubic-bezier(0, 0, 0.2, 1);\n'}</span>
+            <span style={{ color: '#F4F4F1' }}>{'--ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);\n\n'}</span>
+            <span style={{ color: '#97979E' }}>{'/* Common patterns */\n'}</span>
             <span style={{ color: '#E19000' }}>{'.hover-scale'}</span>
-            <span style={{ color: '#F9FAFB' }}>{' { transition: transform 150ms var(--ease-out); }\n'}</span>
+            <span style={{ color: '#F4F4F1' }}>{' { transition: transform 150ms var(--ease-out); }\n'}</span>
             <span style={{ color: '#E19000' }}>{'.hover-scale:hover'}</span>
-            <span style={{ color: '#F9FAFB' }}>{' { transform: scale(1.02); }\n\n'}</span>
+            <span style={{ color: '#F4F4F1' }}>{' { transform: scale(1.02); }\n\n'}</span>
             <span style={{ color: '#E19000' }}>{'.fade-in'}</span>
-            <span style={{ color: '#F9FAFB' }}>{' { animation: fadeIn 200ms var(--ease-out); }\n'}</span>
+            <span style={{ color: '#F4F4F1' }}>{' { animation: fadeIn 200ms var(--ease-out); }\n'}</span>
             <span style={{ color: '#E19000' }}>{'@keyframes fadeIn'}</span>
-            <span style={{ color: '#F9FAFB' }}>{' { from { opacity: 0; } }\n\n'}</span>
+            <span style={{ color: '#F4F4F1' }}>{' { from { opacity: 0; } }\n\n'}</span>
             <span style={{ color: '#E19000' }}>{'.scale-up'}</span>
-            <span style={{ color: '#F9FAFB' }}>{' { animation: scaleUp 200ms var(--ease-out); }\n'}</span>
+            <span style={{ color: '#F4F4F1' }}>{' { animation: scaleUp 200ms var(--ease-out); }\n'}</span>
             <span style={{ color: '#E19000' }}>{'@keyframes scaleUp'}</span>
-            <span style={{ color: '#F9FAFB' }}>{' { from { opacity: 0; transform: scale(0.95); } }'}</span>
+            <span style={{ color: '#F4F4F1' }}>{' { from { opacity: 0; transform: scale(0.95); } }'}</span>
           </pre>
         </div>
       </Section>
@@ -475,15 +475,15 @@ export default function Motion() {
               </div>
             ))}
           </div>
-          <div className="mt-3 bg-stone-900 rounded-lg px-4 py-3">
-            <pre className="text-xs" style={{ fontFamily: "'JetBrains Mono', monospace", color: '#9CA3AF' }}>
+          <div className="mt-3 bg-ink rounded-lg px-4 py-3">
+            <pre className="text-xs" style={{ fontFamily: "'JetBrains Mono', monospace", color: '#97979E' }}>
               <span style={{ color: '#E19000' }}>{'@media'}</span>
-              <span style={{ color: '#F9FAFB' }}>{' (prefers-reduced-motion: reduce) {\n'}</span>
-              <span style={{ color: '#F9FAFB' }}>{'  *, *::before, *::after {\n'}</span>
-              <span style={{ color: '#F9FAFB' }}>{'    animation-duration: 0.01ms !important;\n'}</span>
-              <span style={{ color: '#F9FAFB' }}>{'    transition-duration: 0.01ms !important;\n'}</span>
-              <span style={{ color: '#F9FAFB' }}>{'  }\n'}</span>
-              <span style={{ color: '#F9FAFB' }}>{'}'}</span>
+              <span style={{ color: '#F4F4F1' }}>{' (prefers-reduced-motion: reduce) {\n'}</span>
+              <span style={{ color: '#F4F4F1' }}>{'  *, *::before, *::after {\n'}</span>
+              <span style={{ color: '#F4F4F1' }}>{'    animation-duration: 0.01ms !important;\n'}</span>
+              <span style={{ color: '#F4F4F1' }}>{'    transition-duration: 0.01ms !important;\n'}</span>
+              <span style={{ color: '#F4F4F1' }}>{'  }\n'}</span>
+              <span style={{ color: '#F4F4F1' }}>{'}'}</span>
             </pre>
           </div>
         </div>

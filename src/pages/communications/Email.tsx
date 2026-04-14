@@ -1,6 +1,6 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
-import { StaticLogo } from '../../components/brand/SpectreaLogo'
+import { Logotype, LogotypeGradient } from '../../components/brand/SpectreaLogo'
 
 export default function Email() {
   return (
@@ -22,8 +22,7 @@ export default function Email() {
               <p className="text-xs text-stone-500">Head of Product, Spectrea</p>
               <p className="text-xs text-stone-400 mt-1">sarah@spectrea.com</p>
               <div className="flex items-center gap-2 mt-2">
-                <StaticLogo size={20} />
-                <span className="text-xs font-heading font-semibold text-stone-700">Spectrea</span>
+                <Logotype fontSize={11} colorMode="ink" color="#212226" />
                 <span className="text-xs text-stone-400">| We connect the dots.</span>
               </div>
             </div>
@@ -50,9 +49,8 @@ export default function Email() {
             <div className="border border-stone-200 rounded-xl overflow-hidden">
               <div className="h-1" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
               <div className="p-5">
-                <div className="flex items-center gap-2 mb-4">
-                  <StaticLogo size={24} />
-                  <span className="text-xs font-heading font-semibold text-stone-700">Spectrea</span>
+                <div className="mb-4">
+                  <LogotypeGradient fontSize={13} />
                 </div>
                 <p className="text-sm font-semibold text-stone-900 mb-2" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Your entity was created</p>
                 <p className="text-xs text-stone-600 leading-relaxed mb-3">"Revenue Model" has been added to your knowledge graph with 3 initial connections.</p>
@@ -66,13 +64,12 @@ export default function Email() {
           <div>
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Marketing / Newsletter</p>
             <div className="border border-stone-200 rounded-xl overflow-hidden">
-              <div className="p-5" style={{ backgroundColor: '#111827' }}>
-                <div className="flex items-center gap-2 mb-4">
-                  <StaticLogo size={24} />
-                  <span className="text-xs font-heading font-semibold" style={{ color: '#F9FAFB' }}>Spectrea</span>
+              <div className="p-5" style={{ backgroundColor: '#18181C' }}>
+                <div className="mb-4">
+                  <LogotypeGradient fontSize={13} />
                 </div>
-                <p className="text-lg font-semibold mb-2" style={{ color: '#F9FAFB', fontFamily: "'Albert Sans', sans-serif" }}>Your knowledge compounds.</p>
-                <p className="text-xs leading-relaxed mb-3" style={{ color: '#9CA3AF' }}>This month: auto-extraction improvements, 2x faster graph queries, and a new claims dashboard.</p>
+                <p className="text-lg font-semibold mb-2" style={{ color: '#F4F4F1', fontFamily: "'Albert Sans', sans-serif" }}>Your knowledge compounds.</p>
+                <p className="text-xs leading-relaxed mb-3" style={{ color: '#97979E' }}>This month: auto-extraction improvements, 2x faster graph queries, and a new claims dashboard.</p>
               </div>
               <div className="h-1" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
               <div className="p-5 bg-white">

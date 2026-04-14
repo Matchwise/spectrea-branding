@@ -65,14 +65,14 @@ export default function Sidebar({ open, onClose }: { open: boolean; onClose: () 
       )}
 
       <aside
-        className={`fixed top-0 left-0 z-50 h-full w-64 bg-white border-r border-stone-200 p-4 overflow-y-auto transition-transform lg:translate-x-0 lg:static lg:z-auto ${
+        className={`fixed top-0 left-0 z-50 h-full w-64 bg-canvas border-r border-stone-200 p-4 overflow-y-auto transition-transform lg:translate-x-0 lg:static lg:z-auto ${
           open ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         <Link to="/" className="flex items-center gap-2.5 mb-6 px-3">
-          <StaticLogo size={32} colorMode="color" dotColorMode="grey" />
+          <StaticLogo size={32} colorMode="cool" dotColorMode="grey" />
           <div>
-            <div className="font-semibold text-stone-900 text-sm font-heading">Spectrea</div>
+            <div className="font-semibold text-stone-900 text-sm font-heading" style={{ letterSpacing: '0.02em' }}>SPECTREA</div>
             <div className="text-xs text-stone-400 uppercase tracking-widest">Brand Guide</div>
           </div>
         </Link>

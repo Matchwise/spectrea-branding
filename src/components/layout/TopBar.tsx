@@ -2,7 +2,7 @@ import { TbMenu2 } from 'react-icons/tb'
 
 export default function TopBar({ onMenuToggle }: { onMenuToggle: () => void }) {
   return (
-    <header className="sticky top-0 z-30 flex items-center justify-between h-14 px-4 bg-white/80 backdrop-blur-sm border-b border-stone-200 lg:px-6">
+    <header className="sticky top-0 z-30 flex items-center justify-between h-14 px-4 bg-canvas/80 backdrop-blur-sm border-b border-stone-200 lg:px-6">
       <div className="flex items-center gap-3">
         <button
           onClick={onMenuToggle}

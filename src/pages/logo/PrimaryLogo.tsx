@@ -1,6 +1,6 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
-import { StaticLogo, AnimatedLogo } from '../../components/brand/SpectreaLogo'
+import { StaticLogo, AnimatedLogo, LogotypeGradient } from '../../components/brand/SpectreaLogo'
 
 export default function PrimaryLogo() {
   return (
@@ -30,23 +30,25 @@ export default function PrimaryLogo() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="border border-stone-200 rounded-xl p-6 flex flex-col items-center text-center">
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-4">Mark</p>
-            <StaticLogo size={80} colorMode="color" dotColorMode="grey" />
+            <StaticLogo size={80} colorMode="cool" dotColorMode="grey" />
             <p className="text-xs text-stone-500 mt-4">The "connecting the dots" S-curve. 10 dots along a cubic Bezier path, 2 visually trailing. Spectrum-gradient stroke connecting dots 1–8.</p>
           </div>
           <div className="border border-stone-200 rounded-xl p-6 flex flex-col items-center text-center">
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-4">Wordmark</p>
             <div className="h-20 flex items-center">
-              <span className="font-heading font-semibold text-stone-900 text-3xl">Spectrea</span>
+              <span
+                className="font-heading font-semibold"
+                style={{ fontSize: 32, letterSpacing: '0.02em', color: '#18181C' }}
+              >SPECTREA</span>
             </div>
-            <p className="text-xs text-stone-500 mt-4">Albert Sans Semibold 600 in Ink (#111827). Never rendered alone without the mark nearby.</p>
+            <p className="text-xs text-stone-500 mt-4">Albert Sans Semibold 600, ALL CAPS with 0.02em tracking. Shown here in Ink for the structural anatomy — the wordmark is never rendered alone in production, only as part of the lockup.</p>
           </div>
           <div className="border border-stone-200 rounded-xl p-6 flex flex-col items-center text-center">
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-4">Lockup</p>
-            <div className="h-20 flex items-center gap-3">
-              <StaticLogo size={44} colorMode="color" dotColorMode="grey" />
-              <span className="font-heading font-semibold text-stone-900 text-xl">Spectrea</span>
+            <div className="h-20 flex items-center">
+              <LogotypeGradient fontSize={22} />
             </div>
-            <p className="text-xs text-stone-500 mt-4">Mark + wordmark. Logotype (preferred), horizontal with descriptor, or stacked. See Variants for details.</p>
+            <p className="text-xs text-stone-500 mt-4">Mark + wordmark unified under one full-spectrum gradient. The lockup has exactly two forms: <code className="font-mono text-[11px]">LogotypeGradient</code> (full spectrum — the one and only gradient) and <code className="font-mono text-[11px]">Logotype</code> (mono — ink, white, or grey). See Variants for details.</p>
           </div>
         </div>
       </Section>
@@ -61,7 +63,7 @@ export default function PrimaryLogo() {
         <div className="border border-stone-200 rounded-xl p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="flex items-center justify-center bg-stone-50 rounded-lg p-8">
-              <StaticLogo size={160} colorMode="color" dotColorMode="grey" />
+              <StaticLogo size={160} colorMode="cool" dotColorMode="grey" />
             </div>
             <div className="space-y-3">
               <div className="bg-stone-50 rounded-lg px-4 py-3 border border-stone-100">
@@ -70,7 +72,7 @@ export default function PrimaryLogo() {
               </div>
               <div className="bg-stone-50 rounded-lg px-4 py-3 border border-stone-100">
                 <p className="text-xs font-semibold text-stone-500 mb-1">Stroke</p>
-                <p className="text-sm text-stone-700">Width 8, round linecap. Spectrum gradient: Cobalt #4271DF → Teal #00B6A0 → Amber #E19000. Connects dots 1–8, visually covering dot 8.</p>
+                <p className="text-sm text-stone-700">Width 8, round linecap. In the static mark the stroke uses the <strong>Cool Duet</strong> (Cobalt #4271DF → Teal #00B6A0). The lockup gradient extends this across the full spectrum — see <code className="font-mono text-[11px]">LogotypeGradient</code> for the 5-stop treatment. Connects dots 1–8, visually covering dot 8.</p>
               </div>
               <div className="bg-stone-50 rounded-lg px-4 py-3 border border-stone-100">
                 <p className="text-xs font-semibold text-stone-500 mb-1">Trailing dots</p>
@@ -101,7 +103,7 @@ export default function PrimaryLogo() {
         <div className="flex items-end gap-6 bg-stone-50 rounded-xl p-6 border border-stone-100">
           {[24, 32, 48, 64, 96].map(s => (
             <div key={s} className="flex flex-col items-center gap-2">
-              <StaticLogo size={s} colorMode="color" dotColorMode="grey" />
+              <StaticLogo size={s} colorMode="cool" dotColorMode="grey" />
               <span className="text-xs font-mono text-stone-400">{s}px</span>
             </div>
           ))}

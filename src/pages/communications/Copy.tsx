@@ -15,7 +15,7 @@ export default function Copy() {
             <span>Primary Tagline</span>
           </Tooltip>
         </h2>
-        <div className="text-white rounded-xl p-8 text-center" style={{ backgroundColor: '#111827' }}>
+        <div className="text-white rounded-xl p-8 text-center" style={{ backgroundColor: '#18181C' }}>
           <p className="text-3xl font-semibold" style={{ fontFamily: "'Albert Sans', sans-serif" }}>{brand.tagline.statement}</p>
           <p className="text-sm text-stone-400 mt-3 max-w-md mx-auto">{brand.tagline.usage}</p>
         </div>

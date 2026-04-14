@@ -52,8 +52,8 @@ export default function TypeScale() {
           {scale.map((s, i) => {
             const fontStyle = s.font === 'heading' ? t.heading.css : s.font === 'mono' ? t.mono.css : t.body.css
             return (
-              <div key={s.name} className="flex items-center gap-4 px-4 py-3" style={{ borderBottom: i < scale.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
-                <div className="w-20 flex-shrink-0">
+              <div key={s.name} className="flex items-center gap-3 sm:gap-4 px-4 py-3" style={{ borderBottom: i < scale.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
+                <div className="w-16 sm:w-20 flex-shrink-0">
                   <p className="text-xs font-semibold text-stone-400">{s.name}</p>
                   <CopyButton value={`${s.size} / ${s.lineHeight}`} />
                 </div>
@@ -72,7 +72,7 @@ export default function TypeScale() {
                     {sampleText}
                   </p>
                 </div>
-                <div className="w-32 flex-shrink-0 text-right">
+                <div className="w-32 flex-shrink-0 text-right hidden md:block">
                   <p className="text-xs text-stone-500">{s.usage}</p>
                 </div>
               </div>
@@ -88,7 +88,8 @@ export default function TypeScale() {
             <span>Responsive Scaling</span>
           </Tooltip>
         </h2>
-        <div className="border border-stone-200 rounded-xl overflow-hidden">
+        <div className="border border-stone-200 rounded-xl overflow-x-auto">
+          <div className="min-w-[560px]">
           <div className="grid grid-cols-4 bg-stone-50 border-b border-stone-200 px-4 py-2">
             <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Size</span>
             <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Desktop (1024+)</span>
@@ -110,6 +111,7 @@ export default function TypeScale() {
               <span className="text-xs text-stone-600 font-mono">{r.mobile}</span>
             </div>
           ))}
+          </div>
         </div>
         <p className="text-xs text-stone-400 mt-2">Body text never drops below 16px. Heading sizes scale proportionally. Mobile H1 = Desktop H3.</p>
       </Section>

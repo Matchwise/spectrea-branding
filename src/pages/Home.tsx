@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { brand } from '../data/brand'
 import Tooltip from '../components/brand/Tooltip'
-import { Logotype } from '../components/brand/SpectreaLogo'
+import { LogotypeGradient } from '../components/brand/SpectreaLogo'
 import { TbChevronRight } from 'react-icons/tb'
 
 const sections = [
@@ -34,11 +34,11 @@ const sections = [
 
 export default function Home() {
   return (
-    <div className="max-w-3xl mx-auto px-6 py-12">
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
       {/* Hero */}
-      <div className="mb-14">
-        <div className="mb-1">
-          <Logotype fontSize={48} />
+      <div className="mb-10 sm:mb-14">
+        <div className="mb-1 [&_svg]:max-w-full">
+          <LogotypeGradient fontSize={48} />
         </div>
         <p className="text-lg text-stone-500">Brand Guide</p>
         <p className="text-base text-stone-400 mt-3">
@@ -48,7 +48,7 @@ export default function Home() {
         </p>
 
         {/* Why We Exist */}
-        <div className="mt-8 bg-stone-900 text-white rounded-xl p-6">
+        <div className="mt-8 bg-ink text-white rounded-xl p-6">
           <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">
             <Tooltip content={brand.why.usage}>
               <span className="text-stone-400">Why We Exist</span>
@@ -79,7 +79,7 @@ export default function Home() {
       </div>
 
       {/* Brand at a glance */}
-      <div className="grid grid-cols-2 gap-4 mb-14">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 sm:mb-14">
         <div className="bg-stone-50 rounded-xl p-5 border border-stone-100">
           <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">
             <Tooltip content="The foundational archetype that shapes Spectrea's personality, behavior, and visual identity. Used to gut-check brand decisions: 'Would The Magician do this?'">

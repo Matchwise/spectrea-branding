@@ -45,7 +45,7 @@ export default function App() {
   }, [pathname])
 
   return (
-    <div className="flex h-screen bg-white">
+    <div className="flex h-screen bg-canvas">
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         <TopBar onMenuToggle={() => setSidebarOpen(o => !o)} />
@@ -60,6 +60,7 @@ export default function App() {
             <Route path="/color/primary" element={<PrimaryPalette />} />
             <Route path="/color/semantic" element={<SemanticColors />} />
             <Route path="/color/gradients" element={<Gradients />} />
+            {/* /color/compare is an internal exploration tool — intentionally unlisted in navigation.ts */}
             <Route path="/color/compare" element={<PaletteCompare />} />
             <Route path="/typography/typefaces" element={<TypeExplorer />} />
             <Route path="/typography/scale" element={<TypeScale />} />

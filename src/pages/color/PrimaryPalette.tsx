@@ -40,7 +40,7 @@ function hexToOKLCH(hex: string) {
   return `${L.toFixed(3)} / ${C.toFixed(3)} / ${Math.round(h2)}`
 }
 
-function ColorCard({ name, hex, role, usage, textColor = '#FFFFFF' }: {
+function ColorCard({ name, hex, role, usage, textColor = '#FDFDFB' }: {
   name: string; hex: string; role: string; usage: string; textColor?: string
 }) {
   const [copied, setCopied] = useState<string | null>(null)
@@ -125,12 +125,12 @@ export default function PrimaryPalette() {
           <ColorCard
             name="Teal" hex="#00B6A0" role="spectrum"
             usage="Growth, success, positive change. Use for: success states, positive trends (+12%), completion indicators, knowledge graph nodes, 'connected' status."
-            textColor="#111827"
+            textColor="#18181C"
           />
           <ColorCard
             name="Amber" hex="#E19000" role="spectrum"
             usage="Attention, warmth, highlights. Use for: warnings, pending states, starred/bookmarked items, confidence scores, insight badges."
-            textColor="#111827"
+            textColor="#18181C"
           />
           <ColorCard
             name="Rose" hex="#F24260" role="spectrum"
@@ -147,46 +147,51 @@ export default function PrimaryPalette() {
       {/* Canvas */}
       <Section>
         <h2 className="text-xl font-semibold text-stone-800 mb-4">
-          <Tooltip content="The canvas is deliberately neutral — a blank page ready to be filled. White is the default background; Snow is for elevated surfaces (cards, dropdowns, modals). The canvas should feel open and spacious.">
+          <Tooltip content="The canvas is a warm-tinted neutral — it bridges the gap between achromatic grays and the spectrum accents. Canvas is the default background; Cloud is for elevated surfaces (cards, dropdowns, modals). The warmth is subtle (<2% luminance shift) but makes the spectrum feel at home rather than painted on.">
             <span>Canvas</span>
           </Tooltip>
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <ColorCard
-            name="White" hex="#FFFFFF" role="background"
-            usage="Page background. The default canvas. Clean, open, ready to be filled."
-            textColor="#111827"
+            name="Canvas" hex="#FDFDFB" role="background"
+            usage="Page background. Warm-tinted white. The default canvas — inhabited, not sterile."
+            textColor="#18181C"
           />
           <ColorCard
-            name="Snow" hex="#F9FAFB" role="surface"
+            name="Cloud" hex="#F4F4F1" role="surface"
             usage="Elevated surfaces: cards, sidebars, dropdowns, table headers, modal backgrounds. Creates subtle depth without color."
-            textColor="#111827"
+            textColor="#18181C"
           />
+        </div>
+        <div className="mt-3 bg-stone-50 rounded-lg px-4 py-3 border border-stone-200">
+          <p className="text-xs text-stone-600">
+            <strong>Why warm neutrals?</strong> Cold Tailwind grays sit in tension with the warm spectrum accents — the canvas feels like a different system. A whisper of warmth (Canvas <code className="font-mono text-[11px]">#FDFDFB</code> over pure <code className="font-mono text-[11px]">{'#'}FFFFFF</code>) closes the gap so the whole palette reads as one family.
+          </p>
         </div>
       </Section>
 
       {/* Text & UI */}
       <Section>
         <h2 className="text-xl font-semibold text-stone-800 mb-4">
-          <Tooltip content="Text colors create hierarchy. Ink for primary content, Gray for secondary/supporting. Graphite is used for dark UI elements (sidebar, dark buttons) and as the primary color in the brand system.">
+          <Tooltip content="Text colors create hierarchy. Ink for primary content, Pewter for secondary/supporting. Graphite is used for dark UI elements (sidebar, dark buttons) and as the primary color in the brand system.">
             <span>Text & UI</span>
           </Tooltip>
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <ColorCard
-            name="Ink" hex="#111827" role="text"
-            usage="Primary text, headings, body copy. High contrast on white (17.7:1). The default text color."
-            textColor="#F9FAFB"
+            name="Ink" hex="#18181C" role="text"
+            usage="Primary text, headings, body copy. High contrast on Canvas (17+:1). The default text color."
+            textColor="#F4F4F1"
           />
           <ColorCard
-            name="Graphite" hex="#1F2937" role="primary"
+            name="Graphite" hex="#212226" role="primary"
             usage="Dark UI elements: sidebar backgrounds, dark buttons, tooltip backgrounds, footer. Also the brand's primary neutral."
-            textColor="#F9FAFB"
+            textColor="#F4F4F1"
           />
           <ColorCard
-            name="Gray" hex="#9CA3AF" role="muted"
+            name="Pewter" hex="#97979E" role="muted"
             usage="Secondary text, placeholders, disabled states, timestamps, captions, helper text. Provides hierarchy without distraction."
-            textColor="#111827"
+            textColor="#18181C"
           />
         </div>
       </Section>
@@ -202,17 +207,17 @@ export default function PrimaryPalette() {
           <ColorCard
             name="Dark Background" hex={p.darkMode.bg} role="dark-bg"
             usage="Page background in dark mode. Deep enough for comfortable night use."
-            textColor="#F9FAFB"
+            textColor="#F4F4F1"
           />
           <ColorCard
             name="Dark Surface" hex={p.darkMode.surface} role="dark-surface"
             usage="Cards, sidebars, elevated elements in dark mode. Subtle separation from the background."
-            textColor="#F9FAFB"
+            textColor="#F4F4F1"
           />
         </div>
         <div className="mt-3 bg-stone-50 rounded-lg px-4 py-3 border border-stone-200">
           <p className="text-xs text-stone-600">
-            <strong>Dark mode rule:</strong> All four spectrum accents (Cobalt, Teal, Amber, Rose) carry over unchanged. They have better contrast on dark backgrounds. Text becomes #F9FAFB (Snow). Muted text becomes #6B7280.
+            <strong>Dark mode rule:</strong> All four spectrum accents (Cobalt, Teal, Amber, Rose) carry over unchanged. They have better contrast on dark backgrounds. Text becomes #F4F4F1 (Cloud). Muted text becomes #6B6B72.
           </p>
         </div>
       </Section>
@@ -226,9 +231,9 @@ export default function PrimaryPalette() {
         </h2>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
           <div className="h-8 flex">
-            <div className="flex-[60]" style={{ backgroundColor: '#FFFFFF' }} />
-            <div className="flex-[20]" style={{ backgroundColor: '#F9FAFB' }} />
-            <div className="flex-[8]" style={{ backgroundColor: '#9CA3AF' }} />
+            <div className="flex-[60]" style={{ backgroundColor: '#FDFDFB' }} />
+            <div className="flex-[20]" style={{ backgroundColor: '#F4F4F1' }} />
+            <div className="flex-[8]" style={{ backgroundColor: '#97979E' }} />
             <div className="flex-[5]" style={{ backgroundColor: '#4271DF' }} />
             <div className="flex-[3]" style={{ backgroundColor: '#00B6A0' }} />
             <div className="flex-[2]" style={{ backgroundColor: '#E19000' }} />
@@ -237,15 +242,15 @@ export default function PrimaryPalette() {
           <div className="p-4 grid grid-cols-4 gap-3 text-center">
             <div>
               <p className="text-lg font-semibold text-stone-900">60%</p>
-              <p className="text-xs text-stone-500">Canvas (White)</p>
+              <p className="text-xs text-stone-500">Canvas</p>
             </div>
             <div>
               <p className="text-lg font-semibold text-stone-900">20%</p>
-              <p className="text-xs text-stone-500">Surface (Snow)</p>
+              <p className="text-xs text-stone-500">Surface (Cloud)</p>
             </div>
             <div>
               <p className="text-lg font-semibold text-stone-900">10%</p>
-              <p className="text-xs text-stone-500">Text & UI (Ink, Gray)</p>
+              <p className="text-xs text-stone-500">Text & UI (Ink, Pewter)</p>
             </div>
             <div>
               <p className="text-lg font-semibold text-stone-900">10%</p>

@@ -384,7 +384,8 @@ export default function PaletteCompare() {
             </div>
 
             {/* Contrast validation */}
-            <div className="border border-stone-200 rounded-lg overflow-hidden mb-4">
+            <div className="border border-stone-200 rounded-lg overflow-x-auto mb-4">
+              <div className="min-w-[520px]">
               <div className="grid grid-cols-4 bg-stone-50 border-b border-stone-200 px-3 py-1.5">
                 <span className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider">Color</span>
                 <span className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider">vs White</span>
@@ -419,6 +420,7 @@ export default function PaletteCompare() {
                   </div>
                 )
               })}
+              </div>
             </div>
 
             {/* Gradient */}
@@ -430,11 +432,11 @@ export default function PaletteCompare() {
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <CustomLogo size={40} cobalt={result.cobalt.hex} teal={result.teal.hex} amber={result.amber.hex} />
-                  <span className="font-heading font-semibold text-stone-900 text-lg">Spectrea</span>
+                  <span className="font-heading font-semibold text-stone-900 text-lg" style={{ letterSpacing: '0.02em' }}>SPECTREA</span>
                 </div>
-                <div className="bg-stone-900 rounded-lg px-4 py-3 flex items-center gap-3">
+                <div className="bg-ink rounded-lg px-4 py-3 flex items-center gap-3">
                   <CustomLogo size={40} cobalt={result.cobalt.hex} teal={result.teal.hex} amber={result.amber.hex} />
-                  <span className="font-heading font-semibold text-white text-lg">Spectrea</span>
+                  <span className="font-heading font-semibold text-white text-lg" style={{ letterSpacing: '0.02em' }}>SPECTREA</span>
                 </div>
               </div>
             </div>

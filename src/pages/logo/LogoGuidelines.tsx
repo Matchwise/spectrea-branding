@@ -1,5 +1,5 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
-import { StaticLogo } from '../../components/brand/SpectreaLogo'
+import { StaticLogo, Logotype, LogotypeGradient } from '../../components/brand/SpectreaLogo'
 
 function DoExample({ label, children }: { label: string; children: React.ReactNode }) {
   return (
@@ -46,17 +46,14 @@ export default function LogoGuidelines() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <DoExample label="1x mark width on all sides (minimum)">
             <div className="border-2 border-dashed border-brand/20 rounded-full p-6">
-              <div className="flex items-center gap-3">
-                <StaticLogo size={36} colorMode="color" dotColorMode="grey" />
-                <span className="font-heading font-semibold text-stone-900 text-sm">Spectrea</span>
-              </div>
+              <LogotypeGradient fontSize={18} />
             </div>
           </DoExample>
           <DontExample label="Elements crowding the trailing dots">
             <div className="flex items-center gap-0">
               <span className="text-xs text-stone-400">Check out</span>
-              <StaticLogo size={28} colorMode="color" dotColorMode="grey" />
-              <span className="font-heading font-semibold text-stone-900 text-xs">Spectrea</span>
+              <StaticLogo size={28} colorMode="cool" dotColorMode="grey" />
+              <span className="font-heading font-semibold text-stone-900 text-xs" style={{ letterSpacing: '0.02em' }}>SPECTREA</span>
               <span className="text-xs text-stone-400">today!</span>
             </div>
           </DontExample>
@@ -96,42 +93,37 @@ export default function LogoGuidelines() {
         <p className="text-sm text-stone-600 mb-4">All logo elements must maintain at least 2.5:1 contrast. Mid-tone backgrounds are the danger zone.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
           <DoExample label="Primary on white or light neutrals">
-            <div className="flex items-center gap-2">
-              <StaticLogo size={32} colorMode="color" dotColorMode="grey" />
-              <span className="font-heading font-semibold text-stone-900 text-xs">Spectrea</span>
-            </div>
+            <LogotypeGradient fontSize={16} />
           </DoExample>
           <DoExample label="Primary on solid dark (Ink / Graphite)">
-            <div className="bg-stone-900 rounded-lg px-3 py-2 flex items-center gap-2">
-              <StaticLogo size={28} colorMode="color" dotColorMode="grey" />
-              <span className="font-heading font-semibold text-xs" style={{ color: '#F9FAFB' }}>Spectrea</span>
+            <div className="bg-ink rounded-lg px-3 py-2">
+              <LogotypeGradient fontSize={14} />
             </div>
           </DoExample>
           <DoExample label="White on photo with 40%+ dark overlay">
             <div className="relative rounded-lg overflow-hidden">
               <div className="bg-gradient-to-r from-stone-500 to-stone-600 px-3 py-2">
                 <div className="absolute inset-0 bg-black/50" />
-                <div className="relative flex items-center gap-2">
-                  <StaticLogo size={28} colorMode="white" />
-                  <span className="font-heading font-semibold text-white text-xs">Spectrea</span>
+                <div className="relative">
+                  <Logotype fontSize={14} colorMode="white" color="#FDFDFB" />
                 </div>
               </div>
             </div>
           </DoExample>
           <DontExample label="Any variant on mid-tone backgrounds">
             <div className="bg-stone-400 rounded-lg px-3 py-2 flex items-center gap-2">
-              <StaticLogo size={28} colorMode="color" dotColorMode="grey" />
-              <span className="font-heading font-semibold text-stone-900 text-xs">Spectrea</span>
+              <StaticLogo size={28} colorMode="cool" dotColorMode="grey" />
+              <span className="font-heading font-semibold text-stone-900 text-xs" style={{ letterSpacing: '0.02em' }}>SPECTREA</span>
             </div>
           </DontExample>
           <DontExample label="Photo without sufficient overlay">
             <div className="bg-gradient-to-r from-stone-400 to-stone-500 rounded-lg px-3 py-2 flex items-center gap-2">
               <StaticLogo size={28} colorMode="white" />
-              <span className="font-heading font-semibold text-white text-xs">Spectrea</span>
+              <span className="font-heading font-semibold text-white text-xs" style={{ letterSpacing: '0.02em' }}>SPECTREA</span>
             </div>
           </DontExample>
           <DontExample label="Ink mark on dark — invisible">
-            <div className="bg-stone-900 rounded-lg px-3 py-3 flex items-center justify-center">
+            <div className="bg-ink rounded-lg px-3 py-3 flex items-center justify-center">
               <StaticLogo size={28} colorMode="ink" />
             </div>
           </DontExample>
@@ -144,26 +136,26 @@ export default function LogoGuidelines() {
         <p className="text-sm text-stone-600 mb-4">Below 48px, the bare mark's dots and stroke are hard to distinguish. Use a circle container. The circle is a legibility aid — use the bare mark whenever size allows.</p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           <DoExample label="Ink circle at favicon / app icon size">
-            <div className="w-10 h-10 rounded-full bg-[#111827] flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-[#18181C] flex items-center justify-center">
               <StaticLogo size={26} colorMode="white" />
             </div>
           </DoExample>
           <DoExample label="Ink circle in nav sidebar">
             <div className="bg-stone-100 rounded-lg px-2 py-1.5 flex items-center gap-2">
-              <div className="w-7 h-7 rounded-full bg-[#111827] flex items-center justify-center">
+              <div className="w-7 h-7 rounded-full bg-[#18181C] flex items-center justify-center">
                 <StaticLogo size={18} colorMode="white" />
               </div>
-              <span className="font-heading font-semibold text-stone-700 text-[10px]">Spectrea</span>
+              <span className="font-heading font-semibold text-stone-700 text-[10px]" style={{ letterSpacing: '0.02em' }}>SPECTREA</span>
             </div>
           </DoExample>
           <DontExample label="Squircle or rounded-square">
-            <div className="w-12 h-12 rounded-2xl bg-[#111827] flex items-center justify-center">
+            <div className="w-12 h-12 rounded-2xl bg-[#18181C] flex items-center justify-center">
               <StaticLogo size={30} colorMode="white" />
             </div>
           </DontExample>
           <DontExample label="Circle when mark is large enough">
             <div className="flex items-center gap-2">
-              <div className="w-16 h-16 rounded-full bg-[#111827] flex items-center justify-center">
+              <div className="w-16 h-16 rounded-full bg-[#18181C] flex items-center justify-center">
                 <StaticLogo size={40} colorMode="white" />
               </div>
             </div>
@@ -178,10 +170,7 @@ export default function LogoGuidelines() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <DoExample label="Ink logos, divider, equal sizing">
             <div className="flex items-center gap-6">
-              <div className="flex items-center gap-2">
-                <StaticLogo size={28} colorMode="ink" />
-                <span className="font-heading font-semibold text-stone-700 text-xs">Spectrea</span>
-              </div>
+              <Logotype fontSize={14} colorMode="ink" />
               <div className="w-px h-6 bg-stone-300" />
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 rounded bg-stone-300" />
@@ -191,10 +180,7 @@ export default function LogoGuidelines() {
           </DoExample>
           <DontExample label="Spectrum gradient competing with partner colors">
             <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2">
-                <StaticLogo size={28} colorMode="color" dotColorMode="grey" />
-                <span className="font-heading font-semibold text-stone-900 text-xs">Spectrea</span>
-              </div>
+              <LogotypeGradient fontSize={14} />
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 rounded bg-purple-500" />
                 <span className="text-xs font-medium text-purple-500">Partner</span>

@@ -69,11 +69,11 @@ export default function TypographyGuidelines() {
               <p className="text-base text-stone-700" style={{ fontFamily: t.body.css }}>This entity connects to 12 other nodes across 3 knowledge domains, with a trust score of 94%.</p>
             </div>
             <div>
-              <p className="text-xs font-mono text-stone-400 mb-1">Secondary — Lexend 400, 14px, Gray</p>
+              <p className="text-xs font-mono text-stone-400 mb-1">Secondary — Lexend 400, 14px, Pewter</p>
               <p className="text-sm text-stone-500" style={{ fontFamily: t.body.css }}>Last updated 2 hours ago by Sarah Chen</p>
             </div>
             <div>
-              <p className="text-xs font-mono text-stone-400 mb-1">Metadata — JetBrains Mono 400, 12px, Gray</p>
+              <p className="text-xs font-mono text-stone-400 mb-1">Metadata — JetBrains Mono 400, 12px, Pewter</p>
               <p className="text-xs text-stone-400" style={{ fontFamily: t.mono.css }}>entity.type: "Financial Model" | confidence: 0.94</p>
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function TypographyGuidelines() {
           {[
             { rule: 'Minimum body size: 16px', detail: 'WCAG AAA target. Never go below this for primary content.' },
             { rule: 'Minimum caption size: 12px', detail: 'Absolute floor. Below this, text becomes inaccessible.' },
-            { rule: 'Contrast ratio: 4.5:1 minimum', detail: 'Ink on White = 17.7:1. Gray on White = 3.1:1 (decorative only).' },
+            { rule: 'Contrast ratio: 4.5:1 minimum', detail: 'Ink on Canvas ≈ 17.6:1. Pewter on Canvas ≈ 3.1:1 (decorative only).' },
             { rule: 'Avoid text in images', detail: 'Screen readers can\'t read it. Use real HTML text.' },
             { rule: 'Don\'t rely on color alone', detail: 'Use icons, patterns, or labels alongside color coding.' },
             { rule: 'Support text resizing to 200%', detail: 'Layout must not break when users increase browser font size.' },

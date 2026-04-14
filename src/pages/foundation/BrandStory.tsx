@@ -25,7 +25,7 @@ export default function BrandStory() {
             <span>Why We Exist</span>
           </Tooltip>
         </h2>
-        <div className="bg-stone-900 text-white rounded-xl p-6">
+        <div className="bg-ink text-white rounded-xl p-6">
           <p className="text-base leading-relaxed">{brand.why.statement}</p>
         </div>
       </Section>
@@ -49,7 +49,7 @@ export default function BrandStory() {
             <span>Vision</span>
           </Tooltip>
         </h2>
-        <blockquote className="border-l-4 border-teal-400 pl-5 py-1">
+        <blockquote className="pl-5 py-1" style={{ borderLeft: '4px solid #00B6A0' }}>
           <p className="text-lg text-stone-700 leading-relaxed">{brand.vision.statement}</p>
         </blockquote>
       </Section>

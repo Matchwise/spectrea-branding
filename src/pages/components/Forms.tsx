@@ -116,10 +116,10 @@ export default function Forms() {
             { prop: 'Border radius', value: '8px (rounded-lg)', note: 'Matches button radius' },
             { prop: 'Padding', value: '8px 12px (py-2 px-3)', note: 'Comfortable click target' },
             { prop: 'Font', value: 'Lexend Regular 400, 14px', note: 'Body SM size for input text' },
-            { prop: 'Placeholder', value: 'Stone 400 (#9CA3AF)', note: 'Clearly distinct from entered text' },
+            { prop: 'Placeholder', value: 'Stone 400 (#97979E)', note: 'Clearly distinct from entered text' },
             { prop: 'Focus border', value: '2px solid Cobalt #4271DF', note: 'Thicker on focus, no glow — one clear signal' },
             { prop: 'Error border', value: 'Rose #F24260', note: 'Semantic error color' },
-            { prop: 'Disabled bg', value: 'Stone 50 (#F9FAFB)', note: 'Subtle visual demotion' },
+            { prop: 'Disabled bg', value: 'Stone 50 (#F4F4F1)', note: 'Subtle visual demotion' },
           ].map((row, i) => (
             <div key={row.prop} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < 9 ? '1px solid #F3F4F6' : 'none' }}>
               <span className="text-sm font-medium text-stone-700">{row.prop}</span>

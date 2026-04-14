@@ -5,7 +5,8 @@ const semanticColors = [
   {
     name: 'Primary / Info',
     color: '#4271DF',
-    light: '#EEF2FF',
+    light: '#EDF0F8',
+    lightName: 'Cobalt Wash',
     dark: '#1E3A8A',
     usage: 'Primary actions (buttons, links, focus states) and informational alerts (notable updates, system notices). Cobalt serves dual purpose — triggering actions in Tier 1 and communicating noteworthy information in Tier 3.',
     maps: 'Cobalt (hero)',
@@ -13,7 +14,8 @@ const semanticColors = [
   {
     name: 'Success / Positive',
     color: '#00B6A0',
-    light: '#F0FDFA',
+    light: '#E6F5F3',
+    lightName: 'Teal Mist',
     dark: '#0D5E56',
     usage: 'Success messages, positive trends, completed states, connected status, verified claims.',
     maps: 'Teal (spectrum)',
@@ -21,7 +23,8 @@ const semanticColors = [
   {
     name: 'Warning / Attention',
     color: '#E19000',
-    light: '#FFFBEB',
+    light: '#F5F0E6',
+    lightName: 'Amber Stone',
     dark: '#7C4D04',
     usage: 'Warning alerts, pending states, confidence scores below threshold, approaching limits.',
     maps: 'Amber (spectrum)',
@@ -29,18 +32,53 @@ const semanticColors = [
   {
     name: 'Error / Destructive',
     color: '#F24260',
-    light: '#FFF1F2',
+    light: '#FDF0F2',
+    lightName: 'Rose Blush',
     dark: '#9F1239',
     usage: 'Error messages, destructive actions, failed states, critical alerts, form validation errors.',
     maps: 'Rose (spectrum)',
   },
   {
     name: 'Neutral',
-    color: '#9CA3AF',
-    light: '#F9FAFB',
-    dark: '#4B5563',
+    color: '#97979E',
+    light: '#F4F4F1',
+    lightName: 'Cloud',
+    dark: '#3A3A40',
     usage: 'Disabled states, borders, dividers, placeholder text. Passive context — present if needed, never demanding attention.',
-    maps: 'Gray (muted)',
+    maps: 'Pewter (muted)',
+  },
+]
+
+// Bridge tones — the tinted-wash tier that sits between neutral canvas and full spectrum.
+// 5–10% saturation. Derived from each spectrum color.
+const bridgeTones = [
+  {
+    name: 'Cobalt Wash',
+    hex: '#EDF0F8',
+    source: 'Cobalt',
+    when: 'Informational surfaces',
+    usage: 'Backgrounds for info alerts and system notices. Selected rows in tables. Subtle hover states on surfaces. Section backgrounds that need to read as "actionable context."',
+  },
+  {
+    name: 'Teal Mist',
+    hex: '#E6F5F3',
+    source: 'Teal',
+    when: 'Positive surfaces',
+    usage: 'Success toast backgrounds. Positive callouts (growth metrics, completion panels). Verified-claim badges. Graph-node highlight on hover.',
+  },
+  {
+    name: 'Amber Stone',
+    hex: '#F5F0E6',
+    source: 'Amber',
+    when: 'Warm / attention surfaces',
+    usage: 'Warning alert backgrounds. Pending-state panels. Highlighted quotes or featured content. Bookmarked item backgrounds.',
+  },
+  {
+    name: 'Rose Blush',
+    hex: '#FDF0F2',
+    source: 'Rose',
+    when: 'Critical surfaces',
+    usage: 'Error message backgrounds. Destructive-action confirmation contexts. Failed-state panels. Critical alert callouts.',
   },
 ]
 
@@ -80,8 +118,8 @@ export default function SemanticColors() {
                   <span className="text-xs font-mono text-stone-400 bg-stone-100 px-1.5 py-0.5 rounded">{sc.maps}</span>
                 </div>
                 <p className="text-xs text-stone-600">{sc.usage}</p>
-                <div className="flex gap-2 mt-2">
-                  <span className="text-xs font-mono text-stone-400">Light: {sc.light}</span>
+                <div className="flex gap-2 mt-2 flex-wrap">
+                  <span className="text-xs font-mono text-stone-400">{sc.lightName}: {sc.light}</span>
                   <span className="text-xs font-mono text-stone-400">Default: {sc.color}</span>
                   <span className="text-xs font-mono text-stone-400">Dark: {sc.dark}</span>
                 </div>
@@ -95,25 +133,114 @@ export default function SemanticColors() {
       <Section title="Semantic Colors in Context">
         <div className="border border-stone-200 rounded-xl p-5 space-y-3">
           {/* Success toast */}
-          <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#F0FDFA', border: '1px solid #00B6A020' }}>
+          <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#E6F5F3', border: '1px solid #00B6A020' }}>
             <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#00B6A0' }} />
             <p className="text-xs" style={{ color: '#0D5E56' }}>Entity "Revenue Model" successfully created with 3 connections.</p>
           </div>
           {/* Warning toast */}
-          <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#FFFBEB', border: '1px solid #E1900020' }}>
+          <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#F5F0E6', border: '1px solid #E1900020' }}>
             <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#E19000' }} />
             <p className="text-xs" style={{ color: '#7C4D04' }}>Confidence score below threshold (62%). Review recommended.</p>
           </div>
           {/* Error toast */}
-          <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#FFF1F2', border: '1px solid #F2426020' }}>
+          <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#FDF0F2', border: '1px solid #F2426020' }}>
             <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#F24260' }} />
             <p className="text-xs" style={{ color: '#9F1239' }}>Save failed: connection timeout. Your draft is cached locally.</p>
           </div>
           {/* Info toast */}
-          <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#EEF2FF', border: '1px solid #4271DF20' }}>
+          <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#EDF0F8', border: '1px solid #4271DF20' }}>
             <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#4271DF' }} />
             <p className="text-xs" style={{ color: '#1E3A8A' }}>3 new documents queued for extraction. Processing will begin shortly.</p>
           </div>
+        </div>
+      </Section>
+
+      {/* ─── Bridge tier: tinted washes ─── */}
+      <Section>
+        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+          <Tooltip content="Bridge tones are very-low-saturation tints (5–10%) derived from each spectrum color. They sit between the warm neutral canvas and the full spectrum — so color feels like it's emerging from the system rather than painted on top.">
+            <span>Bridge Tier — Tinted Washes</span>
+          </Tooltip>
+        </h2>
+        <p className="text-sm text-stone-600 mb-4 leading-relaxed">
+          Between the warm neutral canvas and the full spectrum sits a <strong>bridge tier</strong>: very-low-saturation tints (5–10%) that carry just enough color to communicate semantic context without shouting. Use them as surfaces, not as accents. The saturated spectrum color still does the talking — the wash sets the stage.
+        </p>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
+          {bridgeTones.map(t => (
+            <div key={t.name} className="border border-stone-200 rounded-xl overflow-hidden">
+              <div className="h-20 px-3 py-2 flex items-end" style={{ backgroundColor: t.hex }}>
+                <span className="text-xs font-mono text-stone-500">{t.hex}</span>
+              </div>
+              <div className="p-3 space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <p className="text-xs font-semibold text-stone-800">{t.name}</p>
+                  <span className="text-[10px] font-mono text-stone-400">from {t.source}</span>
+                </div>
+                <p className="text-[11px] font-semibold uppercase tracking-wider" style={{ color: '#97979E' }}>{t.when}</p>
+                <p className="text-xs text-stone-600 leading-relaxed">{t.usage}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="border border-stone-200 rounded-xl overflow-hidden">
+          <div className="px-4 py-2.5 bg-stone-50 border-b border-stone-200">
+            <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider">When to use a bridge tone</p>
+          </div>
+          <div className="divide-y divide-stone-100">
+            {[
+              { use: 'Alert / toast background', rule: 'Always use the bridge tone (not the accent itself). The dot or icon carries the color; the surface carries the context.' },
+              { use: 'Selected row or item', rule: 'Use Cobalt Wash (not #F4F4F1) when selection communicates "this is the active/pending one."' },
+              { use: 'Callout or highlighted quote', rule: 'Amber Stone for warmth, Teal Mist for growth insights. Never full-saturation fills on body-copy surfaces.' },
+              { use: 'Destructive confirmation', rule: 'Rose Blush background for the dialog or confirmation strip. The destructive button itself stays full Rose.' },
+              { use: 'Stat card showing a trend', rule: 'Teal Mist for positive trend, Rose Blush for negative, Amber Stone for flat. Optional — only when the trend is the primary message.' },
+              { use: 'Hover state on a surface', rule: 'Cobalt Wash at subtle opacity. Distinguishes interactive surfaces without shifting the saturation cliff.' },
+              { use: 'Decorative section background', rule: 'Never. Bridge tones always carry semantic meaning. Use Cloud (#F4F4F1) for decoration.' },
+            ].map((row, i, arr) => (
+              <div key={row.use} className="grid grid-cols-1 sm:grid-cols-12 gap-y-1 sm:gap-y-0 px-4 py-2.5" style={{ borderBottom: i < arr.length - 1 ? undefined : 'none' }}>
+                <span className="sm:col-span-4 text-xs font-semibold sm:font-medium text-stone-700">{row.use}</span>
+                <span className="sm:col-span-8 text-xs text-stone-500 leading-relaxed">{row.rule}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Saturation ladder */}
+        <div className="mt-5 border border-stone-200 rounded-xl p-5">
+          <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider mb-3">Saturation ladder</p>
+          <p className="text-xs text-stone-500 mb-4 leading-relaxed">
+            Each semantic color has three levels of emphasis. Reach for the lowest level that does the job — save the saturated accent for the moment that carries meaning.
+          </p>
+          <div className="space-y-2">
+            {[
+              { label: 'Info', bg: '#EDF0F8', accent: '#4271DF', dark: '#1E3A8A' },
+              { label: 'Success', bg: '#E6F5F3', accent: '#00B6A0', dark: '#0D5E56' },
+              { label: 'Warning', bg: '#F5F0E6', accent: '#E19000', dark: '#7C4D04' },
+              { label: 'Error', bg: '#FDF0F2', accent: '#F24260', dark: '#9F1239' },
+            ].map(row => (
+              <div key={row.label} className="grid grid-cols-12 gap-2 items-center">
+                <span className="col-span-2 text-xs font-semibold text-stone-700">{row.label}</span>
+                <div className="col-span-10 grid grid-cols-3 gap-2">
+                  <div className="flex flex-col rounded-md overflow-hidden">
+                    <div className="h-8" style={{ backgroundColor: row.bg }} />
+                    <span className="text-[10px] font-mono text-stone-400 mt-1">Wash — {row.bg}</span>
+                  </div>
+                  <div className="flex flex-col rounded-md overflow-hidden">
+                    <div className="h-8" style={{ backgroundColor: row.accent }} />
+                    <span className="text-[10px] font-mono text-stone-400 mt-1">Accent — {row.accent}</span>
+                  </div>
+                  <div className="flex flex-col rounded-md overflow-hidden">
+                    <div className="h-8" style={{ backgroundColor: row.dark }} />
+                    <span className="text-[10px] font-mono text-stone-400 mt-1">Dark — {row.dark}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-stone-500 mt-4 leading-relaxed">
+            <strong>Rule of thirds:</strong> most semantic surfaces should be <strong>wash</strong>. The accent appears as a dot, icon, or short emphasis — not as a fill. Dark variants are reserved for text and borders <em>on top of</em> the wash.
+          </p>
         </div>
       </Section>
 
@@ -159,9 +286,9 @@ export default function SemanticColors() {
                   { element: 'Inline link', state: 'Default + hover', how: 'Cobalt text, underline on hover' },
                   { element: 'CTA card / entry point', state: 'Hovered', how: 'Label text → Cobalt. Invites action.' },
                   { element: 'Input focus', state: 'Focused', how: 'Cobalt border + ring. Reverts on blur.' },
-                  { element: 'Standalone icon', state: 'Hovered', how: 'Gray → Cobalt outline. Reverts on leave.' },
+                  { element: 'Standalone icon', state: 'Hovered', how: 'Pewter → Cobalt outline. Reverts on leave.' },
                 ].map((row, i) => (
-                  <div key={row.element} className="grid grid-cols-3 px-4 py-2" style={{ borderBottom: i < 4 ? '1px solid #F3F4F6' : 'none' }}>
+                  <div key={row.element} className="grid grid-cols-1 sm:grid-cols-3 gap-y-0.5 sm:gap-y-0 px-4 py-2" style={{ borderBottom: i < 4 ? '1px solid #F3F4F6' : 'none' }}>
                     <span className="text-xs font-medium text-stone-700">{row.element}</span>
                     <span className="text-xs text-stone-500">{row.state}</span>
                     <span className="text-xs text-stone-500">{row.how}</span>
@@ -175,9 +302,9 @@ export default function SemanticColors() {
           <div className="border border-stone-300 rounded-xl overflow-hidden">
             <div className="px-5 py-3 bg-stone-100 border-b border-stone-200">
               <div className="flex items-center gap-3">
-                <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#111827' }} />
+                <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#18181C' }} />
                 <p className="text-sm font-semibold text-stone-800">Tier 2: Structural</p>
-                <span className="text-xs font-mono text-stone-600 bg-stone-200 px-1.5 py-0.5 rounded">Ink #111827</span>
+                <span className="text-xs font-mono text-stone-600 bg-stone-200 px-1.5 py-0.5 rounded">Ink #18181C</span>
               </div>
               <p className="text-xs text-stone-500 mt-1">Personality: <strong>Grounded</strong> — confident, understated, persistent</p>
             </div>
@@ -187,14 +314,14 @@ export default function SemanticColors() {
               </p>
               <div className="border border-stone-200 rounded-lg overflow-hidden">
                 {[
-                  { element: 'Active nav item', state: 'Current page', how: 'Gray → Ink text, semibold weight, subtle background' },
-                  { element: 'Nav item hover', state: 'Hovered', how: 'Gray → Ink text, subtle background. Not Cobalt.' },
-                  { element: 'Selected tab', state: 'Active tab', how: 'Gray → Ink text, bottom border or background' },
-                  { element: 'Filled icon', state: 'Toggled on', how: 'Gray outline → Ink filled. Weight signals state.' },
-                  { element: 'Active breadcrumb', state: 'Current segment', how: 'Gray → Ink text, semibold' },
+                  { element: 'Active nav item', state: 'Current page', how: 'Pewter → Ink text, semibold weight, subtle background' },
+                  { element: 'Nav item hover', state: 'Hovered', how: 'Pewter → Ink text, subtle background. Not Cobalt.' },
+                  { element: 'Selected tab', state: 'Active tab', how: 'Pewter → Ink text, bottom border or background' },
+                  { element: 'Filled icon', state: 'Toggled on', how: 'Pewter outline → Ink filled. Weight signals state.' },
+                  { element: 'Active breadcrumb', state: 'Current segment', how: 'Pewter → Ink text, semibold' },
                   { element: 'Selected row', state: 'Selected item', how: 'Subtle Ink/5 background, Ink text' },
                 ].map((row, i) => (
-                  <div key={row.element} className="grid grid-cols-3 px-4 py-2" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
+                  <div key={row.element} className="grid grid-cols-1 sm:grid-cols-3 gap-y-0.5 sm:gap-y-0 px-4 py-2" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
                     <span className="text-xs font-medium text-stone-700">{row.element}</span>
                     <span className="text-xs text-stone-500">{row.state}</span>
                     <span className="text-xs text-stone-500">{row.how}</span>
@@ -213,10 +340,10 @@ export default function SemanticColors() {
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#00B6A0' }} />
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#E19000' }} />
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#F24260' }} />
-                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#9CA3AF' }} />
+                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#97979E' }} />
                 </div>
                 <p className="text-sm font-semibold text-stone-800">Tier 3: Semantic</p>
-                <span className="text-xs font-mono text-stone-500 bg-stone-100 px-1.5 py-0.5 rounded">Cobalt / Teal / Amber / Rose / Gray</span>
+                <span className="text-xs font-mono text-stone-500 bg-stone-100 px-1.5 py-0.5 rounded">Cobalt / Teal / Amber / Rose / Pewter</span>
               </div>
               <p className="text-xs text-stone-500 mt-1">Personality: <strong>Trustworthy</strong> — the system communicates clearly</p>
             </div>
@@ -232,9 +359,9 @@ export default function SemanticColors() {
                   { element: 'Error message', state: 'Something failed', how: 'Rose dot/icon + Rose-light background' },
                   { element: 'Destructive button', state: 'Irreversible action', how: 'Rose background, white text' },
                   { element: 'Trend indicator', state: 'Positive/negative change', how: 'Teal for +, Rose for -, Amber for flat' },
-                  { element: 'Neutral / disabled', state: 'Passive context', how: 'Gray text, borders, placeholders. Present if needed.' },
+                  { element: 'Neutral / disabled', state: 'Passive context', how: 'Pewter text, borders, placeholders. Present if needed.' },
                 ].map((row, i) => (
-                  <div key={row.element} className="grid grid-cols-3 px-4 py-2" style={{ borderBottom: i < 6 ? '1px solid #F3F4F6' : 'none' }}>
+                  <div key={row.element} className="grid grid-cols-1 sm:grid-cols-3 gap-y-0.5 sm:gap-y-0 px-4 py-2" style={{ borderBottom: i < 6 ? '1px solid #F3F4F6' : 'none' }}>
                     <span className="text-xs font-medium text-stone-700">{row.element}</span>
                     <span className="text-xs text-stone-500">{row.state}</span>
                     <span className="text-xs text-stone-500">{row.how}</span>
@@ -246,7 +373,7 @@ export default function SemanticColors() {
         </div>
 
         {/* Decision flowchart */}
-        <div className="bg-stone-900 rounded-xl p-6 text-white">
+        <div className="bg-ink rounded-xl p-6 text-white">
           <p className="text-sm font-semibold mb-4" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Decision: "What color should this be?"</p>
           <div className="space-y-3 text-xs leading-relaxed">
             <div className="flex gap-3">
@@ -263,7 +390,7 @@ export default function SemanticColors() {
             </div>
             <div className="flex gap-3">
               <span className="text-stone-500 font-mono w-6 flex-shrink-0">4.</span>
-              <p><strong className="text-stone-300">None of the above?</strong> <span className="text-stone-400">→ Ink (primary text) or Gray (muted / disabled / passive). The canvas stays neutral.</span></p>
+              <p><strong className="text-stone-300">None of the above?</strong> <span className="text-stone-400">→ Ink (primary text) or Pewter (muted / disabled / passive). The canvas stays neutral.</span></p>
             </div>
           </div>
         </div>

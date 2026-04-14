@@ -98,18 +98,18 @@ export default function TypeExplorer() {
           </div>
 
           {/* Dark */}
-          <div className="border border-stone-700 rounded-xl p-5" style={{ backgroundColor: '#111827' }}>
-            <p className="text-2xl font-semibold mb-1" style={{ fontFamily: t.heading.css, color: '#F9FAFB' }}>
+          <div className="border border-stone-700 rounded-xl p-5" style={{ backgroundColor: '#18181C' }}>
+            <p className="text-2xl font-semibold mb-1" style={{ fontFamily: t.heading.css, color: '#F4F4F1' }}>
               We connect the dots.
             </p>
-            <p className="text-sm mb-4" style={{ fontFamily: t.body.css, color: '#6B7280' }}>
+            <p className="text-sm mb-4" style={{ fontFamily: t.body.css, color: '#97979E' }}>
               Make knowledge trustworthy, connected, and actionable.
             </p>
             <div className="grid grid-cols-3 gap-2 mb-4">
               {['Entities', 'Connections', 'Trust Score'].map((label, i) => (
-                <div key={label} className="rounded-lg p-3" style={{ backgroundColor: '#1F2937', border: '1px solid #374151' }}>
-                  <p className="text-xs mb-0.5" style={{ fontFamily: t.body.css, color: '#6B7280' }}>{label}</p>
-                  <p className="text-lg font-semibold" style={{ fontFamily: t.heading.css, color: '#F9FAFB' }}>
+                <div key={label} className="rounded-lg p-3" style={{ backgroundColor: '#212226', border: '1px solid #2E2E34' }}>
+                  <p className="text-xs mb-0.5" style={{ fontFamily: t.body.css, color: '#97979E' }}>{label}</p>
+                  <p className="text-lg font-semibold" style={{ fontFamily: t.heading.css, color: '#F4F4F1' }}>
                     {['2,847', '8,291', '94%'][i]}
                   </p>
                   <p className="text-xs font-medium" style={{ fontFamily: t.body.css, color: ['#00B6A0', '#00B6A0', '#4271DF'][i] }}>
@@ -118,11 +118,11 @@ export default function TypeExplorer() {
                 </div>
               ))}
             </div>
-            <p className="text-sm leading-relaxed mb-3" style={{ fontFamily: t.body.css, color: '#9CA3AF' }}>
+            <p className="text-sm leading-relaxed mb-3" style={{ fontFamily: t.body.css, color: '#97979E' }}>
               Every document you upload enriches your knowledge graph. Connections you never noticed start surfacing.
             </p>
-            <div className="rounded-lg px-3 py-2" style={{ backgroundColor: '#1F2937', border: '1px solid #374151' }}>
-              <p className="text-xs" style={{ fontFamily: t.mono.css, color: '#6B7280' }}>
+            <div className="rounded-lg px-3 py-2" style={{ backgroundColor: '#212226', border: '1px solid #2E2E34' }}>
+              <p className="text-xs" style={{ fontFamily: t.mono.css, color: '#97979E' }}>
                 entity.type: "Financial Model" | confidence: 0.94
               </p>
             </div>
@@ -146,11 +146,11 @@ export default function TypeExplorer() {
             { font: 'Lexend', weight: 300, label: 'Light', use: 'Large display text, oversized numbers, decorative use only', style: t.body.css },
             { font: 'JetBrains Mono', weight: 400, label: 'Regular', use: 'Code, data values, entity types, provenance', style: t.mono.css },
           ].map((w, i) => (
-            <div key={`${w.font}-${w.weight}`} className="flex items-center gap-4 px-4 py-3" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
-              <p className="text-lg w-48 flex-shrink-0" style={{ fontFamily: w.style, fontWeight: w.weight }}>
+            <div key={`${w.font}-${w.weight}`} className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 px-4 py-3" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
+              <p className="text-base sm:text-lg sm:w-48 sm:flex-shrink-0" style={{ fontFamily: w.style, fontWeight: w.weight }}>
                 {w.font}
               </p>
-              <div className="w-20 flex-shrink-0">
+              <div className="sm:w-20 sm:flex-shrink-0">
                 <span className="text-xs font-mono text-stone-400">{w.weight} {w.label}</span>
               </div>
               <p className="text-xs text-stone-600">{w.use}</p>

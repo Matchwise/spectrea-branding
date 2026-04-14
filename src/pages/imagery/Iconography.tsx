@@ -24,7 +24,7 @@ export default function Iconography() {
             <span>Icon System</span>
           </Tooltip>
         </h2>
-        <div className="bg-stone-900 text-white rounded-xl p-6">
+        <div className="bg-ink text-white rounded-xl p-6">
           <p className="text-base font-semibold" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Tabler · Outline · Rounded · 2px Stroke</p>
           <p className="text-sm text-stone-400 mt-2 leading-relaxed">
             Rounded caps and joins create warmth. Clean geometry reads as intelligent. The 2px stroke has presence without heaviness — grounded but not boring. Outline is the default; filled is reserved for active/selected states.
@@ -42,18 +42,18 @@ export default function Iconography() {
       {/* ─── Import Guide ─── */}
       <Section>
         <h2 className="text-xl font-semibold text-stone-800 mb-4">How to Use</h2>
-        <div className="bg-stone-900 rounded-xl p-5 overflow-x-auto">
+        <div className="bg-ink rounded-xl p-5 overflow-x-auto">
           <pre className="text-xs leading-relaxed" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-            <span style={{ color: '#9CA3AF' }}>{'// Install\n'}</span>
-            <span style={{ color: '#F9FAFB' }}>{'npm install react-icons\n\n'}</span>
-            <span style={{ color: '#9CA3AF' }}>{'// Outline icons (default)\n'}</span>
+            <span style={{ color: '#97979E' }}>{'// Install\n'}</span>
+            <span style={{ color: '#F4F4F1' }}>{'npm install react-icons\n\n'}</span>
+            <span style={{ color: '#97979E' }}>{'// Outline icons (default)\n'}</span>
             <span style={{ color: '#E19000' }}>{'import'}</span>
-            <span style={{ color: '#F9FAFB' }}>{' { TbSearch, TbBell, TbSettings } '}</span>
+            <span style={{ color: '#F4F4F1' }}>{' { TbSearch, TbBell, TbSettings } '}</span>
             <span style={{ color: '#E19000' }}>{'from'}</span>
             <span style={{ color: '#00B6A0' }}>{" 'react-icons/tb'\n\n"}</span>
-            <span style={{ color: '#9CA3AF' }}>{'// Filled icons (active/selected states)\n'}</span>
+            <span style={{ color: '#97979E' }}>{'// Filled icons (active/selected states)\n'}</span>
             <span style={{ color: '#E19000' }}>{'import'}</span>
-            <span style={{ color: '#F9FAFB' }}>{' { TbBellFilled, TbStarFilled } '}</span>
+            <span style={{ color: '#F4F4F1' }}>{' { TbBellFilled, TbStarFilled } '}</span>
             <span style={{ color: '#E19000' }}>{'from'}</span>
             <span style={{ color: '#00B6A0' }}>{" 'react-icons/tb'"}</span>
           </pre>
@@ -137,10 +137,10 @@ export default function Iconography() {
         <h2 className="text-xl font-semibold text-stone-800 mb-4">Icon Colors</h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {[
-            { color: '#111827', name: 'Ink', hex: '#111827', use: 'Primary — nav, headings, actions', bg: 'bg-white', border: true },
-            { color: '#9CA3AF', name: 'Gray', hex: '#9CA3AF', use: 'Secondary — helpers, disabled, muted', bg: 'bg-white', border: true },
+            { color: '#18181C', name: 'Ink', hex: '#18181C', use: 'Primary — nav, headings, actions', bg: 'bg-white', border: true },
+            { color: '#97979E', name: 'Pewter', hex: '#97979E', use: 'Secondary — helpers, disabled, muted', bg: 'bg-white', border: true },
             { color: '#4271DF', name: 'Cobalt', hex: '#4271DF', use: 'Active state, selected, links', bg: 'bg-white', border: true },
-            { color: '#F9FAFB', name: 'Snow', hex: '#F9FAFB', use: 'On dark backgrounds', bg: 'bg-stone-900', border: false },
+            { color: '#F4F4F1', name: 'Cloud', hex: '#F4F4F1', use: 'On dark backgrounds', bg: 'bg-ink', border: false },
           ].map(c => (
             <div key={c.name} className={`${c.bg} rounded-xl p-4 text-center ${c.border ? 'border border-stone-200' : ''}`}>
               <div className="flex justify-center gap-2 mb-2" style={{ color: c.color }}>
@@ -148,9 +148,9 @@ export default function Iconography() {
                 <TbSettings size={20} className="text-current" />
                 <TbUser size={20} className="text-current" />
               </div>
-              <p className="text-xs font-semibold" style={{ color: c.border ? '#374151' : '#F9FAFB' }}>{c.name}</p>
-              <p className="text-xs font-mono" style={{ color: c.border ? '#9CA3AF' : '#6B7280' }}>{c.hex}</p>
-              <p className="text-xs mt-1" style={{ color: c.border ? '#6B7280' : '#9CA3AF' }}>{c.use}</p>
+              <p className="text-xs font-semibold" style={{ color: c.border ? '#212226' : '#F4F4F1' }}>{c.name}</p>
+              <p className="text-xs font-mono" style={{ color: c.border ? '#97979E' : '#97979E' }}>{c.hex}</p>
+              <p className="text-xs mt-1" style={{ color: c.border ? '#97979E' : '#F4F4F1' }}>{c.use}</p>
             </div>
           ))}
         </div>
@@ -178,7 +178,7 @@ export default function Iconography() {
                 <p className="text-sm font-semibold text-stone-800">Default</p>
                 <p className="text-xs text-stone-500 mt-0.5">Resting state — no interaction, no selection, no status.</p>
               </div>
-              <span className="text-xs font-mono text-stone-400">Gray #9CA3AF</span>
+              <span className="text-xs font-mono text-stone-400">Pewter #97979E</span>
             </div>
             <div className="p-5 flex items-center gap-5">
               {[TbSearch, TbHome, TbSettings, TbUser, TbBell, TbStar, TbEye].map((Icon, i) => (
@@ -209,7 +209,7 @@ export default function Iconography() {
                   <TbStar size={22} className="text-brand" />
                 </div>
               </div>
-              <p className="text-xs text-stone-500 mt-3">Outline stays outline. Color changes from Gray to Cobalt. Reverts when interaction ends.</p>
+              <p className="text-xs text-stone-500 mt-3">Outline stays outline. Color changes from Pewter to Cobalt. Reverts when interaction ends.</p>
             </div>
           </div>
 
@@ -220,7 +220,7 @@ export default function Iconography() {
                 <p className="text-sm font-semibold text-stone-800">Tier 2: Structural <span className="text-xs font-normal text-stone-500">— persistent state</span></p>
                 <p className="text-xs text-stone-500 mt-0.5">Active page, selected item, toggled on. Persists until the state changes.</p>
               </div>
-              <span className="text-xs font-mono text-stone-700">Ink #111827</span>
+              <span className="text-xs font-mono text-stone-700">Ink #18181C</span>
             </div>
             <div className="p-5">
               <div className="flex items-center gap-8">
@@ -240,7 +240,7 @@ export default function Iconography() {
                   </div>
                 ))}
               </div>
-              <p className="text-xs text-stone-500 mt-3">Outline becomes filled. Color changes from Gray to Ink. Weight signals the state, not color — canvas stays neutral.</p>
+              <p className="text-xs text-stone-500 mt-3">Outline becomes filled. Color changes from Pewter to Ink. Weight signals the state, not color — canvas stays neutral.</p>
             </div>
           </div>
 

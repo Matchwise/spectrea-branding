@@ -1,6 +1,6 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
-import { StaticLogo } from '../../components/brand/SpectreaLogo'
+import { Logotype } from '../../components/brand/SpectreaLogo'
 
 /* ------------------------------------------------------------------ */
 
@@ -17,13 +17,12 @@ export default function LayoutPage() {
             <span>Page Structure</span>
           </Tooltip>
         </h2>
-        <div className="border border-stone-200 rounded-xl overflow-hidden">
-          <div className="flex h-64">
+        <div className="border border-stone-200 rounded-xl overflow-x-auto">
+          <div className="flex h-64 min-w-[560px]">
             {/* Sidebar mock */}
             <div className="w-48 border-r border-stone-200 bg-white p-3 flex-shrink-0">
-              <div className="flex items-center gap-2 mb-4">
-                <StaticLogo size={24} />
-                <span className="text-xs font-heading font-semibold text-stone-900">Spectrea</span>
+              <div className="mb-4">
+                <Logotype fontSize={11} colorMode="ink" />
               </div>
               {['Overview', 'Entities', 'Graph', 'Documents', 'Settings'].map((item, i) => (
                 <div key={item} className={`px-2 py-1.5 rounded-md text-xs mb-0.5 ${i === 1 ? 'bg-stone-100 text-stone-900 font-medium' : 'text-stone-400'}`}>
@@ -62,7 +61,7 @@ export default function LayoutPage() {
           {[
             { label: 'Sidebar', value: '256px fixed width', note: 'Collapsible on mobile' },
             { label: 'Top Bar', value: '40-48px height', note: 'Search + user menu' },
-            { label: 'Content Area', value: 'Fluid, scrollable', note: 'Snow (#F9FAFB) background' },
+            { label: 'Content Area', value: 'Fluid, scrollable', note: 'Cloud (#F4F4F1) background' },
           ].map(s => (
             <div key={s.label} className="bg-stone-50 rounded-lg px-3 py-2 border border-stone-100 text-center">
               <p className="text-xs font-semibold text-stone-500">{s.label}</p>
@@ -122,7 +121,8 @@ export default function LayoutPage() {
             <span>Grid System</span>
           </Tooltip>
         </h2>
-        <div className="border border-stone-200 rounded-xl overflow-hidden">
+        <div className="border border-stone-200 rounded-xl overflow-x-auto">
+          <div className="min-w-[560px]">
           <div className="grid grid-cols-4 bg-stone-50 border-b border-stone-200 px-4 py-2">
             {['Breakpoint', 'Width', 'Columns', 'Usage'].map(h => (
               <span key={h} className="text-xs font-semibold text-stone-400 uppercase tracking-wider">{h}</span>
@@ -141,6 +141,7 @@ export default function LayoutPage() {
               <span className="text-xs text-stone-500">{row.usage}</span>
             </div>
           ))}
+          </div>
         </div>
         {/* Visual grid demo */}
         <div className="mt-4 border border-stone-200 rounded-xl p-4">
@@ -182,7 +183,8 @@ export default function LayoutPage() {
             <span>Elevation & Z-Index</span>
           </Tooltip>
         </h2>
-        <div className="border border-stone-200 rounded-xl overflow-hidden">
+        <div className="border border-stone-200 rounded-xl overflow-x-auto">
+          <div className="min-w-[600px]">
           {[
             { level: 'Base', z: '0', shadow: 'none', use: 'Page content, cards, sections', example: 'bg-white border' },
             { level: 'Raised', z: '10', shadow: 'shadow-sm', use: 'Sticky headers, toolbars', example: 'shadow-sm' },
@@ -201,6 +203,7 @@ export default function LayoutPage() {
               </div>
             </div>
           ))}
+          </div>
         </div>
         <div className="mt-3 bg-stone-50 rounded-lg px-4 py-3 border border-stone-200">
           <p className="text-xs text-stone-600">

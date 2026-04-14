@@ -8,14 +8,14 @@ interface PageShellProps {
 
 export default function PageShell({ title, subtitle, children }: PageShellProps) {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10">
-      <div className="mb-8">
-        <h1 className="text-3xl font-semibold text-stone-900 tracking-tight">{title}</h1>
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-semibold text-ink tracking-tight">{title}</h1>
         {subtitle && (
-          <p className="mt-2 text-lg text-stone-500">{subtitle}</p>
+          <p className="mt-2 text-base sm:text-lg text-pewter">{subtitle}</p>
         )}
       </div>
-      <div className="space-y-10">
+      <div className="space-y-8 sm:space-y-10">
         {children}
       </div>
     </div>

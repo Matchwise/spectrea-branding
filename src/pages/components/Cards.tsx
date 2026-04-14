@@ -26,7 +26,7 @@ export default function Cards() {
       {/* ── Card Variants ────────────────────────────────────────── */}
       <Section>
         <h2 className="text-xl font-semibold text-stone-800 mb-4">
-          <Tooltip content="Cards are the primary container for grouped content. They create visual separation on the Snow surface and give content a 'home.' Every card follows the same border, radius, and padding rules.">
+          <Tooltip content="Cards are the primary container for grouped content. They create visual separation on the Cloud surface and give content a 'home.' Every card follows the same border, radius, and padding rules.">
             <span>Card Variants</span>
           </Tooltip>
         </h2>
@@ -88,7 +88,7 @@ export default function Cards() {
             { prop: 'Border', value: '1px solid Stone 200 (#E5E7EB)', note: 'Default container border' },
             { prop: 'Border radius', value: '12px (rounded-xl)', note: 'Friendly, modern corners' },
             { prop: 'Padding', value: '20px (p-5)', note: 'Comfortable inner spacing' },
-            { prop: 'Background', value: 'White #FFFFFF', note: 'Cards sit on the Snow surface' },
+            { prop: 'Background', value: 'Canvas #FDFDFB', note: 'Cards sit on the Cloud surface' },
             { prop: 'Shadow (elevated)', value: 'shadow-md', note: 'For floating elements only' },
             { prop: 'Hover border', value: 'Stone 300 (#D1D5DB)', note: 'Subtle darkening on interactive cards' },
             { prop: 'Card gap', value: '16px (gap-4)', note: 'Space between cards in a grid' },

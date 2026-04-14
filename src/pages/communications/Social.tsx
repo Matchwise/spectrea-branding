@@ -14,7 +14,8 @@ export default function Social() {
             <span>Profile Setup</span>
           </Tooltip>
         </h2>
-        <div className="border border-stone-200 rounded-xl overflow-hidden">
+        <div className="border border-stone-200 rounded-xl overflow-x-auto">
+          <div className="min-w-[640px]">
           <div className="grid grid-cols-4 bg-stone-50 border-b border-stone-200 px-4 py-2">
             <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Platform</span>
             <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Avatar</span>
@@ -34,6 +35,7 @@ export default function Social() {
               <span className="text-xs text-stone-500 italic">{row.bio}</span>
             </div>
           ))}
+          </div>
         </div>
       </Section>
 
@@ -89,12 +91,12 @@ export default function Social() {
           {/* Quote card */}
           <div>
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Quote Card</p>
-            <div className="rounded-xl overflow-hidden" style={{ backgroundColor: '#111827' }}>
+            <div className="rounded-xl overflow-hidden" style={{ backgroundColor: '#18181C' }}>
               <div className="p-6">
-                <p className="text-sm font-semibold leading-relaxed" style={{ color: '#F9FAFB', fontFamily: "'Albert Sans', sans-serif" }}>
+                <p className="text-sm font-semibold leading-relaxed" style={{ color: '#F4F4F1', fontFamily: "'Albert Sans', sans-serif" }}>
                   "Stop losing knowledge to silos."
                 </p>
-                <p className="text-xs mt-3" style={{ color: '#6B7280' }}>— Spectrea</p>
+                <p className="text-xs mt-3" style={{ color: '#97979E' }}>— Spectrea</p>
               </div>
               <div className="h-1" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
             </div>
@@ -103,10 +105,10 @@ export default function Social() {
           {/* Stat card */}
           <div>
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Stat Card</p>
-            <div className="rounded-xl overflow-hidden" style={{ backgroundColor: '#111827' }}>
+            <div className="rounded-xl overflow-hidden" style={{ backgroundColor: '#18181C' }}>
               <div className="p-6 text-center">
-                <p className="text-3xl font-semibold" style={{ color: '#F9FAFB', fontFamily: "'Albert Sans', sans-serif" }}>94%</p>
-                <p className="text-xs mt-1" style={{ color: '#6B7280' }}>average trust score across all entities</p>
+                <p className="text-3xl font-semibold" style={{ color: '#F4F4F1', fontFamily: "'Albert Sans', sans-serif" }}>94%</p>
+                <p className="text-xs mt-1" style={{ color: '#97979E' }}>average trust score across all entities</p>
               </div>
               <div className="h-1" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
             </div>
