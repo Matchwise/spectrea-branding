@@ -28,7 +28,7 @@ import Copy from './pages/communications/Copy'
 import Social from './pages/communications/Social'
 import Email from './pages/communications/Email'
 import Presentations from './pages/communications/Presentations'
-import Photography from './pages/imagery/Photography'
+import Illustration from './pages/imagery/Illustration'
 import Iconography from './pages/imagery/Iconography'
 import Motion from './pages/imagery/Motion'
 import Downloads from './pages/resources/Downloads'
@@ -78,7 +78,7 @@ export default function App() {
             <Route path="/communications/social" element={<Social />} />
             <Route path="/communications/email" element={<Email />} />
             <Route path="/communications/presentations" element={<Presentations />} />
-            <Route path="/imagery/photography" element={<Photography />} />
+            <Route path="/imagery/illustration" element={<Illustration />} />
             <Route path="/imagery/iconography" element={<Iconography />} />
             <Route path="/imagery/motion" element={<Motion />} />
             <Route path="/resources/downloads" element={<Downloads />} />

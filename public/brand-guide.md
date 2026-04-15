@@ -364,7 +364,59 @@ Desktop (1024+) / Tablet (640–1023) / Mobile (<640):
 
 ---
 
-## 9. Motion
+## 9. Illustration
+
+Spectrea runs a **dual visual language**. Iconography and product UI stay strictly geometric (Section 8). Illustration — for marketing pages, blog posts, fundraising decks, social, and brand storytelling — is warmer, richer, and allows more organic composition. Both tiers share the same palette so they read as one brand.
+
+### Tier A — Product / docs (strict geometric)
+Already defined by Sections 5–8. Flat primitives, no gradients, strict palette. Used for: app UI, iconography, technical diagrams, developer documentation, changelogs, status pages.
+
+### Tier B — Marketing / editorial (warmer illustrated)
+For everything people-facing and narrative. Characterised by:
+
+- **Filled shapes only** — no outlines, no borders, no line art
+- **Mixed shape vocabulary** — basic geometric primitives (circles, rectangles, triangles, arcs) for structured subjects + organic curved shapes (flowing foliage, rounded hills, billowy clouds, soft contours) for natural / soft subjects
+- **Tints of primaries** — 20–60% opacity versions of Cobalt, Teal, Amber, Rose for supporting elements, mid-ground, atmospheric depth. Every element carries colour; no large empty neutral areas
+- **Subtle depth** — soft vertical gradient permitted on background fields only; single darker tonal step on rounded organic objects; atmospheric perspective for recessed elements
+- **Figures** — clean silhouette, flat-block clothing in palette colours, suggested face only. No detailed facial features
+- **Balanced composition** — visual weight and colour distributed across the frame; asymmetric balance via rule-of-thirds or diagonal flow; element count fits the subject (rich but uncluttered)
+
+**Reference aesthetic:** Linear.app and Stripe brand illustrations — warm, composed, full of life, clean.
+
+### Production workflow
+1. Generate with a free + commercial-safe AI tool (Gemini, Bing Image Creator / DALL-E 3, Adobe Firefly, or Stable Diffusion locally) using the locked prompt template
+2. Vectorise the raster output with **Inkscape** (Path → Trace Bitmap → Multiple scans → Colors)
+3. Drop the SVG into `/public/illustrations/`, or paste markup into a React component
+4. Snap fills to exact Spectrea hex codes, namespace IDs, clean up excess paths
+
+**Prompt template:** versioned at `/docs/illustration-prompt.md` (internal). Keep that file as the single source of truth — edit there, not here.
+
+### What Tier B never does
+- Outlines, strokes, borders, line art
+- Photorealism, 3D rendering, isometric projection
+- Drop shadows, glows, lens flares
+- Heavy textures, noise, grain, hatching
+- Off-brand colours (neon, magenta, cyan, bright yellow, pastel pink, purple, lavender, bright green)
+- Detailed facial features — suggested shapes only
+- Mascot characters, anthropomorphic objects
+- Overcrowded scenes
+
+### When to use which tier
+
+| Surface | Tier |
+|---|---|
+| App UI, iconography | A — strict geometric |
+| Technical diagrams, dashboards | A |
+| Developer docs, changelogs | A |
+| Marketing website | B — illustrated |
+| Blog / editorial | B |
+| Fundraising / sales deck | B |
+| Social posts | B |
+| Onboarding / product tour hero images | B (with restraint) |
+
+---
+
+## 10. Motion
 
 ### Philosophy
 Purposeful, subtle, natural. Every animation answers "what does this help the user understand?" — if the answer is "nothing," remove it. Motion guides attention, confirms actions, and creates continuity; it never decorates.
@@ -385,7 +437,7 @@ The Spectrea mark animates on a 3-second loop: the spectrum stroke draws along t
 
 ---
 
-## 10. Components
+## 11. Components
 
 ### Buttons
 - **Primary (Cobalt)** — the hero action. One per section. `#4271DF`, white text; hover `#3A63C4`; active `#3255A7`.
@@ -414,7 +466,7 @@ Container: `1 px` Stone-200 border, `12 px` radius (rounded-xl), `20 px` padding
 
 ---
 
-## 11. Communications
+## 12. Communications
 
 ### Voice in action
 Every piece of written output — product copy, email, social, presentation slides — follows the same voice formula: clear, specific, warm. Technical language is welcomed when it earns its place ("graph architecture" is fine; "leveraging our graph-based RAG pipeline for vector embeddings" is not).
@@ -442,7 +494,7 @@ Every piece of written output — product copy, email, social, presentation slid
 
 ---
 
-## 12. Governance
+## 13. Governance
 
 ### The simple test
 If you need to ask "is this OK?" — it probably isn't. The logo should always look exactly like the approved versions on the Variations page. When in doubt, use the primary treatment (grey dots, Cool-Duet stroke) on Canvas — that's always correct.
@@ -458,7 +510,7 @@ Brand lead owns this document. Updates live here; downstream consumers (Figma li
 
 ---
 
-## 13. Resources
+## 14. Resources
 
 ### CSS tokens
 ```css

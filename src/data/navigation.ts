@@ -53,7 +53,7 @@ export const navigation: NavItem[] = [
     label: 'Imagery & Motion',
     path: '/imagery',
     children: [
-      { label: 'Abstract Imagery', path: '/imagery/photography' },
+      { label: 'Illustration', path: '/imagery/illustration' },
       { label: 'Iconography', path: '/imagery/iconography' },
       { label: 'Motion', path: '/imagery/motion' },
     ],
