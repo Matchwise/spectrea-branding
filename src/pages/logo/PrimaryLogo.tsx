@@ -39,9 +39,9 @@ export default function PrimaryLogo() {
               <span
                 className="font-heading font-semibold"
                 style={{ fontSize: 32, letterSpacing: '0.02em', color: '#18181C' }}
-              >pectrea</span>
+              >spectrea</span>
             </div>
-            <p className="text-xs text-stone-500 mt-4">Albert Sans Semibold 600, all lowercase with 0.02em tracking. Shown here in Ink for the structural anatomy — the wordmark is never rendered alone in production, only as part of the lockup, where the S mark becomes the leading glyph.</p>
+            <p className="text-xs text-stone-500 mt-4">Albert Sans Semibold 600, all lowercase with 0.02em tracking. Shown here as the full word for the structural anatomy — in production the wordmark never appears alone; the S mark replaces the leading <code className="font-mono text-[10px]">s</code>, and only the tail <code className="font-mono text-[10px]">pectrea</code> is typeset.</p>
           </div>
           <div className="border border-stone-200 rounded-xl p-6 flex flex-col items-center text-center">
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-4">Lockup</p>
