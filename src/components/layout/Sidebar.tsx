@@ -72,7 +72,7 @@ export default function Sidebar({ open, onClose }: { open: boolean; onClose: () 
         <Link to="/" className="flex items-center gap-2.5 mb-6 px-3">
           <StaticLogo size={32} colorMode="cool" dotColorMode="grey" />
           <div>
-            <div className="font-semibold text-stone-900 text-sm font-heading" style={{ letterSpacing: '0.02em' }}>SPECTREA</div>
+            <div className="font-semibold text-stone-900 text-sm font-heading" style={{ letterSpacing: '0.02em' }}>pectrea</div>
             <div className="text-xs text-stone-400 uppercase tracking-widest">Brand Guide</div>
           </div>
         </Link>

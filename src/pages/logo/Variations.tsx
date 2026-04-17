@@ -7,7 +7,7 @@ interface Variant {
   colorMode: ColorMode
   dotColorMode?: ColorMode
   wordmark: boolean
-  /** Mono lockups only — ignored by gradient lockups, which use the full-spectrum gradient. */
+  /** Mono lockups only — ignored by gradient lockups (which carry the Cool Duet on the mark). */
   monoColor?: string
   bgColor: string
   borderColor: string
@@ -40,12 +40,14 @@ function VariantCard({ v, highlight }: { v: Variant; highlight?: boolean }) {
       )
     }
     if (v.wordmark) {
-      // The lockup has TWO forms only: full gradient (mark + wordmark unified)
-      // or full mono (mark + wordmark single color). No mixed treatments.
+      // The lockup has TWO forms only: two-tone mark + mono wordmark
+      // (`LogotypeGradient`), or fully mono mark + wordmark (`Logotype`).
+      // No full-spectrum wordmark, no gradient wordmark.
       const lockupFont = 48
+      const isDarkSurface = v.bgColor === '#18181C'
       const lockup = v.colorMode === 'ink' || v.colorMode === 'white'
         ? <Logotype fontSize={lockupFont} colorMode={v.colorMode} color={v.monoColor} />
-        : <LogotypeGradient fontSize={lockupFont} />
+        : <LogotypeGradient fontSize={lockupFont} colorMode={isDarkSurface ? 'white' : 'ink'} />
       return (
         <div style={{ backgroundColor: isDark ? v.bgColor : undefined, borderRadius: isDark ? 8 : 0, padding: isDark ? '8px 16px' : 0 }}>
           {lockup}
@@ -268,7 +270,7 @@ export default function Variations() {
             </div>
             <div className="p-3 border-t border-brand/10 bg-brand/5">
               <p className="text-xs font-semibold text-brand">Gradient logotype (preferred for brand)</p>
-              <p className="text-xs text-stone-500 mt-0.5">Unified gradient across mark + ALL CAPS wordmark. The spectrum flows from cobalt through rose at 60°. For marketing, hero sections, and brand moments.</p>
+              <p className="text-xs text-stone-500 mt-0.5">Cool Duet on the S mark, monotone Ink on the lowercase wordmark. The gradient energy lives in the mark; the wordmark stays crisp and calm. For marketing, hero sections, and brand moments.</p>
             </div>
           </div>
           <div className="border border-stone-200 rounded-xl overflow-hidden">
@@ -276,7 +278,7 @@ export default function Variations() {
               <div className="flex items-center gap-3">
                 <StaticLogo size={36} colorMode="cool" dotColorMode="grey" />
                 <div>
-                  <span className="font-heading font-semibold text-stone-900 text-sm" style={{ letterSpacing: '0.02em' }}>SPECTREA</span>
+                  <span className="font-heading font-semibold text-stone-900 text-sm" style={{ letterSpacing: '0.02em' }}>pectrea</span>
                   <p className="text-xs text-stone-400 uppercase tracking-widest">Brand Guide</p>
                 </div>
               </div>
@@ -290,7 +292,7 @@ export default function Variations() {
             <div className="p-5 flex items-center justify-center bg-stone-50 min-h-[130px]">
               <div className="flex flex-col items-center gap-2">
                 <StaticLogo size={52} colorMode="cool" dotColorMode="grey" />
-                <span className="font-heading font-semibold text-stone-900 text-lg" style={{ letterSpacing: '0.02em' }}>SPECTREA</span>
+                <span className="font-heading font-semibold text-stone-900 text-lg" style={{ letterSpacing: '0.02em' }}>pectrea</span>
               </div>
             </div>
             <div className="p-3 border-t border-stone-100">
@@ -346,7 +348,7 @@ export default function Variations() {
             <div key={desc} className="border border-stone-200 rounded-xl p-5 flex items-center gap-3">
               <StaticLogo size={36} colorMode="cool" dotColorMode="grey" />
               <div>
-                <span className="font-heading font-semibold text-stone-900 text-sm" style={{ letterSpacing: '0.02em' }}>SPECTREA</span>
+                <span className="font-heading font-semibold text-stone-900 text-sm" style={{ letterSpacing: '0.02em' }}>pectrea</span>
                 <p className="text-xs text-stone-400 uppercase tracking-widest">{desc}</p>
               </div>
             </div>

@@ -228,7 +228,7 @@ async function main() {
   // directly (instead of loading it via <img src>) lets the SVG share the
   // HTML's loaded fonts — otherwise Chrome renders each <img>-loaded SVG in
   // isolation with async @import, which can snapshot before Albert Sans 600
-  // finishes loading and leave PECTREA in the default Regular weight.
+  // finishes loading and leave the wordmark in the default Regular weight.
   //
   // When inlining multiple SVGs we must namespace every `id=` and its
   // `url(#id)` references per instance — the same SVG file referenced in

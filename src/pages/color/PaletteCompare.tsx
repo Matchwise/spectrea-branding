@@ -432,11 +432,11 @@ export default function PaletteCompare() {
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <CustomLogo size={40} cobalt={result.cobalt.hex} teal={result.teal.hex} amber={result.amber.hex} />
-                  <span className="font-heading font-semibold text-stone-900 text-lg" style={{ letterSpacing: '0.02em' }}>SPECTREA</span>
+                  <span className="font-heading font-semibold text-stone-900 text-lg" style={{ letterSpacing: '0.02em' }}>pectrea</span>
                 </div>
                 <div className="bg-ink rounded-lg px-4 py-3 flex items-center gap-3">
                   <CustomLogo size={40} cobalt={result.cobalt.hex} teal={result.teal.hex} amber={result.amber.hex} />
-                  <span className="font-heading font-semibold text-white text-lg" style={{ letterSpacing: '0.02em' }}>SPECTREA</span>
+                  <span className="font-heading font-semibold text-white text-lg" style={{ letterSpacing: '0.02em' }}>pectrea</span>
                 </div>
               </div>
             </div>

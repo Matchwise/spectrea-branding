@@ -366,7 +366,9 @@ function useLockupLayout(fontSize: number) {
   const markW = MW * s
   const textX = markW + gap
   const textY = pad + capH
-  const totalW = textX + fontSize * 5.5
+  // Approximate width of the lowercase wordmark "pectrea" at this fontSize,
+  // plus a small right-side buffer. Tighter than the old caps sizing (5.5).
+  const totalW = textX + fontSize * 4.2
   const totalH = capH + pad * 2
 
   let vpDots: { x: number; y: number }[] = []
@@ -448,50 +450,31 @@ export const Logotype = forwardRef<SVGSVGElement, LogotypeProps>(function Logoty
         fontWeight={600}
         fontSize={fontSize}
         letterSpacing={`${fontSize * 0.02}px`}
-      >PECTREA</text>
+      >pectrea</text>
     </svg>
   )
 })
 
-// ─── The one and only lockup gradient ─────────────────────────────
-// Full spectrum Cobalt → Teal → Amber → Rose with a late-shift intermediate
-// at 55% to prevent muddy olive in the teal→amber transition. There is NO
-// other gradient option for the lockup — duets belong to the static mark
-// (via `StaticLogo colorMode="cool"` etc.), not the lockup.
-const LOCKUP_GRADIENT_STOPS: Array<{ offset: number; color: string }> = [
-  { offset: 0, color: '#4271DF' },
-  { offset: 33, color: '#00B6A0' },
-  { offset: 55, color: '#6FB884' },
-  { offset: 66, color: '#E19000' },
-  { offset: 100, color: '#F24260' },
-]
-
-// ─── LogotypeGradient: Unified gradient lockup (single SVG) ──────
-// Mark AND wordmark share the full-spectrum gradient — this is the only
-// gradient form. For mono lockups use `Logotype`. No duet lockups, no mixed
-// coloured-mark + solid-wordmark — those are off-brand.
+// ─── LogotypeGradient: Cool Duet mark + monotone wordmark lockup ──
+// The mark renders identically to the standalone `StaticLogo colorMode="cool"`
+// — 48 per-segment paths along the visible stroke, each with its own solid
+// colour from the Cool Duet (Cobalt → Teal), and all dots grey. The wordmark
+// is a solid mono colour following `Logotype`'s rules: Ink on light, White on
+// dark. No gradient-filled wordmark.
 export interface LogotypeGradientProps {
   fontSize: number
-  angle?: number
-  /** Optional override of dot colour. Default: connected dots carry the
-   *  gradient, trailing dots stay grey (the unified brand moment). */
-  dotFill?: string
+  /** Monotone colour mode for the wordmark. `ink` on light surfaces,
+   *  `white` on dark. Default: `ink`. */
+  colorMode?: MonoColorMode
+  /** Explicit wordmark colour override. Takes precedence over `colorMode`. */
+  wordmarkColor?: string
 }
 
 export const LogotypeGradient = forwardRef<SVGSVGElement, LogotypeGradientProps>(function LogotypeGradient(
-  { fontSize, angle = 60, dotFill },
+  { fontSize, colorMode = 'ink', wordmarkColor },
   ref,
 ) {
   const layout = useLockupLayout(fontSize)
-
-  const rad = ((90 - angle) * Math.PI) / 180
-  const halfDiag = Math.sqrt(layout.totalW * layout.totalW + layout.totalH * layout.totalH) / 2
-  const cx = layout.totalW / 2, cy = layout.totalH / 2
-  const gx1 = cx - Math.cos(rad) * halfDiag
-  const gy1 = cy + Math.sin(rad) * halfDiag
-  const gx2 = cx + Math.cos(rad) * halfDiag
-  const gy2 = cy - Math.sin(rad) * halfDiag
-  const gradId = `lg${fontSize}${angle}`
 
   if (!layout.metrics) {
     return (
@@ -501,42 +484,43 @@ export const LogotypeGradient = forwardRef<SVGSVGElement, LogotypeGradientProps>
     )
   }
 
-  // Connected dots carry the gradient, trailing dots stay grey (the unified
-  // brand moment). `dotFill` overrides both if provided.
-  const connDotFill = dotFill ?? `url(#${gradId})`
-  const tailDotFill = dotFill ?? '#A3A3A3'
+  const resolvedWordmarkColor = wordmarkColor ?? fillForMode(0.5, colorMode)
+  // Scale the per-segment stroke length using the same formula as StaticLogo
+  // (connectedLen - strokeW/2 + dotR*0.75), already pre-scaled by the layout.
+  const strokeLen = layout.vpConnLen
 
   return (
     <svg ref={ref} width={layout.totalW} height={layout.totalH} viewBox={`0 0 ${layout.totalW} ${layout.totalH}`}>
       <path ref={layout.pathRef} d={LOGO.pathD} fill="none" stroke="none" />
-      <defs>
-        <linearGradient id={gradId} x1={gx1} y1={gy1} x2={gx2} y2={gy2} gradientUnits="userSpaceOnUse">
-          {LOCKUP_GRADIENT_STOPS.map((s, i) => (
-            <stop key={i} offset={`${s.offset}%`} stopColor={s.color} />
-          ))}
-        </linearGradient>
-      </defs>
-      {layout.connDots.map((d, i) => (
-        <circle key={i} cx={d.x} cy={d.y} r={layout.vpDotR} fill={connDotFill} />
-      ))}
-      {layout.tailDotsArr.map((d, i) => (
-        <circle key={`t${i}`} cx={d.x} cy={d.y} r={layout.vpDotR} fill={tailDotFill} />
+      {[...layout.connDots, ...layout.tailDotsArr].map((d, i) => (
+        <circle key={i} cx={d.x} cy={d.y} r={layout.vpDotR} fill="#A3A3A3" />
       ))}
       <g transform={`translate(0, ${layout.pad})`}>
-        <path d={layout.vpPath} fill="none"
-          stroke={`url(#${gradId})`}
-          strokeWidth={layout.vpStrokeW}
-          strokeLinecap="round"
-          strokeDasharray={`${layout.vpConnLen} ${layout.vpTotalLen * 10}`}
-        />
+        {Array.from({ length: STROKE_SEGMENTS }, (_, i) => {
+          const segStart = (strokeLen * i) / STROKE_SEGMENTS
+          const segEnd = (strokeLen * (i + 1)) / STROKE_SEGMENTS
+          const progress = (segStart + segEnd) / 2 / strokeLen
+          const color = fillForMode(progress, 'cool')
+          return (
+            <path key={i}
+              d={layout.vpPath}
+              fill="none"
+              stroke={color}
+              strokeWidth={layout.vpStrokeW}
+              strokeLinecap="round"
+              strokeDasharray={`${segEnd - segStart + 1.5} ${layout.vpTotalLen}`}
+              strokeDashoffset={-segStart}
+            />
+          )
+        })}
       </g>
       <text x={layout.textX} y={layout.textY}
-        fill={`url(#${gradId})`}
+        fill={resolvedWordmarkColor}
         fontFamily="'Albert Sans', sans-serif"
         fontWeight={600}
         fontSize={fontSize}
         letterSpacing={`${fontSize * 0.02}px`}
-      >PECTREA</text>
+      >pectrea</text>
     </svg>
   )
 })

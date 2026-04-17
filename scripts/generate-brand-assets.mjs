@@ -25,7 +25,7 @@ const outDir = resolve(root, 'public', 'brand-assets')
 await mkdir(outDir, { recursive: true })
 
 // ─── Load Albert Sans variable font for text-to-path conversion ─────
-// Rendering PECTREA as a path (not a <text fill="url(#g)">) works around
+// Rendering the wordmark as a path (not a <text fill="url(#g)">) works around
 // a Chrome --print-to-pdf bug where gradient-filled text renders as a
 // solid rectangle instead of glyph outlines.
 const albertSansBuf = await readFile(resolve(root, 'scripts', 'fonts', 'AlbertSans.ttf'))
@@ -142,6 +142,45 @@ function linearGradientDef(id, stops, { x1 = '0', y1 = '0', x2 = '64', y2 = '64'
   </linearGradient>`
 }
 
+// ─── Per-segment stroke rendering (mirrors StaticLogo) ──────────
+// Mirrors the 48-segment approach in src/components/brand/SpectreaLogo.tsx.
+// The key property: each segment is a solid colour from `colorFn(progress)`,
+// so the gradient appears distributed along the VISIBLE stroke (0→1) rather
+// than projected across an arbitrary bounding box. This is what makes the
+// static mark, the lockup mark, and the React mark all render identically.
+const STROKE_SEGMENTS = 48
+
+function rgbLerp(a, b, t) { return Math.round(a + (b - a) * t) }
+function coolDuetColorFn(t) {
+  return `rgb(${rgbLerp(66, 0, t)},${rgbLerp(113, 182, t)},${rgbLerp(223, 160, t)})`
+}
+function spectrumColorFn(t) {
+  if (t < 0.5) {
+    const p = t / 0.5
+    return `rgb(${rgbLerp(66, 0, p)},${rgbLerp(113, 182, p)},${rgbLerp(223, 160, p)})`
+  }
+  const p = (t - 0.5) / 0.5
+  return `rgb(${rgbLerp(0, 225, p)},${rgbLerp(182, 144, p)},${rgbLerp(160, 0, p)})`
+}
+
+function strokeSegments(colorFn) {
+  const strokeLen = connectedLen - LOGO.strokeW / 2 + LOGO.dotR * 0.75
+  const out = []
+  for (let i = 0; i < STROKE_SEGMENTS; i++) {
+    const segStart = (strokeLen * i) / STROKE_SEGMENTS
+    const segEnd = (strokeLen * (i + 1)) / STROKE_SEGMENTS
+    const progress = (segStart + segEnd) / 2 / strokeLen
+    const color = colorFn(progress)
+    out.push(
+      `<path d="${LOGO.pathD}" fill="none" stroke="${color}" ` +
+      `stroke-width="${LOGO.strokeW}" stroke-linecap="round" ` +
+      `stroke-dasharray="${(segEnd - segStart + 1.5).toFixed(2)} ${totalLen.toFixed(2)}" ` +
+      `stroke-dashoffset="${(-segStart).toFixed(2)}"/>`
+    )
+  }
+  return out.join('\n  ')
+}
+
 /**
  * Render a logo mark as a static SVG. Uses a TIGHT viewBox that matches the
  * visible glyph extent (not the original 64×64 construction canvas), so the
@@ -150,47 +189,40 @@ function linearGradientDef(id, stops, { x1 = '0', y1 = '0', x2 = '64', y2 = '64'
  * Z-order matches the live React component: dots first, then stroke on top —
  * the stroke visually passes through the dots rather than sitting under them.
  */
-function renderMark({ size = 160, strokeFill, dotFill, gradientDef = '', bg = null }) {
+function renderMark({ size = 160, strokeFill, strokeColorFn, dotFill, bg = null }) {
   const vb = MARK.viewBox
   const aspect = vb.w / vb.h
   const width = Math.round(size * aspect)
   const height = size
-  // `+ 1.5` matches the per-segment overlap the React component uses for its
-  // 48-segment gradient stroke. Without it, the single-dash static stroke
-  // falls just short of the first trailing dot (dot 7) and a sliver of grey
-  // peeks past the round cap.
-  const dash = `${connectedLen - LOGO.strokeW / 2 + LOGO.dotR * 0.75 + 1.5} ${totalLen}`
   const bgRect = bg
     ? `<rect x="${vb.x}" y="${vb.y}" width="${vb.w}" height="${vb.h}" fill="${bg}"/>`
     : ''
   const circles = DOTS.map(d =>
     `<circle cx="${d.x.toFixed(2)}" cy="${d.y.toFixed(2)}" r="${LOGO.dotR}" fill="${dotFill}"/>`
   ).join('\n  ')
+  // When a per-segment colour function is provided, emit 48 overlapping
+  // dasharrayed paths (identical to StaticLogo's runtime rendering). For mono
+  // strokes, a single solid-coloured path is enough.
+  const strokeMarkup = strokeColorFn
+    ? strokeSegments(strokeColorFn)
+    : `<path d="${LOGO.pathD}" fill="none" stroke="${strokeFill}" stroke-width="${LOGO.strokeW}" ` +
+      `stroke-linecap="round" stroke-dasharray="${(connectedLen - LOGO.strokeW / 2 + LOGO.dotR * 0.75 + 1.5).toFixed(2)} ${totalLen.toFixed(2)}"/>`
   return xml(`
 <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="${vb.x} ${vb.y} ${vb.w} ${vb.h}">
-  ${gradientDef ? `<defs>${gradientDef}</defs>` : ''}
   ${bgRect}
   ${circles}
-  <path d="${LOGO.pathD}" fill="none" stroke="${strokeFill}" stroke-width="${LOGO.strokeW}"
-        stroke-linecap="round" stroke-dasharray="${dash}"/>
+  ${strokeMarkup}
 </svg>
 `)
 }
 
 // ─── Logo variants ──────────────────────────────────────────────
 
-// Gradient for logo marks needs to span the tight viewBox.
-const markGradientUnits = `x1="${MARK.viewBox.x}" y1="${MARK.viewBox.y}" x2="${MARK.viewBox.x + MARK.viewBox.w}" y2="${MARK.viewBox.y + MARK.viewBox.h}"`
-
 // Static logo — Cool Duet + grey dots (primary)
 await writeFile(resolve(outDir, 'logo-mark-cool.svg'), renderMark({
   size: 200,
-  strokeFill: 'url(#cool)',
+  strokeColorFn: coolDuetColorFn,
   dotFill: DOT_GREY,
-  gradientDef: `<linearGradient id="cool" ${markGradientUnits} gradientUnits="userSpaceOnUse">
-    <stop offset="0%" stop-color="${COBALT}"/>
-    <stop offset="100%" stop-color="${TEAL}"/>
-  </linearGradient>`,
 }))
 
 // Static logo — Ink (mono)
@@ -211,25 +243,20 @@ await writeFile(resolve(outDir, 'logo-mark-white.svg'), renderMark({
 // Static logo — full spectrum (animated mark's frame)
 await writeFile(resolve(outDir, 'logo-mark-spectrum.svg'), renderMark({
   size: 200,
-  strokeFill: 'url(#spectrum)',
+  strokeColorFn: spectrumColorFn,
   dotFill: DOT_GREY,
-  gradientDef: `<linearGradient id="spectrum" ${markGradientUnits} gradientUnits="userSpaceOnUse">
-    <stop offset="0%"   stop-color="${COBALT}"/>
-    <stop offset="50%"  stop-color="${TEAL}"/>
-    <stop offset="100%" stop-color="${AMBER}"/>
-  </linearGradient>`,
 }))
 
-// ─── Lockups (mark + PECTREA wordmark) ───────────────────────────
+// ─── Lockups (mark + pectrea wordmark) ───────────────────────────
 /**
  * Build a lockup SVG. Layout mirrors the live LogotypeGradient component
  * exactly (src/components/brand/SpectreaLogo.tsx `useLockupLayout`):
  *   - cap height = fontSize * 0.72
  *   - mark scale = capH / MH (makes mark visible height == cap height)
  *   - gap between mark and wordmark = fontSize * 0.05
- *   - total width = textX + fontSize * 5.5 (true width of "PECTREA")
+ *   - total width = textX + fontkit-measured advance width of "pectrea"
  */
-function renderLockup({ strokeFill, dotFill, wordmarkFill, gradientDef = '', bg = null, fontSize = 80 }) {
+function renderLockup({ strokeFill, strokeColorFn, dotFill, wordmarkFill, bg = null, fontSize = 80 }) {
   const { ML, MT, MW, MH } = MARK
   const capH = fontSize * 0.72
   const s = capH / MH
@@ -240,51 +267,46 @@ function renderLockup({ strokeFill, dotFill, wordmarkFill, gradientDef = '', bg 
   const textX = markW + gap
   const textY = pad + capH
 
-  // Render "PECTREA" as an outline path (see textToPath comment) and use
+  // Render "pectrea" as an outline path (see textToPath comment) and use
   // its measured width for the lockup totalW, so the SVG box always fits
   // the glyphs exactly with no clipping or dead space.
-  const { d: textD, advanceWidth: textW } = textToPath('PECTREA', fontSize, textY, textX)
+  const { d: textD, advanceWidth: textW } = textToPath('pectrea', fontSize, textY, textX)
   const totalW = textX + textW + pad
   const totalH = capH + pad * 2
 
-  // See renderMark for why +1.5 — matches the React component's 48-segment overlap.
-  const origDash = `${connectedLen - LOGO.strokeW / 2 + LOGO.dotR * 0.75 + 1.5} ${totalLen}`
   const circles = DOTS.map(d =>
     `<circle cx="${d.x.toFixed(2)}" cy="${d.y.toFixed(2)}" r="${LOGO.dotR}" fill="${dotFill}"/>`
   ).join('\n    ')
   const bgRect = bg
     ? `<rect width="${totalW.toFixed(0)}" height="${totalH.toFixed(0)}" fill="${bg}"/>`
     : ''
-  const gd = typeof gradientDef === 'function' ? gradientDef({ width: totalW, height: totalH }) : gradientDef
+  // Same per-segment logic as renderMark: gradient strokes emit 48 overlapping
+  // dasharrayed paths, mono strokes emit one solid path.
+  const strokeMarkup = strokeColorFn
+    ? strokeSegments(strokeColorFn)
+    : `<path d="${LOGO.pathD}" fill="none" stroke="${strokeFill}" stroke-width="${LOGO.strokeW}" ` +
+      `stroke-linecap="round" stroke-dasharray="${(connectedLen - LOGO.strokeW / 2 + LOGO.dotR * 0.75 + 1.5).toFixed(2)} ${totalLen.toFixed(2)}"/>`
   return xml(`
 <svg xmlns="http://www.w3.org/2000/svg" width="${totalW.toFixed(0)}" height="${totalH.toFixed(0)}" viewBox="0 0 ${totalW.toFixed(0)} ${totalH.toFixed(0)}">
-  ${gd ? `<defs>${gd}</defs>` : ''}
   ${bgRect}
   <g transform="translate(${(-ML * s).toFixed(2)} ${(-MT * s + pad).toFixed(2)}) scale(${s})">
     ${circles}
-    <path d="${LOGO.pathD}" fill="none" stroke="${strokeFill}" stroke-width="${LOGO.strokeW}"
-          stroke-linecap="round" stroke-dasharray="${origDash}"/>
+    ${strokeMarkup}
   </g>
   <path d="${textD}" fill="${wordmarkFill}"/>
 </svg>
 `)
 }
 
-// Gradient lockup. The wordmark renders as a single <path> (not <text>)
-// because Chrome's --print-to-pdf has a bug where gradient-filled text
-// sometimes paints as a solid rectangle instead of glyph outlines.
-// fill="url(#gradient)" on <path> works reliably.
+// Gradient lockup. The mark carries a two-tone Cool Duet (Cobalt → Teal);
+// the wordmark is monotone Ink. The wordmark renders as a single <path>
+// (not <text>) to avoid the Chrome --print-to-pdf gradient-text bug and
+// to keep every lockup SVG glyph-shape consistent regardless of whether
+// the fill is solid or gradient.
 await writeFile(resolve(outDir, 'logo-lockup-gradient.svg'), renderLockup({
-  strokeFill: 'url(#lockup)',
-  dotFill: 'url(#lockup)',
-  wordmarkFill: 'url(#lockup)',
-  gradientDef: ({ width }) => linearGradientDef('lockup', [
-    { offset: '0%',   color: COBALT },
-    { offset: '33%',  color: TEAL },
-    { offset: '55%',  color: BRIDGE },
-    { offset: '66%',  color: AMBER },
-    { offset: '100%', color: ROSE },
-  ], { x1: '0', y1: '0', x2: String(width), y2: '0' }),
+  strokeColorFn: coolDuetColorFn,
+  dotFill: DOT_GREY,
+  wordmarkFill: INK,
 }))
 
 // Mono ink lockup
@@ -455,13 +477,10 @@ await writeFile(resolve(outDir, 'gradient-lockup.svg'), gradientStrip({
   id: 'g-lock',
   stops: [
     { offset: '0%',   color: COBALT },
-    { offset: '33%',  color: TEAL },
-    { offset: '55%',  color: BRIDGE },
-    { offset: '66%',  color: AMBER },
-    { offset: '100%', color: ROSE },
+    { offset: '100%', color: TEAL },
   ],
-  label: 'Lockup gradient — LogotypeGradient only, 5-stop with bridge',
-  sublabel: '0% #4271DF · 33% #00B6A0 · 55% #6FB884 · 66% #E19000 · 100% #F24260',
+  label: 'Lockup mark gradient — LogotypeGradient only, Cool Duet',
+  sublabel: '0% #4271DF → 100% #00B6A0 (wordmark stays monotone Ink / White)',
 }))
 
 // ─── Typography samples ─────────────────────────────────────────

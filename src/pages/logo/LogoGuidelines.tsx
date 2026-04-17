@@ -53,7 +53,7 @@ export default function LogoGuidelines() {
             <div className="flex items-center gap-0">
               <span className="text-xs text-stone-400">Check out</span>
               <StaticLogo size={28} colorMode="cool" dotColorMode="grey" />
-              <span className="font-heading font-semibold text-stone-900 text-xs" style={{ letterSpacing: '0.02em' }}>SPECTREA</span>
+              <span className="font-heading font-semibold text-stone-900 text-xs" style={{ letterSpacing: '0.02em' }}>pectrea</span>
               <span className="text-xs text-stone-400">today!</span>
             </div>
           </DontExample>
@@ -113,13 +113,13 @@ export default function LogoGuidelines() {
           <DontExample label="Any variant on mid-tone backgrounds">
             <div className="bg-stone-400 rounded-lg px-3 py-2 flex items-center gap-2">
               <StaticLogo size={28} colorMode="cool" dotColorMode="grey" />
-              <span className="font-heading font-semibold text-stone-900 text-xs" style={{ letterSpacing: '0.02em' }}>SPECTREA</span>
+              <span className="font-heading font-semibold text-stone-900 text-xs" style={{ letterSpacing: '0.02em' }}>pectrea</span>
             </div>
           </DontExample>
           <DontExample label="Photo without sufficient overlay">
             <div className="bg-gradient-to-r from-stone-400 to-stone-500 rounded-lg px-3 py-2 flex items-center gap-2">
               <StaticLogo size={28} colorMode="white" />
-              <span className="font-heading font-semibold text-white text-xs" style={{ letterSpacing: '0.02em' }}>SPECTREA</span>
+              <span className="font-heading font-semibold text-white text-xs" style={{ letterSpacing: '0.02em' }}>pectrea</span>
             </div>
           </DontExample>
           <DontExample label="Ink mark on dark — invisible">
@@ -145,7 +145,7 @@ export default function LogoGuidelines() {
               <div className="w-7 h-7 rounded-full bg-[#18181C] flex items-center justify-center">
                 <StaticLogo size={18} colorMode="white" />
               </div>
-              <span className="font-heading font-semibold text-stone-700 text-[10px]" style={{ letterSpacing: '0.02em' }}>SPECTREA</span>
+              <span className="font-heading font-semibold text-stone-700 text-[10px]" style={{ letterSpacing: '0.02em' }}>pectrea</span>
             </div>
           </DoExample>
           <DontExample label="Squircle or rounded-square">

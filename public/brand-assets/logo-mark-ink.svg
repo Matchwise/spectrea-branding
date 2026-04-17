@@ -9,6 +9,5 @@
   <circle cx="40.89" cy="53.58" r="3.5" fill="#18181C"/>
   <circle cx="30.34" cy="55.73" r="3.5" fill="#18181C"/>
   <circle cx="20.00" cy="52.00" r="3.5" fill="#18181C"/>
-  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="#18181C" stroke-width="8"
-  stroke-linecap="round" stroke-dasharray="77.63533630730515 99.65614668082091"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="#18181C" stroke-width="8" stroke-linecap="round" stroke-dasharray="77.64 99.66"/>
 </svg>

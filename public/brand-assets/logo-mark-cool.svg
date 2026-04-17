@@ -1,8 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="138" height="200" viewBox="11 3 40 58">
-  <defs><linearGradient id="cool" x1="11" y1="3" x2="51" y2="61" gradientUnits="userSpaceOnUse">
-  <stop offset="0%" stop-color="#4271DF"/>
-  <stop offset="100%" stop-color="#00B6A0"/>
-  </linearGradient></defs>
   <circle cx="44.00" cy="12.00" r="3.5" fill="#A3A3A3"/>
   <circle cx="33.65" cy="8.26" r="3.5" fill="#A3A3A3"/>
   <circle cx="23.10" cy="10.43" r="3.5" fill="#A3A3A3"/>
@@ -13,6 +9,52 @@
   <circle cx="40.89" cy="53.58" r="3.5" fill="#A3A3A3"/>
   <circle cx="30.34" cy="55.73" r="3.5" fill="#A3A3A3"/>
   <circle cx="20.00" cy="52.00" r="3.5" fill="#A3A3A3"/>
-  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="url(#cool)" stroke-width="8"
-  stroke-linecap="round" stroke-dasharray="77.63533630730515 99.65614668082091"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(65,114,222)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="0.00"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(64,115,221)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-1.59"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(63,117,220)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-3.17"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(61,118,218)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-4.76"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(60,119,217)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-6.34"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(58,121,216)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-7.93"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(57,122,214)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-9.52"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(56,124,213)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-11.10"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(54,125,212)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-12.69"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(53,127,211)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-14.28"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(52,128,209)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-15.86"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(50,130,208)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-17.45"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(49,131,207)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-19.03"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(47,132,205)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-20.62"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(46,134,204)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-22.21"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(45,135,203)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-23.79"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(43,137,201)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-25.38"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(42,138,200)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-26.96"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(41,140,199)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-28.55"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(39,141,197)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-30.14"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(38,142,196)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-31.72"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(36,144,195)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-33.31"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(35,145,193)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-34.90"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(34,147,192)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-36.48"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(32,148,191)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-38.07"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(31,150,190)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-39.65"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(30,151,188)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-41.24"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(28,153,187)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-42.83"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(27,154,186)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-44.41"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(25,155,184)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-46.00"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(24,157,183)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-47.58"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(23,158,182)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-49.17"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(21,160,180)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-50.76"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(20,161,179)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-52.34"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(19,163,178)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-53.93"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(17,164,176)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-55.52"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(16,165,175)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-57.10"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(14,167,174)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-58.69"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(13,168,172)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-60.27"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(12,170,171)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-61.86"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(10,171,170)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-63.45"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(9,173,169)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-65.03"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(8,174,167)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-66.62"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(6,176,166)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-68.20"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(5,177,165)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-69.79"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(3,178,163)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-71.38"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(2,180,162)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-72.96"/>
+  <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" fill="none" stroke="rgb(1,181,161)" stroke-width="8" stroke-linecap="round" stroke-dasharray="3.09 99.66" stroke-dashoffset="-74.55"/>
 </svg>

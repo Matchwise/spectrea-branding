@@ -103,26 +103,26 @@ Spectrea sounds like a brilliant mentor: confident without being arrogant, speci
 
 ### Anatomy
 The logo has three parts:
-1. **Mark** — the "connecting the dots" S-curve. 10 dots along a cubic Bézier path, with the final three visually trailing. Spectrum-gradient stroke connecting the first seven.
-2. **Wordmark** — Albert Sans Semibold 600, ALL CAPS, 0.02em letter-spacing. The wordmark is never rendered alone in production — only as part of the lockup.
-3. **Lockup** — mark + wordmark unified.
+1. **Mark** — the "connecting the dots" S-curve. 10 dots along a cubic Bézier path, with the final three visually trailing. Spectrum-gradient stroke connecting the first seven. The mark also reads as the leading `S` glyph in the lockup.
+2. **Wordmark** — Albert Sans Semibold 600, lowercase, 0.02em letter-spacing. Renders as `pectrea`, always paired with the S mark. Never rendered alone in production.
+3. **Lockup** — S mark + lowercase wordmark.
 
 ### Construction
 - **Dots:** 10 dots, radius 3.5. Grey (`#A3A3A3`) in the primary treatment.
-- **Stroke:** width 8, round linecap. Cool Duet (Cobalt `#4271DF` → Teal `#00B6A0`) in the static mark.
+- **Stroke:** width 8, round linecap. Cool Duet (Cobalt `#4271DF` → Teal `#00B6A0`) in the static mark and in the gradient lockup's mark.
 - **Trailing dots:** the last 3 dots are left visually unconnected — the "about to connect" moment.
 - **Container:** 64×64 construction viewBox. Circle container when needed at small sizes; never a squircle.
 
 ### The two-forms rule (lockup)
 The lockup has **exactly two forms** — no third:
-1. **Gradient lockup** — `LogotypeGradient` component. Mark + dots + wordmark unified under a single 5-stop full-spectrum gradient: `0% #4271DF · 33% #00B6A0 · 55% #6FB884 · 66% #E19000 · 100% #F24260`. The `#6FB884` intermediate prevents muddy olive in the teal→amber transition.
+1. **Gradient lockup** — `LogotypeGradient` component. S mark carries the two-tone Cool Duet (Cobalt `#4271DF` → Teal `#00B6A0`) on the stroke and connected dots; trailing dots stay grey. The wordmark is monotone — Ink on light, White on dark — following the `colorMode` prop.
 2. **Mono lockup** — `Logotype` component. Everything renders in a single `ink` / `white` / `grey` colour.
 
 ![Gradient lockup — LogotypeGradient](/brand-assets/logo-lockup-gradient.svg)
 ![Ink mono lockup](/brand-assets/logo-lockup-ink.svg)
 ![White mono lockup on ink](/brand-assets/logo-lockup-white.svg)
 
-There are no duet lockups. The `gradient` and `wordmarkColor` props were removed from `LogotypeGradient` to enforce this at the type level. Duets (Cool / Balanced / Warm) belong to the static mark only.
+The gradient lives in the mark only. No gradient-filled wordmark, no full-spectrum lockup — the wordmark is always solid so it stays legible at every size. Duets (Balanced / Warm) belong to the static mark only; they are not lockup options.
 
 ### Mark colour modes
 - `'color'` — full spectrum (Cobalt → Teal → Amber). Default for `AnimatedLogo`. Used for hero moments.
@@ -158,7 +158,7 @@ There are no duet lockups. The `gradient` and `wordmarkColor` props were removed
 
 ### Lockup arrangements (three)
 1. **Gradient logotype** — `LogotypeGradient`. Preferred for brand/marketing.
-2. **Horizontal with descriptor** — `StaticLogo` + `SPECTREA` + descriptor below. For nav, product headers, sub-brands. Descriptor styling: `gap-3` between mark and wordmark column, `text-xs`, uppercase, tracking-widest, Pewter (`#97979E`).
+2. **Horizontal with descriptor** — `StaticLogo` + lowercase `pectrea` wordmark + descriptor below. For nav, product headers, sub-brands. Descriptor styling: `gap-3` between mark and wordmark column, `text-xs`, uppercase, tracking-widest, Pewter (`#97979E`).
 3. **Stacked** — mark above wordmark. For title slides, centered compositions. Wordmark width ≤ mark width.
 
 ### When to use which variant
@@ -268,14 +268,14 @@ Every colour in Spectrea lives in one of three tiers:
 
 The `@supports` block is silently ignored by browsers that don't understand OKLCH (Chrome <111, Safari <16.2, Firefox <117) — they keep the sRGB base. Modern browsers apply the OKLCH override for a perceptually richer middle that avoids the muddy olive zone.
 
-### Lockup gradient (inside `LogotypeGradient` only)
-5-stop full spectrum with a perceptual intermediate. **Never used as a general-purpose decorative gradient.**
+### Lockup mark gradient (inside `LogotypeGradient` only)
+Two-tone Cool Duet — the same gradient as the primary static mark. The wordmark stays monotone (Ink / White); only the mark carries colour.
 ```
-0% #4271DF  →  33% #00B6A0  →  55% #6FB884  →  66% #E19000  →  100% #F24260
+0% #4271DF  →  100% #00B6A0
 ```
-Implemented in SVG (`<linearGradient>`) because SVG has no OKLCH equivalent. The explicit `#6FB884` bridge stop guarantees identical rendering in every browser — non-negotiable for a logo.
+Implemented in SVG (`<linearGradient>`). **Never used as a general-purpose decorative gradient.**
 
-![Lockup gradient — 5-stop with #6FB884 bridge](/brand-assets/gradient-lockup.svg)
+![Lockup mark gradient — Cool Duet](/brand-assets/gradient-lockup.svg)
 
 ### Full spectrum with Rose (sparingly)
 `Cobalt → Teal → Amber → Rose` at 135°. Use only for peak brand expression — landing-page heroes, launch moments. Reserving it keeps its impact.
