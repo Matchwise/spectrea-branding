@@ -272,7 +272,10 @@ function renderLockup({ strokeFill, strokeColorFn, dotFill, wordmarkFill, bg = n
   // the glyphs exactly with no clipping or dead space.
   const { d: textD, advanceWidth: textW } = textToPath('pectrea', fontSize, textY, textX)
   const totalW = textX + textW + pad
-  const totalH = capH + pad * 2
+  // The `p` in "pectrea" drops below the baseline — use the font's actual
+  // descent so the viewBox fits the glyph outline exactly.
+  const descender = Math.abs(albertSans600.descent) * (fontSize / albertSans600.unitsPerEm)
+  const totalH = pad + capH + descender + pad
 
   const circles = DOTS.map(d =>
     `<circle cx="${d.x.toFixed(2)}" cy="${d.y.toFixed(2)}" r="${LOGO.dotR}" fill="${dotFill}"/>`

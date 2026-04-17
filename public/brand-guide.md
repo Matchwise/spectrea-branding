@@ -115,7 +115,7 @@ The logo has three parts:
 
 ### The two-forms rule (lockup)
 The lockup has **exactly two forms** — no third:
-1. **Gradient lockup** — `LogotypeGradient` component. S mark carries the two-tone Cool Duet (Cobalt `#4271DF` → Teal `#00B6A0`) on the stroke and connected dots; trailing dots stay grey. The wordmark is monotone — Ink on light, White on dark — following the `colorMode` prop.
+1. **Gradient lockup** — `LogotypeGradient` component. S mark carries the two-tone Cool Duet (Cobalt `#4271DF` → Teal `#00B6A0`) on the stroke only; all dots stay grey. The wordmark is monotone — Ink on light, White on dark — following the `colorMode` prop.
 2. **Mono lockup** — `Logotype` component. Everything renders in a single `ink` / `white` / `grey` colour.
 
 ![Gradient lockup — LogotypeGradient](/brand-assets/logo-lockup-gradient.svg)
@@ -389,7 +389,7 @@ For everything people-facing and narrative. Characterised by:
 3. Drop the SVG into `/public/illustrations/`, or paste markup into a React component
 4. Snap fills to exact Spectrea hex codes, namespace IDs, clean up excess paths
 
-**Prompt template:** versioned at `/docs/illustration-prompt.md` (internal). Keep that file as the single source of truth — edit there, not here.
+**Prompt template:** versioned at `docs/illustration-prompt.md` in the repo (internal, not served publicly). Keep that file as the single source of truth — edit there, not here.
 
 ### What Tier B never does
 - Outlines, strokes, borders, line art
@@ -441,7 +441,7 @@ The Spectrea mark animates on a 3-second loop: the spectrum stroke draws along t
 
 ### Buttons
 - **Primary (Cobalt)** — the hero action. One per section. `#4271DF`, white text; hover `#3A63C4`; active `#3255A7`.
-- **Secondary** — supporting actions. Stone-100 background, stone-700 text (light); Graphite tint background, Cloud text (dark).
+- **Secondary** — supporting actions. Cloud (`#F4F4F1`) background, Ink text (light); Graphite tint background, Cloud text (dark).
 - **Ghost** — tertiary actions. 2-px border, transparent background.
 - **Destructive (Rose)** — irreversible actions. `#F24260`, white text.
 - **Confirm (Teal)** — verify, approve, connect. `#00B6A0`, white text.
@@ -449,13 +449,13 @@ The Spectrea mark animates on a 3-second loop: the spectrum stroke draws along t
 
 Common specs: padding `px-4 py-2` (default), radius `8 px` (rounded-lg), font `Lexend 500`, font-size `14 px`.
 
-Focus ring: Amber `rgba(236, 164, 30, 0.7)`, 2 px solid, 2 px offset (`.btn-focus:focus-visible`).
+Focus ring: Amber `rgba(225, 144, 0, 0.7)` (alpha-tinted `#E19000`), 2 px solid, 2 px offset (`.btn-focus:focus-visible`).
 
 ### Forms
-Input fields: `1 px` border (Stone-200), `8 px` radius, `px-3 py-2` padding, `14 px` Lexend. On focus: `2 px` Cobalt border, no separate shadow ring. Placeholder colour: Pewter.
+Input fields: `1 px` border (Tailwind `stone-200` ≈ Cloud-adjacent), `8 px` radius, `px-3 py-2` padding, `14 px` Lexend. On focus: `2 px` Cobalt border, no separate shadow ring. Placeholder colour: Pewter.
 
 ### Cards
-Container: `1 px` Stone-200 border, `12 px` radius (rounded-xl), `20 px` padding (p-5), Canvas background. Elevated variant adds `shadow-md` (floating elements only). Cards sit on the Cloud surface — the Canvas-vs-Cloud contrast gives them "home."
+Container: `1 px` border (Tailwind `stone-200`), `12 px` radius (rounded-xl), `20 px` padding (p-5), Canvas background. Elevated variant adds `shadow-md` (floating elements only). Cards sit on the Cloud surface — the Canvas-vs-Cloud contrast gives them "home."
 
 ### Layout
 - **Sidebar:** 256 px fixed width, collapsible on mobile.

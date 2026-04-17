@@ -399,7 +399,7 @@ export default function PaletteCompare() {
                 { name: 'Rose', hex: result.rose.hex },
               ].map((c, i) => {
                 const vsWhite = contrastRatio(c.hex, '#FFFFFF')
-                const vsInk = contrastRatio(c.hex, '#111827')
+                const vsInk = contrastRatio(c.hex, '#18181C')
                 const whiteOk = vsWhite >= 2.5
                 const inkOk = vsInk >= 2.5
                 return (

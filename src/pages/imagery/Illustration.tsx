@@ -1528,19 +1528,19 @@ export default function Illustration() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-5">
             <div className="border-l-2 pl-3" style={{ borderColor: TEAL }}>
               <p className="text-xs font-mono uppercase tracking-wider" style={{ color: TEAL }}>Tier A · illustration</p>
-              <p className="text-sm text-stone-400 mt-1">Procedural inline SVG + <code className="bg-stone-900 px-1.5 py-0.5 rounded text-xs">SpectreaFigure</code>. Add Humaaans only if you need varied human poses — MIT, no attribution.</p>
+              <p className="text-sm text-stone-400 mt-1">Procedural inline SVG + <code className="bg-graphite px-1.5 py-0.5 rounded text-xs">SpectreaFigure</code>. Add Humaaans only if you need varied human poses — MIT, no attribution.</p>
             </div>
             <div className="border-l-2 pl-3" style={{ borderColor: COBALT }}>
               <p className="text-xs font-mono uppercase tracking-wider" style={{ color: COBALT }}>Animation</p>
-              <p className="text-sm text-stone-400 mt-1"><code className="bg-stone-900 px-1.5 py-0.5 rounded text-xs">framer-motion</code> — MIT, installed. Wraps inline SVG. Respect prefers-reduced-motion.</p>
+              <p className="text-sm text-stone-400 mt-1"><code className="bg-graphite px-1.5 py-0.5 rounded text-xs">framer-motion</code> — MIT, installed. Wraps inline SVG. Respect prefers-reduced-motion.</p>
             </div>
             <div className="border-l-2 pl-3" style={{ borderColor: AMBER }}>
               <p className="text-xs font-mono uppercase tracking-wider" style={{ color: AMBER }}>Data-viz</p>
-              <p className="text-sm text-stone-400 mt-1"><code className="bg-stone-900 px-1.5 py-0.5 rounded text-xs">visx</code> — MIT, no attribution. Use when dots must come from real data rather than hand-placed.</p>
+              <p className="text-sm text-stone-400 mt-1"><code className="bg-graphite px-1.5 py-0.5 rounded text-xs">visx</code> — MIT, no attribution. Use when dots must come from real data rather than hand-placed.</p>
             </div>
             <div className="border-l-2 pl-3" style={{ borderColor: ROSE }}>
               <p className="text-xs font-mono uppercase tracking-wider" style={{ color: ROSE }}>Tier B · marketing</p>
-              <p className="text-sm text-stone-400 mt-1">Generated via AI using <code className="bg-stone-900 px-1.5 py-0.5 rounded text-xs">docs/illustration-prompt.md</code>. Free + commercial: Gemini, Bing, Firefly, or Stable Diffusion local.</p>
+              <p className="text-sm text-stone-400 mt-1">Generated via AI using <code className="bg-graphite px-1.5 py-0.5 rounded text-xs">docs/illustration-prompt.md</code>. Free + commercial: Gemini, Bing, Firefly, or Stable Diffusion local.</p>
             </div>
           </div>
           <p className="text-xs font-mono text-stone-500 mt-6">Skipped · unDraw · Storyset · Lordicon · Rive · GSAP MorphSVG · Lottie · Recraft free tier</p>

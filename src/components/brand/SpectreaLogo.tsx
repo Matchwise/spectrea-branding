@@ -361,6 +361,9 @@ function useLockupLayout(fontSize: number) {
   const s = capH / MH
   const gap = fontSize * 0.05
   const pad = LOGO.strokeW * s * 0.75
+  // Albert Sans descender depth. The `p` in "pectrea" drops below the
+  // baseline — without this, the descender gets clipped by the viewBox.
+  const descender = fontSize * 0.24
 
   const vpPath = transformPathCoords(LOGO.pathD, -ML, -MT, s)
   const markW = MW * s
@@ -369,7 +372,7 @@ function useLockupLayout(fontSize: number) {
   // Approximate width of the lowercase wordmark "pectrea" at this fontSize,
   // plus a small right-side buffer. Tighter than the old caps sizing (5.5).
   const totalW = textX + fontSize * 4.2
-  const totalH = capH + pad * 2
+  const totalH = pad + capH + descender + pad
 
   let vpDots: { x: number; y: number }[] = []
   let connDots: { x: number; y: number }[] = []

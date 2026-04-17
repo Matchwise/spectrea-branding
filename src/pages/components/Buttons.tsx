@@ -376,11 +376,11 @@ export default function Buttons() {
                 <span className="text-[10px] font-mono text-stone-400">Interactive</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
-                <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand" style={{ outline: '2px solid rgba(236, 164, 30, 0.7)', outlineOffset: '2px' }}>Focused</button>
+                <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand" style={{ outline: '2px solid rgba(225, 144, 0, 0.7)', outlineOffset: '2px' }}>Focused</button>
                 <span className="text-[10px] font-mono text-stone-400">Amber ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
-                <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-stone-500 border-2 border-stone-300" style={{ outline: '2px solid rgba(236, 164, 30, 0.7)', outlineOffset: '2px' }}>Focused</button>
+                <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-stone-500 border-2 border-stone-300" style={{ outline: '2px solid rgba(225, 144, 0, 0.7)', outlineOffset: '2px' }}>Focused</button>
                 <span className="text-[10px] font-mono text-stone-400">Ghost + ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
@@ -404,11 +404,11 @@ export default function Buttons() {
                 <span className="text-[10px] font-mono" style={{ color: dm.muted }}>Interactive</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
-                <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand" style={{ outline: '2px solid rgba(236, 164, 30, 0.7)', outlineOffset: '2px' }}>Focused</button>
+                <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand" style={{ outline: '2px solid rgba(225, 144, 0, 0.7)', outlineOffset: '2px' }}>Focused</button>
                 <span className="text-[10px] font-mono" style={{ color: dm.muted }}>Amber ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
-                <button className="px-3 py-1.5 rounded-lg text-xs font-medium border-2" style={{ borderColor: '#97979E', color: '#D1D5DB', outline: '2px solid rgba(236, 164, 30, 0.7)', outlineOffset: '2px' }}>Focused</button>
+                <button className="px-3 py-1.5 rounded-lg text-xs font-medium border-2" style={{ borderColor: '#97979E', color: '#D1D5DB', outline: '2px solid rgba(225, 144, 0, 0.7)', outlineOffset: '2px' }}>Focused</button>
                 <span className="text-[10px] font-mono" style={{ color: dm.muted }}>Ghost + ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
