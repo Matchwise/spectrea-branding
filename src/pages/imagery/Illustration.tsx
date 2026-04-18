@@ -1190,15 +1190,66 @@ export default function Illustration() {
   return (
     <PageShell
       title="Illustration"
-      subtitle="Spectrea uses two illustration tiers. Tier A (this page): strict geometric for product UI, icons, docs, and technical diagrams. Tier B: warmer illustrated style for marketing and editorial, produced via the AI prompt workflow at docs/illustration-prompt.md."
+      subtitle="Every Spectrea illustration assembles from five atoms — Dot, Curve, Cluster, Trail, Field — in the brand palette, on Canvas. The mark itself is this system at small scale; illustrations extend it at larger scale."
     >
-      {/* ─── Manifesto ─── */}
+      {/* ─── The Dot System manifesto ─── */}
       <Section>
         <div className="rounded-xl bg-ink text-white p-6 sm:p-8">
-          <p className="text-xs font-mono uppercase tracking-wider" style={{ color: AMBER }}>Tier A</p>
-          <h2 className="text-2xl font-semibold mt-1" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Geometric — one vocabulary, many subjects</h2>
+          <p className="text-xs font-mono uppercase tracking-wider" style={{ color: COBALT }}>The Dot System</p>
+          <h2 className="text-2xl font-semibold mt-1" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Five atoms — one universal illustration vocabulary</h2>
           <p className="text-sm text-stone-400 mt-3 max-w-2xl leading-relaxed">
-            Circle, rectangle, triangle, arc, line — nothing else. Flat fills from the brand palette. Strict composition. The single visual language for product UI, iconography, technical diagrams, and developer-facing surfaces. Aesthetic lineage: Bauhaus, Müller-Brockmann, Saul Bass, Vignelli, Paula Scher, Studio Dumbar. For marketing and editorial surfaces, use Tier B (illustrated style, generated via prompt workflow).
+            The brand mark — 10 dots along a curve with the last 3 trailing — IS this system at small scale.
+            Illustrations extend the same DNA: filled circles in brand colours, soft Bézier curves, clusters of dots,
+            directional trails, atmospheric fields. Anything not assembled from these five atoms is off-brand.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-6">
+            <div className="border-l-2 pl-3" style={{ borderColor: COBALT }}>
+              <p className="text-xs font-mono uppercase tracking-wider" style={{ color: COBALT }}>Dot</p>
+              <p className="text-xs text-stone-300 mt-1 leading-snug">A point of attention. Stand it for whatever you need.</p>
+            </div>
+            <div className="border-l-2 pl-3" style={{ borderColor: TEAL }}>
+              <p className="text-xs font-mono uppercase tracking-wider" style={{ color: TEAL }}>Curve</p>
+              <p className="text-xs text-stone-300 mt-1 leading-snug">The relationship between two things.</p>
+            </div>
+            <div className="border-l-2 pl-3" style={{ borderColor: AMBER }}>
+              <p className="text-xs font-mono uppercase tracking-wider" style={{ color: AMBER }}>Cluster</p>
+              <p className="text-xs text-stone-300 mt-1 leading-snug">Things that belong together. A whole of parts.</p>
+            </div>
+            <div className="border-l-2 pl-3" style={{ borderColor: ROSE }}>
+              <p className="text-xs font-mono uppercase tracking-wider" style={{ color: ROSE }}>Trail</p>
+              <p className="text-xs text-stone-300 mt-1 leading-snug">Movement through time. From then to now.</p>
+            </div>
+            <div className="border-l-2 pl-3" style={{ borderColor: PEWTER }}>
+              <p className="text-xs font-mono uppercase tracking-wider" style={{ color: PEWTER }}>Field</p>
+              <p className="text-xs text-stone-300 mt-1 leading-snug">The air around the subject. Atmosphere, never subject.</p>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* ─── Five atoms — visual reference ─── */}
+      <Section>
+        <SubSection eyebrow="Reference" title="The five atoms">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <Tile label="Dot — Cobalt"><svg viewBox="0 0 60 60" className="w-full h-full"><circle cx="30" cy="30" r="14" fill={COBALT}/></svg></Tile>
+            <Tile label="Curve — connecting two dots"><svg viewBox="0 0 80 60" className="w-full h-full"><path d="M 14 40 C 30 10, 50 50, 66 20" stroke={COBALT} strokeWidth="3" fill="none" strokeLinecap="round"/><circle cx="14" cy="40" r="6" fill={COBALT}/><circle cx="66" cy="20" r="6" fill={TEAL}/></svg></Tile>
+            <Tile label="Cluster — 5 dots wired"><svg viewBox="0 0 80 60" className="w-full h-full"><line x1="40" y1="30" x2="22" y2="22" stroke={PEWTER} strokeWidth="1.5" opacity="0.5"/><line x1="40" y1="30" x2="54" y2="20" stroke={PEWTER} strokeWidth="1.5" opacity="0.5"/><line x1="40" y1="30" x2="58" y2="42" stroke={PEWTER} strokeWidth="1.5" opacity="0.5"/><line x1="40" y1="30" x2="20" y2="42" stroke={PEWTER} strokeWidth="1.5" opacity="0.5"/><circle cx="40" cy="30" r="6" fill={TEAL}/><circle cx="22" cy="22" r="5" fill={COBALT}/><circle cx="54" cy="20" r="5" fill={AMBER}/><circle cx="58" cy="42" r="5" fill={ROSE}/><circle cx="20" cy="42" r="5" fill={COBALT}/></svg></Tile>
+            <Tile label="Trail — provenance, faint→full"><svg viewBox="0 0 100 40" className="w-full h-full"><circle cx="12" cy="20" r="4" fill={COBALT} opacity="0.3"/><circle cx="32" cy="20" r="5" fill={COBALT} opacity="0.5"/><circle cx="54" cy="20" r="6" fill={COBALT} opacity="0.7"/><circle cx="78" cy="20" r="7" fill={COBALT} opacity="0.9"/><line x1="14" y1="20" x2="30" y2="20" stroke={COBALT} strokeWidth="1.5" opacity="0.3" strokeDasharray="3 2"/><line x1="34" y1="20" x2="52" y2="20" stroke={COBALT} strokeWidth="1.5" opacity="0.5" strokeDasharray="3 2"/><line x1="56" y1="20" x2="76" y2="20" stroke={COBALT} strokeWidth="1.5" opacity="0.7" strokeDasharray="3 2"/></svg></Tile>
+            <Tile label="Field — Teal Mist wash"><svg viewBox="0 0 80 60" className="w-full h-full"><defs><radialGradient id="atom-field" cx="50%" cy="50%" r="50%"><stop offset="0%" stopColor="#E6F5F3"/><stop offset="100%" stopColor={CANVAS}/></radialGradient></defs><ellipse cx="40" cy="30" rx="36" ry="24" fill="url(#atom-field)"/><circle cx="40" cy="30" r="4" fill={TEAL}/></svg></Tile>
+          </div>
+          <p className="text-xs text-stone-500 mt-3 leading-relaxed">
+            For brand-grade illustrations, generate via <code className="bg-stone-100 px-1.5 py-0.5 rounded font-mono text-xs">docs/illustration-prompt.md</code> (the Dot System v2 prompt).
+            The geometric vocabulary below is a <em>specialisation</em> of the Dot System for product UI, iconography, and technical diagrams — circles, rectangles, triangles, arcs reduce to the same five-atom DNA.
+          </p>
+        </SubSection>
+      </Section>
+      {/* ─── Geometric specialisation manifesto ─── */}
+      <Section>
+        <div className="rounded-xl bg-ink text-white p-6 sm:p-8">
+          <p className="text-xs font-mono uppercase tracking-wider" style={{ color: AMBER }}>Geometric specialisation — for product UI</p>
+          <h2 className="text-2xl font-semibold mt-1" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Geometric primitives — Dot System for product surfaces</h2>
+          <p className="text-sm text-stone-400 mt-3 max-w-2xl leading-relaxed">
+            Circle, rectangle, triangle, arc, line — flat fills from the brand palette. Strict composition. Used for product UI, iconography, technical diagrams, and developer-facing surfaces. These shapes are how the Dot System renders when the surface needs structural precision (icons, diagrams, density). Bauhaus figures (below) are how the Dot System renders when the subject is human. Aesthetic lineage: Bauhaus, Müller-Brockmann, Saul Bass, Vignelli, Paula Scher, Studio Dumbar. For brand-grade marketing illustrations, use the Dot System prompt at <code className="bg-stone-800 px-1 py-0.5 rounded font-mono text-xs">docs/illustration-prompt.md</code>.
           </p>
           <div className="grid grid-cols-3 gap-3 mt-5">
             <div className="border-l-2 pl-3" style={{ borderColor: COBALT }}>

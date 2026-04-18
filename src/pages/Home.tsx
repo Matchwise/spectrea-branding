@@ -82,12 +82,12 @@ export default function Home() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 sm:mb-14">
         <div className="bg-stone-50 rounded-xl p-5 border border-stone-100">
           <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">
-            <Tooltip content="The foundational archetype that shapes Spectrea's personality, behavior, and visual identity. Used to gut-check brand decisions: 'Would The Magician do this?'">
-              <span className="text-stone-400">Archetype</span>
+            <Tooltip content="Three archetypes split across surface domains. Each owns one mood: Magician for marketing, Sage for trust surfaces, Creator for product. The visual aesthetic stays the same across all three; only voice changes.">
+              <span className="text-stone-400">Archetypes</span>
             </Tooltip>
           </p>
-          <p className="text-sm font-semibold text-stone-800">{brand.archetype}</p>
-          <p className="text-xs text-stone-500 mt-1">{brand.archetypeDescription}</p>
+          <p className="text-sm font-semibold text-stone-800">{brand.archetypes.map(a => a.name.replace('The ', '')).join(' · ')}</p>
+          <p className="text-xs text-stone-500 mt-1">Magician (marketing) · Sage (trust) · Creator (product). One archetype per surface.</p>
         </div>
         <div className="bg-stone-50 rounded-xl p-5 border border-stone-100">
           <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">

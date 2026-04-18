@@ -39,13 +39,28 @@ export default function Naming() {
         </div>
       </Section>
 
-      {/* Etymology */}
+      {/* Etymology — dual reading */}
       <Section title="Etymology">
-        <p className="text-sm text-stone-600 leading-relaxed">
+        <p className="text-sm text-stone-600 leading-relaxed mb-3">
           <strong>Spectrea</strong> is derived from <em>spectra</em> (Latin: the full range or spectrum).
-          The name evokes the complete range of hidden connections that the platform reveals —
-          like a prism separating light into its full spectrum, Spectrea surfaces the full
-          breadth of knowledge within an organization.
+          The name does double duty — two readings that together make it earn its place:
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-stone-50 rounded-xl p-5 border border-stone-200">
+            <p className="text-xs font-semibold uppercase tracking-wider text-stone-400 mb-2">Reading 1 — Spectrum</p>
+            <p className="text-sm text-stone-700 leading-relaxed">
+              The full range. The complete view. The whole picture, all in one place — instead of fragments scattered across many.
+            </p>
+          </div>
+          <div className="bg-stone-50 rounded-xl p-5 border border-stone-200">
+            <p className="text-xs font-semibold uppercase tracking-wider text-stone-400 mb-2">Reading 2 — Revealing</p>
+            <p className="text-sm text-stone-700 leading-relaxed">
+              Bringing what was hidden into clear view. The shift from blur to focus — when something you couldn't quite see becomes obvious.
+            </p>
+          </div>
+        </div>
+        <p className="text-sm text-stone-500 italic mt-4 leading-relaxed">
+          Together: <em>the spectrum of clarity</em> — and the action behind the tagline "We connect the dots."
         </p>
       </Section>
 
@@ -80,9 +95,54 @@ export default function Naming() {
       {/* Capitalization */}
       <Section title="Capitalization Rules">
         <div className="text-sm text-stone-600 space-y-2">
-          <p>Always capitalize the <strong>S</strong> in Spectrea — it is a proper noun.</p>
+          <p>Always capitalize the <strong>S</strong> in Spectrea — it is a proper noun in running prose.</p>
+          <p>The lowercase <code className="bg-stone-100 px-1.5 py-0.5 rounded font-mono text-xs">pectrea</code> wordmark in the lockup is a stylistic treatment, not the typed name. Plain-text contexts (email, contracts, search results, browser tabs) always use sentence-case "Spectrea."</p>
           <p>In URLs and email addresses, use all lowercase: <code className="bg-stone-100 px-1.5 py-0.5 rounded font-mono text-xs">spectrea.com</code></p>
           <p>In code references, follow the convention of the codebase (typically <code className="bg-stone-100 px-1.5 py-0.5 rounded font-mono text-xs">spectrea</code> in lowercase).</p>
+        </div>
+      </Section>
+
+      {/* Feature naming convention — Decision 11 */}
+      <Section title="Feature Naming Convention">
+        <p className="text-sm text-stone-500 leading-relaxed mb-4">
+          Apple-style: Title-case Proper Nouns without brand prefix. Each first-class feature gets its own name and stands on its own — the platform context (Spectrea) is implicit.
+        </p>
+
+        <div className="border border-stone-200 rounded-xl overflow-hidden mb-5">
+          <div className="grid grid-cols-2 bg-stone-50 border-b border-stone-200">
+            <div className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-stone-400">Feature</div>
+            <div className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-stone-400">Canonical name</div>
+          </div>
+          {[
+            ['The knowledge graph', 'Knowledge Graph'],
+            ['Claims surface', 'Claims View (or Claims)'],
+            ['Observation records', 'Observations'],
+            ['Source records', 'Sources'],
+            ['AI assistant', 'Assistant'],
+            ['Multi-perspective view', 'Spectrum View'],
+            ['AI-surfaced suggestions', 'Suggestions'],
+            ['Provenance trails', 'Traces'],
+          ].map(([feature, name]) => (
+            <div key={String(name)} className="grid grid-cols-2 border-b last:border-b-0 border-stone-100">
+              <div className="px-4 py-2.5 text-sm text-stone-600">{feature}</div>
+              <div className="px-4 py-2.5 text-sm font-semibold text-stone-800">{name}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div className="bg-stone-50 rounded-lg p-4 border border-stone-200">
+            <p className="text-xs font-semibold uppercase tracking-wider text-stone-400 mb-2">Default</p>
+            <p className="text-sm text-stone-700 leading-relaxed">Title-case Proper Noun for first-class features. <em>Knowledge Graph</em>, not <em>knowledge graph</em>.</p>
+          </div>
+          <div className="bg-stone-50 rounded-lg p-4 border border-stone-200">
+            <p className="text-xs font-semibold uppercase tracking-wider text-stone-400 mb-2">Brand prefix</p>
+            <p className="text-sm text-stone-700 leading-relaxed">Reserved for distinct branded surfaces — separately-paid tiers, developer surfaces, installable companions. After deliberate review only.</p>
+          </div>
+          <div className="bg-stone-50 rounded-lg p-4 border border-stone-200">
+            <p className="text-xs font-semibold uppercase tracking-wider text-stone-400 mb-2">In running prose</p>
+            <p className="text-sm text-stone-700 leading-relaxed">Lowercase generic nouns are acceptable when natural ("the assistant suggested"). Canonical name in headers, marketing, and cross-references.</p>
+          </div>
         </div>
       </Section>
     </PageShell>

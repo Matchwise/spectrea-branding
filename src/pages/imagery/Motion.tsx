@@ -252,6 +252,137 @@ function FocusRingDemo() {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Signature motion primitives — node arrival / edge formation / spectrum shift */
+/* ------------------------------------------------------------------ */
+
+const SPECTRUM_COLORS = ['#4271DF', '#00B6A0', '#E19000', '#F24260'] as const
+
+function SignaturePrimitiveCard({
+  label,
+  duration,
+  trigger,
+  spec,
+  demo,
+}: {
+  label: string
+  duration: string
+  trigger: string
+  spec: string
+  demo: React.ReactNode
+}) {
+  return (
+    <div className="border border-stone-200 rounded-xl overflow-hidden flex flex-col">
+      <div className="bg-stone-50 px-4 py-2 border-b border-stone-200 flex items-center justify-between">
+        <span className="text-xs font-semibold uppercase tracking-wider text-stone-500">{label}</span>
+        <span className="text-[10px] font-mono text-stone-400">{duration}</span>
+      </div>
+      <div className="bg-canvas h-40 flex items-center justify-center">{demo}</div>
+      <div className="px-4 py-3 border-t border-stone-100 space-y-1.5">
+        <p className="text-xs"><span className="text-stone-400">Trigger:</span> <span className="text-stone-700">{trigger}</span></p>
+        <p className="text-xs text-stone-500 leading-relaxed">{spec}</p>
+      </div>
+    </div>
+  )
+}
+
+function NodeArrivalDemo() {
+  const [key, setKey] = useState(0)
+  const [colorIdx, setColorIdx] = useState(0)
+  const play = useCallback(() => {
+    setColorIdx(i => (i + 1) % SPECTRUM_COLORS.length)
+    setKey(k => k + 1)
+  }, [])
+  const color = SPECTRUM_COLORS[colorIdx]
+  return (
+    <div className="relative w-full h-full flex items-center justify-center">
+      <style>{`
+        @keyframes spectrea-node-arrival {
+          0% { transform: scale(0); opacity: 0; }
+          70% { transform: scale(1.15); opacity: 1; }
+          100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes spectrea-node-pulse {
+          0% { transform: scale(0.4); opacity: 0; }
+          50% { transform: scale(1); opacity: 0.4; }
+          100% { transform: scale(2.4); opacity: 0; }
+        }
+      `}</style>
+      <div key={`pulse-${key}`} className="absolute" style={{ width: 32, height: 32, borderRadius: '50%', background: color, animation: 'spectrea-node-pulse 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards', animationDelay: '120ms' }} />
+      <div key={`node-${key}`} className="relative z-10" style={{ width: 32, height: 32, borderRadius: '50%', background: color, animation: 'spectrea-node-arrival 400ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards' }} />
+      <button onClick={play} className="absolute bottom-2 right-2 text-[10px] px-2 py-1 rounded bg-stone-100 text-stone-500 hover:bg-stone-200 transition-colors font-mono">Play</button>
+    </div>
+  )
+}
+
+function EdgeFormationDemo() {
+  const [key, setKey] = useState(0)
+  const play = useCallback(() => setKey(k => k + 1), [])
+  return (
+    <div className="relative w-full h-full">
+      <style>{`
+        @keyframes spectrea-edge-draw {
+          to { stroke-dashoffset: 0; }
+        }
+      `}</style>
+      <svg viewBox="0 0 240 100" className="w-full h-full">
+        <defs>
+          <linearGradient id={`spectrea-edge-gradient-${key}`} x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#4271DF" />
+            <stop offset="50%" stopColor="#00B6A0" />
+            <stop offset="100%" stopColor="#E19000" />
+          </linearGradient>
+        </defs>
+        <circle cx="40" cy="50" r="14" fill="#4271DF" />
+        <circle cx="200" cy="50" r="14" fill="#E19000" />
+        <path
+          key={key}
+          d="M 54 50 C 100 20, 140 80, 186 50"
+          stroke={`url(#spectrea-edge-gradient-${key})`}
+          strokeWidth="3"
+          fill="none"
+          strokeLinecap="round"
+          style={{
+            strokeDasharray: 200,
+            strokeDashoffset: 200,
+            animation: 'spectrea-edge-draw 300ms cubic-bezier(0.22, 1, 0.36, 1) forwards',
+          }}
+        />
+      </svg>
+      <button onClick={play} className="absolute bottom-2 right-2 text-[10px] px-2 py-1 rounded bg-stone-100 text-stone-500 hover:bg-stone-200 transition-colors font-mono">Play</button>
+    </div>
+  )
+}
+
+function SpectrumShiftDemo() {
+  const [key, setKey] = useState(0)
+  const play = useCallback(() => setKey(k => k + 1), [])
+  return (
+    <div className="relative w-full h-full flex items-center justify-center">
+      <style>{`
+        @keyframes spectrea-spectrum-shift {
+          0% { background-position: 0% 50%; opacity: 0; }
+          15% { opacity: 1; }
+          85% { opacity: 1; }
+          100% { background-position: 100% 50%; opacity: 0; }
+        }
+      `}</style>
+      <div className="text-[11px] text-stone-400 font-mono mb-2 absolute top-3 left-3">AI surfacing a connection</div>
+      <div
+        key={key}
+        className="w-3/4 rounded-full"
+        style={{
+          height: 4,
+          background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000, #F24260, #F24260, #E19000, #00B6A0, #4271DF)',
+          backgroundSize: '400% 100%',
+          animation: 'spectrea-spectrum-shift 600ms cubic-bezier(0.65, 0, 0.35, 1) forwards',
+        }}
+      />
+      <button onClick={play} className="absolute bottom-2 right-2 text-[10px] px-2 py-1 rounded bg-stone-100 text-stone-500 hover:bg-stone-200 transition-colors font-mono">Play</button>
+    </div>
+  )
+}
+
+/* ------------------------------------------------------------------ */
 /*  Page                                                               */
 /* ------------------------------------------------------------------ */
 
@@ -269,11 +400,53 @@ export default function Motion() {
           </Tooltip>
         </h2>
         <div className="bg-ink text-white rounded-xl p-6">
-          <p className="text-base font-semibold" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Purposeful, Subtle, Natural</p>
+          <p className="text-base font-semibold" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Purposeful, Subtle, Natural — and Alive</p>
           <p className="text-sm text-stone-400 mt-2 leading-relaxed">
-            Every animation must answer: "What does this help the user understand?" If the answer is "nothing," remove it. Motion should feel like the interface is alive and responsive, not performing.
+            Every animation must answer: "What does this help the user understand?" If the answer is "nothing," remove it.
+            Most interactive motion stays restrained (150–300ms hovers, focus, state changes).
+            Three signature primitives below carry the brand's "alive, growing, compounding" claim — used purposefully, not decoratively.
           </p>
         </div>
+      </Section>
+
+      {/* ─── Signature Motion Primitives ─── */}
+      <Section>
+        <h2 className="text-xl font-semibold text-stone-800 mb-2">
+          <Tooltip content="Three brand-distinctive motion primitives. Used at specific moments — not decoratively. Each carries one part of the 'alive, growing, compounding' brand claim.">
+            <span>Signature Motion Primitives</span>
+          </Tooltip>
+        </h2>
+        <p className="text-sm text-stone-500 mb-5 leading-relaxed">
+          Three reusable motion primitives used across product and marketing surfaces. Each owns one moment in the brand's <em>alive, growing, compounding</em> claim. Standard interactive motion (hovers, focus, state transitions) stays restrained at 150–200ms.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <SignaturePrimitiveCard
+            label="1. Node arrival"
+            duration="~400ms"
+            trigger="A new node enters the graph (extraction, AI suggestion, user action)"
+            spec="Scale from 0 with soft elastic settle, then a brief radial pulse in the node's spectrum colour."
+            demo={<NodeArrivalDemo />}
+          />
+          <SignaturePrimitiveCard
+            label="2. Edge formation"
+            duration="~300ms"
+            trigger="A relationship forms between two nodes"
+            spec="Edge draws from source toward target with the spectrum gradient running along the line, then settles to its resting colour."
+            demo={<EdgeFormationDemo />}
+          />
+          <SignaturePrimitiveCard
+            label="3. Spectrum shift"
+            duration="~600ms"
+            trigger="AI surfaces a connection / insight / claim"
+            spec={"A thin gradient strip traverses Cobalt → Teal → Amber → Rose. The brand's signal for \"AI just acted\" without saying the word AI."}
+            demo={<SpectrumShiftDemo />}
+          />
+        </div>
+
+        <p className="text-xs text-stone-500 mt-4 leading-relaxed">
+          Use sparingly. Spectrum shift in particular is reserved for <em>meaningful</em> AI activity — not every API response. Restraint amplifies the signature.
+        </p>
       </Section>
 
       {/* ─── Principles ─── */}

@@ -149,24 +149,32 @@ export default function BrandStory() {
         </div>
       </Section>
 
-      {/* Archetype */}
+      {/* Archetypes — tri-domain split */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
-          <Tooltip content="The foundational archetype that shapes brand personality, visual identity, and communication style. Use as a gut-check: 'Would The Magician say/do this?'">
-            <span>Brand Archetype</span>
+        <h2 className="text-xl font-semibold text-stone-800 mb-2">
+          <Tooltip content="Three archetypes assigned to surface domains. Each shapes the EMOTIONAL TONE on its surface; the VISUAL AESTHETIC (spectrum + graph + Warm Blend + modern sans) stays consistent across all three. Use as a gut-check: 'Which surface is this for, and which archetype owns it?'">
+            <span>Brand Archetypes</span>
           </Tooltip>
         </h2>
-        <div className="bg-stone-50 rounded-xl p-6 border border-stone-200">
-          <h3 className="text-xl font-semibold text-stone-900">{brand.archetype}</h3>
-          <p className="text-sm text-stone-600 mt-2 leading-relaxed">{brand.archetypeDescription}</p>
-          <div className="mt-4 pt-4 border-t border-stone-200">
-            <p className="text-xs text-stone-400">
-              Reference brands: {brand.aspirationalBrands.join(', ')}
-            </p>
-            <p className="text-xs text-stone-400 mt-1">
-              Anti-patterns: {brand.antiBrands.join(', ')}
-            </p>
-          </div>
+        <p className="text-sm text-stone-600 mb-5 leading-relaxed">
+          Spectrea splits its archetype across three surface domains. The voice and mood change by surface; the visual aesthetic does not. This lets each surface speak its native register without fragmenting the brand.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {brand.archetypes.map(a => (
+            <div key={a.name} className="bg-stone-50 rounded-xl p-5 border border-stone-200">
+              <p className="text-xs font-semibold uppercase tracking-wider text-stone-400 mb-1">{a.surface}</p>
+              <h3 className="text-lg font-semibold text-stone-900">{a.name}</h3>
+              <p className="text-sm text-stone-600 mt-2 leading-relaxed">{a.description}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-5 pt-5 border-t border-stone-200">
+          <p className="text-xs text-stone-400">
+            Reference brands: {brand.aspirationalBrands.join(', ')}
+          </p>
+          <p className="text-xs text-stone-400 mt-1">
+            Anti-patterns: {brand.antiBrands.join(', ')}
+          </p>
         </div>
       </Section>
 

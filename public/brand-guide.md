@@ -6,7 +6,9 @@
 
 **Tagline:** We connect the dots.
 **Category:** Composable knowledge platform.
-**Pronunciation:** /spek-TREE-uh/ (from Latin *spectra* — the full range or spectrum).
+**Pronunciation:** /spek-TREE-uh/ (from Latin *spectra* — the full range or spectrum, with a second reading: *revealing*).
+
+**Strategic claim:** Spectrea is the spectrum of clarity. Everything you know, in one living view — alive with possibility, yours to keep. See it whole. Trust what you see. Build on what you find.
 
 ---
 
@@ -28,32 +30,39 @@ A world where anyone can see the full spectrum of what's known, trust what they 
 - **Tactical:** For anyone who works with knowledge, Spectrea is the composable knowledge platform that turns scattered information into compounding intelligence — unlike fragmented point solutions that silo your knowledge and hide their reasoning.
 
 ### Messaging hierarchy
-Primary theme is **Connection** — the headline "We connect the dots" and the idea that scattered knowledge becomes a single living graph. Three supporting themes:
-1. **Trustworthy Intelligence** — "Intelligence you can trust." Every claim has a source; every action is auditable.
+Primary theme is **Connection** — the headline "We connect the dots" and the idea that scattered knowledge becomes one living view. Three supporting themes:
+1. **Trustworthy Intelligence** — "Intelligence you can trust." Everything you see is transparent; every action is reviewable.
 2. **Compounding Intelligence** — "It gets smarter with every interaction." Your second year is incomparably better than your first.
 3. **Composability** — "Build exactly what you need." Simple, combinable parts assembled into any solution.
 
-### Archetype
-**The Magician.** Transformation — making the impossible possible. Turns complexity into clarity. Reveals hidden patterns. The world is more intelligible because Spectrea exists.
+### Archetypes — tri-domain split
+Spectrea splits its archetype across three surface domains. The voice and emotional register shift with the archetype that owns each surface; the visual aesthetic (spectrum + graph + Warm Blend + modern sans) stays consistent across all three.
 
-### Personality (four traits with guardrails)
+| Archetype | Owns | The feeling it creates |
+|---|---|---|
+| **The Magician** | Marketing surfaces (landing pages, launch video, social, blog headers) | The moment of seeing what was hidden. The thrill of pattern emerging from chaos. |
+| **The Sage** | Trust surfaces (settings, errors, documentation, security pages) | Authority through clarity. The calm of being able to see exactly how something is true. |
+| **The Creator** | Product surfaces (composition, editor, workflows) | The joy of making. Building something that's yours. |
+
+### Personality (five traits with guardrails)
 - **Warm** — respects the person behind every interaction. *Guardrail: not soft — trust users to be capable.*
 - **Perceptive** — sees patterns others miss; surfaces connections, then steps back. *Guardrail: not presumptuous — suggests, never dictates.*
 - **Grounded** — powerful but never pretentious; substance over style. *Guardrail: not boring — substance needs spark.*
 - **Adaptive** — meets you where you are; same system, different depths. *Guardrail: not shapeless — Spectrea has a point of view.*
+- **Rigorous** — discipline that serves clarity. The system is prescriptive on purpose — fixed primitives, fixed palette, fixed motion language — so the brand reads recognisably across every surface. *Guardrail: not rigid — discipline serves meaning, not dogma.*
 
 ### Emotional core
 **Empowerment + Clarity.** Feeling more capable because Spectrea helped you see clearly and choose wisely. Like putting on glasses — everything that was blurry snaps into focus.
 
 ### Visual metaphor
-**Prism + Living Network.** The prism is Spectrea's origin (raw information enters, organized insight exits — the "reveal" moment). The network is its promise — a web of connections that grows denser and more intelligent over time.
+**Living Network + Prism.** The living network is Spectrea's central visual idea — a web of connections that grows denser and more alive with every interaction. The prism is the etymology echo — what enters as a single stream comes out as the full spectrum, organised and visible. The network is what the brand *feels like*; the prism is where the name *comes from*.
 
 ### Aesthetic direction
 **Warm + Intelligent.** Like a brilliant mentor — approachable yet deep. Rich colours, inviting spacing, feels human. References: Notion, Stripe. Tradeoff: **power over polish** — capability is sacred; elegance is valued but never at the cost of depth.
 
 ### Values
 1. **Human-First** — Spectrea serves people, not the other way around. AI assists understanding; it never replaces judgment.
-2. **Trustworthy Intelligence** — every claim attributed, every action auditable, every connection traceable.
+2. **Trustworthy Intelligence** — everything you see is transparent; every action is reviewable; every connection can be followed back.
 3. **Compounding Intelligence** — the more you use it, the more it gives back.
 4. **Composable by Nature** — build solutions that fit your world; don't reshape your world to fit a tool.
 5. **Accessible Power** — deep capability that meets you where you are. Floor high, ceiling infinite.
@@ -69,7 +78,16 @@ Primary theme is **Connection** — the headline "We connect the dots" and the i
 ## 2. Voice & Tone
 
 ### Voice formula
-Spectrea sounds like a brilliant mentor: confident without being arrogant, specific without being jargon-heavy, warm without being cloying. The voice stays constant; the tone adapts to context.
+**Clarity of explanation + experiential momentum. Tech earns its place by showing its work.**
+
+The formula applies on every surface. Tech doesn't earn its place by impressing or by sleight-of-hand; it earns it by *showing its work* — pointing to the reasoning, the evidence, the source. Confidence comes from being able to see how the answer was reached, not from being told to trust it.
+
+### One voice, three archetypes by surface
+The voice formula stays the same; the *emotional register* shifts with the archetype that owns each surface:
+
+- **Magician on marketing** — leads with discovery, surprise, the moment of seeing connections that were always there.
+- **Sage on trust surfaces** — leads with verification, sources, inspection. Anywhere users go to confirm, review, or understand: settings, errors, audit views, docs, security pages.
+- **Creator on product** — leads with agency, composition, building. The graph editor, primitives, workflows.
 
 ### Tone spectrum
 | Context | Tone | Example |
@@ -80,10 +98,14 @@ Spectrea sounds like a brilliant mentor: confident without being arrogant, speci
 | Onboarding | Encouraging, low-friction | "Start with one document. The rest will compound." |
 | Technical docs | Precise, well-structured | "The graph grows O(n·log n) with document count when using the default indexer." |
 
-### Vocabulary
-**Words we use:** connect, surface, compound, graph, claim, insight, understanding, verify, trace, build-on, meets-you-where, spectrum, prism, clarity.
+### Vocabulary — twelve privileged words
+The twelve brand-evocative words that should appear disproportionately often in copy. Each builds the *feeling* of Spectrea — clarity, aliveness, ownership, the act of seeing — without requiring the reader to know what the product does.
 
-**Words we never use:** disrupt, synergy, leverage (as verb), seamless, revolutionize, game-changer, unparalleled, cutting-edge, AI-powered (as lead adjective), solution (generic).
+**Privileged words:** spectrum, clarity, whole, see, reveal, illuminate, surface, connect, compose, compound, alive, transparent.
+
+Generic B2B SaaS words (insights, intelligence, transform, empower, unlock, enable, build, evolve, grow, deepen, expand) are still allowed but not privileged — they don't make Spectrea sound like Spectrea. Product-specific words (provenance, traceable, auditable, attributed, sourced) are also allowed and useful when describing what the product actually does — they just don't do brand voice work.
+
+**Words we never use:** AI-powered (overused), next-gen, state-of-the-art, world-class, breakthrough, unprecedented, game-changer, revolutionary.
 
 ---
 
@@ -91,9 +113,30 @@ Spectrea sounds like a brilliant mentor: confident without being arrogant, speci
 
 - **Spelling:** Spectrea (capital S, no space).
 - **Pronunciation:** /spek-TREE-uh/ — emphasis on the second syllable.
-- **Etymology:** Latin *spectra* — the full range or spectrum. The name evokes the complete range of hidden connections the platform reveals.
-- **Product names:** lowercase after the master brand. E.g., "Spectrea graph", "Spectrea claims", "Spectrea composer". Master brand always capitalised.
+- **Etymology — dual reading:** From *spectra* (Latin: the full range or spectrum). The name does double duty:
+  - **Reading 1 — Spectrum:** the full range. The complete view. The whole picture, all in one place.
+  - **Reading 2 — Revealing:** bringing what was hidden into clear view. The shift from blur to focus.
+  - Together: *the spectrum of clarity* — and the action behind the tagline "We connect the dots."
 - **Never:** "SpectreAI", "Spectrea AI" (lead), "spectra" (missing e).
+
+### Feature naming convention
+Apple-style: Title-case Proper Nouns without brand prefix. Each first-class feature stands on its own; the platform context (Spectrea) is implicit.
+
+| Feature | Canonical name |
+|---|---|
+| The knowledge graph | **Knowledge Graph** |
+| Claims surface | **Claims View** (or **Claims**) |
+| Observation records | **Observations** |
+| Source records | **Sources** |
+| AI assistant | **Assistant** |
+| Multi-perspective view | **Spectrum View** |
+| AI-surfaced suggestions | **Suggestions** |
+| Provenance trails | **Traces** |
+
+**Three rules:**
+1. **Default:** Title-case Proper Noun for first-class features. *Knowledge Graph*, not *knowledge graph*.
+2. **Brand-prefix:** reserved for distinct branded surfaces — separately-paid tiers, developer surfaces, installable companions. Only after deliberate review (a hypothetical *Spectrea Studio* would qualify).
+3. **In running prose:** lowercase generic nouns are acceptable when natural ("the assistant suggested"). Canonical name in marketing headers, documentation cross-references, and product UI labels.
 
 ---
 
@@ -104,7 +147,7 @@ Spectrea sounds like a brilliant mentor: confident without being arrogant, speci
 ### Anatomy
 The logo has three parts:
 1. **Mark** — the "connecting the dots" S-curve. 10 dots along a cubic Bézier path, with the final three visually trailing. Spectrum-gradient stroke connecting the first seven. The mark also reads as the leading `S` glyph in the lockup.
-2. **Wordmark** — Albert Sans Semibold 600, lowercase, 0.02em letter-spacing. Renders as `pectrea`, always paired with the S mark. Never rendered alone in production.
+2. **Wordmark** — Albert Sans Semibold 600, 0.02em letter-spacing. Inside the canonical `Logotype` / `LogotypeGradient` components, the S mark replaces the leading `S` and only the tail `pectrea` is typeset in lowercase — a stylistic treatment, not the typed name. In every other context (manual lockups like the sidebar, descriptor variants, prose, headings, URLs-excepted), use the sentence-case `Spectrea` — the mark sits beside it as a companion glyph rather than a letter substitute.
 3. **Lockup** — S mark + lowercase wordmark.
 
 ### Construction
@@ -158,7 +201,7 @@ The gradient lives in the mark only. No gradient-filled wordmark, no full-spectr
 
 ### Lockup arrangements (three)
 1. **Gradient logotype** — `LogotypeGradient`. Preferred for brand/marketing.
-2. **Horizontal with descriptor** — `StaticLogo` + lowercase `pectrea` wordmark + descriptor below. For nav, product headers, sub-brands. Descriptor styling: `gap-3` between mark and wordmark column, `text-xs`, uppercase, tracking-widest, Pewter (`#97979E`).
+2. **Horizontal with descriptor** — `StaticLogo` + sentence-case `Spectrea` wordmark + descriptor below. For nav, product headers, sub-brands. Descriptor styling: `gap-3` between mark and wordmark column, `text-xs`, uppercase, tracking-widest, Pewter (`#97979E`). Because this is a manual composition (not the canonical `Logotype` component), the mark sits beside the wordmark as a companion glyph — the S is not dropped, and the word is typed `Spectrea` exactly as in running prose.
 3. **Stacked** — mark above wordmark. For title slides, centered compositions. Wordmark width ≤ mark width.
 
 ### When to use which variant
@@ -192,6 +235,11 @@ Never: stretch or distort · change colours (spectrum gradient is Cobalt → Tea
 ![Warm Blend neutrals — Canvas, Cloud, Pewter, Graphite, Ink](/brand-assets/swatches-neutrals.svg)
 
 ![Bridge tier — tinted washes for semantic surfaces](/brand-assets/swatches-bridge.svg)
+
+### Spectrum is the brand signature
+The four-colour spectrum (Cobalt + Teal + Amber + Rose) is the brand's central visual claim — comparable to how Google's four colours signal Google or Microsoft's four squares signal Microsoft. In **marketing surfaces**, the spectrum is used confidently as the brand's identity: hero gradients, full-spectrum illustration moments, spectrum lockups, the lockup gradient as the signature mark treatment.
+
+In **product UI**, the same four colours stay strictly *semantic* (Tier 3 framework below): Cobalt for action, Teal for success, Amber for attention, Rose for urgency. The discipline doesn't change; only the airtime does. Marketing spends budget on spectrum hero moments; product reserves it for meaning.
 
 ### Warm Blend neutrals (applied system-wide)
 A subtle warm tint layered under the spectrum — closes the gap between cold Tailwind grays and the warm accents. Luminance shift is <2% but cohesive as a system.
@@ -364,62 +412,55 @@ Desktop (1024+) / Tablet (640–1023) / Mobile (<640):
 
 ---
 
-## 9. Illustration
+## 9. Illustration — the Dot System
 
-Spectrea runs a **dual visual language**. Iconography and product UI stay strictly geometric (Section 8). Illustration — for marketing pages, blog posts, fundraising decks, social, and brand storytelling — is warmer, richer, and allows more organic composition. Both tiers share the same palette so they read as one brand.
+Every Spectrea illustration assembles from **five primitives**: Dot, Curve, Cluster, Trail, Field. Brand palette only, on Canvas. The brand mark itself is this system at small scale; illustrations extend it at larger scale. Anything not assembled from these five atoms is off-brand.
 
-### Tier A — Product / docs (strict geometric)
-Already defined by Sections 5–8. Flat primitives, no gradients, strict palette. Used for: app UI, iconography, technical diagrams, developer documentation, changelogs, status pages.
+### The five atoms
 
-### Tier B — Marketing / editorial (warmer illustrated)
-For everything people-facing and narrative. Characterised by:
+1. **Dot** — filled circle in a brand colour. The fundamental unit. A point of attention. Stand it for whatever the illustration needs it to stand for.
+2. **Curve** — a soft Bézier line that connects. The relationship between two things. Same flowing feel as the Spectrea mark.
+3. **Cluster** — a group of 3–8 dots in proximity. Things that belong together. A whole made of parts.
+4. **Trail** — a sequence of dots in directional order, opacity or size increasing from earliest (faint) to latest (full). Movement through time. The path from then to now.
+5. **Field** — a soft tinted radial or linear wash using one bridge tone (Cobalt Wash `#EDF0F8`, Teal Mist `#E6F5F3`, Amber Stone `#F5F0E6`, or Rose Blush `#FDF0F2`). Atmospheric depth — the air around the subject, never the subject itself.
 
-- **Filled shapes only** — no outlines, no borders, no line art
-- **Mixed shape vocabulary** — basic geometric primitives (circles, rectangles, triangles, arcs) for structured subjects + organic curved shapes (flowing foliage, rounded hills, billowy clouds, soft contours) for natural / soft subjects
-- **Tints of primaries** — 20–60% opacity versions of Cobalt, Teal, Amber, Rose for supporting elements, mid-ground, atmospheric depth. Every element carries colour; no large empty neutral areas
-- **Subtle depth** — soft vertical gradient permitted on background fields only; single darker tonal step on rounded organic objects; atmospheric perspective for recessed elements
-- **Figures** — clean silhouette, flat-block clothing in palette colours, suggested face only. No detailed facial features
-- **Balanced composition** — visual weight and colour distributed across the frame; asymmetric balance via rule-of-thirds or diagonal flow; element count fits the subject (rich but uncluttered)
+### The rule
+Every brand illustration assembles from these five atoms only, in the brand palette, on Canvas or a Field. **Filled shapes only — no outlines, no strokes on dots, no drop shadows, no glows, no textures.** Curves are the only stroked elements (thin, soft, Pewter or spectrum).
 
-**Reference aesthetic:** Linear.app and Stripe brand illustrations — warm, composed, full of life, clean.
+### Specialisations
+The Dot System is the universal vocabulary; two specialisations apply it to specific surfaces:
+
+- **Geometric specialisation** (icons, diagrams, product UI). Circles, rectangles, triangles, arcs, lines. Flat fills from the brand palette. The geometric primitives reduce to the same five-atom DNA — circles are dots; rectangles are oriented dots; triangles are arrows. Used for app UI, iconography, technical diagrams, developer documentation, changelogs, status pages.
+- **Bauhaus figure specialisation** (human / team imagery). Each person = head dot + soft rounded torso shape, in one brand colour. Multiple people = a cluster of these figures, optionally connected by Pewter curves (their "shared graph"). Used for about pages, customer stories, team imagery.
 
 ### Production workflow
-1. Generate with a free + commercial-safe AI tool (Gemini, Bing Image Creator / DALL-E 3, Adobe Firefly, or Stable Diffusion locally) using the locked prompt template
+1. Generate with a free + commercial-safe AI tool (Gemini, Bing Image Creator / DALL-E 3, Adobe Firefly, or Stable Diffusion locally) using the **Dot System v2 prompt** at `docs/illustration-prompt.md`
 2. Vectorise the raster output with **Inkscape** (Path → Trace Bitmap → Multiple scans → Colors)
 3. Drop the SVG into `/public/illustrations/`, or paste markup into a React component
 4. Snap fills to exact Spectrea hex codes, namespace IDs, clean up excess paths
+5. **Reject any output that introduces shapes outside the five atoms.** Triangles, abstract blobs, wireframes, line art, mascots — all off-brand. Regenerate.
 
 **Prompt template:** versioned at `docs/illustration-prompt.md` in the repo (internal, not served publicly). Keep that file as the single source of truth — edit there, not here.
 
-### What Tier B never does
-- Outlines, strokes, borders, line art
+### What the Dot System never does
+- Outlines, strokes on dots, borders, line art
 - Photorealism, 3D rendering, isometric projection
 - Drop shadows, glows, lens flares
 - Heavy textures, noise, grain, hatching
 - Off-brand colours (neon, magenta, cyan, bright yellow, pastel pink, purple, lavender, bright green)
-- Detailed facial features — suggested shapes only
 - Mascot characters, anthropomorphic objects
+- Detailed facial features (use the Bauhaus distillation when figures are needed)
 - Overcrowded scenes
 
-### When to use which tier
-
-| Surface | Tier |
-|---|---|
-| App UI, iconography | A — strict geometric |
-| Technical diagrams, dashboards | A |
-| Developer docs, changelogs | A |
-| Marketing website | B — illustrated |
-| Blog / editorial | B |
-| Fundraising / sales deck | B |
-| Social posts | B |
-| Onboarding / product tour hero images | B (with restraint) |
+### One register everywhere
+Marketing surfaces and product surfaces share the same illustration vocabulary — the Dot System. The variation is *how dense* and *how much hero treatment*, not *what kind of brand*. Marketing is product-with-room-to-breathe; product is marketing-with-functional-density. Same visual world.
 
 ---
 
 ## 10. Motion
 
 ### Philosophy
-Purposeful, subtle, natural. Every animation answers "what does this help the user understand?" — if the answer is "nothing," remove it. Motion guides attention, confirms actions, and creates continuity; it never decorates.
+Purposeful, subtle, natural — and alive. Every animation answers "what does this help the user understand?" — if the answer is "nothing," remove it. Most interactive motion stays restrained (150–300ms hovers, focus, state changes). Three signature primitives below carry the brand's "alive, growing, compounding" claim — used purposefully, not decoratively.
 
 ### Durations
 - 100 ms — micro (hover tints, colour shifts)
@@ -432,8 +473,74 @@ Purposeful, subtle, natural. Every animation answers "what does this help the us
 - `ease-in-out` (`cubic-bezier(0.4, 0, 0.2, 1)`) — for back-and-forth movements, continuous animations.
 - Never use linear (feels mechanical) or ease-in alone (feels like something is wrong).
 
+### Signature motion primitives (three)
+Three brand-distinctive motion primitives. Used at specific moments only — not decoratively. Each owns one part of the *alive, growing, compounding* brand claim.
+
+**1. Node arrival (~400ms).** Trigger: a new node enters the graph (extraction, AI suggestion, user action). Spec: scale from 0 with soft elastic settle (`cubic-bezier(0.34, 1.56, 0.64, 1)`), then a brief radial pulse in the node's spectrum colour. Used in the live graph view, marketing demo videos, and onboarding moments.
+
+**2. Edge formation (~300ms).** Trigger: a relationship forms between two nodes. Spec: edge draws from source toward target with the spectrum gradient running along the line, then settles to its resting colour. Implemented via `stroke-dashoffset` animation on an SVG path with a linear gradient stroke. Used wherever the graph is shown live or recorded.
+
+**3. Spectrum shift (~600ms).** Trigger: AI surfaces a connection / insight / claim. Spec: a thin gradient strip (4px tall, ~75% width of its container) traverses Cobalt → Teal → Amber → Rose with `background-position` animation across a 4× wide gradient, fading in at 15% and out at 85%. The brand's signal for "AI just acted" — without saying the word AI. Used sparingly: only when AI has *meaningfully* acted (surfaced an insight, made a connection, completed an extraction). Not on every API response.
+
 ### Animated mark
 The Spectrea mark animates on a 3-second loop: the spectrum stroke draws along the S curve, pauses, then dissolves to reveal the dots again. Always uses the **full spectrum** (Cobalt → Teal → Amber) — the "reveal" moment. Use for loading states, hero animations, and motion assets.
+
+---
+
+## 10b. Data Visualization
+
+The product's hero UI is a knowledge graph. The graph IS the brand. That makes graph rendering a brand artefact — not a local engineering choice. The rules below ensure the same node, edge, and confidence vocabulary appears across product UI, marketing screenshots, blog diagrams, and brand-guide examples.
+
+### Node rendering
+Category determines colour; size encodes one signal at a time.
+
+| Node type | Colour | When |
+|---|---|---|
+| Primary entity | **Cobalt** `#4271DF` | The things the user is reasoning about |
+| Relationship rendered as node | **Teal** `#00B6A0` | When the relationship itself is first-class (meetings, agreements, transactions) |
+| Uncertain / contested claim | **Amber** `#E19000` (70% opacity) | Uses the `hedge_marker` convention |
+| Context / background | **Pewter** `#97979E` | Less prominent supporting nodes |
+
+Density cap: **~80 nodes per view** before clustering kicks in.
+
+### Edge rendering
+Stroke style encodes relationship category; stroke weight encodes confidence.
+
+| Stroke style | Meaning |
+|---|---|
+| Solid | Confirmed relationship with provenance |
+| Dashed | Inferred relationship (AI- or rule-derived) |
+| Dotted | Hypothetical or proposed relationship |
+
+Default stroke colour: **Pewter**. Spectrum colours appear only on emphasised edges (selected, hovered, AI-surfaced). Stroke weight: 1.5–2.5px. Higher confidence → thicker. Direction (arrow) only when meaningful; bidirectional relationships render without arrows.
+
+### Confidence encoding
+Opacity 50–100% maps to confidence 0.5–1.0. Linear ramp. Anything below 50% confidence is hidden by default (user can opt to show). Combined with the `hedge_marker` field in tooltips ("estimated", "preliminary", "hedged", "hypothetical").
+
+**Never use colour shift for confidence** — colour is reserved for category. Opacity is the unambiguous confidence channel.
+
+### Provenance trails
+When the user asks "trace this claim back to its source," the chain renders as a **Trail** (Dot System atom #4) — a sequence of dots from earliest source (faint, small) to final claim (full opacity, full size). Dashes between dots indicate derivation rather than direct connection. Source nodes (originating documents / observations) get a subtle outline ring on hover. Animation: nodes light up sequentially from source to claim — see *Edge formation* signature motion primitive above.
+
+### Interactive states
+| State | Treatment |
+|---|---|
+| Default | Full opacity, category colour |
+| Hover | Slight scale-up (×1.1), 85% opacity. Cursor change. |
+| Focused | 2px Ink stroke ring (keyboard focus) |
+| Selected | Outer halo at 18% opacity, inner node unchanged |
+
+Animation timing: 150ms ease-out for hover, instant for selection.
+
+### Layout & density
+- **Full graph view:** up to 80 nodes onscreen. Force-directed layout, pan and zoom enabled.
+- **Cluster view:** when density exceeds 80, nodes group into clusters. Click a cluster to expand.
+- **Focus view:** single entity centred, immediate neighbours visible. Used for "explore this entity" surfaces.
+- **Background:** Canvas (`#FDFDFB`) in light mode; Ink (`#18181C`) in dark mode.
+- **Empty state:** single Cobalt dot centred + ghost hint dots in distance (Pewter at 30% opacity). Room to grow built into the composition.
+
+### Cross-product consistency
+The same node / edge / confidence rendering must appear in: product UI (`GraphExplorer`, `BubbleNode`, `CompositionNode`), marketing screenshots, blog post diagrams, brand-guide examples, documentation, and pitch decks. If a graph rendered anywhere else looks different from these rules, it's off-brand. Consistency across surfaces is what makes the graph recognisable as Spectrea — not just *a* graph.
 
 ---
 

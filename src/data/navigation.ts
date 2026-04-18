@@ -54,6 +54,7 @@ export const navigation: NavItem[] = [
     path: '/imagery',
     children: [
       { label: 'Illustration', path: '/imagery/illustration' },
+      { label: 'Data Visualization', path: '/imagery/dataviz' },
       { label: 'Iconography', path: '/imagery/iconography' },
       { label: 'Motion', path: '/imagery/motion' },
     ],

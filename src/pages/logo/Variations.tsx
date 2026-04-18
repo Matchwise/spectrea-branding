@@ -278,7 +278,7 @@ export default function Variations() {
               <div className="flex items-center gap-3">
                 <StaticLogo size={36} colorMode="cool" dotColorMode="grey" />
                 <div>
-                  <span className="font-heading font-semibold text-stone-900 text-sm" style={{ letterSpacing: '0.02em' }}>spectrea</span>
+                  <span className="font-heading font-semibold text-stone-900 text-sm" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
                   <p className="text-xs text-stone-400 uppercase tracking-widest">Brand Guide</p>
                 </div>
               </div>
@@ -292,7 +292,7 @@ export default function Variations() {
             <div className="p-5 flex items-center justify-center bg-stone-50 min-h-[130px]">
               <div className="flex flex-col items-center gap-2">
                 <StaticLogo size={52} colorMode="cool" dotColorMode="grey" />
-                <span className="font-heading font-semibold text-stone-900 text-lg" style={{ letterSpacing: '0.02em' }}>spectrea</span>
+                <span className="font-heading font-semibold text-stone-900 text-lg" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
               </div>
             </div>
             <div className="p-3 border-t border-stone-100">
@@ -348,7 +348,7 @@ export default function Variations() {
             <div key={desc} className="border border-stone-200 rounded-xl p-5 flex items-center gap-3">
               <StaticLogo size={36} colorMode="cool" dotColorMode="grey" />
               <div>
-                <span className="font-heading font-semibold text-stone-900 text-sm" style={{ letterSpacing: '0.02em' }}>spectrea</span>
+                <span className="font-heading font-semibold text-stone-900 text-sm" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
                 <p className="text-xs text-stone-400 uppercase tracking-widest">{desc}</p>
               </div>
             </div>

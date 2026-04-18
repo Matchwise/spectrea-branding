@@ -12,14 +12,36 @@ export default function Voice() {
         <div className="bg-ink text-white rounded-xl p-6">
           <p className="text-base font-medium leading-relaxed">{voice.formula}</p>
         </div>
+        <p className="text-xs text-stone-500 mt-3 leading-relaxed">
+          The formula applies on every surface. Tech doesn't earn its place by impressing or by sleight-of-hand;
+          it earns it by <em>showing its work</em> — pointing to the reasoning, the evidence, the source.
+          Confidence comes from being able to see how the answer was reached, not from being told to trust it.
+        </p>
+      </Section>
+
+      {/* Tri-archetype surface mapping */}
+      <Section title="One Voice, Three Archetypes by Surface">
+        <p className="text-sm text-stone-500 mb-4 leading-relaxed">
+          Spectrea splits its archetype across three surface domains. The voice formula stays the same;
+          the <strong>emotional register</strong> shifts with the archetype that owns each surface.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          {brand.archetypes.map(a => (
+            <div key={a.name} className="bg-stone-50 rounded-lg p-4 border border-stone-200">
+              <p className="text-xs font-semibold uppercase tracking-wider text-stone-400 mb-1">{a.surface}</p>
+              <p className="text-sm font-semibold text-stone-800 mb-1">{a.name}</p>
+              <p className="text-xs text-stone-500 leading-relaxed">{a.description}</p>
+            </div>
+          ))}
+        </div>
       </Section>
 
       {/* Personality reminder */}
       <Section title="Voice = Personality in Words">
         <p className="text-sm text-stone-500 mb-4">
-          Spectrea's voice is the verbal expression of its personality traits. Every piece of writing should feel:
+          Spectrea's voice is the verbal expression of its five personality traits. Every piece of writing should feel:
         </p>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
           {brand.personality.map(p => (
             <div key={p.trait} className="bg-stone-50 rounded-lg p-3 border border-stone-200 text-center">
               <p className="text-sm font-semibold text-stone-800">{p.trait}</p>
@@ -99,9 +121,16 @@ export default function Voice() {
 
       {/* Vocabulary */}
       <Section title="Vocabulary">
+        <p className="text-sm text-stone-500 mb-4 leading-relaxed">
+          Twelve brand-evocative words that <strong>privilege</strong> the Spectrea voice. Each builds the <em>feeling</em> of the brand
+          — clarity, aliveness, ownership, the act of seeing — without requiring the reader to know what the product does.
+          Generic B2B SaaS words (insights, intelligence, transform, empower, unlock, build, etc.) are still allowed in writing
+          but don't do voice work. Product-specific words (provenance, traceable, auditable) are also allowed when describing what
+          the product actually does — they're just not what makes Spectrea sound like Spectrea.
+        </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
-            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Words We Use</h3>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Privileged words ({voice.alwaysUse.length})</h3>
             <div className="flex flex-wrap gap-1.5">
               {voice.alwaysUse.map(word => (
                 <span key={word} className="text-xs px-2 py-1 rounded-md" style={{ backgroundColor: '#00B6A010', color: '#008775' }}>{word}</span>
@@ -109,7 +138,7 @@ export default function Voice() {
             </div>
           </div>
           <div className="border rounded-xl p-5" style={{ borderColor: '#F2426025', backgroundColor: '#F2426008' }}>
-            <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Words We Never Use</h3>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Words we never use</h3>
             <div className="flex flex-wrap gap-1.5">
               {voice.neverUse.map(word => (
                 <span key={word} className="text-xs px-2 py-1 rounded-md line-through" style={{ backgroundColor: '#F2426010', color: '#D63B55', textDecorationColor: '#F2426060' }}>{word}</span>

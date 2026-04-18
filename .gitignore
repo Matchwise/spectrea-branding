@@ -28,3 +28,5 @@ tsconfig.tsbuildinfo
 
 # Ad-hoc screenshot dumps at repo root
 /*.png
+
+.superpowers/

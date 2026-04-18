@@ -7,7 +7,7 @@ export const brand = {
   name: 'Spectrea',
   pronunciation: '/spek-TREE-uh/',
   etymology:
-    'From "spectra" (Latin: the full range or spectrum). The name evokes the complete range of hidden connections the platform reveals — like a prism separating light into its full spectrum.',
+    'From "spectra" (Latin: the full range or spectrum). The name does double duty: (1) the full range — the complete view, the whole picture, everything in one place; (2) revealing — bringing what was hidden into clear view. Together: the spectrum of clarity.',
   tagline: {
     statement: 'We connect the dots.',
     usage: 'The public-facing hook. Appears with the logo, in marketing headlines, and as the one-line summary. Should work at both the product level (connecting data) and the brand level (connecting understanding).',
@@ -35,7 +35,7 @@ export const brand = {
     promise:
       'Turns scattered information into compounding intelligence',
     brand:
-      'In an age of information overload and eroding trust, people need more than another tool — they need a way to separate truth from noise, surface insights across boundaries, and build on what they understand. Spectrea is the composable knowledge platform that puts this power in human hands — where every claim is traceable, every insight is inspectable, and understanding compounds with every interaction.',
+      'In an age of information overload and eroding trust, people need more than another tool — they need a way to separate truth from noise, surface insights across boundaries, and build on what they understand. Spectrea is the composable knowledge platform that puts this power in human hands — where everything you see is transparent, every connection inspectable, and understanding compounds with every interaction.',
     tactical:
       'For anyone who works with knowledge, Spectrea is the composable knowledge platform that turns scattered information into compounding intelligence — unlike fragmented point solutions that silo your knowledge and hide their reasoning.',
   },
@@ -53,13 +53,13 @@ export const brand = {
         theme: 'Trustworthy Intelligence',
         headline: 'Intelligence you can trust.',
         supporting:
-          'In a world of noise and hallucination, every claim in Spectrea has a source. Every action is auditable. Every connection is traceable. Truth isn\'t assumed — it\'s verified and inspectable.',
+          'In a world of noise and hallucination, everything you see in Spectrea is transparent. You can always see where it came from, what changed, and why. Truth isn\'t assumed — it\'s shown.',
       },
       {
         theme: 'Compounding Intelligence',
         headline: 'It gets smarter with every interaction.',
         supporting:
-          'Every document you upload, every entity you create, every relationship you draw — it all compounds. Your second year is incomparably better than your first.',
+          'Every document you add, every idea you capture, every connection you draw — it all compounds. Your second year is incomparably better than your first.',
       },
       {
         theme: 'Composability',
@@ -70,10 +70,30 @@ export const brand = {
     ],
   },
 
-  // --- Brand Archetype ---
-  archetype: 'The Magician' as const,
-  archetypeDescription:
-    'Transformation — making the impossible possible. Turns complexity into clarity. Reveals hidden patterns. The world is more intelligible because Spectrea exists.',
+  // --- Brand Archetypes (tri-domain split) ---
+  // Each archetype owns one surface domain and shapes the emotional tone there.
+  // The visual aesthetic stays consistent across surfaces (see "one register everywhere"
+  // in the v2 design spec); only voice and mood change per archetype.
+  archetypes: [
+    {
+      name: 'The Magician',
+      surface: 'Marketing',
+      description:
+        'The moment of seeing what was hidden. The thrill of pattern emerging from chaos. Owns landing pages, launch videos, social, blog headers — wherever the brand surprises and delights.',
+    },
+    {
+      name: 'The Sage',
+      surface: 'Trust',
+      description:
+        'Authority through clarity. The calm of being able to see exactly how something is true. Owns settings, errors, documentation, security pages — wherever trust gets earned by showing the work.',
+    },
+    {
+      name: 'The Creator',
+      surface: 'Product',
+      description:
+        'The joy of making. Building something that\'s yours. Owns the spaces where users compose and create — wherever the brand hands the user the tools and steps back.',
+    },
+  ] as const,
 
   // --- Personality ---
   personality: [
@@ -97,6 +117,11 @@ export const brand = {
       description: 'Meets you where you are. A beginner and an expert use the same system — they just see different depths.',
       guardrail: 'But not shapeless — flexibility doesn\'t mean no opinion. Spectrea has a clear point of view.',
     },
+    {
+      trait: 'Rigorous',
+      description: 'Discipline that serves clarity. The system is prescriptive on purpose — a fixed set of primitives, a fixed palette, a fixed motion language — because consistency is what makes the brand recognisable across every surface.',
+      guardrail: 'But not rigid — discipline serves meaning, not dogma. When meaning calls for an exception, the exception is documented and named, not smuggled in.',
+    },
   ],
 
   // --- Values ---
@@ -110,8 +135,8 @@ export const brand = {
     {
       name: 'Trustworthy Intelligence',
       principle: 'P2 + P5',
-      description: 'Every claim is attributed, every action auditable, every connection traceable. Understanding that can\'t be verified isn\'t understanding at all.',
-      proof: 'Claims-based knowledge model with full provenance chains. Source attribution, confidence scores, and staleness indicators. Every mutation logged, every AI action recorded with model and rationale.',
+      description: 'Everything you see is transparent. Every action is reviewable. Every connection can be followed back to where it came from. Understanding that can\'t be verified isn\'t understanding at all.',
+      proof: 'Every piece of information is linked to its source. Confidence levels are visible, never hidden. Every change is logged with reasoning. AI actions are always recorded and explainable.',
     },
     {
       name: 'Compounding Intelligence',
@@ -208,9 +233,9 @@ export const brand = {
 
   // --- Differentiators ---
   differentiators: [
-    { spectrea: 'Trustworthy intelligence — every claim has a source', others: 'Black box — data goes in, answers come out' },
+    { spectrea: 'Trustworthy intelligence — everything you see is transparent', others: 'Black box — data goes in, answers come out' },
     { spectrea: 'Compounding intelligence — gets smarter with use', others: 'Static tools — same value on day 1 and day 1000' },
-    { spectrea: 'Claims with provenance — truth is traceable', others: 'Unverifiable outputs — no way to audit or trust' },
+    { spectrea: 'Verifiable truth — every connection can be followed back', others: 'Unverifiable outputs — no way to audit or trust' },
     { spectrea: 'Composable primitives — build exactly what you need', others: 'Fixed features — use what you\'re given' },
     { spectrea: 'Unified substrate — one graph replaces 20+ tools', others: 'Point solutions — another app in the stack' },
     { spectrea: 'Private by default — your knowledge stays yours', others: 'Open by default — data leaks across boundaries' },
@@ -251,10 +276,10 @@ export const brand = {
 
 // --- Voice & Tone ---
 export const voice = {
-  formula: 'Clarity of explanation + experiential momentum. Tech earns its place by explaining the magic.',
+  formula: 'Clarity of explanation + experiential momentum. Tech earns its place by showing its work.',
   techApproach: 'Earn the jargon',
   techDescription:
-    'Start with the human benefit, then introduce the technical concept. The tech earns its place by explaining the magic — not by impressing.',
+    'Start with the human benefit, then introduce the technical concept. Tech earns its place by showing its work — pointing to the source, the trace, the evidence — not by impressing.',
 
   toneSpectrum: [
     {
@@ -279,13 +304,23 @@ export const voice = {
     },
   ],
 
+  // The 12 brand-evocative privileged words.
+  // These read brand-pure (no product knowledge required) and shape the Spectrea voice.
+  // Product-flavoured words (provenance, traceable, auditable, attributed) are still
+  // allowed when describing what the product does — they just don't do brand voice work.
   alwaysUse: [
-    'insights', 'connections', 'intelligence', 'clarity', 'spectrum',
-    'discover', 'surface', 'reveal', 'illuminate',
-    'empower', 'unlock', 'transform', 'enable', 'compose', 'build',
-    'transparent', 'traceable', 'auditable', 'provenance', 'private', 'secure',
-    'trustworthy', 'verified', 'attributed', 'sourced', 'grounded',
-    'evolve', 'grow', 'compound', 'deepen', 'expand', 'adapt', 'emerge',
+    'spectrum',     // the brand's name
+    'clarity',      // the brand outcome
+    'whole',        // seeing it all in one place
+    'see',          // direct, humble brand action
+    'reveal',       // bringing the hidden into view
+    'illuminate',   // shining light on what was dim
+    'surface',      // distinctive verb — bring forward
+    'connect',      // the tagline verb
+    'compose',      // brand quality (build from parts)
+    'compound',     // brand quality (grows over time)
+    'alive',        // the living, growing quality
+    'transparent',  // brand value
   ],
   neverUse: [
     'AI-powered (overused)', 'next-gen', 'state-of-the-art', 'world-class',
@@ -309,7 +344,7 @@ export const voice = {
       context: 'Feature Announcement',
       correct: 'Every document you upload now automatically enriches your knowledge graph. Connections you never noticed start surfacing. The system gets sharper — your second month is better than your first.',
       incorrect: 'We are excited to announce the launch of our groundbreaking auto-extraction feature, a world-class breakthrough in knowledge management technology!',
-      why: 'Shows what the user experiences, not what we built. Tech earns its place by explaining the magic.',
+      why: 'Shows what the user experiences, not what we built. Tech earns its place by showing its work.',
     },
     {
       context: 'Documentation',

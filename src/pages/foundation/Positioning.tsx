@@ -7,6 +7,37 @@ export default function Positioning() {
       title="Positioning"
       subtitle="How Spectrea connects its purpose to the market."
     >
+      {/* Strategic claim — Decision 7 */}
+      <Section title="Strategic Claim">
+        <div className="text-white rounded-xl p-6" style={{ backgroundColor: '#18181C' }}>
+          <p className="text-base leading-relaxed font-medium">
+            Spectrea is the spectrum of clarity. Everything you know, in one living view —
+            alive with possibility, yours to keep. See it whole. Trust what you see. Build on what you find.
+          </p>
+        </div>
+        <p className="text-xs text-stone-500 mt-3 leading-relaxed">
+          The brand's anchor sentence. Reads on its own without product context — anyone can grok the feeling
+          (clarity, aliveness, ownership) before they ever learn what Spectrea actually does. The brand stands
+          first; the product slots into the brand, not the other way around.
+        </p>
+      </Section>
+
+      {/* Audience scope — mass appeal */}
+      <Section title="Audience Scope">
+        <div className="bg-stone-50 rounded-xl p-6 border border-stone-200">
+          <p className="text-sm text-stone-700 leading-relaxed mb-3">
+            <strong>Mass-appeal: B2C personal use through enterprise.</strong> The four named personas below
+            (Business Leaders, Knowledge Workers, Technology Leaders, Growing Teams) are only the named top tier.
+            The brand also has to work for an individual managing personal knowledge, a freelancer running their
+            own engagements, a five-person team with no IT department, and an enterprise procurement committee.
+          </p>
+          <p className="text-sm text-stone-700 leading-relaxed">
+            Every artefact must read as <em>credible to enterprise</em> and <em>approachable to individuals</em> simultaneously.
+            This is why the brand stakes the <em>spectrum + graph + alive</em> identity rather than picking a tier-specific aesthetic.
+          </p>
+        </div>
+      </Section>
+
       {/* Brand Positioning — elevated */}
       <Section title="Brand Positioning">
         <div className="text-white rounded-xl p-6" style={{ backgroundColor: '#18181C' }}>
