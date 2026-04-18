@@ -1,9 +1,8 @@
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import PageShell, { Section } from '../../components/layout/PageShell'
-import Tooltip from '../../components/brand/Tooltip'
 import {
-  SpectreaFigure, ALL_COLORS, type FigureColor,
+  SpectreaFigure,
   SceneCohort, SceneCrowd, ScenePair,
 } from '../../components/illustrations/SpectreaFigure'
 
@@ -19,778 +18,7 @@ const INK = '#18181C'
 const PEWTER = '#97979E'
 const CLOUD = '#F4F4F1'
 const CANVAS = '#FDFDFB'
-
-const rand = (i: number, salt = 0) => {
-  const x = Math.sin(i * 12.9898 + salt * 78.233) * 43758.5453
-  return x - Math.floor(x)
-}
-
-/* ================================================================== */
-/*  PEOPLE — geometric figures and portraits                           */
-/* ================================================================== */
-
-function PortraitGeom() {
-  return (
-    <svg viewBox="0 0 160 160" className="w-full h-auto">
-      <circle cx="80" cy="75" r="55" fill={INK} />
-      <circle cx="62" cy="68" r="5" fill={CANVAS} />
-      <circle cx="98" cy="68" r="5" fill={CANVAS} />
-      <rect x="78" y="82" width="4" height="10" fill={CANVAS} />
-      <path d="M62,108 Q80,118 98,108" stroke={CANVAS} strokeWidth="3" fill="none" strokeLinecap="round" />
-    </svg>
-  )
-}
-
-function PortraitAvatar() {
-  return (
-    <svg viewBox="0 0 160 160" className="w-full h-auto">
-      <circle cx="80" cy="55" r="28" fill={INK} />
-      <path d="M22,155 Q22,98 80,98 Q138,98 138,155 Z" fill={INK} />
-    </svg>
-  )
-}
-
-function Thinker() {
-  return (
-    <svg viewBox="0 0 240 160" className="w-full h-auto">
-      <g transform="translate(30 0)">
-        <circle cx="40" cy="48" r="18" fill={INK} />
-        <rect x="17" y="66" width="46" height="55" rx="10" fill={COBALT} />
-        <rect x="22" y="121" width="13" height="35" rx="3" fill={INK} />
-        <rect x="46" y="121" width="13" height="35" rx="3" fill={INK} />
-      </g>
-      <circle cx="135" cy="80" r="4" fill={CANVAS} stroke={INK} strokeWidth="1.5" />
-      <circle cx="155" cy="60" r="7" fill={CANVAS} stroke={INK} strokeWidth="1.5" />
-      <circle cx="190" cy="40" r="22" fill={CANVAS} stroke={INK} strokeWidth="1.5" />
-      <rect x="184" y="34" width="12" height="12" fill={AMBER} />
-    </svg>
-  )
-}
-
-/* ================================================================== */
-/*  EMOTION                                                             */
-/* ================================================================== */
-
-function EmoFocus() {
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <circle cx="120" cy="85" r="60" fill="none" stroke={AMBER} strokeWidth="2" />
-      <circle cx="120" cy="85" r="42" fill="none" stroke={AMBER} strokeWidth="2" opacity="0.7" />
-      <circle cx="120" cy="85" r="24" fill="none" stroke={AMBER} strokeWidth="2" opacity="0.45" />
-      <circle cx="120" cy="85" r="8" fill={AMBER} />
-    </svg>
-  )
-}
-
-function EmoCalm() {
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <circle cx="120" cy="85" r="55" fill={TEAL} />
-    </svg>
-  )
-}
-
-function EmoTension() {
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <polygon points="15,50 110,85 15,120" fill={COBALT} />
-      <polygon points="225,50 130,85 225,120" fill={AMBER} />
-      <rect x="117" y="82" width="6" height="6" fill={INK} />
-    </svg>
-  )
-}
-
-function EmoUncertainty() {
-  const dots = Array.from({ length: 70 }, (_, i) => ({
-    x: 20 + rand(i, 200) * 200,
-    y: 20 + rand(i, 201) * 130,
-  }))
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      {dots.map((d, i) => <rect key={i} x={d.x} y={d.y} width="3" height="3" fill={PEWTER} opacity="0.6" />)}
-      <rect x="110" y="50" width="20" height="60" fill={ROSE} />
-      <rect x="110" y="118" width="20" height="20" fill={ROSE} />
-    </svg>
-  )
-}
-
-function EmoJoy() {
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      {Array.from({ length: 12 }).map((_, i) => {
-        const a = (i / 12) * Math.PI * 2
-        const cx = 120 + Math.cos(a) * 55
-        const cy = 85 + Math.sin(a) * 55
-        const palette = [COBALT, TEAL, AMBER, ROSE]
-        return <circle key={i} cx={cx} cy={cy} r="10" fill={palette[i % palette.length]} />
-      })}
-      <circle cx="120" cy="85" r="20" fill={INK} />
-    </svg>
-  )
-}
-
-function EmoAmbition() {
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <rect x="30" y="120" width="30" height="30" fill={PEWTER} />
-      <rect x="80" y="95" width="30" height="55" fill={COBALT} />
-      <rect x="130" y="60" width="30" height="90" fill={TEAL} />
-      <rect x="180" y="25" width="30" height="125" fill={AMBER} />
-    </svg>
-  )
-}
-
-/* ================================================================== */
-/*  DISCOVERY & INSIGHT                                                 */
-/* ================================================================== */
-
-function DiscoveryAha() {
-  const cx = 120, cy = 85
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      {Array.from({ length: 80 }).map((_, i) => {
-        const x = 15 + rand(i, 300) * 210
-        const y = 15 + rand(i, 301) * 140
-        const dx = x - cx, dy = y - cy
-        if (Math.sqrt(dx * dx + dy * dy) < 22) return null
-        return <rect key={i} x={x} y={y} width="2.5" height="2.5" fill={PEWTER} opacity="0.5" />
-      })}
-      {Array.from({ length: 8 }).map((_, i) => {
-        const a = (i / 8) * Math.PI * 2
-        return <line key={i} x1={cx + Math.cos(a) * 20} y1={cy + Math.sin(a) * 20}
-          x2={cx + Math.cos(a) * 32} y2={cy + Math.sin(a) * 32}
-          stroke={AMBER} strokeWidth="2.5" strokeLinecap="square" />
-      })}
-      <circle cx={cx} cy={cy} r="14" fill={AMBER} />
-    </svg>
-  )
-}
-
-function DiscoveryLightbulb() {
-  return (
-    <svg viewBox="0 0 160 200" className="w-full h-auto">
-      <circle cx="80" cy="80" r="45" fill={AMBER} />
-      <rect x="63" y="120" width="34" height="22" fill={INK} />
-      <line x1="63" y1="127" x2="97" y2="127" stroke={AMBER} strokeWidth="1.5" />
-      <line x1="63" y1="134" x2="97" y2="134" stroke={AMBER} strokeWidth="1.5" />
-      <rect x="72" y="142" width="16" height="10" fill={INK} />
-      <line x1="80" y1="15" x2="80" y2="27" stroke={AMBER} strokeWidth="2.5" strokeLinecap="round" />
-      <line x1="28" y1="38" x2="40" y2="46" stroke={AMBER} strokeWidth="2.5" strokeLinecap="round" />
-      <line x1="132" y1="38" x2="120" y2="46" stroke={AMBER} strokeWidth="2.5" strokeLinecap="round" />
-      <line x1="16" y1="80" x2="28" y2="80" stroke={AMBER} strokeWidth="2.5" strokeLinecap="round" />
-      <line x1="144" y1="80" x2="132" y2="80" stroke={AMBER} strokeWidth="2.5" strokeLinecap="round" />
-    </svg>
-  )
-}
-
-/* ================================================================== */
-/*  INTERACTION                                                         */
-/* ================================================================== */
-
-function IntMeeting() {
-  const seats = Array.from({ length: 6 }, (_, i) => {
-    const a = (i / 6) * Math.PI * 2 - Math.PI / 2
-    return { x: 120 + Math.cos(a) * 60, y: 85 + Math.sin(a) * 38, c: [COBALT, INK, TEAL, INK, AMBER, INK][i] }
-  })
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <rect x="50" y="50" width="140" height="70" rx="35" fill={INK} />
-      <rect x="65" y="60" width="110" height="50" rx="25" fill={CANVAS} />
-      {seats.map((s, i) => <circle key={i} cx={s.x} cy={s.y} r="10" fill={s.c} />)}
-    </svg>
-  )
-}
-
-function IntHandshake() {
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <polygon points="15,85 118,42 118,128" fill={COBALT} />
-      <polygon points="225,85 122,42 122,128" fill={AMBER} />
-    </svg>
-  )
-}
-
-function IntNetwork() {
-  const nodes = [
-    { x: 60, y: 50, c: COBALT },
-    { x: 180, y: 45, c: TEAL },
-    { x: 40, y: 120, c: AMBER },
-    { x: 200, y: 125, c: ROSE },
-    { x: 120, y: 85, c: INK },
-  ]
-  const links: [number, number][] = [[0, 4], [1, 4], [2, 4], [3, 4], [0, 1], [2, 3]]
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      {links.map(([a, b], i) => (
-        <line key={i} x1={nodes[a].x} y1={nodes[a].y} x2={nodes[b].x} y2={nodes[b].y}
-          stroke={PEWTER} strokeWidth="1.5" />
-      ))}
-      {nodes.map((n, i) => <circle key={i} cx={n.x} cy={n.y} r={i === 4 ? 10 : 7} fill={n.c} />)}
-    </svg>
-  )
-}
-
-function IntConversation() {
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <rect x="22" y="20" width="88" height="46" rx="10" fill={COBALT} />
-      <path d="M52,66 L58,80 L68,66 Z" fill={COBALT} />
-      <circle cx="45" cy="43" r="3.5" fill={CANVAS} />
-      <circle cx="66" cy="43" r="3.5" fill={CANVAS} />
-      <circle cx="87" cy="43" r="3.5" fill={CANVAS} />
-      <circle cx="60" cy="120" r="18" fill={INK} />
-      <rect x="130" y="65" width="88" height="46" rx="10" fill={AMBER} />
-      <path d="M188,111 L182,125 L172,111 Z" fill={AMBER} />
-      <circle cx="153" cy="88" r="3.5" fill={CANVAS} />
-      <circle cx="174" cy="88" r="3.5" fill={CANVAS} />
-      <circle cx="195" cy="88" r="3.5" fill={CANVAS} />
-      <circle cx="180" cy="140" r="18" fill={INK} />
-    </svg>
-  )
-}
-
-/* ================================================================== */
-/*  CONCEPTS                                                            */
-/* ================================================================== */
-
-function ConSecurity() {
-  return (
-    <svg viewBox="0 0 160 180" className="w-full h-auto">
-      <path d="M80,20 L135,40 L135,95 Q135,140 80,165 Q25,140 25,95 L25,40 Z" fill={COBALT} />
-      <path d="M80,20 L135,40 L135,95 Q135,140 80,165 Z" fill={INK} opacity="0.15" />
-      <circle cx="80" cy="85" r="20" fill={CANVAS} />
-      <rect x="76" y="85" width="8" height="22" fill={CANVAS} />
-    </svg>
-  )
-}
-
-function ConGrowth() {
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <rect x="20" y="150" width="210" height="3" fill={INK} />
-      <polygon points="40,130 60,130 50,105" fill={COBALT} />
-      <polygon points="80,115 110,115 95,80" fill={TEAL} />
-      <polygon points="130,95 170,95 150,45" fill={AMBER} />
-      <polygon points="185,70 225,70 205,15" fill={ROSE} />
-    </svg>
-  )
-}
-
-function ConSpeed() {
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <path d="M40,85 L180,85 L180,55 L215,100 L180,145 L180,115 L40,115 Z" fill={COBALT} />
-      <line x1="5" y1="85" x2="25" y2="85" stroke={INK} strokeWidth="3" strokeLinecap="square" />
-      <line x1="10" y1="75" x2="28" y2="75" stroke={INK} strokeWidth="2" strokeLinecap="square" opacity="0.5" />
-      <line x1="10" y1="95" x2="28" y2="95" stroke={INK} strokeWidth="2" strokeLinecap="square" opacity="0.5" />
-    </svg>
-  )
-}
-
-function ConBalance() {
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <circle cx="75" cy="80" r="42" fill={COBALT} />
-      <circle cx="165" cy="80" r="42" fill={AMBER} />
-      <rect x="50" y="140" width="140" height="6" fill={INK} />
-      <rect x="117" y="140" width="6" height="15" fill={INK} />
-    </svg>
-  )
-}
-
-function ConChoice() {
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <circle cx="35" cy="85" r="10" fill={INK} />
-      <line x1="45" y1="85" x2="115" y2="45" stroke={PEWTER} strokeWidth="2" />
-      <line x1="45" y1="85" x2="115" y2="85" stroke={PEWTER} strokeWidth="2" />
-      <line x1="45" y1="85" x2="115" y2="125" stroke={PEWTER} strokeWidth="2" />
-      <circle cx="125" cy="45" r="12" fill={COBALT} />
-      <circle cx="125" cy="85" r="12" fill={TEAL} />
-      <circle cx="125" cy="125" r="12" fill={AMBER} />
-      <line x1="137" y1="85" x2="195" y2="85" stroke={INK} strokeWidth="2.5" />
-      <polygon points="195,80 205,85 195,90" fill={INK} />
-    </svg>
-  )
-}
-
-function ConPriority() {
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <circle cx="55" cy="85" r="28" fill={COBALT} />
-      <circle cx="115" cy="85" r="20" fill={TEAL} />
-      <circle cx="160" cy="85" r="14" fill={AMBER} />
-      <circle cx="195" cy="85" r="8" fill={PEWTER} />
-    </svg>
-  )
-}
-
-function ConStability() {
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <rect x="45" y="35" width="150" height="30" fill={AMBER} />
-      <rect x="55" y="65" width="130" height="25" fill={TEAL} />
-      <rect x="65" y="90" width="110" height="25" fill={COBALT} />
-      <rect x="30" y="115" width="180" height="35" fill={INK} />
-    </svg>
-  )
-}
-
-function ConInsight() {
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <path d="M20,85 Q120,45 220,85 Q120,125 20,85 Z" fill={INK} />
-      <circle cx="120" cy="85" r="26" fill={CANVAS} />
-      <circle cx="120" cy="85" r="20" fill={COBALT} />
-      <circle cx="120" cy="85" r="8" fill={INK} />
-      <circle cx="126" cy="80" r="3" fill={CANVAS} />
-    </svg>
-  )
-}
-
-/* ================================================================== */
-/*  OBJECTS                                                              */
-/* ================================================================== */
-
-function ObjBook() {
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <rect x="40" y="35" width="160" height="110" fill={COBALT} />
-      <rect x="115" y="35" width="10" height="110" fill={INK} opacity="0.2" />
-      <rect x="55" y="55" width="50" height="4" fill={CANVAS} opacity="0.85" />
-      <rect x="55" y="67" width="40" height="4" fill={CANVAS} opacity="0.6" />
-      <rect x="55" y="79" width="45" height="4" fill={CANVAS} opacity="0.6" />
-      <rect x="135" y="55" width="50" height="4" fill={CANVAS} opacity="0.85" />
-      <rect x="135" y="67" width="40" height="4" fill={CANVAS} opacity="0.6" />
-      <rect x="135" y="79" width="45" height="4" fill={CANVAS} opacity="0.6" />
-    </svg>
-  )
-}
-
-function ObjKey() {
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <circle cx="70" cy="85" r="35" fill={AMBER} />
-      <circle cx="70" cy="85" r="15" fill={CANVAS} />
-      <rect x="105" y="77" width="110" height="16" fill={AMBER} />
-      <rect x="165" y="93" width="10" height="18" fill={AMBER} />
-      <rect x="195" y="93" width="10" height="18" fill={AMBER} />
-    </svg>
-  )
-}
-
-function ObjGear() {
-  const teeth = 8
-  const outerR = 55, innerR = 40
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <g transform="translate(120 85)">
-        {Array.from({ length: teeth }).map((_, i) => {
-          const a = (i / teeth) * Math.PI * 2
-          const w = 14, h = 18
-          return (
-            <rect key={i} x={-w / 2} y={-outerR - h / 2} width={w} height={h}
-              fill={TEAL} transform={`rotate(${(a * 180 / Math.PI)})`} />
-          )
-        })}
-        <circle r={outerR} fill={TEAL} />
-        <circle r={innerR * 0.4} fill={CANVAS} />
-      </g>
-    </svg>
-  )
-}
-
-function ObjTarget() {
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <circle cx="120" cy="85" r="60" fill={PEWTER} opacity="0.3" />
-      <circle cx="120" cy="85" r="42" fill={COBALT} />
-      <circle cx="120" cy="85" r="26" fill={AMBER} />
-      <circle cx="120" cy="85" r="10" fill={ROSE} />
-    </svg>
-  )
-}
-
-/* ================================================================== */
-/*  ENVIRONMENTS                                                         */
-/* ================================================================== */
-
-function EnvOffice() {
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <path d="M30,140 L120,90 L210,140 L120,190 Z" fill={CLOUD} />
-      <path d="M65,115 L120,85 L175,115 L120,145 Z" fill={COBALT} />
-      <path d="M175,115 L175,130 L120,160 L120,145 Z" fill={INK} opacity="0.55" />
-      <path d="M65,115 L65,130 L120,160 L120,145 Z" fill={INK} opacity="0.75" />
-      <path d="M100,105 L135,88 L150,96 L115,113 Z" fill={INK} />
-      <path d="M105,108 L138,91 L148,94 L120,108 Z" fill={CANVAS} />
-      <path d="M138,91 L148,94 L148,86 L138,83 Z" fill={INK} opacity="0.6" />
-      <circle cx="155" cy="100" r="4" fill={AMBER} />
-    </svg>
-  )
-}
-
-function EnvCity() {
-  const buildings = [
-    { x: 20, h: 70, c: COBALT },
-    { x: 55, h: 100, c: INK },
-    { x: 95, h: 60, c: TEAL },
-    { x: 130, h: 85, c: INK },
-    { x: 170, h: 95, c: AMBER },
-    { x: 200, h: 50, c: PEWTER },
-  ]
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <line x1="0" y1="140" x2="240" y2="140" stroke={INK} strokeWidth="1" />
-      {buildings.map((b, i) => (
-        <g key={i}>
-          <rect x={b.x} y={140 - b.h} width="32" height={b.h} fill={b.c} />
-          {Array.from({ length: Math.floor(b.h / 12) }).map((_, row) => (
-            [0, 1, 2].map(col => (
-              <rect key={`${row}-${col}`} x={b.x + 6 + col * 10} y={140 - b.h + 8 + row * 12}
-                width="2.5" height="2.5" fill={CANVAS} opacity={rand(i * 30 + row * 3 + col, 400) > 0.4 ? 0.95 : 0.3} />
-            ))
-          ))}
-        </g>
-      ))}
-    </svg>
-  )
-}
-
-function EnvLandscape() {
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <rect width="240" height="170" fill={CLOUD} />
-      <circle cx="200" cy="40" r="22" fill={AMBER} />
-      <rect y="85" width="240" height="30" fill={TEAL} opacity="0.45" />
-      <rect y="115" width="240" height="55" fill={COBALT} opacity="0.85" />
-      <polygon points="30,115 70,75 110,115" fill={INK} opacity="0.75" />
-      <polygon points="90,115 140,55 190,115" fill={INK} />
-    </svg>
-  )
-}
-
-function EnvRoom() {
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <rect width="240" height="170" fill={CLOUD} />
-      <polygon points="40,25 200,25 120,15" fill={INK} />
-      <rect x="40" y="25" width="160" height="120" fill={COBALT} />
-      <rect x="60" y="55" width="40" height="40" fill={CANVAS} />
-      <line x1="80" y1="55" x2="80" y2="95" stroke={INK} strokeWidth="1.5" />
-      <line x1="60" y1="75" x2="100" y2="75" stroke={INK} strokeWidth="1.5" />
-      <rect x="140" y="55" width="40" height="40" fill={CANVAS} />
-      <line x1="160" y1="55" x2="160" y2="95" stroke={INK} strokeWidth="1.5" />
-      <line x1="140" y1="75" x2="180" y2="75" stroke={INK} strokeWidth="1.5" />
-      <rect x="108" y="100" width="24" height="45" fill={AMBER} />
-    </svg>
-  )
-}
-
-/* ================================================================== */
-/*  NARRATIVE                                                           */
-/* ================================================================== */
-
-function NarJourney() {
-  const stops = [
-    { x: 25, y: 130, c: PEWTER, label: 'start' },
-    { x: 80, y: 95, c: COBALT },
-    { x: 135, y: 115, c: INK },
-    { x: 185, y: 60, c: TEAL },
-    { x: 220, y: 30, c: AMBER, label: 'goal' },
-  ]
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      {stops.slice(0, -1).map((s, i) => (
-        <line key={i} x1={s.x} y1={s.y} x2={stops[i + 1].x} y2={stops[i + 1].y}
-          stroke={PEWTER} strokeWidth="1.5" />
-      ))}
-      {stops.map((s, i) => (
-        <g key={i}>
-          <circle cx={s.x} cy={s.y} r={i === 0 || i === stops.length - 1 ? 8 : 5} fill={s.c} />
-          {s.label && <text x={s.x} y={s.y + 22} fontSize="9" fill={PEWTER} textAnchor="middle" fontFamily="'JetBrains Mono', monospace">{s.label}</text>}
-        </g>
-      ))}
-    </svg>
-  )
-}
-
-function NarTransformation() {
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      <rect x="15" y="55" width="55" height="55" fill={PEWTER} />
-      <line x1="75" y1="82" x2="92" y2="82" stroke={INK} strokeWidth="2" />
-      <polygon points="92,77 100,82 92,87" fill={INK} />
-      <rect x="105" y="55" width="55" height="55" fill={COBALT} transform="rotate(18 132.5 82.5)" />
-      <line x1="170" y1="82" x2="187" y2="82" stroke={INK} strokeWidth="2" />
-      <polygon points="187,77 195,82 187,87" fill={INK} />
-      <polygon points="200,110 225,110 212.5,55" fill={AMBER} />
-    </svg>
-  )
-}
-
-function NarBeforeAfter() {
-  const before = Array.from({ length: 20 }, (_, i) => ({
-    x: 15 + rand(i, 40) * 85,
-    y: 35 + rand(i, 41) * 100,
-  }))
-  return (
-    <svg viewBox="0 0 240 170" className="w-full h-auto">
-      {before.map((d, i) => <rect key={i} x={d.x} y={d.y} width="4" height="4" fill={PEWTER} opacity="0.7" />)}
-      <line x1="115" y1="35" x2="125" y2="35" stroke={INK} strokeWidth="2" />
-      <polygon points="125,30 133,35 125,40" fill={INK} />
-      {Array.from({ length: 20 }).map((_, i) => {
-        const row = Math.floor(i / 5)
-        const col = i % 5
-        return <rect key={i} x={145 + col * 16} y={45 + row * 20} width="4" height="4" fill={COBALT} />
-      })}
-    </svg>
-  )
-}
-
-/* ================================================================== */
-/*  DATA — schematic subset that is pure geometry                      */
-/* ================================================================== */
-
-function DataCohorts() {
-  const clusters = [
-    { cx: 55, cy: 55, color: COBALT, n: 9 },
-    { cx: 170, cy: 45, color: TEAL, n: 11 },
-    { cx: 65, cy: 115, color: AMBER, n: 7 },
-    { cx: 175, cy: 110, color: ROSE, n: 10 },
-  ]
-  return (
-    <svg viewBox="0 0 240 160" className="w-full h-auto">
-      {clusters.map((cl, ci) => (
-        <g key={ci}>
-          {Array.from({ length: cl.n }).map((_, i) => {
-            const a = rand(ci * 50 + i, 1) * Math.PI * 2
-            const r = rand(ci * 50 + i, 2) * 22
-            return <rect key={i} x={cl.cx + Math.cos(a) * r - 2.5} y={cl.cy + Math.sin(a) * r - 2.5}
-              width="5" height="5" fill={cl.color} />
-          })}
-        </g>
-      ))}
-    </svg>
-  )
-}
-
-function DataPercent() {
-  const rows = 8, cols = 14
-  const highlight = Math.round(rows * cols * 0.37)
-  return (
-    <svg viewBox="0 0 240 160" className="w-full h-auto">
-      {Array.from({ length: rows * cols }).map((_, i) => {
-        const r = Math.floor(i / cols)
-        const c = i % cols
-        return <rect key={i} x={25 + c * 14} y={25 + r * 14} width="7" height="7"
-          fill={i < highlight ? COBALT : CLOUD} stroke={i < highlight ? 'none' : PEWTER} strokeWidth="0.6" />
-      })}
-      <text x="25" y="153" fontSize="20" fontWeight="700" fill={COBALT} fontFamily="'Albert Sans', sans-serif">37%</text>
-    </svg>
-  )
-}
-
-function DataComposition() {
-  return (
-    <svg viewBox="0 0 240 160" className="w-full h-auto">
-      <rect x="20" y="55" width="120" height="40" fill={CANVAS} stroke={INK} strokeWidth="1.2" />
-      <rect x="140" y="55" width="40" height="40" fill={COBALT} />
-      <rect x="180" y="55" width="20" height="40" fill={TEAL} />
-      <rect x="200" y="55" width="20" height="40" fill={AMBER} />
-      <text x="80" y="118" fontSize="9" fill={PEWTER} textAnchor="middle" fontFamily="'JetBrains Mono', monospace">60 · canvas</text>
-      <text x="160" y="118" fontSize="9" fill={COBALT} textAnchor="middle" fontFamily="'JetBrains Mono', monospace">20</text>
-      <text x="190" y="118" fontSize="9" fill={TEAL} textAnchor="middle" fontFamily="'JetBrains Mono', monospace">10</text>
-      <text x="210" y="118" fontSize="9" fill={AMBER} textAnchor="middle" fontFamily="'JetBrains Mono', monospace">10</text>
-    </svg>
-  )
-}
-
-function DataThreshold() {
-  return (
-    <svg viewBox="0 0 240 160" className="w-full h-auto">
-      {Array.from({ length: 7 }).map((_, row) => (
-        Array.from({ length: 14 }).map((_, col) => {
-          const i = row * 14 + col
-          return <rect key={i} x={20 + col * 15} y={25 + row * 15} width="6" height="6"
-            fill={row < 3 ? AMBER : PEWTER} opacity={row < 3 ? 1 : 0.5} />
-        })
-      ))}
-      <line x1="15" y1="68" x2="235" y2="68" stroke={INK} strokeWidth="1.2" strokeDasharray="4 3" />
-      <text x="232" y="64" fontSize="8" fill={INK} textAnchor="end" fontFamily="'JetBrains Mono', monospace">threshold</text>
-    </svg>
-  )
-}
-
-/* ================================================================== */
-/*  TYPOGRAPHIC — letterforms as geometric shapes                      */
-/* ================================================================== */
-
-function TypoInitialS() {
-  return (
-    <svg viewBox="0 0 240 160" className="w-full h-auto">
-      <defs>
-        <linearGradient id="typo-s" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor={COBALT} />
-          <stop offset="0.5" stopColor={TEAL} />
-          <stop offset="1" stopColor={AMBER} />
-        </linearGradient>
-      </defs>
-      <text x="120" y="140" fontSize="180" fontWeight="700" fill="url(#typo-s)"
-        fontFamily="'Albert Sans', sans-serif" textAnchor="middle" letterSpacing="-0.05em">S</text>
-    </svg>
-  )
-}
-
-function TypoNumeral() {
-  return (
-    <svg viewBox="0 0 240 160" className="w-full h-auto">
-      <text x="100" y="140" fontSize="160" fontWeight="700" fill="none" stroke={INK} strokeWidth="2"
-        fontFamily="'Albert Sans', sans-serif" textAnchor="middle" letterSpacing="-0.04em">3</text>
-      <rect x="175" y="40" width="8" height="8" fill={COBALT} />
-      <rect x="175" y="82" width="8" height="8" fill={TEAL} />
-      <rect x="175" y="124" width="8" height="8" fill={AMBER} />
-    </svg>
-  )
-}
-
-/* ================================================================== */
-/*  PATTERNS                                                             */
-/* ================================================================== */
-
-function PatDotGrid() {
-  return (
-    <svg viewBox="0 0 240 160" className="w-full h-auto">
-      {Array.from({ length: 8 }).map((_, row) => (
-        Array.from({ length: 14 }).map((_, col) => {
-          const i = row * 14 + col
-          const size = 3 + (rand(i, 600) > 0.7 ? 4 : 0)
-          const color = rand(i, 601) > 0.85 ? AMBER : rand(i, 602) > 0.7 ? COBALT : INK
-          return <rect key={i} x={20 + col * 14} y={25 + row * 14} width={size} height={size} fill={color} opacity={size > 3 ? 1 : 0.7} />
-        })
-      ))}
-    </svg>
-  )
-}
-
-function PatRadial() {
-  const rings = 8
-  return (
-    <svg viewBox="0 0 240 160" className="w-full h-auto">
-      <rect width="240" height="160" fill={INK} />
-      {Array.from({ length: rings }).map((_, i) => (
-        <g key={i}>
-          {Array.from({ length: 24 }).map((_, j) => {
-            const a = (j / 24) * Math.PI * 2
-            const r = 14 + i * 12
-            const cx = 120 + Math.cos(a) * r
-            const cy = 80 + Math.sin(a) * r
-            const grad = i / rings
-            const color = grad < 0.4 ? COBALT : grad < 0.7 ? TEAL : AMBER
-            return <rect key={j} x={cx - 1} y={cy - 1} width="2" height="2" fill={color} opacity={1 - grad * 0.6} />
-          })}
-        </g>
-      ))}
-    </svg>
-  )
-}
-
-function PatStripes() {
-  return (
-    <svg viewBox="0 0 240 160" className="w-full h-auto">
-      {Array.from({ length: 20 }).map((_, i) => {
-        const w = 8 + (i % 4) * 3
-        const x = 5 + i * 12
-        const palette = [COBALT, TEAL, AMBER, INK, PEWTER]
-        return <rect key={i} x={x} y="15" width={w} height="130" fill={palette[i % palette.length]} opacity={0.6 + (i % 3) * 0.15} />
-      })}
-    </svg>
-  )
-}
-
-function PatShapeGrid() {
-  const items = [
-    { t: 'c', c: COBALT }, { t: 'r', c: CANVAS }, { t: 'c', c: TEAL }, { t: 'r', c: AMBER },
-    { t: 'r', c: INK }, { t: 'c', c: AMBER }, { t: 'r', c: COBALT }, { t: 'c', c: ROSE },
-    { t: 'c', c: INK }, { t: 'r', c: TEAL }, { t: 'c', c: PEWTER }, { t: 'r', c: COBALT },
-  ]
-  return (
-    <svg viewBox="0 0 240 160" className="w-full h-auto">
-      <rect width="240" height="160" fill={CLOUD} />
-      {items.map((it, i) => {
-        const col = i % 4
-        const row = Math.floor(i / 4)
-        const cx = 35 + col * 57
-        const cy = 30 + row * 45
-        return it.t === 'c'
-          ? <circle key={i} cx={cx} cy={cy} r="18" fill={it.c} />
-          : <rect key={i} x={cx - 18} y={cy - 18} width="36" height="36" fill={it.c} />
-      })}
-    </svg>
-  )
-}
-
-/* ================================================================== */
-/*  LIBRARY STYLE RECONSTRUCTIONS                                       */
-/*  (Approximations of what each library's output looks like,           */
-/*   recoloured to the Spectrea palette for direct comparison.)         */
-/* ================================================================== */
-
-function LibHumaaans() {
-  return (
-    <svg viewBox="0 0 140 220" className="h-auto" style={{ maxHeight: 200 }}>
-      <path d="M42,38 Q42,18 62,18 Q88,18 88,42 L83,42 Q83,28 62,28 Q47,28 47,42 Z" fill={INK} />
-      <circle cx="62" cy="48" r="17" fill={AMBER} />
-      <rect x="42" y="65" width="40" height="55" rx="5" fill={COBALT} />
-      <rect x="27" y="67" width="12" height="46" rx="5" fill={COBALT} />
-      <rect x="85" y="67" width="12" height="46" rx="5" fill={COBALT} />
-      <circle cx="33" cy="117" r="7" fill={AMBER} />
-      <circle cx="91" cy="117" r="7" fill={AMBER} />
-      <rect x="43" y="120" width="17" height="60" fill={INK} />
-      <rect x="64" y="120" width="17" height="60" fill={INK} />
-      <rect x="40" y="178" width="22" height="10" rx="2" fill={TEAL} />
-      <rect x="62" y="178" width="22" height="10" rx="2" fill={TEAL} />
-    </svg>
-  )
-}
-
-function LibVisx() {
-  const values = [40, 90, 55, 120, 80, 160, 110, 70, 140]
-  return (
-    <svg viewBox="0 0 240 160" className="w-full h-auto">
-      <line x1="25" y1="140" x2="225" y2="140" stroke={PEWTER} strokeWidth="0.6" />
-      <line x1="25" y1="20" x2="25" y2="140" stroke={PEWTER} strokeWidth="0.6" />
-      {values.map((v, i) => {
-        const barW = 18, gap = 4
-        return (
-          <rect key={i} x={30 + i * (barW + gap)} y={140 - v * 0.7} width={barW} height={v * 0.7}
-            fill={i === 5 ? AMBER : COBALT} opacity={i === 5 ? 1 : 0.8} />
-        )
-      })}
-    </svg>
-  )
-}
-
-
-function LibSpectreaNative() {
-  return (
-    <svg viewBox="0 0 240 160" className="w-full h-auto">
-      <defs>
-        <linearGradient id="lib-native" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor={COBALT} />
-          <stop offset="0.5" stopColor={TEAL} />
-          <stop offset="1" stopColor={AMBER} />
-        </linearGradient>
-      </defs>
-      <path d="M25,115 C70,50 130,130 215,30" stroke="url(#lib-native)" strokeWidth="2.2" fill="none" strokeLinecap="round" />
-      <circle cx="25" cy="115" r="5" fill={COBALT} />
-      <circle cx="75" cy="75" r="3.5" fill={INK} />
-      <circle cx="130" cy="95" r="3.5" fill={INK} />
-      <circle cx="175" cy="60" r="3.5" fill={TEAL} />
-      <circle cx="215" cy="30" r="5" fill={AMBER} />
-    </svg>
-  )
-}
+const PAPER = '#FAF8F2'
 
 /* ================================================================== */
 /*  ANIMATION DEMOS — Framer Motion + native alternatives               */
@@ -983,7 +211,7 @@ function AntiStock() {
       <rect x="15" y="25" width="90" height="60" rx="4" fill="#d1d5db" />
       <circle cx="35" cy="50" r="8" fill="#9ca3af" />
       <path d="M20,80 L45,60 L65,75 L100,50 L100,80 Z" fill="#9ca3af" />
-      <text x="60" y="105" textAnchor="middle" fontSize="9" fill={PEWTER}>shutterstock-vibes</text>
+      <text x="60" y="105" textAnchor="middle" fontSize="9" fill={PEWTER}>stock-vibes</text>
     </svg>
   )
 }
@@ -1040,23 +268,30 @@ function Tile({ children, label, bg = CLOUD }: { children: React.ReactNode; labe
   )
 }
 
-function LibraryCard({
-  children, name, license, note, url,
-}: { children: React.ReactNode; name: string; license: string; note: string; url: string }) {
+function Card({ label, children, darkBg = false }: { label: string; children: React.ReactNode; darkBg?: boolean }) {
   return (
-    <div className="flex flex-col rounded-xl border border-stone-200 overflow-hidden">
-      <div className="p-4 flex items-center justify-center overflow-hidden bg-cloud" style={{ aspectRatio: '16 / 10' }}>
+    <div className={`flex flex-col rounded-xl border ${darkBg ? 'border-stone-700' : 'border-stone-200'} overflow-hidden`}>
+      <div className={`px-3 py-2 text-[10px] font-mono uppercase tracking-wider ${darkBg ? 'text-stone-400 bg-ink border-b border-stone-700' : 'text-stone-500 bg-stone-50 border-b border-stone-100'}`}>
+        {label}
+      </div>
+      <div className={darkBg ? 'bg-ink' : 'bg-white'}>
         {children}
       </div>
-      <div className="p-3.5">
-        <div className="flex items-center justify-between gap-2">
-          <p className="text-sm font-semibold text-stone-800 truncate" style={{ fontFamily: "'Albert Sans', sans-serif" }}>{name}</p>
-          <span className="text-[10px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-stone-100 text-stone-500 shrink-0">{license}</span>
-        </div>
-        <p className="text-xs text-stone-500 mt-1.5 leading-snug">{note}</p>
-        <p className="text-[10px] font-mono text-stone-400 mt-2">{url}</p>
-      </div>
     </div>
+  )
+}
+
+function ChannelPill({ kind }: { kind: 'me' | 'aigen' | 'designer' | 'canva' }) {
+  const styles = {
+    me: { bg: '#00B6A015', color: '#008775', border: '#00B6A030', label: 'Me' },
+    aigen: { bg: '#E1900015', color: '#7C4D04', border: '#E1900030', label: 'AI gen' },
+    designer: { bg: '#F2426015', color: '#BA3249', border: '#F2426030', label: 'Designer' },
+    canva: { bg: '#4271DF15', color: '#1E3A8A', border: '#4271DF30', label: 'Canva' },
+  } as const
+  const s = styles[kind]
+  return (
+    <span className="inline-block px-2 py-0.5 rounded font-mono text-[10px] font-semibold uppercase tracking-wider"
+      style={{ backgroundColor: s.bg, color: s.color, border: `1px solid ${s.border}` }}>{s.label}</span>
   )
 }
 
@@ -1170,18 +405,6 @@ function AnimDemoCard({
   )
 }
 
-function SubSection({ title, eyebrow, children }: { title: string; eyebrow: string; children: React.ReactNode }) {
-  return (
-    <div>
-      <div className="mb-4">
-        <p className="text-xs font-mono uppercase tracking-wider text-stone-400">{eyebrow}</p>
-        <h3 className="text-lg font-semibold text-stone-800 mt-0.5" style={{ fontFamily: "'Albert Sans', sans-serif" }}>{title}</h3>
-      </div>
-      {children}
-    </div>
-  )
-}
-
 /* ================================================================== */
 /*  Page                                                                */
 /* ================================================================== */
@@ -1190,369 +413,486 @@ export default function Illustration() {
   return (
     <PageShell
       title="Illustration"
-      subtitle="Every Spectrea illustration assembles from five atoms — Dot, Curve, Cluster, Trail, Field — in the brand palette, on Canvas. The mark itself is this system at small scale; illustrations extend it at larger scale."
+      subtitle="A layered vocabulary (atoms · forms · treatments · palette), the seven craft moves that distinguish system-applied-with-craft from shapes-assembled, and the four production channels that cover every brand surface."
     >
-      {/* ─── The Dot System manifesto ─── */}
+      {/* ─── v3 Manifesto ─── */}
       <Section>
         <div className="rounded-xl bg-ink text-white p-6 sm:p-8">
-          <p className="text-xs font-mono uppercase tracking-wider" style={{ color: COBALT }}>The Dot System</p>
-          <h2 className="text-2xl font-semibold mt-1" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Five atoms — one universal illustration vocabulary</h2>
+          <p className="text-xs font-mono uppercase tracking-wider" style={{ color: COBALT }}>The illustration system · v3</p>
+          <h2 className="text-2xl font-semibold mt-1" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Four layers. Seven moves. Four channels.</h2>
           <p className="text-sm text-stone-400 mt-3 max-w-2xl leading-relaxed">
-            The brand mark — 10 dots along a curve with the last 3 trailing — IS this system at small scale.
-            Illustrations extend the same DNA: filled circles in brand colours, soft Bézier curves, clusters of dots,
-            directional trails, atmospheric fields. Anything not assembled from these five atoms is off-brand.
+            The brand mark is 10 dots along a soft Bézier curve — atoms in their purest form. Illustrations extend the same DNA, but a five-atom-only rule reads as primitive at scale.
+            v3 adds a <strong className="text-white">form layer</strong> (rectangles, arcs, half-circles) for figures, scenes, and objects; a <strong className="text-white">treatment layer</strong> (filled, outlined, halo, layered) for depth; and a <strong className="text-white">palette &amp; ratio</strong> that keeps everything one family.
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mt-6">
-            <div className="border-l-2 pl-3" style={{ borderColor: COBALT }}>
-              <p className="text-xs font-mono uppercase tracking-wider" style={{ color: COBALT }}>Dot</p>
-              <p className="text-xs text-stone-300 mt-1 leading-snug">A point of attention. Stand it for whatever you need.</p>
-            </div>
-            <div className="border-l-2 pl-3" style={{ borderColor: TEAL }}>
-              <p className="text-xs font-mono uppercase tracking-wider" style={{ color: TEAL }}>Curve</p>
-              <p className="text-xs text-stone-300 mt-1 leading-snug">The relationship between two things.</p>
-            </div>
-            <div className="border-l-2 pl-3" style={{ borderColor: AMBER }}>
-              <p className="text-xs font-mono uppercase tracking-wider" style={{ color: AMBER }}>Cluster</p>
-              <p className="text-xs text-stone-300 mt-1 leading-snug">Things that belong together. A whole of parts.</p>
-            </div>
-            <div className="border-l-2 pl-3" style={{ borderColor: ROSE }}>
-              <p className="text-xs font-mono uppercase tracking-wider" style={{ color: ROSE }}>Trail</p>
-              <p className="text-xs text-stone-300 mt-1 leading-snug">Movement through time. From then to now.</p>
-            </div>
-            <div className="border-l-2 pl-3" style={{ borderColor: PEWTER }}>
-              <p className="text-xs font-mono uppercase tracking-wider" style={{ color: PEWTER }}>Field</p>
-              <p className="text-xs text-stone-300 mt-1 leading-snug">The air around the subject. Atmosphere, never subject.</p>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* ─── Five atoms — visual reference ─── */}
-      <Section>
-        <SubSection eyebrow="Reference" title="The five atoms">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            <Tile label="Dot — Cobalt"><svg viewBox="0 0 60 60" className="w-full h-full"><circle cx="30" cy="30" r="14" fill={COBALT}/></svg></Tile>
-            <Tile label="Curve — connecting two dots"><svg viewBox="0 0 80 60" className="w-full h-full"><path d="M 14 40 C 30 10, 50 50, 66 20" stroke={COBALT} strokeWidth="3" fill="none" strokeLinecap="round"/><circle cx="14" cy="40" r="6" fill={COBALT}/><circle cx="66" cy="20" r="6" fill={TEAL}/></svg></Tile>
-            <Tile label="Cluster — 5 dots wired"><svg viewBox="0 0 80 60" className="w-full h-full"><line x1="40" y1="30" x2="22" y2="22" stroke={PEWTER} strokeWidth="1.5" opacity="0.5"/><line x1="40" y1="30" x2="54" y2="20" stroke={PEWTER} strokeWidth="1.5" opacity="0.5"/><line x1="40" y1="30" x2="58" y2="42" stroke={PEWTER} strokeWidth="1.5" opacity="0.5"/><line x1="40" y1="30" x2="20" y2="42" stroke={PEWTER} strokeWidth="1.5" opacity="0.5"/><circle cx="40" cy="30" r="6" fill={TEAL}/><circle cx="22" cy="22" r="5" fill={COBALT}/><circle cx="54" cy="20" r="5" fill={AMBER}/><circle cx="58" cy="42" r="5" fill={ROSE}/><circle cx="20" cy="42" r="5" fill={COBALT}/></svg></Tile>
-            <Tile label="Trail — provenance, faint→full"><svg viewBox="0 0 100 40" className="w-full h-full"><circle cx="12" cy="20" r="4" fill={COBALT} opacity="0.3"/><circle cx="32" cy="20" r="5" fill={COBALT} opacity="0.5"/><circle cx="54" cy="20" r="6" fill={COBALT} opacity="0.7"/><circle cx="78" cy="20" r="7" fill={COBALT} opacity="0.9"/><line x1="14" y1="20" x2="30" y2="20" stroke={COBALT} strokeWidth="1.5" opacity="0.3" strokeDasharray="3 2"/><line x1="34" y1="20" x2="52" y2="20" stroke={COBALT} strokeWidth="1.5" opacity="0.5" strokeDasharray="3 2"/><line x1="56" y1="20" x2="76" y2="20" stroke={COBALT} strokeWidth="1.5" opacity="0.7" strokeDasharray="3 2"/></svg></Tile>
-            <Tile label="Field — Teal Mist wash"><svg viewBox="0 0 80 60" className="w-full h-full"><defs><radialGradient id="atom-field" cx="50%" cy="50%" r="50%"><stop offset="0%" stopColor="#E6F5F3"/><stop offset="100%" stopColor={CANVAS}/></radialGradient></defs><ellipse cx="40" cy="30" rx="36" ry="24" fill="url(#atom-field)"/><circle cx="40" cy="30" r="4" fill={TEAL}/></svg></Tile>
-          </div>
-          <p className="text-xs text-stone-500 mt-3 leading-relaxed">
-            For brand-grade illustrations, generate via <code className="bg-stone-100 px-1.5 py-0.5 rounded font-mono text-xs">docs/illustration-prompt.md</code> (the Dot System v2 prompt).
-            The geometric vocabulary below is a <em>specialisation</em> of the Dot System for product UI, iconography, and technical diagrams — circles, rectangles, triangles, arcs reduce to the same five-atom DNA.
-          </p>
-        </SubSection>
-      </Section>
-      {/* ─── Geometric specialisation manifesto ─── */}
-      <Section>
-        <div className="rounded-xl bg-ink text-white p-6 sm:p-8">
-          <p className="text-xs font-mono uppercase tracking-wider" style={{ color: AMBER }}>Geometric specialisation — for product UI</p>
-          <h2 className="text-2xl font-semibold mt-1" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Geometric primitives — Dot System for product surfaces</h2>
           <p className="text-sm text-stone-400 mt-3 max-w-2xl leading-relaxed">
-            Circle, rectangle, triangle, arc, line — flat fills from the brand palette. Strict composition. Used for product UI, iconography, technical diagrams, and developer-facing surfaces. These shapes are how the Dot System renders when the surface needs structural precision (icons, diagrams, density). Bauhaus figures (below) are how the Dot System renders when the subject is human. Aesthetic lineage: Bauhaus, Müller-Brockmann, Saul Bass, Vignelli, Paula Scher, Studio Dumbar. For brand-grade marketing illustrations, use the Dot System prompt at <code className="bg-stone-800 px-1 py-0.5 rounded font-mono text-xs">docs/illustration-prompt.md</code>.
-          </p>
-          <div className="grid grid-cols-3 gap-3 mt-5">
-            <div className="border-l-2 pl-3" style={{ borderColor: COBALT }}>
-              <p className="text-xs font-mono uppercase tracking-wider" style={{ color: COBALT }}>Vocabulary</p>
-              <p className="text-sm mt-1">Circle · rectangle · triangle · arc · line.</p>
-            </div>
-            <div className="border-l-2 pl-3" style={{ borderColor: TEAL }}>
-              <p className="text-xs font-mono uppercase tracking-wider" style={{ color: TEAL }}>Palette</p>
-              <p className="text-sm mt-1">Cobalt · Teal · Amber · Rose · Ink · Pewter. One colour per shape.</p>
-            </div>
-            <div className="border-l-2 pl-3" style={{ borderColor: AMBER }}>
-              <p className="text-xs font-mono uppercase tracking-wider" style={{ color: AMBER }}>Discipline</p>
-              <p className="text-sm mt-1">Flat. No gradients (outside hero S). No shadows. No texture.</p>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* ─── People ─── */}
-      <Section>
-        <SubSection eyebrow="Category" title="People">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            <Tile label="Portrait — features as primitives"><PortraitGeom /></Tile>
-            <Tile label="Avatar — head and shoulders"><PortraitAvatar /></Tile>
-            <Tile label="Single figure — cobalt"><SpectreaFigure color="cobalt" /></Tile>
-            <Tile label="Single figure — amber"><SpectreaFigure color="amber" /></Tile>
-            <Tile label="Cohort — team of four"><SceneCohort /></Tile>
-            <Tile label="Crowd — modular grid of figures"><SceneCrowd /></Tile>
-          </div>
-        </SubSection>
-      </Section>
-
-      {/* ─── Emotion ─── */}
-      <Section>
-        <SubSection eyebrow="Category" title="Emotion">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            <Tile label="Focus — concentric rings"><EmoFocus /></Tile>
-            <Tile label="Calm — single grounded form"><EmoCalm /></Tile>
-            <Tile label="Tension — offset overlap"><EmoTension /></Tile>
-            <Tile label="Uncertainty — scattered field + mark"><EmoUncertainty /></Tile>
-            <Tile label="Joy — full spectrum around ink core"><EmoJoy /></Tile>
-            <Tile label="Ambition — ascending stacks"><EmoAmbition /></Tile>
-          </div>
-        </SubSection>
-      </Section>
-
-      {/* ─── Discovery ─── */}
-      <Section>
-        <SubSection eyebrow="Category" title="Discovery & insight">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Tile label="Thinker — figure with ideas forming"><Thinker /></Tile>
-            <Tile label="Aha — illuminated node in the field"><DiscoveryAha /></Tile>
-            <Tile label="Lightbulb — rays around a lit bulb"><DiscoveryLightbulb /></Tile>
-          </div>
-        </SubSection>
-      </Section>
-
-      {/* ─── Interaction ─── */}
-      <Section>
-        <SubSection eyebrow="Category" title="Interaction">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Tile label="Meeting — top-down table"><IntMeeting /></Tile>
-            <Tile label="Handshake — opposing triangles"><IntHandshake /></Tile>
-            <Tile label="Conversation — speech frames"><IntConversation /></Tile>
-            <Tile label="Network — hub and spokes"><IntNetwork /></Tile>
-          </div>
-        </SubSection>
-      </Section>
-
-      {/* ─── Concepts ─── */}
-      <Section>
-        <SubSection eyebrow="Category" title="Concepts">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Tile label="Security — shield + lock"><ConSecurity /></Tile>
-            <Tile label="Growth — ascending triangles"><ConGrowth /></Tile>
-            <Tile label="Speed — arrow thrust"><ConSpeed /></Tile>
-            <Tile label="Balance — paired forms on beam"><ConBalance /></Tile>
-            <Tile label="Choice — branching to options"><ConChoice /></Tile>
-            <Tile label="Priority — ranked by size"><ConPriority /></Tile>
-            <Tile label="Stability — stacked foundation"><ConStability /></Tile>
-            <Tile label="Insight — eye composition"><ConInsight /></Tile>
-          </div>
-        </SubSection>
-      </Section>
-
-      {/* ─── Objects ─── */}
-      <Section>
-        <SubSection eyebrow="Category" title="Objects">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Tile label="Book — two-page spread"><ObjBook /></Tile>
-            <Tile label="Key — disc and bit"><ObjKey /></Tile>
-            <Tile label="Gear — teeth around a ring"><ObjGear /></Tile>
-            <Tile label="Target — concentric bands"><ObjTarget /></Tile>
-          </div>
-        </SubSection>
-      </Section>
-
-      {/* ─── Environments ─── */}
-      <Section>
-        <SubSection eyebrow="Category" title="Environments">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Tile label="Office — isometric desk"><EnvOffice /></Tile>
-            <Tile label="City — skyline composition"><EnvCity /></Tile>
-            <Tile label="Landscape — horizon bands"><EnvLandscape /></Tile>
-            <Tile label="Building — simple facade"><EnvRoom /></Tile>
-          </div>
-        </SubSection>
-      </Section>
-
-      {/* ─── Narrative ─── */}
-      <Section>
-        <SubSection eyebrow="Category" title="Narrative">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Tile label="Journey — milestoned path"><NarJourney /></Tile>
-            <Tile label="Transformation — shape change"><NarTransformation /></Tile>
-            <Tile label="Before → after — field to grid"><NarBeforeAfter /></Tile>
-          </div>
-        </SubSection>
-      </Section>
-
-      {/* ─── Data ─── */}
-      <Section>
-        <SubSection eyebrow="Category" title="Data">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Tile label="Cohorts — coloured clusters"><DataCohorts /></Tile>
-            <Tile label="Percentage — filled grid"><DataPercent /></Tile>
-            <Tile label="Composition — 60/20/10/10"><DataComposition /></Tile>
-            <Tile label="Threshold — above/below line"><DataThreshold /></Tile>
-          </div>
-        </SubSection>
-      </Section>
-
-      {/* ─── Typography ─── */}
-      <Section>
-        <SubSection eyebrow="Category" title="Typography as geometry">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Tile label="Initial S — gradient hero (only exception)" bg={CANVAS}><TypoInitialS /></Tile>
-            <Tile label="Numeral — outlined with markers" bg={CANVAS}><TypoNumeral /></Tile>
-          </div>
-        </SubSection>
-      </Section>
-
-      {/* ─── Patterns ─── */}
-      <Section>
-        <SubSection eyebrow="Category" title="Patterns & backgrounds">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Tile label="Dot grid — density emphasis" bg={CANVAS}><PatDotGrid /></Tile>
-            <Tile label="Radial — dot rings on ink"><PatRadial /></Tile>
-            <Tile label="Stripes — rhythmic palette" bg={CANVAS}><PatStripes /></Tile>
-            <Tile label="Shape grid — primitives tiled" bg={CANVAS}><PatShapeGrid /></Tile>
-          </div>
-        </SubSection>
-      </Section>
-
-      {/* ─── Construction rules ─── */}
-      <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
-          <Tooltip content="Rules that keep error rate low. Because the vocabulary is small, deviations show immediately.">
-            <span>Construction rules</span>
-          </Tooltip>
-        </h2>
-        <div className="rounded-lg bg-stone-50 border border-stone-100 p-5">
-          <ul className="text-sm text-stone-600 space-y-2 list-disc list-inside">
-            <li><strong>Primitives only.</strong> Circle, rectangle, triangle, arc, line. If you reach for a path to draw a curve that isn't an arc, stop.</li>
-            <li><strong>Flat fills only.</strong> One colour per shape from the brand palette. No gradients except the hero lockup and the initial-S treatment.</li>
-            <li><strong>Colour hierarchy.</strong> One spectrum accent per composition. Ink and Pewter do the quiet work. Rose is a highlight, not a fill.</li>
-            <li><strong>Alignment.</strong> Compose on a grid. Eyeballed placement drifts; grid placement stays.</li>
-            <li><strong>No texture.</strong> No noise, no grain, no shadows, no blurs. The style is clean by definition.</li>
-            <li><strong>No gradients for faces/figures.</strong> Faces are rectangles and circles; the moment you add a gradient, it turns into an app icon.</li>
-            <li><strong>Generous negative space.</strong> Crowded compositions break the Swiss discipline. Let shapes breathe.</li>
-          </ul>
-        </div>
-      </Section>
-
-      {/* ─── Library reference (approved) ─── */}
-      <Section>
-        <div className="border-t border-stone-200 pt-8">
-          <p className="text-xs font-mono uppercase tracking-wider text-stone-400">Stack</p>
-          <h2 className="text-xl font-semibold text-stone-800 mt-1" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Illustration stack — free, open source, no attribution</h2>
-          <p className="text-sm text-stone-500 mt-2 max-w-2xl">
-            Every library below is MIT licensed, requires no attribution, and fits the geometric brand direction. Recoloured to the Spectrea palette for direct comparison.
-          </p>
-        </div>
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <LibraryCard
-            name="Spectrea native"
-            license="Current · In use"
-            note="Procedural inline SVG — what powers every illustration on this page. Zero dependency, full brand control."
-            url="this codebase"
-          >
-            <LibSpectreaNative />
-          </LibraryCard>
-          <LibraryCard
-            name="Humaaans"
-            license="MIT · No attribution"
-            note="Mix-and-match modular human figures by Pablo Stanley. Closest external match to the Spectrea figure language."
-            url="humaaans.com"
-          >
-            <LibHumaaans />
-          </LibraryCard>
-          <LibraryCard
-            name="visx"
-            license="MIT · No attribution"
-            note="Airbnb's D3 + React primitives. Use for dynamic data-viz illustrations where dots must come from real data."
-            url="airbnb.io/visx"
-          >
-            <LibVisx />
-          </LibraryCard>
-        </div>
-        <div className="mt-4 rounded-xl border border-stone-200 bg-stone-50 p-4">
-          <p className="text-xs font-mono uppercase tracking-wider text-stone-400">Evaluated and rejected</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 mt-2 text-sm">
-            <div className="flex items-baseline gap-2">
-              <span className="text-stone-800 font-semibold">unDraw</span>
-              <span className="text-stone-500">— off-brand (editorial scene style, not geometric)</span>
-            </div>
-            <div className="flex items-baseline gap-2">
-              <span className="text-stone-800 font-semibold">Storyset</span>
-              <span className="text-stone-500">— attribution required on free tier</span>
-            </div>
-            <div className="flex items-baseline gap-2">
-              <span className="text-stone-800 font-semibold">Lordicon</span>
-              <span className="text-stone-500">— subscription required</span>
-            </div>
-            <div className="flex items-baseline gap-2">
-              <span className="text-stone-800 font-semibold">Rive</span>
-              <span className="text-stone-500">— paid editor to author (see note below)</span>
-            </div>
-            <div className="flex items-baseline gap-2">
-              <span className="text-stone-800 font-semibold">GSAP MorphSVG</span>
-              <span className="text-stone-500">— paid plugin</span>
-            </div>
-            <div className="flex items-baseline gap-2">
-              <span className="text-stone-800 font-semibold">Lottie / After Effects</span>
-              <span className="text-stone-500">— needs a motion designer to produce source files</span>
-            </div>
-          </div>
-        </div>
-        <div className="mt-4 rounded-xl border border-stone-200 p-5">
-          <div className="flex items-start justify-between gap-3 mb-2">
-            <p className="font-semibold text-stone-800" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Note on Rive — worth knowing, not adopting</p>
-            <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full shrink-0 bg-stone-100 text-stone-500">Future candidate</span>
-          </div>
-          <p className="text-sm text-stone-600 leading-relaxed">
-            Rive is uniquely good at <strong>interactive state machines</strong> — a single vector component that transitions between loading / success / error / hover states driven by app data. Runtime is ~50KB, files are tiny, two-way JS bridge lets animation and app state stay in sync. Better than Lottie for components that need to <em>respond</em> rather than play once. Skipped now because authoring requires the Rive editor and a motion designer — revisit if Spectrea hires one.
+            Production is split across <strong className="text-white">four channels</strong> — in-house, AI image-generation, commissioned designer, and Canva — each with a clear scope, so no surface gets malformed output standing in for what it actually needs.
           </p>
         </div>
       </Section>
 
-      {/* ─── Spectrea Figure System ─── */}
-      <Section>
-        <div className="border-t border-stone-200 pt-8">
-          <p className="text-xs font-mono uppercase tracking-wider text-stone-400">System</p>
-          <h2 className="text-xl font-semibold text-stone-800 mt-1" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Spectrea Figure — Bauhaus standing figure</h2>
-          <p className="text-sm text-stone-500 mt-2 max-w-2xl">
-            One first-party React component. Standing pose only — pose articulation (walking, pointing, sitting) is deliberately out of scope because hand-coded SVG can't deliver it cleanly. Composition multiplies the figure (cohort, crowd, meeting); it doesn't pose it.
-          </p>
+      {/* ─── LAYER 1 — ATOMS ─── */}
+      <Section title="Layer 1 · Atoms">
+        <p className="text-sm text-stone-500 mb-5 leading-relaxed">
+          The brand DNA. What the mark itself is built from. Every illustration must echo at least one.
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+          <Card label="Dot">
+            <svg viewBox="0 0 120 90" className="w-full h-24"><circle cx="60" cy="45" r="22" fill={COBALT}/></svg>
+          </Card>
+          <Card label="Curve">
+            <svg viewBox="0 0 120 90" className="w-full h-24"><path d="M 16 70 C 36 16, 84 16, 104 70" stroke={TEAL} strokeWidth="3" fill="none" strokeLinecap="round"/></svg>
+          </Card>
+          <Card label="Cluster">
+            <svg viewBox="0 0 120 90" className="w-full h-24">
+              <circle cx="60" cy="32" r="7" fill={AMBER}/>
+              <circle cx="36" cy="50" r="5" fill={AMBER}/>
+              <circle cx="84" cy="50" r="5" fill={AMBER}/>
+              <circle cx="50" cy="68" r="5" fill={AMBER}/>
+              <circle cx="74" cy="68" r="5" fill={AMBER}/>
+              <path d="M 60 32 C 50 40, 42 46, 36 50" stroke={AMBER} strokeWidth="1.4" fill="none" opacity="0.6"/>
+              <path d="M 60 32 C 70 40, 78 46, 84 50" stroke={AMBER} strokeWidth="1.4" fill="none" opacity="0.6"/>
+              <path d="M 36 50 C 42 58, 48 64, 50 68" stroke={AMBER} strokeWidth="1.4" fill="none" opacity="0.6"/>
+              <path d="M 84 50 C 80 58, 76 64, 74 68" stroke={AMBER} strokeWidth="1.4" fill="none" opacity="0.6"/>
+            </svg>
+          </Card>
+          <Card label="Trail">
+            <svg viewBox="0 0 120 90" className="w-full h-24">
+              <circle cx="20" cy="56" r="3" fill={ROSE} opacity="0.18"/>
+              <circle cx="36" cy="50" r="3.5" fill={ROSE} opacity="0.32"/>
+              <circle cx="54" cy="44" r="4" fill={ROSE} opacity="0.5"/>
+              <circle cx="72" cy="40" r="4.5" fill={ROSE} opacity="0.7"/>
+              <circle cx="90" cy="36" r="6" fill={ROSE}/>
+            </svg>
+          </Card>
+          <Card label="Field">
+            <svg viewBox="0 0 120 90" className="w-full h-24">
+              <defs>
+                <radialGradient id="atom-field-v3" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor="#EDF0F8"/>
+                  <stop offset="100%" stopColor={CANVAS} stopOpacity="0"/>
+                </radialGradient>
+              </defs>
+              <circle cx="60" cy="45" r="42" fill="url(#atom-field-v3)"/>
+            </svg>
+          </Card>
         </div>
+      </Section>
 
-        {/* Single figure — colour variants */}
-        <div className="mt-8">
-          <p className="text-xs font-mono uppercase tracking-wider text-stone-400">Colour variants</p>
-          <div className="mt-3 grid grid-cols-3 sm:grid-cols-6 gap-3">
-            {ALL_COLORS.map((color: FigureColor) => (
-              <div key={color} className="flex flex-col">
-                <div className="rounded-xl flex items-center justify-center p-3" style={{ background: CLOUD, aspectRatio: '3 / 4' }}>
-                  <SpectreaFigure color={color} />
-                </div>
-                <p className="mt-2 text-xs font-mono text-stone-500 text-center">{color}</p>
-              </div>
-            ))}
+      {/* ─── LAYER 2 — FORMS ─── */}
+      <Section title="Layer 2 · Forms">
+        <p className="text-sm text-stone-500 mb-5 leading-relaxed">
+          Geometric shapes that build figurative content — figures, scenes, objects, structures. Always co-occur with atoms in a composition. Never replace them.
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+          <Card label="Rounded rect"><svg viewBox="0 0 120 90" className="w-full h-24"><rect x="18" y="18" width="84" height="54" rx="12" fill={COBALT}/></svg></Card>
+          <Card label="Square"><svg viewBox="0 0 120 90" className="w-full h-24"><rect x="30" y="18" width="60" height="54" fill={TEAL}/></svg></Card>
+          <Card label="Triangle"><svg viewBox="0 0 120 90" className="w-full h-24"><polygon points="60,14 108,72 12,72" fill={AMBER}/></svg></Card>
+          <Card label="Arc"><svg viewBox="0 0 120 90" className="w-full h-24"><path d="M 18 70 A 42 42 0 0 1 102 70" stroke={ROSE} strokeWidth="4" fill="none" strokeLinecap="round"/></svg></Card>
+          <Card label="Half-circle"><svg viewBox="0 0 120 90" className="w-full h-24"><path d="M 30 72 A 30 30 0 0 1 90 72 Z" fill={COBALT}/></svg></Card>
+          <Card label="Soft blob"><svg viewBox="0 0 120 90" className="w-full h-24"><path d="M 30 45 C 30 22, 90 18, 90 45 C 90 68, 30 70, 30 45 Z" fill={PEWTER}/></svg></Card>
+        </div>
+      </Section>
+
+      {/* ─── LAYER 3 — TREATMENTS ─── */}
+      <Section title="Layer 3 · Treatments">
+        <p className="text-sm text-stone-500 mb-5 leading-relaxed">
+          How a shape is rendered. Apply to both atoms and forms.
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <Card label="Filled"><svg viewBox="0 0 120 90" className="w-full h-24"><circle cx="60" cy="45" r="22" fill={COBALT}/></svg></Card>
+          <Card label="Outlined (ghost)"><svg viewBox="0 0 120 90" className="w-full h-24"><circle cx="60" cy="45" r="22" fill="none" stroke={COBALT} strokeWidth="2.5"/></svg></Card>
+          <Card label="Halo"><svg viewBox="0 0 120 90" className="w-full h-24">
+            <defs><radialGradient id="halo-v3"><stop offset="0%" stopColor={AMBER} stopOpacity="0.45"/><stop offset="100%" stopColor={AMBER} stopOpacity="0"/></radialGradient></defs>
+            <circle cx="60" cy="45" r="40" fill="url(#halo-v3)"/>
+            <circle cx="60" cy="45" r="11" fill={AMBER}/>
+          </svg></Card>
+          <Card label="Layered"><svg viewBox="0 0 120 90" className="w-full h-24">
+            <rect x="28" y="20" width="46" height="46" rx="6" fill={TEAL}/>
+            <circle cx="82" cy="30" r="12" fill={AMBER}/>
+          </svg></Card>
+        </div>
+      </Section>
+
+      {/* ─── LAYER 4 — PALETTE & RATIO ─── */}
+      <Section title="Layer 4 · Palette & ratio">
+        <p className="text-sm text-stone-500 mb-5 leading-relaxed">
+          Brand palette only. 60 / 20 / 10 / 10 ratio — Canvas, surface (Cloud), text &amp; UI, spectrum. One spectrum hero per composition; supporting colours at lower opacity. Pewter for ghost / context. Paper <code className="bg-stone-100 px-1.5 py-0.5 rounded font-mono text-xs">#FAF8F2</code> for editorial surfaces.
+        </p>
+        <div className="border border-stone-200 rounded-xl overflow-hidden bg-white">
+          <div className="h-10 flex">
+            <div className="flex-[60]" style={{ backgroundColor: CANVAS, borderRight: '1px solid #ECECE7' }}/>
+            <div className="flex-[20]" style={{ backgroundColor: CLOUD }}/>
+            <div className="flex-[10]" style={{ backgroundColor: INK }}/>
+            <div className="flex-[3]" style={{ backgroundColor: COBALT }}/>
+            <div className="flex-[3]" style={{ backgroundColor: TEAL }}/>
+            <div className="flex-[2]" style={{ backgroundColor: AMBER }}/>
+            <div className="flex-[2]" style={{ backgroundColor: ROSE }}/>
+          </div>
+          <div className="grid grid-cols-4 px-4 py-3 text-center">
+            <div><p className="text-sm font-semibold text-stone-800">60%</p><p className="text-xs text-stone-500">Canvas</p></div>
+            <div><p className="text-sm font-semibold text-stone-800">20%</p><p className="text-xs text-stone-500">Cloud surface</p></div>
+            <div><p className="text-sm font-semibold text-stone-800">10%</p><p className="text-xs text-stone-500">Ink &amp; Pewter</p></div>
+            <div><p className="text-sm font-semibold text-stone-800">10%</p><p className="text-xs text-stone-500">Spectrum accents</p></div>
           </div>
         </div>
+      </Section>
 
-        {/* Compositions that actually work */}
-        <div className="mt-8">
-          <p className="text-xs font-mono uppercase tracking-wider text-stone-400">Compositions · multi-figure only</p>
-          <div className="mt-3 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Tile label="Pair · partnership / interaction" bg={CANVAS}><ScenePair /></Tile>
-            <Tile label="Cohort · team of four" bg={CANVAS}><SceneCohort /></Tile>
-            <Tile label="Crowd · many small figures" bg={CANVAS}><SceneCrowd /></Tile>
+      {/* ─── Seven craft moves ─── */}
+      <Section title="The seven craft moves">
+        <p className="text-sm text-stone-500 mb-5 leading-relaxed">
+          Beyond the four layers, these are the techniques that turn a system applied into a composition with craft. Every polished illustration uses several.
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <Card label="1 · Arc">
+            <svg viewBox="0 0 120 90" className="w-full h-24"><path d="M 18 70 A 42 42 0 0 1 102 70" stroke={COBALT} strokeWidth="3" fill="none" strokeLinecap="round"/></svg>
+          </Card>
+          <Card label="2 · Halo">
+            <svg viewBox="0 0 120 90" className="w-full h-24">
+              <defs><radialGradient id="h-v3a"><stop offset="0%" stopColor={AMBER} stopOpacity="0.45"/><stop offset="100%" stopColor={AMBER} stopOpacity="0"/></radialGradient></defs>
+              <circle cx="60" cy="45" r="38" fill="url(#h-v3a)"/>
+              <circle cx="60" cy="45" r="10" fill={AMBER}/>
+            </svg>
+          </Card>
+          <Card label="3 · Painterly Field">
+            <svg viewBox="0 0 120 90" className="w-full h-24">
+              <defs>
+                <radialGradient id="pf1-v3" cx="35%" cy="40%" r="50%"><stop offset="0%" stopColor="#EDF0F8"/><stop offset="100%" stopColor={PAPER} stopOpacity="0"/></radialGradient>
+                <radialGradient id="pf2-v3" cx="68%" cy="62%" r="42%"><stop offset="0%" stopColor="#F5F0E6"/><stop offset="100%" stopColor={PAPER} stopOpacity="0"/></radialGradient>
+              </defs>
+              <rect width="120" height="90" fill={PAPER}/>
+              <rect width="120" height="90" fill="url(#pf1-v3)"/>
+              <rect width="120" height="90" fill="url(#pf2-v3)"/>
+            </svg>
+          </Card>
+          <Card label="4 · Spectrum Band">
+            <svg viewBox="0 0 120 90" className="w-full h-24">
+              <defs><linearGradient id="sb-v3" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor={COBALT}/><stop offset="33%" stopColor={TEAL}/>
+                <stop offset="66%" stopColor={AMBER}/><stop offset="100%" stopColor={ROSE}/>
+              </linearGradient></defs>
+              <rect x="12" y="36" width="96" height="18" rx="9" fill="url(#sb-v3)" opacity="0.9"/>
+            </svg>
+          </Card>
+          <Card label="5 · Translucent Plate">
+            <svg viewBox="0 0 120 90" className="w-full h-24">
+              <rect width="120" height="90" fill="#F5F0E6"/>
+              <rect x="22" y="14" width="76" height="62" rx="10" fill={PAPER} stroke="#E5DBC5" strokeWidth="0.5" opacity="0.92"/>
+              <circle cx="60" cy="45" r="9" fill={COBALT}/>
+            </svg>
+          </Card>
+          <Card label="6 · Keyline Rule">
+            <svg viewBox="0 0 120 90" className="w-full h-24">
+              <line x1="14" y1="18" x2="106" y2="18" stroke={PEWTER} strokeWidth="0.5" opacity="0.6"/>
+              <line x1="14" y1="74" x2="106" y2="74" stroke={PEWTER} strokeWidth="0.5" opacity="0.6"/>
+              <text x="18" y="48" fontFamily="ui-monospace, monospace" fontSize="9" fill={INK}>SECTION</text>
+              <text x="102" y="48" fontFamily="ui-monospace, monospace" fontSize="9" fill={PEWTER} textAnchor="end">01</text>
+            </svg>
+          </Card>
+          <Card label="7 · Hand-imperfect">
+            <svg viewBox="0 0 120 90" className="w-full h-24">
+              <circle cx="34" cy="45" r="11" fill={COBALT}/>
+              <ellipse cx="60" cy="45" rx="12" ry="10" fill={COBALT}/>
+              <circle cx="86" cy="45" r="11" fill={COBALT}/>
+            </svg>
+          </Card>
+          <Card label="+ Paper grain">
+            <svg viewBox="0 0 120 90" className="w-full h-24">
+              <defs><filter id="pg-v3"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="3"/><feColorMatrix values="0 0 0 0 0.35  0 0 0 0 0.32  0 0 0 0 0.27  0 0 0 0.22 0"/></filter></defs>
+              <rect width="120" height="90" fill={PAPER}/>
+              <rect width="120" height="90" filter="url(#pg-v3)"/>
+            </svg>
+          </Card>
+        </div>
+      </Section>
+
+      {/* ─── Two paired styles ─── */}
+      <Section title="Two paired styles">
+        <p className="text-sm text-stone-500 mb-5 leading-relaxed">
+          The brand has two illustration jobs. One style can't serve both well. Pair two styles sharing palette, type, paper ground, and the brand-mark curve — but differing in what each is for.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+          <div className="rounded-xl border border-stone-200 overflow-hidden">
+            <div className="px-5 py-3 border-b border-stone-200 flex items-center gap-2" style={{ backgroundColor: '#F5F0E6' }}>
+              <span className="text-[10px] font-mono uppercase tracking-wider text-stone-500">Style A</span>
+              <span className="text-xs font-semibold text-amber-900" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Editorial Geometry</span>
+            </div>
+            <div className="p-5">
+              <p className="text-sm text-stone-700 leading-relaxed mb-3">
+                Flat geometric shapes on warm paper, generous white space, serif headline + monospace metadata, single warm focal accent.
+              </p>
+              <p className="text-xs text-stone-500 mb-3"><strong className="text-stone-700">For:</strong> homepage hero, About / story, blog headers, press, brand-guide section opens.</p>
+              <p className="text-xs text-stone-500"><strong className="text-stone-700">References:</strong> <a href="https://press.stripe.com/" target="_blank" className="text-brand hover:underline">Stripe Press</a>, Pelican classics, MIT Press, Fitzcarraldo Editions.</p>
+            </div>
+          </div>
+
+          <div className="rounded-xl border border-stone-200 overflow-hidden bg-ink">
+            <div className="px-5 py-3 border-b border-stone-700 flex items-center gap-2">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-stone-400">Style B</span>
+              <span className="text-xs font-semibold" style={{ fontFamily: "'Albert Sans', sans-serif", color: CANVAS }}>Living Graph</span>
+            </div>
+            <div className="p-5">
+              <p className="text-sm text-stone-300 leading-relaxed mb-3">
+                Dense node + edge compositions, depth via painterly Fields and halos, atmospheric perspective, focal hierarchy.
+              </p>
+              <p className="text-xs text-stone-400 mb-3"><strong className="text-stone-200">For:</strong> product feature pages, docs hero, "how it works" diagrams, onboarding, in-product loading + empty states.</p>
+              <p className="text-xs text-stone-400"><strong className="text-stone-200">References:</strong> <a href="https://vercel.com/" target="_blank" className="hover:underline" style={{ color: COBALT }}>Vercel</a>, <a href="https://linear.app/" target="_blank" className="hover:underline" style={{ color: COBALT }}>Linear</a>.</p>
+            </div>
           </div>
         </div>
+      </Section>
 
-        <div className="mt-6 rounded-xl border border-rose-100 bg-rose-50 p-5">
-          <p className="text-xs font-mono uppercase tracking-wider text-rose-600">Honest limits</p>
-          <p className="text-sm text-stone-700 mt-2 leading-relaxed">
-            Compositions that need viewer interpretation (top-down meeting tables, walking-through-a-park scenes, "one figure standing out" leadership metaphors) don't read cleanly without a caption. They need anatomical pose articulation, perspective cues, or scene depth — none of which hand-coded SVG handles well. For those, use an image generation tool (Gemini, DALL-E, Midjourney) with a Spectrea-branded prompt, or commission an illustrator. Don't try to fake them in SVG.
-          </p>
+      {/* ─── Channel allocation matrix ─── */}
+      <Section title="Four channels · who produces what">
+        <p className="text-sm text-stone-500 mb-3 leading-relaxed">
+          Every illustration in the system is allocated to one of four channels. No surface gets low-fidelity SVG standing in for what it actually needs.
+        </p>
+        <div className="flex flex-wrap gap-2 mb-5">
+          <ChannelPill kind="me"/> <span className="text-xs text-stone-500">~80% · in-house SVG with render-iterate loop</span>
+          <span className="text-stone-300 mx-2">·</span>
+          <ChannelPill kind="aigen"/> <span className="text-xs text-stone-500">~15% · AI image-gen via <code className="bg-stone-100 px-1 py-0.5 rounded font-mono text-[10px]">docs/illustration-prompt.md</code></span>
+          <span className="text-stone-300 mx-2">·</span>
+          <ChannelPill kind="designer"/> <span className="text-xs text-stone-500">~5% · commissioned for launch / paid / print</span>
+          <span className="text-stone-300 mx-2">·</span>
+          <ChannelPill kind="canva"/> <span className="text-xs text-stone-500">Template-driven recurring formats (optional)</span>
         </div>
 
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="rounded-lg bg-stone-50 border border-stone-100 p-4">
-            <p className="text-xs font-mono uppercase tracking-wider text-stone-400">API</p>
-            <pre className="text-[11px] font-mono text-stone-600 mt-1.5 leading-relaxed">{`<SpectreaFigure
-  color="cobalt"
-  height={200}
-/>`}</pre>
+        <div className="border border-stone-200 rounded-xl overflow-hidden">
+          <div className="grid grid-cols-[1fr_110px_2fr] bg-stone-50 border-b border-stone-200 px-4 py-2 text-[10px] font-mono uppercase tracking-wider text-stone-400">
+            <div>Surface</div>
+            <div>Channel</div>
+            <div>Example</div>
           </div>
-          <div className="rounded-lg bg-stone-50 border border-stone-100 p-4">
-            <p className="text-xs font-mono uppercase tracking-wider text-stone-400">Where</p>
-            <p className="text-sm text-stone-600 mt-1.5">
-              <code className="text-[11px] bg-white px-1 py-0.5 rounded">src/components/illustrations/SpectreaFigure.tsx</code>. Add new compositions as scene exports — same file.
+          {[
+            { s: 'Brand-guide vocabulary cards (atoms, forms, treatments)', c: 'me', e: 'Cards on this page. Dot/Curve/Cluster/Trail/Field + seven craft moves.' },
+            { s: 'Brand-guide layout & system diagrams', c: 'me', e: '60/20/10/10 ratio, spacing scale, 12-col grid, swatches.' },
+            { s: 'Motion primitive demos (static + live)', c: 'me', e: 'Arrival, Formation, Spectrum sweep. React/CSS components on Motion page.' },
+            { s: 'Data-viz primitive cards (node/edge/confidence/trail)', c: 'me', e: 'Graph-rendering reference material for the brand guide.' },
+            { s: 'Empty states, loading skeletons, searching', c: 'me', e: 'Nothing-here-yet, skeleton pulses, dashed search ring.' },
+            { s: 'In-product brand moments (small, schematic)', c: 'me', e: 'Connection-formed, item-arrived, AI-just-acted, notification dots.' },
+            { s: 'Section dividers & visual breaks', c: 'me', e: 'Spectrum band, dot rule, arc divider.' },
+            { s: 'Brand mark variants & logo system', c: 'me', e: 'Cool duet, mono ink, mono white, full spectrum, animated frames.' },
+            { s: 'Comparison diagrams (do/don\'t, before/after)', c: 'me', e: 'Schematic diptychs with simple distinction.' },
+            { s: 'Marketing site hero (homepage above fold)', c: 'aigen', e: 'Editorial pictorial scene. Generate via prompt → vectorise → drop into /public/illustrations/.' },
+            { s: 'Feature page heroes (product pages)', c: 'aigen', e: '"What it feels like to use this" — atmospheric pictorial.' },
+            { s: 'Blog post header art', c: 'aigen', e: 'One-off editorial per article, brand-prompt-driven.' },
+            { s: 'Social post imagery (campaigns)', c: 'aigen', e: 'Concept-driven posts. Prompt keeps consistency.' },
+            { s: 'About page atmospheric imagery', c: 'aigen', e: 'Scenes evoking team intent without literal photography.' },
+            { s: 'Brand launch keynote / hero visual', c: 'designer', e: 'The single defining image. Commission.' },
+            { s: 'Conference banner & booth visuals', c: 'designer', e: 'Print-scale custom illustration.' },
+            { s: 'Print brand-guide cover & section opens', c: 'designer', e: '3–4 designer-produced plates for the printed artifact.' },
+            { s: 'About page main hero illustration', c: 'designer', e: 'AI-gen can be a draft; commission for the final.' },
+            { s: 'Custom marketing campaign imagery (paid)', c: 'designer', e: 'Paid media deserves designer-quality production.' },
+            { s: 'Photography direction (human imagery)', c: 'designer', e: 'Photographer + art director. About / customer stories / team.' },
+            { s: 'Sales presentation decks (template-driven)', c: 'canva', e: 'Requires Spectrea brand kit in Canva; generate via brand_kit_id.' },
+            { s: 'One-off social posts (template-driven)', c: 'canva', e: 'Recurring weekly content with brand-kitted templates.' },
+            { s: 'Internal flyers, event posters', c: 'canva', e: 'Quick-turn collateral; no custom illustration needed.' },
+          ].map((row, i) => (
+            <div key={i} className="grid grid-cols-[1fr_110px_2fr] px-4 py-3 border-b border-stone-100 last:border-b-0 items-center">
+              <div className="text-sm text-stone-700">{row.s}</div>
+              <div><ChannelPill kind={row.c as 'me' | 'aigen' | 'designer' | 'canva'}/></div>
+              <div className="text-xs text-stone-500 leading-relaxed">{row.e}</div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* ─── Decision rubric ─── */}
+      <Section title="Decision rubric">
+        <p className="text-sm text-stone-500 mb-5 leading-relaxed">
+          For any new illustration, ask three questions in order:
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="rounded-xl border border-stone-200 p-5">
+            <p className="text-xs font-mono uppercase tracking-wider mb-2" style={{ color: '#008775' }}>01</p>
+            <p className="text-sm font-semibold text-stone-800 mb-2" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Is it a system artefact?</p>
+            <p className="text-xs text-stone-500 leading-relaxed">Vocabulary card, primitive demo, layout diagram, swatch, in-product moment, dataviz primitive, brand mark variant. → <ChannelPill kind="me"/></p>
+          </div>
+          <div className="rounded-xl border border-stone-200 p-5">
+            <p className="text-xs font-mono uppercase tracking-wider mb-2" style={{ color: '#7C4D04' }}>02</p>
+            <p className="text-sm font-semibold text-stone-800 mb-2" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Does it need a pictorial subject?</p>
+            <p className="text-xs text-stone-500 leading-relaxed">A figure mid-action, a scene with depth, a metaphorical landscape, atmospheric texture. → <ChannelPill kind="aigen"/></p>
+          </div>
+          <div className="rounded-xl border border-stone-200 p-5">
+            <p className="text-xs font-mono uppercase tracking-wider mb-2" style={{ color: '#BA3249' }}>03</p>
+            <p className="text-sm font-semibold text-stone-800 mb-2" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Does it carry launch / paid / print?</p>
+            <p className="text-xs text-stone-500 leading-relaxed">Homepage hero, conference banner, About hero, print cover, paid campaign. → <ChannelPill kind="designer"/></p>
+          </div>
+        </div>
+        <p className="text-xs text-stone-500 mt-4 leading-relaxed">
+          <ChannelPill kind="canva"/> is reserved for template-driven recurring formats only (sales decks, predictable social). If "not sure" — default to <ChannelPill kind="me"/>, render through the loop, evaluate honestly. If malformed, escalate.
+        </p>
+      </Section>
+
+      {/* ─── Data-viz primitive cards (system artefact — Channel 1) ─── */}
+      <Section title="Data-viz primitives">
+        <p className="text-sm text-stone-500 mb-4 leading-relaxed">
+          Graph-rendering reference cards. These describe how the product's graph renders consistently with the brand. Channel 1 (Me) — schematic, low-fidelity, system-aware.
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <Card label="Node types"><svg viewBox="0 0 120 90" className="w-full h-24">
+            <circle cx="34" cy="30" r="9" fill={COBALT}/>
+            <circle cx="86" cy="30" r="9" fill={TEAL}/>
+            <circle cx="34" cy="60" r="9" fill={AMBER} opacity="0.7"/>
+            <circle cx="86" cy="60" r="9" fill={PEWTER}/>
+          </svg></Card>
+          <Card label="Edge styles"><svg viewBox="0 0 120 90" className="w-full h-24">
+            <line x1="14" y1="22" x2="106" y2="22" stroke={PEWTER} strokeWidth="1.6"/>
+            <line x1="14" y1="44" x2="106" y2="44" stroke={PEWTER} strokeWidth="1.6" strokeDasharray="6 3"/>
+            <line x1="14" y1="66" x2="106" y2="66" stroke={PEWTER} strokeWidth="1.6" strokeDasharray="2 3"/>
+          </svg></Card>
+          <Card label="Confidence (opacity)"><svg viewBox="0 0 120 90" className="w-full h-24">
+            <circle cx="22" cy="45" r="9" fill={COBALT} opacity="0.3"/>
+            <circle cx="48" cy="45" r="9" fill={COBALT} opacity="0.55"/>
+            <circle cx="74" cy="45" r="9" fill={COBALT} opacity="0.78"/>
+            <circle cx="100" cy="45" r="9" fill={COBALT}/>
+          </svg></Card>
+          <Card label="Provenance trail"><svg viewBox="0 0 120 90" className="w-full h-24">
+            <circle cx="20" cy="74" r="3" fill={AMBER} opacity="0.3"/>
+            <circle cx="40" cy="60" r="3.5" fill={AMBER} opacity="0.5"/>
+            <circle cx="60" cy="46" r="4" fill={AMBER} opacity="0.7"/>
+            <circle cx="80" cy="30" r="4.5" fill={AMBER} opacity="0.85"/>
+            <circle cx="100" cy="14" r="6" fill={AMBER}/>
+          </svg></Card>
+        </div>
+      </Section>
+
+      {/* ─── In-product brand moments ─── */}
+      <Section title="In-product brand moments">
+        <p className="text-sm text-stone-500 mb-4 leading-relaxed">
+          Small schematic illustrations the product uses to communicate state. Channel 1 (Me).
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <Card label="Connection formed"><svg viewBox="0 0 120 90" className="w-full h-24">
+            <circle cx="22" cy="45" r="6" fill={COBALT}/>
+            <circle cx="98" cy="45" r="6" fill={AMBER}/>
+            <path d="M 28 45 C 50 22, 70 68, 92 45" stroke={PEWTER} strokeWidth="1.6" fill="none" opacity="0.6"/>
+            <circle cx="60" cy="42" r="4" fill={CANVAS} stroke={AMBER} strokeWidth="2"/>
+          </svg></Card>
+          <Card label="Item arrived"><svg viewBox="0 0 120 90" className="w-full h-24">
+            <circle cx="60" cy="45" r="32" fill={TEAL} opacity="0.10"/>
+            <circle cx="60" cy="45" r="20" fill={TEAL} opacity="0.20"/>
+            <circle cx="60" cy="45" r="11" fill={TEAL}/>
+          </svg></Card>
+          <Card label="AI just acted"><svg viewBox="0 0 120 90" className="w-full h-24">
+            <defs><linearGradient id="ai-v3" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor={COBALT}/><stop offset="33%" stopColor={TEAL}/>
+              <stop offset="66%" stopColor={AMBER}/><stop offset="100%" stopColor={ROSE}/>
+            </linearGradient></defs>
+            <rect x="14" y="44" width="92" height="3" rx="1.5" fill="url(#ai-v3)"/>
+          </svg></Card>
+          <Card label="Notification badge"><svg viewBox="0 0 120 90" className="w-full h-24">
+            <rect x="32" y="22" width="56" height="44" rx="6" fill={CLOUD}/>
+            <circle cx="86" cy="26" r="7" fill={ROSE}/>
+            <text x="86" y="29" fontFamily="ui-monospace,monospace" fontSize="8" fill="#fff" textAnchor="middle">3</text>
+          </svg></Card>
+        </div>
+      </Section>
+
+      {/* ─── Empty / loading states ─── */}
+      <Section title="Empty & loading states">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <Card label="Nothing here yet"><svg viewBox="0 0 200 90" className="w-full h-24">
+            <circle cx="100" cy="40" r="9" fill={COBALT}/>
+            <circle cx="64" cy="50" r="3" fill={PEWTER} opacity="0.4"/>
+            <circle cx="136" cy="50" r="3" fill={PEWTER} opacity="0.4"/>
+            <text x="100" y="80" fontFamily="ui-monospace,monospace" fontSize="9" fill={PEWTER} textAnchor="middle">add your first item</text>
+          </svg></Card>
+          <Card label="Loading skeleton"><svg viewBox="0 0 200 90" className="w-full h-24">
+            <rect x="20" y="20" width="120" height="10" rx="5" fill="#EDF0F8"/>
+            <rect x="20" y="38" width="160" height="6" rx="3" fill={CLOUD}/>
+            <rect x="20" y="50" width="140" height="6" rx="3" fill={CLOUD}/>
+            <rect x="20" y="68" width="44" height="14" rx="7" fill="#EDF0F8"/>
+          </svg></Card>
+          <Card label="Searching"><svg viewBox="0 0 200 90" className="w-full h-24">
+            <circle cx="100" cy="42" r="22" fill="none" stroke={COBALT} strokeWidth="2" opacity="0.5" strokeDasharray="6 4"/>
+            <circle cx="100" cy="42" r="6" fill={COBALT}/>
+          </svg></Card>
+        </div>
+      </Section>
+
+      {/* ─── Section dividers ─── */}
+      <Section title="Section dividers · visual breaks">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <Card label="Spectrum band"><svg viewBox="0 0 200 40" className="w-full h-16">
+            <defs><linearGradient id="dv-v3" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor={COBALT}/><stop offset="33%" stopColor={TEAL}/>
+              <stop offset="66%" stopColor={AMBER}/><stop offset="100%" stopColor={ROSE}/>
+            </linearGradient></defs>
+            <rect x="0" y="18" width="200" height="4" fill="url(#dv-v3)"/>
+          </svg></Card>
+          <Card label="Dot rule"><svg viewBox="0 0 200 40" className="w-full h-16">
+            <circle cx="80" cy="20" r="2" fill={PEWTER}/>
+            <circle cx="92" cy="20" r="2" fill={PEWTER}/>
+            <circle cx="104" cy="20" r="2" fill={PEWTER}/>
+            <circle cx="116" cy="20" r="2" fill={PEWTER}/>
+            <circle cx="128" cy="20" r="2" fill={PEWTER}/>
+          </svg></Card>
+          <Card label="Arc divider"><svg viewBox="0 0 200 40" className="w-full h-16">
+            <path d="M 20 32 Q 100 10 180 32" stroke={COBALT} strokeWidth="1.4" fill="none" opacity="0.7" strokeLinecap="round"/>
+          </svg></Card>
+        </div>
+      </Section>
+
+      {/* ─── Bauhaus figure specialisation (SpectreaFigure) ─── */}
+      <Section title="Bauhaus figures · the Form-layer specialisation for human imagery">
+        <p className="text-sm text-stone-500 mb-4 leading-relaxed">
+          When a composition needs to explicitly depict people, use the <code className="bg-stone-100 px-1.5 py-0.5 rounded font-mono text-xs">SpectreaFigure</code> component. Figures are built from Layer-2 Forms (rounded rectangles for body parts) wrapped in Layer-1 atoms (head Dot, hand Dots, the occasional Trail / Halo). Standing only — pose articulation is out of scope for hand-coded SVG.
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <Tile label="Single figure"><SpectreaFigure color="cobalt" height={140}/></Tile>
+          <Tile label="Pair"><ScenePair/></Tile>
+          <Tile label="Cohort (team)"><SceneCohort/></Tile>
+          <Tile label="Crowd"><SceneCrowd/></Tile>
+        </div>
+        <p className="text-xs text-stone-500 mt-3">
+          <strong className="text-stone-700">Honest limits:</strong> these figures don't walk, sit, reach, or gesture. For scenes needing pose articulation (a person at a desk reaching for a cup, a conversation with body language), use <ChannelPill kind="aigen"/> via the prompt.
+        </p>
+      </Section>
+
+      {/* ─── What belongs to other channels ─── */}
+      <Section title="What doesn't live on this page">
+        <p className="text-sm text-stone-500 mb-5 leading-relaxed">
+          These surfaces need other channels. The brand guide doesn't try to stand in for them with low-fidelity SVG.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+          <div className="rounded-xl border border-amber-200 p-5" style={{ backgroundColor: '#E1900008' }}>
+            <div className="flex items-center gap-2 mb-3">
+              <ChannelPill kind="aigen"/>
+              <span className="text-sm font-semibold text-stone-800">Marketing heroes</span>
+            </div>
+            <p className="text-xs text-stone-600 leading-relaxed mb-3">
+              Homepage above-fold, feature-page heroes, blog headers, social campaigns, About atmospheric imagery.
+            </p>
+            <p className="text-xs text-stone-500 leading-relaxed">
+              <strong>Workflow:</strong> use the prompt at <code className="bg-amber-50 px-1 py-0.5 rounded font-mono text-[10px]">docs/illustration-prompt.md</code> → generate via Gemini / DALL-E / Firefly → vectorise with Inkscape → drop into <code className="bg-amber-50 px-1 py-0.5 rounded font-mono text-[10px]">/public/illustrations/</code>.
+            </p>
+          </div>
+
+          <div className="rounded-xl border border-rose-200 p-5" style={{ backgroundColor: '#F2426008' }}>
+            <div className="flex items-center gap-2 mb-3">
+              <ChannelPill kind="designer"/>
+              <span className="text-sm font-semibold text-stone-800">Launch &amp; print</span>
+            </div>
+            <p className="text-xs text-stone-600 leading-relaxed mb-3">
+              Brand launch keynote slide, conference banner, print brand-guide cover, About hero, paid-media imagery, photography direction.
+            </p>
+            <p className="text-xs text-stone-500 leading-relaxed">
+              <strong>Workflow:</strong> commission an illustrator briefed with this system. Brand-guide tells the designer what the rules are; the designer produces the heroes.
+            </p>
+          </div>
+
+          <div className="rounded-xl border border-blue-200 p-5" style={{ backgroundColor: '#4271DF08' }}>
+            <div className="flex items-center gap-2 mb-3">
+              <ChannelPill kind="canva"/>
+              <span className="text-sm font-semibold text-stone-800">Template-driven recurring</span>
+            </div>
+            <p className="text-xs text-stone-600 leading-relaxed mb-3">
+              Sales decks, one-off social posts, internal flyers. Only worth setting up if the team will use it weekly.
+            </p>
+            <p className="text-xs text-stone-500 leading-relaxed">
+              <strong>Workflow:</strong> set up a Spectrea brand kit in Canva (palette, fonts, logo upload) and call <code className="bg-blue-50 px-1 py-0.5 rounded font-mono text-[10px]">generate-design</code> with <code className="bg-blue-50 px-1 py-0.5 rounded font-mono text-[10px]">brand_kit_id</code>.
             </p>
           </div>
         </div>
@@ -1564,34 +904,33 @@ export default function Illustration() {
           <p className="text-xs font-mono uppercase tracking-wider text-stone-400">Motion</p>
           <h2 className="text-xl font-semibold text-stone-800 mt-1" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Animation techniques — live demos</h2>
           <p className="text-sm text-stone-500 mt-2 max-w-2xl">
-            Interactive side-by-side of Framer Motion (<code className="text-xs bg-cloud px-1 py-0.5 rounded">framer-motion@12</code>, installed), native CSS, and SVG SMIL. Click <em>Replay</em> to re-trigger. Hover tiles to test gestures.
+            Side-by-side of Framer Motion (<code className="text-xs bg-cloud px-1 py-0.5 rounded">framer-motion@12</code>, installed), native CSS, and SVG SMIL. Click <em>Replay</em> to re-trigger. Hover tiles to test gestures.
           </p>
         </div>
-
-        <AnimationDemos />
+        <AnimationDemos/>
       </Section>
 
-      {/* ─── Stack (final) ─── */}
+      {/* ─── Shipping stack ─── */}
       <Section>
         <div className="rounded-xl bg-ink text-white p-6 sm:p-8">
           <p className="text-xs font-mono uppercase tracking-wider" style={{ color: AMBER }}>Shipping stack</p>
           <h2 className="text-xl font-semibold mt-1" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Free, open source, no attribution</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-5">
             <div className="border-l-2 pl-3" style={{ borderColor: TEAL }}>
-              <p className="text-xs font-mono uppercase tracking-wider" style={{ color: TEAL }}>Tier A · illustration</p>
-              <p className="text-sm text-stone-400 mt-1">Procedural inline SVG + <code className="bg-graphite px-1.5 py-0.5 rounded text-xs">SpectreaFigure</code>. Add Humaaans only if you need varied human poses — MIT, no attribution.</p>
+              <p className="text-xs font-mono uppercase tracking-wider" style={{ color: TEAL }}>Procedural · geometric &amp; figure</p>
+              <p className="text-sm text-stone-400 mt-1">Inline SVG built from the atoms + Form layer + <code className="bg-graphite px-1.5 py-0.5 rounded text-xs">SpectreaFigure</code> for human imagery.</p>
             </div>
             <div className="border-l-2 pl-3" style={{ borderColor: COBALT }}>
               <p className="text-xs font-mono uppercase tracking-wider" style={{ color: COBALT }}>Animation</p>
               <p className="text-sm text-stone-400 mt-1"><code className="bg-graphite px-1.5 py-0.5 rounded text-xs">framer-motion</code> — MIT, installed. Wraps inline SVG. Respect prefers-reduced-motion.</p>
             </div>
             <div className="border-l-2 pl-3" style={{ borderColor: AMBER }}>
-              <p className="text-xs font-mono uppercase tracking-wider" style={{ color: AMBER }}>Data-viz</p>
-              <p className="text-sm text-stone-400 mt-1"><code className="bg-graphite px-1.5 py-0.5 rounded text-xs">visx</code> — MIT, no attribution. Use when dots must come from real data rather than hand-placed.</p>
+              <p className="text-xs font-mono uppercase tracking-wider" style={{ color: AMBER }}>Data-driven dots</p>
+              <p className="text-sm text-stone-400 mt-1"><code className="bg-graphite px-1.5 py-0.5 rounded text-xs">visx</code> — MIT, no attribution. Use when dots come from real data.</p>
             </div>
             <div className="border-l-2 pl-3" style={{ borderColor: ROSE }}>
-              <p className="text-xs font-mono uppercase tracking-wider" style={{ color: ROSE }}>Tier B · marketing</p>
-              <p className="text-sm text-stone-400 mt-1">Generated via AI using <code className="bg-graphite px-1.5 py-0.5 rounded text-xs">docs/illustration-prompt.md</code>. Free + commercial: Gemini, Bing, Firefly, or Stable Diffusion local.</p>
+              <p className="text-xs font-mono uppercase tracking-wider" style={{ color: ROSE }}>Generated · richer scenes</p>
+              <p className="text-sm text-stone-400 mt-1">AI image-gen via <code className="bg-graphite px-1.5 py-0.5 rounded text-xs">docs/illustration-prompt.md</code>. Gemini, Bing, Firefly, or Stable Diffusion local.</p>
             </div>
           </div>
           <p className="text-xs font-mono text-stone-500 mt-6">Skipped · unDraw · Storyset · Lordicon · Rive · GSAP MorphSVG · Lottie · Recraft free tier</p>
@@ -1599,20 +938,19 @@ export default function Illustration() {
       </Section>
 
       {/* ─── Anti-patterns ─── */}
-      <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">Anti-patterns</h2>
+      <Section title="Anti-patterns">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <Tile label="Mascot / character cartoon" bg="#FEF3F2"><AntiCartoon /></Tile>
-          <Tile label="Generic stock photography" bg="#FEF3F2"><AntiStock /></Tile>
-          <Tile label="Off-palette neon gradients" bg="#FEF3F2"><AntiOffPalette /></Tile>
-          <Tile label="Skeuomorphic / photoreal 3D" bg="#FEF3F2"><AntiSkeuomorph /></Tile>
+          <Tile label="Mascot / character cartoon" bg="#FEF3F2"><AntiCartoon/></Tile>
+          <Tile label="Generic stock photography" bg="#FEF3F2"><AntiStock/></Tile>
+          <Tile label="Off-palette neon gradients" bg="#FEF3F2"><AntiOffPalette/></Tile>
+          <Tile label="Skeuomorphic / photoreal 3D" bg="#FEF3F2"><AntiSkeuomorph/></Tile>
         </div>
         <div className="mt-5 rounded-lg bg-rose-50 border border-rose-100 p-4">
           <ul className="text-sm text-stone-700 space-y-1 list-disc list-inside">
             <li><strong>No mascots.</strong> Spectrea is a mentor, not a pet.</li>
-            <li><strong>No stock photography.</strong> Licensed people-photos age badly. For warmth in marketing surfaces, use Tier B illustrated style (generated via the prompt workflow) — not stock.</li>
-            <li><strong>No off-palette gradients.</strong> Cobalt → Teal → Amber is the only spectrum, and used only in the hero S.</li>
-            <li><strong>No skeuomorphism.</strong> Chrome, glass, bevels belong to Apple's materialist tradition, not to Spectrea.</li>
+            <li><strong>No stock photography.</strong> For warmth in marketing, use AI-gen via the prompt — not stock.</li>
+            <li><strong>No off-palette gradients.</strong> Cobalt → Teal → Amber is the only spectrum.</li>
+            <li><strong>No skeuomorphism.</strong> Chrome, glass, bevels belong to other design traditions, not Spectrea.</li>
           </ul>
         </div>
       </Section>

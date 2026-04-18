@@ -117,44 +117,38 @@ export const brand = {
       description: 'Meets you where you are. A beginner and an expert use the same system — they just see different depths.',
       guardrail: 'But not shapeless — flexibility doesn\'t mean no opinion. Spectrea has a clear point of view.',
     },
-    {
-      trait: 'Rigorous',
-      description: 'Discipline that serves clarity. The system is prescriptive on purpose — a fixed set of primitives, a fixed palette, a fixed motion language — because consistency is what makes the brand recognisable across every surface.',
-      guardrail: 'But not rigid — discipline serves meaning, not dogma. When meaning calls for an exception, the exception is documented and named, not smuggled in.',
-    },
   ],
 
   // --- Values ---
+  // Brand-level values — outcomes the brand stands for. Proofs describe the
+  // shape of that outcome at the brand level (what a reader can feel), not
+  // specific product mechanisms. Internal product principle codes have been
+  // dropped; the values stand on their own.
   values: [
     {
       name: 'Human-First',
-      principle: 'P4 + P6 + P9',
       description: 'Spectrea serves people, not the other way around. AI assists understanding — it never replaces judgment. The system suggests, you decide. Your knowledge belongs to you.',
-      proof: 'Private by default. AI recommendations carry confidence scores, never silent overrides. Every AI action is inspectable and reversible. The full product works without AI (the floor); AI elevates but never gates capability.',
+      proof: 'Private by default. AI suggests, never overrides silently. Every AI action is reviewable and reversible. The system works without AI; AI elevates, never gates.',
     },
     {
       name: 'Trustworthy Intelligence',
-      principle: 'P2 + P5',
       description: 'Everything you see is transparent. Every action is reviewable. Every connection can be followed back to where it came from. Understanding that can\'t be verified isn\'t understanding at all.',
       proof: 'Every piece of information is linked to its source. Confidence levels are visible, never hidden. Every change is logged with reasoning. AI actions are always recorded and explainable.',
     },
     {
       name: 'Compounding Intelligence',
-      principle: 'Knowledge Flywheel',
-      description: 'The more you use Spectrea, the more it gives back. The graph grows denser, connections surface faster, and insights deepen. Your second year is incomparably better than your first.',
-      proof: 'Every document uploaded enriches the graph, providing richer context for all future queries and surfacing connections that would otherwise stay hidden.',
+      description: 'The more you use Spectrea, the more it gives back. Connections surface faster, context deepens, insights compound. Your second year is incomparably better than your first.',
+      proof: 'Every interaction enriches the system, providing richer context for everything that comes next and surfacing connections that would otherwise stay hidden.',
     },
     {
       name: 'Composable by Nature',
-      principle: 'P3',
       description: 'Build solutions that fit your world — don\'t reshape your world to fit a tool. Simple, combinable parts assembled into exactly what you need.',
-      proof: 'Six primitive layers (Type, Data, Logic, Constraint, Query, Visual) that combine into any solution. Domain specificity emerges from how you compose, not from what we pre-build.',
+      proof: 'Composable building blocks that assemble into domain-specific solutions. Specificity emerges from how you combine, not from what\'s pre-built for you.',
     },
     {
       name: 'Accessible Power',
-      principle: 'P9',
       description: 'Deep capability that meets you where you are. No one excluded by complexity, no one limited by simplicity. The floor is high, the ceiling is infinite.',
-      proof: 'Two experience tiers: a complete first-class experience without AI, and an AI-elevated experience that makes composition effortless.',
+      proof: 'The same system reveals different depths depending on how you use it. Beginners get a clear, complete experience; experts get the depth they need without changing tools.',
     },
   ],
 
@@ -199,7 +193,7 @@ export const brand = {
   aesthetic: {
     direction: 'Warm + Intelligent',
     description: 'Like a brilliant mentor — approachable yet deep. Rich colors, inviting spacing. Feels human.',
-    references: ['Notion', 'Stripe'],
+    references: ['Stripe', 'Linear'],
     tradeoff: 'Power over polish. Capability is sacred. Elegance is valued but never at the cost of depth.',
   },
 
@@ -221,7 +215,7 @@ export const brand = {
       title: 'Technology Leaders',
       who: 'CTOs, IT Directors, architects',
       need: 'A composable, inspectable, extensible knowledge substrate.',
-      message: 'Six primitive layers. Full provenance. Symmetric APIs. A platform that\'s as transparent and composable as your engineering culture demands.',
+      message: 'Composable. Transparent. Built on primitives, not opinions. A platform that earns the trust of an engineering culture that asks "why" before adopting anything.',
     },
     {
       title: 'Growing Teams',
@@ -233,11 +227,11 @@ export const brand = {
 
   // --- Differentiators ---
   differentiators: [
-    { spectrea: 'Trustworthy intelligence — everything you see is transparent', others: 'Black box — data goes in, answers come out' },
-    { spectrea: 'Compounding intelligence — gets smarter with use', others: 'Static tools — same value on day 1 and day 1000' },
-    { spectrea: 'Verifiable truth — every connection can be followed back', others: 'Unverifiable outputs — no way to audit or trust' },
-    { spectrea: 'Composable primitives — build exactly what you need', others: 'Fixed features — use what you\'re given' },
-    { spectrea: 'Unified substrate — one graph replaces 20+ tools', others: 'Point solutions — another app in the stack' },
+    { spectrea: 'Transparent — everything you see is shown, not assumed', others: 'Black box — data goes in, answers come out' },
+    { spectrea: 'Compounding — gets smarter with use', others: 'Static — same value on day 1 and day 1000' },
+    { spectrea: 'Verifiable — every connection can be followed back', others: 'Unverifiable — no way to audit or trust' },
+    { spectrea: 'Composable — build exactly what you need from simple parts', others: 'Fixed — use what you\'re given' },
+    { spectrea: 'Unified — one place for what was scattered across many', others: 'Fragmented — another app in the stack' },
     { spectrea: 'Private by default — your knowledge stays yours', others: 'Open by default — data leaks across boundaries' },
   ],
 
@@ -265,12 +259,16 @@ export const brand = {
       css: "'JetBrains Mono', monospace",
       weights: { regular: 400, medium: 500 },
       defaultWeight: 400,
-      usage: 'Code snippets, entity types, provenance chains, data values, confidence scores, technical identifiers.',
+      usage: 'Code snippets, type labels, trace details, data values, confidence scores, technical identifiers.',
     },
   },
 
   // --- Aspirational & Anti Brands ---
-  aspirationalBrands: ['Apple', 'Linear', 'Notion', 'Stripe'],
+  // Aspirational reads as "shares brand qualities Spectrea wants to be felt
+  // alongside" (clarity, restraint, considered design). Notion was previously
+  // listed but is dropped in v2 because Spectrea explicitly differentiates
+  // from Notion (substrate-only positioning).
+  aspirationalBrands: ['Apple', 'Linear', 'Stripe'],
   antiBrands: ['Salesforce', 'Microsoft 365', 'Jira'],
 } as const
 
@@ -290,7 +288,7 @@ export const voice = {
     {
       context: 'Documentation / Help',
       tone: 'Precise + Helpful',
-      example: 'To create a new entity, navigate to the graph view and click "+ Entity." Choose a type from your ontology, or create a new one. The entity appears in your graph immediately.',
+      example: 'To add a new item, open the relevant view and choose "Add". Pick a type from the list, or create one if you need it. The item appears in place immediately.',
     },
     {
       context: 'Social Media / Community',
@@ -342,14 +340,14 @@ export const voice = {
     },
     {
       context: 'Feature Announcement',
-      correct: 'Every document you upload now automatically enriches your knowledge graph. Connections you never noticed start surfacing. The system gets sharper — your second month is better than your first.',
-      incorrect: 'We are excited to announce the launch of our groundbreaking auto-extraction feature, a world-class breakthrough in knowledge management technology!',
+      correct: 'Every document you add now strengthens what the system already knows. Connections you never noticed start surfacing. The whole gets sharper — your second month is better than your first.',
+      incorrect: 'We are excited to announce the launch of our groundbreaking new feature, a world-class breakthrough in knowledge management technology!',
       why: 'Shows what the user experiences, not what we built. Tech earns its place by showing its work.',
     },
     {
       context: 'Documentation',
-      correct: 'To create a new entity, navigate to the graph view and click "+ Entity." Choose a type from your ontology, or create a new one. The entity appears in your graph immediately.',
-      incorrect: 'Ready to add something to your graph? Just head over to the graph view and hit that "+ Entity" button! Pick a type that fits — or make a new one if nothing works. Easy!',
+      correct: 'To add a new item, open the relevant view and choose "Add". Pick a type from the list, or create one if you need it. The item appears in place immediately.',
+      incorrect: 'Ready to add something? Just head over to the right view and hit that "+ Add" button! Pick a type that fits — or make a new one if nothing works. Easy!',
       why: 'Precise and helpful. No forced enthusiasm. Respects the user\'s time and intelligence.',
     },
     {
@@ -360,8 +358,8 @@ export const voice = {
     },
     {
       context: 'Beginner Documentation',
-      correct: 'Think of your knowledge graph as a web of everything your team knows. When you upload a document, Spectrea reads it and adds what it learns to this web — connecting it to things you\'ve already captured.',
-      incorrect: 'The knowledge graph ingestion pipeline processes uploaded documents through a 6-phase extraction workflow: parse, chunk, embed, extract, review, and graph integration.',
+      correct: 'Think of Spectrea as a web of everything your team knows. When you add a document, Spectrea reads it and weaves what it learns into the web — connecting it to things you\'ve already captured.',
+      incorrect: 'Documents are processed through a 6-phase pipeline: parse, chunk, embed, score, review, and integrate.',
       why: 'Demonstrates the Adaptive personality: meets beginners where they are, using familiar metaphors instead of technical architecture.',
     },
   ],
@@ -410,188 +408,10 @@ export const selectedPalette: PaletteOption = {
   darkMode: { bg: '#18181C', surface: '#212226', text: '#F4F4F1', muted: '#6B6B72' },
 }
 
-// Keep finalists for reference in the explorer
-export const paletteFinalists: PaletteOption[] = [selectedPalette]
-
-export const paletteOptions: PaletteOption[] = [
-  {
-    id: 'warm-depth',
-    name: 'Warm Depth',
-    story: 'Inspired by rich wood libraries and golden-hour light. Knowledge has weight and warmth here — like opening a book that already knows your name.',
-    feeling: 'Inviting, wise, established. A mentor\'s study.',
-    colors: [
-      { name: 'Ink', hex: '#1C1917', role: 'primary' },
-      { name: 'Ember', hex: '#C2410C', role: 'accent' },
-      { name: 'Honey', hex: '#D97706', role: 'accent' },
-      { name: 'Stone', hex: '#78716C', role: 'secondary' },
-      { name: 'Parchment', hex: '#FAFAF9', role: 'background' },
-      { name: 'Linen', hex: '#F5F5F4', role: 'surface' },
-      { name: 'Charcoal', hex: '#292524', role: 'text' },
-      { name: 'Dusk', hex: '#A8A29E', role: 'muted' },
-    ],
-    gradient: { from: '#C2410C', to: '#D97706', angle: 135 },
-    darkMode: { bg: '#1C1917', surface: '#292524', text: '#FAFAF9', muted: '#A8A29E' },
-  },
-  {
-    id: 'deep-spectrum',
-    name: 'Deep Spectrum',
-    story: 'The brand name made visual. A deep, intelligent base that refracts into prismatic accents — indigo to teal to amber. Knowledge revealing its full range.',
-    feeling: 'Multifaceted, intelligent, richly layered. A prism catching light.',
-    colors: [
-      { name: 'Midnight', hex: '#1E1B4B', role: 'primary' },
-      { name: 'Iris', hex: '#6366F1', role: 'accent' },
-      { name: 'Teal', hex: '#0D9488', role: 'accent' },
-      { name: 'Marigold', hex: '#EAB308', role: 'accent' },
-      { name: 'Frost', hex: '#F8FAFC', role: 'background' },
-      { name: 'Lavender', hex: '#EEF2FF', role: 'surface' },
-      { name: 'Deep Ink', hex: '#1E1B4B', role: 'text' },
-      { name: 'Slate', hex: '#94A3B8', role: 'muted' },
-    ],
-    gradient: { from: '#6366F1', via: '#0D9488', to: '#EAB308', angle: 135 },
-    darkMode: { bg: '#0F0D2E', surface: '#1E1B4B', text: '#E2E8F0', muted: '#64748B' },
-  },
-  {
-    id: 'living-teal',
-    name: 'Living Teal',
-    story: 'The knowledge graph made tangible. Deep teal grounds the intelligence, warm terracotta adds humanity. An ecosystem that feels alive and growing.',
-    feeling: 'Organic, evolving, trustworthy. A living system.',
-    colors: [
-      { name: 'Deep Teal', hex: '#134E4A', role: 'primary' },
-      { name: 'Bright Teal', hex: '#14B8A6', role: 'accent' },
-      { name: 'Terracotta', hex: '#C2410C', role: 'accent' },
-      { name: 'Sage', hex: '#6B7280', role: 'secondary' },
-      { name: 'Ivory', hex: '#FFFBEB', role: 'background' },
-      { name: 'Cream', hex: '#FEF3C7', role: 'surface' },
-      { name: 'Forest', hex: '#0F3D3A', role: 'text' },
-      { name: 'Moss', hex: '#9CA3AF', role: 'muted' },
-    ],
-    gradient: { from: '#134E4A', to: '#14B8A6', angle: 135 },
-    darkMode: { bg: '#0A2725', surface: '#134E4A', text: '#ECFDF5', muted: '#6EE7B7' },
-  },
-  {
-    id: 'refined-indigo',
-    name: 'Refined Indigo',
-    story: 'Intelligence refined to its essence. A sophisticated indigo anchors the brand, warmed by amber moments. Like Stripe meets Notion — premium but human.',
-    feeling: 'Sophisticated, warm, trustworthy. A well-tailored suit with an unexpected lining.',
-    colors: [
-      { name: 'Indigo', hex: '#3730A3', role: 'primary' },
-      { name: 'Bright Indigo', hex: '#6366F1', role: 'accent' },
-      { name: 'Amber', hex: '#F59E0B', role: 'accent' },
-      { name: 'Warm Gray', hex: '#6B7280', role: 'secondary' },
-      { name: 'Snow', hex: '#FEFCE8', role: 'background' },
-      { name: 'Pearl', hex: '#FEF9C3', role: 'surface' },
-      { name: 'Onyx', hex: '#1E1B4B', role: 'text' },
-      { name: 'Pewter', hex: '#9CA3AF', role: 'muted' },
-    ],
-    gradient: { from: '#3730A3', via: '#6366F1', to: '#F59E0B', angle: 135 },
-    darkMode: { bg: '#1E1B4B', surface: '#312E81', text: '#EEF2FF', muted: '#818CF8' },
-  },
-  {
-    id: 'copper-night',
-    name: 'Copper & Night',
-    story: 'Knowledge forged in fire. A dark, contemplative canvas with warm copper highlights — every accent feels earned, intentional. Insights that glow.',
-    feeling: 'Premium, considered, authoritative. A dark room with warm light.',
-    colors: [
-      { name: 'Night', hex: '#18181B', role: 'primary' },
-      { name: 'Copper', hex: '#EA580C', role: 'accent' },
-      { name: 'Bronze', hex: '#B45309', role: 'accent' },
-      { name: 'Zinc', hex: '#71717A', role: 'secondary' },
-      { name: 'Warm White', hex: '#FAFAF9', role: 'background' },
-      { name: 'Ash', hex: '#F4F4F5', role: 'surface' },
-      { name: 'Carbon', hex: '#18181B', role: 'text' },
-      { name: 'Steel', hex: '#A1A1AA', role: 'muted' },
-    ],
-    gradient: { from: '#EA580C', to: '#B45309', angle: 135 },
-    darkMode: { bg: '#09090B', surface: '#18181B', text: '#FAFAFA', muted: '#71717A' },
-  },
-  {
-    id: 'sage-coral',
-    name: 'Sage & Coral',
-    story: 'Nature meets warmth. Muted sage grounds the experience while coral brings energy and humanity. Feels approachable without sacrificing depth.',
-    feeling: 'Natural, approachable, modern. A sunlit workspace with plants.',
-    colors: [
-      { name: 'Sage', hex: '#3F6212', role: 'primary' },
-      { name: 'Coral', hex: '#E11D48', role: 'accent' },
-      { name: 'Lime', hex: '#84CC16', role: 'accent' },
-      { name: 'Olive', hex: '#6B7280', role: 'secondary' },
-      { name: 'Cotton', hex: '#FAFAF9', role: 'background' },
-      { name: 'Mint', hex: '#F0FDF4', role: 'surface' },
-      { name: 'Earth', hex: '#1A2E05', role: 'text' },
-      { name: 'Fern', hex: '#9CA3AF', role: 'muted' },
-    ],
-    gradient: { from: '#3F6212', via: '#84CC16', to: '#E11D48', angle: 135 },
-    darkMode: { bg: '#0A1F02', surface: '#1A2E05', text: '#ECFDF5', muted: '#86EFAC' },
-  },
-  {
-    id: 'twilight',
-    name: 'Twilight',
-    story: 'The hour between day and night — when clarity meets contemplation. Deep purple and rose carry the Magician archetype: transformative, creative, thoughtful.',
-    feeling: 'Creative, contemplative, distinctive. A sunset over the city.',
-    colors: [
-      { name: 'Deep Purple', hex: '#581C87', role: 'primary' },
-      { name: 'Rose', hex: '#E11D48', role: 'accent' },
-      { name: 'Lavender', hex: '#A78BFA', role: 'accent' },
-      { name: 'Mauve', hex: '#78716C', role: 'secondary' },
-      { name: 'Blush', hex: '#FDF2F8', role: 'background' },
-      { name: 'Petal', hex: '#FAE8FF', role: 'surface' },
-      { name: 'Plum', hex: '#3B0764', role: 'text' },
-      { name: 'Haze', hex: '#A1A1AA', role: 'muted' },
-    ],
-    gradient: { from: '#581C87', via: '#A78BFA', to: '#E11D48', angle: 135 },
-    darkMode: { bg: '#1E0533', surface: '#3B0764', text: '#F5D0FE', muted: '#C084FC' },
-  },
-  {
-    id: 'warm-blue',
-    name: 'Warm Blue',
-    story: 'Classic trust blue, done warmly. Avoids the cold corporate feel by pairing with warm neutrals and a golden accent. Professional without being sterile.',
-    feeling: 'Trustworthy, professional, human. A warm handshake.',
-    colors: [
-      { name: 'Ocean', hex: '#1E40AF', role: 'primary' },
-      { name: 'Sky', hex: '#3B82F6', role: 'accent' },
-      { name: 'Gold', hex: '#D97706', role: 'accent' },
-      { name: 'Warm Gray', hex: '#78716C', role: 'secondary' },
-      { name: 'Cream', hex: '#FFFBEB', role: 'background' },
-      { name: 'Cloud', hex: '#FEF3C7', role: 'surface' },
-      { name: 'Navy', hex: '#1E3A5F', role: 'text' },
-      { name: 'Fog', hex: '#9CA3AF', role: 'muted' },
-    ],
-    gradient: { from: '#1E40AF', via: '#3B82F6', to: '#D97706', angle: 135 },
-    darkMode: { bg: '#0C1929', surface: '#1E3A5F', text: '#DBEAFE', muted: '#60A5FA' },
-  },
-  {
-    id: 'clay',
-    name: 'Clay & Slate',
-    story: 'Earthy and honest. Terracotta clay paired with cool slate — the warmth of handmade craft meets the precision of engineered stone. Grounded and real.',
-    feeling: 'Honest, tactile, artisan. A pottery studio meets an architect\'s desk.',
-    colors: [
-      { name: 'Slate', hex: '#334155', role: 'primary' },
-      { name: 'Clay', hex: '#DC2626', role: 'accent' },
-      { name: 'Sand', hex: '#D97706', role: 'accent' },
-      { name: 'Graphite', hex: '#64748B', role: 'secondary' },
-      { name: 'Bone', hex: '#FFF7ED', role: 'background' },
-      { name: 'Sandstone', hex: '#FFEDD5', role: 'surface' },
-      { name: 'Obsidian', hex: '#1E293B', role: 'text' },
-      { name: 'Pebble', hex: '#94A3B8', role: 'muted' },
-    ],
-    gradient: { from: '#DC2626', via: '#D97706', to: '#334155', angle: 135 },
-    darkMode: { bg: '#0F172A', surface: '#1E293B', text: '#F1F5F9', muted: '#64748B' },
-  },
-  {
-    id: 'nordic',
-    name: 'Nordic Light',
-    story: 'Scandinavian clarity. Clean, airy, with deliberate moments of warmth. Intelligence expressed through restraint and precision, softened by golden-hour accents.',
-    feeling: 'Clean, calm, intentional. A Helsinki design studio at dawn.',
-    colors: [
-      { name: 'Charcoal', hex: '#27272A', role: 'primary' },
-      { name: 'Arctic Blue', hex: '#0EA5E9', role: 'accent' },
-      { name: 'Sunrise', hex: '#F59E0B', role: 'accent' },
-      { name: 'Cool Gray', hex: '#71717A', role: 'secondary' },
-      { name: 'Snow', hex: '#FAFAFA', role: 'background' },
-      { name: 'Frost', hex: '#F4F4F5', role: 'surface' },
-      { name: 'Iron', hex: '#18181B', role: 'text' },
-      { name: 'Silver', hex: '#A1A1AA', role: 'muted' },
-    ],
-    gradient: { from: '#0EA5E9', to: '#F59E0B', angle: 135 },
-    darkMode: { bg: '#09090B', surface: '#18181B', text: '#FAFAFA', muted: '#71717A' },
-  },
-]
+// Historical palette explorations were retired in v2. Spectrea is the chosen
+// palette; the prior alternatives (Warm Depth, Deep Spectrum, Living Teal,
+// Refined Indigo, Copper & Night, Sage & Coral, Twilight, Warm Blue, Clay,
+// Nordic Light) are no longer referenced anywhere in the app or guide.
+// `paletteOptions` is kept as an empty stable export so external imports
+// degrade gracefully if they ever existed.
+export const paletteOptions: PaletteOption[] = []

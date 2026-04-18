@@ -54,7 +54,7 @@ function MiniPreview({ dark }: { dark?: boolean }) {
         <div className="flex gap-1">
           {['#4271DF', '#00B6A0', '#E19000', '#F24260'].map((c, i) => (
             <span key={i} className="text-[5px] px-1.5 py-0.5 rounded-full" style={{ backgroundColor: c + '18', color: c, border: `1px solid ${c}30` }}>
-              {['entities', 'connected', 'review', 'critical'][i]}
+              {['items', 'connected', 'review', 'critical'][i]}
             </span>
           ))}
         </div>

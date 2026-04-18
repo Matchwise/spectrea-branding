@@ -29,7 +29,6 @@ import Social from './pages/communications/Social'
 import Email from './pages/communications/Email'
 import Presentations from './pages/communications/Presentations'
 import Illustration from './pages/imagery/Illustration'
-import DataViz from './pages/imagery/DataViz'
 import Iconography from './pages/imagery/Iconography'
 import Motion from './pages/imagery/Motion'
 import Downloads from './pages/resources/Downloads'
@@ -80,7 +79,6 @@ export default function App() {
             <Route path="/communications/email" element={<Email />} />
             <Route path="/communications/presentations" element={<Presentations />} />
             <Route path="/imagery/illustration" element={<Illustration />} />
-            <Route path="/imagery/dataviz" element={<DataViz />} />
             <Route path="/imagery/iconography" element={<Iconography />} />
             <Route path="/imagery/motion" element={<Motion />} />
             <Route path="/resources/downloads" element={<Downloads />} />

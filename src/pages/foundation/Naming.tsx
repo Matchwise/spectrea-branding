@@ -102,30 +102,26 @@ export default function Naming() {
         </div>
       </Section>
 
-      {/* Feature naming convention — Decision 11 */}
+      {/* Feature naming convention — the rule, not the inventory */}
       <Section title="Feature Naming Convention">
         <p className="text-sm text-stone-500 leading-relaxed mb-4">
-          Apple-style: Title-case Proper Nouns without brand prefix. Each first-class feature gets its own name and stands on its own — the platform context (Spectrea) is implicit.
+          Apple-style: Title-case Proper Nouns without brand prefix. Each first-class feature gets its own name and stands on its own — the platform context (Spectrea) is implicit. The rule below applies to whatever Spectrea ships, today or in the future.
         </p>
 
         <div className="border border-stone-200 rounded-xl overflow-hidden mb-5">
           <div className="grid grid-cols-2 bg-stone-50 border-b border-stone-200">
-            <div className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-stone-400">Feature</div>
-            <div className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-stone-400">Canonical name</div>
+            <div className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-stone-400">Pattern</div>
+            <div className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-stone-400">Form</div>
           </div>
           {[
-            ['The knowledge graph', 'Knowledge Graph'],
-            ['Claims surface', 'Claims View (or Claims)'],
-            ['Observation records', 'Observations'],
-            ['Source records', 'Sources'],
-            ['AI assistant', 'Assistant'],
-            ['Multi-perspective view', 'Spectrum View'],
-            ['AI-surfaced suggestions', 'Suggestions'],
-            ['Provenance trails', 'Traces'],
-          ].map(([feature, name]) => (
-            <div key={String(name)} className="grid grid-cols-2 border-b last:border-b-0 border-stone-100">
-              <div className="px-4 py-2.5 text-sm text-stone-600">{feature}</div>
-              <div className="px-4 py-2.5 text-sm font-semibold text-stone-800">{name}</div>
+            ['Generic noun (in prose)', 'lowercase ("the assistant", "the editor")'],
+            ['First-class feature (canonical)', 'Title-Case Proper Noun ("Assistant", "Editor")'],
+            ['Multi-word feature', 'Each significant word capitalised ("Spectrum View")'],
+            ['Distinct branded surface', '"Spectrea X" — only after deliberate review'],
+          ].map(([pattern, form]) => (
+            <div key={String(pattern)} className="grid grid-cols-2 border-b last:border-b-0 border-stone-100">
+              <div className="px-4 py-2.5 text-sm text-stone-600">{pattern}</div>
+              <div className="px-4 py-2.5 text-sm font-semibold text-stone-800">{form}</div>
             </div>
           ))}
         </div>
@@ -133,7 +129,7 @@ export default function Naming() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           <div className="bg-stone-50 rounded-lg p-4 border border-stone-200">
             <p className="text-xs font-semibold uppercase tracking-wider text-stone-400 mb-2">Default</p>
-            <p className="text-sm text-stone-700 leading-relaxed">Title-case Proper Noun for first-class features. <em>Knowledge Graph</em>, not <em>knowledge graph</em>.</p>
+            <p className="text-sm text-stone-700 leading-relaxed">Title-case Proper Noun for first-class features. The capital signals "this is a named thing in Spectrea."</p>
           </div>
           <div className="bg-stone-50 rounded-lg p-4 border border-stone-200">
             <p className="text-xs font-semibold uppercase tracking-wider text-stone-400 mb-2">Brand prefix</p>

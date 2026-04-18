@@ -24,7 +24,7 @@ export default function LayoutPage() {
               <div className="mb-4">
                 <Logotype fontSize={11} colorMode="ink" />
               </div>
-              {['Overview', 'Entities', 'Graph', 'Documents', 'Settings'].map((item, i) => (
+              {['Overview', 'Library', 'Connections', 'Documents', 'Settings'].map((item, i) => (
                 <div key={item} className={`px-2 py-1.5 rounded-md text-xs mb-0.5 ${i === 1 ? 'bg-stone-100 text-stone-900 font-medium' : 'text-stone-400'}`}>
                   {item}
                 </div>
@@ -131,7 +131,7 @@ export default function LayoutPage() {
           {[
             { bp: 'Mobile', width: '<640px', cols: '1 column', usage: 'Stacked cards, full-width forms' },
             { bp: 'Tablet', width: '640-1023px', cols: '2 columns', usage: 'Side-by-side cards, split views' },
-            { bp: 'Desktop', width: '1024-1279px', cols: '3 columns', usage: 'Dashboard grids, entity listings' },
+            { bp: 'Desktop', width: '1024-1279px', cols: '3 columns', usage: 'Dashboard grids, item listings' },
             { bp: 'Wide', width: '1280px+', cols: '4 columns', usage: 'Dense dashboards, data tables' },
           ].map((row, i) => (
             <div key={row.bp} className="grid grid-cols-4 px-4 py-2.5" style={{ borderBottom: i < 3 ? '1px solid #F3F4F6' : 'none' }}>

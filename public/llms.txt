@@ -6,11 +6,11 @@
 
 The brand stakes a position around clarity, aliveness, and ownership — readable on its own without any product context. Differentiates from Notion (substrate-only), Stripe (one-accent infrastructure), Anthropic (editorial-research), Linear (austere modern), and Replit / Vercel (developer tooling).
 
-Spectrea splits its archetype across three surface domains: **Magician** on marketing surfaces, **Sage** on trust surfaces (provenance, audit, errors, docs), **Creator** on product surfaces (composition, graph editor, primitives). The visual aesthetic stays consistent across all three; only voice and emotional register shift per surface.
+Spectrea splits its archetype across three surface domains: **Magician** on marketing surfaces (discovery, surprise), **Sage** on trust surfaces (anywhere users go to confirm, review, or understand), **Creator** on product surfaces (anywhere users compose or shape something of their own). The visual aesthetic stays consistent across all three; only voice and emotional register shift per surface.
 
 The brand combines spectrum accents (Cobalt, Teal, Amber, Rose) with a Warm Blend neutral palette (Canvas, Cloud, Pewter, Graphite, Ink) to feel both precise and human. Tagline: *We connect the dots.* Pronunciation: /spek-TREE-uh/. Etymology — dual reading: (1) *spectrum* — the full range, the complete view; (2) *revealing* — bringing what was hidden into clear view. Together: the spectrum of clarity.
 
-**Illustration vocabulary — the Dot System.** Every illustration assembles from five atoms: Dot, Curve, Cluster, Trail, Field. Brand palette only, on Canvas. The mark itself is this system at small scale; illustrations extend it at larger scale.
+**Illustration system (v3) — four layers + four channels.** Vocabulary: Layer 1 atoms (Dot, Curve, Cluster, Trail, Field) + Layer 2 forms (rounded rect, square, triangle, arc, half-circle, soft blob) + Layer 3 treatments (filled, outlined, halo, layered) + Layer 4 palette & 60/20/10/10 ratio. Plus seven craft moves (Arc, Halo, Painterly Field, Spectrum Band, Translucent Plate, Keyline Rule, Hand-imperfect Mark) and a paper grain. Two paired styles: Editorial Geometry (Stripe Press lineage) for brand surfaces; Living Graph (Vercel/Linear lineage) for product surfaces. Production split across four channels: in-house SVG (~80%), AI image-gen via locked prompt (~15%), designer commissioned (~5%), and Canva for template-driven recurring formats (optional).
 
 **Signature motion (three primitives):** node arrival (~400ms elastic settle + radial pulse), edge formation (~300ms gradient draw), spectrum shift (~600ms Cobalt→Teal→Amber→Rose traversal as the AI-acted signal).
 
@@ -61,9 +61,8 @@ The brand combines spectrum accents (Cobalt, Teal, Amber, Rose) with a Warm Blen
 - [Type scale](/typography/scale): Complete sizing system with responsive scaling.
 - [Typography guidelines](/typography/guidelines): Hierarchy, weight rules, accessibility.
 - [Illustration — Dot System](/imagery/illustration): Five atoms (Dot/Curve/Cluster/Trail/Field), composition rules, geometric and Bauhaus specialisations.
-- [Data Visualization](/imagery/dataviz): Node rendering, edge styles, confidence encoding, provenance trails, layout & density rules for the knowledge graph.
 - [Iconography](/imagery/iconography): Tabler icon system and colour rules.
-- [Motion](/imagery/motion): Durations, easing, three signature motion primitives (node arrival, edge formation, spectrum shift).
+- [Motion](/imagery/motion): Durations, easing, three signature motion primitives (arrival, formation, spectrum sweep).
 - [Buttons](/components/buttons): Six variants (Primary, Secondary, Ghost, Destructive, Confirm, Caution).
 - [Forms](/components/forms): Input fields, selects, checkboxes, toggles.
 - [Cards](/components/cards): Container patterns, elevation, content layout.
@@ -87,9 +86,9 @@ The brand combines spectrum accents (Cobalt, Teal, Amber, Rose) with a Warm Blen
 - **Lockup gradient (LogotypeGradient only):** 5-stop full spectrum with `#6FB884` intermediate at 55%.
 - **Typefaces:** Albert Sans (headings, 600/700), Lexend (body, 300/400/500), JetBrains Mono (code, 400).
 - **Archetypes (v2 tri-domain split):** Magician on marketing · Sage on trust surfaces · Creator on product surfaces.
-- **Personality (v2, 5 traits):** Warm · Perceptive · Grounded · Adaptive · Rigorous (each with a guardrail).
+- **Personality (v2, 4 traits):** Warm · Perceptive · Grounded · Adaptive (each with a guardrail). The brand's discipline and consistency are enforced structurally by the system rules (fixed primitives, fixed palette, fixed motion language) rather than claimed as a personality trait.
 - **Voice formula (v2):** "Clarity of explanation + experiential momentum. Tech earns its place by **showing its work**." (Replaces the v1 "explaining the magic" formulation.)
 - **Privileged vocabulary (v2, 12 brand-evocative words):** spectrum, clarity, whole, see, reveal, illuminate, surface, connect, compose, compound, alive, transparent. Each builds the brand feeling without product context. Product-specific words (provenance, traceable, auditable, attributed, sourced) are still allowed when describing what the product actually does.
-- **Illustration system (v2):** the Dot System — five atoms (Dot · Curve · Cluster · Trail · Field), brand palette only, on Canvas. Geometric primitives are a specialisation for product UI; Bauhaus figures are a specialisation for human imagery.
-- **Feature naming convention (v2):** Title-case Proper Nouns without brand prefix. *Knowledge Graph, Claims View, Observations, Sources, Assistant, Spectrum View, Suggestions, Traces.* Brand prefix reserved for distinct branded surfaces only.
-- **Signature motion primitives (v2):** Node arrival (~400ms), Edge formation (~300ms), Spectrum shift (~600ms — the AI-acted signal).
+- **Illustration system (v3, 2026-04-18 late):** four layers (Atoms · Forms · Treatments · Palette) + seven craft moves + two paired styles (Editorial Geometry + Living Graph) + four production channels (in-house SVG · AI image-gen · designer · Canva). Decision rubric routes each surface to the channel that can actually deliver it. v2 Dot System (five atoms only) is retained as a proper subset for system artefacts and small-scale compositions. See `docs/superpowers/specs/2026-04-18-illustration-system-v3-design.md`.
+- **Feature naming convention (v2):** Title-case Proper Nouns without brand prefix. The capital signals "this is a named thing in Spectrea." Generic nouns stay lowercase in prose ("the assistant suggested"). Brand prefix reserved for distinct branded surfaces only — separately-paid tiers, developer surfaces, installable companions.
+- **Signature motion primitives (v2):** Arrival (~400ms), Formation (~300ms), Spectrum sweep (~600ms — the brand's signature moment, used sparingly).

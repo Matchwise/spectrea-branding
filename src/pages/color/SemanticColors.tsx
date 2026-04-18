@@ -17,7 +17,7 @@ const semanticColors = [
     light: '#E6F5F3',
     lightName: 'Teal Mist',
     dark: '#0D5E56',
-    usage: 'Success messages, positive trends, completed states, connected status, verified claims.',
+    usage: 'Success messages, positive trends, completed states, connected status, verified items.',
     maps: 'Teal (spectrum)',
   },
   {
@@ -135,7 +135,7 @@ export default function SemanticColors() {
           {/* Success toast */}
           <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#E6F5F3', border: '1px solid #00B6A020' }}>
             <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#00B6A0' }} />
-            <p className="text-xs" style={{ color: '#0D5E56' }}>Entity "Revenue Model" successfully created with 3 connections.</p>
+            <p className="text-xs" style={{ color: '#0D5E56' }}>Item created successfully with 3 initial connections.</p>
           </div>
           {/* Warning toast */}
           <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#F5F0E6', border: '1px solid #E1900020' }}>
@@ -150,7 +150,7 @@ export default function SemanticColors() {
           {/* Info toast */}
           <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#EDF0F8', border: '1px solid #4271DF20' }}>
             <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#4271DF' }} />
-            <p className="text-xs" style={{ color: '#1E3A8A' }}>3 new documents queued for extraction. Processing will begin shortly.</p>
+            <p className="text-xs" style={{ color: '#1E3A8A' }}>3 new documents queued. Processing will begin shortly.</p>
           </div>
         </div>
       </Section>

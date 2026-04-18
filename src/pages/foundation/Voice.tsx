@@ -41,7 +41,7 @@ export default function Voice() {
         <p className="text-sm text-stone-500 mb-4">
           Spectrea's voice is the verbal expression of its five personality traits. Every piece of writing should feel:
         </p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {brand.personality.map(p => (
             <div key={p.trait} className="bg-stone-50 rounded-lg p-3 border border-stone-200 text-center">
               <p className="text-sm font-semibold text-stone-800">{p.trait}</p>
@@ -56,8 +56,8 @@ export default function Voice() {
           <h3 className="text-sm font-semibold text-amber-900 mb-1">Approach: {voice.techApproach}</h3>
           <p className="text-sm text-amber-800 leading-relaxed">{voice.techDescription}</p>
           <div className="mt-3 text-xs text-amber-700 space-y-1">
-            <p><strong>Do:</strong> "Your knowledge compounds because of the underlying graph architecture."</p>
-            <p><strong>Don't:</strong> "Our graph-based RAG pipeline uses vector embeddings for semantic retrieval."</p>
+            <p><strong>Do:</strong> "Your understanding compounds — every connection you make strengthens the next one you find."</p>
+            <p><strong>Don't:</strong> "Our retrieval pipeline uses vector embeddings to score semantic similarity across the corpus."</p>
           </div>
         </div>
       </Section>

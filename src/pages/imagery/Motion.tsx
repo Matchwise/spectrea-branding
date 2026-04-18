@@ -93,8 +93,8 @@ function HoverScaleDemo() {
     <div className="border border-stone-200 rounded-xl p-5 flex flex-col items-center gap-3">
       <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider">Hover Scale</p>
       <div className="border border-stone-200 rounded-xl p-4 bg-white transition-transform duration-150 ease-out hover:scale-[1.02] cursor-pointer select-none">
-        <p className="text-sm font-semibold text-stone-800" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Revenue Model</p>
-        <p className="text-xs text-stone-500 mt-1">12 connections · 94% trust</p>
+        <p className="text-sm font-semibold text-stone-800" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Sample card</p>
+        <p className="text-xs text-stone-500 mt-1">12 connections · 94% confidence</p>
       </div>
       <span className="text-[10px] font-mono text-stone-400">scale(1.02) · 150ms · ease-out</span>
     </div>
@@ -157,7 +157,7 @@ function SlideDownDemo() {
           }}
         >
           <div className="mt-1 border border-stone-200 rounded-lg bg-white shadow-md overflow-hidden">
-            {['Financial Model', 'Research Paper', 'Organization'].map((item, i) => (
+            {['Category A', 'Category B', 'Category C'].map((item, i) => (
               <button key={item} onClick={() => setOpen(false)} className="w-full text-left px-3 py-2 text-xs text-stone-700 hover:bg-stone-50 transition-colors" style={{ borderBottom: i < 2 ? '1px solid #F3F4F6' : 'none' }}>
                 {item}
               </button>
@@ -195,7 +195,7 @@ function ScaleUpDemo() {
             style={{ animation: 'scaleUp 200ms ease-out' }}
           >
             <div className="flex items-center justify-between mb-3">
-              <p className="text-sm font-semibold text-stone-800" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Create Entity</p>
+              <p className="text-sm font-semibold text-stone-800" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Create</p>
               <button onClick={() => setOpen(false)} className="text-stone-400 hover:text-stone-600 transition-colors">
                 <TbX size={16} />
               </button>
@@ -366,7 +366,7 @@ function SpectrumShiftDemo() {
           100% { background-position: 100% 50%; opacity: 0; }
         }
       `}</style>
-      <div className="text-[11px] text-stone-400 font-mono mb-2 absolute top-3 left-3">AI surfacing a connection</div>
+      <div className="text-[11px] text-stone-400 font-mono mb-2 absolute top-3 left-3">Spectrum sweep — the brand's signature moment</div>
       <div
         key={key}
         className="w-3/4 rounded-full"
@@ -412,40 +412,40 @@ export default function Motion() {
       {/* ─── Signature Motion Primitives ─── */}
       <Section>
         <h2 className="text-xl font-semibold text-stone-800 mb-2">
-          <Tooltip content="Three brand-distinctive motion primitives. Used at specific moments — not decoratively. Each carries one part of the 'alive, growing, compounding' brand claim.">
+          <Tooltip content="Three brand-distinctive motion patterns. Reusable across any Spectrea surface — used at meaningful moments, not decoratively. Each carries one part of the 'alive, growing, compounding' brand claim.">
             <span>Signature Motion Primitives</span>
           </Tooltip>
         </h2>
         <p className="text-sm text-stone-500 mb-5 leading-relaxed">
-          Three reusable motion primitives used across product and marketing surfaces. Each owns one moment in the brand's <em>alive, growing, compounding</em> claim. Standard interactive motion (hovers, focus, state transitions) stays restrained at 150–200ms.
+          Three reusable motion patterns that carry the brand's <em>alive, growing, compounding</em> claim. They are pattern-level, not surface-specific — apply them anywhere a moment fits the meaning. Standard interactive motion (hovers, focus, state transitions) stays restrained at 150–200ms.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <SignaturePrimitiveCard
-            label="1. Node arrival"
+            label="1. Arrival"
             duration="~400ms"
-            trigger="A new node enters the graph (extraction, AI suggestion, user action)"
-            spec="Scale from 0 with soft elastic settle, then a brief radial pulse in the node's spectrum colour."
+            trigger="When something important enters the frame — a new card, a fresh result, an inserted item."
+            spec="Scale from 0 with soft elastic settle, then a brief radial pulse in a brand spectrum colour. Reads as 'something just arrived and is alive.'"
             demo={<NodeArrivalDemo />}
           />
           <SignaturePrimitiveCard
-            label="2. Edge formation"
+            label="2. Formation"
             duration="~300ms"
-            trigger="A relationship forms between two nodes"
-            spec="Edge draws from source toward target with the spectrum gradient running along the line, then settles to its resting colour."
+            trigger="When two things visibly connect — a line, a link, a relationship being shown."
+            spec="A curved stroke draws between two points with the spectrum gradient running along the line, then settles to its resting colour. Echoes the curve in the brand mark."
             demo={<EdgeFormationDemo />}
           />
           <SignaturePrimitiveCard
-            label="3. Spectrum shift"
+            label="3. Spectrum sweep"
             duration="~600ms"
-            trigger="AI surfaces a connection / insight / claim"
-            spec={"A thin gradient strip traverses Cobalt → Teal → Amber → Rose. The brand's signal for \"AI just acted\" without saying the word AI."}
+            trigger="The brand's signature moment — used sparingly when something meaningful happens that deserves the brand's full voice."
+            spec={"A thin gradient strip traverses Cobalt → Teal → Amber → Rose. Spectrea's most distinctive motion. Reserve for moments that matter — overuse dilutes it."}
             demo={<SpectrumShiftDemo />}
           />
         </div>
 
         <p className="text-xs text-stone-500 mt-4 leading-relaxed">
-          Use sparingly. Spectrum shift in particular is reserved for <em>meaningful</em> AI activity — not every API response. Restraint amplifies the signature.
+          Use sparingly. Spectrum sweep in particular is reserved for moments that genuinely matter — restraint is what makes the signature feel like a signature.
         </p>
       </Section>
 

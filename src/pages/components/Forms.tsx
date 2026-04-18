@@ -7,7 +7,7 @@ import { TbCheck, TbAlertTriangle, TbX } from 'react-icons/tb'
 
 export default function Forms() {
   /* Selection control state */
-  const [checks, setChecks] = useState<Record<string, boolean>>({ financial: true, research: true })
+  const [checks, setChecks] = useState<Record<string, boolean>>({ optionA: true, optionB: true })
   const [radio, setRadio] = useState('connected')
   const [toggles, setToggles] = useState<Record<string, boolean>>({ autoConnect: true })
 
@@ -32,10 +32,10 @@ export default function Forms() {
 
           {/* Default */}
           <div>
-            <label className="block text-sm font-medium text-stone-700 mb-2">Entity Name</label>
+            <label className="block text-sm font-medium text-stone-700 mb-2">Name</label>
             <input
               type="text"
-              placeholder="e.g., Revenue Model"
+              placeholder="e.g., Quarterly summary"
               className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-stone-900 placeholder:text-stone-400 outline-none focus:border-brand focus:border-2 transition-colors"
             />
             <p className="text-xs text-stone-400 mt-1">Helper text provides context or constraints.</p>
@@ -67,14 +67,14 @@ export default function Forms() {
             <label className="block text-sm font-medium text-stone-700 mb-2">Search</label>
             <input
               type="text"
-              placeholder="Search entities..."
+              placeholder="Search..."
               className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-stone-900 placeholder:text-stone-400 outline-none focus:border-brand focus:border-2 transition-colors"
             />
           </div>
 
           {/* Disabled */}
           <div>
-            <label className="block text-sm font-medium text-stone-400 mb-2">Organization (read-only)</label>
+            <label className="block text-sm font-medium text-stone-400 mb-2">Workspace (read-only)</label>
             <input
               type="text"
               defaultValue="Spectrea Inc."
@@ -85,12 +85,12 @@ export default function Forms() {
 
           {/* Select */}
           <div>
-            <label className="block text-sm font-medium text-stone-700 mb-2">Entity Type</label>
+            <label className="block text-sm font-medium text-stone-700 mb-2">Category</label>
             <select className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-stone-900 outline-none focus:border-brand focus:border-2 transition-colors">
-              <option>Select a type...</option>
-              <option>Financial Model</option>
-              <option>Research Paper</option>
-              <option>Organization</option>
+              <option>Select a category...</option>
+              <option>Category A</option>
+              <option>Category B</option>
+              <option>Category C</option>
             </select>
           </div>
 
@@ -98,7 +98,7 @@ export default function Forms() {
           <div>
             <label className="block text-sm font-medium text-stone-700 mb-2">Description</label>
             <textarea
-              placeholder="Describe this entity..."
+              placeholder="Describe this item..."
               rows={3}
               className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-stone-900 placeholder:text-stone-400 resize-none outline-none focus:border-brand focus:border-2 transition-colors"
             />
@@ -143,9 +143,9 @@ export default function Forms() {
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3">Checkbox</p>
             <div className="space-y-3">
               {[
-                { key: 'financial', label: 'Financial entities' },
-                { key: 'research', label: 'Research papers' },
-                { key: 'organizations', label: 'Organizations' },
+                { key: 'optionA', label: 'Option A' },
+                { key: 'optionB', label: 'Option B' },
+                { key: 'optionC', label: 'Option C' },
               ].map(c => (
                 <label key={c.key} className="flex items-center gap-2.5 cursor-pointer group" onClick={() => setChecks(p => ({ ...p, [c.key]: !p[c.key] }))}>
                   <span
@@ -173,7 +173,7 @@ export default function Forms() {
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3">Radio</p>
             <div className="space-y-3">
               {[
-                { key: 'all', label: 'All entities' },
+                { key: 'all', label: 'All items' },
                 { key: 'connected', label: 'Connected only' },
                 { key: 'unconnected', label: 'Unconnected only' },
               ].map(r => (
@@ -199,7 +199,7 @@ export default function Forms() {
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3">Toggle</p>
             <div className="space-y-4">
               {[
-                { key: 'autoConnect', label: 'Auto-connect entities' },
+                { key: 'autoConnect', label: 'Auto-connect new items' },
                 { key: 'confidence', label: 'Show confidence scores' },
               ].map(t => (
                 <button
@@ -245,9 +245,9 @@ export default function Forms() {
         </h2>
         <div className="border border-stone-200 rounded-xl p-5 space-y-1.5">
           {[
-            { color: '#00B6A0', icon: <TbCheck size={14} />, message: 'Entity name is available.' },
-            { color: '#E19000', icon: <TbAlertTriangle size={14} />, message: 'This name is similar to an existing entity. Continue?' },
-            { color: '#F24260', icon: <TbX size={14} />, message: 'Entity name is required.' },
+            { color: '#00B6A0', icon: <TbCheck size={14} />, message: 'Name is available.' },
+            { color: '#E19000', icon: <TbAlertTriangle size={14} />, message: 'This name is similar to an existing item. Continue?' },
+            { color: '#F24260', icon: <TbX size={14} />, message: 'Name is required.' },
           ].map(v => (
             <div key={v.message} className="flex items-center gap-1.5 px-1">
               <span className="flex-shrink-0" style={{ color: v.color }}>{v.icon}</span>

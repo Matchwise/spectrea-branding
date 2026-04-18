@@ -1,5 +1,12 @@
 # Comprehensive Critical Review of the Spectrea Brand Direction
 
+> **Historical record (2026-04-18).** This audit was the *starting point* for
+> the v2 brand iteration — see `docs/superpowers/specs/2026-04-18-brand-iteration-v2-design.md`
+> for the actual decisions that shipped. Several recommendations in this report
+> were rejected after user-led interview (e.g., the proposal to retire the
+> tagline, retire the Bauhaus figures, and reopen the name). The v2 spec is
+> canonical; this report is retained for traceability of the decision process.
+>
 > Independent audit of the greenfield rebrand, evaluated against the product's
 > actual first principles, target personas, and positioning.
 > Dated 2026-04-18. Pre-launch.

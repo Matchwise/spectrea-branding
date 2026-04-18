@@ -174,7 +174,9 @@ The "never use" list (`brand.ts:290-293`) is unchanged.
 
 ### Decision 9 — Personality traits: add Rigorous
 
-**Outcome:** Five personality traits with guardrails. Keep all four existing; add Rigorous.
+> **Reverted (post-launch revision):** Rigorous was added per this decision and shipped briefly, but on review it read as a methodology rather than a personality — strange to call someone "rigorous" alongside warm / perceptive / grounded / adaptive. The brand's discipline and consistency (fixed primitives, fixed palette, fixed motion language) are now enforced **structurally** by the system rules in the guide, not claimed verbally as a fifth personality trait. The personality returned to four traits.
+
+**Outcome (now superseded):** Five personality traits with guardrails. Keep all four existing; add Rigorous.
 
 | # | Trait | Guardrail |
 |---|---|---|
@@ -194,7 +196,9 @@ The "never use" list (`brand.ts:290-293`) is unchanged.
 
 ### Decision 10 — Data visualisation specification
 
-**Outcome:** Add a new brand-guide section specifying how the knowledge graph itself should be rendered.
+> **Superseded (post-launch revision, 2026-04-18 late):** This decision has been **reversed**. A `Data Visualization` page and brand-guide section were initially shipped per this decision, but the user reviewed the brand guide and judged the section "too opinionated on how specific parts of the product is like." The brand guide was reframed as **product-agnostic generic foundations** — design rules for any Spectrea-branded surface, not a product design system. Knowledge-graph rendering specs (node/edge/confidence/provenance/layout) belong in a product design system, not the brand guide. The page (`src/pages/imagery/DataViz.tsx`), the brand-guide Section 10b, and all related references have been removed. The Dot System (Decision 6) remains the brand's visual vocabulary — generic enough to be applied to graphs, but not prescriptive about graph rendering.
+
+**Original (now-superseded) outcome:** Add a new brand-guide section specifying how the knowledge graph itself should be rendered.
 
 **Why now (not deferred):** Decision 7 made the graph the brand's central visual idea. If the graph IS the brand, the rendering of the graph IS a brand artefact. Decision 6 (Dot System) needs the in-product graph to align with the illustration vocabulary or the brand splits. Marketing screenshots are the product's most important brand asset and currently have no rendering rules.
 
@@ -212,6 +216,8 @@ The "never use" list (`brand.ts:290-293`) is unchanged.
 ---
 
 ### Decision 11 — Product-feature naming convention
+
+> **Spec table superseded (post-launch revision):** the original table below enumerated specific product features (Knowledge Graph, Claims View, Observations, Sources, Assistant, Spectrum View, Suggestions, Traces) as canonical examples. In the product-agnostic-foundations review, that was reframed as too tied to the current product roadmap. The shipped guide replaces the feature-list table with a **generic pattern table** (lowercase noun in prose → Title-Case Proper Noun for canonical → multi-word capitalised → "Spectrea X" reserved for branded surfaces). The convention is unchanged; only the examples were genericised so the rule outlives any specific feature lineup. The original table is retained below for traceability.
 
 **Outcome:** Title-case feature names without brand prefix, Apple-style.
 
@@ -237,6 +243,8 @@ The "never use" list (`brand.ts:290-293`) is unchanged.
 ---
 
 ### Decision 12 — Motion: three signature primitives
+
+> **Names generalised (post-launch revision):** the three primitives below were originally named **Node arrival / Edge formation / Spectrum shift** with triggers tied directly to the in-product graph view. In the product-agnostic-foundations review, the names and triggers were generalised so the patterns apply across any Spectrea surface (not just the graph UI). The shipped names are **Arrival (~400ms) / Formation (~300ms) / Spectrum sweep (~600ms)**. Timings, easing, and spec mechanics are unchanged. The original table is retained below for traceability.
 
 **Outcome:** Add three signature motion primitives to the brand system, each owning one moment in the brand's "alive, growing, compounding" claim.
 

@@ -124,7 +124,7 @@ export default function PrimaryPalette() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <ColorCard
             name="Teal" hex="#00B6A0" role="spectrum"
-            usage="Growth, success, positive change. Use for: success states, positive trends (+12%), completion indicators, knowledge graph nodes, 'connected' status."
+            usage="Growth, success, positive change. Use for: success states, positive trends (+12%), completion indicators, healthy active states, 'connected' status."
             textColor="#18181C"
           />
           <ColorCard

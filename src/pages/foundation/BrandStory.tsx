@@ -88,7 +88,7 @@ export default function BrandStory() {
       {/* Core Values */}
       <Section>
         <h2 className="text-xl font-semibold text-stone-800 mb-4">
-          <Tooltip content="The five non-negotiable principles that govern product decisions, hiring, partnerships, and communications. Each maps to a pillar of the 'why' (truth, insight, action) and a platform principle.">
+          <Tooltip content="The five non-negotiable values that govern product decisions, hiring, partnerships, and communications. Each one is a stance the brand takes — and lives by — across every surface.">
             <span>Core Values</span>
           </Tooltip>
         </h2>
@@ -98,7 +98,6 @@ export default function BrandStory() {
               <div className="flex items-baseline gap-3 mb-2">
                 <span className="text-xs font-semibold text-stone-400">{String(i + 1).padStart(2, '0')}</span>
                 <h3 className="font-semibold text-stone-900">{v.name}</h3>
-                <span className="text-xs font-mono text-stone-400 bg-stone-100 px-1.5 py-0.5 rounded">{v.principle}</span>
               </div>
               <p className="text-sm text-stone-600 leading-relaxed mb-2">{v.description}</p>
               <p className="text-xs text-stone-400 italic">Proof: {v.proof}</p>

@@ -113,7 +113,7 @@ export default function Buttons() {
               <button className="px-4 py-2 rounded-lg text-sm font-medium text-white transition-all btn-focus"
                 {...filledHandlers('brand')}
               >
-                Create Entity
+                Create
               </button>
               <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#97979E' }}>Primary</span>
             </div>
@@ -166,7 +166,7 @@ export default function Buttons() {
               <button className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium text-white transition-all btn-focus"
                 {...filledHandlers('teal')}
               >
-                <TbCheck size={16} /> Verify Claim
+                <TbCheck size={16} /> Confirm
               </button>
               <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#97979E' }}>Confirm</span>
             </div>
@@ -264,7 +264,7 @@ export default function Buttons() {
             </div>
             <p className="text-xs text-stone-600 mb-3">For actions that affirm, verify, or establish positive connections. The outcome is constructive.</p>
             <div className="space-y-1.5">
-              {['Verify Claim', 'Approve Entity', 'Connect Nodes', 'Mark as Trusted'].map(ex => (
+              {['Verify', 'Approve', 'Connect', 'Mark as Trusted'].map(ex => (
                 <p key={ex} className="text-xs font-mono text-stone-500">"{ex}"</p>
               ))}
             </div>
@@ -276,7 +276,7 @@ export default function Buttons() {
             </div>
             <p className="text-xs text-stone-600 mb-3">For actions that acknowledge a warning or override a safeguard. Reversible but consequential.</p>
             <div className="space-y-1.5">
-              {['Override Score', 'Merge Entities', 'Proceed Anyway', 'Dismiss Warning'].map(ex => (
+              {['Override', 'Merge', 'Proceed Anyway', 'Dismiss Warning'].map(ex => (
                 <p key={ex} className="text-xs font-mono text-stone-500">"{ex}"</p>
               ))}
             </div>
@@ -457,7 +457,7 @@ export default function Buttons() {
                 disabled={loading.primary}
                 onClick={() => startLoading('primary')}
               >
-                {loading.primary ? <><Spinner /> Creating...</> : <><TbPlus size={16} /> Create Entity</>}
+                {loading.primary ? <><Spinner /> Creating...</> : <><TbPlus size={16} /> Create</>}
               </button>
               <span className="text-xs font-mono text-stone-400">Primary</span>
             </div>
@@ -542,7 +542,7 @@ export default function Buttons() {
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
             <ul className="space-y-2 text-sm text-stone-700">
-              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use verb-first labels: "Create Entity", "Save Draft"</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use verb-first labels: "Create", "Save Draft", "Open"</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>One Primary button per section maximum</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Pair destructive actions with a confirmation step</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use Confirm/Caution only for their defined semantic contexts</li>

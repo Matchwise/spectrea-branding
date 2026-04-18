@@ -17,8 +17,8 @@ const scale = [
   { name: 'Body SM', size: '0.875rem', px: 14, lineHeight: '1.5', weight: 400, font: 'body', usage: 'Secondary text, table cells, form inputs' },
   { name: 'Caption', size: '0.75rem', px: 12, lineHeight: '1.5', weight: 500, font: 'body', usage: 'Labels, timestamps, helper text, badges' },
   { name: 'Overline', size: '0.75rem', px: 12, lineHeight: '1.5', weight: 600, font: 'body', usage: 'Section labels, category tags (uppercase, tracked)' },
-  { name: 'Code', size: '0.875rem', px: 14, lineHeight: '1.5', weight: 400, font: 'mono', usage: 'Inline code, data values, entity types' },
-  { name: 'Code SM', size: '0.75rem', px: 12, lineHeight: '1.5', weight: 400, font: 'mono', usage: 'Provenance chains, technical metadata' },
+  { name: 'Code', size: '0.875rem', px: 14, lineHeight: '1.5', weight: 400, font: 'mono', usage: 'Inline code, data values, type labels' },
+  { name: 'Code SM', size: '0.75rem', px: 12, lineHeight: '1.5', weight: 400, font: 'mono', usage: 'Trace details, technical metadata' },
 ]
 
 const sampleText = 'We connect the dots.'
@@ -127,19 +127,19 @@ export default function TypeScale() {
           <div className="rounded-xl p-5" style={{ border: '1px solid #F2426025', backgroundColor: '#F2426008' }}>
             <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: '#F24260' }}>Too wide (90+ chars)</p>
             <p className="text-sm text-stone-600 leading-relaxed" style={{ fontFamily: t.body.css, maxWidth: '800px' }}>
-              Every document you upload enriches your knowledge graph. Connections you never noticed start surfacing. The system gets sharper — your second month is better than your first. Your second year is incomparably better.
+              Every document you add strengthens what the system already knows. Connections you might have missed start surfacing on their own. The whole gets sharper — your second month is better than your first. Your second year is incomparably better.
             </p>
           </div>
           <div className="rounded-xl p-5" style={{ border: '1px solid #00B6A025', backgroundColor: '#00B6A008' }}>
             <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: '#00B6A0' }}>Ideal (50–75 chars)</p>
             <p className="text-sm text-stone-600 leading-relaxed" style={{ fontFamily: t.body.css, maxWidth: '540px' }}>
-              Every document you upload enriches your knowledge graph. Connections you never noticed start surfacing. The system gets sharper — your second month is better than your first.
+              Every document you add strengthens what the system already knows. Connections you might have missed start surfacing on their own. The whole gets sharper — your second month is better than your first.
             </p>
           </div>
           <div className="rounded-xl p-5" style={{ border: '1px solid #F2426025', backgroundColor: '#F2426008' }}>
             <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: '#F24260' }}>Too narrow (30 chars)</p>
             <p className="text-sm text-stone-600 leading-relaxed" style={{ fontFamily: t.body.css, maxWidth: '220px' }}>
-              Every document you upload enriches your knowledge graph. Connections you never noticed start surfacing.
+              Every document you add strengthens what the system already knows. Connections start surfacing on their own.
             </p>
           </div>
         </div>

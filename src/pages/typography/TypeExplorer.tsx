@@ -75,7 +75,7 @@ export default function TypeExplorer() {
               Make knowledge trustworthy, connected, and actionable.
             </p>
             <div className="grid grid-cols-3 gap-2 mb-4">
-              {['Entities', 'Connections', 'Trust Score'].map((label, i) => (
+              {['Items', 'Connections', 'Confidence'].map((label, i) => (
                 <div key={label} className="rounded-lg border border-stone-200 p-3">
                   <p className="text-xs text-stone-400 mb-0.5" style={{ fontFamily: t.body.css }}>{label}</p>
                   <p className="text-lg font-semibold text-stone-900" style={{ fontFamily: t.heading.css }}>
@@ -88,11 +88,11 @@ export default function TypeExplorer() {
               ))}
             </div>
             <p className="text-sm text-stone-600 leading-relaxed mb-3" style={{ fontFamily: t.body.css }}>
-              Every document you upload enriches your knowledge graph. Connections you never noticed start surfacing. The system gets sharper — your second month is better than your first.
+              Every document you add strengthens what the system already knows. Connections start surfacing on their own. The whole gets sharper — your second month is better than your first.
             </p>
             <div className="bg-stone-50 rounded-lg px-3 py-2 border border-stone-200">
               <p className="text-xs text-stone-500" style={{ fontFamily: t.mono.css }}>
-                entity.type: "Financial Model" | confidence: 0.94 | source: "Q4_report.pdf"
+                type: "Sample" | confidence: 0.94 | source: "Q4_report.pdf"
               </p>
             </div>
           </div>
@@ -106,7 +106,7 @@ export default function TypeExplorer() {
               Make knowledge trustworthy, connected, and actionable.
             </p>
             <div className="grid grid-cols-3 gap-2 mb-4">
-              {['Entities', 'Connections', 'Trust Score'].map((label, i) => (
+              {['Items', 'Connections', 'Confidence'].map((label, i) => (
                 <div key={label} className="rounded-lg p-3" style={{ backgroundColor: '#212226', border: '1px solid #2E2E34' }}>
                   <p className="text-xs mb-0.5" style={{ fontFamily: t.body.css, color: '#97979E' }}>{label}</p>
                   <p className="text-lg font-semibold" style={{ fontFamily: t.heading.css, color: '#F4F4F1' }}>
@@ -119,11 +119,11 @@ export default function TypeExplorer() {
               ))}
             </div>
             <p className="text-sm leading-relaxed mb-3" style={{ fontFamily: t.body.css, color: '#97979E' }}>
-              Every document you upload enriches your knowledge graph. Connections you never noticed start surfacing.
+              Every document you add strengthens what the system already knows. Connections start surfacing on their own.
             </p>
             <div className="rounded-lg px-3 py-2" style={{ backgroundColor: '#212226', border: '1px solid #2E2E34' }}>
               <p className="text-xs" style={{ fontFamily: t.mono.css, color: '#97979E' }}>
-                entity.type: "Financial Model" | confidence: 0.94
+                type: "Sample" | confidence: 0.94
               </p>
             </div>
           </div>
@@ -144,7 +144,7 @@ export default function TypeExplorer() {
             { font: 'Lexend', weight: 500, label: 'Medium', use: 'Button labels, nav items, emphasized body text, form labels', style: t.body.css },
             { font: 'Lexend', weight: 400, label: 'Regular', use: 'Body text, descriptions, helper text, tooltips', style: t.body.css },
             { font: 'Lexend', weight: 300, label: 'Light', use: 'Large display text, oversized numbers, decorative use only', style: t.body.css },
-            { font: 'JetBrains Mono', weight: 400, label: 'Regular', use: 'Code, data values, entity types, provenance', style: t.mono.css },
+            { font: 'JetBrains Mono', weight: 400, label: 'Regular', use: 'Code, data values, type labels, technical metadata', style: t.mono.css },
           ].map((w, i) => (
             <div key={`${w.font}-${w.weight}`} className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 px-4 py-3" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
               <p className="text-base sm:text-lg sm:w-48 sm:flex-shrink-0" style={{ fontFamily: w.style, fontWeight: w.weight }}>

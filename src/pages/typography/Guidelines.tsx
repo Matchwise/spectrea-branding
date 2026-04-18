@@ -62,11 +62,11 @@ export default function TypographyGuidelines() {
             </div>
             <div>
               <p className="text-xs font-mono text-stone-400 mb-1">Level 3 — Lexend 500, 14px, Ink</p>
-              <p className="text-sm font-medium text-stone-900" style={{ fontFamily: t.body.css }}>Entity: Revenue Model</p>
+              <p className="text-sm font-medium text-stone-900" style={{ fontFamily: t.body.css }}>Sample item title</p>
             </div>
             <div>
               <p className="text-xs font-mono text-stone-400 mb-1">Body — Lexend 400, 16px, Ink</p>
-              <p className="text-base text-stone-700" style={{ fontFamily: t.body.css }}>This entity connects to 12 other nodes across 3 knowledge domains, with a trust score of 94%.</p>
+              <p className="text-base text-stone-700" style={{ fontFamily: t.body.css }}>This item connects to 12 others across 3 areas, with a confidence of 94%.</p>
             </div>
             <div>
               <p className="text-xs font-mono text-stone-400 mb-1">Secondary — Lexend 400, 14px, Pewter</p>
@@ -74,7 +74,7 @@ export default function TypographyGuidelines() {
             </div>
             <div>
               <p className="text-xs font-mono text-stone-400 mb-1">Metadata — JetBrains Mono 400, 12px, Pewter</p>
-              <p className="text-xs text-stone-400" style={{ fontFamily: t.mono.css }}>entity.type: "Financial Model" | confidence: 0.94</p>
+              <p className="text-xs text-stone-400" style={{ fontFamily: t.mono.css }}>type: "Sample" | confidence: 0.94</p>
             </div>
           </div>
         </div>

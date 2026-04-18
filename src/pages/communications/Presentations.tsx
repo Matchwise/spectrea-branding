@@ -61,7 +61,7 @@ export default function Presentations() {
             <div className="rounded-xl overflow-hidden border border-stone-200 aspect-video" style={{ backgroundColor: '#18181C' }}>
               <div className="h-full flex flex-col items-center justify-center p-6">
                 <p className="text-4xl font-semibold" style={{ color: '#F4F4F1', fontFamily: "'Albert Sans', sans-serif" }}>94%</p>
-                <p className="text-xs mt-1" style={{ color: '#97979E' }}>average trust score across all entities</p>
+                <p className="text-xs mt-1" style={{ color: '#97979E' }}>average confidence across all items</p>
               </div>
             </div>
           </div>

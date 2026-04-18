@@ -52,10 +52,10 @@ export default function Email() {
                 <div className="mb-4">
                   <LogotypeGradient fontSize={13} />
                 </div>
-                <p className="text-sm font-semibold text-stone-900 mb-2" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Your entity was created</p>
-                <p className="text-xs text-stone-600 leading-relaxed mb-3">"Revenue Model" has been added to your knowledge graph with 3 initial connections.</p>
-                <button className="px-3 py-1.5 rounded-md text-xs font-medium text-white" style={{ backgroundColor: '#4271DF' }}>View Entity</button>
-                <p className="text-xs text-stone-400 mt-4 pt-3 border-t border-stone-100">You received this because you created an entity in Spectrea.</p>
+                <p className="text-sm font-semibold text-stone-900 mb-2" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Your item was added</p>
+                <p className="text-xs text-stone-600 leading-relaxed mb-3">"[Item title]" is in. We've already linked it to a few related things you have.</p>
+                <button className="px-3 py-1.5 rounded-md text-xs font-medium text-white" style={{ backgroundColor: '#4271DF' }}>Open</button>
+                <p className="text-xs text-stone-400 mt-4 pt-3 border-t border-stone-100">You received this because you added something to Spectrea.</p>
               </div>
             </div>
           </div>
@@ -69,11 +69,11 @@ export default function Email() {
                   <LogotypeGradient fontSize={13} />
                 </div>
                 <p className="text-lg font-semibold mb-2" style={{ color: '#F4F4F1', fontFamily: "'Albert Sans', sans-serif" }}>Your knowledge compounds.</p>
-                <p className="text-xs leading-relaxed mb-3" style={{ color: '#97979E' }}>This month: auto-extraction improvements, 2x faster graph queries, and a new claims dashboard.</p>
+                <p className="text-xs leading-relaxed mb-3" style={{ color: '#97979E' }}>This month: a few quiet improvements that make the everyday faster — plus one new view we're excited about.</p>
               </div>
               <div className="h-1" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
               <div className="p-5 bg-white">
-                <p className="text-xs text-stone-600 leading-relaxed">Every document you upload now enriches your graph 40% faster. Connections surface automatically...</p>
+                <p className="text-xs text-stone-600 leading-relaxed">Every interaction now strengthens what you already have. Connections you might have missed start surfacing on their own...</p>
                 <button className="mt-3 px-3 py-1.5 rounded-md text-xs font-medium text-white" style={{ backgroundColor: '#4271DF' }}>Read More</button>
               </div>
             </div>
@@ -90,7 +90,7 @@ export default function Email() {
         </h2>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
           {[
-            { rule: 'Subject lines: direct and specific', detail: '"Your entity was created" not "Update from Spectrea!"' },
+            { rule: 'Subject lines: direct and specific', detail: '"Your item was added" not "Update from Spectrea!"' },
             { rule: 'One CTA per email maximum', detail: 'Don\'t compete for attention. One clear next step.' },
             { rule: 'Gradient bar: top or bottom, never both', detail: 'Transactional: top. Marketing: bottom after hero.' },
             { rule: 'Body font: system sans-serif at 14–16px', detail: 'Custom fonts don\'t render in all email clients.' },

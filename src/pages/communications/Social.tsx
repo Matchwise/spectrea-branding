@@ -56,12 +56,12 @@ export default function Social() {
             {
               type: 'Feature Announcement',
               template: 'What users experience → What changed → Why it matters',
-              example: 'Every document you upload now automatically enriches your knowledge graph. Connections you never noticed start surfacing. Your second month is better than your first.',
+              example: 'Every document you add now strengthens what the system already knows. Connections you might have missed start surfacing on their own. Your second month is better than your first.',
             },
             {
               type: 'Social Proof',
               template: 'Metric or quote → Context → Implication',
-              example: '"We went from 4 hours of manual research to instant answers with full provenance." — Knowledge team at [Company]',
+              example: '"We went from 4 hours of manual research to instant answers we could trust and trace." — Knowledge team at [Company]',
             },
             {
               type: 'Question / Engagement',
@@ -108,7 +108,7 @@ export default function Social() {
             <div className="rounded-xl overflow-hidden" style={{ backgroundColor: '#18181C' }}>
               <div className="p-6 text-center">
                 <p className="text-3xl font-semibold" style={{ color: '#F4F4F1', fontFamily: "'Albert Sans', sans-serif" }}>94%</p>
-                <p className="text-xs mt-1" style={{ color: '#97979E' }}>average trust score across all entities</p>
+                <p className="text-xs mt-1" style={{ color: '#97979E' }}>average confidence across all items</p>
               </div>
               <div className="h-1" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
             </div>

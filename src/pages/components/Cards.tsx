@@ -10,10 +10,10 @@ export default function Cards() {
   const [removedTags, setRemovedTags] = useState<Set<string>>(new Set())
 
   const alerts = [
-    { color: '#4271DF', bg: '#4271DF08', border: '#4271DF20', title: 'Info', message: '3 new entities were auto-connected to your knowledge graph.', icon: <TbInfoCircle size={14} /> },
-    { color: '#00B6A0', bg: '#00B6A008', border: '#00B6A020', title: 'Success', message: 'Document uploaded and processed. 12 entities extracted.', icon: <TbCircleCheck size={14} /> },
-    { color: '#E19000', bg: '#E1900008', border: '#E1900020', title: 'Warning', message: 'This entity has a low confidence score (62%). Review the source claims.', icon: <TbAlertTriangle size={14} /> },
-    { color: '#F24260', bg: '#F2426008', border: '#F2426020', title: 'Error', message: 'Failed to connect to the knowledge graph. Your changes are saved locally.', icon: <TbAlertCircle size={14} /> },
+    { color: '#4271DF', bg: '#4271DF08', border: '#4271DF20', title: 'Info', message: '3 new items were added to your collection.', icon: <TbInfoCircle size={14} /> },
+    { color: '#00B6A0', bg: '#00B6A008', border: '#00B6A020', title: 'Success', message: 'Document uploaded and processed. Ready to use.', icon: <TbCircleCheck size={14} /> },
+    { color: '#E19000', bg: '#E1900008', border: '#E1900020', title: 'Warning', message: 'This item has moderate confidence (62%). Review the source before relying on it.', icon: <TbAlertTriangle size={14} /> },
+    { color: '#F24260', bg: '#F2426008', border: '#F2426020', title: 'Error', message: 'Failed to reach the server. Your changes are saved locally and will sync when reconnected.', icon: <TbAlertCircle size={14} /> },
   ]
 
   const visibleAlerts = alerts.filter(a => !dismissedAlerts.has(a.title))
@@ -35,10 +35,10 @@ export default function Cards() {
           <div>
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Default</p>
             <div className="border border-stone-200 rounded-xl p-5 bg-white">
-              <p className="text-sm font-semibold text-stone-900" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Revenue Model</p>
-              <p className="text-xs text-stone-500 mt-1">Financial entity with 12 connections across 3 domains.</p>
+              <p className="text-sm font-semibold text-stone-900" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Card title</p>
+              <p className="text-xs text-stone-500 mt-1">A short supporting description. Keep it to one or two lines so the card stays scannable.</p>
               <div className="flex gap-2 mt-3">
-                <span className="text-xs px-2 py-0.5 rounded-full" style={{ backgroundColor: '#4271DF15', color: '#4271DF', border: '1px solid #4271DF30' }}>entity</span>
+                <span className="text-xs px-2 py-0.5 rounded-full" style={{ backgroundColor: '#4271DF15', color: '#4271DF', border: '1px solid #4271DF30' }}>tag</span>
                 <span className="text-xs px-2 py-0.5 rounded-full" style={{ backgroundColor: '#00B6A015', color: '#00B6A0', border: '1px solid #00B6A030' }}>connected</span>
               </div>
             </div>
@@ -53,7 +53,7 @@ export default function Cards() {
               <div className="grid grid-cols-2 gap-2 mt-3">
                 <div>
                   <p className="text-lg font-semibold text-stone-900" style={{ fontFamily: "'Albert Sans', sans-serif" }}>2.8k</p>
-                  <p className="text-xs text-stone-500">Entities</p>
+                  <p className="text-xs text-stone-500">Items</p>
                 </div>
                 <div>
                   <p className="text-lg font-semibold" style={{ fontFamily: "'Albert Sans', sans-serif", color: '#00B6A0' }}>+23%</p>
@@ -68,10 +68,10 @@ export default function Cards() {
           <div>
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Interactive</p>
             <div className="border border-stone-200 rounded-xl p-5 bg-white hover:border-stone-300 hover:bg-stone-50 active:bg-stone-100 transition-all cursor-pointer group">
-              <p className="text-sm font-semibold text-stone-900 group-hover:text-brand transition-colors" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Knowledge Graph</p>
-              <p className="text-xs text-stone-500 mt-1">Explore connections between entities and claims.</p>
+              <p className="text-sm font-semibold text-stone-900 group-hover:text-brand transition-colors" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Section title</p>
+              <p className="text-xs text-stone-500 mt-1">Short supporting line. Two lines maximum.</p>
               <div className="flex items-center gap-1 mt-3">
-                <span className="text-xs font-medium transition-colors" style={{ color: '#4271DF' }}>Open graph</span>
+                <span className="text-xs font-medium transition-colors" style={{ color: '#4271DF' }}>Open</span>
                 <TbChevronRight size={12} className="transition-transform group-hover:translate-x-0.5" style={{ color: '#4271DF' }} />
               </div>
             </div>
@@ -115,25 +115,25 @@ export default function Cards() {
           <div className="border border-stone-200 rounded-xl p-5">
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3">Stat Card</p>
             <div className="rounded-lg border border-stone-200 p-4 hover:border-stone-300 transition-colors">
-              <p className="text-xs text-stone-500">Active Entities</p>
+              <p className="text-xs text-stone-500">Active Items</p>
               <p className="text-2xl font-semibold text-stone-900 mt-0.5" style={{ fontFamily: "'Albert Sans', sans-serif" }}>2,847</p>
               <p className="text-xs font-medium mt-1" style={{ color: '#00B6A0' }}>+12% from last month</p>
             </div>
             <p className="text-xs text-stone-400 mt-2">Label → Value → Trend. Always in this order.</p>
           </div>
 
-          {/* Entity card */}
+          {/* Detail card */}
           <div className="border border-stone-200 rounded-xl p-5">
-            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3">Entity Card</p>
+            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3">Detail Card</p>
             <div className="rounded-lg border border-stone-200 p-4 hover:border-stone-300 hover:bg-stone-50/50 transition-all cursor-pointer">
               <div className="flex items-center justify-between mb-2">
-                <p className="text-sm font-semibold text-stone-900" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Revenue Model</p>
-                <span className="text-xs font-mono px-1.5 py-0.5 rounded" style={{ backgroundColor: '#4271DF10', color: '#4271DF' }}>Financial</span>
+                <p className="text-sm font-semibold text-stone-900" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Item title</p>
+                <span className="text-xs font-mono px-1.5 py-0.5 rounded" style={{ backgroundColor: '#4271DF10', color: '#4271DF' }}>Type</span>
               </div>
-              <p className="text-xs text-stone-500">Quarterly revenue projections based on current pipeline data and historical conversion rates.</p>
+              <p className="text-xs text-stone-500">A short description of what this item represents and why it might matter to the reader.</p>
               <div className="flex items-center gap-3 mt-3 pt-3 border-t border-stone-100">
-                <span className="text-xs text-stone-400 font-mono">94% trust</span>
-                <span className="text-xs text-stone-400">12 connections</span>
+                <span className="text-xs text-stone-400 font-mono">94% confidence</span>
+                <span className="text-xs text-stone-400">12 links</span>
                 <span className="text-xs text-stone-400">Updated 2h ago</span>
               </div>
             </div>
@@ -207,7 +207,7 @@ export default function Cards() {
               <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Spectrum Tags — click to remove</p>
               <div className="flex gap-2 flex-wrap min-h-[28px]">
                 {[
-                  { label: 'entity', color: '#4271DF' },
+                  { label: 'tag', color: '#4271DF' },
                   { label: 'connected', color: '#00B6A0' },
                   { label: 'pending review', color: '#E19000' },
                   { label: 'critical', color: '#F24260' },
@@ -238,7 +238,7 @@ export default function Cards() {
             <div>
               <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Neutral Tags</p>
               <div className="flex gap-2 flex-wrap">
-                {['Financial Model', 'Research', 'v2.1', 'Draft'].map(label => (
+                {['Category', 'Type', 'v2.1', 'Draft'].map(label => (
                   <span key={label} className="text-xs px-2.5 py-1 rounded-full bg-stone-100 text-stone-600 border border-stone-200">{label}</span>
                 ))}
               </div>
@@ -298,9 +298,9 @@ export default function Cards() {
               <div className="w-10 h-10 rounded-full bg-stone-100 flex items-center justify-center mx-auto mb-3">
                 <span className="text-stone-400 text-lg">+</span>
               </div>
-              <p className="text-sm font-medium text-stone-700">No entities yet</p>
-              <p className="text-xs text-stone-400 mt-1">Upload a document or create your first entity to get started.</p>
-              <button className="mt-3 px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand transition-all hover:bg-brand-hover active:bg-brand-active btn-focus">Create Entity</button>
+              <p className="text-sm font-medium text-stone-700">Nothing here yet</p>
+              <p className="text-xs text-stone-400 mt-1">Add your first item to get started.</p>
+              <button className="mt-3 px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand transition-all hover:bg-brand-hover active:bg-brand-active btn-focus">Add Item</button>
             </div>
             <p className="text-xs text-stone-400 mt-2">Dashed border, icon, explanation, and a CTA. Never leave empty space unexplained.</p>
           </div>
