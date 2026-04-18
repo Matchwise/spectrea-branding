@@ -33,7 +33,7 @@ function MiniPreview({ dark }: { dark?: boolean }) {
       <div className="flex items-center px-3 py-1.5" style={{ borderBottom: `1px solid ${border}` }}>
         <div className="flex items-center gap-1">
           <div className="w-3.5 h-3.5 rounded" style={{ background: 'linear-gradient(135deg, #4271DF, #00B6A0, #E19000)' }} />
-          <span className="text-[8px] font-bold" style={{ color: text }}>pectrea</span>
+          <span className="text-[8px] font-bold" style={{ color: text }}>spectrea</span>
         </div>
         <div className="flex-1" />
         <span className="text-[7px] px-1.5 py-0.5 rounded text-white" style={{ backgroundColor: '#4271DF' }}>Sign Up</span>

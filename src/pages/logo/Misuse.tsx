@@ -45,7 +45,7 @@ export default function Misuse() {
             <div style={{ transform: 'rotate(-20deg)' }}>
               <div className="flex items-center gap-2">
                 <StaticLogo size={40} colorMode="cool" dotColorMode="grey" />
-                <span className="font-heading font-semibold text-stone-900 text-sm" style={{ letterSpacing: '0.02em' }}>pectrea</span>
+                <span className="font-heading font-semibold text-stone-900 text-sm" style={{ letterSpacing: '0.02em' }}>spectrea</span>
               </div>
             </div>
           </MisuseExample>
@@ -79,7 +79,7 @@ export default function Misuse() {
           {/* Rearranged */}
           <MisuseExample title="Don't swap mark and wordmark" description="In horizontal lockups the mark is always to the left of the wordmark. In the stacked arrangement the mark is always above. Never put the wordmark above or to the left of the mark.">
             <div className="flex flex-col items-center gap-1">
-              <span className="font-heading font-semibold text-stone-900 text-sm" style={{ letterSpacing: '0.02em' }}>pectrea</span>
+              <span className="font-heading font-semibold text-stone-900 text-sm" style={{ letterSpacing: '0.02em' }}>spectrea</span>
               <StaticLogo size={36} colorMode="cool" dotColorMode="grey" />
             </div>
           </MisuseExample>
@@ -89,7 +89,7 @@ export default function Misuse() {
             <div className="flex items-center gap-0">
               <span className="text-xs text-stone-400">Check out</span>
               <StaticLogo size={32} colorMode="cool" dotColorMode="grey" />
-              <span className="font-heading font-semibold text-stone-900 text-xs" style={{ letterSpacing: '0.02em' }}>pectrea</span>
+              <span className="font-heading font-semibold text-stone-900 text-xs" style={{ letterSpacing: '0.02em' }}>spectrea</span>
               <span className="text-xs text-stone-400">today!</span>
             </div>
           </MisuseExample>
@@ -110,7 +110,7 @@ export default function Misuse() {
           <MisuseExample title="Don't use the wrong typeface" description="The wordmark is always Albert Sans Semibold. Never substitute another font.">
             <div className="flex items-center gap-2">
               <StaticLogo size={36} colorMode="cool" dotColorMode="grey" />
-              <span className="font-semibold text-stone-900 text-sm" style={{ fontFamily: 'serif' }}>pectrea</span>
+              <span className="font-semibold text-stone-900 text-sm" style={{ fontFamily: 'serif' }}>spectrea</span>
             </div>
           </MisuseExample>
         </div>
