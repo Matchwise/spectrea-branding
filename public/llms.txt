@@ -48,7 +48,7 @@ The brand combines spectrum accents (Cobalt, Teal, Amber, Rose) with a Warm Blen
 - [Positioning](/foundation/positioning): Audience, category, tactical positioning.
 - [Voice & tone](/foundation/voice): Voice formula, tone spectrum, vocabulary.
 - [Naming](/foundation/naming): Pronunciation and usage rules.
-- [Logo — Primary](/logo/primary): Anatomy, construction, animated version.
+- [Logo — The Logo](/logo/primary): Anatomy, construction, animated version.
 - [Logo — Variations](/logo/variations): All 11 approved variants + 3 arrangements + decision guide.
 - [Logo — Guidelines](/logo/guidelines): Clear space, minimum size, background pairing.
 - [Logo — Misuse](/logo/misuse): What not to do.
