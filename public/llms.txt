@@ -60,7 +60,7 @@ The brand combines spectrum accents (Cobalt, Teal, Amber, Rose) with a Warm Blen
 - [Typefaces](/typography/typefaces): Albert Sans, Lexend, JetBrains Mono.
 - [Type scale](/typography/scale): Complete sizing system with responsive scaling.
 - [Typography guidelines](/typography/guidelines): Hierarchy, weight rules, accessibility.
-- [Illustration — Dot System](/imagery/illustration): Five atoms (Dot/Curve/Cluster/Trail/Field), composition rules, geometric and Bauhaus specialisations.
+- [Illustration](/imagery/illustration): Universal subject-agnostic prompt for hero scenes (Gemini / Firefly / Imagen) plus hand-coded SVG substrate for primitives (graph vocabulary, dividers, in-product state dots).
 - [Iconography](/imagery/iconography): Tabler icon system and colour rules.
 - [Motion](/imagery/motion): Durations, easing, three signature motion primitives (arrival, formation, spectrum sweep).
 - [Buttons](/components/buttons): Six variants (Primary, Secondary, Ghost, Destructive, Confirm, Caution).

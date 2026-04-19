@@ -409,90 +409,60 @@ Desktop (1024+) / Tablet (640–1023) / Mobile (<640):
 
 ---
 
-## 9. Illustration — v3 system
+## 9. Illustration — v4 system
 
-Spectrea's illustration system is a layered vocabulary plus a four-channel production model. The vocabulary keeps every illustration recognisably one family; the channel model routes each surface to the production approach that can actually deliver it.
+Spectrea's illustration system is two tracks: one universal prompt for hero scenes run through image generators, and a tight set of hand-coded SVG primitives for the schematic work in between.
 
-### Vocabulary — four layers
+### Two tracks
 
-**Layer 1 · Atoms** (the brand DNA — the mark itself is built from these). Every illustration must echo at least one.
-- **Dot** — filled circle, brand colour
-- **Curve** — soft Bézier line connecting things
-- **Cluster** — 3–8 dots in proximity, optionally wired with curves
-- **Trail** — sequence of 4–6 dots, opacity / size ramping faint → full
-- **Field** — soft radial or linear wash in a bridge tone (Cobalt Wash `#EDF0F8` · Teal Mist `#E6F5F3` · Amber Stone `#F5F0E6` · Rose Blush `#FDF0F2`)
+- **Image-gen via v4 prompt** — mid- and higher-complexity scenes: marketing heroes, feature-page illustrations, blog headers, About imagery, onboarding scenes, social posts. Any 16:9 composition with a recognisable scene.
+- **Hand-coded SVG** — basic, simple, direct primitives only: graph vocabulary (node, edge, cluster, trail, confidence, highlight), section dividers, in-product state dots, painterly-field backdrop.
 
-**Layer 2 · Forms** (geometric shapes for figurative content — co-occur with atoms, never replace them).
-- **Rounded rectangle** (body parts, frames, screens, plates)
-- **Square** (structural blocks, layout units)
-- **Triangle / polygon** (direction, tension, geometric mass)
-- **Arc** — 90°–270° circle segment (horizons, archways, partial ranges)
-- **Half-circle** (ground, dome, top of a form)
-- **Soft blob** (atmospheric mass when not a Field)
+**Rule of thumb.** If the piece fits in a 120×90 brand-guide vocabulary card, hand-SVG. If it wants to be a 16:9 scene, image-gen.
 
-**Layer 3 · Treatments** (how shapes are rendered, applied to both atoms and forms).
-- **Filled** (default, primary)
-- **Outlined** (ghost / context / negative space)
-- **Halo** (soft radial light around a focal element — depth without shadow)
-- **Layered** (multiple shapes stacked at varying opacity for depth)
+### The universal prompt
 
-**Layer 4 · Palette & ratio.** Brand palette only. 60 / 20 / 10 / 10 ratio (Canvas / Cloud / Ink+Pewter / Spectrum). One spectrum hero per composition; supporting colours at lower opacity. Pewter for ghost / context. Paper `#FAF8F2` for Editorial Geometry surfaces.
+A single subject-agnostic prompt template lives at `docs/illustration-prompt.md`. Fill the `SUBJECT:` line with one sentence describing the scene; paste into Gemini / Adobe Firefly / Bing Image Creator / Imagen / Stable Diffusion. The prompt governs **how** the image is rendered — palette, composition, depth, shape vocabulary, figure treatment — not **what** appears in it. The same prompt produces a person at a desk, a city skyline, a data dashboard, or an abstract concept, all in the brand voice.
 
-### The seven craft moves
+### Style controls (hard rules)
 
-Beyond the four layers, these techniques distinguish system-applied-with-craft from shapes-assembled. Every polished illustration uses several:
+- **No outlines.** Filled shapes only. No strokes, borders, or line art anywhere.
+- **Tint discipline.** Supporting elements use 20–60% tints of the primary spectrum colours. Never default to pure neutrals — that leaves compositions drab and cold.
+- **One hero primary per composition.** A single spectrum colour dominates; the others appear as supporting tints or small accents. Not all four primaries at full saturation.
+- **Subtle depth.** On rounded organic objects, a single darker tonal step on the shadow side (one deeper value of the same fill colour). No soft gradients on objects, no drop shadows.
+- **Both shape modes always present.** Geometric primitives (circles, rectangles, triangles, arcs, half-circles) and organic curved shapes (soft contours, flowing lines, blobs) both appear — geometric content never below ~15% of the coloured area, even in nature / soft subjects, to keep compositions anchored.
+- **Figures (when subject calls for them).** Clean silhouette, flat-block clothing in palette colours, simple hair, suggested face only (one dot per eye or blank). No detailed facial features.
+- **Coloured ground.** Background is a palette neutral (Canvas `#FDFDFB` preferred, Paper `#FAF8F2` when a slightly warmer ground is wanted) or a soft palette gradient. Not pure white, not pure grey.
+- **Asymmetric balance.** Rule-of-thirds or diagonal flow. Never centred.
 
-1. **Arc** — the Bézier's geometric sibling
-2. **Halo** — soft radial wash behind a focal Dot or Cluster
-3. **Painterly Field** — Field upgraded from flat radial to two-or-more-tone overlapping radials
-4. **Spectrum Band** — painterly streak through Cobalt → Teal → Amber → Rose
-5. **Translucent Plate** — soft-cornered rectangle at 40–70% opacity in Cloud or Bridge tint
-6. **Keyline Rule** — 0.5–1px Pewter hairline (editorial composition skeleton)
-7. **Hand-imperfect Mark** — exactly one subtle imperfection per composition (slightly off-round dot, a curve with a tremor)
+### Warmth + palette checklist
 
-Plus **paper grain** (SVG noise filter at 4–7% opacity) for Editorial surfaces.
+Every generator output ships only if it hits all eight:
 
-### Two paired styles
+1. Zero outlines anywhere.
+2. Every element carries colour — no element defaults to pure neutral fill.
+3. One hero primary dominates; others as supporting tints / accents.
+4. At least one rounded object has a single darker tonal step for depth.
+5. Both geometric and organic modes present; geometric floor ~15%.
+6. Coloured ground — palette neutral or gradient, not pure white / grey.
+7. Face is a suggestion — one dot per eye max, or blank.
+8. Asymmetric balance.
 
-The brand has two illustration jobs. Pair two styles sharing palette / type / paper ground / curve gesture:
-
-- **Editorial Geometry** — flat geometric shapes on warm paper, Stripe Press / Pelican classics lineage, serif headline + monospace metadata, single warm focal accent. For: homepage hero, About / story, blog headers, press, brand-guide section opens. References: [Stripe Press](https://press.stripe.com/), MIT Press, Fitzcarraldo Editions.
-- **Living Graph** — dense node + edge compositions with depth (painterly Fields, halos, layered opacity), atmospheric perspective, focal hierarchy. For: product feature pages, docs hero, "how it works" diagrams, onboarding, in-product loading + empty states. References: [Vercel](https://vercel.com/), [Linear](https://linear.app/).
-
-### Four production channels
-
-Every illustration is allocated to exactly one channel. No surface gets low-fidelity SVG standing in for what it actually needs.
-
-| Channel | Use for | Workflow |
-|---|---|---|
-| **In-house SVG** (~80%) | Vocabulary cards, layout diagrams, motion demos, dataviz primitives, in-product moments, section dividers, brand mark variants, comparison diagrams, empty/loading states. | Hand-authored SVG, rendered through a verify-and-iterate loop (headless Chrome screenshot → review → iterate). |
-| **AI image-gen** (~15%) | Marketing heroes, feature page heroes, blog headers, social post imagery, About atmospheric scenes — anything pictorial. | Use the prompt at `docs/illustration-prompt.md` (v3) → generate via Gemini / DALL-E / Firefly / Stable Diffusion → vectorise with Inkscape (Path → Trace Bitmap) → drop into `/public/illustrations/`. |
-| **Designer commissioned** (~5%) | Brand launch keynote, conference banner, print brand-guide cover, About hero, paid-media imagery, photography direction. | Brief the designer with this brand guide. The brand-guide tells them what the system is; the designer produces the heroes. |
-| **Canva** (optional) | Sales decks, recurring social posts, internal flyers — template-driven recurring formats. | Set up a Spectrea brand kit in Canva (palette, fonts, logo upload). Worth the setup only if used weekly. |
-
-### Decision rubric
-
-For any new illustration, ask three questions in order:
-
-1. **Is it a system artefact?** Vocabulary card, primitive demo, layout diagram, swatch, in-product moment, dataviz primitive, brand mark variant. → **In-house SVG**.
-2. **Does it need a pictorial subject?** A figure mid-action, a scene with depth, a metaphorical landscape, atmospheric texture. → **AI image-gen**.
-3. **Does it carry launch / paid media / print?** Homepage hero, conference banner, About hero, print cover, paid campaign. → **Designer**.
-
-Canva is reserved for template-driven recurring formats. If "not sure" — default to in-house, render through the loop, evaluate honestly. If malformed, escalate.
+**Reject conditions.** Any outline, neutral grey backdrop, four-colour confetti (all primaries at full saturation), or detailed face — regenerate.
 
 ### What the system never does
 
-- Outlines on filled shapes (outlined is a treatment, applied deliberately — not the default)
+- Outlines, strokes, borders, line-art rendering
 - Photorealism, 3D rendering, isometric projection, perspective
-- Drop shadows, glows, lens flares (halos replace these)
-- Heavy textures, noise, grain, hatching (paper grain at ≤7% opacity is the only permitted surface effect)
+- Drop shadows, glows, lens flares
+- Textures, noise, grain, hatching
 - Off-brand colours (neon, magenta, cyan, bright yellow, pastel pink, purple, lavender, bright green)
 - Mascot characters, anthropomorphic objects, cartoon faces
-- Stock photography for warmth — use AI-gen via the prompt
+- Stock photography for warmth — use image-gen via the prompt
 
 ### Versioning
 
-v3 (2026-04-18, late) — adds Forms layer, Treatments layer, seven craft moves, paired Editorial Geometry + Living Graph styles, and the four-channel production model. v2 (Dot System with five atoms) is retained as a proper subset of v3 — strict-five-atoms-only compositions are still valid at small scale (vocabulary cards, in-product moments, system diagrams). v3 adds the vocabulary needed to compose larger illustrations without reading as primitive. See `docs/superpowers/specs/2026-04-18-illustration-system-v3-design.md` for the full rationale.
+v4 (2026-04-19) — universal subject-agnostic prompt for scenes, tight hand-SVG substrate for primitives only. Retires v3's two-style split (Editorial Geometry + Living Graph), the ten-noun recurring subject cast, the atoms/forms/treatments/palette four-layer vocabulary as a generation constraint, the four-channel production matrix, the decision rubric, and the `SpectreaFigure` Bauhaus limbs-figure component. Full prompt and checklist at `docs/illustration-prompt.md`.
 
 ---
 
