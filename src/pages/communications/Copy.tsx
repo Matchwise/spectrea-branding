@@ -6,7 +6,7 @@ export default function Copy() {
   return (
     <PageShell
       title="Copy & Taglines"
-      subtitle="Approved messaging, headline formulas, and copy patterns for Spectrea."
+      subtitle="The sanctioned phrases, headline formulas, and vocabulary that keep every Spectrea surface sounding like the same brand."
     >
       {/* Primary tagline */}
       <Section>
@@ -17,7 +17,7 @@ export default function Copy() {
         </h2>
         <div className="text-white rounded-xl p-8 text-center" style={{ backgroundColor: '#18181C' }}>
           <p className="text-3xl font-semibold" style={{ fontFamily: "'Albert Sans', sans-serif" }}>{brand.tagline.statement}</p>
-          <p className="text-sm text-stone-400 mt-3 max-w-md mx-auto">{brand.tagline.usage}</p>
+          <p className="text-sm mt-3 max-w-md mx-auto" style={{ color: '#B0B0B6' }}>{brand.tagline.usage}</p>
         </div>
       </Section>
 

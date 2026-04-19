@@ -6,7 +6,7 @@ export default function Email() {
   return (
     <PageShell
       title="Email"
-      subtitle="Email templates, signatures, and formatting guidelines for Spectrea communications."
+      subtitle="How Spectrea shows up in the inbox — signatures, transactional, marketing. Quiet, direct, and unmistakably us."
     >
       {/* Email signature */}
       <Section>
@@ -69,7 +69,7 @@ export default function Email() {
                   <LogotypeGradient fontSize={13} />
                 </div>
                 <p className="text-lg font-semibold mb-2" style={{ color: '#F4F4F1', fontFamily: "'Albert Sans', sans-serif" }}>Your knowledge compounds.</p>
-                <p className="text-xs leading-relaxed mb-3" style={{ color: '#97979E' }}>This month: a few quiet improvements that make the everyday faster — plus one new view we're excited about.</p>
+                <p className="text-xs leading-relaxed mb-3" style={{ color: '#B0B0B6' }}>This month: a few quiet improvements that make the everyday faster — plus one new view we're excited about.</p>
               </div>
               <div className="h-1" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
               <div className="p-5 bg-white">

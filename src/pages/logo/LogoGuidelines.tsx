@@ -37,7 +37,7 @@ export default function LogoGuidelines() {
   return (
     <PageShell
       title="Guidelines"
-      subtitle="How to use the logo correctly — spacing, sizing, backgrounds, and partnerships."
+      subtitle="Where the logo lives, what it needs around it, and how to put it on something else without either brand losing."
     >
       {/* Clear space */}
       <Section>

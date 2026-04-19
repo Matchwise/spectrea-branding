@@ -1,14 +1,44 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
-import { StaticLogo, Logotype } from '../../components/brand/SpectreaLogo'
+import { Logotype, LogotypeGradient } from '../../components/brand/SpectreaLogo'
+
+// ─────────────────────────────────────────────────────────────────────
+// Subtle corner wisp — echoes the brand gradient without shouting.
+// Kept at 6–10% opacity so it reads as atmosphere, not decoration.
+// ─────────────────────────────────────────────────────────────────────
+function CanvasWisp() {
+  return (
+    <div
+      className="absolute inset-0 pointer-events-none"
+      style={{
+        background:
+          'radial-gradient(ellipse 70% 55% at 100% 0%, rgba(66,113,223,0.08), transparent 65%), ' +
+          'radial-gradient(ellipse 55% 45% at 0% 100%, rgba(225,144,0,0.06), transparent 65%)',
+      }}
+    />
+  )
+}
+
+function InkWisp() {
+  return (
+    <div
+      className="absolute inset-0 pointer-events-none"
+      style={{
+        background:
+          'radial-gradient(ellipse 65% 55% at 100% 0%, rgba(66,113,223,0.16), transparent 65%), ' +
+          'radial-gradient(ellipse 55% 50% at 0% 100%, rgba(225,144,0,0.10), transparent 65%)',
+      }}
+    />
+  )
+}
 
 export default function Presentations() {
   return (
     <PageShell
       title="Presentations"
-      subtitle="Slide design rules, templates, and visual patterns for Spectrea decks."
+      subtitle="How Spectrea decks look, sound, and hold together — from the opening slide to the closing ask."
     >
-      {/* Mode balance — light default, ink as punctuation */}
+      {/* Mode balance */}
       <Section>
         <div className="rounded-xl border border-stone-200 overflow-hidden">
           <div className="px-5 py-3 bg-stone-50 border-b border-stone-200">
@@ -16,7 +46,7 @@ export default function Presentations() {
           </div>
           <div className="p-5">
             <p className="text-sm text-stone-700 leading-relaxed mb-3">
-              Decks are <strong>Canvas-default</strong>, Ink for punctuation. Canvas is the warmth that keeps a Spectrea deck from reading as austere — don't dilute that by flipping whole decks dark. Target roughly <strong>80% Canvas / 20% Ink</strong>.
+              Your deck lives on Canvas. The warmth is deliberate — it's what keeps a Spectrea talk from feeling like a system briefing. Ink slides earn their place as punctuation: a number that lands, a section break worth pausing on, the closing ask. Think four-fifths Canvas, one-fifth Ink.
             </p>
             <div className="h-7 rounded-md overflow-hidden flex mb-2 border border-stone-200">
               <div className="flex-[80] flex items-center justify-center" style={{ backgroundColor: '#FDFDFB' }}>
@@ -27,40 +57,44 @@ export default function Presentations() {
               </div>
             </div>
             <p className="text-xs text-stone-500 leading-relaxed">
-              Canvas for: opening, agenda, content, data, closing-thanks. Ink for: section dividers, single-stat emphasis, closing CTA. On Ink slides, text is Cloud <code className="font-mono text-[11px]">#F4F4F1</code> and muted is Mist <code className="font-mono text-[11px]">#B0B0B6</code>. Accents carry over unchanged.
+              Canvas carries the everyday — opening, agenda, content, data, close. Ink marks the moments you want the room to feel. When you do go dark, text shifts to Cloud <code className="font-mono text-[11px]">#F4F4F1</code>, muted to Mist <code className="font-mono text-[11px]">#B0B0B6</code>; accents don't flinch. The brand keeps its voice across both.
             </p>
           </div>
         </div>
       </Section>
 
-      {/* Slide anatomy */}
+      {/* Slide types — Canvas default (the 80%) */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
-          <Tooltip content="Every slide follows the same grid: logo placement, typography rules, and color usage. Consistency across decks builds brand credibility.">
-            <span>Slide Types</span>
+        <h2 className="text-xl font-semibold text-stone-800 mb-1">
+          <Tooltip content="A small set of layouts covering the bulk of any deck. Consistency is the thing that makes different decks still feel like Spectrea.">
+            <span>Slide Types — Canvas default</span>
           </Tooltip>
         </h2>
+        <p className="text-sm text-stone-500 mb-4 leading-relaxed">
+          These four carry most of a Spectrea deck. Warm ground, a gradient accent where emphasis is earned, type and spacing doing the real work. The backgrounds aren't empty — a soft corner wisp of the brand gradient keeps each slide breathing.
+        </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Title slide */}
+
+          {/* Title slide — Canvas with full logotype centered */}
           <div>
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Title Slide</p>
-            <div className="rounded-xl overflow-hidden border border-stone-200 aspect-video relative" style={{ backgroundColor: '#18181C' }}>
-              <div className="h-full flex flex-col items-center justify-center p-6">
-                <div className="mb-3">
-                  <StaticLogo size={40} />
-                </div>
-                <p className="text-lg font-semibold text-center" style={{ color: '#F4F4F1', fontFamily: "'Albert Sans', sans-serif" }}>We connect the dots.</p>
+            <div className="rounded-xl overflow-hidden border border-stone-200 aspect-video relative" style={{ backgroundColor: '#FDFDFB' }}>
+              <CanvasWisp />
+              <div className="h-full flex flex-col items-center justify-center p-6 relative">
+                <LogotypeGradient fontSize={22} />
+                <p className="text-base font-semibold text-center mt-4" style={{ color: '#18181C', fontFamily: "'Albert Sans', sans-serif" }}>We connect the dots.</p>
                 <p className="text-xs mt-1" style={{ color: '#97979E' }}>Composable knowledge platform</p>
-                <div className="absolute bottom-0 left-0 right-0 h-0.5" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
               </div>
+              <div className="absolute bottom-0 left-0 right-0 h-0.5" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
             </div>
           </div>
 
-          {/* Content slide */}
+          {/* Content slide — Canvas, logotype footer, subtle wisp */}
           <div>
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Content Slide</p>
-            <div className="rounded-xl overflow-hidden border border-stone-200 aspect-video bg-white">
-              <div className="h-full flex flex-col p-5">
+            <div className="rounded-xl overflow-hidden border border-stone-200 aspect-video relative" style={{ backgroundColor: '#FDFDFB' }}>
+              <CanvasWisp />
+              <div className="h-full flex flex-col p-5 relative">
                 <p className="text-sm font-semibold text-stone-900" style={{ fontFamily: "'Albert Sans', sans-serif" }}>The Knowledge Problem</p>
                 <div className="flex-1 flex items-center">
                   <div className="space-y-2 w-full">
@@ -73,58 +107,113 @@ export default function Presentations() {
                   </div>
                 </div>
                 <div className="flex items-center justify-between pt-2 border-t border-stone-100">
-                  <Logotype fontSize={9} colorMode="ink" color="#97979E" />
+                  <Logotype fontSize={10} colorMode="ink" color="#97979E" />
                   <span className="text-xs text-stone-300">3</span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Stat slide */}
+          {/* Stat / Impact slide — Canvas with Cobalt hero number + logotype footer */}
           <div>
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Stat / Impact Slide</p>
-            <div className="rounded-xl overflow-hidden border border-stone-200 aspect-video" style={{ backgroundColor: '#18181C' }}>
-              <div className="h-full flex flex-col items-center justify-center p-6">
-                <p className="text-4xl font-semibold" style={{ color: '#F4F4F1', fontFamily: "'Albert Sans', sans-serif" }}>94%</p>
-                <p className="text-xs mt-1" style={{ color: '#97979E' }}>average confidence across all items</p>
+            <div className="rounded-xl overflow-hidden border border-stone-200 aspect-video relative" style={{ backgroundColor: '#FDFDFB' }}>
+              <CanvasWisp />
+              <div className="h-full flex flex-col items-center justify-center p-6 relative">
+                <p className="text-5xl font-semibold" style={{ color: '#4271DF', fontFamily: "'Albert Sans', sans-serif" }}>94%</p>
+                <p className="text-xs mt-2" style={{ color: '#97979E' }}>average confidence across all items</p>
               </div>
+              <div className="absolute bottom-3 left-4">
+                <Logotype fontSize={9} colorMode="ink" color="#97979E" />
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 h-0.5" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
             </div>
           </div>
 
-          {/* Section divider */}
+          {/* Section divider — Canvas, centered logotype + title + gradient bar */}
           <div>
             <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Section Divider</p>
-            <div className="rounded-xl overflow-hidden border border-stone-200 aspect-video relative" style={{ backgroundColor: '#18181C' }}>
-              <div className="h-full flex items-center justify-center p-6">
-                <p className="text-lg font-semibold" style={{ color: '#F4F4F1', fontFamily: "'Albert Sans', sans-serif" }}>How It Works</p>
+            <div className="rounded-xl overflow-hidden border border-stone-200 aspect-video relative" style={{ backgroundColor: '#FDFDFB' }}>
+              <CanvasWisp />
+              <div className="h-full flex flex-col items-center justify-center p-6 gap-3 relative">
+                <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#97979E' }}>Chapter Two</p>
+                <p className="text-xl font-semibold" style={{ color: '#18181C', fontFamily: "'Albert Sans', sans-serif" }}>How It Works</p>
+              </div>
+              <div className="absolute bottom-3 left-4">
+                <Logotype fontSize={9} colorMode="ink" color="#97979E" />
               </div>
               <div className="absolute bottom-0 left-0 right-0 h-1" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
             </div>
           </div>
+
+        </div>
+      </Section>
+
+      {/* Ink punctuation — the 20% */}
+      <Section>
+        <h2 className="text-xl font-semibold text-stone-800 mb-1">
+          <Tooltip content="Going dark should feel like a choice, not a pattern. Use Ink when the shift itself carries the point.">
+            <span>Ink Punctuation — use sparingly</span>
+          </Tooltip>
+        </h2>
+        <p className="text-sm text-stone-500 mb-4 leading-relaxed">
+          Used rarely on purpose. Save Ink for the moments where going dark <em>is</em> the point — a number that stops the room, a section break worth pausing on, the closing ask. Text becomes Cloud, muted becomes Mist, accents stay themselves. Same subtle wisp as Canvas, just warmed up a notch.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          {/* Stat emphasis (Ink) */}
+          <div>
+            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Stat emphasis (Ink)</p>
+            <div className="rounded-xl overflow-hidden border border-stone-200 aspect-video relative" style={{ backgroundColor: '#18181C' }}>
+              <InkWisp />
+              <div className="h-full flex flex-col items-center justify-center p-6 relative">
+                <p className="text-5xl font-semibold" style={{ color: '#F4F4F1', fontFamily: "'Albert Sans', sans-serif" }}>94%</p>
+                <p className="text-xs mt-2" style={{ color: '#B0B0B6' }}>average confidence across all items</p>
+              </div>
+              <div className="absolute bottom-3 left-4">
+                <Logotype fontSize={9} colorMode="white" color="#B0B0B6" />
+              </div>
+            </div>
+          </div>
+
+          {/* Closing CTA (Ink) */}
+          <div>
+            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Closing CTA (Ink)</p>
+            <div className="rounded-xl overflow-hidden border border-stone-200 aspect-video relative" style={{ backgroundColor: '#18181C' }}>
+              <InkWisp />
+              <div className="h-full flex flex-col items-center justify-center p-6 gap-3 relative">
+                <LogotypeGradient fontSize={18} />
+                <p className="text-lg font-semibold mt-2" style={{ color: '#F4F4F1', fontFamily: "'Albert Sans', sans-serif" }}>Start connecting the dots.</p>
+                <p className="text-xs" style={{ color: '#B0B0B6' }}>spectrea.com</p>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 h-1" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
+            </div>
+          </div>
+
         </div>
       </Section>
 
       {/* Slide rules */}
       <Section>
         <h2 className="text-xl font-semibold text-stone-800 mb-4">
-          <Tooltip content="These rules apply to every Spectrea presentation. They ensure slides look branded even when different people create them.">
+          <Tooltip content="The guardrails that keep different decks from drifting apart. Not many — enough.">
             <span>Design Rules</span>
           </Tooltip>
         </h2>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
           {[
-            { rule: 'Canvas-default, Ink for punctuation', detail: 'Canvas (#FDFDFB) for content slides, Ink (#18181C) for emphasis/divider/CTA. Keep Ink to ≤20% of the deck. No other backgrounds.' },
-            { rule: 'Title: Albert Sans Semibold', detail: '24–36px for slide titles. Left-aligned on content slides, centered on divider slides.' },
-            { rule: 'Body: Lexend Regular', detail: '14–18px for bullet points and descriptions. Maximum 6 lines per slide.' },
-            { rule: 'Logo: bottom-left on content slides', detail: 'Small mark + wordmark. Never on title or stat slides (they have the centered mark).' },
-            { rule: 'Gradient bar: bottom of emphasis slides', detail: 'Thin horizontal bar (2–4px) at the bottom edge. Never on content slides.' },
-            { rule: 'One idea per slide', detail: 'If you need to scroll, you need another slide.' },
-            { rule: 'Spectrum colors for bullet dots', detail: 'Use Cobalt, Teal, Amber in sequence for 3-point lists. Rose for critical items only.' },
-            { rule: 'No clip art or decorative elements', detail: 'Product screenshots, data visualizations, or nothing. Clean > decorated.' },
-          ].map((row, i) => (
-            <div key={row.rule} className="px-4 py-3" style={{ borderBottom: i < 7 ? '1px solid #F3F4F6' : 'none' }}>
+            { rule: 'Lead with Canvas, reach for Ink when it earns it', detail: 'Canvas is the ground. Ink is the emphasis — the stat, the divider, the closing ask. Keep Ink under a fifth of the deck.' },
+            { rule: 'Titles in Albert Sans Semibold', detail: '24–36 px. Left-align on content slides, centre on dividers and titles.' },
+            { rule: 'Body in Lexend Regular', detail: '14–18 px. Cap at six lines per slide — if you need more, it\'s already two slides.' },
+            { rule: 'Logotype, not just the mark, when the slide has room', detail: 'Centered Logotype on title and closing slides; small Logotype footer bottom-left on content, stat, and divider slides. The bare mark is for favicons and tight spaces, not deck hero moments.' },
+            { rule: 'Gradient bar at the bottom edge — title, stat, divider', detail: 'A 2–4 px gradient bar signals an emphasis slide. Leave it off content slides so it keeps its meaning.' },
+            { rule: 'One idea per slide', detail: 'If you\'re scrolling, it\'s already two. Split before the room has to catch up.' },
+            { rule: 'Bullet dots in spectrum order', detail: 'Cobalt, Teal, Amber in that sequence for three-point lists. Rose only when something is actually critical.' },
+            { rule: 'Screenshots, data, or empty space', detail: 'A product shot or a chart earns its place. Clip art, stock icons, and decoration rarely do — leave them off.' },
+          ].map((row, i, arr) => (
+            <div key={row.rule} className="px-4 py-3" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
               <p className="text-sm font-medium text-stone-700">{row.rule}</p>
-              <p className="text-xs text-stone-500 mt-0.5">{row.detail}</p>
+              <p className="text-xs text-stone-500 mt-0.5 leading-relaxed">{row.detail}</p>
             </div>
           ))}
         </div>
@@ -132,17 +221,20 @@ export default function Presentations() {
 
       {/* Color in presentations */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
-          <Tooltip content="Presentations use a restricted subset of the full color system. Only four colors appear in slides — fewer choices mean faster, more consistent deck creation.">
-            <span>Color Usage in Slides</span>
+        <h2 className="text-xl font-semibold text-stone-800 mb-1">
+          <Tooltip content="Decks use a trimmed palette on purpose. Fewer choices means faster decisions and decks that look like family.">
+            <span>Colour in slides</span>
           </Tooltip>
         </h2>
+        <p className="text-sm text-stone-500 mb-4 leading-relaxed">
+          Two backgrounds, four accents. Fewer choices, faster decisions, decks that look like family even when different people make them.
+        </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {[
-            { color: '#FDFDFB', name: 'Canvas', use: 'Content slide background', textColor: '#18181C', border: true },
-            { color: '#18181C', name: 'Ink', use: 'Emphasis / divider background', textColor: '#F4F4F1', border: false },
-            { color: '#4271DF', name: 'Cobalt', use: 'Primary bullet dots, key metrics', textColor: '#FDFDFB', border: false },
-            { color: '#00B6A0', name: 'Teal', use: 'Growth metrics, positive change', textColor: '#18181C', border: false },
+            { color: '#FDFDFB', name: 'Canvas', use: 'Content background — the 80%', textColor: '#18181C', border: true },
+            { color: '#18181C', name: 'Ink', use: 'Emphasis background — the earned 20%', textColor: '#F4F4F1', border: false },
+            { color: '#4271DF', name: 'Cobalt', use: 'Primary bullet dots, hero stats, key metrics', textColor: '#FDFDFB', border: false },
+            { color: '#00B6A0', name: 'Teal', use: 'Growth, positive change, success', textColor: '#18181C', border: false },
             { color: '#E19000', name: 'Amber', use: 'Third bullet dot, attention highlights', textColor: '#18181C', border: false },
             { color: '#F24260', name: 'Rose', use: 'Critical items only — use sparingly', textColor: '#FDFDFB', border: false },
           ].map(c => (
@@ -152,7 +244,7 @@ export default function Presentations() {
               </div>
               <div className="p-2 bg-white border-t border-stone-100">
                 <p className="text-xs font-medium text-stone-700">{c.name}</p>
-                <p className="text-xs text-stone-400">{c.use}</p>
+                <p className="text-xs text-stone-400 leading-relaxed">{c.use}</p>
               </div>
             </div>
           ))}
@@ -161,30 +253,34 @@ export default function Presentations() {
 
       {/* Dos & Don'ts */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
-          <Tooltip content="Quick reference for common slide design decisions. When in doubt, default to fewer elements and more white space.">
-            <span>Slide Dos & Don'ts</span>
+        <h2 className="text-xl font-semibold text-stone-800 mb-1">
+          <Tooltip content="Quick answers for the decisions you'll make most. When unsure, fewer elements and more breathing room wins.">
+            <span>Working guide</span>
           </Tooltip>
         </h2>
+        <p className="text-sm text-stone-500 mb-4 leading-relaxed">
+          Quick answers for the calls you'll make most. When in doubt, fewer elements and more breathing room.
+        </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
-            <ul className="space-y-2 text-sm text-stone-700">
-              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use one idea per slide — if you need to scroll, split</li>
-              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use the gradient bar on emphasis/divider slides only</li>
-              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use product screenshots or data visualizations for visuals</li>
-              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Keep bullet points to 3–6 per slide using spectrum dot colors</li>
-              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use the small logo lockup in bottom-left of content slides</li>
+            <ul className="space-y-2 text-sm text-stone-700 leading-relaxed">
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Pick one idea and let it breathe.</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Save the gradient bar for the slides that earn it — title, stat, divider.</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Reach for a product shot or a chart when a picture does the work faster than words.</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Keep bullets to three to six, with the spectrum dots in order.</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Put the Logotype — not just the mark — wherever the slide has room.</li>
             </ul>
           </div>
           <div className="border rounded-xl p-5" style={{ borderColor: '#F2426025', backgroundColor: '#F2426008' }}>
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Don't</h3>
-            <ul className="space-y-2 text-sm text-stone-700">
-              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use backgrounds other than White or Ink (#18181C)</li>
-              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Add clip art, decorative icons, or stock imagery</li>
-              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Put the gradient bar on content slides</li>
-              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use fonts outside the three-font system (Albert Sans, Lexend, JetBrains Mono)</li>
-              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Center-align body text — left-align on content slides</li>
+            <ul className="space-y-2 text-sm text-stone-700 leading-relaxed">
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Add a third background colour — the two-way split is what keeps the deck coherent.</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Let Ink creep past a fifth of the deck. Contrast is a signal, not a texture.</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Stack on clip art, decorative icons, or stock imagery — the content should be enough.</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Sprinkle the gradient bar across content slides — it loses meaning when it's everywhere.</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Reach for a font outside Albert Sans, Lexend, or JetBrains Mono. The kit is the kit.</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Centre body text on content slides — left-align reads better when the eye needs to move.</li>
             </ul>
           </div>
         </div>

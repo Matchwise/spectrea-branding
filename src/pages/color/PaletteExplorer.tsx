@@ -24,8 +24,8 @@ function MiniPreview({ dark }: { dark?: boolean }) {
   const bg = dark ? '#18181C' : '#FDFDFB'
   const surface = dark ? '#212226' : '#F4F4F1'
   const text = dark ? '#F4F4F1' : '#18181C'
-  const muted = dark ? '#6B6B72' : '#97979E'
-  const border = dark ? '#97979E20' : '#18181C08'
+  const muted = dark ? '#B0B0B6' : '#97979E'
+  const border = dark ? '#2E2F35' : '#18181C08'
 
   return (
     <div className="rounded-lg overflow-hidden text-left" style={{ backgroundColor: bg, border: `1px solid ${border}` }}>
@@ -156,7 +156,7 @@ export default function ColorOverview() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {[
             { label: 'Primary Palette', path: '/color/primary', desc: 'Every color with role, usage, and copy-able values' },
-            { label: 'Semantic Colors', path: '/color/semantic', desc: 'Functional color mapping with light/default/dark variants' },
+            { label: 'Semantic Colors', path: '/color/semantic', desc: 'Functional color mapping — wash, accent, on-wash text, plus dark-surface washes' },
             { label: 'Gradients', path: '/color/gradients', desc: 'Brand gradient variations and usage rules' },
           ].map(link => (
             <Link

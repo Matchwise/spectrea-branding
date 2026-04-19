@@ -443,22 +443,17 @@ export default function SemanticColors() {
         <div className="bg-ink rounded-xl p-6 text-white">
           <p className="text-sm font-semibold mb-4" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Decision: "What color should this be?"</p>
           <div className="space-y-3 text-xs leading-relaxed">
-            <div className="flex gap-3">
-              <span className="text-stone-500 font-mono w-6 flex-shrink-0">1.</span>
-              <p><strong className="text-stone-300">Is it an action trigger?</strong> <span className="text-stone-400">→ Cobalt. Buttons, links, CTAs, input focus. Elements that DO something when clicked.</span></p>
-            </div>
-            <div className="flex gap-3">
-              <span className="text-stone-500 font-mono w-6 flex-shrink-0">2.</span>
-              <p><strong className="text-stone-300">Is it structural UI chrome?</strong> <span className="text-stone-400">→ Ink. Sidebar nav, tabs, breadcrumbs, filled icons. Elements that show WHERE you are. Hover darkens to Ink, not Cobalt.</span></p>
-            </div>
-            <div className="flex gap-3">
-              <span className="text-stone-500 font-mono w-6 flex-shrink-0">3.</span>
-              <p><strong className="text-stone-300">Is the system communicating status?</strong> <span className="text-stone-400">→ Cobalt (info), Teal (success), Amber (warning), Rose (error). Never decorative.</span></p>
-            </div>
-            <div className="flex gap-3">
-              <span className="text-stone-500 font-mono w-6 flex-shrink-0">4.</span>
-              <p><strong className="text-stone-300">None of the above?</strong> <span className="text-stone-400">→ Ink (primary text) or Pewter (muted / disabled / passive). The canvas stays neutral.</span></p>
-            </div>
+            {[
+              { n: '1.', q: 'Is it an action trigger?', a: '→ Cobalt. Buttons, links, CTAs, input focus. Elements that DO something when clicked.' },
+              { n: '2.', q: 'Is it structural UI chrome?', a: '→ Ink. Sidebar nav, tabs, breadcrumbs, filled icons. Elements that show WHERE you are. Hover darkens to Ink, not Cobalt.' },
+              { n: '3.', q: 'Is the system communicating status?', a: '→ Cobalt (info), Teal (success), Amber (warning), Rose (error). Never decorative.' },
+              { n: '4.', q: 'None of the above?', a: '→ Ink (primary text) or Pewter (muted / disabled / passive). The canvas stays neutral.' },
+            ].map(row => (
+              <div key={row.n} className="flex gap-3">
+                <span className="font-mono w-6 flex-shrink-0" style={{ color: '#B0B0B6' }}>{row.n}</span>
+                <p><strong style={{ color: '#F4F4F1' }}>{row.q}</strong> <span style={{ color: '#B0B0B6' }}>{row.a}</span></p>
+              </div>
+            ))}
           </div>
         </div>
 

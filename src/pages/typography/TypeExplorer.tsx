@@ -98,17 +98,17 @@ export default function TypeExplorer() {
           </div>
 
           {/* Dark */}
-          <div className="border border-stone-700 rounded-xl p-5" style={{ backgroundColor: '#18181C' }}>
+          <div className="rounded-xl p-5" style={{ backgroundColor: '#18181C', border: '1px solid #2E2F35' }}>
             <p className="text-2xl font-semibold mb-1" style={{ fontFamily: t.heading.css, color: '#F4F4F1' }}>
               We connect the dots.
             </p>
-            <p className="text-sm mb-4" style={{ fontFamily: t.body.css, color: '#97979E' }}>
+            <p className="text-sm mb-4" style={{ fontFamily: t.body.css, color: '#B0B0B6' }}>
               Make knowledge trustworthy, connected, and actionable.
             </p>
             <div className="grid grid-cols-3 gap-2 mb-4">
               {['Items', 'Connections', 'Confidence'].map((label, i) => (
-                <div key={label} className="rounded-lg p-3" style={{ backgroundColor: '#212226', border: '1px solid #2E2E34' }}>
-                  <p className="text-xs mb-0.5" style={{ fontFamily: t.body.css, color: '#97979E' }}>{label}</p>
+                <div key={label} className="rounded-lg p-3" style={{ backgroundColor: '#212226', border: '1px solid #2E2F35' }}>
+                  <p className="text-xs mb-0.5" style={{ fontFamily: t.body.css, color: '#B0B0B6' }}>{label}</p>
                   <p className="text-lg font-semibold" style={{ fontFamily: t.heading.css, color: '#F4F4F1' }}>
                     {['2,847', '8,291', '94%'][i]}
                   </p>
@@ -118,11 +118,11 @@ export default function TypeExplorer() {
                 </div>
               ))}
             </div>
-            <p className="text-sm leading-relaxed mb-3" style={{ fontFamily: t.body.css, color: '#97979E' }}>
+            <p className="text-sm leading-relaxed mb-3" style={{ fontFamily: t.body.css, color: '#B0B0B6' }}>
               Every document you add strengthens what the system already knows. Connections start surfacing on their own.
             </p>
-            <div className="rounded-lg px-3 py-2" style={{ backgroundColor: '#212226', border: '1px solid #2E2E34' }}>
-              <p className="text-xs" style={{ fontFamily: t.mono.css, color: '#97979E' }}>
+            <div className="rounded-lg px-3 py-2" style={{ backgroundColor: '#212226', border: '1px solid #2E2F35' }}>
+              <p className="text-xs" style={{ fontFamily: t.mono.css, color: '#B0B0B6' }}>
                 type: "Sample" | confidence: 0.94
               </p>
             </div>

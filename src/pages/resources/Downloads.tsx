@@ -6,7 +6,7 @@ export default function Downloads() {
   return (
     <PageShell
       title="Downloads"
-      subtitle="Brand assets, templates, and resources for creating on-brand Spectrea materials."
+      subtitle="Everything you need to make something that looks like Spectrea — logos, swatches, templates, and the tokens that tie it together."
     >
       {/* Guide documents — available now */}
       <Section>
@@ -158,25 +158,52 @@ export default function Downloads() {
       {/* CSS tokens */}
       <Section title="CSS Tokens">
         <div className="bg-ink rounded-xl p-5 overflow-x-auto">
-          <pre className="text-xs leading-relaxed" style={{ fontFamily: "'JetBrains Mono', monospace", color: '#97979E' }}>
+          <pre className="text-xs leading-relaxed" style={{ fontFamily: "'JetBrains Mono', monospace", color: '#B0B0B6' }}>
 {`:root {
-  /* Colors */
+  /* Spectrum */
   --color-brand: #4271DF;
   --color-brand-teal: #00B6A0;
   --color-brand-amber: #E19000;
   --color-brand-rose: #F24260;
+
+  /* Warm Blend neutrals */
   --color-canvas: #FDFDFB;
-  --color-cloud: #F4F4F1;
+  --color-cloud:  #F4F4F1;
   --color-pewter: #97979E;
   --color-graphite: #212226;
-  --color-ink: #18181C;
+  --color-ink:    #18181C;
+
+  /* Bridge washes (light) */
+  --wash-cobalt: #EDF0F8;
+  --wash-teal:   #E6F5F3;
+  --wash-amber:  #F5F0E6;
+  --wash-rose:   #FDF0F2;
+
+  /* Dark surfaces (parallel mode — role-inverted) */
+  --dark-canvas: #18181C;   /* page bg on dark */
+  --dark-cloud:  #212226;   /* elevated on dark */
+  --dark-ink:    #F4F4F1;   /* primary text on dark */
+  --dark-mist:   #B0B0B6;   /* muted text on dark (new) */
+  --dark-fog:    #2E2F35;   /* border / divider on dark (new) */
+
+  /* Dark bridge washes */
+  --dark-wash-cobalt: #1B2440;
+  --dark-wash-teal:   #0E2E2A;
+  --dark-wash-amber:  #2E2410;
+  --dark-wash-rose:   #2E1218;
+
+  /* Accent dark-lifts (long-form coloured text on dark only) */
+  --cobalt-lift: #7A9AEF;
+  --teal-lift:   #3DD3BF;
+  --amber-lift:  #F2AE40;
+  --rose-lift:   #F97587;
 
   /* Typography */
   --font-heading: 'Albert Sans', sans-serif;
-  --font-body: 'Lexend', 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-body:    'Lexend', 'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
 
-  /* Spacing */
+  /* Radii */
   --radius-lg: 8px;
   --radius-xl: 12px;
 }

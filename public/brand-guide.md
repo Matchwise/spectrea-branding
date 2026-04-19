@@ -595,19 +595,19 @@ Every piece of written output — product copy, email, social, presentation slid
 - **Avatar:** gradient mark at 400×400 px (square, no crop).
 - **Cover images:** brand gradient bar + tagline on Ink background (LinkedIn); gradient bar at bottom with tagline centered (Twitter/X).
 - **Bio template:** "We connect the dots. Composable knowledge platform."
-- **Quote card:** Ink background, Cloud text, `h-1` brand gradient accent strip at bottom.
-- **Stat card:** Ink background, 3 xl Cloud number, Pewter supporting text, gradient accent strip at bottom.
+- **Quote card:** Ink background, Cloud text, Mist (`#B0B0B6`) attribution, `h-1` brand gradient accent strip at bottom.
+- **Stat card:** Ink background, 3 xl Cloud number, Mist (`#B0B0B6`) supporting text, gradient accent strip at bottom.
 
 ### Presentations
-Slides are **Canvas-default**, Ink for punctuation. The warmth of Canvas is what keeps a Spectrea deck from reading as austere/Linear-like — don't dilute that by flipping whole decks dark.
+Your deck lives on Canvas. The warmth is deliberate — it's what keeps a Spectrea talk from feeling like a system briefing. Ink slides earn their place as punctuation: a number that lands, a section break worth pausing on, the closing ask. Think four-fifths Canvas, one-fifth Ink.
 
-- **Default slide background:** Canvas (`#FDFDFB`). Use for opening, agenda, content, data, closing-thanks — roughly 80%+ of any deck.
-- **Ink slide background:** Ink (`#18181C`) — reserved for section dividers, single-stat emphasis, closing CTA. Keep ≤20% of the deck; contrast is the point, dilute it and both modes weaken.
-- **On Ink slides:** text is Cloud `#F4F4F1`; muted text is Mist `#B0B0B6`; accents carry over unchanged.
+- **Default slide background:** Canvas (`#FDFDFB`). Carries the everyday — opening, agenda, content, data, close — roughly 80%+ of any deck. Add a soft corner wisp of the brand gradient at ~8% opacity so the page breathes rather than sits flat.
+- **Ink slide background:** Ink (`#18181C`). Reserved for section dividers, single-stat emphasis, closing CTA. Keep to ≤20% of the deck; contrast works because it's earned, not because it's the default.
+- **On Ink slides:** text is Cloud `#F4F4F1`; muted is Mist `#B0B0B6`; accents stay themselves. The wisp lifts to ~14% so the warmth still reads against the dark.
 - **Title typography:** Albert Sans 600, 48 px.
 - **Body typography:** Lexend 400, 24 px.
-- **Accent strip:** brand gradient, 4 px tall, at the bottom of title slides (both Canvas and Ink).
-- **Footer:** `Logotype` at `fontSize=9`, `colorMode="ink"` (Canvas slides) or `colorMode="white"` (Ink slides), `color="#97979E"` / `#B0B0B6`.
+- **Accent strip:** brand gradient, 2–4 px tall, at the bottom of title, stat, and divider slides (Canvas or Ink). Leave it off content slides so it keeps its meaning.
+- **Logotype, not just the mark, wherever the slide has room.** Centered `LogotypeGradient` on title and closing-CTA slides (the brand's signature hero treatment). Small `Logotype` footer at `fontSize=9`, bottom-left, on content, stat, and divider slides (`colorMode="ink"` on Canvas with `color="#97979E"`; `colorMode="white"` on Ink with `color="#B0B0B6"`). The bare mark is for favicons and tight spaces — not deck hero moments.
 
 ---
 

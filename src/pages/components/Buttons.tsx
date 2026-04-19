@@ -36,14 +36,14 @@ export default function Buttons() {
     setTimeout(() => setLoading(p => ({ ...p, [key]: false })), 2000)
   }
 
-  /* Dark mode surface colors — Warm Blend palette */
+  /* Dark mode surface colors — Warm Blend palette (parallel mode) */
   const dm = {
-    bg: '#18181C',       // Ink
-    surface: '#212226',  // Graphite
-    border: '#2E2E34',   // Graphite tint
-    text: '#F4F4F1',     // Cloud
-    muted: '#97979E',    // Pewter
-    secondaryBg: '#2E2E34',
+    bg: '#18181C',       // Ink — canvas role
+    surface: '#212226',  // Graphite — elevated role
+    border: '#2E2F35',   // Fog — border / divider
+    text: '#F4F4F1',     // Cloud — primary text
+    muted: '#B0B0B6',    // Mist — muted text on dark
+    secondaryBg: '#2E2F35',
     secondaryHover: '#3A3A40',
   }
 
@@ -68,7 +68,7 @@ export default function Buttons() {
   return (
     <PageShell
       title="Buttons"
-      subtitle="Button styles, sizes, states, and usage rules for the Spectrea design system."
+      subtitle="Six variants, a clear hierarchy, and a single rule underneath — every click should feel like the obvious next move."
     >
       {/* ── Variants ─────────────────────────────────────────────── */}
       <Section>
@@ -137,11 +137,11 @@ export default function Buttons() {
               <button
                 className="px-4 py-2 rounded-lg text-sm font-medium border-2 transition-all btn-focus"
                 style={dark
-                  ? { borderColor: '#97979E', color: '#D1D5DB' }
+                  ? { borderColor: '#B0B0B6', color: '#F4F4F1' }
                   : { borderColor: '#D1D5DB', color: '#97979E' }
                 }
-                onMouseEnter={e => { e.currentTarget.style.backgroundColor = dark ? dm.secondaryBg : '#F4F4F1'; e.currentTarget.style.borderColor = dark ? '#D1D5DB' : '#97979E' }}
-                onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.borderColor = dark ? '#97979E' : '#D1D5DB' }}
+                onMouseEnter={e => { e.currentTarget.style.backgroundColor = dark ? dm.secondaryBg : '#F4F4F1'; e.currentTarget.style.borderColor = dark ? '#F4F4F1' : '#97979E' }}
+                onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.borderColor = dark ? '#B0B0B6' : '#D1D5DB' }}
               >
                 Cancel
               </button>

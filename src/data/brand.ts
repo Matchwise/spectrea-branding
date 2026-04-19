@@ -384,6 +384,7 @@ export interface PaletteOption {
     surface: string
     text: string
     muted: string
+    border: string
   }
 }
 
@@ -405,7 +406,7 @@ export const selectedPalette: PaletteOption = {
     { name: 'Pewter', hex: '#97979E', role: 'muted' },
   ],
   gradient: { from: '#4271DF', via: '#00B6A0', to: '#E19000', angle: 135 },
-  darkMode: { bg: '#18181C', surface: '#212226', text: '#F4F4F1', muted: '#6B6B72' },
+  darkMode: { bg: '#18181C', surface: '#212226', text: '#F4F4F1', muted: '#B0B0B6', border: '#2E2F35' },
 }
 
 // Historical palette explorations were retired in v2. Spectrea is the chosen

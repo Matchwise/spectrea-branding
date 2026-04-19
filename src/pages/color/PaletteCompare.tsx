@@ -286,7 +286,7 @@ export default function PaletteCompare() {
   return (
     <PageShell
       title="Palette Generator"
-      subtitle="Explore OKLCH-harmonized palette variations. Adjust lightness, chroma, and hue while staying within harmony tolerances."
+      subtitle="Nudge lightness, chroma, or hue and see what the family looks like next door — all within OKLCH harmony."
     >
       {/* Generator */}
       <Section>

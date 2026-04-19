@@ -27,6 +27,33 @@
   --color-pewter: #97979E;   /* was #9CA3AF (muted / gray) */
   --color-graphite: #212226; /* was #1F2937 (dark UI) */
   --color-ink:    #18181C;   /* was #111827 (text / dark bg) */
+
+  /* Bridge washes (light — role-inverted counterparts below) */
+  --color-wash-cobalt: #EDF0F8;
+  --color-wash-teal:   #E6F5F3;
+  --color-wash-amber:  #F5F0E6;
+  --color-wash-rose:   #FDF0F2;
+
+  /* Dark surfaces (parallel mode — roles invert). Mist + Fog are new
+     tokens introduced for dark; all accents carry over unchanged
+     (every spectrum hex passes WCAG AA on Ink). */
+  --color-dark-canvas: #18181C;  /* page bg on dark */
+  --color-dark-cloud:  #212226;  /* elevated on dark */
+  --color-dark-ink:    #F4F4F1;  /* primary text on dark */
+  --color-dark-mist:   #B0B0B6;  /* muted text on dark (new) */
+  --color-dark-fog:    #2E2F35;  /* border / divider on dark (new) */
+
+  /* Dark bridge washes */
+  --color-dark-wash-cobalt: #1B2440;
+  --color-dark-wash-teal:   #0E2E2A;
+  --color-dark-wash-amber:  #2E2410;
+  --color-dark-wash-rose:   #2E1218;
+
+  /* Accent dark-lifts — only for long-form coloured text on dark. */
+  --color-cobalt-lift: #7A9AEF;
+  --color-teal-lift:   #3DD3BF;
+  --color-amber-lift:  #F2AE40;
+  --color-rose-lift:   #F97587;
 }
 
 html {

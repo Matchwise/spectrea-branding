@@ -8,7 +8,7 @@ export default function LayoutPage() {
   return (
     <PageShell
       title="Layout"
-      subtitle="Grid systems, spacing scale, elevation, and page structure for Spectrea interfaces."
+      subtitle="The scaffolding underneath every Spectrea surface — grids, spacing, elevation. The part users never notice, which is the point."
     >
       {/* ── Page Structure ───────────────────────────────────────── */}
       <Section>

@@ -21,7 +21,7 @@ export default function Cards() {
   return (
     <PageShell
       title="Cards"
-      subtitle="Card patterns, elevation, content layout, and special states for Spectrea UI."
+      subtitle="The containers that hold most of the product — patterns, elevation, and the small decisions that keep cards feeling like a family."
     >
       {/* ── Card Variants ────────────────────────────────────────── */}
       <Section>

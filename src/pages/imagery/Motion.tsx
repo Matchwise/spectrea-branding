@@ -390,7 +390,7 @@ export default function Motion() {
   return (
     <PageShell
       title="Motion"
-      subtitle="Animation principles, timing, easing, and live demos for Spectrea interfaces."
+      subtitle="How Spectrea moves — purposeful, subtle, natural, and alive. Motion is feedback, not decoration."
     >
       {/* ─── Philosophy ─── */}
       <Section>
@@ -401,7 +401,7 @@ export default function Motion() {
         </h2>
         <div className="bg-ink text-white rounded-xl p-6">
           <p className="text-base font-semibold" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Purposeful, Subtle, Natural — and Alive</p>
-          <p className="text-sm text-stone-400 mt-2 leading-relaxed">
+          <p className="text-sm mt-2 leading-relaxed" style={{ color: '#B0B0B6' }}>
             Every animation must answer: "What does this help the user understand?" If the answer is "nothing," remove it.
             Most interactive motion stays restrained (150–300ms hovers, focus, state changes).
             Three signature primitives below carry the brand's "alive, growing, compounding" claim — used purposefully, not decoratively.
@@ -604,15 +604,15 @@ export default function Motion() {
         <h2 className="text-xl font-semibold text-stone-800 mb-4">CSS Reference</h2>
         <div className="bg-ink rounded-xl p-5 overflow-x-auto">
           <pre className="text-xs leading-relaxed" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-            <span style={{ color: '#97979E' }}>{'/* Duration tokens */\n'}</span>
+            <span style={{ color: '#B0B0B6' }}>{'/* Duration tokens */\n'}</span>
             <span style={{ color: '#F4F4F1' }}>{'--duration-instant: 100ms;\n'}</span>
             <span style={{ color: '#F4F4F1' }}>{'--duration-quick:   150ms;\n'}</span>
             <span style={{ color: '#F4F4F1' }}>{'--duration-normal:  200ms;\n'}</span>
             <span style={{ color: '#F4F4F1' }}>{'--duration-slow:    300ms;\n\n'}</span>
-            <span style={{ color: '#97979E' }}>{'/* Easing tokens */\n'}</span>
+            <span style={{ color: '#B0B0B6' }}>{'/* Easing tokens */\n'}</span>
             <span style={{ color: '#F4F4F1' }}>{'--ease-out:    cubic-bezier(0, 0, 0.2, 1);\n'}</span>
             <span style={{ color: '#F4F4F1' }}>{'--ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);\n\n'}</span>
-            <span style={{ color: '#97979E' }}>{'/* Common patterns */\n'}</span>
+            <span style={{ color: '#B0B0B6' }}>{'/* Common patterns */\n'}</span>
             <span style={{ color: '#E19000' }}>{'.hover-scale'}</span>
             <span style={{ color: '#F4F4F1' }}>{' { transition: transform 150ms var(--ease-out); }\n'}</span>
             <span style={{ color: '#E19000' }}>{'.hover-scale:hover'}</span>
@@ -649,7 +649,7 @@ export default function Motion() {
             ))}
           </div>
           <div className="mt-3 bg-ink rounded-lg px-4 py-3">
-            <pre className="text-xs" style={{ fontFamily: "'JetBrains Mono', monospace", color: '#97979E' }}>
+            <pre className="text-xs" style={{ fontFamily: "'JetBrains Mono', monospace", color: '#B0B0B6' }}>
               <span style={{ color: '#E19000' }}>{'@media'}</span>
               <span style={{ color: '#F4F4F1' }}>{' (prefers-reduced-motion: reduce) {\n'}</span>
               <span style={{ color: '#F4F4F1' }}>{'  *, *::before, *::after {\n'}</span>

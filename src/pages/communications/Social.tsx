@@ -5,7 +5,7 @@ export default function Social() {
   return (
     <PageShell
       title="Social Media"
-      subtitle="Social media guidelines — profile setup, post patterns, and visual templates."
+      subtitle="How Spectrea reads in the feed — profiles, post patterns, and visual templates that hold their shape across platforms."
     >
       {/* Profile setup */}
       <Section>
@@ -96,7 +96,7 @@ export default function Social() {
                 <p className="text-sm font-semibold leading-relaxed" style={{ color: '#F4F4F1', fontFamily: "'Albert Sans', sans-serif" }}>
                   "Stop losing knowledge to silos."
                 </p>
-                <p className="text-xs mt-3" style={{ color: '#97979E' }}>— Spectrea</p>
+                <p className="text-xs mt-3" style={{ color: '#B0B0B6' }}>— Spectrea</p>
               </div>
               <div className="h-1" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
             </div>
@@ -108,7 +108,7 @@ export default function Social() {
             <div className="rounded-xl overflow-hidden" style={{ backgroundColor: '#18181C' }}>
               <div className="p-6 text-center">
                 <p className="text-3xl font-semibold" style={{ color: '#F4F4F1', fontFamily: "'Albert Sans', sans-serif" }}>94%</p>
-                <p className="text-xs mt-1" style={{ color: '#97979E' }}>average confidence across all items</p>
+                <p className="text-xs mt-1" style={{ color: '#B0B0B6' }}>average confidence across all items</p>
               </div>
               <div className="h-1" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
             </div>

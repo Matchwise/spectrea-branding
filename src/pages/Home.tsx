@@ -49,9 +49,9 @@ export default function Home() {
 
         {/* Why We Exist */}
         <div className="mt-8 bg-ink text-white rounded-xl p-6">
-          <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">
+          <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: '#B0B0B6' }}>
             <Tooltip content={brand.why.usage}>
-              <span className="text-stone-400">Why We Exist</span>
+              <span style={{ color: '#B0B0B6' }}>Why We Exist</span>
             </Tooltip>
           </p>
           <p className="text-sm leading-relaxed">{brand.why.statement}</p>

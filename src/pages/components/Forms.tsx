@@ -18,7 +18,7 @@ export default function Forms() {
   return (
     <PageShell
       title="Forms"
-      subtitle="Input styles, selection controls, validation patterns, and form layout rules."
+      subtitle="Inputs, selects, toggles, and the quiet mechanics of a good form — the parts that should disappear while the user thinks."
     >
       {/* ── Text Inputs ──────────────────────────────────────────── */}
       <Section>

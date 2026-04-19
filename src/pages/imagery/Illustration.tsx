@@ -20,8 +20,14 @@ const PAPER = '#FAF8F2'
 
 function Card({ label, children, darkBg = false }: { label: string; children: React.ReactNode; darkBg?: boolean }) {
   return (
-    <div className={`flex flex-col rounded-xl border ${darkBg ? 'border-stone-700' : 'border-stone-200'} overflow-hidden`}>
-      <div className={`px-3 py-2 text-[10px] font-mono uppercase tracking-wider ${darkBg ? 'text-stone-400 bg-ink border-b border-stone-700' : 'text-stone-500 bg-stone-50 border-b border-stone-100'}`}>
+    <div className="flex flex-col rounded-xl border overflow-hidden" style={{ borderColor: darkBg ? '#2E2F35' : '#E7E5E4' }}>
+      <div
+        className="px-3 py-2 text-[10px] font-mono uppercase tracking-wider"
+        style={darkBg
+          ? { color: '#B0B0B6', backgroundColor: '#18181C', borderBottom: '1px solid #2E2F35' }
+          : { color: '#78716C', backgroundColor: '#FAFAF9', borderBottom: '1px solid #F4F4F1' }
+        }
+      >
         {label}
       </div>
       <div className={darkBg ? 'bg-ink' : 'bg-white'}>
@@ -115,10 +121,10 @@ export default function Illustration() {
         <div className="rounded-xl bg-ink text-white p-6 sm:p-8">
           <p className="text-xs font-mono uppercase tracking-wider" style={{ color: COBALT }}>The illustration system · v4</p>
           <h2 className="text-2xl font-semibold mt-1" style={{ fontFamily: "'Albert Sans', sans-serif" }}>One prompt, one substrate, one checklist.</h2>
-          <p className="text-sm text-stone-400 mt-3 max-w-2xl leading-relaxed">
+          <p className="text-sm mt-3 max-w-2xl leading-relaxed" style={{ color: '#B0B0B6' }}>
             v4 is a universal, subject-agnostic prompt — one template renders any scene (person at a desk, city skyline, abstract concept, dashboard) in the brand voice. Warmth comes from palette discipline: supporting elements use 20–60% tints of the primaries, never default to neutrals. Subtle depth from a single darker tonal step per rounded object. No outlines anywhere.
           </p>
-          <p className="text-sm text-stone-400 mt-3 max-w-2xl leading-relaxed">
+          <p className="text-sm mt-3 max-w-2xl leading-relaxed" style={{ color: '#B0B0B6' }}>
             For mid- and higher-complexity illustration, use the prompt in <code className="bg-graphite px-1.5 py-0.5 rounded text-xs">docs/illustration-prompt.md</code> with your image generator. For basic primitives — graph vocabulary, section dividers, in-product state dots — use the hand-coded substrate below.
           </p>
         </div>
@@ -415,15 +421,15 @@ export default function Illustration() {
       <Section title="Using the v4 prompt for hero illustrations">
         <div className="rounded-xl bg-ink text-white p-6 sm:p-8">
           <p className="text-xs font-mono uppercase tracking-wider" style={{ color: AMBER }}>Workflow</p>
-          <ol className="mt-3 space-y-3 text-sm text-stone-300 leading-relaxed">
-            <li><strong className="text-white">1.</strong> Write your subject — one sentence. It can be literally anything; the prompt doesn't constrain it.</li>
-            <li><strong className="text-white">2.</strong> Copy the prompt block from <code className="bg-graphite px-1.5 py-0.5 rounded text-xs">docs/illustration-prompt.md</code>. Paste into Gemini / Firefly / Bing / Imagen / Stable Diffusion.</li>
-            <li><strong className="text-white">3.</strong> Generate four variants.</li>
-            <li><strong className="text-white">4.</strong> Score each against the 8-item checklist above. If 0 of 4 pass, find the rule the model ignored and tighten that section.</li>
-            <li><strong className="text-white">5.</strong> When one lands, save it as the <em>reference image</em> and attach it as a style anchor for every subsequent generation.</li>
-            <li><strong className="text-white">6.</strong> Vectorise the raster (Inkscape → Path → Trace Bitmap). Drop the SVG into <code className="bg-graphite px-1.5 py-0.5 rounded text-xs">/public/illustrations/</code>. Any stroke that sneaks in during trace — delete.</li>
+          <ol className="mt-3 space-y-3 text-sm leading-relaxed" style={{ color: '#B0B0B6' }}>
+            <li><strong style={{ color: '#F4F4F1' }}>1.</strong> Write your subject — one sentence. It can be literally anything; the prompt doesn't constrain it.</li>
+            <li><strong style={{ color: '#F4F4F1' }}>2.</strong> Copy the prompt block from <code className="bg-graphite px-1.5 py-0.5 rounded text-xs">docs/illustration-prompt.md</code>. Paste into Gemini / Firefly / Bing / Imagen / Stable Diffusion.</li>
+            <li><strong style={{ color: '#F4F4F1' }}>3.</strong> Generate four variants.</li>
+            <li><strong style={{ color: '#F4F4F1' }}>4.</strong> Score each against the 8-item checklist above. If 0 of 4 pass, find the rule the model ignored and tighten that section.</li>
+            <li><strong style={{ color: '#F4F4F1' }}>5.</strong> When one lands, save it as the <em>reference image</em> and attach it as a style anchor for every subsequent generation.</li>
+            <li><strong style={{ color: '#F4F4F1' }}>6.</strong> Vectorise the raster (Inkscape → Path → Trace Bitmap). Drop the SVG into <code className="bg-graphite px-1.5 py-0.5 rounded text-xs">/public/illustrations/</code>. Any stroke that sneaks in during trace — delete.</li>
           </ol>
-          <p className="text-xs text-stone-400 mt-5">The prompt is deliberately subject-agnostic. Editorial decisions about <em>what</em> to illustrate belong in content briefs, not in the render prompt.</p>
+          <p className="text-xs mt-5" style={{ color: '#B0B0B6' }}>The prompt is deliberately subject-agnostic. Editorial decisions about <em>what</em> to illustrate belong in content briefs, not in the render prompt.</p>
         </div>
       </Section>
 

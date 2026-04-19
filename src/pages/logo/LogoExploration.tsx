@@ -493,7 +493,7 @@ function AssetGenerator() {
         }}
       >
         {preview}
-        <p className="text-xs" style={{ color: '#97979E' }}>
+        <p className="text-xs" style={{ color: effectiveBg === '#18181C' ? '#B0B0B6' : '#97979E' }}>
           {label} — {isLogotype ? `${size}px height` : `${size}x${size}px`} — {format.toUpperCase()}{effectiveBg !== 'transparent' ? ` on ${effectiveBg === '#FDFDFB' ? 'canvas' : 'ink'}` : ''}
         </p>
       </div>
@@ -521,7 +521,7 @@ export default function LogoExploration() {
   return (
     <PageShell
       title="Specs & Export"
-      subtitle="Full technical specifications and guideline-safe asset generator."
+      subtitle="The spec sheet, plus an exporter — so whatever you need, in whatever format, is one click away and still within the rules."
     >
       {/* Generator */}
       <Section>

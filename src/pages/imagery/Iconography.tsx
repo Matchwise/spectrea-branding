@@ -15,7 +15,7 @@ export default function Iconography() {
   return (
     <PageShell
       title="Iconography"
-      subtitle="Icon library, style specs, sizing, and usage rules for Spectrea interfaces."
+      subtitle="One icon library, one stroke, one grid — so every glyph in Spectrea feels like it was drawn by the same hand."
     >
       {/* ─── The System ─── */}
       <Section>
@@ -26,13 +26,13 @@ export default function Iconography() {
         </h2>
         <div className="bg-ink text-white rounded-xl p-6">
           <p className="text-base font-semibold" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Tabler · Outline · Rounded · 2px Stroke</p>
-          <p className="text-sm text-stone-400 mt-2 leading-relaxed">
+          <p className="text-sm mt-2 leading-relaxed" style={{ color: '#B0B0B6' }}>
             Rounded caps and joins create warmth. Clean geometry reads as intelligent. The 2px stroke has presence without heaviness — grounded but not boring. Outline is the default; filled is reserved for active/selected states.
           </p>
-          <div className="flex items-center gap-4 mt-4 pt-4 border-t border-stone-700">
+          <div className="flex items-center gap-4 mt-4 pt-4" style={{ borderTop: '1px solid #2E2F35' }}>
             <div className="flex items-center gap-3">
               {[TbSearch, TbHome, TbSettings, TbUser, TbBell, TbPlus, TbCheck, TbX, TbEye, TbStack, TbStar, TbChevronRight].map((Icon, i) => (
-                <Icon key={i} size={20} className="text-stone-400" />
+                <Icon key={i} size={20} style={{ color: '#B0B0B6' }} />
               ))}
             </div>
           </div>
@@ -44,14 +44,14 @@ export default function Iconography() {
         <h2 className="text-xl font-semibold text-stone-800 mb-4">How to Use</h2>
         <div className="bg-ink rounded-xl p-5 overflow-x-auto">
           <pre className="text-xs leading-relaxed" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-            <span style={{ color: '#97979E' }}>{'// Install\n'}</span>
+            <span style={{ color: '#B0B0B6' }}>{'// Install\n'}</span>
             <span style={{ color: '#F4F4F1' }}>{'npm install react-icons\n\n'}</span>
-            <span style={{ color: '#97979E' }}>{'// Outline icons (default)\n'}</span>
+            <span style={{ color: '#B0B0B6' }}>{'// Outline icons (default)\n'}</span>
             <span style={{ color: '#E19000' }}>{'import'}</span>
             <span style={{ color: '#F4F4F1' }}>{' { TbSearch, TbBell, TbSettings } '}</span>
             <span style={{ color: '#E19000' }}>{'from'}</span>
             <span style={{ color: '#00B6A0' }}>{" 'react-icons/tb'\n\n"}</span>
-            <span style={{ color: '#97979E' }}>{'// Filled icons (active/selected states)\n'}</span>
+            <span style={{ color: '#B0B0B6' }}>{'// Filled icons (active/selected states)\n'}</span>
             <span style={{ color: '#E19000' }}>{'import'}</span>
             <span style={{ color: '#F4F4F1' }}>{' { TbBellFilled, TbStarFilled } '}</span>
             <span style={{ color: '#E19000' }}>{'from'}</span>
@@ -149,8 +149,8 @@ export default function Iconography() {
                 <TbUser size={20} className="text-current" />
               </div>
               <p className="text-xs font-semibold" style={{ color: c.border ? '#212226' : '#F4F4F1' }}>{c.name}</p>
-              <p className="text-xs font-mono" style={{ color: c.border ? '#97979E' : '#97979E' }}>{c.hex}</p>
-              <p className="text-xs mt-1" style={{ color: c.border ? '#97979E' : '#F4F4F1' }}>{c.use}</p>
+              <p className="text-xs font-mono" style={{ color: c.border ? '#97979E' : '#B0B0B6' }}>{c.hex}</p>
+              <p className="text-xs mt-1" style={{ color: c.border ? '#97979E' : '#B0B0B6' }}>{c.use}</p>
             </div>
           ))}
         </div>

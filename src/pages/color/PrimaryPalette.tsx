@@ -170,7 +170,7 @@ export default function PrimaryPalette() {
       {/* Text & UI */}
       <Section>
         <h2 className="text-xl font-semibold text-stone-800 mb-4">
-          <Tooltip content="Text colors create hierarchy. Ink for primary content, Pewter for secondary/supporting. Graphite is used for dark UI elements (sidebar, dark buttons) and as the primary color in the brand system.">
+          <Tooltip content="Text colors create hierarchy. Ink for primary content, Pewter for secondary/supporting. Graphite does double duty — structural Ink-family surface in product chrome (sidebar, tooltips) and the elevated surface role on dark mode.">
             <span>Text & UI</span>
           </Tooltip>
         </h2>
@@ -182,7 +182,7 @@ export default function PrimaryPalette() {
           />
           <ColorCard
             name="Graphite" hex="#212226" role="primary"
-            usage="Dark UI elements: sidebar backgrounds, dark buttons, tooltip backgrounds, footer. Also the brand's primary neutral."
+            usage="Structural Ink-family surface — sidebar, tooltip, footer chrome. Doubles as the elevated surface role on dark mode (equivalent to Cloud on light)."
             textColor="#F4F4F1"
           />
           <ColorCard

@@ -21,12 +21,12 @@ const variants: Variant[] = [
   { id: '3', name: 'Ink mark', colorMode: 'ink', wordmark: false, bgColor: '#FDFDFB', borderColor: '#E5E7EB' },
   { id: '4', name: 'Ink lockup', colorMode: 'ink', wordmark: true, monoColor: '#18181C', bgColor: '#FDFDFB', borderColor: '#E5E7EB' },
   { id: '5', name: 'Grey mark', colorMode: 'grey', wordmark: false, bgColor: '#FDFDFB', borderColor: '#E5E7EB', note: 'Watermark only' },
-  { id: '6', name: 'Primary on dark', colorMode: 'cool', dotColorMode: 'grey', wordmark: false, bgColor: '#18181C', borderColor: '#2E2E34' },
-  { id: '7', name: 'Primary lockup on dark', colorMode: 'cool', dotColorMode: 'grey', wordmark: true, bgColor: '#18181C', borderColor: '#2E2E34' },
-  { id: '8', name: 'White mark', colorMode: 'white', wordmark: false, bgColor: '#18181C', borderColor: '#2E2E34' },
-  { id: '9', name: 'White lockup', colorMode: 'white', wordmark: true, monoColor: '#FDFDFB', bgColor: '#18181C', borderColor: '#2E2E34' },
+  { id: '6', name: 'Primary on dark', colorMode: 'cool', dotColorMode: 'grey', wordmark: false, bgColor: '#18181C', borderColor: '#2E2F35' },
+  { id: '7', name: 'Primary lockup on dark', colorMode: 'cool', dotColorMode: 'grey', wordmark: true, bgColor: '#18181C', borderColor: '#2E2F35' },
+  { id: '8', name: 'White mark', colorMode: 'white', wordmark: false, bgColor: '#18181C', borderColor: '#2E2F35' },
+  { id: '9', name: 'White lockup', colorMode: 'white', wordmark: true, monoColor: '#FDFDFB', bgColor: '#18181C', borderColor: '#2E2F35' },
   { id: '10', name: 'Ink circle', colorMode: 'white', wordmark: false, bgColor: '#F4F4F1', borderColor: '#E5E7EB', circle: { fill: '#18181C' } },
-  { id: '11', name: 'White circle', colorMode: 'ink', wordmark: false, bgColor: '#18181C', borderColor: '#2E2E34', circle: { fill: '#FDFDFB' } },
+  { id: '11', name: 'White circle', colorMode: 'ink', wordmark: false, bgColor: '#18181C', borderColor: '#2E2F35', circle: { fill: '#FDFDFB' } },
 ]
 
 function VariantCard({ v, highlight }: { v: Variant; highlight?: boolean }) {
@@ -192,11 +192,11 @@ export default function Variations() {
               <p className="text-xs text-stone-500 mt-1">All #18181C. Formal, co-branding, single-color print.</p>
             </div>
           </div>
-          <div className="border border-stone-200 rounded-xl p-4 flex flex-col items-center gap-3 bg-ink">
+          <div className="rounded-xl p-4 flex flex-col items-center gap-3 bg-ink" style={{ border: '1px solid #2E2F35' }}>
             <StaticLogo size={48} colorMode="white" />
             <div className="text-center">
               <p className="text-xs font-semibold text-white">White</p>
-              <p className="text-xs text-stone-400 mt-1">All #FDFDFB. Dark backgrounds, overlays.</p>
+              <p className="text-xs mt-1" style={{ color: '#B0B0B6' }}>All #FDFDFB. Dark backgrounds, overlays.</p>
             </div>
           </div>
           <div className="border border-stone-200 rounded-xl p-4 flex flex-col items-center gap-3">
@@ -329,10 +329,10 @@ export default function Variations() {
           </div>
           {/* Mono white on dark */}
           <div className="p-6 bg-ink space-y-4">
-            <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider mb-1">Mono — White</p>
+            <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: '#B0B0B6' }}>Mono — White</p>
             {[48, 36].map(size => (
               <div key={size} className="flex items-center gap-4">
-                <span className="text-xs font-mono text-stone-500 w-10 flex-shrink-0">{size}px</span>
+                <span className="text-xs font-mono w-10 flex-shrink-0" style={{ color: '#B0B0B6' }}>{size}px</span>
                 <Logotype fontSize={size} colorMode="white" color="#FDFDFB" />
               </div>
             ))}
