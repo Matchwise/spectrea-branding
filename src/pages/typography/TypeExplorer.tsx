@@ -180,7 +180,7 @@ export default function TypeExplorer() {
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use Albert Sans for long body paragraphs</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use Bold 700 for anything except the logo and hero headlines</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use all-caps for body text (headings only, sparingly)</li>
-              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Go below 12px for any text (accessibility minimum)</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Go below 12px for body or prose text (10px is permitted only for uppercase-tracked overlines, numeric badges, and metadata chips; below 10px is specimen-only)</li>
             </ul>
           </div>
         </div>

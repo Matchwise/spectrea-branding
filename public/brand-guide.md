@@ -409,6 +409,8 @@ Must use **adjacent** spectrum pairs. Skip pairs (Cobalt→Amber direct, Teal→
 | Body | Lexend | 300, 400, 500, 600 | Body text, descriptions, form labels, nav items; 600 for overlines and small section labels (uppercase/tracked) |
 | Code / metadata | JetBrains Mono | 400 | Inline code, data values, entity types, provenance |
 
+**Minimum sizes.** Body and prose: 16 px preferred, 14 px minimum. Captions and secondary labels: 12 px minimum. 10 px is permitted only for uppercase-tracked overlines, numeric badges, and metadata chips where the letter-spacing and weight restore legibility. Below 10 px is specimen-only (mini-preview UI illustrating another system at small scale) and must never appear in shipped production surfaces.
+
 ### Type scale
 
 ![Type scale ladder — Display through Code](/brand-assets/type-scale.svg)
