@@ -30,3 +30,4 @@ tsconfig.tsbuildinfo
 /*.png
 
 .superpowers/
+.illustration-lab/

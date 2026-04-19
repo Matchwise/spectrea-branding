@@ -480,10 +480,6 @@ For any new illustration, ask three questions in order:
 
 Canva is reserved for template-driven recurring formats. If "not sure" — default to in-house, render through the loop, evaluate honestly. If malformed, escalate.
 
-### Bauhaus figure specialisation
-
-When an illustration needs to depict people explicitly, use the `SpectreaFigure` component — a Layer-2 Form-layer construct (rounded rectangles for body parts) wrapped in Layer-1 atoms (head Dot, hand Dots, optional idea Trail / Halo). Standing pose only. For scenes needing pose articulation (a person at a desk reaching for a coffee mug, conversation with body language), generate via AI image-gen instead.
-
 ### What the system never does
 
 - Outlines on filled shapes (outlined is a treatment, applied deliberately — not the default)
