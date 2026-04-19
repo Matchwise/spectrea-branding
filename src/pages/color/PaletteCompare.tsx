@@ -408,10 +408,10 @@ export default function PaletteCompare() {
                       <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: c.hex }} />
                       <span className="text-[10px] font-medium text-stone-700">{c.name}</span>
                     </div>
-                    <span className="text-[10px] font-mono" style={whiteOk ? { color: '#57534E' } : { color: '#F24260', fontWeight: 600 }}>
+                    <span className="text-[10px] font-mono" style={whiteOk ? { color: '#57534E' } : { color: '#F24260' }}>
                       {vsWhite.toFixed(2)}:1 {whiteOk ? '' : 'FAIL'}
                     </span>
-                    <span className="text-[10px] font-mono" style={inkOk ? { color: '#57534E' } : { color: '#F24260', fontWeight: 600 }}>
+                    <span className="text-[10px] font-mono" style={inkOk ? { color: '#57534E' } : { color: '#F24260' }}>
                       {vsInk.toFixed(2)}:1 {inkOk ? '' : 'FAIL'}
                     </span>
                     <span className="text-[10px] font-medium" style={{ color: whiteOk && inkOk ? '#008775' : whiteOk || inkOk ? '#D97706' : '#F24260' }}>

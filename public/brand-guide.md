@@ -406,7 +406,7 @@ Must use **adjacent** spectrum pairs. Skip pairs (Cobalt→Amber direct, Teal→
 | Role | Family | Weights | Use |
 |---|---|---|---|
 | Headings | Albert Sans | 600 (Semibold), 700 (Bold — logo wordmark, hero only) | Page titles, section headings, card titles, stat values |
-| Body | Lexend | 300, 400, 500 | Body text, descriptions, form labels, nav items |
+| Body | Lexend | 300, 400, 500, 600 | Body text, descriptions, form labels, nav items; 600 for overlines and small section labels (uppercase/tracked) |
 | Code / metadata | JetBrains Mono | 400 | Inline code, data values, entity types, provenance |
 
 ### Type scale
@@ -697,7 +697,7 @@ Tabler Icons via `react-icons/tb` — outline and filled from one library. 2 px 
 ### Fonts
 All via Google Fonts:
 - [Albert Sans](https://fonts.google.com/specimen/Albert+Sans) (weights 600, 700)
-- [Lexend](https://fonts.google.com/specimen/Lexend) (weights 300, 400, 500)
+- [Lexend](https://fonts.google.com/specimen/Lexend) (weights 300, 400, 500, 600)
 - [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) (weight 400)
 
 ---

@@ -15,7 +15,7 @@ export default function Tooltip({ content, children }: TooltipProps) {
       onMouseLeave={() => setVisible(false)}
     >
       {children}
-      <span className="ml-1 inline-flex items-center justify-center w-4 h-4 rounded-full bg-stone-200 text-stone-500 text-xs font-bold cursor-help select-none flex-shrink-0">
+      <span className="ml-1 inline-flex items-center justify-center w-4 h-4 rounded-full bg-stone-200 text-stone-500 text-xs font-semibold cursor-help select-none flex-shrink-0">
         ?
       </span>
       <span

@@ -87,7 +87,7 @@ The brand combines spectrum accents (Cobalt, Teal, Amber, Rose) with a Warm Blen
 - **Slides:** Canvas-default, Ink for punctuation (section dividers, single-stat emphasis, closing CTA). Target ~80/20 Canvas/Ink; contrast is the point, so dilution weakens both modes.
 - **Brand gradient:** `linear-gradient(135deg in oklch, #4271DF, #00B6A0, #E19000)` with sRGB fallback for older browsers.
 - **Lockup gradient (LogotypeGradient only):** 5-stop full spectrum with `#6FB884` intermediate at 55%.
-- **Typefaces:** Albert Sans (headings, 600/700), Lexend (body, 300/400/500), JetBrains Mono (code, 400).
+- **Typefaces:** Albert Sans (headings, 600/700), Lexend (body, 300/400/500/600), JetBrains Mono (code, 400).
 - **Archetypes (v2 tri-domain split):** Magician on marketing · Sage on trust surfaces · Creator on product surfaces.
 - **Personality (v2, 4 traits):** Warm · Perceptive · Grounded · Adaptive (each with a guardrail). The brand's discipline and consistency are enforced structurally by the system rules (fixed primitives, fixed palette, fixed motion language) rather than claimed as a personality trait.
 - **Voice formula (v2):** "Clarity of explanation + experiential momentum. Tech earns its place by **showing its work**." (Replaces the v1 "explaining the magic" formulation.)

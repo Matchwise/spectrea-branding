@@ -512,7 +512,7 @@ export default function Buttons() {
                 <button
                   key={label}
                   onClick={() => setToolbarActive(i)}
-                  className={`px-3 py-1.5 text-xs font-medium transition-all outline-none ${
+                  className={`px-3 py-1.5 text-xs font-medium transition-all btn-focus ${
                     i === toolbarActive
                       ? 'bg-stone-800 text-white'
                       : 'text-stone-500 hover:bg-stone-50 hover:text-stone-800 active:bg-stone-100'
