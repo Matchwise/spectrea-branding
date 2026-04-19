@@ -244,7 +244,7 @@ function FocusRingDemo() {
       <input
         type="text"
         placeholder="Tab to focus..."
-        className="px-3 py-2 text-xs border border-stone-200 rounded-lg bg-white text-stone-700 placeholder:text-stone-400 transition-all duration-150 ease-out focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 w-48"
+        className="px-3 py-2 text-xs border border-stone-200 rounded-lg bg-white text-stone-700 placeholder:text-pewter transition-all duration-150 ease-out focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 w-48"
       />
       <span className="text-[10px] font-mono text-stone-400">border + ring · 150ms · ease-out</span>
     </div>

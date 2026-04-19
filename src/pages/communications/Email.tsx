@@ -54,7 +54,7 @@ export default function Email() {
                 </div>
                 <p className="text-sm font-semibold text-stone-900 mb-2" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Your item was added</p>
                 <p className="text-xs text-stone-600 leading-relaxed mb-3">"[Item title]" is in. We've already linked it to a few related things you have.</p>
-                <button className="px-3 py-1.5 rounded-md text-xs font-medium text-white" style={{ backgroundColor: '#4271DF' }}>Open</button>
+                <button className="px-3 py-1.5 rounded-md text-xs font-medium text-white btn-focus" style={{ backgroundColor: '#4271DF' }}>Open</button>
                 <p className="text-xs text-stone-400 mt-4 pt-3 border-t border-stone-100">You received this because you added something to Spectrea.</p>
               </div>
             </div>
@@ -74,7 +74,7 @@ export default function Email() {
               <div className="h-1" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
               <div className="p-5 bg-white">
                 <p className="text-xs text-stone-600 leading-relaxed">Every interaction now strengthens what you already have. Connections you might have missed start surfacing on their own...</p>
-                <button className="mt-3 px-3 py-1.5 rounded-md text-xs font-medium text-white" style={{ backgroundColor: '#4271DF' }}>Read More</button>
+                <button className="mt-3 px-3 py-1.5 rounded-md text-xs font-medium text-white btn-focus" style={{ backgroundColor: '#4271DF' }}>Read More</button>
               </div>
             </div>
           </div>

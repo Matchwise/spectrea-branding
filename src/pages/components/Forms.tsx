@@ -36,7 +36,7 @@ export default function Forms() {
             <input
               type="text"
               placeholder="e.g., Quarterly summary"
-              className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-stone-900 placeholder:text-stone-400 outline-none focus:border-brand focus:border-2 transition-colors"
+              className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-stone-900 placeholder:text-pewter outline-none focus:border-brand focus:border-2 transition-colors"
             />
             <p className="text-xs text-stone-400 mt-1">Helper text provides context or constraints.</p>
           </div>
@@ -49,7 +49,7 @@ export default function Forms() {
               placeholder="name@example.com"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              className="w-full px-3 py-2 text-sm rounded-lg bg-white text-stone-900 placeholder:text-stone-400 outline-none transition-shadow"
+              className="w-full px-3 py-2 text-sm rounded-lg bg-white text-stone-900 placeholder:text-pewter outline-none transition-shadow"
               style={emailValid === null
                 ? { border: '1px solid #E5E7EB' }
                 : emailValid
@@ -68,7 +68,7 @@ export default function Forms() {
             <input
               type="text"
               placeholder="Search..."
-              className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-stone-900 placeholder:text-stone-400 outline-none focus:border-brand focus:border-2 transition-colors"
+              className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-stone-900 placeholder:text-pewter outline-none focus:border-brand focus:border-2 transition-colors"
             />
           </div>
 
@@ -100,7 +100,7 @@ export default function Forms() {
             <textarea
               placeholder="Describe this item..."
               rows={3}
-              className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-stone-900 placeholder:text-stone-400 resize-none outline-none focus:border-brand focus:border-2 transition-colors"
+              className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-stone-900 placeholder:text-pewter resize-none outline-none focus:border-brand focus:border-2 transition-colors"
             />
           </div>
         </div>
