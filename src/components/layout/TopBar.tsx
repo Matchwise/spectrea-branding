@@ -6,7 +6,7 @@ export default function TopBar({ onMenuToggle }: { onMenuToggle: () => void }) {
       <div className="flex items-center gap-3">
         <button
           onClick={onMenuToggle}
-          className="p-2 rounded-lg hover:bg-stone-100 transition-colors duration-150 lg:hidden"
+          className="p-2 rounded-lg hover:bg-stone-100 transition-colors duration-150 lg:hidden btn-focus"
           aria-label="Toggle menu"
         >
           <TbMenu2 size={20} className="text-stone-500" />

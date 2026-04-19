@@ -196,14 +196,14 @@ function ScaleUpDemo() {
           >
             <div className="flex items-center justify-between mb-3">
               <p className="text-sm font-semibold text-stone-800" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Create</p>
-              <button onClick={() => setOpen(false)} className="text-stone-400 hover:text-stone-600 transition-colors">
+              <button onClick={() => setOpen(false)} aria-label="Close" className="text-stone-400 hover:text-stone-600 transition-colors btn-focus">
                 <TbX size={16} />
               </button>
             </div>
             <p className="text-xs text-stone-500 mb-4">This modal opened with scale(0.95→1) + fade. 200ms ease-out.</p>
             <div className="flex justify-end gap-2">
-              <button onClick={() => setOpen(false)} className="px-3 py-1.5 rounded-lg text-xs text-stone-500 border border-stone-200">Cancel</button>
-              <button onClick={() => setOpen(false)} className="px-3 py-1.5 rounded-lg text-xs text-white" style={{ backgroundColor: '#4271DF' }}>Create</button>
+              <button onClick={() => setOpen(false)} className="px-3 py-1.5 rounded-lg text-xs text-stone-500 border border-stone-200 btn-focus hover:bg-stone-50 transition-colors">Cancel</button>
+              <button onClick={() => setOpen(false)} className="px-3 py-1.5 rounded-lg text-xs text-white bg-brand hover:bg-brand-hover active:bg-brand-active btn-focus transition-colors">Create</button>
             </div>
           </div>
         </div>
@@ -222,13 +222,13 @@ function ColorTransitionDemo() {
     <div className="border border-stone-200 rounded-xl p-5 flex flex-col items-center gap-3">
       <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider">Button States</p>
       <div className="flex gap-3">
-        <button className="px-4 py-2 rounded-lg text-xs font-medium text-white transition-all duration-150 ease-out hover:brightness-90 active:brightness-75" style={{ backgroundColor: '#4271DF' }}>
+        <button className="px-4 py-2 rounded-lg text-xs font-medium text-white bg-brand transition-all duration-150 ease-out hover:bg-brand-hover active:bg-brand-active btn-focus">
           Primary
         </button>
-        <button className="px-4 py-2 rounded-lg text-xs font-medium text-stone-700 bg-stone-100 transition-all duration-150 ease-out hover:bg-stone-200 active:bg-stone-300">
+        <button className="px-4 py-2 rounded-lg text-xs font-medium text-stone-700 bg-stone-100 transition-all duration-150 ease-out hover:bg-stone-200 active:bg-stone-300 btn-focus">
           Secondary
         </button>
-        <button className="px-4 py-2 rounded-lg text-xs font-medium text-stone-500 border border-stone-200 transition-all duration-150 ease-out hover:border-stone-300 hover:bg-stone-50">
+        <button className="px-4 py-2 rounded-lg text-xs font-medium text-stone-500 border border-stone-200 transition-all duration-150 ease-out hover:border-stone-300 hover:bg-stone-50 btn-focus">
           Ghost
         </button>
       </div>
