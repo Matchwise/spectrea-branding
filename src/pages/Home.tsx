@@ -83,12 +83,12 @@ export default function Home() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 sm:mb-14">
         <div className="bg-cloud rounded-xl p-5 border border-stone-100">
           <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">
-            <Tooltip content="Three archetypes split across surface domains. Each owns one mood: Magician for marketing, Sage for trust surfaces, Creator for product. The visual aesthetic stays the same across all three; only voice changes.">
+            <Tooltip content="One character, three inseparable facets. Every brand moment — marketing, trust, product — reveals, grounds, and equips in a single motion. The emphasis shifts with context; the character doesn't.">
               <span className="text-pewter">Archetypes</span>
             </Tooltip>
           </p>
-          <p className="text-sm font-semibold text-ink">{brand.archetypes.map(a => a.name.replace('The ', '')).join(' · ')}</p>
-          <p className="text-xs text-slate mt-1">Magician (marketing) · Sage (trust) · Creator (product). One archetype per surface.</p>
+          <p className="text-sm font-semibold text-ink">{brand.archetypes.map(a => a.name).join(' → ')}</p>
+          <p className="text-xs text-slate mt-1">Three facets, one motion. Reveal (Magician) · Ground (Sage) · Equip (Creator) — present in every brand moment.</p>
         </div>
         <div className="bg-cloud rounded-xl p-5 border border-stone-100">
           <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">

@@ -148,25 +148,28 @@ export default function BrandStory() {
         </div>
       </Section>
 
-      {/* Archetypes — tri-domain split */}
+      {/* Archetypes — three facets, one motion */}
       <Section>
         <h2 className="text-xl font-semibold text-ink mb-2">
-          <Tooltip content="Three archetypes assigned to surface domains. Each shapes the EMOTIONAL TONE on its surface; the VISUAL AESTHETIC (spectrum + graph + Warm Blend + modern sans) stays consistent across all three. Use as a gut-check: 'Which surface is this for, and which archetype owns it?'">
+          <Tooltip content="Spectrea is one character, not three. The traditional archetypes — Magician, Sage, Creator — operate as inseparable facets of a single gesture: reveal → ground → equip. Every brand moment carries all three; the emphasis shifts with context, the character doesn't.">
             <span>Brand Archetypes</span>
           </Tooltip>
         </h2>
         <p className="text-sm text-iron mb-5 leading-relaxed">
-          Spectrea splits its archetype across three surface domains. The voice and mood change by surface; the visual aesthetic does not. This lets each surface speak its native register without fragmenting the brand.
+          Three facets, one motion: <strong>reveal → ground → equip</strong>. Spectrea doesn't split into three personas for three surfaces — it's one character whose way of operating always contains all three movements. The emphasis shifts with context; the character doesn't.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {brand.archetypes.map(a => (
             <div key={a.name} className="bg-cloud rounded-xl p-5 border border-stone-200">
-              <p className="text-xs font-semibold uppercase tracking-wider text-pewter mb-1">{a.surface}</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-pewter mb-1">{a.facet} facet</p>
               <h3 className="text-lg font-semibold text-ink">{a.name}</h3>
               <p className="text-sm text-iron mt-2 leading-relaxed">{a.description}</p>
             </div>
           ))}
         </div>
+        <p className="text-xs text-slate mt-4 leading-relaxed">
+          The through-line is already in the tagline — <em>We connect the dots</em> = see them (reveal) · trust them (ground) · build on them (equip). If any of the three is missing, the copy doesn't sound like Spectrea.
+        </p>
         <div className="mt-5 pt-5 border-t border-stone-200">
           <p className="text-xs text-pewter">
             Reference brands: {brand.aspirationalBrands.join(', ')}

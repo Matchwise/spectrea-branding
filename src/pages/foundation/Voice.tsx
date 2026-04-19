@@ -19,20 +19,29 @@ export default function Voice() {
         </p>
       </Section>
 
-      {/* Tri-archetype surface mapping */}
-      <Section title="One Voice, Three Archetypes by Surface">
+      {/* Three facets, one motion */}
+      <Section title="Three Facets, One Motion">
         <p className="text-sm text-slate mb-4 leading-relaxed">
-          Spectrea splits its archetype across three surface domains. The voice formula stays the same;
-          the <strong>emotional register</strong> shifts with the archetype that owns each surface.
+          Spectrea is one character whose way of operating always contains three inseparable movements:
+          <strong> reveal → ground → equip</strong>. These aren't three personas for three surfaces — they're
+          facets of a single gesture. Every brand moment carries all three; the <em>emphasis</em> shifts with
+          context, the character doesn't.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {brand.archetypes.map(a => (
             <div key={a.name} className="bg-cloud rounded-lg p-4 border border-stone-200">
-              <p className="text-xs font-semibold uppercase tracking-wider text-pewter mb-1">{a.surface}</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-pewter mb-1">{a.facet} facet</p>
               <p className="text-sm font-semibold text-ink mb-1">{a.name}</p>
               <p className="text-xs text-slate leading-relaxed">{a.description}</p>
             </div>
           ))}
+        </div>
+        <div className="mt-4 bg-brand/5 rounded-lg px-4 py-3 border border-brand/10">
+          <p className="text-xs text-brand leading-relaxed">
+            <strong>Rule of three.</strong> If any of the three is missing, the copy doesn't sound like Spectrea.
+            Reveal-without-ground is hype. Ground-without-equip is stuffy. Equip-without-reveal is tools without a reason.
+            The through-line is already in the tagline — <em>We connect the dots</em> = see them (reveal) · trust them (ground) · build on them (equip).
+          </p>
         </div>
       </Section>
 

@@ -70,28 +70,37 @@ export const brand = {
     ],
   },
 
-  // --- Brand Archetypes (tri-domain split) ---
-  // Each archetype owns one surface domain and shapes the emotional tone there.
-  // The visual aesthetic stays consistent across surfaces (see "one register everywhere"
-  // in the v2 design spec); only voice and mood change per archetype.
+  // --- Brand Archetypes (three facets, one motion) ---
+  // Spectrea is one character whose way of operating always contains three
+  // inseparable movements: reveal → ground → equip. The three traditional
+  // archetypes (Magician / Sage / Creator) aren't personas for three surfaces;
+  // they're facets of a single gesture. Every brand moment — marketing hero,
+  // error screen, editor interaction — carries all three. The emphasis shifts
+  // with context; the character doesn't.
+  //
+  // The through-line is already encoded in the tagline ("We connect the dots"
+  // = see → trust → build), the strategic claim ("See it whole. Trust what you
+  // see. Build on what you find."), and the voice formula
+  // ("Clarity of explanation + experiential momentum. Tech earns its place by
+  // showing its work.").
   archetypes: [
     {
-      name: 'The Magician',
-      surface: 'Marketing',
+      name: 'Reveal',
+      facet: 'Magician',
       description:
-        'The moment of seeing what was hidden. The thrill of pattern emerging from chaos. Owns landing pages, launch videos, social, blog headers — wherever the brand surprises and delights.',
+        'Brings the hidden pattern into view. The moment of seeing what was always there but never noticed — the insight surfacing, the connection clicking. Without reveal, copy is flat; nothing feels discovered.',
     },
     {
-      name: 'The Sage',
-      surface: 'Trust',
+      name: 'Ground',
+      facet: 'Sage',
       description:
-        'Authority through clarity. The calm of being able to see exactly how something is true. Owns settings, errors, documentation, security pages — wherever trust gets earned by showing the work.',
+        'Shows the evidence. Makes the reasoning visible. The calm of being able to see exactly how something is true — sources, confidence, traceable logic. Without ground, reveal is hype.',
     },
     {
-      name: 'The Creator',
-      surface: 'Product',
+      name: 'Equip',
+      facet: 'Creator',
       description:
-        'The joy of making. Building something that\'s yours. Owns the spaces where users compose and create — wherever the brand hands the user the tools and steps back.',
+        'Hands you the tools to build on what you find. Gives the user agency, stays out of the way. The joy of making something that\'s yours. Without equip, the brand informs but never empowers.',
     },
   ] as const,
 

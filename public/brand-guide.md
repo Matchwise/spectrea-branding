@@ -35,14 +35,21 @@ Primary theme is **Connection** — the headline "We connect the dots" and the i
 2. **Compounding Intelligence** — "It gets smarter with every interaction." Your second year is incomparably better than your first.
 3. **Composability** — "Build exactly what you need." Simple, combinable parts assembled into any solution.
 
-### Archetypes — tri-domain split
-Spectrea splits its archetype across three surface domains. The voice and emotional register shift with the archetype that owns each surface; the visual aesthetic (spectrum + graph + Warm Blend + modern sans) stays consistent across all three.
+### Archetypes — three facets, one motion
+Spectrea is **one character**, not three. The traditional archetypes — Magician, Sage, Creator — operate as inseparable facets of a single gesture: **reveal → ground → equip**. Every brand moment (marketing hero, error screen, editor interaction) carries all three; the emphasis shifts with context, the character doesn't.
 
-| Archetype | Owns | The feeling it creates |
+| Facet | Movement | What it does |
 |---|---|---|
-| **The Magician** | Marketing surfaces (landing pages, launch video, social, blog headers) | The moment of seeing what was hidden. The thrill of pattern emerging from chaos. |
-| **The Sage** | Trust surfaces (settings, errors, documentation, security pages) | Authority through clarity. The calm of being able to see exactly how something is true. |
-| **The Creator** | Product surfaces (composition, editor, workflows) | The joy of making. Building something that's yours. |
+| **Reveal** (Magician) | Brings the hidden pattern into view | The moment of seeing what was always there but never noticed — the insight surfacing, the connection clicking. Without reveal, copy is flat; nothing feels discovered. |
+| **Ground** (Sage) | Shows the evidence | The calm of being able to see exactly how something is true — sources, confidence, traceable logic. Without ground, reveal is hype. |
+| **Equip** (Creator) | Hands you the tools | Gives the user agency, stays out of the way. The joy of making something that's yours. Without equip, the brand informs but never empowers. |
+
+**Rule of three.** If any of the three is missing, the copy doesn't sound like Spectrea. Reveal-without-ground is hype. Ground-without-equip is stuffy. Equip-without-reveal is tools without a reason.
+
+The through-line is already encoded in the brand:
+- **Tagline** — *We connect the dots* = see them (reveal) · trust them (ground) · build on them (equip).
+- **Strategic claim** — *"See it whole. Trust what you see. Build on what you find."* (literally reveal → ground → equip).
+- **Voice formula** — *"Clarity of explanation [ground] + experiential momentum [reveal]. Tech earns its place by showing its work [equip]."*
 
 ### Personality (four traits with guardrails)
 - **Warm** — respects the person behind every interaction. *Guardrail: not soft — trust users to be capable.*
@@ -83,12 +90,14 @@ The brand's *consistency and discipline* — fixed primitives, fixed palette, fi
 
 The formula applies on every surface. Tech doesn't earn its place by impressing or by sleight-of-hand; it earns it by *showing its work* — pointing to the reasoning, the evidence, the source. Confidence comes from being able to see how the answer was reached, not from being told to trust it.
 
-### One voice, three archetypes by surface
-The voice formula stays the same; the *emotional register* shifts with the archetype that owns each surface:
+### One voice — three facets in every moment
+The voice formula is triadic by construction. Every piece of Spectrea copy — regardless of surface — should carry all three facets together. What shifts with context is which facet leads:
 
-- **Magician on marketing** — leads with discovery, surprise, the moment of seeing connections that were always there.
-- **Sage on trust surfaces** — leads with verification, sources, inspection. Anywhere users go to confirm, review, or understand: settings, errors, audit views, docs, security pages.
-- **Creator on product** — leads with agency, composition, building. Anywhere users assemble or shape something of their own.
+- On marketing, **reveal** leads. A hero headline starts by surfacing what was hidden, *then* grounds it with specifics, *then* invites the reader to try it.
+- On trust surfaces (errors, docs, settings, security), **ground** leads. The message starts with what is true, *reveals* the underlying cause, and *equips* the reader with the next step.
+- On product, **equip** leads. The copy hands the user the tool, makes the result *visible* (reveal), and surfaces the reasoning when asked (ground).
+
+The facet that leads changes; the other two are always present. A marketing page that only reveals is hype. A doc page that only grounds is stuffy. A product screen that only equips is a toolbar. Spectrea reads as Spectrea when all three are in every moment.
 
 ### Tone spectrum
 Six contexts, each with the right (left) and wrong (right) version. Read each pair together — the contrast is what the rule looks like in practice.
