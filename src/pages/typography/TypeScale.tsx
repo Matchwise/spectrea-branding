@@ -28,7 +28,7 @@ function CopyButton({ value }: { value: string }) {
   return (
     <button
       onClick={() => { navigator.clipboard.writeText(value); setCopied(true); setTimeout(() => setCopied(false), 1500) }}
-      className="text-xs font-mono text-stone-400 hover:text-stone-600 transition-colors"
+      className="text-xs font-mono text-stone-400 hover:text-stone-600 transition-colors btn-focus rounded"
     >
       {copied ? 'Copied!' : value}
     </button>

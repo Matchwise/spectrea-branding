@@ -296,13 +296,13 @@ export default function PaletteCompare() {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setMode('shared')}
-                className={`text-xs font-medium px-3 py-1 rounded-lg transition-colors ${mode === 'shared' ? 'bg-white text-stone-800 shadow-sm border border-stone-200' : 'text-stone-400'}`}
+                className={`text-xs font-medium px-3 py-1 rounded-lg transition-colors btn-focus ${mode === 'shared' ? 'bg-white text-stone-800 shadow-sm border border-stone-200' : 'text-stone-400'}`}
               >
                 Shared lightness
               </button>
               <button
                 onClick={() => setMode('independent')}
-                className={`text-xs font-medium px-3 py-1 rounded-lg transition-colors ${mode === 'independent' ? 'bg-white text-stone-800 shadow-sm border border-stone-200' : 'text-stone-400'}`}
+                className={`text-xs font-medium px-3 py-1 rounded-lg transition-colors btn-focus ${mode === 'independent' ? 'bg-white text-stone-800 shadow-sm border border-stone-200' : 'text-stone-400'}`}
               >
                 Independent lightness
               </button>
@@ -320,13 +320,13 @@ export default function PaletteCompare() {
                     <span className="text-xs font-medium text-stone-600">Chroma</span>
                     <button
                       onClick={() => setChromaMode('matched')}
-                      className={`text-[10px] font-medium px-2 py-0.5 rounded transition-colors ${chromaMode === 'matched' ? 'bg-white text-stone-800 shadow-sm border border-stone-200' : 'text-stone-400'}`}
+                      className={`text-[10px] font-medium px-2 py-0.5 rounded transition-colors btn-focus ${chromaMode === 'matched' ? 'bg-white text-stone-800 shadow-sm border border-stone-200' : 'text-stone-400'}`}
                     >
                       Matched (same absolute C)
                     </button>
                     <button
                       onClick={() => setChromaMode('relative')}
-                      className={`text-[10px] font-medium px-2 py-0.5 rounded transition-colors ${chromaMode === 'relative' ? 'bg-white text-stone-800 shadow-sm border border-stone-200' : 'text-stone-400'}`}
+                      className={`text-[10px] font-medium px-2 py-0.5 rounded transition-colors btn-focus ${chromaMode === 'relative' ? 'bg-white text-stone-800 shadow-sm border border-stone-200' : 'text-stone-400'}`}
                     >
                       Relative (% of each max)
                     </button>

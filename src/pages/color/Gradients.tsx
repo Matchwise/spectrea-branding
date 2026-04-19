@@ -28,7 +28,7 @@ function CopyButton({ value, label }: { value: string; label: string }) {
   return (
     <button
       onClick={() => { navigator.clipboard.writeText(value); setCopied(true); setTimeout(() => setCopied(false), 1500) }}
-      className="text-xs font-mono px-2.5 py-1.5 rounded border border-stone-200 hover:bg-stone-50 transition-colors text-left"
+      className="text-xs font-mono px-2.5 py-1.5 rounded border border-stone-200 hover:bg-stone-50 transition-colors text-left btn-focus"
     >
       {copied ? 'Copied!' : label}
     </button>

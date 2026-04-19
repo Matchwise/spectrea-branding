@@ -8,7 +8,7 @@ function Swatch({ name, hex, role, textColor = '#FDFDFB' }: { name: string; hex:
   return (
     <button
       onClick={() => { navigator.clipboard.writeText(hex); setCopied(true); setTimeout(() => setCopied(false), 1500) }}
-      className="group text-left"
+      className="group text-left btn-focus rounded-lg"
       title={`Copy ${hex}`}
     >
       <div className="h-16 rounded-lg border border-black/5 group-hover:scale-105 transition-transform flex items-end p-2" style={{ backgroundColor: hex }}>

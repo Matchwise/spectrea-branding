@@ -82,13 +82,13 @@ export default function Buttons() {
         <div className="flex items-center gap-2 mb-3">
           <button
             onClick={() => setDark(false)}
-            className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${!dark ? 'bg-ink text-white' : 'text-stone-400 hover:text-stone-600'}`}
+            className={`px-3 py-1 rounded-md text-xs font-medium transition-colors btn-focus ${!dark ? 'bg-ink text-white' : 'text-stone-400 hover:text-stone-600'}`}
           >
             Light
           </button>
           <button
             onClick={() => setDark(true)}
-            className={`px-3 py-1 rounded-md text-xs font-medium transition-colors ${dark ? 'bg-ink text-white' : 'text-stone-400 hover:text-stone-600'}`}
+            className={`px-3 py-1 rounded-md text-xs font-medium transition-colors btn-focus ${dark ? 'bg-ink text-white' : 'text-stone-400 hover:text-stone-600'}`}
           >
             Dark
           </button>

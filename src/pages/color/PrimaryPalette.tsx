@@ -76,7 +76,7 @@ function ColorCard({ name, hex, role, usage, textColor = '#FDFDFB' }: {
             <button
               key={f.label}
               onClick={() => copy(f.value, f.label)}
-              className="text-xs font-mono px-2 py-1 rounded border border-stone-200 hover:bg-stone-50 transition-colors"
+              className="text-xs font-mono px-2 py-1 rounded border border-stone-200 hover:bg-stone-50 transition-colors btn-focus"
             >
               {copied === f.label ? 'Copied!' : `${f.label}: ${f.value}`}
             </button>

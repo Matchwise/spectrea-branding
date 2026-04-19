@@ -505,8 +505,7 @@ function AssetGenerator() {
         </p>
         <button
           onClick={handleExport}
-          className="px-4 py-2 rounded-lg text-sm font-medium text-white transition-colors"
-          style={{ backgroundColor: '#4271DF' }}
+          className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-brand hover:bg-brand-hover active:bg-brand-active transition-colors btn-focus"
         >
           Download {format.toUpperCase()}
         </button>
