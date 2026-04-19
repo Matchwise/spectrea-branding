@@ -104,7 +104,7 @@ export default function Variations() {
             <div className="md:col-span-3 p-5 space-y-3 bg-white border-t md:border-t-0 md:border-l border-stone-200">
               <div className="flex items-baseline gap-2 flex-wrap">
                 <p className="text-base font-semibold text-stone-800">Cool Duet</p>
-                <span className="text-[10px] text-brand bg-brand/10 px-1.5 py-0.5 rounded font-mono uppercase tracking-wider">The primary mark</span>
+                <span className="text-[10px] text-brand bg-brand/10 px-1.5 py-0.5 rounded font-semibold uppercase tracking-wider">The primary mark</span>
               </div>
               <p className="text-[11px] font-mono text-stone-400">Cobalt #4271DF → Teal #00B6A0 · grey dots #A3A3A3</p>
               <p className="text-xs text-stone-700 leading-relaxed">

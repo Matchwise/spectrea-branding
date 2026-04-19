@@ -22,7 +22,7 @@ function Card({ label, children, darkBg = false }: { label: string; children: Re
   return (
     <div className="flex flex-col rounded-xl border overflow-hidden" style={{ borderColor: darkBg ? '#2E2F35' : '#E7E5E4' }}>
       <div
-        className="px-3 py-2 text-[10px] font-mono uppercase tracking-wider"
+        className="px-3 py-2 text-[10px] font-semibold uppercase tracking-wider"
         style={darkBg
           ? { color: '#B0B0B6', backgroundColor: '#18181C', borderBottom: '1px solid #2E2F35' }
           : { color: '#78716C', backgroundColor: '#FAFAF9', borderBottom: '1px solid #F4F4F1' }
@@ -46,7 +46,7 @@ function Tile({ children, label, bg = CLOUD }: { children: React.ReactNode; labe
       >
         {children}
       </div>
-      <p className="mt-2 text-xs font-mono text-stone-500">{label}</p>
+      <p className="mt-2 text-xs text-stone-500">{label}</p>
     </div>
   )
 }
@@ -119,7 +119,7 @@ export default function Illustration() {
       {/* ─── v4 Manifesto ─── */}
       <Section>
         <div className="rounded-xl bg-ink text-white p-6 sm:p-8">
-          <p className="text-xs font-mono uppercase tracking-wider" style={{ color: COBALT }}>The illustration system · v4</p>
+          <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: COBALT }}>The illustration system · v4</p>
           <h2 className="text-2xl font-semibold mt-1" style={{ fontFamily: "'Albert Sans', sans-serif" }}>One prompt, one substrate, one checklist.</h2>
           <p className="text-sm mt-3 max-w-2xl leading-relaxed" style={{ color: '#B0B0B6' }}>
             v4 is a universal, subject-agnostic prompt — one template renders any scene (person at a desk, city skyline, abstract concept, dashboard) in the brand voice. Warmth comes from palette discipline: supporting elements use 20–60% tints of the primaries, never default to neutrals. Subtle depth from a single darker tonal step per rounded object. No outlines anywhere.
@@ -134,7 +134,7 @@ export default function Illustration() {
       <Section title="Two tracks · where to reach for what">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="rounded-xl border border-amber-200 p-5" style={{ backgroundColor: '#E1900010' }}>
-            <p className="text-[10px] font-mono uppercase tracking-wider mb-2" style={{ color: '#7C4D04' }}>Image-gen via v4 prompt</p>
+            <p className="text-[10px] font-semibold uppercase tracking-wider mb-2" style={{ color: '#7C4D04' }}>Image-gen via v4 prompt</p>
             <p className="text-sm font-semibold text-stone-800 mb-2" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Mid- and higher-complexity scenes</p>
             <p className="text-xs text-stone-600 leading-relaxed">
               Marketing heroes, feature-page illustrations, blog headers, About imagery, onboarding scenes, social posts. Any 16:9 composition with a recognisable scene.
@@ -144,7 +144,7 @@ export default function Illustration() {
             </p>
           </div>
           <div className="rounded-xl border border-teal-200 p-5" style={{ backgroundColor: '#00B6A010' }}>
-            <p className="text-[10px] font-mono uppercase tracking-wider mb-2" style={{ color: '#007362' }}>Hand-coded SVG</p>
+            <p className="text-[10px] font-semibold uppercase tracking-wider mb-2" style={{ color: '#007362' }}>Hand-coded SVG</p>
             <p className="text-sm font-semibold text-stone-800 mb-2" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Basic, simple, direct primitives</p>
             <p className="text-xs text-stone-600 leading-relaxed">
               Graph primitives (node, edge, cluster, trail, confidence, highlight), section dividers, in-product state dots, painterly-field backdrop, small threads and constellations.
@@ -197,7 +197,7 @@ export default function Illustration() {
             ['08', 'Asymmetric balance', 'Rule-of-thirds or diagonal flow. Not centred.'],
           ].map(([n, title, desc]) => (
             <div key={n} className="rounded-xl border border-stone-200 p-4">
-              <p className="text-[10px] font-mono uppercase tracking-wider mb-1" style={{ color: COBALT }}>{n}</p>
+              <p className="text-[10px] font-semibold uppercase tracking-wider mb-1" style={{ color: COBALT }}>{n}</p>
               <p className="text-sm font-semibold text-stone-800 mb-1" style={{ fontFamily: "'Albert Sans', sans-serif" }}>{title}</p>
               <p className="text-xs text-stone-500 leading-relaxed">{desc}</p>
             </div>
@@ -420,7 +420,7 @@ export default function Illustration() {
       {/* ─── Using the v4 prompt ─── */}
       <Section title="Using the v4 prompt for hero illustrations">
         <div className="rounded-xl bg-ink text-white p-6 sm:p-8">
-          <p className="text-xs font-mono uppercase tracking-wider" style={{ color: AMBER }}>Workflow</p>
+          <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: AMBER }}>Workflow</p>
           <ol className="mt-3 space-y-3 text-sm leading-relaxed" style={{ color: '#B0B0B6' }}>
             <li><strong style={{ color: '#F4F4F1' }}>1.</strong> Write your subject — one sentence. It can be literally anything; the prompt doesn't constrain it.</li>
             <li><strong style={{ color: '#F4F4F1' }}>2.</strong> Copy the prompt block from <code className="bg-graphite px-1.5 py-0.5 rounded text-xs">docs/illustration-prompt.md</code>. Paste into Gemini / Firefly / Bing / Imagen / Stable Diffusion.</li>

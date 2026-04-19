@@ -24,7 +24,7 @@ export default function Downloads() {
           >
             <div className="flex items-center justify-between">
               <TbFileText size={22} className="text-brand" />
-              <span className="text-[10px] font-mono text-stone-400 uppercase tracking-wider">Canonical</span>
+              <span className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider">Canonical</span>
             </div>
             <div>
               <p className="text-sm font-semibold text-stone-900 group-hover:text-brand transition-colors">brand-guide.md</p>
@@ -38,7 +38,7 @@ export default function Downloads() {
           >
             <div className="flex items-center justify-between">
               <TbFileTypePdf size={22} className="text-brand" />
-              <span className="text-[10px] font-mono text-stone-400 uppercase tracking-wider">Printable</span>
+              <span className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider">Printable</span>
             </div>
             <div>
               <p className="text-sm font-semibold text-stone-900 group-hover:text-brand transition-colors">brand-guide.pdf</p>
@@ -52,7 +52,7 @@ export default function Downloads() {
           >
             <div className="flex items-center justify-between">
               <TbRobot size={22} className="text-brand" />
-              <span className="text-[10px] font-mono text-stone-400 uppercase tracking-wider">LLM index</span>
+              <span className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider">LLM index</span>
             </div>
             <div>
               <p className="text-sm font-semibold text-stone-900 group-hover:text-brand transition-colors">llms.txt</p>
