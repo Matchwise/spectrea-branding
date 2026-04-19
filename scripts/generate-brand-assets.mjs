@@ -60,6 +60,8 @@ const BRIDGE = '#6FB884'
 const CANVAS   = '#FDFDFB'
 const CLOUD    = '#F4F4F1'
 const PEWTER   = '#97979E'
+const SLATE    = '#6D6D72'
+const IRON     = '#46464B'
 const GRAPHITE = '#212226'
 const INK      = '#18181C'
 
@@ -76,7 +78,7 @@ const LOGO = {
   strokeW: 8,
   dotR: 3.5,
   totalDots: 10,
-  tailDots: 3,
+  tailDots: 2,
 }
 
 // Visible extent of the glyph within the original 64×64 coordinate space.
@@ -130,7 +132,9 @@ for (let i = 0; i < LOGO.totalDots; i++) {
   DOTS.push({ ...pointAtLength(t * totalLen), t })
 }
 
-const firstTrailingIdx = LOGO.totalDots - LOGO.tailDots
+// tailDots counts VISUALLY trailing dots — stroke round-cap covers the
+// last math-trailing dot, so offset by 1 to align config with what renders.
+const firstTrailingIdx = LOGO.totalDots - LOGO.tailDots - 1
 const connectedLen = (firstTrailingIdx / (LOGO.totalDots - 1)) * totalLen
 
 // ─── Helpers to build SVG strings ───────────────────────────────
@@ -368,9 +372,11 @@ await writeFile(resolve(outDir, 'swatches-neutrals.svg'), renderSwatchRow([
   { color: CANVAS,   name: 'Canvas',   hex: '#FDFDFB' },
   { color: CLOUD,    name: 'Cloud',    hex: '#F4F4F1' },
   { color: PEWTER,   name: 'Pewter',   hex: '#97979E' },
+  { color: SLATE,    name: 'Slate',    hex: '#6D6D72' },
+  { color: IRON,     name: 'Iron',     hex: '#46464B' },
   { color: GRAPHITE, name: 'Graphite', hex: '#212226' },
   { color: INK,      name: 'Ink',      hex: '#18181C' },
-], { rowLabel: 'WARM BLEND NEUTRALS' }))
+], { rowLabel: 'WARM BLEND NEUTRALS (OKLCH-EVEN LADDER)' }))
 
 await writeFile(resolve(outDir, 'swatches-bridge.svg'), renderSwatchRow([
   { color: '#EDF0F8', name: 'Cobalt Wash', hex: '#EDF0F8' },

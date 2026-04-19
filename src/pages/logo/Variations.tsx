@@ -75,8 +75,8 @@ function VariantCard({ v, highlight }: { v: Variant; highlight?: boolean }) {
         {renderMark()}
       </div>
       <div className="p-2.5 border-t border-stone-100 bg-white">
-        <p className="text-xs font-semibold text-stone-700">{v.id}. {v.name}</p>
-        {v.note && <p className="text-[10px] text-stone-400 mt-0.5">{v.note}</p>}
+        <p className="text-xs font-semibold text-iron">{v.id}. {v.name}</p>
+        {v.note && <p className="text-[10px] text-pewter mt-0.5">{v.note}</p>}
       </div>
     </div>
   )
@@ -90,29 +90,29 @@ export default function Variations() {
     >
       {/* Gradient variants — focus on the primary */}
       <Section>
-        <h2 className="text-lg font-semibold text-stone-800 mb-1">Gradient Mark</h2>
-        <p className="text-xs text-stone-500 mb-5">
+        <h2 className="text-lg font-semibold text-ink mb-1">Gradient Mark</h2>
+        <p className="text-xs text-slate mb-5">
           The static S mark carries the <strong>Cool Duet</strong>. This is the treatment — everything else is a contextual possibility you reach for only when the primary genuinely doesn't fit.
         </p>
 
         {/* Primary — the one that matters */}
         <div className="border-2 border-brand/30 rounded-xl overflow-hidden mb-6">
           <div className="grid grid-cols-1 md:grid-cols-5">
-            <div className="md:col-span-2 p-8 flex items-center justify-center bg-stone-50 min-h-[200px]">
+            <div className="md:col-span-2 p-8 flex items-center justify-center bg-cloud min-h-[200px]">
               <StaticLogo size={120} colorMode="cool" dotColorMode="grey" />
             </div>
             <div className="md:col-span-3 p-5 space-y-3 bg-white border-t md:border-t-0 md:border-l border-stone-200">
               <div className="flex items-baseline gap-2 flex-wrap">
-                <p className="text-base font-semibold text-stone-800">Cool Duet</p>
+                <p className="text-base font-semibold text-ink">Cool Duet</p>
                 <span className="text-[10px] text-brand bg-brand/10 px-1.5 py-0.5 rounded font-semibold uppercase tracking-wider">The primary mark</span>
               </div>
-              <p className="text-[11px] font-mono text-stone-400">Cobalt #4271DF → Teal #00B6A0 · grey dots #A3A3A3</p>
-              <p className="text-xs text-stone-700 leading-relaxed">
+              <p className="text-[11px] font-mono text-pewter">Cobalt #4271DF → Teal #00B6A0 · grey dots #A3A3A3</p>
+              <p className="text-xs text-iron leading-relaxed">
                 <strong>Intelligence + growth.</strong> Cold precision meeting verified insight. The brand's resting state — restrained, professional, calm. If you're not sure which gradient to reach for, use this one.
               </p>
               <div>
-                <p className="text-[11px] font-semibold text-stone-500 uppercase tracking-wider mb-1.5">Use for</p>
-                <ul className="text-xs text-stone-600 space-y-1 pl-4 list-disc">
+                <p className="text-[11px] font-semibold text-slate uppercase tracking-wider mb-1.5">Use for</p>
+                <ul className="text-xs text-iron space-y-1 pl-4 list-disc">
                   <li>Every everyday UI placement — sidebar, nav, breadcrumbs, headers</li>
                   <li>Documentation, settings, dashboards, admin surfaces</li>
                   <li>Technical and data-heavy contexts</li>
@@ -126,8 +126,8 @@ export default function Variations() {
 
         {/* Other possibilities — quiet, small */}
         <div>
-          <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3">Other possibilities</p>
-          <p className="text-xs text-stone-500 mb-4">
+          <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-3">Other possibilities</p>
+          <p className="text-xs text-slate mb-4">
             Contextual gradient treatments for specific moments. Treat them as exceptions, not defaults. All available in the asset generator.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -149,12 +149,12 @@ export default function Variations() {
               },
             ] as const).map(v => (
               <div key={v.name} className="border border-stone-200 rounded-xl overflow-hidden">
-                <div className="p-4 flex items-center justify-center bg-stone-50 min-h-[96px]">
+                <div className="p-4 flex items-center justify-center bg-cloud min-h-[96px]">
                   <StaticLogo size={56} colorMode={v.colorMode} dotColorMode="grey" />
                 </div>
                 <div className="p-3 bg-white">
-                  <p className="text-xs font-semibold text-stone-700">{v.name}</p>
-                  <p className="text-xs text-stone-500 mt-0.5 leading-relaxed">{v.hint}</p>
+                  <p className="text-xs font-semibold text-iron">{v.name}</p>
+                  <p className="text-xs text-slate mt-0.5 leading-relaxed">{v.hint}</p>
                 </div>
               </div>
             ))}
@@ -164,14 +164,14 @@ export default function Variations() {
 
       {/* Animated mark — always full spectrum */}
       <Section>
-        <h2 className="text-lg font-semibold text-stone-800 mb-1">Animated Mark</h2>
-        <p className="text-xs text-stone-500 mb-4">
+        <h2 className="text-lg font-semibold text-ink mb-1">Animated Mark</h2>
+        <p className="text-xs text-slate mb-4">
           The animated mark always uses the <strong>full spectrum</strong> — the "reveal" moment. The stroke draws in and erases in a 3-second loop, carrying cobalt → teal → amber across the S curve.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border-2 border-brand/20 rounded-xl p-6 flex flex-col items-center gap-3 bg-white">
             <AnimatedLogo size={120} />
-            <p className="text-xs font-semibold text-stone-800">Full Spectrum · light</p>
+            <p className="text-xs font-semibold text-ink">Full Spectrum · light</p>
           </div>
           <div className="rounded-xl p-6 flex flex-col items-center gap-3" style={{ backgroundColor: '#18181C' }}>
             <AnimatedLogo size={120} />
@@ -182,14 +182,14 @@ export default function Variations() {
 
       {/* Solid color treatments */}
       <Section>
-        <h2 className="text-lg font-semibold text-stone-800 mb-1">Solid Color Treatments</h2>
-        <p className="text-xs text-stone-500 mb-4">Single-color variants for formal, restrained, or print contexts.</p>
+        <h2 className="text-lg font-semibold text-ink mb-1">Solid Color Treatments</h2>
+        <p className="text-xs text-slate mb-4">Single-color variants for formal, restrained, or print contexts.</p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="border border-stone-200 rounded-xl p-4 flex flex-col items-center gap-3">
             <StaticLogo size={48} colorMode="ink" />
             <div className="text-center">
-              <p className="text-xs font-semibold text-stone-800">Ink</p>
-              <p className="text-xs text-stone-500 mt-1">All #18181C. Formal, co-branding, single-color print.</p>
+              <p className="text-xs font-semibold text-ink">Ink</p>
+              <p className="text-xs text-slate mt-1">All #18181C. Formal, co-branding, single-color print.</p>
             </div>
           </div>
           <div className="rounded-xl p-4 flex flex-col items-center gap-3 bg-ink" style={{ border: '1px solid #2E2F35' }}>
@@ -202,8 +202,8 @@ export default function Variations() {
           <div className="border border-stone-200 rounded-xl p-4 flex flex-col items-center gap-3">
             <StaticLogo size={48} colorMode="ink" dotColorMode="grey" />
             <div className="text-center">
-              <p className="text-xs font-semibold text-stone-800">Ink + Grey Dots</p>
-              <p className="text-xs text-stone-500 mt-1">Quiet authority — connection formed, spectrum dormant.</p>
+              <p className="text-xs font-semibold text-ink">Ink + Grey Dots</p>
+              <p className="text-xs text-slate mt-1">Quiet authority — connection formed, spectrum dormant.</p>
             </div>
           </div>
           <div className="border border-stone-200 rounded-xl p-4 flex flex-col items-center gap-3">
@@ -211,8 +211,8 @@ export default function Variations() {
               <StaticLogo size={48} colorMode="grey" />
             </div>
             <div className="text-center">
-              <p className="text-xs font-semibold text-stone-800">Grey (watermark)</p>
-              <p className="text-xs text-stone-500 mt-1">All #A3A3A3 at low opacity. Watermarks only.</p>
+              <p className="text-xs font-semibold text-ink">Grey (watermark)</p>
+              <p className="text-xs text-slate mt-1">All #A3A3A3 at low opacity. Watermarks only.</p>
             </div>
           </div>
         </div>
@@ -220,38 +220,38 @@ export default function Variations() {
 
       {/* All 11 variants */}
       <Section>
-        <h2 className="text-lg font-semibold text-stone-800 mb-1">All 11 Variants</h2>
-        <p className="text-xs text-stone-500 mb-4">Grouped by background. Blue border = default for that group.</p>
+        <h2 className="text-lg font-semibold text-ink mb-1">All 11 Variants</h2>
+        <p className="text-xs text-slate mb-4">Grouped by background. Blue border = default for that group.</p>
 
-        <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3">On light backgrounds — marks</p>
+        <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-3">On light backgrounds — marks</p>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
           {variants.filter(v => ['1','3','5'].includes(v.id)).map(v => (
             <VariantCard key={v.id} v={v} highlight={v.id === '1'} />
           ))}
         </div>
 
-        <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3">On light backgrounds — lockups</p>
+        <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-3">On light backgrounds — lockups</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
           {variants.filter(v => ['2','4'].includes(v.id)).map(v => (
             <VariantCard key={v.id} v={v} highlight={v.id === '2'} />
           ))}
         </div>
 
-        <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3">On dark backgrounds — marks</p>
+        <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-3">On dark backgrounds — marks</p>
         <div className="grid grid-cols-2 md:grid-cols-2 gap-3 mb-4">
           {variants.filter(v => ['6','8'].includes(v.id)).map(v => (
             <VariantCard key={v.id} v={v} highlight={v.id === '6'} />
           ))}
         </div>
 
-        <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3">On dark backgrounds — lockups</p>
+        <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-3">On dark backgrounds — lockups</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
           {variants.filter(v => ['7','9'].includes(v.id)).map(v => (
             <VariantCard key={v.id} v={v} highlight={v.id === '7'} />
           ))}
         </div>
 
-        <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3">Contained (below 48px)</p>
+        <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-3">Contained (below 48px)</p>
         <div className="grid grid-cols-2 gap-3 max-w-sm">
           {variants.filter(v => ['10','11'].includes(v.id)).map(v => (
             <VariantCard key={v.id} v={v} highlight={v.id === '10'} />
@@ -261,43 +261,43 @@ export default function Variations() {
 
       {/* Lockup arrangements */}
       <Section>
-        <h2 className="text-lg font-semibold text-stone-800 mb-4">Lockup Arrangements</h2>
-        <p className="text-xs text-stone-500 mb-4">Three ways to pair the mark with the wordmark. All color treatments work with all layouts.</p>
+        <h2 className="text-lg font-semibold text-ink mb-4">Lockup Arrangements</h2>
+        <p className="text-xs text-slate mb-4">Three ways to pair the mark with the wordmark. All color treatments work with all layouts.</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="border-2 border-brand/20 rounded-xl overflow-hidden">
-            <div className="p-5 flex items-center justify-center bg-stone-50 min-h-[130px]">
+            <div className="p-5 flex items-center justify-center bg-cloud min-h-[130px]">
               <LogotypeGradient fontSize={30} />
             </div>
             <div className="p-3 border-t border-brand/10 bg-brand/5">
               <p className="text-xs font-semibold text-brand">Gradient logotype (preferred for brand)</p>
-              <p className="text-xs text-stone-500 mt-0.5">Cool Duet on the S mark, monotone Ink on the lowercase wordmark. The gradient energy lives in the mark; the wordmark stays crisp and calm. For marketing, hero sections, and brand moments.</p>
+              <p className="text-xs text-slate mt-0.5">Cool Duet on the S mark, monotone Ink on the lowercase wordmark. The gradient energy lives in the mark; the wordmark stays crisp and calm. For marketing, hero sections, and brand moments.</p>
             </div>
           </div>
           <div className="border border-stone-200 rounded-xl overflow-hidden">
-            <div className="p-5 flex flex-col gap-4 items-center justify-center bg-stone-50 min-h-[130px]">
+            <div className="p-5 flex flex-col gap-4 items-center justify-center bg-cloud min-h-[130px]">
               <div className="flex items-center gap-3">
                 <StaticLogo size={36} colorMode="cool" dotColorMode="grey" />
                 <div>
-                  <span className="font-heading font-semibold text-stone-900 text-sm" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
-                  <p className="text-xs text-stone-400 uppercase tracking-widest">Brand Guide</p>
+                  <span className="font-heading font-semibold text-ink text-sm" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
+                  <p className="text-xs text-pewter uppercase tracking-widest">Brand Guide</p>
                 </div>
               </div>
             </div>
             <div className="p-3 border-t border-stone-100">
-              <p className="text-xs font-semibold text-stone-700">Horizontal with descriptor</p>
-              <p className="text-xs text-stone-500 mt-0.5">Mark + wordmark + descriptor. The descriptor fills the vertical gap. For navigation, product headers, and sub-brands.</p>
+              <p className="text-xs font-semibold text-iron">Horizontal with descriptor</p>
+              <p className="text-xs text-slate mt-0.5">Mark + wordmark + descriptor. The descriptor fills the vertical gap. For navigation, product headers, and sub-brands.</p>
             </div>
           </div>
           <div className="border border-stone-200 rounded-xl overflow-hidden">
-            <div className="p-5 flex items-center justify-center bg-stone-50 min-h-[130px]">
+            <div className="p-5 flex items-center justify-center bg-cloud min-h-[130px]">
               <div className="flex flex-col items-center gap-2">
                 <StaticLogo size={52} colorMode="cool" dotColorMode="grey" />
-                <span className="font-heading font-semibold text-stone-900 text-lg" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
+                <span className="font-heading font-semibold text-ink text-lg" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
               </div>
             </div>
             <div className="p-3 border-t border-stone-100">
-              <p className="text-xs font-semibold text-stone-700">Stacked</p>
-              <p className="text-xs text-stone-500 mt-0.5">Title slides, centered compositions. Mark above wordmark. Wordmark width ≤ mark width.</p>
+              <p className="text-xs font-semibold text-iron">Stacked</p>
+              <p className="text-xs text-slate mt-0.5">Title slides, centered compositions. Mark above wordmark. Wordmark width ≤ mark width.</p>
             </div>
           </div>
         </div>
@@ -305,24 +305,24 @@ export default function Variations() {
 
       {/* Logotype at scale */}
       <Section>
-        <h2 className="text-lg font-semibold text-stone-800 mb-4">Logotype at Scale</h2>
+        <h2 className="text-lg font-semibold text-ink mb-4">Logotype at Scale</h2>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
           {/* Gradient lockup */}
-          <div className="p-6 bg-stone-50 space-y-4">
-            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-1">Gradient</p>
+          <div className="p-6 bg-cloud space-y-4">
+            <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-1">Gradient</p>
             {[60, 48, 36].map(size => (
               <div key={size} className="flex items-center gap-4">
-                <span className="text-xs font-mono text-stone-400 w-10 flex-shrink-0">{size}px</span>
+                <span className="text-xs font-mono text-pewter w-10 flex-shrink-0">{size}px</span>
                 <LogotypeGradient fontSize={size} />
               </div>
             ))}
           </div>
           {/* Mono ink */}
           <div className="p-6 bg-white border-t border-stone-100 space-y-4">
-            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-1">Mono — Ink</p>
+            <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-1">Mono — Ink</p>
             {[48, 36].map(size => (
               <div key={size} className="flex items-center gap-4">
-                <span className="text-xs font-mono text-stone-400 w-10 flex-shrink-0">{size}px</span>
+                <span className="text-xs font-mono text-pewter w-10 flex-shrink-0">{size}px</span>
                 <Logotype fontSize={size} colorMode="ink" color="#18181C" />
               </div>
             ))}
@@ -342,40 +342,40 @@ export default function Variations() {
 
       {/* With descriptor */}
       <Section>
-        <h2 className="text-lg font-semibold text-stone-800 mb-4">With Descriptor</h2>
+        <h2 className="text-lg font-semibold text-ink mb-4">With Descriptor</h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {['Brand Guide', 'Documentation', 'Platform'].map(desc => (
             <div key={desc} className="border border-stone-200 rounded-xl p-5 flex items-center gap-3">
               <StaticLogo size={36} colorMode="cool" dotColorMode="grey" />
               <div>
-                <span className="font-heading font-semibold text-stone-900 text-sm" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
-                <p className="text-xs text-stone-400 uppercase tracking-widest">{desc}</p>
+                <span className="font-heading font-semibold text-ink text-sm" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
+                <p className="text-xs text-pewter uppercase tracking-widest">{desc}</p>
               </div>
             </div>
           ))}
         </div>
-        <p className="text-xs text-stone-500 mt-3">Descriptor: uppercase, tracked widest, Grey (#97979E). Below the wordmark. Use only when the audience needs clarification about which Spectrea product they're in.</p>
+        <p className="text-xs text-slate mt-3">Descriptor: uppercase, tracked widest, Grey (#97979E). Below the wordmark. Use only when the audience needs clarification about which Spectrea product they're in.</p>
       </Section>
 
       {/* Decision guide */}
       <Section>
-        <h2 className="text-lg font-semibold text-stone-800 mb-4">Decision Guide</h2>
-        <div className="bg-stone-50 rounded-xl border border-stone-100 p-5 mb-5">
-          <p className="text-sm text-stone-700 leading-relaxed"><strong>Four questions, in order:</strong></p>
-          <ol className="mt-2 space-y-1 text-sm text-stone-600 list-decimal list-inside">
+        <h2 className="text-lg font-semibold text-ink mb-4">Decision Guide</h2>
+        <div className="bg-cloud rounded-xl border border-stone-100 p-5 mb-5">
+          <p className="text-sm text-iron leading-relaxed"><strong>Four questions, in order:</strong></p>
+          <ol className="mt-2 space-y-1 text-sm text-iron list-decimal list-inside">
             <li><strong>Is the background light or dark?</strong> Light → #1-5. Dark → #6-9.</li>
             <li><strong>Is color available?</strong> If not, ink (#3/#4 on light) or white (#8/#9 on dark).</li>
             <li><strong>Is there space for the wordmark?</strong> If yes, use a lockup. If not, mark only.</li>
             <li><strong>What arrangement?</strong> Logotype for horizontal at 36px+. Horizontal with descriptor for nav/product. Stacked for centered.</li>
           </ol>
-          <p className="text-xs text-stone-500 mt-3">Below 48px → #10 (ink circle) or #11 (white circle). Grey (#5) is for watermarks only.</p>
+          <p className="text-xs text-slate mt-3">Below 48px → #10 (ink circle) or #11 (white circle). Grey (#5) is for watermarks only.</p>
         </div>
         <div className="border border-stone-200 rounded-xl overflow-x-auto">
           <div className="min-w-[640px]">
-          <div className="grid grid-cols-12 bg-stone-50 border-b border-stone-200 px-4 py-2">
-            <span className="col-span-4 text-xs font-semibold text-stone-400 uppercase tracking-wider">Context</span>
-            <span className="col-span-2 text-xs font-semibold text-stone-400 uppercase tracking-wider">Variant</span>
-            <span className="col-span-6 text-xs font-semibold text-stone-400 uppercase tracking-wider">Why</span>
+          <div className="grid grid-cols-12 bg-cloud border-b border-stone-200 px-4 py-2">
+            <span className="col-span-4 text-xs font-semibold text-pewter uppercase tracking-wider">Context</span>
+            <span className="col-span-2 text-xs font-semibold text-pewter uppercase tracking-wider">Variant</span>
+            <span className="col-span-6 text-xs font-semibold text-pewter uppercase tracking-wider">Why</span>
           </div>
           {([
             { context: 'Website header (light)', variant: 'Logotype', why: 'Preferred horizontal treatment. Compact, balanced.' },
@@ -398,9 +398,9 @@ export default function Variations() {
             { context: 'Fax / newspaper', variant: '#4', why: 'Ink lockup for poor reproduction.' },
           ] as const).map((row, i) => (
             <div key={row.context} className="grid grid-cols-12 px-4 py-2.5" style={{ borderBottom: i < 17 ? '1px solid #F3F4F6' : 'none' }}>
-              <span className="col-span-4 text-sm text-stone-700">{row.context}</span>
+              <span className="col-span-4 text-sm text-iron">{row.context}</span>
               <span className="col-span-2 text-xs font-mono font-semibold text-brand">{row.variant}</span>
-              <span className="col-span-6 text-xs text-stone-500">{row.why}</span>
+              <span className="col-span-6 text-xs text-slate">{row.why}</span>
             </div>
           ))}
           </div>

@@ -10,7 +10,7 @@ function CopyValue({ value }: { value: string }) {
   return (
     <button
       onClick={() => { navigator.clipboard.writeText(value); setCopied(true); setTimeout(() => setCopied(false), 1200) }}
-      className="text-xs font-mono text-stone-400 hover:text-stone-600 transition-colors"
+      className="text-xs font-mono text-pewter hover:text-iron transition-colors"
       title={`Copy ${value}`}
     >
       {copied ? 'Copied!' : value}
@@ -72,7 +72,7 @@ export default function Buttons() {
     >
       {/* ── Variants ─────────────────────────────────────────────── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Spectrea uses four core button variants plus two semantic variants. Primary (Cobalt) is the hero action. Confirm (Teal) and Caution (Amber) are reserved for specific semantic contexts.">
             <span>Button Variants</span>
           </Tooltip>
@@ -82,13 +82,13 @@ export default function Buttons() {
         <div className="flex items-center gap-2 mb-3">
           <button
             onClick={() => setDark(false)}
-            className={`px-3 py-1 rounded-md text-xs font-medium transition-colors btn-focus ${!dark ? 'bg-ink text-white' : 'text-stone-400 hover:text-stone-600'}`}
+            className={`px-3 py-1 rounded-md text-xs font-medium transition-colors btn-focus ${!dark ? 'bg-ink text-white' : 'text-pewter hover:text-iron'}`}
           >
             Light
           </button>
           <button
             onClick={() => setDark(true)}
-            className={`px-3 py-1 rounded-md text-xs font-medium transition-colors btn-focus ${dark ? 'bg-ink text-white' : 'text-stone-400 hover:text-stone-600'}`}
+            className={`px-3 py-1 rounded-md text-xs font-medium transition-colors btn-focus ${dark ? 'bg-ink text-white' : 'text-pewter hover:text-iron'}`}
           >
             Dark
           </button>
@@ -191,16 +191,16 @@ export default function Buttons() {
 
       {/* ── Specifications ───────────────────────────────────────── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Every button has consistent padding, radius, and typography. Dark mode inverts hover direction: lighten instead of darken.">
             <span>Specifications</span>
           </Tooltip>
         </h2>
         <div className="border border-stone-200 rounded-xl overflow-x-auto">
           <div className="min-w-[720px]">
-          <div className="grid grid-cols-6 bg-stone-50 border-b border-stone-200 px-4 py-2">
+          <div className="grid grid-cols-6 bg-cloud border-b border-stone-200 px-4 py-2">
             {['Variant', 'Light Bg', 'Dark Bg', 'Text', 'Hover', 'Usage'].map(h => (
-              <span key={h} className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider">{h}</span>
+              <span key={h} className="text-[10px] font-semibold text-pewter uppercase tracking-wider">{h}</span>
             ))}
           </div>
           {[
@@ -212,25 +212,25 @@ export default function Buttons() {
             { variant: 'Caution', lightBg: 'Amber', darkBg: 'Amber', text: 'White', hover: '#C58200 / #ECA41E', usage: 'Override, merge, proceed.' },
           ].map((row, i) => (
             <div key={row.variant} className="grid grid-cols-6 px-4 py-2.5 items-center" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
-              <span className="text-sm font-medium text-stone-800">{row.variant}</span>
-              <span className="text-xs font-mono text-stone-600">{row.lightBg}</span>
-              <span className="text-xs font-mono text-stone-600">{row.darkBg}</span>
-              <span className="text-xs font-mono text-stone-600">{row.text}</span>
-              <span className="text-xs font-mono text-stone-600">{row.hover}</span>
-              <span className="text-xs text-stone-500">{row.usage}</span>
+              <span className="text-sm font-medium text-ink">{row.variant}</span>
+              <span className="text-xs font-mono text-iron">{row.lightBg}</span>
+              <span className="text-xs font-mono text-iron">{row.darkBg}</span>
+              <span className="text-xs font-mono text-iron">{row.text}</span>
+              <span className="text-xs font-mono text-iron">{row.hover}</span>
+              <span className="text-xs text-slate">{row.usage}</span>
             </div>
           ))}
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
-          <div className="bg-stone-50 rounded-lg px-4 py-3 border border-stone-100">
-            <p className="text-xs font-semibold text-stone-500 mb-1">Light Mode Hover</p>
-            <p className="text-xs text-stone-400">Hand-picked darker shade — buttons recede into the surface on press.</p>
+          <div className="bg-cloud rounded-lg px-4 py-3 border border-stone-100">
+            <p className="text-xs font-semibold text-slate mb-1">Light Mode Hover</p>
+            <p className="text-xs text-slate">Hand-picked darker shade — buttons recede into the surface on press.</p>
           </div>
-          <div className="bg-stone-50 rounded-lg px-4 py-3 border border-stone-100">
-            <p className="text-xs font-semibold text-stone-500 mb-1">Dark Mode Hover</p>
-            <p className="text-xs text-stone-400">Hand-picked lighter shade — buttons lift toward the user on hover.</p>
+          <div className="bg-cloud rounded-lg px-4 py-3 border border-stone-100">
+            <p className="text-xs font-semibold text-slate mb-1">Dark Mode Hover</p>
+            <p className="text-xs text-slate">Hand-picked lighter shade — buttons lift toward the user on hover.</p>
           </div>
         </div>
 
@@ -241,9 +241,9 @@ export default function Buttons() {
             { label: 'Semantic text', value: 'White' },
             { label: 'Focus ring', value: '2px Amber, 2px offset' },
           ].map(s => (
-            <div key={s.label} className="bg-stone-50 rounded-lg px-3 py-2 border border-stone-100 text-center">
-              <p className="text-xs font-semibold text-stone-500">{s.label}</p>
-              <p className="text-xs font-mono text-stone-400">{s.value}</p>
+            <div key={s.label} className="bg-cloud rounded-lg px-3 py-2 border border-stone-100 text-center">
+              <p className="text-xs font-semibold text-slate">{s.label}</p>
+              <p className="text-xs font-mono text-pewter">{s.value}</p>
             </div>
           ))}
         </div>
@@ -251,7 +251,7 @@ export default function Buttons() {
 
       {/* ── Semantic Usage Rules ──────────────────────────────────── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Semantic buttons carry meaning through color. Unlike Primary (which just means 'main action'), Confirm and Caution tell the user what kind of action they're taking.">
             <span>Semantic Button Rules</span>
           </Tooltip>
@@ -260,30 +260,30 @@ export default function Buttons() {
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A030', backgroundColor: '#00B6A005' }}>
             <div className="flex items-center gap-2 mb-3">
               <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#00B6A0' }} />
-              <h3 className="text-sm font-semibold text-stone-800">Confirm (Teal)</h3>
+              <h3 className="text-sm font-semibold text-ink">Confirm (Teal)</h3>
             </div>
-            <p className="text-xs text-stone-600 mb-3">For actions that affirm, verify, or establish positive connections. The outcome is constructive.</p>
+            <p className="text-xs text-iron mb-3">For actions that affirm, verify, or establish positive connections. The outcome is constructive.</p>
             <div className="space-y-1.5">
               {['Verify', 'Approve', 'Connect', 'Mark as Trusted'].map(ex => (
-                <p key={ex} className="text-xs font-mono text-stone-500">"{ex}"</p>
+                <p key={ex} className="text-xs font-mono text-slate">"{ex}"</p>
               ))}
             </div>
           </div>
           <div className="border rounded-xl p-5" style={{ borderColor: '#E1900030', backgroundColor: '#E1900005' }}>
             <div className="flex items-center gap-2 mb-3">
               <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#E19000' }} />
-              <h3 className="text-sm font-semibold text-stone-800">Caution (Amber)</h3>
+              <h3 className="text-sm font-semibold text-ink">Caution (Amber)</h3>
             </div>
-            <p className="text-xs text-stone-600 mb-3">For actions that acknowledge a warning or override a safeguard. Reversible but consequential.</p>
+            <p className="text-xs text-iron mb-3">For actions that acknowledge a warning or override a safeguard. Reversible but consequential.</p>
             <div className="space-y-1.5">
               {['Override', 'Merge', 'Proceed Anyway', 'Dismiss Warning'].map(ex => (
-                <p key={ex} className="text-xs font-mono text-stone-500">"{ex}"</p>
+                <p key={ex} className="text-xs font-mono text-slate">"{ex}"</p>
               ))}
             </div>
           </div>
         </div>
-        <div className="mt-3 bg-stone-50 rounded-lg px-4 py-3 border border-stone-200">
-          <p className="text-xs text-stone-600">
+        <div className="mt-3 bg-cloud rounded-lg px-4 py-3 border border-stone-200">
+          <p className="text-xs text-iron">
             <strong>Contrast note:</strong> White text on Teal and Amber does not meet WCAG AA (4.5:1). This is accepted because semantic buttons are large, infrequent, and carry strong contextual meaning through color. The label is always reinforced by the action context (e.g. a confirmation dialog).
           </p>
         </div>
@@ -291,7 +291,7 @@ export default function Buttons() {
 
       {/* ── Sizes ────────────────────────────────────────────────── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Button sizes match the density of the surrounding UI. Compact for toolbars and tables, Default for most contexts, Large for standalone CTAs.">
             <span>Sizes</span>
           </Tooltip>
@@ -305,14 +305,14 @@ export default function Buttons() {
             ].map(s => (
               <div key={s.name} className="flex flex-col items-center gap-2">
                 <button className={`${s.padding} ${s.radius} ${s.text} font-medium text-white bg-brand transition-all hover:bg-brand-hover active:bg-brand-active btn-focus`}>{s.name}</button>
-                <span className="text-xs font-mono text-stone-400">{s.h}</span>
+                <span className="text-xs font-mono text-pewter">{s.h}</span>
                 <CopyValue value={`${s.padding} ${s.radius} ${s.text}`} />
               </div>
             ))}
           </div>
         </div>
-        <div className="mt-3 bg-stone-50 rounded-lg px-4 py-3 border border-stone-200">
-          <p className="text-xs text-stone-600">
+        <div className="mt-3 bg-cloud rounded-lg px-4 py-3 border border-stone-200">
+          <p className="text-xs text-iron">
             <strong>Custom sizes:</strong> These three cover most cases. When a specific layout demands a different height, compose it from the same building blocks — Lexend Medium, rounded-lg, and padding on the 4px grid. The system provides defaults, not constraints.
           </p>
         </div>
@@ -320,48 +320,48 @@ export default function Buttons() {
 
       {/* ── Icon Buttons ─────────────────────────────────────────── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Icons reinforce button intent. Always pair an icon with a text label when space allows. Icon-only buttons need a visible tooltip or aria-label.">
             <span>Icon Buttons</span>
           </Tooltip>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border border-stone-200 rounded-xl p-5">
-            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3">Icon + Label</p>
+            <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-3">Icon + Label</p>
             <div className="flex items-center gap-3 flex-wrap">
               <button className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium text-white bg-brand transition-all hover:bg-brand-hover active:bg-brand-active btn-focus">
                 <TbPlus size={16} /> Create
               </button>
-              <button className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium text-stone-700 bg-stone-100 transition-all hover:bg-stone-200 active:bg-stone-300 btn-focus">
+              <button className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium text-iron bg-cloud transition-all hover:bg-stone-200 active:bg-stone-300 btn-focus">
                 <TbSearch size={16} /> Search
               </button>
-              <button className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium text-stone-500 border-2 border-stone-300 transition-all hover:bg-stone-50 hover:border-stone-400 active:bg-stone-100 btn-focus">
+              <button className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium text-slate border-2 border-stone-300 transition-all hover:bg-cloud hover:border-stone-400 active:bg-cloud btn-focus">
                 <TbSettings size={16} /> Settings
               </button>
             </div>
-            <p className="text-xs text-stone-400 mt-3">Icon left, 6px gap (gap-1.5), 16px icon for default buttons.</p>
+            <p className="text-xs text-slate mt-3">Icon left, 6px gap (gap-1.5), 16px icon for default buttons.</p>
           </div>
           <div className="border border-stone-200 rounded-xl p-5">
-            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3">Icon Only</p>
+            <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-3">Icon Only</p>
             <div className="flex items-center gap-3 flex-wrap">
               <button className="flex items-center justify-center w-9 h-9 rounded-lg text-white bg-brand transition-all hover:bg-brand-hover active:bg-brand-active btn-focus" aria-label="Add">
                 <TbPlus size={18} />
               </button>
-              <button className="flex items-center justify-center w-9 h-9 rounded-lg text-stone-700 bg-stone-100 transition-all hover:bg-stone-200 active:bg-stone-300 btn-focus" aria-label="Search">
+              <button className="flex items-center justify-center w-9 h-9 rounded-lg text-iron bg-cloud transition-all hover:bg-stone-200 active:bg-stone-300 btn-focus" aria-label="Search">
                 <TbSearch size={18} />
               </button>
-              <button className="flex items-center justify-center w-9 h-9 rounded-lg text-stone-500 border-2 border-stone-300 transition-all hover:bg-stone-50 hover:border-stone-400 active:bg-stone-100 btn-focus" aria-label="Settings">
+              <button className="flex items-center justify-center w-9 h-9 rounded-lg text-slate border-2 border-stone-300 transition-all hover:bg-cloud hover:border-stone-400 active:bg-cloud btn-focus" aria-label="Settings">
                 <TbSettings size={18} />
               </button>
             </div>
-            <p className="text-xs text-stone-400 mt-3">36px square. Always provide <code className="text-xs font-mono bg-stone-100 px-1 rounded">aria-label</code>.</p>
+            <p className="text-xs text-slate mt-3">36px square. Always provide <code className="text-xs font-mono bg-cloud px-1 rounded">aria-label</code>.</p>
           </div>
         </div>
       </Section>
 
       {/* ── States ───────────────────────────────────────────────── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Button states provide feedback. In dark mode, hover direction reverses: buttons brighten toward the user instead of darkening into the surface.">
             <span>States</span>
           </Tooltip>
@@ -369,23 +369,23 @@ export default function Buttons() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Light mode states */}
           <div className="border border-stone-200 rounded-xl p-5 bg-white">
-            <p className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider mb-3">Light Mode</p>
+            <p className="text-[10px] font-semibold text-pewter uppercase tracking-wider mb-3">Light Mode</p>
             <div className="flex items-center gap-3 flex-wrap">
               <div className="flex flex-col items-center gap-1.5">
                 <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand transition-all hover:bg-brand-hover active:bg-brand-active btn-focus">Hover me</button>
-                <span className="text-[10px] font-mono text-stone-400">Interactive</span>
+                <span className="text-[10px] font-mono text-pewter">Interactive</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
                 <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand" style={{ outline: '2px solid rgba(225, 144, 0, 0.7)', outlineOffset: '2px' }}>Focused</button>
-                <span className="text-[10px] font-mono text-stone-400">Amber ring</span>
+                <span className="text-[10px] font-mono text-pewter">Amber ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
-                <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-stone-500 border-2 border-stone-300" style={{ outline: '2px solid rgba(225, 144, 0, 0.7)', outlineOffset: '2px' }}>Focused</button>
-                <span className="text-[10px] font-mono text-stone-400">Ghost + ring</span>
+                <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate border-2 border-stone-300" style={{ outline: '2px solid rgba(225, 144, 0, 0.7)', outlineOffset: '2px' }}>Focused</button>
+                <span className="text-[10px] font-mono text-pewter">Ghost + ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
                 <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand opacity-40 cursor-not-allowed" disabled>Disabled</button>
-                <span className="text-[10px] font-mono text-stone-400">40% opacity</span>
+                <span className="text-[10px] font-mono text-pewter">40% opacity</span>
               </div>
             </div>
           </div>
@@ -428,28 +428,28 @@ export default function Buttons() {
             { state: 'Disabled', light: 'opacity-40', dark: 'opacity-40' },
           ].map((row, i) => (
             <div key={row.state} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < 4 ? '1px solid #F3F4F6' : 'none' }}>
-              <span className="text-sm font-medium text-stone-700">{row.state}</span>
-              <span className="text-xs font-mono text-stone-600">{row.light}</span>
-              <span className="text-xs font-mono text-stone-600">{row.dark}</span>
+              <span className="text-sm font-medium text-iron">{row.state}</span>
+              <span className="text-xs font-mono text-iron">{row.light}</span>
+              <span className="text-xs font-mono text-iron">{row.dark}</span>
             </div>
           ))}
         </div>
-        <div className="mt-3 bg-stone-50 rounded-lg px-4 py-3 border border-stone-200">
-          <p className="text-xs text-stone-600">
-            <strong>Focus ring:</strong> 2px solid Amber outline with 2px offset. Amber = "attention" in the semantic color system — focus is literally where attention should go. The warm tone contrasts with every button variant and works equally well on light and dark surfaces. Only appears on keyboard navigation (<code className="font-mono bg-stone-100 px-1 rounded">focus-visible</code>), never on click.
+        <div className="mt-3 bg-cloud rounded-lg px-4 py-3 border border-stone-200">
+          <p className="text-xs text-iron">
+            <strong>Focus ring:</strong> 2px solid Amber outline with 2px offset. Amber = "attention" in the semantic color system — focus is literally where attention should go. The warm tone contrasts with every button variant and works equally well on light and dark surfaces. Only appears on keyboard navigation (<code className="font-mono bg-cloud px-1 rounded">focus-visible</code>), never on click.
           </p>
         </div>
       </Section>
 
       {/* ── Loading State ────────────────────────────────────────── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Loading buttons prevent double-submission. The spinner replaces the icon, never the label, keeping button width stable.">
             <span>Loading State</span>
           </Tooltip>
         </h2>
         <div className="border border-stone-200 rounded-xl p-6 bg-white">
-          <p className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider text-center mb-4">Click to trigger a 2-second loading state</p>
+          <p className="text-[10px] font-semibold text-pewter uppercase tracking-wider text-center mb-4">Click to trigger a 2-second loading state</p>
           <div className="flex items-center justify-center gap-6 flex-wrap">
             <div className="flex flex-col items-center gap-2">
               <button
@@ -459,17 +459,17 @@ export default function Buttons() {
               >
                 {loading.primary ? <><Spinner /> Creating...</> : <><TbPlus size={16} /> Create</>}
               </button>
-              <span className="text-xs font-mono text-stone-400">Primary</span>
+              <span className="text-xs font-mono text-pewter">Primary</span>
             </div>
             <div className="flex flex-col items-center gap-2">
               <button
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-stone-700 bg-stone-100 transition-all hover:bg-stone-200 btn-focus disabled:opacity-80 disabled:cursor-not-allowed disabled:hover:bg-stone-100"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-iron bg-cloud transition-all hover:bg-stone-200 btn-focus disabled:opacity-80 disabled:cursor-not-allowed disabled:hover:bg-cloud"
                 disabled={loading.secondary}
                 onClick={() => startLoading('secondary')}
               >
                 {loading.secondary ? <><Spinner /> Saving...</> : 'Save Draft'}
               </button>
-              <span className="text-xs font-mono text-stone-400">Secondary</span>
+              <span className="text-xs font-mono text-pewter">Secondary</span>
             </div>
             <div className="flex flex-col items-center gap-2">
               <button
@@ -479,7 +479,7 @@ export default function Buttons() {
               >
                 {loading.destructive ? <><Spinner /> Deleting...</> : 'Delete'}
               </button>
-              <span className="text-xs font-mono text-stone-400">Destructive</span>
+              <span className="text-xs font-mono text-pewter">Destructive</span>
             </div>
           </div>
         </div>
@@ -489,9 +489,9 @@ export default function Buttons() {
             { rule: 'Disable during loading', detail: 'Prevent double-submission with pointer-events-none' },
             { rule: 'Use verb + "..."', detail: '"Creating...", "Saving...", not just "Loading..."' },
           ].map(r => (
-            <div key={r.rule} className="bg-stone-50 rounded-lg px-3 py-2.5 border border-stone-100">
-              <p className="text-xs font-medium text-stone-700">{r.rule}</p>
-              <p className="text-xs text-stone-400 mt-0.5">{r.detail}</p>
+            <div key={r.rule} className="bg-cloud rounded-lg px-3 py-2.5 border border-stone-100">
+              <p className="text-xs font-medium text-iron">{r.rule}</p>
+              <p className="text-xs text-slate mt-0.5">{r.detail}</p>
             </div>
           ))}
         </div>
@@ -499,14 +499,14 @@ export default function Buttons() {
 
       {/* ── Button Groups ────────────────────────────────────────── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Button groups cluster related actions. Use for toolbars, pagination, and segmented controls. Maintain a clear primary/secondary hierarchy within the group.">
             <span>Button Groups</span>
           </Tooltip>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border border-stone-200 rounded-xl p-5">
-            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3">Segmented Control</p>
+            <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-3">Segmented Control</p>
             <div className="inline-flex rounded-lg overflow-hidden border border-stone-200">
               {['List', 'Grid', 'Graph'].map((label, i) => (
                 <button
@@ -514,8 +514,8 @@ export default function Buttons() {
                   onClick={() => setToolbarActive(i)}
                   className={`px-3 py-1.5 text-xs font-medium transition-all btn-focus ${
                     i === toolbarActive
-                      ? 'bg-stone-800 text-white'
-                      : 'text-stone-500 hover:bg-stone-50 hover:text-stone-800 active:bg-stone-100'
+                      ? 'bg-ink text-white'
+                      : 'text-slate hover:bg-cloud hover:text-ink active:bg-cloud'
                   }`}
                   style={i > 0 && i !== toolbarActive && i - 1 !== toolbarActive ? { borderLeft: '1px solid #E5E7EB' } : undefined}
                 >
@@ -523,15 +523,15 @@ export default function Buttons() {
                 </button>
               ))}
             </div>
-            <p className="text-xs text-stone-400 mt-3">Click to switch. Active = Ink fill (Tier 2: Structural), not Cobalt.</p>
+            <p className="text-xs text-slate mt-3">Click to switch. Active = Ink fill (Tier 2: Structural), not Cobalt.</p>
           </div>
           <div className="border border-stone-200 rounded-xl p-5">
-            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3">Action Pair</p>
+            <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-3">Action Pair</p>
             <div className="flex gap-2">
               <button className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-brand transition-all hover:bg-brand-hover active:bg-brand-active btn-focus">Save Changes</button>
-              <button className="px-4 py-2 rounded-lg text-sm font-medium text-stone-500 border-2 border-stone-300 transition-all hover:bg-stone-50 hover:border-stone-400 active:bg-stone-100 btn-focus">Discard</button>
+              <button className="px-4 py-2 rounded-lg text-sm font-medium text-slate border-2 border-stone-300 transition-all hover:bg-cloud hover:border-stone-400 active:bg-cloud btn-focus">Discard</button>
             </div>
-            <p className="text-xs text-stone-400 mt-3">Primary left, Ghost right. 8px gap.</p>
+            <p className="text-xs text-slate mt-3">Primary left, Ghost right. 8px gap.</p>
           </div>
         </div>
       </Section>
@@ -541,7 +541,7 @@ export default function Buttons() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
-            <ul className="space-y-2 text-sm text-stone-700">
+            <ul className="space-y-2 text-sm text-iron">
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use verb-first labels: "Create", "Save Draft", "Open"</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>One Primary button per section maximum</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Pair destructive actions with a confirmation step</li>
@@ -552,7 +552,7 @@ export default function Buttons() {
           </div>
           <div className="border rounded-xl p-5" style={{ borderColor: '#F2426025', backgroundColor: '#F2426008' }}>
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Don't</h3>
-            <ul className="space-y-2 text-sm text-stone-700">
+            <ul className="space-y-2 text-sm text-iron">
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Put two Primary buttons next to each other</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use semantic buttons as general-purpose actions</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use semantic buttons where a Primary would do</li>

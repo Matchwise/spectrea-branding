@@ -12,7 +12,7 @@ export default function PageShell({ title, subtitle, children }: PageShellProps)
       <div className="mb-6 sm:mb-8">
         <h1 className="text-2xl sm:text-3xl font-semibold text-ink tracking-tight">{title}</h1>
         {subtitle && (
-          <p className="mt-2 text-base sm:text-lg text-pewter">{subtitle}</p>
+          <p className="mt-2 text-base sm:text-lg text-slate">{subtitle}</p>
         )}
       </div>
       <div className="space-y-8 sm:space-y-10">
@@ -26,7 +26,7 @@ export function Section({ title, children }: { title?: string; children: ReactNo
   return (
     <section>
       {title && (
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">{title}</h2>
+        <h2 className="text-xl font-semibold text-ink mb-4">{title}</h2>
       )}
       {children}
     </section>

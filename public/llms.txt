@@ -8,7 +8,7 @@ The brand stakes a position around clarity, aliveness, and ownership — readabl
 
 Spectrea splits its archetype across three surface domains: **Magician** on marketing surfaces (discovery, surprise), **Sage** on trust surfaces (anywhere users go to confirm, review, or understand), **Creator** on product surfaces (anywhere users compose or shape something of their own). The visual aesthetic stays consistent across all three; only voice and emotional register shift per surface.
 
-The brand combines spectrum accents (Cobalt, Teal, Amber, Rose) with a Warm Blend neutral palette (Canvas, Cloud, Pewter, Graphite, Ink) to feel both precise and human. Tagline: *We connect the dots.* Pronunciation: /spek-TREE-uh/. Etymology — dual reading: (1) *spectrum* — the full range, the complete view; (2) *revealing* — bringing what was hidden into clear view. Together: the spectrum of clarity.
+The brand combines spectrum accents (Cobalt, Teal, Amber, Rose) with a seven-token Warm Blend neutral ladder (Canvas, Cloud, Pewter, Slate, Iron, Graphite, Ink) to feel both precise and human. Tagline: *We connect the dots.* Pronunciation: /spek-TREE-uh/. Etymology — dual reading: (1) *spectrum* — the full range, the complete view; (2) *revealing* — bringing what was hidden into clear view. Together: the spectrum of clarity.
 
 **Illustration system (v4, 2026-04-19) — universal subject-agnostic prompt + hand-SVG primitives.** One prompt template renders any scene (person at a desk, city skyline, abstract concept, dashboard) in the brand voice via Gemini / Firefly / Imagen. Warmth comes from palette discipline: supporting elements use 20–60% tints of the primaries, never default to neutrals. Subtle depth from a single darker tonal step per rounded object. No outlines anywhere. Hand-coded SVG is reserved for primitives — graph vocabulary, dividers, in-product state dots — not for hero scenes. Full prompt and 8-item checklist at `docs/illustration-prompt.md`. v4 retires v3's two-style split (Editorial Geometry + Living Graph), the atoms/forms/treatments/palette four-layer vocabulary as a generation constraint, the four-channel production matrix, and the `SpectreaFigure` Bauhaus limbs-figure component.
 
@@ -16,7 +16,7 @@ The brand combines spectrum accents (Cobalt, Teal, Amber, Rose) with a Warm Blen
 
 ## Canonical documents
 
-- [Full brand guide (Markdown)](/brand-guide.md): The single source of truth. Covers foundation, voice, logo system (two-forms rule, 11 variants, 3 arrangements), Warm Blend colour system, gradient rules (OKLCH with sRGB fallback, 3-stop primary, 5-stop lockup, three duets), typography (Albert Sans / Lexend / JetBrains Mono), iconography (Tabler, 2px stroke), motion, components, communications, and governance. Includes inline SVG visuals for logo, swatches, gradients, and typography.
+- [Full brand guide (Markdown)](/brand-guide.md): Offline mirror of the live app. The live app at [/](/) is canonical; this Markdown exists for LLM-readable and print use. Covers foundation, voice, logo system (two-forms rule, 11 variants, 3 arrangements), Warm Blend colour system, gradient rules (OKLCH with sRGB fallback, 3-stop primary, 2-stop Cool Duet lockup, three duets), typography (Albert Sans / Lexend / JetBrains Mono), iconography (Tabler, 2px stroke), motion, components, communications, and governance. Includes inline SVG visuals for logo, swatches, gradients, and typography.
 - [Full brand guide (PDF)](/brand-guide.pdf): Printable version of the same content.
 
 ## Visual assets (referenced from the Markdown)
@@ -25,11 +25,11 @@ The brand combines spectrum accents (Cobalt, Teal, Amber, Rose) with a Warm Blen
 - [/brand-assets/logo-mark-ink.svg](/brand-assets/logo-mark-ink.svg): Mono ink mark.
 - [/brand-assets/logo-mark-white.svg](/brand-assets/logo-mark-white.svg): Mono white mark on Ink background.
 - [/brand-assets/logo-mark-spectrum.svg](/brand-assets/logo-mark-spectrum.svg): Full-spectrum mark (animated-frame colour).
-- [/brand-assets/logo-lockup-gradient.svg](/brand-assets/logo-lockup-gradient.svg): Gradient lockup (5-stop full-spectrum).
+- [/brand-assets/logo-lockup-gradient.svg](/brand-assets/logo-lockup-gradient.svg): Gradient lockup — 2-stop Cool Duet (Cobalt → Teal) on the mark stroke only; wordmark stays monotone.
 - [/brand-assets/logo-lockup-ink.svg](/brand-assets/logo-lockup-ink.svg): Mono ink lockup.
 - [/brand-assets/logo-lockup-white.svg](/brand-assets/logo-lockup-white.svg): Mono white lockup on Ink.
 - [/brand-assets/swatches-spectrum.svg](/brand-assets/swatches-spectrum.svg): Cobalt / Teal / Amber / Rose swatches.
-- [/brand-assets/swatches-neutrals.svg](/brand-assets/swatches-neutrals.svg): Canvas / Cloud / Pewter / Graphite / Ink swatches.
+- [/brand-assets/swatches-neutrals.svg](/brand-assets/swatches-neutrals.svg): Warm Blend seven-token neutral ladder — Canvas / Cloud / Pewter / Slate / Iron / Graphite / Ink.
 - [/brand-assets/swatches-bridge.svg](/brand-assets/swatches-bridge.svg): Bridge-tier tinted washes.
 - [/brand-assets/ratio-bar.svg](/brand-assets/ratio-bar.svg): 60 / 20 / 10 / 10 usage-ratio bar.
 - [/brand-assets/gradient-brand.svg](/brand-assets/gradient-brand.svg): The primary brand gradient.
@@ -37,7 +37,7 @@ The brand combines spectrum accents (Cobalt, Teal, Amber, Rose) with a Warm Blen
 - [/brand-assets/gradient-balanced-duet.svg](/brand-assets/gradient-balanced-duet.svg): Balanced Duet with #6FB884 bridge.
 - [/brand-assets/gradient-warm-duet.svg](/brand-assets/gradient-warm-duet.svg): Warm Duet strip.
 - [/brand-assets/gradient-full-rose.svg](/brand-assets/gradient-full-rose.svg): Full spectrum with Rose.
-- [/brand-assets/gradient-lockup.svg](/brand-assets/gradient-lockup.svg): 5-stop lockup gradient (LogotypeGradient only).
+- [/brand-assets/gradient-lockup.svg](/brand-assets/gradient-lockup.svg): 2-stop Cool Duet gradient on the lockup mark stroke (LogotypeGradient only).
 - [/brand-assets/type-samples.svg](/brand-assets/type-samples.svg): Typography samples in Albert Sans, Lexend, JetBrains Mono.
 - [/brand-assets/type-scale.svg](/brand-assets/type-scale.svg): Type scale ladder — Display through Code.
 
@@ -81,12 +81,12 @@ The brand combines spectrum accents (Cobalt, Teal, Amber, Rose) with a Warm Blen
 - **Tagline:** "We connect the dots."
 - **Category:** Composable knowledge platform.
 - **Spectrum colours:** Cobalt `#4271DF` · Teal `#00B6A0` · Amber `#E19000` · Rose `#F24260`.
-- **Warm Blend neutrals:** Canvas `#FDFDFB` · Cloud `#F4F4F1` · Pewter `#97979E` · Graphite `#212226` · Ink `#18181C`.
+- **Warm Blend neutrals (seven-token OKLCH-even ladder):** Canvas `#FDFDFB` (bg) · Cloud `#F4F4F1` (surface) · Pewter `#97979E` (whisper muted, 2.85:1 — supplementary only) · Slate `#6D6D72` (body secondary, 5.05:1 AA) · Iron `#46464B` (emphasized body, 9.21:1 AAA) · Graphite `#212226` (dark UI surface) · Ink `#18181C` (primary text).
 - **Default mode:** light. Canvas is the 60% page ground on marketing, product, slides, PDF. Dark is a parallel mode, not the primary register.
 - **Dark surfaces (parallel mode):** role mapping inverts — Ink becomes the canvas, Graphite becomes elevated, Cloud becomes text. Two new tokens complete the hierarchy: **Mist `#B0B0B6`** (muted text, ~8.5:1 on Ink) and **Fog `#2E2F35`** (border / divider). Accents (Cobalt, Teal, Amber, Rose) carry over unchanged — all pass WCAG AA on Ink. Dark bridge washes: Cobalt Deep `#1B2440` · Teal Deep `#0E2E2A` · Amber Deep `#2E2410` · Rose Deep `#2E1218`.
 - **Slides:** Canvas-default, Ink for punctuation (section dividers, single-stat emphasis, closing CTA). Target ~80/20 Canvas/Ink; contrast is the point, so dilution weakens both modes.
 - **Brand gradient:** `linear-gradient(135deg in oklch, #4271DF, #00B6A0, #E19000)` with sRGB fallback for older browsers.
-- **Lockup gradient (LogotypeGradient only):** 5-stop full spectrum with `#6FB884` intermediate at 55%.
+- **Lockup gradient (LogotypeGradient only):** 2-stop Cool Duet — Cobalt `#4271DF` → Teal `#00B6A0`, applied to the mark stroke only. The wordmark stays monotone (Ink on light, White on dark).
 - **Typefaces:** Albert Sans (headings, 600/700), Lexend (body, 300/400/500/600), JetBrains Mono (code, 400).
 - **Archetypes (v2 tri-domain split):** Magician on marketing · Sage on trust surfaces · Creator on product surfaces.
 - **Personality (v2, 4 traits):** Warm · Perceptive · Grounded · Adaptive (each with a guardrail). The brand's discipline and consistency are enforced structurally by the system rules (fixed primitives, fixed palette, fixed motion language) rather than claimed as a personality trait.

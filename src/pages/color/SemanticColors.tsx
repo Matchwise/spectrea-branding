@@ -89,12 +89,12 @@ export default function SemanticColors() {
       subtitle="How the spectrum maps to functional meaning in the product UI."
     >
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Semantic colors carry consistent meaning across the product. Users learn that teal = good, amber = caution, rose = problem. Never use a semantic color for decoration — it will confuse users.">
             <span>Functional Color Mapping</span>
           </Tooltip>
         </h2>
-        <p className="text-sm text-stone-500 mb-6">
+        <p className="text-sm text-slate mb-6">
           Each spectrum accent maps to a semantic role. Every color carries meaning — consistency builds trust.
         </p>
 
@@ -114,14 +114,14 @@ export default function SemanticColors() {
               </div>
               <div className="p-4">
                 <div className="flex items-center gap-2 mb-1">
-                  <h3 className="text-sm font-semibold text-stone-900">{sc.name}</h3>
-                  <span className="text-xs font-mono text-stone-400 bg-stone-100 px-1.5 py-0.5 rounded">{sc.maps}</span>
+                  <h3 className="text-sm font-semibold text-ink">{sc.name}</h3>
+                  <span className="text-xs font-mono text-pewter bg-cloud px-1.5 py-0.5 rounded">{sc.maps}</span>
                 </div>
-                <p className="text-xs text-stone-600">{sc.usage}</p>
+                <p className="text-xs text-iron">{sc.usage}</p>
                 <div className="flex gap-2 mt-2 flex-wrap">
-                  <span className="text-xs font-mono text-stone-400">Wash ({sc.lightName}): {sc.light}</span>
-                  <span className="text-xs font-mono text-stone-400">Accent: {sc.color}</span>
-                  <span className="text-xs font-mono text-stone-400">On-wash text: {sc.dark}</span>
+                  <span className="text-xs font-mono text-pewter">Wash ({sc.lightName}): {sc.light}</span>
+                  <span className="text-xs font-mono text-pewter">Accent: {sc.color}</span>
+                  <span className="text-xs font-mono text-pewter">On-wash text: {sc.dark}</span>
                 </div>
               </div>
             </div>
@@ -157,12 +157,12 @@ export default function SemanticColors() {
 
       {/* ─── Bridge tier: tinted washes ─── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Bridge tones are very-low-saturation tints (5–10%) derived from each spectrum color. They sit between the warm neutral canvas and the full spectrum — so color feels like it's emerging from the system rather than painted on top.">
             <span>Bridge Tier — Tinted Washes</span>
           </Tooltip>
         </h2>
-        <p className="text-sm text-stone-600 mb-4 leading-relaxed">
+        <p className="text-sm text-iron mb-4 leading-relaxed">
           Between the warm neutral canvas and the full spectrum sits a <strong>bridge tier</strong>: very-low-saturation tints (5–10%) that carry just enough color to communicate semantic context without shouting. Use them as surfaces, not as accents. The saturated spectrum color still does the talking — the wash sets the stage.
         </p>
 
@@ -170,23 +170,23 @@ export default function SemanticColors() {
           {bridgeTones.map(t => (
             <div key={t.name} className="border border-stone-200 rounded-xl overflow-hidden">
               <div className="h-20 px-3 py-2 flex items-end" style={{ backgroundColor: t.hex }}>
-                <span className="text-xs font-mono text-stone-500">{t.hex}</span>
+                <span className="text-xs font-mono text-slate">{t.hex}</span>
               </div>
               <div className="p-3 space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <p className="text-xs font-semibold text-stone-800">{t.name}</p>
-                  <span className="text-[10px] font-mono text-stone-400">from {t.source}</span>
+                  <p className="text-xs font-semibold text-ink">{t.name}</p>
+                  <span className="text-[10px] font-mono text-pewter">from {t.source}</span>
                 </div>
                 <p className="text-[11px] font-semibold uppercase tracking-wider" style={{ color: '#97979E' }}>{t.when}</p>
-                <p className="text-xs text-stone-600 leading-relaxed">{t.usage}</p>
+                <p className="text-xs text-iron leading-relaxed">{t.usage}</p>
               </div>
             </div>
           ))}
         </div>
 
         <div className="border border-stone-200 rounded-xl overflow-hidden">
-          <div className="px-4 py-2.5 bg-stone-50 border-b border-stone-200">
-            <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider">When to use a bridge tone</p>
+          <div className="px-4 py-2.5 bg-cloud border-b border-stone-200">
+            <p className="text-xs font-semibold text-slate uppercase tracking-wider">When to use a bridge tone</p>
           </div>
           <div className="divide-y divide-stone-100">
             {[
@@ -199,8 +199,8 @@ export default function SemanticColors() {
               { use: 'Decorative section background', rule: 'Never. Bridge tones always carry semantic meaning. Use Cloud (#F4F4F1) for decoration.' },
             ].map((row, i, arr) => (
               <div key={row.use} className="grid grid-cols-1 sm:grid-cols-12 gap-y-1 sm:gap-y-0 px-4 py-2.5" style={{ borderBottom: i < arr.length - 1 ? undefined : 'none' }}>
-                <span className="sm:col-span-4 text-xs font-semibold sm:font-medium text-stone-700">{row.use}</span>
-                <span className="sm:col-span-8 text-xs text-stone-500 leading-relaxed">{row.rule}</span>
+                <span className="sm:col-span-4 text-xs font-semibold sm:font-medium text-iron">{row.use}</span>
+                <span className="sm:col-span-8 text-xs text-slate leading-relaxed">{row.rule}</span>
               </div>
             ))}
           </div>
@@ -208,8 +208,8 @@ export default function SemanticColors() {
 
         {/* Saturation ladder */}
         <div className="mt-5 border border-stone-200 rounded-xl p-5">
-          <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider mb-3">Saturation ladder</p>
-          <p className="text-xs text-stone-500 mb-4 leading-relaxed">
+          <p className="text-xs font-semibold text-slate uppercase tracking-wider mb-3">Saturation ladder</p>
+          <p className="text-xs text-slate mb-4 leading-relaxed">
             Each semantic color has three levels of emphasis. Reach for the lowest level that does the job — save the saturated accent for the moment that carries meaning.
           </p>
           <div className="space-y-2">
@@ -220,25 +220,25 @@ export default function SemanticColors() {
               { label: 'Error', bg: '#FDF0F2', accent: '#F24260', dark: '#9F1239' },
             ].map(row => (
               <div key={row.label} className="grid grid-cols-12 gap-2 items-center">
-                <span className="col-span-2 text-xs font-semibold text-stone-700">{row.label}</span>
+                <span className="col-span-2 text-xs font-semibold text-iron">{row.label}</span>
                 <div className="col-span-10 grid grid-cols-3 gap-2">
                   <div className="flex flex-col rounded-md overflow-hidden">
                     <div className="h-8" style={{ backgroundColor: row.bg }} />
-                    <span className="text-[10px] font-mono text-stone-400 mt-1">Wash — {row.bg}</span>
+                    <span className="text-[10px] font-mono text-pewter mt-1">Wash — {row.bg}</span>
                   </div>
                   <div className="flex flex-col rounded-md overflow-hidden">
                     <div className="h-8" style={{ backgroundColor: row.accent }} />
-                    <span className="text-[10px] font-mono text-stone-400 mt-1">Accent — {row.accent}</span>
+                    <span className="text-[10px] font-mono text-pewter mt-1">Accent — {row.accent}</span>
                   </div>
                   <div className="flex flex-col rounded-md overflow-hidden">
                     <div className="h-8" style={{ backgroundColor: row.dark }} />
-                    <span className="text-[10px] font-mono text-stone-400 mt-1">Dark — {row.dark}</span>
+                    <span className="text-[10px] font-mono text-pewter mt-1">Dark — {row.dark}</span>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-          <p className="text-xs text-stone-500 mt-4 leading-relaxed">
+          <p className="text-xs text-slate mt-4 leading-relaxed">
             <strong>Rule of thirds:</strong> most semantic surfaces should be <strong>wash</strong>. The accent appears as a dot, icon, or short emphasis — not as a fill. Dark variants are reserved for text and borders <em>on top of</em> the wash.
           </p>
         </div>
@@ -246,18 +246,18 @@ export default function SemanticColors() {
 
       {/* Semantic surfaces on dark */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Dark mode rebuilds the bridge tier on a dark base. Same pairing rule: the surface carries context, the saturated accent carries the color. Accents don't change hex between modes.">
             <span>Semantic Surfaces on Dark</span>
           </Tooltip>
         </h2>
-        <p className="text-sm text-stone-600 mb-4 leading-relaxed">
+        <p className="text-sm text-iron mb-4 leading-relaxed">
           On dark surfaces the bridge tier rebuilds at ~8–12% saturation on a dark base. The accents carry over <strong>unchanged</strong> — all four pass WCAG AA on Ink — so the brand reads as itself in either mode.
         </p>
 
         <div className="rounded-xl overflow-hidden border border-stone-200">
-          <div className="px-4 py-2.5 bg-stone-50 border-b border-stone-200">
-            <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider">Dark saturation ladder</p>
+          <div className="px-4 py-2.5 bg-cloud border-b border-stone-200">
+            <p className="text-xs font-semibold text-slate uppercase tracking-wider">Dark saturation ladder</p>
           </div>
           <div className="p-5" style={{ backgroundColor: '#18181C' }}>
             <div className="space-y-2">
@@ -306,15 +306,15 @@ export default function SemanticColors() {
           </div>
         </div>
 
-        <p className="text-xs text-stone-500 mt-4 leading-relaxed">
+        <p className="text-xs text-slate mt-4 leading-relaxed">
           <strong>Rule:</strong> dark washes replace light washes 1:1. Accent dots, borders, and icons stay unchanged. On-dark text on washes is Cloud <code className="font-mono text-[11px]">#F4F4F1</code> — the wash provides enough contrast that a darker text variant isn't needed.
         </p>
       </Section>
 
       {/* Consistency rule */}
       <Section title="The Consistency Rule">
-        <div className="bg-stone-50 rounded-xl p-5 border border-stone-200">
-          <p className="text-sm text-stone-700 leading-relaxed">
+        <div className="bg-cloud rounded-xl p-5 border border-stone-200">
+          <p className="text-sm text-iron leading-relaxed">
             Once a color is assigned a semantic meaning, it must be used consistently. If Teal means "success" in one context and "category label" in another, users lose trust in color as a communication channel. Each semantic color should carry <strong>one meaning</strong> across the entire product.
           </p>
         </div>
@@ -322,12 +322,12 @@ export default function SemanticColors() {
 
       {/* ─── Three-Tier Color Application ─── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="The three-tier system governs when each color appears across all UI elements — buttons, icons, nav, cards, inputs. Each tier answers a different question about why color is present.">
             <span>Three-Tier Color Application</span>
           </Tooltip>
         </h2>
-        <p className="text-sm text-stone-600 mb-5 leading-relaxed">
+        <p className="text-sm text-iron mb-5 leading-relaxed">
           Every color in the UI exists for a reason. The three tiers map to three brand personality traits and answer three different questions.
         </p>
 
@@ -338,13 +338,13 @@ export default function SemanticColors() {
             <div className="px-5 py-3 bg-brand/5 border-b border-brand/10">
               <div className="flex items-center gap-3">
                 <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#4271DF' }} />
-                <p className="text-sm font-semibold text-stone-800">Tier 1: Responsive</p>
+                <p className="text-sm font-semibold text-ink">Tier 1: Responsive</p>
                 <span className="text-xs font-mono text-brand bg-brand/10 px-1.5 py-0.5 rounded">Cobalt #4271DF</span>
               </div>
-              <p className="text-xs text-stone-500 mt-1">Personality: <strong>Perceptive</strong> — the system responds to you</p>
+              <p className="text-xs text-slate mt-1">Personality: <strong>Perceptive</strong> — the system responds to you</p>
             </div>
             <div className="p-5">
-              <p className="text-xs text-stone-600 leading-relaxed mb-3">
+              <p className="text-xs text-iron leading-relaxed mb-3">
                 Cobalt appears on <strong>action-oriented elements</strong> — things that trigger an operation or navigate to a new context. It's temporary and reactive: present during hover, focus, and press, then settles. This keeps Cobalt rare and powerful.
               </p>
               <div className="border border-stone-200 rounded-lg overflow-hidden">
@@ -356,9 +356,9 @@ export default function SemanticColors() {
                   { element: 'Standalone icon', state: 'Hovered', how: 'Pewter → Cobalt outline. Reverts on leave.' },
                 ].map((row, i) => (
                   <div key={row.element} className="grid grid-cols-1 sm:grid-cols-3 gap-y-0.5 sm:gap-y-0 px-4 py-2" style={{ borderBottom: i < 4 ? '1px solid #F3F4F6' : 'none' }}>
-                    <span className="text-xs font-medium text-stone-700">{row.element}</span>
-                    <span className="text-xs text-stone-500">{row.state}</span>
-                    <span className="text-xs text-stone-500">{row.how}</span>
+                    <span className="text-xs font-medium text-iron">{row.element}</span>
+                    <span className="text-xs text-slate">{row.state}</span>
+                    <span className="text-xs text-slate">{row.how}</span>
                   </div>
                 ))}
               </div>
@@ -367,16 +367,16 @@ export default function SemanticColors() {
 
           {/* Tier 2 */}
           <div className="border border-stone-300 rounded-xl overflow-hidden">
-            <div className="px-5 py-3 bg-stone-100 border-b border-stone-200">
+            <div className="px-5 py-3 bg-cloud border-b border-stone-200">
               <div className="flex items-center gap-3">
                 <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#18181C' }} />
-                <p className="text-sm font-semibold text-stone-800">Tier 2: Structural</p>
-                <span className="text-xs font-mono text-stone-600 bg-stone-200 px-1.5 py-0.5 rounded">Ink #18181C</span>
+                <p className="text-sm font-semibold text-ink">Tier 2: Structural</p>
+                <span className="text-xs font-mono text-iron bg-stone-200 px-1.5 py-0.5 rounded">Ink #18181C</span>
               </div>
-              <p className="text-xs text-stone-500 mt-1">Personality: <strong>Grounded</strong> — confident, understated, persistent</p>
+              <p className="text-xs text-slate mt-1">Personality: <strong>Grounded</strong> — confident, understated, persistent</p>
             </div>
             <div className="p-5">
-              <p className="text-xs text-stone-600 leading-relaxed mb-3">
+              <p className="text-xs text-iron leading-relaxed mb-3">
                 Ink signals <strong>persistent state</strong> and <strong>structural navigation</strong>. The current page, the selected tab, the toggled-on icon — and the hover state of elements that are part of the persistent UI chrome (sidebar, tabs, breadcrumbs). These elements are always visible, so Ink keeps the canvas calm while Cobalt stays reserved for action-oriented moments.
               </p>
               <div className="border border-stone-200 rounded-lg overflow-hidden">
@@ -389,9 +389,9 @@ export default function SemanticColors() {
                   { element: 'Selected row', state: 'Selected item', how: 'Subtle Ink/5 background, Ink text' },
                 ].map((row, i) => (
                   <div key={row.element} className="grid grid-cols-1 sm:grid-cols-3 gap-y-0.5 sm:gap-y-0 px-4 py-2" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
-                    <span className="text-xs font-medium text-stone-700">{row.element}</span>
-                    <span className="text-xs text-stone-500">{row.state}</span>
-                    <span className="text-xs text-stone-500">{row.how}</span>
+                    <span className="text-xs font-medium text-iron">{row.element}</span>
+                    <span className="text-xs text-slate">{row.state}</span>
+                    <span className="text-xs text-slate">{row.how}</span>
                   </div>
                 ))}
               </div>
@@ -400,7 +400,7 @@ export default function SemanticColors() {
 
           {/* Tier 3 */}
           <div className="border border-stone-200 rounded-xl overflow-hidden">
-            <div className="px-5 py-3 bg-stone-50 border-b border-stone-100">
+            <div className="px-5 py-3 bg-cloud border-b border-stone-100">
               <div className="flex items-center gap-3">
                 <div className="flex gap-1">
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#4271DF' }} />
@@ -409,13 +409,13 @@ export default function SemanticColors() {
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#F24260' }} />
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#97979E' }} />
                 </div>
-                <p className="text-sm font-semibold text-stone-800">Tier 3: Semantic</p>
-                <span className="text-xs font-mono text-stone-500 bg-stone-100 px-1.5 py-0.5 rounded">Cobalt / Teal / Amber / Rose / Pewter</span>
+                <p className="text-sm font-semibold text-ink">Tier 3: Semantic</p>
+                <span className="text-xs font-mono text-slate bg-cloud px-1.5 py-0.5 rounded">Cobalt / Teal / Amber / Rose / Pewter</span>
               </div>
-              <p className="text-xs text-stone-500 mt-1">Personality: <strong>Trustworthy</strong> — the system communicates clearly</p>
+              <p className="text-xs text-slate mt-1">Personality: <strong>Trustworthy</strong> — the system communicates clearly</p>
             </div>
             <div className="p-5">
-              <p className="text-xs text-stone-600 leading-relaxed mb-3">
+              <p className="text-xs text-iron leading-relaxed mb-3">
                 Semantic colors appear when the <strong>system communicates status</strong>. Info, success, warning, error. Cobalt doubles as the informational semantic color — giving notices visual weight. These colors are never decorative — every appearance carries meaning that users learn to trust.
               </p>
               <div className="border border-stone-200 rounded-lg overflow-hidden">
@@ -429,9 +429,9 @@ export default function SemanticColors() {
                   { element: 'Neutral / disabled', state: 'Passive context', how: 'Pewter text, borders, placeholders. Present if needed.' },
                 ].map((row, i) => (
                   <div key={row.element} className="grid grid-cols-1 sm:grid-cols-3 gap-y-0.5 sm:gap-y-0 px-4 py-2" style={{ borderBottom: i < 6 ? '1px solid #F3F4F6' : 'none' }}>
-                    <span className="text-xs font-medium text-stone-700">{row.element}</span>
-                    <span className="text-xs text-stone-500">{row.state}</span>
-                    <span className="text-xs text-stone-500">{row.how}</span>
+                    <span className="text-xs font-medium text-iron">{row.element}</span>
+                    <span className="text-xs text-slate">{row.state}</span>
+                    <span className="text-xs text-slate">{row.how}</span>
                   </div>
                 ))}
               </div>
@@ -458,21 +458,21 @@ export default function SemanticColors() {
         </div>
 
         {/* The hover nuance */}
-        <div className="mt-4 bg-stone-50 rounded-xl p-5 border border-stone-200">
-          <p className="text-sm font-semibold text-stone-800 mb-2">The Hover Rule</p>
-          <p className="text-xs text-stone-600 leading-relaxed mb-3">
+        <div className="mt-4 bg-cloud rounded-xl p-5 border border-stone-200">
+          <p className="text-sm font-semibold text-ink mb-2">The Hover Rule</p>
+          <p className="text-xs text-iron leading-relaxed mb-3">
             Not all hovers are equal. The distinction is between elements that <strong>trigger actions</strong> and elements that <strong>navigate within persistent chrome</strong>.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div className="bg-white rounded-lg px-4 py-3 border border-brand/15">
               <p className="text-xs font-semibold text-brand mb-1">Cobalt hover</p>
-              <p className="text-xs text-stone-600 leading-relaxed">
+              <p className="text-xs text-iron leading-relaxed">
                 Buttons, inline links, CTA cards, standalone icons, entry points. These elements invite the user to <strong>take an action</strong> or <strong>go somewhere new</strong>. Cobalt says "I'm interactive, click me."
               </p>
             </div>
             <div className="bg-white rounded-lg px-4 py-3 border border-stone-200">
-              <p className="text-xs font-semibold text-stone-800 mb-1">Ink hover</p>
-              <p className="text-xs text-stone-600 leading-relaxed">
+              <p className="text-xs font-semibold text-ink mb-1">Ink hover</p>
+              <p className="text-xs text-iron leading-relaxed">
                 Sidebar nav, tab bars, breadcrumbs, toolbars. These elements are <strong>always visible</strong> and show structural position. Ink hover keeps the chrome calm — Cobalt would make the sidebar feel like a row of CTAs.
               </p>
             </div>

@@ -23,9 +23,9 @@ export default function TypeExplorer() {
             { label: 'Code', family: t.mono.family, style: t.mono.css, weight: t.mono.defaultWeight, usage: t.mono.usage },
           ].map(f => (
             <div key={f.label} className="border border-stone-200 rounded-xl p-5">
-              <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">{f.label}</p>
+              <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">{f.label}</p>
               <p className="text-2xl mb-1" style={{ fontFamily: f.style, fontWeight: f.weight }}>{f.family}</p>
-              <p className="text-xs text-stone-500 leading-relaxed mt-2">{f.usage}</p>
+              <p className="text-xs text-slate leading-relaxed mt-2">{f.usage}</p>
             </div>
           ))}
         </div>
@@ -33,7 +33,7 @@ export default function TypeExplorer() {
 
       {/* Specimens */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Full character set for each typeface. Verify all needed glyphs render correctly, especially for multilingual content (SG/AU/US markets).">
             <span>Character Specimens</span>
           </Tooltip>
@@ -45,13 +45,13 @@ export default function TypeExplorer() {
           { label: 'JetBrains Mono (Code)', style: t.mono.css, weight: 400 },
         ].map(spec => (
           <div key={spec.label} className="mb-6 border border-stone-200 rounded-xl overflow-hidden">
-            <div className="bg-stone-50 px-4 py-2 border-b border-stone-200">
-              <span className="text-xs font-semibold text-stone-500">{spec.label}</span>
+            <div className="bg-cloud px-4 py-2 border-b border-stone-200">
+              <span className="text-xs font-semibold text-slate">{spec.label}</span>
             </div>
             <div className="p-4 space-y-2" style={{ fontFamily: spec.style, fontWeight: spec.weight }}>
-              <p className="text-lg text-stone-800 tracking-wide">{alphabet}</p>
-              <p className="text-lg text-stone-800">{numbers}</p>
-              <p className="text-lg text-stone-500">{special}</p>
+              <p className="text-lg text-ink tracking-wide">{alphabet}</p>
+              <p className="text-lg text-ink">{numbers}</p>
+              <p className="text-lg text-slate">{special}</p>
             </div>
           </div>
         ))}
@@ -59,7 +59,7 @@ export default function TypeExplorer() {
 
       {/* Live preview */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="How the type system looks in a realistic Spectrea UI context — headings, body, stats, code, and dark mode.">
             <span>In Context</span>
           </Tooltip>
@@ -68,17 +68,17 @@ export default function TypeExplorer() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Light */}
           <div className="border border-stone-200 rounded-xl p-5 bg-white">
-            <p className="text-2xl font-semibold text-stone-900 mb-1" style={{ fontFamily: t.heading.css }}>
+            <p className="text-2xl font-semibold text-ink mb-1" style={{ fontFamily: t.heading.css }}>
               We connect the dots.
             </p>
-            <p className="text-sm text-stone-500 mb-4" style={{ fontFamily: t.body.css }}>
+            <p className="text-sm text-slate mb-4" style={{ fontFamily: t.body.css }}>
               Make knowledge trustworthy, connected, and actionable.
             </p>
             <div className="grid grid-cols-3 gap-2 mb-4">
               {['Items', 'Connections', 'Confidence'].map((label, i) => (
                 <div key={label} className="rounded-lg border border-stone-200 p-3">
-                  <p className="text-xs text-stone-400 mb-0.5" style={{ fontFamily: t.body.css }}>{label}</p>
-                  <p className="text-lg font-semibold text-stone-900" style={{ fontFamily: t.heading.css }}>
+                  <p className="text-xs text-pewter mb-0.5" style={{ fontFamily: t.body.css }}>{label}</p>
+                  <p className="text-lg font-semibold text-ink" style={{ fontFamily: t.heading.css }}>
                     {['2,847', '8,291', '94%'][i]}
                   </p>
                   <p className="text-xs font-medium" style={{ fontFamily: t.body.css, color: ['#00B6A0', '#00B6A0', '#4271DF'][i] }}>
@@ -87,11 +87,11 @@ export default function TypeExplorer() {
                 </div>
               ))}
             </div>
-            <p className="text-sm text-stone-600 leading-relaxed mb-3" style={{ fontFamily: t.body.css }}>
+            <p className="text-sm text-iron leading-relaxed mb-3" style={{ fontFamily: t.body.css }}>
               Every document you add strengthens what the system already knows. Connections start surfacing on their own. The whole gets sharper — your second month is better than your first.
             </p>
-            <div className="bg-stone-50 rounded-lg px-3 py-2 border border-stone-200">
-              <p className="text-xs text-stone-500" style={{ fontFamily: t.mono.css }}>
+            <div className="bg-cloud rounded-lg px-3 py-2 border border-stone-200">
+              <p className="text-xs text-slate" style={{ fontFamily: t.mono.css }}>
                 type: "Sample" | confidence: 0.94 | source: "Q4_report.pdf"
               </p>
             </div>
@@ -132,7 +132,7 @@ export default function TypeExplorer() {
 
       {/* Weight usage */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Which weights to use and when. Consistency in weight usage creates clear visual hierarchy.">
             <span>Weight Usage</span>
           </Tooltip>
@@ -152,9 +152,9 @@ export default function TypeExplorer() {
                 {w.font}
               </p>
               <div className="sm:w-20 sm:flex-shrink-0">
-                <span className="text-xs font-mono text-stone-400">{w.weight} {w.label}</span>
+                <span className="text-xs font-mono text-pewter">{w.weight} {w.label}</span>
               </div>
-              <p className="text-xs text-stone-600">{w.use}</p>
+              <p className="text-xs text-iron">{w.use}</p>
             </div>
           ))}
         </div>
@@ -165,7 +165,7 @@ export default function TypeExplorer() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="rounded-xl p-5" style={{ border: '1px solid #00B6A025', backgroundColor: '#00B6A008' }}>
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
-            <ul className="space-y-2 text-sm text-stone-700">
+            <ul className="space-y-2 text-sm text-iron">
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use Albert Sans only for headings and display text</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use Lexend for all body text and UI labels</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use JetBrains Mono for anything code-like or data-like</li>
@@ -175,7 +175,7 @@ export default function TypeExplorer() {
           </div>
           <div className="rounded-xl p-5" style={{ border: '1px solid #F2426025', backgroundColor: '#F2426008' }}>
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Don't</h3>
-            <ul className="space-y-2 text-sm text-stone-700">
+            <ul className="space-y-2 text-sm text-iron">
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Mix in other font families — three is the maximum</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use Albert Sans for long body paragraphs</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use Bold 700 for anything except the logo and hero headlines</li>

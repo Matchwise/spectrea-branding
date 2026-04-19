@@ -367,7 +367,7 @@ function AssetGenerator() {
     ? `${style.label} logotype`
     : `${style.label}${useCircle ? ' circle' : ''} mark`
 
-  const selectClass = 'w-full text-sm border border-stone-300 rounded-lg px-2 py-1.5 bg-white text-stone-800'
+  const selectClass = 'w-full text-sm border border-stone-300 rounded-lg px-2 py-1.5 bg-white text-ink'
 
   // ─── Render the preview ──────────────────────────────────────────
   const preview = (() => {
@@ -410,16 +410,16 @@ function AssetGenerator() {
   return (
     <div className="border border-stone-200 rounded-xl overflow-hidden">
       {/* Controls */}
-      <div className="bg-stone-50 p-4 border-b border-stone-200 grid grid-cols-2 md:grid-cols-6 gap-3">
+      <div className="bg-cloud p-4 border-b border-stone-200 grid grid-cols-2 md:grid-cols-6 gap-3">
         <div>
-          <label className="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">Layout</label>
+          <label className="text-xs font-semibold text-slate uppercase tracking-wider block mb-1">Layout</label>
           <select value={layout} onChange={e => handleLayoutChange(e.target.value as Layout)} className={selectClass}>
             <option value="mark">Mark</option>
             <option value="logotype">Logotype</option>
           </select>
         </div>
         <div>
-          <label className="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">Style</label>
+          <label className="text-xs font-semibold text-slate uppercase tracking-wider block mb-1">Style</label>
           <select value={styleIdx} onChange={e => handleStyleChange(Number(e.target.value))} className={selectClass}>
             {availableStyleIndexes.map(i => (
               <option key={styles[i].id} value={i}>{styles[i].label}</option>
@@ -428,7 +428,7 @@ function AssetGenerator() {
         </div>
         {!isLogotype && (
           <div>
-            <label className="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">Container</label>
+            <label className="text-xs font-semibold text-slate uppercase tracking-wider block mb-1">Container</label>
             <select
               value={useCircle ? 'circle' : 'none'}
               onChange={e => handleCircleToggle(e.target.value === 'circle')}
@@ -441,7 +441,7 @@ function AssetGenerator() {
           </div>
         )}
         <div>
-          <label className="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">Background</label>
+          <label className="text-xs font-semibold text-slate uppercase tracking-wider block mb-1">Background</label>
           <select value={bg} onChange={e => setBg(e.target.value)} className={selectClass}>
             {backgrounds.map(b => (
               <option key={b.value} value={b.value}>{b.label}</option>
@@ -449,7 +449,7 @@ function AssetGenerator() {
           </select>
         </div>
         <div>
-          <label className="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">
+          <label className="text-xs font-semibold text-slate uppercase tracking-wider block mb-1">
             {isLogotype ? 'Height' : 'Size'}
           </label>
           <select value={size} onChange={e => setSize(Number(e.target.value))} className={selectClass}>
@@ -459,7 +459,7 @@ function AssetGenerator() {
           </select>
         </div>
         <div>
-          <label className="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-1">Format</label>
+          <label className="text-xs font-semibold text-slate uppercase tracking-wider block mb-1">Format</label>
           <select
             value={format}
             onChange={e => setFormat(e.target.value as 'svg' | 'png' | 'jpg')}
@@ -499,8 +499,8 @@ function AssetGenerator() {
       </div>
 
       {/* Export */}
-      <div className="p-4 border-t border-stone-200 bg-stone-50 flex items-center justify-between">
-        <p className="text-xs text-stone-500">
+      <div className="p-4 border-t border-stone-200 bg-cloud flex items-center justify-between">
+        <p className="text-xs text-slate">
           {format === 'svg' ? 'Vector — scales to any size' : `${isLogotype ? `${size}px height` : `${size}x${size}px`} raster`}
         </p>
         <button
@@ -524,8 +524,8 @@ export default function LogoExploration() {
     >
       {/* Generator */}
       <Section>
-        <h2 className="text-lg font-semibold text-stone-800 mb-4">Asset Generator</h2>
-        <p className="text-xs text-stone-500 mb-4">
+        <h2 className="text-lg font-semibold text-ink mb-4">Asset Generator</h2>
+        <p className="text-xs text-slate mb-4">
           Only guideline-compliant combinations are available. The logotype offers the two approved forms only — <strong>Full Spectrum</strong> (gradient) or <strong>Mono</strong> (Ink / White). Cool Duet and Grey are mark-only treatments.
         </p>
         <AssetGenerator />
@@ -533,11 +533,11 @@ export default function LogoExploration() {
 
       {/* Specs */}
       <Section>
-        <h2 className="text-lg font-semibold text-stone-800 mb-4">Technical Specifications</h2>
+        <h2 className="text-lg font-semibold text-ink mb-4">Technical Specifications</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border border-stone-200 rounded-xl overflow-hidden">
-            <div className="bg-stone-50 px-4 py-2 border-b border-stone-200">
-              <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Mark geometry</p>
+            <div className="bg-cloud px-4 py-2 border-b border-stone-200">
+              <p className="text-xs font-semibold text-pewter uppercase tracking-wider">Mark geometry</p>
             </div>
             {[
               { label: 'ViewBox', value: '0 0 64 64' },
@@ -548,37 +548,35 @@ export default function LogoExploration() {
               { label: 'Stroke width', value: `${LOGO.strokeW}` },
               { label: 'Linecap', value: 'round' },
               { label: 'Stroke segments', value: '48 (individually coloured for path-following gradient)' },
-              { label: 'Segment overlap', value: '+1.5 units with round caps for seamless joins' },
+              { label: 'Segment overlap', value: '+1.5 units with round caps for continuous joins' },
             ].map((row, i, arr) => (
               <div key={row.label} className="flex gap-3 px-4 py-2" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
-                <span className="text-xs font-medium text-stone-500 w-36 flex-shrink-0">{row.label}</span>
-                <span className="text-xs font-mono text-stone-700 break-all">{row.value}</span>
+                <span className="text-xs font-medium text-slate w-36 flex-shrink-0">{row.label}</span>
+                <span className="text-xs font-mono text-iron break-all">{row.value}</span>
               </div>
             ))}
           </div>
           <div className="border border-stone-200 rounded-xl overflow-hidden">
-            <div className="bg-stone-50 px-4 py-2 border-b border-stone-200">
-              <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Colours</p>
+            <div className="bg-cloud px-4 py-2 border-b border-stone-200">
+              <p className="text-xs font-semibold text-pewter uppercase tracking-wider">Colours</p>
             </div>
             {[
               { label: 'Mark — Cool Duet start', value: 'Cobalt #4271DF' },
               { label: 'Mark — Cool Duet end', value: 'Teal #00B6A0' },
               { label: 'Lockup gradient — stop 1', value: 'Cobalt #4271DF (0%)' },
-              { label: 'Lockup gradient — stop 2', value: 'Teal #00B6A0 (33%)' },
-              { label: 'Lockup gradient — stop 3', value: '#6FB884 (55%, late-shift intermediate)' },
-              { label: 'Lockup gradient — stop 4', value: 'Amber #E19000 (66%)' },
-              { label: 'Lockup gradient — stop 5', value: 'Rose #F24260 (100%)' },
+              { label: 'Lockup gradient — stop 2', value: 'Teal #00B6A0 (100%)' },
+              { label: 'Lockup wordmark', value: 'Monotone — Ink #18181C (light) / Canvas #FDFDFB (dark)' },
               { label: 'Grey (dots / watermark)', value: '#A3A3A3' },
               { label: 'Ink', value: '#18181C' },
               { label: 'Canvas / White', value: '#FDFDFB' },
             ].map((row, i, arr) => (
               <div key={row.label} className="flex gap-3 px-4 py-2" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
-                <span className="text-xs font-medium text-stone-500 w-40 flex-shrink-0">{row.label}</span>
-                <span className="text-xs font-mono text-stone-700">{row.value}</span>
+                <span className="text-xs font-medium text-slate w-40 flex-shrink-0">{row.label}</span>
+                <span className="text-xs font-mono text-iron">{row.value}</span>
               </div>
             ))}
             <div className="px-4 py-3 border-t border-stone-100">
-              <p className="text-xs font-medium text-stone-500 mb-2">Full-spectrum preview (mark `color` mode)</p>
+              <p className="text-xs font-medium text-slate mb-2">Full-spectrum preview (mark `color` mode)</p>
               <div className="h-4 rounded-full overflow-hidden flex">
                 {Array.from({ length: 48 }, (_, i) => (
                   <div key={i} className="flex-1" style={{ backgroundColor: gradientColor(i / 47) }} />
@@ -589,8 +587,8 @@ export default function LogoExploration() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
           <div className="border border-stone-200 rounded-xl overflow-hidden">
-            <div className="bg-stone-50 px-4 py-2 border-b border-stone-200">
-              <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Typography (wordmark)</p>
+            <div className="bg-cloud px-4 py-2 border-b border-stone-200">
+              <p className="text-xs font-semibold text-pewter uppercase tracking-wider">Typography (wordmark)</p>
             </div>
             {[
               { label: 'Typeface', value: 'Albert Sans' },
@@ -602,14 +600,14 @@ export default function LogoExploration() {
               { label: 'Logotype min size', value: '32px font-size' },
             ].map((row, i, arr) => (
               <div key={row.label} className="flex gap-3 px-4 py-2" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
-                <span className="text-xs font-medium text-stone-500 w-36 flex-shrink-0">{row.label}</span>
-                <span className="text-xs font-mono text-stone-700">{row.value}</span>
+                <span className="text-xs font-medium text-slate w-36 flex-shrink-0">{row.label}</span>
+                <span className="text-xs font-mono text-iron">{row.value}</span>
               </div>
             ))}
           </div>
           <div className="border border-stone-200 rounded-xl overflow-hidden">
-            <div className="bg-stone-50 px-4 py-2 border-b border-stone-200">
-              <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Animation</p>
+            <div className="bg-cloud px-4 py-2 border-b border-stone-200">
+              <p className="text-xs font-semibold text-pewter uppercase tracking-wider">Animation</p>
             </div>
             {[
               { label: 'Duration', value: '3 seconds (loop)' },
@@ -620,8 +618,8 @@ export default function LogoExploration() {
               { label: 'Dots', value: 'Always grey, visible beneath the stroke' },
             ].map((row, i, arr) => (
               <div key={row.label} className="flex gap-3 px-4 py-2" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
-                <span className="text-xs font-medium text-stone-500 w-36 flex-shrink-0">{row.label}</span>
-                <span className="text-xs font-mono text-stone-700">{row.value}</span>
+                <span className="text-xs font-medium text-slate w-36 flex-shrink-0">{row.label}</span>
+                <span className="text-xs font-mono text-iron">{row.value}</span>
               </div>
             ))}
           </div>

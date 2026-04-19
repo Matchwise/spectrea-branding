@@ -15,10 +15,10 @@ function NavGroup({ item }: { item: NavItem }) {
       <Link
         to={item.path}
         aria-current={location.pathname === item.path ? 'page' : undefined}
-        className={`block px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-150 ${
+        className={`block px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-150 btn-focus ${
           location.pathname === item.path
-            ? 'bg-stone-100 text-stone-900'
-            : 'text-stone-500 hover:bg-stone-50 hover:text-stone-900'
+            ? 'bg-cloud text-ink'
+            : 'text-slate hover:bg-cloud hover:text-ink'
         }`}
       >
         {item.label}
@@ -31,8 +31,8 @@ function NavGroup({ item }: { item: NavItem }) {
       <button
         onClick={() => setOpen(!open)}
         aria-expanded={open}
-        className={`flex items-center justify-between w-full px-3 py-2 rounded-lg text-sm font-semibold transition-colors duration-150 ${
-          isActive ? 'text-stone-900' : 'text-stone-400 hover:text-stone-900'
+        className={`flex items-center justify-between w-full px-3 py-2 rounded-lg text-sm font-semibold transition-colors duration-150 btn-focus ${
+          isActive ? 'text-ink' : 'text-slate hover:text-ink'
         }`}
       >
         {item.label}
@@ -45,10 +45,10 @@ function NavGroup({ item }: { item: NavItem }) {
               key={child.path}
               to={child.path}
               aria-current={location.pathname === child.path ? 'page' : undefined}
-              className={`block px-3 py-1.5 rounded-md text-sm transition-colors duration-150 ${
+              className={`block px-3 py-1.5 rounded-md text-sm transition-colors duration-150 btn-focus ${
                 location.pathname === child.path
-                  ? 'text-stone-900 font-medium bg-stone-100'
-                  : 'text-stone-400 hover:text-stone-900 hover:bg-stone-50'
+                  ? 'text-ink font-medium bg-cloud'
+                  : 'text-slate hover:text-ink hover:bg-cloud'
               }`}
             >
               {child.label}
@@ -75,8 +75,8 @@ export default function Sidebar({ open, onClose }: { open: boolean; onClose: () 
         <Link to="/" className="flex items-center gap-2.5 mb-6 px-3">
           <StaticLogo size={32} colorMode="cool" dotColorMode="grey" />
           <div>
-            <div className="font-semibold text-stone-900 text-sm font-heading" style={{ letterSpacing: '0.02em' }}>Spectrea</div>
-            <div className="text-xs text-stone-400 uppercase tracking-widest">Brand Guide</div>
+            <div className="font-semibold text-ink text-sm font-heading" style={{ letterSpacing: '0.02em' }}>Spectrea</div>
+            <div className="text-xs text-pewter uppercase tracking-widest">Brand Guide</div>
           </div>
         </Link>
 

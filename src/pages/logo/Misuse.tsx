@@ -4,7 +4,7 @@ import { StaticLogo } from '../../components/brand/SpectreaLogo'
 function MisuseExample({ title, description, children }: { title: string; description: string; children: React.ReactNode }) {
   return (
     <div className="border rounded-xl overflow-hidden" style={{ borderColor: '#F2426025' }}>
-      <div className="h-32 flex items-center justify-center bg-stone-50 relative">
+      <div className="h-32 flex items-center justify-center bg-cloud relative">
         {children}
         <div className="absolute top-2 right-2 w-6 h-6 rounded-full flex items-center justify-center" style={{ backgroundColor: '#F2426010' }}>
           <span className="text-xs font-semibold" style={{ color: '#F24260' }}>&#10007;</span>
@@ -12,7 +12,7 @@ function MisuseExample({ title, description, children }: { title: string; descri
       </div>
       <div className="px-4 py-3 border-t" style={{ backgroundColor: '#F2426008', borderColor: '#F2426015' }}>
         <p className="text-sm font-medium" style={{ color: '#BA3249' }}>{title}</p>
-        <p className="text-xs text-stone-500 mt-0.5">{description}</p>
+        <p className="text-xs text-slate mt-0.5">{description}</p>
       </div>
     </div>
   )
@@ -45,7 +45,7 @@ export default function Misuse() {
             <div style={{ transform: 'rotate(-20deg)' }}>
               <div className="flex items-center gap-2">
                 <StaticLogo size={40} colorMode="cool" dotColorMode="grey" />
-                <span className="font-heading font-semibold text-stone-900 text-sm" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
+                <span className="font-heading font-semibold text-ink text-sm" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
               </div>
             </div>
           </MisuseExample>
@@ -79,7 +79,7 @@ export default function Misuse() {
           {/* Rearranged */}
           <MisuseExample title="Don't swap mark and wordmark" description="In horizontal lockups the mark is always to the left of the wordmark. In the stacked arrangement the mark is always above. Never put the wordmark above or to the left of the mark.">
             <div className="flex flex-col items-center gap-1">
-              <span className="font-heading font-semibold text-stone-900 text-sm" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
+              <span className="font-heading font-semibold text-ink text-sm" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
               <StaticLogo size={36} colorMode="cool" dotColorMode="grey" />
             </div>
           </MisuseExample>
@@ -87,10 +87,10 @@ export default function Misuse() {
           {/* Crowded */}
           <MisuseExample title="Don't violate clear space" description="The logo needs room to breathe. The trailing dots especially need space to read as 'about to connect.'">
             <div className="flex items-center gap-0">
-              <span className="text-xs text-stone-400">Check out</span>
+              <span className="text-xs text-pewter">Check out</span>
               <StaticLogo size={32} colorMode="cool" dotColorMode="grey" />
-              <span className="font-heading font-semibold text-stone-900 text-xs" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
-              <span className="text-xs text-stone-400">today!</span>
+              <span className="font-heading font-semibold text-ink text-xs" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
+              <span className="text-xs text-pewter">today!</span>
             </div>
           </MisuseExample>
 
@@ -110,7 +110,7 @@ export default function Misuse() {
           <MisuseExample title="Don't use the wrong typeface" description="The wordmark is always Albert Sans Semibold. Never substitute another font.">
             <div className="flex items-center gap-2">
               <StaticLogo size={36} colorMode="cool" dotColorMode="grey" />
-              <span className="font-semibold text-stone-900 text-sm" style={{ fontFamily: 'serif' }}>Spectrea</span>
+              <span className="font-semibold text-ink text-sm" style={{ fontFamily: 'serif' }}>Spectrea</span>
             </div>
           </MisuseExample>
         </div>

@@ -21,7 +21,7 @@ function EasingCurve({ name, d, color = '#4271DF' }: { name: string; d: string; 
         {/* Curve */}
         <path d={d} stroke={color} strokeWidth="2" fill="none" strokeLinecap="round" />
       </svg>
-      <span className="text-xs font-mono text-stone-500">{name}</span>
+      <span className="text-xs font-mono text-slate">{name}</span>
     </div>
   )
 }
@@ -50,11 +50,10 @@ function DurationDemo() {
   return (
     <div className="border border-stone-200 rounded-xl p-5">
       <div className="flex items-center justify-between mb-4">
-        <p className="text-sm font-semibold text-stone-700">Duration comparison</p>
+        <p className="text-sm font-semibold text-iron">Duration comparison</p>
         <button
           onClick={play}
-          className="px-3 py-1.5 rounded-lg text-xs font-medium text-white transition-colors"
-          style={{ backgroundColor: '#4271DF' }}
+          className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand hover:bg-brand-hover active:bg-brand-active transition-colors btn-focus"
         >
           Play
         </button>
@@ -63,10 +62,10 @@ function DurationDemo() {
         {tiers.map(t => (
           <div key={`${t.name}-${key}`} className="flex items-center gap-3">
             <div className="w-16 flex-shrink-0">
-              <span className="text-xs font-semibold text-stone-600">{t.name}</span>
-              <p className="text-[10px] font-mono text-stone-400">{t.ms}ms</p>
+              <span className="text-xs font-semibold text-iron">{t.name}</span>
+              <p className="text-[10px] font-mono text-pewter">{t.ms}ms</p>
             </div>
-            <div className="flex-1 h-6 bg-stone-100 rounded-full overflow-hidden relative">
+            <div className="flex-1 h-6 bg-cloud rounded-full overflow-hidden relative">
               <div
                 className="h-full rounded-full"
                 style={{
@@ -76,7 +75,7 @@ function DurationDemo() {
                 }}
               />
             </div>
-            <span className="text-[10px] font-mono text-stone-400 w-20 flex-shrink-0">{t.tw}</span>
+            <span className="text-[10px] font-mono text-pewter w-20 flex-shrink-0">{t.tw}</span>
           </div>
         ))}
       </div>
@@ -91,12 +90,12 @@ function DurationDemo() {
 function HoverScaleDemo() {
   return (
     <div className="border border-stone-200 rounded-xl p-5 flex flex-col items-center gap-3">
-      <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider">Hover Scale</p>
+      <p className="text-xs font-semibold text-slate uppercase tracking-wider">Hover Scale</p>
       <div className="border border-stone-200 rounded-xl p-4 bg-white transition-transform duration-150 ease-out hover:scale-[1.02] cursor-pointer select-none">
-        <p className="text-sm font-semibold text-stone-800" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Sample card</p>
-        <p className="text-xs text-stone-500 mt-1">12 connections · 94% confidence</p>
+        <p className="text-sm font-semibold text-ink" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Sample card</p>
+        <p className="text-xs text-slate mt-1">12 connections · 94% confidence</p>
       </div>
-      <span className="text-[10px] font-mono text-stone-400">scale(1.02) · 150ms · ease-out</span>
+      <span className="text-[10px] font-mono text-pewter">scale(1.02) · 150ms · ease-out</span>
     </div>
   )
 }
@@ -107,7 +106,7 @@ function FadeInDemo() {
 
   return (
     <div className="border border-stone-200 rounded-xl p-5 flex flex-col items-center gap-3">
-      <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider">Fade In</p>
+      <p className="text-xs font-semibold text-slate uppercase tracking-wider">Fade In</p>
       <div className="h-16 flex items-center justify-center">
         <div
           key={key}
@@ -123,7 +122,7 @@ function FadeInDemo() {
       </div>
       <button
         onClick={() => { setVisible(false); setTimeout(() => { setKey(k => k + 1); setVisible(true) }, 250) }}
-        className="text-[10px] font-mono text-stone-400 hover:text-brand transition-colors cursor-pointer"
+        className="text-[10px] font-mono text-pewter hover:text-brand transition-colors cursor-pointer"
       >
         replay · 200ms · ease-out
       </button>
@@ -136,16 +135,16 @@ function SlideDownDemo() {
 
   return (
     <div className="border border-stone-200 rounded-xl p-5 flex flex-col items-center gap-3">
-      <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider">Slide Down</p>
+      <p className="text-xs font-semibold text-slate uppercase tracking-wider">Slide Down</p>
       <div className="w-48">
         <button
           onClick={() => setOpen(o => !o)}
-          className="w-full flex items-center justify-between px-3 py-2 rounded-lg border border-stone-200 text-sm text-stone-700 bg-white hover:bg-stone-50 transition-colors"
+          className="w-full flex items-center justify-between px-3 py-2 rounded-lg border border-stone-200 text-sm text-iron bg-white hover:bg-cloud transition-colors"
         >
           <span className="text-xs">Select type</span>
           <TbChevronDown
             size={14}
-            className="text-stone-400 transition-transform duration-200"
+            className="text-pewter transition-transform duration-200"
             style={{ transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }}
           />
         </button>
@@ -158,14 +157,14 @@ function SlideDownDemo() {
         >
           <div className="mt-1 border border-stone-200 rounded-lg bg-white shadow-md overflow-hidden">
             {['Category A', 'Category B', 'Category C'].map((item, i) => (
-              <button key={item} onClick={() => setOpen(false)} className="w-full text-left px-3 py-2 text-xs text-stone-700 hover:bg-stone-50 transition-colors" style={{ borderBottom: i < 2 ? '1px solid #F3F4F6' : 'none' }}>
+              <button key={item} onClick={() => setOpen(false)} className="w-full text-left px-3 py-2 text-xs text-iron hover:bg-cloud transition-colors" style={{ borderBottom: i < 2 ? '1px solid #F3F4F6' : 'none' }}>
                 {item}
               </button>
             ))}
           </div>
         </div>
       </div>
-      <span className="text-[10px] font-mono text-stone-400">maxHeight · 200ms · ease-in-out</span>
+      <span className="text-[10px] font-mono text-pewter">maxHeight · 200ms · ease-in-out</span>
     </div>
   )
 }
@@ -175,11 +174,10 @@ function ScaleUpDemo() {
 
   return (
     <div className="border border-stone-200 rounded-xl p-5 flex flex-col items-center gap-3">
-      <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider">Scale Up (Modal)</p>
+      <p className="text-xs font-semibold text-slate uppercase tracking-wider">Scale Up (Modal)</p>
       <button
         onClick={() => setOpen(true)}
-        className="px-3 py-1.5 rounded-lg text-xs font-medium text-white transition-colors"
-        style={{ backgroundColor: '#4271DF' }}
+        className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand hover:bg-brand-hover active:bg-brand-active transition-colors btn-focus"
       >
         Open modal
       </button>
@@ -195,20 +193,20 @@ function ScaleUpDemo() {
             style={{ animation: 'scaleUp 200ms ease-out' }}
           >
             <div className="flex items-center justify-between mb-3">
-              <p className="text-sm font-semibold text-stone-800" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Create</p>
-              <button onClick={() => setOpen(false)} aria-label="Close" className="text-stone-400 hover:text-stone-600 transition-colors btn-focus">
+              <p className="text-sm font-semibold text-ink" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Create</p>
+              <button onClick={() => setOpen(false)} aria-label="Close" className="text-pewter hover:text-iron transition-colors btn-focus">
                 <TbX size={16} />
               </button>
             </div>
-            <p className="text-xs text-stone-500 mb-4">This modal opened with scale(0.95→1) + fade. 200ms ease-out.</p>
+            <p className="text-xs text-slate mb-4">This modal opened with scale(0.95→1) + fade. 200ms ease-out.</p>
             <div className="flex justify-end gap-2">
-              <button onClick={() => setOpen(false)} className="px-3 py-1.5 rounded-lg text-xs text-stone-500 border border-stone-200 btn-focus hover:bg-stone-50 transition-colors">Cancel</button>
+              <button onClick={() => setOpen(false)} className="px-3 py-1.5 rounded-lg text-xs text-slate border border-stone-200 btn-focus hover:bg-cloud transition-colors">Cancel</button>
               <button onClick={() => setOpen(false)} className="px-3 py-1.5 rounded-lg text-xs text-white bg-brand hover:bg-brand-hover active:bg-brand-active btn-focus transition-colors">Create</button>
             </div>
           </div>
         </div>
       )}
-      <span className="text-[10px] font-mono text-stone-400">scale(0.95→1) + fade · 200ms</span>
+      <span className="text-[10px] font-mono text-pewter">scale(0.95→1) + fade · 200ms</span>
       <style>{`
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes scaleUp { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
@@ -220,19 +218,19 @@ function ScaleUpDemo() {
 function ColorTransitionDemo() {
   return (
     <div className="border border-stone-200 rounded-xl p-5 flex flex-col items-center gap-3">
-      <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider">Button States</p>
+      <p className="text-xs font-semibold text-slate uppercase tracking-wider">Button States</p>
       <div className="flex gap-3">
         <button className="px-4 py-2 rounded-lg text-xs font-medium text-white bg-brand transition-all duration-150 ease-out hover:bg-brand-hover active:bg-brand-active btn-focus">
           Primary
         </button>
-        <button className="px-4 py-2 rounded-lg text-xs font-medium text-stone-700 bg-stone-100 transition-all duration-150 ease-out hover:bg-stone-200 active:bg-stone-300 btn-focus">
+        <button className="px-4 py-2 rounded-lg text-xs font-medium text-iron bg-cloud transition-all duration-150 ease-out hover:bg-stone-200 active:bg-stone-300 btn-focus">
           Secondary
         </button>
-        <button className="px-4 py-2 rounded-lg text-xs font-medium text-stone-500 border border-stone-200 transition-all duration-150 ease-out hover:border-stone-300 hover:bg-stone-50 btn-focus">
+        <button className="px-4 py-2 rounded-lg text-xs font-medium text-slate border border-stone-200 transition-all duration-150 ease-out hover:border-stone-300 hover:bg-cloud btn-focus">
           Ghost
         </button>
       </div>
-      <span className="text-[10px] font-mono text-stone-400">background-color · 150ms · ease-out</span>
+      <span className="text-[10px] font-mono text-pewter">background-color · 150ms · ease-out</span>
     </div>
   )
 }
@@ -240,13 +238,13 @@ function ColorTransitionDemo() {
 function FocusRingDemo() {
   return (
     <div className="border border-stone-200 rounded-xl p-5 flex flex-col items-center gap-3">
-      <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider">Focus Ring</p>
+      <p className="text-xs font-semibold text-slate uppercase tracking-wider">Focus Ring</p>
       <input
         type="text"
         placeholder="Tab to focus..."
-        className="px-3 py-2 text-xs border border-stone-200 rounded-lg bg-white text-stone-700 placeholder:text-pewter transition-all duration-150 ease-out focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 w-48"
+        className="px-3 py-2 text-xs border border-stone-200 rounded-lg bg-white text-iron placeholder:text-pewter transition-all duration-150 ease-out focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 w-48"
       />
-      <span className="text-[10px] font-mono text-stone-400">border + ring · 150ms · ease-out</span>
+      <span className="text-[10px] font-mono text-pewter">border + ring · 150ms · ease-out</span>
     </div>
   )
 }
@@ -272,14 +270,14 @@ function SignaturePrimitiveCard({
 }) {
   return (
     <div className="border border-stone-200 rounded-xl overflow-hidden flex flex-col">
-      <div className="bg-stone-50 px-4 py-2 border-b border-stone-200 flex items-center justify-between">
-        <span className="text-xs font-semibold uppercase tracking-wider text-stone-500">{label}</span>
-        <span className="text-[10px] font-mono text-stone-400">{duration}</span>
+      <div className="bg-cloud px-4 py-2 border-b border-stone-200 flex items-center justify-between">
+        <span className="text-xs font-semibold uppercase tracking-wider text-slate">{label}</span>
+        <span className="text-[10px] font-mono text-pewter">{duration}</span>
       </div>
       <div className="bg-canvas h-40 flex items-center justify-center">{demo}</div>
       <div className="px-4 py-3 border-t border-stone-100 space-y-1.5">
-        <p className="text-xs"><span className="text-stone-400">Trigger:</span> <span className="text-stone-700">{trigger}</span></p>
-        <p className="text-xs text-stone-500 leading-relaxed">{spec}</p>
+        <p className="text-xs"><span className="text-slate">Trigger:</span> <span className="text-iron">{trigger}</span></p>
+        <p className="text-xs text-slate leading-relaxed">{spec}</p>
       </div>
     </div>
   )
@@ -309,7 +307,7 @@ function NodeArrivalDemo() {
       `}</style>
       <div key={`pulse-${key}`} className="absolute" style={{ width: 32, height: 32, borderRadius: '50%', background: color, animation: 'spectrea-node-pulse 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards', animationDelay: '120ms' }} />
       <div key={`node-${key}`} className="relative z-10" style={{ width: 32, height: 32, borderRadius: '50%', background: color, animation: 'spectrea-node-arrival 400ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards' }} />
-      <button onClick={play} className="absolute bottom-2 right-2 text-[10px] px-2 py-1 rounded bg-stone-100 text-stone-500 hover:bg-stone-200 transition-colors font-mono">Play</button>
+      <button onClick={play} className="absolute bottom-2 right-2 text-[10px] px-2 py-1 rounded bg-cloud text-slate hover:bg-stone-200 transition-colors font-mono">Play</button>
     </div>
   )
 }
@@ -348,7 +346,7 @@ function EdgeFormationDemo() {
           }}
         />
       </svg>
-      <button onClick={play} className="absolute bottom-2 right-2 text-[10px] px-2 py-1 rounded bg-stone-100 text-stone-500 hover:bg-stone-200 transition-colors font-mono">Play</button>
+      <button onClick={play} className="absolute bottom-2 right-2 text-[10px] px-2 py-1 rounded bg-cloud text-slate hover:bg-stone-200 transition-colors font-mono">Play</button>
     </div>
   )
 }
@@ -366,7 +364,7 @@ function SpectrumShiftDemo() {
           100% { background-position: 100% 50%; opacity: 0; }
         }
       `}</style>
-      <div className="text-[11px] text-stone-400 font-mono mb-2 absolute top-3 left-3">Spectrum sweep — the brand's signature moment</div>
+      <div className="text-[11px] text-pewter font-mono mb-2 absolute top-3 left-3">Spectrum sweep — the brand's signature moment</div>
       <div
         key={key}
         className="w-3/4 rounded-full"
@@ -377,7 +375,7 @@ function SpectrumShiftDemo() {
           animation: 'spectrea-spectrum-shift 600ms cubic-bezier(0.65, 0, 0.35, 1) forwards',
         }}
       />
-      <button onClick={play} className="absolute bottom-2 right-2 text-[10px] px-2 py-1 rounded bg-stone-100 text-stone-500 hover:bg-stone-200 transition-colors font-mono">Play</button>
+      <button onClick={play} className="absolute bottom-2 right-2 text-[10px] px-2 py-1 rounded bg-cloud text-slate hover:bg-stone-200 transition-colors font-mono">Play</button>
     </div>
   )
 }
@@ -394,7 +392,7 @@ export default function Motion() {
     >
       {/* ─── Philosophy ─── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Motion in Spectrea should feel natural and purposeful. It guides attention, confirms actions, and creates continuity — never decorates or distracts.">
             <span>Motion Philosophy</span>
           </Tooltip>
@@ -411,12 +409,12 @@ export default function Motion() {
 
       {/* ─── Signature Motion Primitives ─── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-2">
+        <h2 className="text-xl font-semibold text-ink mb-2">
           <Tooltip content="Three brand-distinctive motion patterns. Reusable across any Spectrea surface — used at meaningful moments, not decoratively. Each carries one part of the 'alive, growing, compounding' brand claim.">
             <span>Signature Motion Primitives</span>
           </Tooltip>
         </h2>
-        <p className="text-sm text-stone-500 mb-5 leading-relaxed">
+        <p className="text-sm text-slate mb-5 leading-relaxed">
           Three reusable motion patterns that carry the brand's <em>alive, growing, compounding</em> claim. They are pattern-level, not surface-specific — apply them anywhere a moment fits the meaning. Standard interactive motion (hovers, focus, state transitions) stays restrained at 150–200ms.
         </p>
 
@@ -444,14 +442,14 @@ export default function Motion() {
           />
         </div>
 
-        <p className="text-xs text-stone-500 mt-4 leading-relaxed">
+        <p className="text-xs text-slate mt-4 leading-relaxed">
           Use sparingly. Spectrum sweep in particular is reserved for moments that genuinely matter — restraint is what makes the signature feel like a signature.
         </p>
       </Section>
 
       {/* ─── Principles ─── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">Principles</h2>
+        <h2 className="text-xl font-semibold text-ink mb-4">Principles</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {[
             {
@@ -472,8 +470,8 @@ export default function Motion() {
             },
           ].map(item => (
             <div key={item.principle} className="border border-stone-200 rounded-xl p-5">
-              <p className="text-sm font-semibold text-stone-800">{item.principle}</p>
-              <p className="text-xs text-stone-600 mt-1 leading-relaxed">{item.description}</p>
+              <p className="text-sm font-semibold text-ink">{item.principle}</p>
+              <p className="text-xs text-iron mt-1 leading-relaxed">{item.description}</p>
             </div>
           ))}
         </div>
@@ -481,7 +479,7 @@ export default function Motion() {
 
       {/* ─── Easing Curves ─── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Spectrea uses two easing functions. ease-out for entrances (fast start, gentle landing). ease-in-out for layout shifts (smooth acceleration and deceleration).">
             <span>Easing Curves</span>
           </Tooltip>
@@ -498,11 +496,11 @@ export default function Motion() {
             color="#00B6A0"
           />
           <div className="flex flex-col items-center justify-center text-center px-4">
-            <p className="text-xs text-stone-600 leading-relaxed">
-              <strong className="text-stone-800">ease-out</strong> for entrances and responses — fast start, gentle landing. Feels reactive.
+            <p className="text-xs text-iron leading-relaxed">
+              <strong className="text-ink">ease-out</strong> for entrances and responses — fast start, gentle landing. Feels reactive.
             </p>
-            <p className="text-xs text-stone-600 leading-relaxed mt-2">
-              <strong className="text-stone-800">ease-in-out</strong> for layout changes — smooth acceleration and deceleration. Feels controlled.
+            <p className="text-xs text-iron leading-relaxed mt-2">
+              <strong className="text-ink">ease-in-out</strong> for layout changes — smooth acceleration and deceleration. Feels controlled.
             </p>
           </div>
         </div>
@@ -510,7 +508,7 @@ export default function Motion() {
 
       {/* ─── Duration Scale ─── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Every animation uses one of these four durations. Consistent timing creates rhythm.">
             <span>Duration Scale</span>
           </Tooltip>
@@ -525,15 +523,15 @@ export default function Motion() {
             ].map((row, i) => (
               <div key={row.name} className="flex items-center gap-4 px-4 py-3" style={{ borderBottom: i < 3 ? '1px solid #F3F4F6' : 'none' }}>
                 <div className="w-14 flex-shrink-0">
-                  <span className="text-sm font-semibold text-stone-700">{row.name}</span>
+                  <span className="text-sm font-semibold text-iron">{row.name}</span>
                 </div>
                 <div className="w-12 flex-shrink-0">
                   <span className="text-xs font-mono text-brand">{row.duration}</span>
                 </div>
                 <div className="w-20 flex-shrink-0">
-                  <span className="text-xs font-mono text-stone-500">{row.easing}</span>
+                  <span className="text-xs font-mono text-slate">{row.easing}</span>
                 </div>
-                <span className="text-xs text-stone-600 flex-1">{row.use}</span>
+                <span className="text-xs text-iron flex-1">{row.use}</span>
               </div>
             ))}
           </div>
@@ -543,8 +541,8 @@ export default function Motion() {
 
       {/* ─── Live Pattern Demos ─── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">Interactive Demos</h2>
-        <p className="text-sm text-stone-600 mb-4">Hover, click, and tab through these to see the motion system in action.</p>
+        <h2 className="text-xl font-semibold text-ink mb-4">Interactive Demos</h2>
+        <p className="text-sm text-iron mb-4">Hover, click, and tab through these to see the motion system in action.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <HoverScaleDemo />
           <FadeInDemo />
@@ -557,29 +555,29 @@ export default function Motion() {
 
       {/* ─── Brand Animation ─── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="The logo animation is Spectrea's signature motion. The spectrum stroke draws along the S connecting the dots — the brand story in motion.">
             <span>Signature Animation</span>
           </Tooltip>
         </h2>
-        <p className="text-sm text-stone-600 mb-4">The connecting-dots logo animation is the brand's motion signature. Use for loading states, hero animations, and motion assets.</p>
+        <p className="text-sm text-iron mb-4">The connecting-dots logo animation is the brand's motion signature. Use for loading states, hero animations, and motion assets.</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="border border-stone-200 rounded-xl overflow-hidden">
             <div className="bg-white p-8 flex items-center justify-center">
               <AnimatedLogo size={160} duration={3} dotColorMode="grey" />
             </div>
-            <div className="px-4 py-3 bg-stone-50 border-t border-stone-100">
-              <p className="text-xs font-semibold text-stone-600">On light</p>
-              <p className="text-xs text-stone-400 mt-0.5">Spectrum stroke, grey dots. Default treatment.</p>
+            <div className="px-4 py-3 bg-cloud border-t border-stone-100">
+              <p className="text-xs font-semibold text-iron">On light</p>
+              <p className="text-xs text-slate mt-0.5">Spectrum stroke, grey dots. Default treatment.</p>
             </div>
           </div>
           <div className="border border-stone-200 rounded-xl overflow-hidden">
             <div className="bg-ink p-8 flex items-center justify-center">
               <AnimatedLogo size={160} duration={3} dotColorMode="grey" />
             </div>
-            <div className="px-4 py-3 bg-stone-50 border-t border-stone-100">
-              <p className="text-xs font-semibold text-stone-600">On dark</p>
-              <p className="text-xs text-stone-400 mt-0.5">Spectrum stroke on dark. The gradient is the point — always use spectrum, never monochrome.</p>
+            <div className="px-4 py-3 bg-cloud border-t border-stone-100">
+              <p className="text-xs font-semibold text-iron">On dark</p>
+              <p className="text-xs text-slate mt-0.5">Spectrum stroke on dark. The gradient is the point — always use spectrum, never monochrome.</p>
             </div>
           </div>
         </div>
@@ -591,9 +589,9 @@ export default function Motion() {
             { prop: 'Use cases', value: 'Loading, hero, splash', note: 'Never for inline UI — too prominent' },
           ].map((row, i) => (
             <div key={row.prop} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < 3 ? '1px solid #F3F4F6' : 'none' }}>
-              <span className="text-sm font-medium text-stone-700">{row.prop}</span>
-              <span className="text-xs font-mono text-stone-600">{row.value}</span>
-              <span className="text-xs text-stone-500">{row.note}</span>
+              <span className="text-sm font-medium text-iron">{row.prop}</span>
+              <span className="text-xs font-mono text-iron">{row.value}</span>
+              <span className="text-xs text-slate">{row.note}</span>
             </div>
           ))}
         </div>
@@ -601,7 +599,7 @@ export default function Motion() {
 
       {/* ─── CSS Reference ─── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">CSS Reference</h2>
+        <h2 className="text-xl font-semibold text-ink mb-4">CSS Reference</h2>
         <div className="bg-ink rounded-xl p-5 overflow-x-auto">
           <pre className="text-xs leading-relaxed" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
             <span style={{ color: '#B0B0B6' }}>{'/* Duration tokens */\n'}</span>
@@ -631,9 +629,9 @@ export default function Motion() {
 
       {/* ─── Accessibility ─── */}
       <Section title="Motion Accessibility">
-        <div className="bg-stone-50 rounded-xl p-5 border border-stone-200">
-          <p className="text-sm text-stone-700 leading-relaxed mb-3">
-            All animations must respect <code className="bg-stone-100 px-1 py-0.5 rounded font-mono text-xs">prefers-reduced-motion</code>. When enabled:
+        <div className="bg-cloud rounded-xl p-5 border border-stone-200">
+          <p className="text-sm text-iron leading-relaxed mb-3">
+            All animations must respect <code className="bg-cloud px-1 py-0.5 rounded font-mono text-xs">prefers-reduced-motion</code>. When enabled:
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {[
@@ -643,8 +641,8 @@ export default function Motion() {
               'Loading spinners may remain (essential feedback)',
             ].map((rule, i) => (
               <div key={i} className="flex items-start gap-2 bg-white rounded-lg px-3 py-2 border border-stone-100">
-                <span className="text-xs font-semibold text-stone-400 mt-px">{String(i + 1).padStart(2, '0')}</span>
-                <p className="text-xs text-stone-600">{rule}</p>
+                <span className="text-xs font-semibold text-pewter mt-px">{String(i + 1).padStart(2, '0')}</span>
+                <p className="text-xs text-iron">{rule}</p>
               </div>
             ))}
           </div>

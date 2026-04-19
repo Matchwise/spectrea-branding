@@ -292,17 +292,17 @@ export default function PaletteCompare() {
       <Section>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
           {/* Mode toggle + harmony badge */}
-          <div className="bg-stone-50 px-4 py-3 border-b border-stone-200 flex items-center justify-between flex-wrap gap-2">
+          <div className="bg-cloud px-4 py-3 border-b border-stone-200 flex items-center justify-between flex-wrap gap-2">
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setMode('shared')}
-                className={`text-xs font-medium px-3 py-1 rounded-lg transition-colors btn-focus ${mode === 'shared' ? 'bg-white text-stone-800 shadow-sm border border-stone-200' : 'text-stone-400'}`}
+                className={`text-xs font-medium px-3 py-1 rounded-lg transition-colors btn-focus ${mode === 'shared' ? 'bg-white text-ink shadow-sm border border-stone-200' : 'text-slate'}`}
               >
                 Shared lightness
               </button>
               <button
                 onClick={() => setMode('independent')}
-                className={`text-xs font-medium px-3 py-1 rounded-lg transition-colors btn-focus ${mode === 'independent' ? 'bg-white text-stone-800 shadow-sm border border-stone-200' : 'text-stone-400'}`}
+                className={`text-xs font-medium px-3 py-1 rounded-lg transition-colors btn-focus ${mode === 'independent' ? 'bg-white text-ink shadow-sm border border-stone-200' : 'text-slate'}`}
               >
                 Independent lightness
               </button>
@@ -317,16 +317,16 @@ export default function PaletteCompare() {
                 <SliderRow label="Lightness (all)" value={sharedL} min={0.4} max={0.85} step={0.005} onChange={setSharedL} format={v => v.toFixed(3)} />
                 <div>
                   <div className="flex items-center gap-3 mb-1">
-                    <span className="text-xs font-medium text-stone-600">Chroma</span>
+                    <span className="text-xs font-medium text-iron">Chroma</span>
                     <button
                       onClick={() => setChromaMode('matched')}
-                      className={`text-[10px] font-medium px-2 py-0.5 rounded transition-colors btn-focus ${chromaMode === 'matched' ? 'bg-white text-stone-800 shadow-sm border border-stone-200' : 'text-stone-400'}`}
+                      className={`text-[10px] font-medium px-2 py-0.5 rounded transition-colors btn-focus ${chromaMode === 'matched' ? 'bg-white text-ink shadow-sm border border-stone-200' : 'text-slate'}`}
                     >
                       Matched (same absolute C)
                     </button>
                     <button
                       onClick={() => setChromaMode('relative')}
-                      className={`text-[10px] font-medium px-2 py-0.5 rounded transition-colors btn-focus ${chromaMode === 'relative' ? 'bg-white text-stone-800 shadow-sm border border-stone-200' : 'text-stone-400'}`}
+                      className={`text-[10px] font-medium px-2 py-0.5 rounded transition-colors btn-focus ${chromaMode === 'relative' ? 'bg-white text-ink shadow-sm border border-stone-200' : 'text-slate'}`}
                     >
                       Relative (% of each max)
                     </button>
@@ -375,10 +375,10 @@ export default function PaletteCompare() {
                 <div key={c.name} className="flex-1">
                   <div className="h-16 rounded-lg border border-black/5" style={{ backgroundColor: c.hex }} />
                   <div className="mt-1.5 flex items-center justify-between">
-                    <span className="text-[10px] font-medium text-stone-700">{c.name}</span>
-                    <span className="text-[10px] font-mono text-stone-400">{c.hex}</span>
+                    <span className="text-[10px] font-medium text-iron">{c.name}</span>
+                    <span className="text-[10px] font-mono text-pewter">{c.hex}</span>
                   </div>
-                  <p className="text-[9px] font-mono text-stone-400">L={c.L.toFixed(3)} C={c.C.toFixed(3)} h={c.h}</p>
+                  <p className="text-[9px] font-mono text-pewter">L={c.L.toFixed(3)} C={c.C.toFixed(3)} h={c.h}</p>
                 </div>
               ))}
             </div>
@@ -386,11 +386,11 @@ export default function PaletteCompare() {
             {/* Contrast validation */}
             <div className="border border-stone-200 rounded-lg overflow-x-auto mb-4">
               <div className="min-w-[520px]">
-              <div className="grid grid-cols-4 bg-stone-50 border-b border-stone-200 px-3 py-1.5">
-                <span className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider">Color</span>
-                <span className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider">vs White</span>
-                <span className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider">vs Ink</span>
-                <span className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider">Status</span>
+              <div className="grid grid-cols-4 bg-cloud border-b border-stone-200 px-3 py-1.5">
+                <span className="text-[10px] font-semibold text-pewter uppercase tracking-wider">Color</span>
+                <span className="text-[10px] font-semibold text-pewter uppercase tracking-wider">vs White</span>
+                <span className="text-[10px] font-semibold text-pewter uppercase tracking-wider">vs Ink</span>
+                <span className="text-[10px] font-semibold text-pewter uppercase tracking-wider">Status</span>
               </div>
               {[
                 { name: 'Cobalt', hex: result.cobalt.hex },
@@ -406,7 +406,7 @@ export default function PaletteCompare() {
                   <div key={c.name} className="grid grid-cols-4 px-3 py-1.5 items-center" style={{ borderBottom: i < 3 ? '1px solid #F3F4F6' : 'none' }}>
                     <div className="flex items-center gap-1.5">
                       <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: c.hex }} />
-                      <span className="text-[10px] font-medium text-stone-700">{c.name}</span>
+                      <span className="text-[10px] font-medium text-iron">{c.name}</span>
                     </div>
                     <span className="text-[10px] font-mono" style={whiteOk ? { color: '#57534E' } : { color: '#F24260' }}>
                       {vsWhite.toFixed(2)}:1 {whiteOk ? '' : 'FAIL'}
@@ -432,7 +432,7 @@ export default function PaletteCompare() {
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-3">
                   <CustomLogo size={40} cobalt={result.cobalt.hex} teal={result.teal.hex} amber={result.amber.hex} />
-                  <span className="font-heading font-semibold text-stone-900 text-lg" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
+                  <span className="font-heading font-semibold text-ink text-lg" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
                 </div>
                 <div className="bg-ink rounded-lg px-4 py-3 flex items-center gap-3">
                   <CustomLogo size={40} cobalt={result.cobalt.hex} teal={result.teal.hex} amber={result.amber.hex} />
@@ -443,11 +443,11 @@ export default function PaletteCompare() {
           </div>
 
           {/* Comparison with current */}
-          <div className="p-4 border-t border-stone-200 bg-stone-50">
-            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3">vs current palette</p>
+          <div className="p-4 border-t border-stone-200 bg-cloud">
+            <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-3">vs current palette</p>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-[10px] text-stone-500 mb-1">Current</p>
+                <p className="text-[10px] text-slate mb-1">Current</p>
                 <div className="flex gap-1.5 mb-2">
                   <div className="flex-1 h-8 rounded" style={{ backgroundColor: '#4271DF' }} />
                   <div className="flex-1 h-8 rounded" style={{ backgroundColor: '#00B6A0' }} />
@@ -455,10 +455,10 @@ export default function PaletteCompare() {
                   <div className="flex-1 h-8 rounded" style={{ backgroundColor: '#F24260' }} />
                 </div>
                 <GradientStrip cobalt="#4271DF" teal="#00B6A0" amber="#E19000" height={16} />
-                <p className="text-[9px] font-mono text-stone-400 mt-1">L: {current.cobalt.L.toFixed(2)} / {current.teal.L.toFixed(2)} / {current.amber.L.toFixed(2)} / {current.rose.L.toFixed(2)} — dL={Math.max(Math.abs(current.cobalt.L - current.teal.L), Math.abs(current.cobalt.L - current.amber.L), Math.abs(current.cobalt.L - current.rose.L), Math.abs(current.teal.L - current.amber.L), Math.abs(current.teal.L - current.rose.L), Math.abs(current.amber.L - current.rose.L)).toFixed(3)}</p>
+                <p className="text-[9px] font-mono text-pewter mt-1">L: {current.cobalt.L.toFixed(2)} / {current.teal.L.toFixed(2)} / {current.amber.L.toFixed(2)} / {current.rose.L.toFixed(2)} — dL={Math.max(Math.abs(current.cobalt.L - current.teal.L), Math.abs(current.cobalt.L - current.amber.L), Math.abs(current.cobalt.L - current.rose.L), Math.abs(current.teal.L - current.amber.L), Math.abs(current.teal.L - current.rose.L), Math.abs(current.amber.L - current.rose.L)).toFixed(3)}</p>
               </div>
               <div>
-                <p className="text-[10px] text-stone-500 mb-1">Generated</p>
+                <p className="text-[10px] text-slate mb-1">Generated</p>
                 <div className="flex gap-1.5 mb-2">
                   <div className="flex-1 h-8 rounded" style={{ backgroundColor: result.cobalt.hex }} />
                   <div className="flex-1 h-8 rounded" style={{ backgroundColor: result.teal.hex }} />
@@ -466,7 +466,7 @@ export default function PaletteCompare() {
                   <div className="flex-1 h-8 rounded" style={{ backgroundColor: result.rose.hex }} />
                 </div>
                 <GradientStrip cobalt={result.cobalt.hex} teal={result.teal.hex} amber={result.amber.hex} height={16} />
-                <p className="text-[9px] font-mono text-stone-400 mt-1">L: {result.cobalt.L.toFixed(2)} / {result.teal.L.toFixed(2)} / {result.amber.L.toFixed(2)} / {result.rose.L.toFixed(2)} — dL={result.deltaL.toFixed(3)}</p>
+                <p className="text-[9px] font-mono text-pewter mt-1">L: {result.cobalt.L.toFixed(2)} / {result.teal.L.toFixed(2)} / {result.amber.L.toFixed(2)} / {result.rose.L.toFixed(2)} — dL={result.deltaL.toFixed(3)}</p>
               </div>
             </div>
           </div>
@@ -475,7 +475,7 @@ export default function PaletteCompare() {
 
       {/* Reference */}
       <Section>
-        <h2 className="text-lg font-semibold text-stone-800 mb-3">Harmony Thresholds (OKLCH)</h2>
+        <h2 className="text-lg font-semibold text-ink mb-3">Harmony Thresholds (OKLCH)</h2>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
           {[
             { metric: 'Delta L (lightness)', threshold: '< 0.04', note: 'Barely noticeable difference in perceived brightness' },
@@ -484,9 +484,9 @@ export default function PaletteCompare() {
             { metric: 'Gamut limit', threshold: 'Teal hue (~180) has the tightest sRGB gamut', note: 'Teal constrains how vivid all four can be at matched lightness' },
           ].map((row, i) => (
             <div key={row.metric} className="flex gap-4 px-4 py-2.5" style={{ borderBottom: i < 3 ? '1px solid #F3F4F6' : 'none' }}>
-              <span className="text-xs font-medium text-stone-600 w-32 flex-shrink-0">{row.metric}</span>
+              <span className="text-xs font-medium text-iron w-32 flex-shrink-0">{row.metric}</span>
               <span className="text-xs font-mono text-brand w-40 flex-shrink-0">{row.threshold}</span>
-              <span className="text-xs text-stone-500">{row.note}</span>
+              <span className="text-xs text-slate">{row.note}</span>
             </div>
           ))}
         </div>
@@ -511,13 +511,13 @@ function SliderRow({ label, value, min, max, step, onChange, format, color, devi
   return (
     <div>
       <div className="flex items-center justify-between mb-1">
-        <label className="text-xs font-medium text-stone-600 flex items-center gap-1.5">
+        <label className="text-xs font-medium text-iron flex items-center gap-1.5">
           {color && <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ backgroundColor: color }} />}
           {label}
         </label>
-        <span className="text-xs font-mono text-stone-400 flex items-center gap-1.5">
+        <span className="text-xs font-mono text-pewter flex items-center gap-1.5">
           {deviation !== undefined && Math.abs(deviation) >= 0.001 && (
-            <span className={`text-[9px] px-1 py-px rounded ${Math.abs(deviation) > 0.04 ? 'bg-amber-50 text-amber-600' : 'bg-stone-100 text-stone-400'}`}>
+            <span className={`text-[9px] px-1 py-px rounded ${Math.abs(deviation) > 0.04 ? 'bg-amber-50 text-amber-600' : 'bg-cloud text-pewter'}`}>
               {deviation > 0 ? '+' : ''}{deviation.toFixed(3)}
             </span>
           )}
@@ -531,7 +531,7 @@ function SliderRow({ label, value, min, max, step, onChange, format, color, devi
         step={step}
         value={value}
         onChange={e => onChange(Number(e.target.value))}
-        className="w-full h-1.5 bg-stone-200 rounded-full appearance-none cursor-pointer accent-stone-600"
+        className="w-full h-1.5 bg-stone-200 rounded-full appearance-none cursor-pointer accent-iron"
       />
     </div>
   )

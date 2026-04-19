@@ -9,7 +9,7 @@ export default function Governance() {
     >
       {/* Brand ownership */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Clear ownership prevents brand drift. These roles ensure someone is accountable for every brand decision.">
             <span>Brand Ownership</span>
           </Tooltip>
@@ -33,10 +33,10 @@ export default function Governance() {
             },
           ].map(item => (
             <div key={item.role} className="border border-stone-200 rounded-xl p-5">
-              <p className="text-sm font-semibold text-stone-900">{item.role}</p>
-              <p className="text-xs text-stone-600 mt-2 leading-relaxed">{item.responsibility}</p>
+              <p className="text-sm font-semibold text-ink">{item.role}</p>
+              <p className="text-xs text-iron mt-2 leading-relaxed">{item.responsibility}</p>
               <div className="mt-3 pt-3 border-t border-stone-100">
-                <p className="text-xs text-stone-400"><strong>Approves:</strong> {item.approves}</p>
+                <p className="text-xs text-slate"><strong>Approves:</strong> {item.approves}</p>
               </div>
             </div>
           ))}
@@ -45,7 +45,7 @@ export default function Governance() {
 
       {/* Change process */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Brand changes go through a structured process to prevent inconsistency. Minor updates can be fast-tracked; major changes need full review.">
             <span>Change Process</span>
           </Tooltip>
@@ -61,16 +61,16 @@ export default function Governance() {
             ].map(item => (
               <div key={item.step} className="flex gap-4">
                 <div className="flex-shrink-0">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-semibold" style={{ backgroundColor: '#4271DF' }}>
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-semibold bg-brand">
                     {item.step}
                   </div>
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
-                    <p className="text-sm font-semibold text-stone-800">{item.title}</p>
-                    <span className="text-xs font-mono text-stone-400 bg-stone-100 px-1.5 py-0.5 rounded">{item.time}</span>
+                    <p className="text-sm font-semibold text-ink">{item.title}</p>
+                    <span className="text-xs font-mono text-pewter bg-cloud px-1.5 py-0.5 rounded">{item.time}</span>
                   </div>
-                  <p className="text-xs text-stone-600 mt-0.5">{item.description}</p>
+                  <p className="text-xs text-iron mt-0.5">{item.description}</p>
                 </div>
               </div>
             ))}
@@ -80,7 +80,7 @@ export default function Governance() {
 
       {/* Severity levels */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">Change Severity</h2>
+        <h2 className="text-xl font-semibold text-ink mb-4">Change Severity</h2>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
           {[
             { level: 'Minor', color: '#00B6A0', examples: 'Fix a typo, adjust a padding value, update a screenshot', approval: 'Design Lead', turnaround: 'Same day' },
@@ -90,12 +90,12 @@ export default function Governance() {
             <div key={row.level} className="px-4 py-4" style={{ borderBottom: i < 2 ? '1px solid #F3F4F6' : 'none' }}>
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-2 h-2 rounded-full" style={{ backgroundColor: row.color }} />
-                <p className="text-sm font-semibold text-stone-800">{row.level}</p>
+                <p className="text-sm font-semibold text-ink">{row.level}</p>
               </div>
-              <p className="text-xs text-stone-600">{row.examples}</p>
+              <p className="text-xs text-iron">{row.examples}</p>
               <div className="flex gap-4 mt-2">
-                <span className="text-xs text-stone-400"><strong>Approval:</strong> {row.approval}</span>
-                <span className="text-xs text-stone-400"><strong>Turnaround:</strong> {row.turnaround}</span>
+                <span className="text-xs text-slate"><strong>Approval:</strong> {row.approval}</span>
+                <span className="text-xs text-slate"><strong>Turnaround:</strong> {row.turnaround}</span>
               </div>
             </div>
           ))}
@@ -113,8 +113,8 @@ export default function Governance() {
             { q: 'Who do I contact for brand questions?', a: 'Start with the Design Lead for visual questions and the Content Lead for copy questions. Escalate to the Brand Lead if needed.' },
           ].map(item => (
             <div key={item.q} className="border border-stone-200 rounded-xl p-4">
-              <p className="text-sm font-medium text-stone-800">{item.q}</p>
-              <p className="text-xs text-stone-600 mt-1 leading-relaxed">{item.a}</p>
+              <p className="text-sm font-medium text-ink">{item.q}</p>
+              <p className="text-xs text-iron mt-1 leading-relaxed">{item.a}</p>
             </div>
           ))}
         </div>

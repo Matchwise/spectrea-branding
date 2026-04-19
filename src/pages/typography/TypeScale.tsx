@@ -28,7 +28,7 @@ function CopyButton({ value }: { value: string }) {
   return (
     <button
       onClick={() => { navigator.clipboard.writeText(value); setCopied(true); setTimeout(() => setCopied(false), 1500) }}
-      className="text-xs font-mono text-stone-400 hover:text-stone-600 transition-colors btn-focus rounded"
+      className="text-xs font-mono text-pewter hover:text-iron transition-colors btn-focus rounded"
     >
       {copied ? 'Copied!' : value}
     </button>
@@ -43,7 +43,7 @@ export default function TypeScale() {
     >
       {/* Visual scale */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="A consistent type scale ensures visual hierarchy across every page. Each size has a specific role — don't use sizes outside this scale.">
             <span>Scale</span>
           </Tooltip>
@@ -54,12 +54,12 @@ export default function TypeScale() {
             return (
               <div key={s.name} className="flex items-center gap-3 sm:gap-4 px-4 py-3" style={{ borderBottom: i < scale.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
                 <div className="w-16 sm:w-20 flex-shrink-0">
-                  <p className="text-xs font-semibold text-stone-400">{s.name}</p>
+                  <p className="text-xs font-semibold text-pewter">{s.name}</p>
                   <CopyButton value={`${s.size} / ${s.lineHeight}`} />
                 </div>
                 <div className="flex-1 min-w-0 overflow-hidden">
                   <p
-                    className="text-stone-900 truncate"
+                    className="text-ink truncate"
                     style={{
                       fontFamily: fontStyle,
                       fontSize: s.size,
@@ -73,7 +73,7 @@ export default function TypeScale() {
                   </p>
                 </div>
                 <div className="w-32 flex-shrink-0 text-right hidden md:block">
-                  <p className="text-xs text-stone-500">{s.usage}</p>
+                  <p className="text-xs text-slate">{s.usage}</p>
                 </div>
               </div>
             )
@@ -83,18 +83,18 @@ export default function TypeScale() {
 
       {/* Responsive adjustments */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="On smaller screens, large headings scale down to prevent overflow. Body text stays at 16px minimum for readability.">
             <span>Responsive Scaling</span>
           </Tooltip>
         </h2>
         <div className="border border-stone-200 rounded-xl overflow-x-auto">
           <div className="min-w-[560px]">
-          <div className="grid grid-cols-4 bg-stone-50 border-b border-stone-200 px-4 py-2">
-            <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Size</span>
-            <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Desktop (1024+)</span>
-            <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Tablet (640–1023)</span>
-            <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Mobile (&lt;640)</span>
+          <div className="grid grid-cols-4 bg-cloud border-b border-stone-200 px-4 py-2">
+            <span className="text-xs font-semibold text-pewter uppercase tracking-wider">Size</span>
+            <span className="text-xs font-semibold text-pewter uppercase tracking-wider">Desktop (1024+)</span>
+            <span className="text-xs font-semibold text-pewter uppercase tracking-wider">Tablet (640–1023)</span>
+            <span className="text-xs font-semibold text-pewter uppercase tracking-wider">Mobile (&lt;640)</span>
           </div>
           {[
             { name: 'Display', desktop: '48px', tablet: '36px', mobile: '30px' },
@@ -105,20 +105,20 @@ export default function TypeScale() {
             { name: 'Body SM', desktop: '14px', tablet: '14px', mobile: '14px' },
           ].map((r, i) => (
             <div key={r.name} className="grid grid-cols-4 px-4 py-2" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
-              <span className="text-xs font-medium text-stone-700">{r.name}</span>
-              <span className="text-xs text-stone-600 font-mono">{r.desktop}</span>
-              <span className="text-xs text-stone-600 font-mono">{r.tablet}</span>
-              <span className="text-xs text-stone-600 font-mono">{r.mobile}</span>
+              <span className="text-xs font-medium text-iron">{r.name}</span>
+              <span className="text-xs text-iron font-mono">{r.desktop}</span>
+              <span className="text-xs text-iron font-mono">{r.tablet}</span>
+              <span className="text-xs text-iron font-mono">{r.mobile}</span>
             </div>
           ))}
           </div>
         </div>
-        <p className="text-xs text-stone-400 mt-2">Body text never drops below 16px. Heading sizes scale proportionally. Mobile H1 = Desktop H3.</p>
+        <p className="text-xs text-slate mt-2">Body text never drops below 16px. Heading sizes scale proportionally. Mobile H1 = Desktop H3.</p>
       </Section>
 
       {/* Line length */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Optimal line length for readability is 50–75 characters. Too wide = eyes lose their place. Too narrow = constant line breaks.">
             <span>Line Length</span>
           </Tooltip>
@@ -126,24 +126,24 @@ export default function TypeScale() {
         <div className="space-y-4">
           <div className="rounded-xl p-5" style={{ border: '1px solid #F2426025', backgroundColor: '#F2426008' }}>
             <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: '#F24260' }}>Too wide (90+ chars)</p>
-            <p className="text-sm text-stone-600 leading-relaxed" style={{ fontFamily: t.body.css, maxWidth: '800px' }}>
+            <p className="text-sm text-iron leading-relaxed" style={{ fontFamily: t.body.css, maxWidth: '800px' }}>
               Every document you add strengthens what the system already knows. Connections you might have missed start surfacing on their own. The whole gets sharper — your second month is better than your first. Your second year is incomparably better.
             </p>
           </div>
           <div className="rounded-xl p-5" style={{ border: '1px solid #00B6A025', backgroundColor: '#00B6A008' }}>
             <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: '#00B6A0' }}>Ideal (50–75 chars)</p>
-            <p className="text-sm text-stone-600 leading-relaxed" style={{ fontFamily: t.body.css, maxWidth: '540px' }}>
+            <p className="text-sm text-iron leading-relaxed" style={{ fontFamily: t.body.css, maxWidth: '540px' }}>
               Every document you add strengthens what the system already knows. Connections you might have missed start surfacing on their own. The whole gets sharper — your second month is better than your first.
             </p>
           </div>
           <div className="rounded-xl p-5" style={{ border: '1px solid #F2426025', backgroundColor: '#F2426008' }}>
             <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: '#F24260' }}>Too narrow (30 chars)</p>
-            <p className="text-sm text-stone-600 leading-relaxed" style={{ fontFamily: t.body.css, maxWidth: '220px' }}>
+            <p className="text-sm text-iron leading-relaxed" style={{ fontFamily: t.body.css, maxWidth: '220px' }}>
               Every document you add strengthens what the system already knows. Connections start surfacing on their own.
             </p>
           </div>
         </div>
-        <p className="text-xs text-stone-400 mt-2">Target max-width for body text: <code className="bg-stone-100 px-1 py-0.5 rounded font-mono text-xs">max-w-prose</code> (65ch) or ~540px at 16px body size.</p>
+        <p className="text-xs text-slate mt-2">Target max-width for body text: <code className="bg-cloud px-1 py-0.5 rounded font-mono text-xs">max-w-prose</code> (65ch) or ~540px at 16px body size.</p>
       </Section>
     </PageShell>
   )

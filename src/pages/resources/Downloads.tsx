@@ -10,12 +10,12 @@ export default function Downloads() {
     >
       {/* Guide documents — available now */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-1">
+        <h2 className="text-xl font-semibold text-ink mb-1">
           <Tooltip content="The complete brand guide in two formats. The Markdown version is the single source of truth and is optimised for LLMs and automation. The PDF is for humans who want offline / print reference.">
             <span>The Brand Guide</span>
           </Tooltip>
         </h2>
-        <p className="text-xs text-stone-500 mb-4">Both files are the same content — pick whichever format suits your workflow.</p>
+        <p className="text-xs text-slate mb-4">Both files are the same content — pick whichever format suits your workflow.</p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <a
             href="/brand-guide.md"
@@ -24,11 +24,11 @@ export default function Downloads() {
           >
             <div className="flex items-center justify-between">
               <TbFileText size={22} className="text-brand" />
-              <span className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider">Canonical</span>
+              <span className="text-[10px] font-semibold text-pewter uppercase tracking-wider">Canonical</span>
             </div>
             <div>
-              <p className="text-sm font-semibold text-stone-900 group-hover:text-brand transition-colors">brand-guide.md</p>
-              <p className="text-xs text-stone-500 mt-0.5 leading-relaxed">Full brand guide in Markdown. Source of truth. LLM-friendly.</p>
+              <p className="text-sm font-semibold text-ink group-hover:text-brand transition-colors">brand-guide.md</p>
+              <p className="text-xs text-slate mt-0.5 leading-relaxed">Full brand guide in Markdown. Source of truth. LLM-friendly.</p>
             </div>
           </a>
           <a
@@ -38,11 +38,11 @@ export default function Downloads() {
           >
             <div className="flex items-center justify-between">
               <TbFileTypePdf size={22} className="text-brand" />
-              <span className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider">Printable</span>
+              <span className="text-[10px] font-semibold text-pewter uppercase tracking-wider">Printable</span>
             </div>
             <div>
-              <p className="text-sm font-semibold text-stone-900 group-hover:text-brand transition-colors">brand-guide.pdf</p>
-              <p className="text-xs text-stone-500 mt-0.5 leading-relaxed">PDF version rendered from the same Markdown. For offline reading.</p>
+              <p className="text-sm font-semibold text-ink group-hover:text-brand transition-colors">brand-guide.pdf</p>
+              <p className="text-xs text-slate mt-0.5 leading-relaxed">PDF version rendered from the same Markdown. For offline reading.</p>
             </div>
           </a>
           <a
@@ -52,22 +52,22 @@ export default function Downloads() {
           >
             <div className="flex items-center justify-between">
               <TbRobot size={22} className="text-brand" />
-              <span className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider">LLM index</span>
+              <span className="text-[10px] font-semibold text-pewter uppercase tracking-wider">LLM index</span>
             </div>
             <div>
-              <p className="text-sm font-semibold text-stone-900 group-hover:text-brand transition-colors">llms.txt</p>
-              <p className="text-xs text-stone-500 mt-0.5 leading-relaxed">Small index file per <code className="font-mono text-[11px]">llmstxt.org</code>. Points AI tools at the canonical docs.</p>
+              <p className="text-sm font-semibold text-ink group-hover:text-brand transition-colors">llms.txt</p>
+              <p className="text-xs text-slate mt-0.5 leading-relaxed">Small index file per <code className="font-mono text-[11px]">llmstxt.org</code>. Points AI tools at the canonical docs.</p>
             </div>
           </a>
         </div>
-        <div className="mt-3 bg-stone-50 rounded-lg px-4 py-3 border border-stone-100">
-          <p className="text-xs text-stone-600 leading-relaxed">
+        <div className="mt-3 bg-cloud rounded-lg px-4 py-3 border border-stone-100">
+          <p className="text-xs text-iron leading-relaxed">
             <strong>LLM readability:</strong> the <code className="font-mono text-[11px]">brand-guide.md</code> and <code className="font-mono text-[11px]">llms.txt</code> files are designed for AI tools (Claude, ChatGPT browsing, Perplexity) to read directly. <code className="font-mono text-[11px]">robots.txt</code> explicitly allows GPTBot, ClaudeBot, CCBot, PerplexityBot, and Google-Extended.
           </p>
-          <p className="text-xs text-stone-600 leading-relaxed mt-2">
+          <p className="text-xs text-iron leading-relaxed mt-2">
             <strong>Visual assets</strong> for the guide (logo marks, lockups, colour swatches, gradient strips, type samples) live in <code className="font-mono text-[11px]">/brand-assets/</code> as standalone SVGs. They're referenced from the Markdown, embedded in the PDF, and regenerable from <code className="font-mono text-[11px]">npm run generate:assets</code>.
           </p>
-          <p className="text-xs text-stone-600 leading-relaxed mt-2">
+          <p className="text-xs text-iron leading-relaxed mt-2">
             <strong>Regeneration:</strong> edit <code className="font-mono text-[11px]">public/brand-guide.md</code> → run <code className="font-mono text-[11px]">npm run generate:all</code> to rebuild assets + PDF in one step.
           </p>
         </div>
@@ -75,7 +75,7 @@ export default function Downloads() {
 
       {/* Asset packages */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="These asset packages contain everything you need to create on-brand materials. Always use assets from this kit — never recreate the logo or modify colors.">
             <span>Asset Packages</span>
           </Tooltip>
@@ -115,13 +115,13 @@ export default function Downloads() {
           ].map(pkg => (
             <div key={pkg.name} className="border border-stone-200 rounded-xl p-5">
               <div className="flex items-start justify-between mb-2">
-                <p className="text-sm font-semibold text-stone-900">{pkg.name}</p>
-                <span className="text-xs font-mono text-stone-400 bg-stone-100 px-1.5 py-0.5 rounded">Coming soon</span>
+                <p className="text-sm font-semibold text-ink">{pkg.name}</p>
+                <span className="text-xs font-mono text-pewter bg-cloud px-1.5 py-0.5 rounded">Coming soon</span>
               </div>
-              <p className="text-xs text-stone-600 leading-relaxed">{pkg.description}</p>
+              <p className="text-xs text-iron leading-relaxed">{pkg.description}</p>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {pkg.contents.map(item => (
-                  <span key={item} className="text-xs bg-stone-50 text-stone-500 px-2 py-0.5 rounded border border-stone-100">{item}</span>
+                  <span key={item} className="text-xs bg-cloud text-slate px-2 py-0.5 rounded border border-stone-100">{item}</span>
                 ))}
               </div>
             </div>
@@ -131,11 +131,11 @@ export default function Downloads() {
 
       {/* Quick reference */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">Quick Reference</h2>
+        <h2 className="text-xl font-semibold text-ink mb-4">Quick Reference</h2>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
-          <div className="grid grid-cols-2 bg-stone-50 border-b border-stone-200 px-4 py-2">
-            <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Resource</span>
-            <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Value</span>
+          <div className="grid grid-cols-2 bg-cloud border-b border-stone-200 px-4 py-2">
+            <span className="text-xs font-semibold text-pewter uppercase tracking-wider">Resource</span>
+            <span className="text-xs font-semibold text-pewter uppercase tracking-wider">Value</span>
           </div>
           {[
             { resource: 'Primary brand color', value: '#4271DF (Cobalt)' },
@@ -148,8 +148,8 @@ export default function Downloads() {
             { resource: 'Border radius (buttons)', value: '8px (rounded-lg)' },
           ].map((row, i) => (
             <div key={row.resource} className="grid grid-cols-2 px-4 py-2.5" style={{ borderBottom: i < 7 ? '1px solid #F3F4F6' : 'none' }}>
-              <span className="text-sm text-stone-700">{row.resource}</span>
-              <span className="text-xs font-mono text-stone-600">{row.value}</span>
+              <span className="text-sm text-iron">{row.resource}</span>
+              <span className="text-xs font-mono text-iron">{row.value}</span>
             </div>
           ))}
         </div>
@@ -166,12 +166,14 @@ export default function Downloads() {
   --color-brand-amber: #E19000;
   --color-brand-rose: #F24260;
 
-  /* Warm Blend neutrals */
-  --color-canvas: #FDFDFB;
-  --color-cloud:  #F4F4F1;
-  --color-pewter: #97979E;
+  /* Warm Blend neutrals — OKLCH-even seven-token ladder */
+  --color-canvas:   #FDFDFB;
+  --color-cloud:    #F4F4F1;
+  --color-pewter:   #97979E;
+  --color-slate:    #6D6D72;
+  --color-iron:     #46464B;
   --color-graphite: #212226;
-  --color-ink:    #18181C;
+  --color-ink:      #18181C;
 
   /* Bridge washes (light) */
   --wash-cobalt: #EDF0F8;

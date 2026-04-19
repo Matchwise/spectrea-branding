@@ -41,22 +41,22 @@ export default function Presentations() {
       {/* Mode balance */}
       <Section>
         <div className="rounded-xl border border-stone-200 overflow-hidden">
-          <div className="px-5 py-3 bg-stone-50 border-b border-stone-200">
-            <p className="text-xs font-semibold uppercase tracking-wider text-stone-500">Deck mode balance</p>
+          <div className="px-5 py-3 bg-cloud border-b border-stone-200">
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate">Deck mode balance</p>
           </div>
           <div className="p-5">
-            <p className="text-sm text-stone-700 leading-relaxed mb-3">
+            <p className="text-sm text-iron leading-relaxed mb-3">
               Your deck lives on Canvas. The warmth is deliberate — it's what keeps a Spectrea talk from feeling like a system briefing. Ink slides earn their place as punctuation: a number that lands, a section break worth pausing on, the closing ask. Think four-fifths Canvas, one-fifth Ink.
             </p>
             <div className="h-7 rounded-md overflow-hidden flex mb-2 border border-stone-200">
               <div className="flex-[80] flex items-center justify-center" style={{ backgroundColor: '#FDFDFB' }}>
-                <span className="text-[11px] font-semibold text-stone-500">Canvas — 80%</span>
+                <span className="text-[11px] font-semibold text-slate">Canvas — 80%</span>
               </div>
               <div className="flex-[20] flex items-center justify-center" style={{ backgroundColor: '#18181C' }}>
                 <span className="text-[11px] font-semibold" style={{ color: '#F4F4F1' }}>Ink — 20%</span>
               </div>
             </div>
-            <p className="text-xs text-stone-500 leading-relaxed">
+            <p className="text-xs text-slate leading-relaxed">
               Canvas carries the everyday — opening, agenda, content, data, close. Ink marks the moments you want the room to feel. When you do go dark, text shifts to Cloud <code className="font-mono text-[11px]">#F4F4F1</code>, muted to Mist <code className="font-mono text-[11px]">#B0B0B6</code>; accents don't flinch. The brand keeps its voice across both.
             </p>
           </div>
@@ -65,19 +65,19 @@ export default function Presentations() {
 
       {/* Slide types — Canvas default (the 80%) */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-1">
+        <h2 className="text-xl font-semibold text-ink mb-1">
           <Tooltip content="A small set of layouts covering the bulk of any deck. Consistency is the thing that makes different decks still feel like Spectrea.">
             <span>Slide Types — Canvas default</span>
           </Tooltip>
         </h2>
-        <p className="text-sm text-stone-500 mb-4 leading-relaxed">
+        <p className="text-sm text-slate mb-4 leading-relaxed">
           These four carry most of a Spectrea deck. Warm ground, a gradient accent where emphasis is earned, type and spacing doing the real work. The backgrounds aren't empty — a soft corner wisp of the brand gradient keeps each slide breathing.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
           {/* Title slide — Canvas with full logotype centered */}
           <div>
-            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Title Slide</p>
+            <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">Title Slide</p>
             <div className="rounded-xl overflow-hidden border border-stone-200 aspect-video relative" style={{ backgroundColor: '#FDFDFB' }}>
               <CanvasWisp />
               <div className="h-full flex flex-col items-center justify-center p-6 relative">
@@ -91,24 +91,24 @@ export default function Presentations() {
 
           {/* Content slide — Canvas, logotype footer, subtle wisp */}
           <div>
-            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Content Slide</p>
+            <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">Content Slide</p>
             <div className="rounded-xl overflow-hidden border border-stone-200 aspect-video relative" style={{ backgroundColor: '#FDFDFB' }}>
               <CanvasWisp />
               <div className="h-full flex flex-col p-5 relative">
-                <p className="text-sm font-semibold text-stone-900" style={{ fontFamily: "'Albert Sans', sans-serif" }}>The Knowledge Problem</p>
+                <p className="text-sm font-semibold text-ink" style={{ fontFamily: "'Albert Sans', sans-serif" }}>The Knowledge Problem</p>
                 <div className="flex-1 flex items-center">
                   <div className="space-y-2 w-full">
                     {['More data, less truth', 'More tools, fewer insights', 'More noise, less action'].map((line, i) => (
                       <div key={i} className="flex items-center gap-2">
                         <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: ['#4271DF', '#00B6A0', '#E19000'][i] }} />
-                        <p className="text-xs text-stone-700">{line}</p>
+                        <p className="text-xs text-iron">{line}</p>
                       </div>
                     ))}
                   </div>
                 </div>
                 <div className="flex items-center justify-between pt-2 border-t border-stone-100">
                   <Logotype fontSize={10} colorMode="ink" color="#97979E" />
-                  <span className="text-xs text-stone-300">3</span>
+                  <span className="text-xs text-pewter">3</span>
                 </div>
               </div>
             </div>
@@ -116,7 +116,7 @@ export default function Presentations() {
 
           {/* Stat / Impact slide — Canvas with Cobalt hero number + logotype footer */}
           <div>
-            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Stat / Impact Slide</p>
+            <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">Stat / Impact Slide</p>
             <div className="rounded-xl overflow-hidden border border-stone-200 aspect-video relative" style={{ backgroundColor: '#FDFDFB' }}>
               <CanvasWisp />
               <div className="h-full flex flex-col items-center justify-center p-6 relative">
@@ -132,7 +132,7 @@ export default function Presentations() {
 
           {/* Section divider — Canvas, centered logotype + title + gradient bar */}
           <div>
-            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Section Divider</p>
+            <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">Section Divider</p>
             <div className="rounded-xl overflow-hidden border border-stone-200 aspect-video relative" style={{ backgroundColor: '#FDFDFB' }}>
               <CanvasWisp />
               <div className="h-full flex flex-col items-center justify-center p-6 gap-3 relative">
@@ -151,19 +151,19 @@ export default function Presentations() {
 
       {/* Ink punctuation — the 20% */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-1">
+        <h2 className="text-xl font-semibold text-ink mb-1">
           <Tooltip content="Going dark should feel like a choice, not a pattern. Use Ink when the shift itself carries the point.">
             <span>Ink Punctuation — use sparingly</span>
           </Tooltip>
         </h2>
-        <p className="text-sm text-stone-500 mb-4 leading-relaxed">
+        <p className="text-sm text-slate mb-4 leading-relaxed">
           Used rarely on purpose. Save Ink for the moments where going dark <em>is</em> the point — a number that stops the room, a section break worth pausing on, the closing ask. Text becomes Cloud, muted becomes Mist, accents stay themselves. Same subtle wisp as Canvas, just warmed up a notch.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
           {/* Stat emphasis (Ink) */}
           <div>
-            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Stat emphasis (Ink)</p>
+            <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">Stat emphasis (Ink)</p>
             <div className="rounded-xl overflow-hidden border border-stone-200 aspect-video relative" style={{ backgroundColor: '#18181C' }}>
               <InkWisp />
               <div className="h-full flex flex-col items-center justify-center p-6 relative">
@@ -178,7 +178,7 @@ export default function Presentations() {
 
           {/* Closing CTA (Ink) */}
           <div>
-            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Closing CTA (Ink)</p>
+            <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">Closing CTA (Ink)</p>
             <div className="rounded-xl overflow-hidden border border-stone-200 aspect-video relative" style={{ backgroundColor: '#18181C' }}>
               <InkWisp />
               <div className="h-full flex flex-col items-center justify-center p-6 gap-3 relative">
@@ -195,7 +195,7 @@ export default function Presentations() {
 
       {/* Slide rules */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="The guardrails that keep different decks from drifting apart. Not many — enough.">
             <span>Design Rules</span>
           </Tooltip>
@@ -212,8 +212,8 @@ export default function Presentations() {
             { rule: 'Screenshots, data, or empty space', detail: 'A product shot or a chart earns its place. Clip art, stock icons, and decoration rarely do — leave them off.' },
           ].map((row, i, arr) => (
             <div key={row.rule} className="px-4 py-3" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
-              <p className="text-sm font-medium text-stone-700">{row.rule}</p>
-              <p className="text-xs text-stone-500 mt-0.5 leading-relaxed">{row.detail}</p>
+              <p className="text-sm font-medium text-iron">{row.rule}</p>
+              <p className="text-xs text-slate mt-0.5 leading-relaxed">{row.detail}</p>
             </div>
           ))}
         </div>
@@ -221,12 +221,12 @@ export default function Presentations() {
 
       {/* Color in presentations */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-1">
+        <h2 className="text-xl font-semibold text-ink mb-1">
           <Tooltip content="Decks use a trimmed palette on purpose. Fewer choices means faster decisions and decks that look like family.">
             <span>Colour in slides</span>
           </Tooltip>
         </h2>
-        <p className="text-sm text-stone-500 mb-4 leading-relaxed">
+        <p className="text-sm text-slate mb-4 leading-relaxed">
           Two backgrounds, four accents. Fewer choices, faster decisions, decks that look like family even when different people make them.
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -243,8 +243,8 @@ export default function Presentations() {
                 <span className="text-xs font-mono" style={{ color: c.textColor, opacity: 0.7 }}>{c.color}</span>
               </div>
               <div className="p-2 bg-white border-t border-stone-100">
-                <p className="text-xs font-medium text-stone-700">{c.name}</p>
-                <p className="text-xs text-stone-400 leading-relaxed">{c.use}</p>
+                <p className="text-xs font-medium text-iron">{c.name}</p>
+                <p className="text-xs text-slate leading-relaxed">{c.use}</p>
               </div>
             </div>
           ))}
@@ -253,18 +253,18 @@ export default function Presentations() {
 
       {/* Dos & Don'ts */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-1">
+        <h2 className="text-xl font-semibold text-ink mb-1">
           <Tooltip content="Quick answers for the decisions you'll make most. When unsure, fewer elements and more breathing room wins.">
             <span>Working guide</span>
           </Tooltip>
         </h2>
-        <p className="text-sm text-stone-500 mb-4 leading-relaxed">
+        <p className="text-sm text-slate mb-4 leading-relaxed">
           Quick answers for the calls you'll make most. When in doubt, fewer elements and more breathing room.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
-            <ul className="space-y-2 text-sm text-stone-700 leading-relaxed">
+            <ul className="space-y-2 text-sm text-iron leading-relaxed">
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Pick one idea and let it breathe.</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Save the gradient bar for the slides that earn it — title, stat, divider.</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Reach for a product shot or a chart when a picture does the work faster than words.</li>
@@ -274,7 +274,7 @@ export default function Presentations() {
           </div>
           <div className="border rounded-xl p-5" style={{ borderColor: '#F2426025', backgroundColor: '#F2426008' }}>
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Don't</h3>
-            <ul className="space-y-2 text-sm text-stone-700 leading-relaxed">
+            <ul className="space-y-2 text-sm text-iron leading-relaxed">
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Add a third background colour — the two-way split is what keeps the deck coherent.</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Let Ink creep past a fifth of the deck. Contrast is a signal, not a texture.</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Stack on clip art, decorative icons, or stock imagery — the content should be enough.</li>

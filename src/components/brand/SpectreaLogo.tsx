@@ -6,7 +6,7 @@ export const LOGO = {
   strokeW: 8,
   dotR: 3.5,
   totalDots: 10,
-  tailDots: 3,
+  tailDots: 2,
 } as const
 
 // ─── Color modes ──────────────────────────────────────────────────
@@ -101,7 +101,11 @@ export function usePathMetrics(pathD: string, totalDots: number, tailDots: numbe
       dots.push({ x: p.x, y: p.y, t })
     }
 
-    const firstTrailingIdx = totalDots - tailDots
+    // tailDots counts VISUALLY trailing dots. The stroke's round linecap
+    // extends ~half-width past connectedLen, swallowing the last
+    // math-trailing dot — so we offset by 1 to align config with what
+    // the reader actually sees.
+    const firstTrailingIdx = totalDots - tailDots - 1
     const connectedFraction = firstTrailingIdx / (totalDots - 1)
     const connectedLen = connectedFraction * totalLen
 

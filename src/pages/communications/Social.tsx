@@ -9,18 +9,18 @@ export default function Social() {
     >
       {/* Profile setup */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Consistent profile setup across platforms builds recognition. The mark works as an avatar; the lockup works as a cover image element.">
             <span>Profile Setup</span>
           </Tooltip>
         </h2>
         <div className="border border-stone-200 rounded-xl overflow-x-auto">
           <div className="min-w-[640px]">
-          <div className="grid grid-cols-4 bg-stone-50 border-b border-stone-200 px-4 py-2">
-            <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Platform</span>
-            <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Avatar</span>
-            <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Cover</span>
-            <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">Bio</span>
+          <div className="grid grid-cols-4 bg-cloud border-b border-stone-200 px-4 py-2">
+            <span className="text-xs font-semibold text-pewter uppercase tracking-wider">Platform</span>
+            <span className="text-xs font-semibold text-pewter uppercase tracking-wider">Avatar</span>
+            <span className="text-xs font-semibold text-pewter uppercase tracking-wider">Cover</span>
+            <span className="text-xs font-semibold text-pewter uppercase tracking-wider">Bio</span>
           </div>
           {[
             { platform: 'LinkedIn', avatar: 'Gradient mark (400x400px)', cover: 'Brand gradient bar + tagline on Ink background', bio: 'We connect the dots. Composable knowledge platform.' },
@@ -29,10 +29,10 @@ export default function Social() {
             { platform: 'Product Hunt', avatar: 'Gradient mark', cover: 'Product screenshot with gradient accent', bio: 'Turns scattered info into compounding intelligence.' },
           ].map((row, i) => (
             <div key={row.platform} className="grid grid-cols-4 px-4 py-3" style={{ borderBottom: i < 3 ? '1px solid #F3F4F6' : 'none' }}>
-              <span className="text-sm font-medium text-stone-800">{row.platform}</span>
-              <span className="text-xs text-stone-600">{row.avatar}</span>
-              <span className="text-xs text-stone-600">{row.cover}</span>
-              <span className="text-xs text-stone-500 italic">{row.bio}</span>
+              <span className="text-sm font-medium text-ink">{row.platform}</span>
+              <span className="text-xs text-iron">{row.avatar}</span>
+              <span className="text-xs text-iron">{row.cover}</span>
+              <span className="text-xs text-slate italic">{row.bio}</span>
             </div>
           ))}
           </div>
@@ -41,7 +41,7 @@ export default function Social() {
 
       {/* Post templates */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Social posts should feel thoughtful, not salesy. Lead with an idea or question, then connect to Spectrea. Never use hype words.">
             <span>Post Patterns</span>
           </Tooltip>
@@ -70,10 +70,10 @@ export default function Social() {
             },
           ].map(post => (
             <div key={post.type} className="border border-stone-200 rounded-xl p-5">
-              <p className="text-sm font-semibold text-stone-800 mb-1">{post.type}</p>
-              <p className="text-xs text-stone-400 font-mono mb-3">{post.template}</p>
-              <div className="bg-stone-50 rounded-lg p-3 border border-stone-100">
-                <p className="text-xs text-stone-600 leading-relaxed italic">"{post.example}"</p>
+              <p className="text-sm font-semibold text-ink mb-1">{post.type}</p>
+              <p className="text-xs text-pewter font-mono mb-3">{post.template}</p>
+              <div className="bg-cloud rounded-lg p-3 border border-stone-100">
+                <p className="text-xs text-iron leading-relaxed italic">"{post.example}"</p>
               </div>
             </div>
           ))}
@@ -82,7 +82,7 @@ export default function Social() {
 
       {/* Visual templates */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Social graphics follow a simple template: dark background, brand gradient accent, and clear typography. Keep it clean and confident.">
             <span>Visual Templates</span>
           </Tooltip>
@@ -90,7 +90,7 @@ export default function Social() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {/* Quote card */}
           <div>
-            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Quote Card</p>
+            <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">Quote Card</p>
             <div className="rounded-xl overflow-hidden" style={{ backgroundColor: '#18181C' }}>
               <div className="p-6">
                 <p className="text-sm font-semibold leading-relaxed" style={{ color: '#F4F4F1', fontFamily: "'Albert Sans', sans-serif" }}>
@@ -104,7 +104,7 @@ export default function Social() {
 
           {/* Stat card */}
           <div>
-            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Stat Card</p>
+            <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">Stat Card</p>
             <div className="rounded-xl overflow-hidden" style={{ backgroundColor: '#18181C' }}>
               <div className="p-6 text-center">
                 <p className="text-3xl font-semibold" style={{ color: '#F4F4F1', fontFamily: "'Albert Sans', sans-serif" }}>94%</p>
@@ -118,7 +118,7 @@ export default function Social() {
 
       {/* Rules */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="These rules apply to every Spectrea social post. They keep the brand voice consistent across platforms and team members.">
             <span>Social Media Rules</span>
           </Tooltip>
@@ -126,7 +126,7 @@ export default function Social() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
-            <ul className="space-y-2 text-sm text-stone-700">
+            <ul className="space-y-2 text-sm text-iron">
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Lead with ideas, not product features</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use the approved vocabulary list</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Keep visuals clean — dark bg + gradient accent</li>
@@ -135,7 +135,7 @@ export default function Social() {
           </div>
           <div className="border rounded-xl p-5" style={{ borderColor: '#F2426025', backgroundColor: '#F2426008' }}>
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Don't</h3>
-            <ul className="space-y-2 text-sm text-stone-700">
+            <ul className="space-y-2 text-sm text-iron">
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use hype words ("revolutionary", "game-changer")</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Post clickbait or engagement bait</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use stock photos — use product screenshots instead</li>

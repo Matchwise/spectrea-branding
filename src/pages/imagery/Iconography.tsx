@@ -19,7 +19,7 @@ export default function Iconography() {
     >
       {/* ─── The System ─── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Spectrea uses Tabler Icons via react-icons. One library for outline and filled variants — 5,963 outline + 999 filled, all visually consistent.">
             <span>Icon System</span>
           </Tooltip>
@@ -41,7 +41,7 @@ export default function Iconography() {
 
       {/* ─── Import Guide ─── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">How to Use</h2>
+        <h2 className="text-xl font-semibold text-ink mb-4">How to Use</h2>
         <div className="bg-ink rounded-xl p-5 overflow-x-auto">
           <pre className="text-xs leading-relaxed" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
             <span style={{ color: '#B0B0B6' }}>{'// Install\n'}</span>
@@ -59,27 +59,27 @@ export default function Iconography() {
           </pre>
         </div>
         <div className="grid grid-cols-3 gap-3 mt-4">
-          <div className="bg-stone-50 rounded-lg px-3 py-2 border border-stone-100">
-            <p className="text-xs font-semibold text-stone-600">Library</p>
+          <div className="bg-cloud rounded-lg px-3 py-2 border border-stone-100">
+            <p className="text-xs font-semibold text-iron">Library</p>
             <code className="text-[10px] text-brand font-mono">react-icons/tb</code>
-            <p className="text-xs text-stone-400 mt-0.5">Tabler Icons</p>
+            <p className="text-xs text-slate mt-0.5">Tabler Icons</p>
           </div>
-          <div className="bg-stone-50 rounded-lg px-3 py-2 border border-stone-100">
-            <p className="text-xs font-semibold text-stone-600">Outline</p>
+          <div className="bg-cloud rounded-lg px-3 py-2 border border-stone-100">
+            <p className="text-xs font-semibold text-iron">Outline</p>
             <code className="text-[10px] text-brand font-mono">TbSearch, TbBell…</code>
-            <p className="text-xs text-stone-400 mt-0.5">5,963 icons</p>
+            <p className="text-xs text-slate mt-0.5">5,963 icons</p>
           </div>
-          <div className="bg-stone-50 rounded-lg px-3 py-2 border border-stone-100">
-            <p className="text-xs font-semibold text-stone-600">Filled</p>
+          <div className="bg-cloud rounded-lg px-3 py-2 border border-stone-100">
+            <p className="text-xs font-semibold text-iron">Filled</p>
             <code className="text-[10px] text-brand font-mono">TbBellFilled…</code>
-            <p className="text-xs text-stone-400 mt-0.5">999 matched variants</p>
+            <p className="text-xs text-slate mt-0.5">999 matched variants</p>
           </div>
         </div>
       </Section>
 
       {/* ─── Specifications ─── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="All icons follow these specs. Custom icons must match to maintain visual consistency.">
             <span>Specifications</span>
           </Tooltip>
@@ -96,9 +96,9 @@ export default function Iconography() {
             { prop: 'Source', value: 'react-icons/tb', note: 'Tabler Icons — outline + filled from one library' },
           ].map((row, i) => (
             <div key={row.prop} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < 7 ? '1px solid #F3F4F6' : 'none' }}>
-              <span className="text-sm font-medium text-stone-700">{row.prop}</span>
-              <span className="text-xs font-mono text-stone-600">{row.value}</span>
-              <span className="text-xs text-stone-500">{row.note}</span>
+              <span className="text-sm font-medium text-iron">{row.prop}</span>
+              <span className="text-xs font-mono text-iron">{row.value}</span>
+              <span className="text-xs text-slate">{row.note}</span>
             </div>
           ))}
         </div>
@@ -106,7 +106,7 @@ export default function Iconography() {
 
       {/* ─── Sizing ─── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Use these standard sizes. Custom sizes break visual consistency.">
             <span>Sizing</span>
           </Tooltip>
@@ -122,10 +122,10 @@ export default function Iconography() {
             ].map(s => (
               <div key={s.size} className="flex flex-col items-center gap-2">
                 <div className="flex items-center justify-center" style={{ width: s.size, height: s.size }}>
-                  <TbSearch size={s.size} className="text-stone-600" />
+                  <TbSearch size={s.size} className="text-iron" />
                 </div>
-                <span className="text-xs font-mono text-stone-500">{s.label}</span>
-                <span className="text-xs text-stone-400 text-center">{s.use}</span>
+                <span className="text-xs font-mono text-slate">{s.label}</span>
+                <span className="text-xs text-slate text-center">{s.use}</span>
               </div>
             ))}
           </div>
@@ -134,7 +134,7 @@ export default function Iconography() {
 
       {/* ─── Colors ─── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">Icon Colors</h2>
+        <h2 className="text-xl font-semibold text-ink mb-4">Icon Colors</h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {[
             { color: '#18181C', name: 'Ink', hex: '#18181C', use: 'Primary — nav, headings, actions', bg: 'bg-white', border: true },
@@ -154,8 +154,8 @@ export default function Iconography() {
             </div>
           ))}
         </div>
-        <div className="mt-3 bg-stone-50 rounded-lg px-4 py-3 border border-stone-200">
-          <p className="text-xs text-stone-600">
+        <div className="mt-3 bg-cloud rounded-lg px-4 py-3 border border-stone-200">
+          <p className="text-xs text-iron">
             <strong>Rule:</strong> Never use spectrum accent colors (Teal, Amber, Rose) for decorative icons. These colors are reserved for semantic meaning (success, warning, error).
           </p>
         </div>
@@ -163,26 +163,26 @@ export default function Iconography() {
 
       {/* ─── Icon States (Tiered Color) ─── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Icon states follow the tiered color system: Cobalt for responsive interaction, Ink for structural selection, semantic colors for status. See Color Application for the full framework.">
             <span>Icon States</span>
           </Tooltip>
         </h2>
-        <p className="text-sm text-stone-600 mb-4">Icons follow Spectrea's three-tier color system. Each tier answers a different question.</p>
+        <p className="text-sm text-iron mb-4">Icons follow Spectrea's three-tier color system. Each tier answers a different question.</p>
 
         <div className="space-y-4">
           {/* Tier: Default */}
           <div className="border border-stone-200 rounded-xl overflow-hidden">
-            <div className="px-5 py-3 bg-stone-50 border-b border-stone-100 flex items-center justify-between">
+            <div className="px-5 py-3 bg-cloud border-b border-stone-100 flex items-center justify-between">
               <div>
-                <p className="text-sm font-semibold text-stone-800">Default</p>
-                <p className="text-xs text-stone-500 mt-0.5">Resting state — no interaction, no selection, no status.</p>
+                <p className="text-sm font-semibold text-ink">Default</p>
+                <p className="text-xs text-slate mt-0.5">Resting state — no interaction, no selection, no status.</p>
               </div>
-              <span className="text-xs font-mono text-stone-400">Pewter #97979E</span>
+              <span className="text-xs font-mono text-pewter">Pewter #97979E</span>
             </div>
             <div className="p-5 flex items-center gap-5">
               {[TbSearch, TbHome, TbSettings, TbUser, TbBell, TbStar, TbEye].map((Icon, i) => (
-                <Icon key={i} size={24} className="text-stone-400" />
+                <Icon key={i} size={24} className="text-pewter" />
               ))}
             </div>
           </div>
@@ -191,36 +191,36 @@ export default function Iconography() {
           <div className="border border-brand/20 rounded-xl overflow-hidden">
             <div className="px-5 py-3 bg-brand/5 border-b border-brand/10 flex items-center justify-between">
               <div>
-                <p className="text-sm font-semibold text-stone-800">Tier 1: Responsive <span className="text-xs font-normal text-stone-500">— user interacts</span></p>
-                <p className="text-xs text-stone-500 mt-0.5">Hover, focus, press. Temporary — appears while interacting, settles when done.</p>
+                <p className="text-sm font-semibold text-ink">Tier 1: Responsive <span className="text-xs font-normal text-slate">— user interacts</span></p>
+                <p className="text-xs text-slate mt-0.5">Hover, focus, press. Temporary — appears while interacting, settles when done.</p>
               </div>
               <span className="text-xs font-mono text-brand">Cobalt #4271DF</span>
             </div>
             <div className="p-5">
               <div className="flex items-center gap-6">
                 <div className="flex items-center gap-3">
-                  <TbBell size={22} className="text-stone-400" />
-                  <span className="text-stone-300 text-xs">hover →</span>
+                  <TbBell size={22} className="text-pewter" />
+                  <span className="text-pewter text-xs">hover →</span>
                   <TbBell size={22} className="text-brand" />
                 </div>
                 <div className="flex items-center gap-3">
-                  <TbStar size={22} className="text-stone-400" />
-                  <span className="text-stone-300 text-xs">hover →</span>
+                  <TbStar size={22} className="text-pewter" />
+                  <span className="text-pewter text-xs">hover →</span>
                   <TbStar size={22} className="text-brand" />
                 </div>
               </div>
-              <p className="text-xs text-stone-500 mt-3">Outline stays outline. Color changes from Pewter to Cobalt. Reverts when interaction ends.</p>
+              <p className="text-xs text-slate mt-3">Outline stays outline. Color changes from Pewter to Cobalt. Reverts when interaction ends.</p>
             </div>
           </div>
 
           {/* Tier 2: Structural */}
           <div className="border border-stone-300 rounded-xl overflow-hidden">
-            <div className="px-5 py-3 bg-stone-100 border-b border-stone-200 flex items-center justify-between">
+            <div className="px-5 py-3 bg-cloud border-b border-stone-200 flex items-center justify-between">
               <div>
-                <p className="text-sm font-semibold text-stone-800">Tier 2: Structural <span className="text-xs font-normal text-stone-500">— persistent state</span></p>
-                <p className="text-xs text-stone-500 mt-0.5">Active page, selected item, toggled on. Persists until the state changes.</p>
+                <p className="text-sm font-semibold text-ink">Tier 2: Structural <span className="text-xs font-normal text-slate">— persistent state</span></p>
+                <p className="text-xs text-slate mt-0.5">Active page, selected item, toggled on. Persists until the state changes.</p>
               </div>
-              <span className="text-xs font-mono text-stone-700">Ink #18181C</span>
+              <span className="text-xs font-mono text-iron">Ink #18181C</span>
             </div>
             <div className="p-5">
               <div className="flex items-center gap-8">
@@ -232,43 +232,43 @@ export default function Iconography() {
                 ].map(pair => (
                   <div key={pair.label} className="flex flex-col items-center gap-2">
                     <div className="flex items-center gap-3">
-                      <pair.outline size={22} className="text-stone-400" />
-                      <span className="text-stone-300 text-xs">→</span>
-                      <pair.filled size={22} className="text-stone-800" />
+                      <pair.outline size={22} className="text-pewter" />
+                      <span className="text-pewter text-xs">→</span>
+                      <pair.filled size={22} className="text-ink" />
                     </div>
-                    <span className="text-[10px] text-stone-400">{pair.label}</span>
+                    <span className="text-[10px] text-pewter">{pair.label}</span>
                   </div>
                 ))}
               </div>
-              <p className="text-xs text-stone-500 mt-3">Outline becomes filled. Color changes from Pewter to Ink. Weight signals the state, not color — canvas stays neutral.</p>
+              <p className="text-xs text-slate mt-3">Outline becomes filled. Color changes from Pewter to Ink. Weight signals the state, not color — canvas stays neutral.</p>
             </div>
           </div>
 
           {/* Tier 3: Semantic */}
           <div className="border border-stone-200 rounded-xl overflow-hidden">
-            <div className="px-5 py-3 bg-stone-50 border-b border-stone-100 flex items-center justify-between">
+            <div className="px-5 py-3 bg-cloud border-b border-stone-100 flex items-center justify-between">
               <div>
-                <p className="text-sm font-semibold text-stone-800">Tier 3: Semantic <span className="text-xs font-normal text-stone-500">— system communicates</span></p>
-                <p className="text-xs text-stone-500 mt-0.5">Success, warning, error. The icon carries status meaning.</p>
+                <p className="text-sm font-semibold text-ink">Tier 3: Semantic <span className="text-xs font-normal text-slate">— system communicates</span></p>
+                <p className="text-xs text-slate mt-0.5">Success, warning, error. The icon carries status meaning.</p>
               </div>
-              <span className="text-xs font-mono text-stone-500">Teal / Amber / Rose</span>
+              <span className="text-xs font-mono text-slate">Teal / Amber / Rose</span>
             </div>
             <div className="p-5">
               <div className="flex items-center gap-8">
                 <div className="flex flex-col items-center gap-1">
                   <TbCheck size={22} style={{ color: '#00B6A0' }} />
-                  <span className="text-[10px] text-stone-400">Success</span>
+                  <span className="text-[10px] text-pewter">Success</span>
                 </div>
                 <div className="flex flex-col items-center gap-1">
                   <TbBell size={22} style={{ color: '#E19000' }} />
-                  <span className="text-[10px] text-stone-400">Warning</span>
+                  <span className="text-[10px] text-pewter">Warning</span>
                 </div>
                 <div className="flex flex-col items-center gap-1">
                   <TbX size={22} style={{ color: '#F24260' }} />
-                  <span className="text-[10px] text-stone-400">Error</span>
+                  <span className="text-[10px] text-pewter">Error</span>
                 </div>
               </div>
-              <p className="text-xs text-stone-500 mt-3">Outline stays outline. Color matches the semantic meaning. Never use semantic colors for decoration.</p>
+              <p className="text-xs text-slate mt-3">Outline stays outline. Color matches the semantic meaning. Never use semantic colors for decoration.</p>
             </div>
           </div>
         </div>
@@ -276,16 +276,16 @@ export default function Iconography() {
 
       {/* ─── Licensing ─── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">Licensing</h2>
-        <div className="bg-stone-50 rounded-xl p-5 border border-stone-200">
+        <h2 className="text-xl font-semibold text-ink mb-4">Licensing</h2>
+        <div className="bg-cloud rounded-xl p-5 border border-stone-200">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <p className="text-sm font-semibold text-stone-800">Tabler Icons</p>
-              <p className="text-xs text-stone-500 mt-1">MIT License. Free for commercial use. No attribution required in product UI.</p>
+              <p className="text-sm font-semibold text-ink">Tabler Icons</p>
+              <p className="text-xs text-slate mt-1">MIT License. Free for commercial use. No attribution required in product UI.</p>
             </div>
             <div>
-              <p className="text-sm font-semibold text-stone-800">react-icons</p>
-              <p className="text-xs text-stone-500 mt-1">MIT License. Wrapper library. Keep license file in source (handled by node_modules).</p>
+              <p className="text-sm font-semibold text-ink">react-icons</p>
+              <p className="text-xs text-slate mt-1">MIT License. Wrapper library. Keep license file in source (handled by node_modules).</p>
             </div>
           </div>
         </div>
@@ -296,8 +296,8 @@ export default function Iconography() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
-            <ul className="space-y-2 text-sm text-stone-700">
-              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Import all icons from <code className="text-xs bg-stone-100 px-1 rounded">react-icons/tb</code></li>
+            <ul className="space-y-2 text-sm text-iron">
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Import all icons from <code className="text-xs bg-cloud px-1 rounded">react-icons/tb</code></li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Pair icons with text labels for clarity</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use outline for default, filled for active state</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Vertically center icons with adjacent text</li>
@@ -306,8 +306,8 @@ export default function Iconography() {
           </div>
           <div className="border rounded-xl p-5" style={{ borderColor: '#F2426025', backgroundColor: '#F2426008' }}>
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Don't</h3>
-            <ul className="space-y-2 text-sm text-stone-700">
-              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Import from other sets (<code className="text-xs bg-stone-100 px-1 rounded">md</code>, <code className="text-xs bg-stone-100 px-1 rounded">lu</code>, <code className="text-xs bg-stone-100 px-1 rounded">bs</code>, <code className="text-xs bg-stone-100 px-1 rounded">fa6</code>) — different visual style</li>
+            <ul className="space-y-2 text-sm text-iron">
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Import from other sets (<code className="text-xs bg-cloud px-1 rounded">md</code>, <code className="text-xs bg-cloud px-1 rounded">lu</code>, <code className="text-xs bg-cloud px-1 rounded">bs</code>, <code className="text-xs bg-cloud px-1 rounded">fa6</code>) — different visual style</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Mix outline and filled styles as decoration</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use icons without labels in primary navigation</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use spectrum colors (Teal, Amber) on decorative icons</li>

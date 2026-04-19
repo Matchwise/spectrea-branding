@@ -323,6 +323,7 @@ export const voice = {
   neverUse: [
     'AI-powered (overused)', 'next-gen', 'state-of-the-art', 'world-class',
     'breakthrough', 'unprecedented', 'game-changer', 'revolutionary',
+    'seamless', 'cutting-edge', 'synergy', 'leverage (as verb)',
   ],
 
   toneExamples: [
@@ -369,7 +370,7 @@ export const voice = {
 export interface PaletteColor {
   name: string
   hex: string
-  role: 'primary' | 'accent' | 'secondary' | 'background' | 'surface' | 'text' | 'muted'
+  role: 'primary' | 'accent' | 'secondary' | 'background' | 'surface' | 'text' | 'muted' | 'body-secondary' | 'body-emphasized'
 }
 
 export interface PaletteOption {
@@ -403,6 +404,8 @@ export const selectedPalette: PaletteOption = {
     { name: 'Canvas', hex: '#FDFDFB', role: 'background' },
     { name: 'Cloud', hex: '#F4F4F1', role: 'surface' },
     { name: 'Ink', hex: '#18181C', role: 'text' },
+    { name: 'Iron', hex: '#46464B', role: 'body-emphasized' },
+    { name: 'Slate', hex: '#6D6D72', role: 'body-secondary' },
     { name: 'Pewter', hex: '#97979E', role: 'muted' },
   ],
   gradient: { from: '#4271DF', via: '#00B6A0', to: '#E19000', angle: 135 },

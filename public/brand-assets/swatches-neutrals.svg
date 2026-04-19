@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="732" height="146" viewBox="0 0 732 146">
-  <text x="0" y="18" font-size="11" font-weight="600" fill="#97979E" font-family="Lexend, sans-serif" letter-spacing="0.05em">WARM BLEND NEUTRALS</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1028" height="146" viewBox="0 0 1028 146">
+  <text x="0" y="18" font-size="11" font-weight="600" fill="#97979E" font-family="Lexend, sans-serif" letter-spacing="0.05em">WARM BLEND NEUTRALS (OKLCH-EVEN LADDER)</text>
   <g transform="translate(0 36)">
   <g>
   <rect width="140" height="78" fill="#FDFDFB" stroke="#F4F4F1" stroke-width="0.5"/>
@@ -26,13 +26,29 @@
   </g>
   <g transform="translate(444 36)">
   <g>
+  <rect width="140" height="78" fill="#6D6D72" stroke="#F4F4F1" stroke-width="0.5"/>
+  <rect y="78" width="140" height="32" fill="#FDFDFB" stroke="#F4F4F1" stroke-width="0.5"/>
+  <text x="10" y="92" font-size="11" font-weight="600" fill="#18181C" font-family="Lexend, sans-serif">Slate</text>
+  <text x="10" y="104" font-size="9" fill="#97979E" font-family="JetBrains Mono, monospace">#6D6D72</text>
+  </g>
+  </g>
+  <g transform="translate(592 36)">
+  <g>
+  <rect width="140" height="78" fill="#46464B" stroke="#F4F4F1" stroke-width="0.5"/>
+  <rect y="78" width="140" height="32" fill="#FDFDFB" stroke="#F4F4F1" stroke-width="0.5"/>
+  <text x="10" y="92" font-size="11" font-weight="600" fill="#18181C" font-family="Lexend, sans-serif">Iron</text>
+  <text x="10" y="104" font-size="9" fill="#97979E" font-family="JetBrains Mono, monospace">#46464B</text>
+  </g>
+  </g>
+  <g transform="translate(740 36)">
+  <g>
   <rect width="140" height="78" fill="#212226" stroke="#F4F4F1" stroke-width="0.5"/>
   <rect y="78" width="140" height="32" fill="#FDFDFB" stroke="#F4F4F1" stroke-width="0.5"/>
   <text x="10" y="92" font-size="11" font-weight="600" fill="#18181C" font-family="Lexend, sans-serif">Graphite</text>
   <text x="10" y="104" font-size="9" fill="#97979E" font-family="JetBrains Mono, monospace">#212226</text>
   </g>
   </g>
-  <g transform="translate(592 36)">
+  <g transform="translate(888 36)">
   <g>
   <rect width="140" height="78" fill="#18181C" stroke="#F4F4F1" stroke-width="0.5"/>
   <rect y="78" width="140" height="32" fill="#FDFDFB" stroke="#F4F4F1" stroke-width="0.5"/>

@@ -12,15 +12,15 @@ export default function BrandStory() {
       {/* Etymology */}
       <Section title="Name Origin">
         <div className="bg-gradient-to-r from-brand/5 via-brand-teal/5 to-brand-amber/5 rounded-xl p-6 border border-brand/10">
-          <p className="text-3xl font-semibold text-stone-900 tracking-tight">{brand.name}</p>
-          <p className="text-sm text-stone-500 font-mono mt-1">{brand.pronunciation}</p>
-          <p className="text-sm text-stone-600 mt-3 leading-relaxed">{brand.etymology}</p>
+          <p className="text-3xl font-semibold text-ink tracking-tight">{brand.name}</p>
+          <p className="text-sm text-slate font-mono mt-1">{brand.pronunciation}</p>
+          <p className="text-sm text-iron mt-3 leading-relaxed">{brand.etymology}</p>
         </div>
       </Section>
 
       {/* Why We Exist */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content={brand.why.usage}>
             <span>Why We Exist</span>
           </Tooltip>
@@ -32,62 +32,62 @@ export default function BrandStory() {
 
       {/* Mission */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content={brand.mission.usage}>
             <span>Mission</span>
           </Tooltip>
         </h2>
         <blockquote className="border-l-4 border-brand pl-5 py-1">
-          <p className="text-lg text-stone-700 leading-relaxed">{brand.mission.statement}</p>
+          <p className="text-lg text-iron leading-relaxed">{brand.mission.statement}</p>
         </blockquote>
       </Section>
 
       {/* Vision */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content={brand.vision.usage}>
             <span>Vision</span>
           </Tooltip>
         </h2>
         <blockquote className="pl-5 py-1" style={{ borderLeft: '4px solid #00B6A0' }}>
-          <p className="text-lg text-stone-700 leading-relaxed">{brand.vision.statement}</p>
+          <p className="text-lg text-iron leading-relaxed">{brand.vision.statement}</p>
         </blockquote>
       </Section>
 
       {/* Tagline */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content={brand.tagline.usage}>
             <span>Tagline</span>
           </Tooltip>
         </h2>
-        <div className="bg-stone-50 rounded-xl p-6 border border-stone-200">
-          <p className="text-2xl font-semibold text-stone-900">{brand.tagline.statement}</p>
+        <div className="bg-cloud rounded-xl p-6 border border-stone-200">
+          <p className="text-2xl font-semibold text-ink">{brand.tagline.statement}</p>
         </div>
       </Section>
 
       {/* Emotional Core */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="The two emotions every Spectrea interaction should evoke. Use as a filter for UX, copy, and product decisions: 'Does this make users feel empowered and clear?'">
             <span>Emotional Core</span>
           </Tooltip>
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="bg-stone-50 rounded-xl p-5 border border-stone-200">
-            <h3 className="font-semibold text-stone-900 text-lg">{brand.emotionalCore.primary}</h3>
-            <p className="text-sm text-stone-600 mt-2 leading-relaxed">{brand.emotionalCore.primaryDescription}</p>
+          <div className="bg-cloud rounded-xl p-5 border border-stone-200">
+            <h3 className="font-semibold text-ink text-lg">{brand.emotionalCore.primary}</h3>
+            <p className="text-sm text-iron mt-2 leading-relaxed">{brand.emotionalCore.primaryDescription}</p>
           </div>
-          <div className="bg-stone-50 rounded-xl p-5 border border-stone-200">
-            <h3 className="font-semibold text-stone-900 text-lg">{brand.emotionalCore.secondary}</h3>
-            <p className="text-sm text-stone-600 mt-2 leading-relaxed">{brand.emotionalCore.secondaryDescription}</p>
+          <div className="bg-cloud rounded-xl p-5 border border-stone-200">
+            <h3 className="font-semibold text-ink text-lg">{brand.emotionalCore.secondary}</h3>
+            <p className="text-sm text-iron mt-2 leading-relaxed">{brand.emotionalCore.secondaryDescription}</p>
           </div>
         </div>
       </Section>
 
       {/* Core Values */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="The five non-negotiable values that govern product decisions, hiring, partnerships, and communications. Each one is a stance the brand takes — and lives by — across every surface.">
             <span>Core Values</span>
           </Tooltip>
@@ -96,11 +96,11 @@ export default function BrandStory() {
           {brand.values.map((v, i) => (
             <div key={v.name} className="border border-stone-200 rounded-xl p-5">
               <div className="flex items-baseline gap-3 mb-2">
-                <span className="text-xs font-semibold text-stone-400">{String(i + 1).padStart(2, '0')}</span>
-                <h3 className="font-semibold text-stone-900">{v.name}</h3>
+                <span className="text-xs font-semibold text-pewter">{String(i + 1).padStart(2, '0')}</span>
+                <h3 className="font-semibold text-ink">{v.name}</h3>
               </div>
-              <p className="text-sm text-stone-600 leading-relaxed mb-2">{v.description}</p>
-              <p className="text-xs text-stone-400 italic">Proof: {v.proof}</p>
+              <p className="text-sm text-iron leading-relaxed mb-2">{v.description}</p>
+              <p className="text-xs text-pewter italic">Proof: {v.proof}</p>
             </div>
           ))}
         </div>
@@ -108,16 +108,16 @@ export default function BrandStory() {
 
       {/* Personality */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Four traits that govern how Spectrea behaves in every interaction — from UI micro-copy to investor presentations. Each has a guardrail to prevent the trait from becoming a weakness.">
             <span>Brand Personality</span>
           </Tooltip>
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {brand.personality.map(p => (
-            <div key={p.trait} className="bg-stone-50 rounded-xl p-5 border border-stone-200">
-              <h3 className="font-semibold text-stone-900 mb-1">{p.trait}</h3>
-              <p className="text-sm text-stone-600 leading-relaxed">{p.description}</p>
+            <div key={p.trait} className="bg-cloud rounded-xl p-5 border border-stone-200">
+              <h3 className="font-semibold text-ink mb-1">{p.trait}</h3>
+              <p className="text-sm text-iron leading-relaxed">{p.description}</p>
               <p className="text-xs text-amber-700 bg-amber-50 rounded-md px-2 py-1 mt-3 inline-block">
                 {p.guardrail}
               </p>
@@ -128,7 +128,7 @@ export default function BrandStory() {
 
       {/* Anti-values */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Hard boundaries that define what Spectrea will never become. Use to veto features, designs, or messaging that cross these lines — even if they seem profitable or popular.">
             <span>What Spectrea Will Never Be</span>
           </Tooltip>
@@ -140,8 +140,8 @@ export default function BrandStory() {
                 <TbX size={16} />
               </span>
               <div>
-                <p className="text-sm font-medium text-stone-800">{av.never}</p>
-                <p className="text-xs text-stone-500 mt-0.5">{av.because}</p>
+                <p className="text-sm font-medium text-ink">{av.never}</p>
+                <p className="text-xs text-slate mt-0.5">{av.because}</p>
               </div>
             </div>
           ))}
@@ -150,28 +150,28 @@ export default function BrandStory() {
 
       {/* Archetypes — tri-domain split */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-2">
+        <h2 className="text-xl font-semibold text-ink mb-2">
           <Tooltip content="Three archetypes assigned to surface domains. Each shapes the EMOTIONAL TONE on its surface; the VISUAL AESTHETIC (spectrum + graph + Warm Blend + modern sans) stays consistent across all three. Use as a gut-check: 'Which surface is this for, and which archetype owns it?'">
             <span>Brand Archetypes</span>
           </Tooltip>
         </h2>
-        <p className="text-sm text-stone-600 mb-5 leading-relaxed">
+        <p className="text-sm text-iron mb-5 leading-relaxed">
           Spectrea splits its archetype across three surface domains. The voice and mood change by surface; the visual aesthetic does not. This lets each surface speak its native register without fragmenting the brand.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {brand.archetypes.map(a => (
-            <div key={a.name} className="bg-stone-50 rounded-xl p-5 border border-stone-200">
-              <p className="text-xs font-semibold uppercase tracking-wider text-stone-400 mb-1">{a.surface}</p>
-              <h3 className="text-lg font-semibold text-stone-900">{a.name}</h3>
-              <p className="text-sm text-stone-600 mt-2 leading-relaxed">{a.description}</p>
+            <div key={a.name} className="bg-cloud rounded-xl p-5 border border-stone-200">
+              <p className="text-xs font-semibold uppercase tracking-wider text-pewter mb-1">{a.surface}</p>
+              <h3 className="text-lg font-semibold text-ink">{a.name}</h3>
+              <p className="text-sm text-iron mt-2 leading-relaxed">{a.description}</p>
             </div>
           ))}
         </div>
         <div className="mt-5 pt-5 border-t border-stone-200">
-          <p className="text-xs text-stone-400">
+          <p className="text-xs text-pewter">
             Reference brands: {brand.aspirationalBrands.join(', ')}
           </p>
-          <p className="text-xs text-stone-400 mt-1">
+          <p className="text-xs text-slate mt-1">
             Anti-patterns: {brand.antiBrands.join(', ')}
           </p>
         </div>
@@ -179,35 +179,35 @@ export default function BrandStory() {
 
       {/* Visual Metaphor */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="The two visual metaphors that inform logo design, illustrations, motion design, and imagery. The prism represents the 'reveal' moment (clarity); the network represents 'growth over time' (compounding).">
             <span>Visual Metaphor</span>
           </Tooltip>
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="border border-stone-200 rounded-xl p-5">
-            <h3 className="font-semibold text-stone-900 mb-1">{brand.visualMetaphor.primary}</h3>
-            <p className="text-sm text-stone-600">{brand.visualMetaphor.primaryDescription}</p>
+            <h3 className="font-semibold text-ink mb-1">{brand.visualMetaphor.primary}</h3>
+            <p className="text-sm text-iron">{brand.visualMetaphor.primaryDescription}</p>
           </div>
           <div className="border border-stone-200 rounded-xl p-5">
-            <h3 className="font-semibold text-stone-900 mb-1">{brand.visualMetaphor.secondary}</h3>
-            <p className="text-sm text-stone-600">{brand.visualMetaphor.secondaryDescription}</p>
+            <h3 className="font-semibold text-ink mb-1">{brand.visualMetaphor.secondary}</h3>
+            <p className="text-sm text-iron">{brand.visualMetaphor.secondaryDescription}</p>
           </div>
         </div>
-        <p className="text-sm text-stone-500 mt-3 italic">{brand.visualMetaphor.combined}</p>
+        <p className="text-sm text-slate mt-3 italic">{brand.visualMetaphor.combined}</p>
       </Section>
 
       {/* Aesthetic Direction */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="The overall visual feeling that guides color, typography, spacing, and imagery choices. Every visual decision should be tested against this direction.">
             <span>Aesthetic Direction</span>
           </Tooltip>
         </h2>
-        <div className="bg-stone-50 rounded-xl p-5 border border-stone-200">
-          <h3 className="font-semibold text-stone-900 mb-1">{brand.aesthetic.direction}</h3>
-          <p className="text-sm text-stone-600">{brand.aesthetic.description}</p>
-          <p className="text-xs text-stone-400 mt-2">{brand.aesthetic.tradeoff}</p>
+        <div className="bg-cloud rounded-xl p-5 border border-stone-200">
+          <h3 className="font-semibold text-ink mb-1">{brand.aesthetic.direction}</h3>
+          <p className="text-sm text-iron">{brand.aesthetic.description}</p>
+          <p className="text-xs text-slate mt-2">{brand.aesthetic.tradeoff}</p>
         </div>
       </Section>
     </PageShell>

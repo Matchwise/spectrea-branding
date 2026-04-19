@@ -91,13 +91,18 @@ The voice formula stays the same; the *emotional register* shifts with the arche
 - **Creator on product** — leads with agency, composition, building. Anywhere users assemble or shape something of their own.
 
 ### Tone spectrum
-| Context | Tone | Example |
+Six contexts, each with the right (left) and wrong (right) version. Read each pair together — the contrast is what the rule looks like in practice.
+
+| Context | Right | Wrong |
 |---|---|---|
-| Marketing copy | Evocative, confident | "Every connection you never noticed. Surfaced." |
-| Product UI | Clear, concise, warm | "3 new connections discovered — review them?" |
-| Error messages | Specific, helpful, never blaming | "This file type isn't supported yet. Try PDF, DOCX, or MD." |
-| Onboarding | Encouraging, low-friction | "Start with one document. The rest will compound." |
-| Technical docs | Precise, well-structured | "The graph grows O(n·log n) with document count when using the default indexer." |
+| **Marketing / Landing Page** | *"Stop losing knowledge to silos. Spectrea builds a living graph of everything your organization knows. The more you use it, the sharper it gets."* | *"Spectrea is a next-gen, AI-powered knowledge management solution that leverages cutting-edge graph technology to revolutionize how enterprises handle data."* |
+| **Error Message** | *"Save failed: connection timeout. Your draft is cached locally. Retrying…"* | *"Oops! Something went wrong. Please try again later or contact support if the problem persists."* |
+| **Feature Announcement** | *"Every document you add now strengthens what the system already knows. Connections you never noticed start surfacing. The whole gets sharper — your second month is better than your first."* | *"We are excited to announce the launch of our groundbreaking new feature, a world-class breakthrough in knowledge management technology!"* |
+| **Documentation** | *"To add a new item, open the relevant view and choose 'Add'. Pick a type from the list, or create one if you need it. The item appears in place immediately."* | *"Ready to add something? Just head over to the right view and hit that '+ Add' button! Pick a type that fits — or make a new one if nothing works. Easy!"* |
+| **Social Media** | *"What if every document you uploaded made your whole system smarter? That's not a hypothetical — it's how Spectrea works."* | *"Big news! Our AI just got even more powerful! Check out our latest update that will blow your mind!"* |
+| **Beginner Documentation** | *"Think of Spectrea as a web of everything your team knows. When you add a document, Spectrea reads it and weaves what it learns into the web — connecting it to things you've already captured."* | *"Documents are processed through a 6-phase pipeline: parse, chunk, embed, score, review, and integrate."* |
+
+The right-hand versions are bold, direct, concrete. The wrong-hand versions lean on hype words (*next-gen, AI-powered, cutting-edge, revolutionize, world-class, groundbreaking*), forced enthusiasm, or pipeline-internal jargon. In every case, the brand shows its work rather than claiming magic.
 
 ### Vocabulary — twelve privileged words
 The twelve brand-evocative words that should appear disproportionately often in copy. Each builds the *feeling* of Spectrea — clarity, aliveness, ownership, the act of seeing — without requiring the reader to know what the product does.
@@ -143,14 +148,14 @@ Apple-style: Title-case Proper Nouns without brand prefix. Each first-class feat
 
 ### Anatomy
 The logo has three parts:
-1. **Mark** — the "connecting the dots" S-curve. 10 dots along a cubic Bézier path, with the final three visually trailing. Spectrum-gradient stroke connecting the first seven. The mark also reads as the leading `S` glyph in the lockup.
+1. **Mark** — the "connecting the dots" S-curve. 10 dots along a cubic Bézier path, with the final two visually trailing. Spectrum-gradient stroke connecting the first eight. The mark also reads as the leading `S` glyph in the lockup.
 2. **Wordmark** — Albert Sans Semibold 600, 0.02em letter-spacing. Inside the canonical `Logotype` / `LogotypeGradient` components, the S mark replaces the leading `S` and only the tail `pectrea` is typeset in lowercase — a stylistic treatment, not the typed name. In every other context (manual lockups like the sidebar, descriptor variants, prose, headings, URLs-excepted), use the sentence-case `Spectrea` — the mark sits beside it as a companion glyph rather than a letter substitute.
 3. **Lockup** — S mark + lowercase wordmark.
 
 ### Construction
 - **Dots:** 10 dots, radius 3.5. Grey (`#A3A3A3`) in the primary treatment.
 - **Stroke:** width 8, round linecap. Cool Duet (Cobalt `#4271DF` → Teal `#00B6A0`) in the static mark and in the gradient lockup's mark.
-- **Trailing dots:** the last 3 dots are left visually unconnected — the "about to connect" moment.
+- **Trailing dots:** the last 2 dots are left visually unconnected — the "about to connect" moment.
 - **Container:** 64×64 construction viewBox. Circle container when needed at small sizes; never a squircle.
 
 ### The two-forms rule (lockup)
@@ -239,15 +244,19 @@ The four-colour spectrum (Cobalt + Teal + Amber + Rose) is the brand's central v
 In **product UI**, the same four colours stay strictly *semantic* (Tier 3 framework below): Cobalt for action, Teal for success, Amber for attention, Rose for urgency. The discipline doesn't change; only the airtime does. Marketing spends budget on spectrum hero moments; product reserves it for meaning.
 
 ### Warm Blend neutrals (applied system-wide)
-A subtle warm tint layered under the spectrum — closes the gap between cold Tailwind grays and the warm accents. Luminance shift is <2% but cohesive as a system.
+A subtle warm tint layered under the spectrum — closes the gap between cold Tailwind grays and the warm accents. Seven tokens, perceptually-uniform in OKLCH L-space from surface to primary text.
 
-| Role | Name | Hex | CSS var |
-|---|---|---|---|
-| Background | Canvas | `#FDFDFB` | `--color-canvas` |
-| Elevated surface | Cloud | `#F4F4F1` | `--color-cloud` |
-| Muted / secondary text | Pewter | `#97979E` | `--color-pewter` |
-| Dark UI surface | Graphite | `#212226` | `--color-graphite` |
-| Primary text / dark surface | Ink | `#18181C` | `--color-ink` |
+| Role | Name | Hex | OKLCH L | Contrast on Canvas | CSS var |
+|---|---|---|---|---|---|
+| Background | Canvas | `#FDFDFB` | 0.993 | 1:1 | `--color-canvas` |
+| Elevated surface | Cloud | `#F4F4F1` | 0.966 | 1.08:1 | `--color-cloud` |
+| Whisper muted | Pewter | `#97979E` | 0.679 | 2.85:1 | `--color-pewter` |
+| Body secondary | Slate | `#6D6D72` | 0.537 | 5.05:1 | `--color-slate` |
+| Emphasized body | Iron | `#46464B` | 0.395 | 9.21:1 | `--color-iron` |
+| Dark UI surface | Graphite | `#212226` | 0.253 | 15.6:1 | `--color-graphite` |
+| Primary text / dark bg | Ink | `#18181C` | 0.211 | 17.4:1 | `--color-ink` |
+
+The seven tokens form an OKLCH-even ladder (ΔL ≈ 0.14 through the body range, with tighter pairs at each end: Canvas↔Cloud and Graphite↔Ink). Slate and Iron exist because the body-text hierarchy needs three working tiers (quiet / body / emphasized) and the old five-token palette had a single ~0.43-wide L gap between Pewter and Graphite with nothing in between.
 
 ### Spectrum accents (the four spectrum colours)
 | Role | Name | Hex | Meaning |
@@ -272,6 +281,34 @@ Tiered between the neutral canvas and the vivid accents — 5–10% saturation v
 | Teal Mist | `#E6F5F3` | Teal | Success toast, positive trend card |
 | Amber Stone | `#F5F0E6` | Amber | Warning alert, highlighted callout |
 | Rose Blush | `#FDF0F2` | Rose | Error message, destructive confirmation |
+
+### Text hierarchy — which token for which tier
+
+The three dark-on-light text tiers map cleanly to the Warm Blend's three readable tokens:
+
+| Tier | Token | Contrast | Use for |
+|---|---|---|---|
+| Primary | Ink `#18181C` | 17.4:1 | Headings, stat values, body emphasis, logo wordmark |
+| Emphasized body | Iron `#46464B` | 9.21:1 (AAA) | Table headers, field labels, key body sentences |
+| Body secondary | Slate `#6D6D72` | 5.05:1 (AA) | Descriptions, helper text, card sub-labels, secondary prose |
+| Whisper muted | Pewter `#97979E` | 2.85:1 | Supplementary labels only — see below |
+
+**Pewter is a whisper, not a readable tier.** Its 2.85:1 contrast is below WCAG AA large-text (3:1). This is an intentional trade: the whisper register is part of what makes the Warm Blend feel warm rather than clinical. Reserve Pewter for truly supplementary labels: overlines, timestamps, meta chips, placeholder text, and captions where the adjacent context already makes the content obvious. Any text that must be *read on its own* steps up to Slate (body secondary) or Iron (emphasized).
+
+### Tailwind → Warm Blend mapping
+
+The app uses Tailwind utility classes; the Warm Blend tokens are exported into the `@theme` so the brand names are first-class utilities. The required mapping:
+
+| Tailwind stone class | Brand token | Notes |
+|---|---|---|
+| `text-stone-900`, `text-stone-800` | `text-ink` | primary |
+| `text-stone-700`, `text-stone-600` | `text-iron` | emphasized body |
+| `text-stone-500` | `text-slate` | body secondary |
+| `text-stone-400`, `text-stone-300` | `text-pewter` | whisper — never for informational text |
+| `bg-stone-50`, `bg-stone-100` | `bg-cloud` | elevated surface |
+| `bg-stone-800` | `bg-ink` | active dark fill (Tier 2 Structural) |
+| `border-stone-*` | **keep as-is** | Tailwind stones are the sanctioned border family |
+| `bg-stone-200`, `bg-stone-300` | **keep as-is** | hover / active / press backgrounds, skeleton placeholders |
 
 ### Colour ratio (the 60/20/10/10 rule)
 - **60%** Canvas (page background)
@@ -305,14 +342,14 @@ On dark surfaces, the role mapping **inverts** — existing tokens carry more of
 **Why two new tokens and not more.** Pewter on Ink reads ~6.3:1 — fine for body — but muted text needs to sit *above* body hierarchy on dark. **Mist `#B0B0B6`** is Pewter brightened to ~8.5:1 so "secondary" still feels secondary without fighting primary text. **Fog `#2E2F35`** gives separation without a visible line — lighter than Ink, darker than Graphite, so cards feel edged rather than drawn.
 
 ### Spectrum accents on dark
-All four accents pass WCAG AA on Ink and carry over **unchanged** — the brand should read as itself on either surface.
+Three of four accents pass WCAG AA for normal text on Ink; Cobalt is **UI-only** at this contrast — for coloured text on Ink use Cobalt Lift instead. Accents carry over **unchanged** — the brand should read as itself on either surface.
 
 | Accent | On Ink contrast | Notes |
 |---|---|---|
-| Cobalt `#4271DF` | 5.2:1 | AA for UI and normal text. |
-| Teal `#00B6A0` | 7.8:1 | AAA. |
-| Amber `#E19000` | 8.4:1 | AAA. |
-| Rose `#F24260` | 5.9:1 | AA. |
+| Cobalt `#4271DF` | 3.93:1 | UI only (passes 3:1 for non-text UI). **For coloured text on Ink use Cobalt Lift `#7A9AEF`.** |
+| Teal `#00B6A0` | 6.91:1 | AA normal text; AA large. |
+| Amber `#E19000` | 6.90:1 | AA normal text; AA large. |
+| Rose `#F24260` | 4.82:1 | AA normal text. |
 
 **Optional brightened variants** — only for long-form *coloured* text on dark (rare in practice). Use sparingly; default behaviour is "same hex, lighter surface."
 
@@ -428,6 +465,8 @@ Must use **adjacent** spectrum pairs. Skip pairs (Cobalt→Amber direct, Teal→
 | Body SM | 14 px | 1.5 | 400 | Secondary text, table cells, form inputs |
 | Caption | 12 px | 1.5 | 500 | Labels, timestamps, helper text |
 | Overline | 12 px | 1.5 | 600 | Section labels (uppercase + 0.05em tracking) |
+| Code | 14 px | 1.5 | 400 | Inline code, data values, type labels (JetBrains Mono) |
+| Code SM | 12 px | 1.5 | 400 | Trace details, technical metadata (JetBrains Mono) |
 
 ### Responsive scale
 Desktop (1024+) / Tablet (640–1023) / Mobile (<640):
@@ -439,7 +478,7 @@ Desktop (1024+) / Tablet (640–1023) / Mobile (<640):
 
 ### Accessibility
 - Body text minimum: 16 px. Never lower for primary content.
-- Contrast ratio minimum: 4.5:1. Ink on Canvas ≈ 17.6:1. Pewter on Canvas ≈ 3.1:1 (decorative only).
+- Contrast ratio minimum: 4.5:1 for normal text, 3:1 for large/UI. Ink 17.4:1 · Iron 9.21:1 (AAA) · Slate 5.05:1 (AA) · Pewter 2.85:1 (supplementary only).
 - Never rely on colour alone — pair colour coding with icons, patterns, or labels.
 - Layout must not break at 200% browser text-zoom.
 
@@ -640,12 +679,14 @@ Brand lead owns this document. Updates live here; downstream consumers (Figma li
   --color-brand-amber: #E19000;
   --color-brand-rose: #F24260;
 
-  /* Warm Blend neutrals */
-  --color-canvas: #FDFDFB;
-  --color-cloud:  #F4F4F1;
-  --color-pewter: #97979E;
+  /* Warm Blend neutrals — OKLCH-even seven-token ladder */
+  --color-canvas:   #FDFDFB;
+  --color-cloud:    #F4F4F1;
+  --color-pewter:   #97979E;
+  --color-slate:    #6D6D72;
+  --color-iron:     #46464B;
   --color-graphite: #212226;
-  --color-ink:    #18181C;
+  --color-ink:      #18181C;
 
   /* Bridge washes (light) */
   --wash-cobalt: #EDF0F8;
@@ -677,9 +718,23 @@ Brand lead owns this document. Updates live here; downstream consumers (Figma li
   --font-body:    'Lexend', 'Inter', sans-serif;
   --font-mono:    'JetBrains Mono', monospace;
 
-  /* Radii */
-  --radius-lg: 8px;
-  --radius-xl: 12px;
+  /* Radii — see Radii table below */
+  --radius-sm:   4px;  /* tags, badges, inline code */
+  --radius-md:   6px;  /* compact buttons, small controls */
+  --radius-lg:   8px;  /* buttons, inputs, dropdowns */
+  --radius-xl:   12px; /* cards, panels, modals (default container) */
+  --radius-2xl:  16px; /* hero sections, large feature cards */
+  --radius-full: 9999px; /* avatars, spectrum tags, toggles */
+
+  /* Spacing — 4 px base unit, all values are multiples of 4 */
+  --space-2xs:  4px;   /* p-1  — tight inline, icon gaps */
+  --space-xs:   8px;   /* p-2  — input padding, badge padding, compact gaps */
+  --space-sm:   12px;  /* p-3  — compact card padding, list item gaps */
+  --space-md:   16px;  /* p-4  — default content gap, section padding */
+  --space-lg:   20px;  /* p-5  — card padding (default), modal padding */
+  --space-xl:   24px;  /* p-6  — section spacing, form field gaps */
+  --space-2xl:  32px;  /* p-8  — major section breaks */
+  --space-3xl:  48px;  /* p-12 — page top padding, hero spacing */
 }
 
 /* Brand gradient — OKLCH with sRGB fallback */
@@ -693,6 +748,44 @@ Brand lead owns this document. Updates live here; downstream consumers (Figma li
 }
 ```
 
+### Radii
+Six tokens. Container `xl` (12 px) is the default; buttons and inputs land on `lg` (8 px); everything else pegs to this scale.
+
+| Token | Value | Tailwind | Use |
+| --- | --- | --- | --- |
+| sm | 4 px | `rounded` | Tags, badges, inline code |
+| md | 6 px | `rounded-md` | Compact buttons, small controls |
+| lg | 8 px | `rounded-lg` | Buttons, inputs, dropdowns |
+| xl | 12 px | `rounded-xl` | Cards, panels, modals (default) |
+| 2xl | 16 px | `rounded-2xl` | Hero sections, large feature cards |
+| full | 9999 px | `rounded-full` | Avatars, spectrum tags, toggles |
+
+### Spacing
+4 px base unit. Every spacing value in the app is a multiple of 4. Fine inline elements (badges, compact controls) may use 2 px increments (6 px, 10 px); never arbitrary values like 5 px, 7 px, or 15 px.
+
+| Token | Value | Tailwind | Use |
+| --- | --- | --- | --- |
+| 2xs | 4 px | `p-1`  | Tight inline, icon gaps |
+| xs | 8 px | `p-2`  | Input / badge padding, compact gaps |
+| sm | 12 px | `p-3`  | Compact card padding, list-item gaps |
+| md | 16 px | `p-4`  | Default content gap, section padding |
+| lg | 20 px | `p-5`  | Default card padding, modal padding |
+| xl | 24 px | `p-6`  | Section spacing, form-field gaps |
+| 2xl | 32 px | `p-8`  | Major section breaks |
+| 3xl | 48 px | `p-12` | Page top padding, hero spacing |
+
+### Elevation
+Six levels. Z-index increments by 10 to leave room for intermediate layers.
+
+| Level | z-index | Shadow | Use |
+| --- | --- | --- | --- |
+| Base | 0 | — | Page content, cards, sections |
+| Raised | 10 | `shadow-sm` | Sticky headers, toolbars |
+| Dropdown | 20 | `shadow-md` | Dropdowns, popovers, tooltips |
+| Modal | 30 | `shadow-lg` | Modals, dialogs, slide-overs |
+| Overlay | 40 | `shadow-xl` | Modal backdrops, full-screen overlays |
+| Toast | 50 | `shadow-lg` | Notifications, toasts |
+
 ### Icon library
 Tabler Icons via `react-icons/tb` — outline and filled from one library. 2 px stroke, round caps/joins, 24×24 grid.
 
@@ -704,4 +797,4 @@ All via Google Fonts:
 
 ---
 
-*This document is the single source of truth for the Spectrea brand. The live web version at [spectrea.com/brand](/) contains interactive demos and the asset generator. If this document and the web guide ever disagree, this document wins.*
+*The live app at [spectrea.com/brand](/) is the canonical source of truth for the Spectrea brand — interactive demos, the asset generator, and runtime tokens define the system. This document mirrors the app for offline and LLM-readable use. If the two ever disagree, the app wins.*

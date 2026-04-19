@@ -22,34 +22,34 @@ export default function Forms() {
     >
       {/* ── Text Inputs ──────────────────────────────────────────── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Consistent form styling builds trust. Users learn the patterns once and apply them everywhere. Every input follows the same border, radius, and spacing rules.">
             <span>Text Inputs</span>
           </Tooltip>
         </h2>
         <div className="border border-stone-200 rounded-xl p-6 space-y-5 max-w-md bg-white">
-          <p className="text-[10px] font-semibold text-stone-400 uppercase tracking-wider">Interactive — type in these fields to see focus and validation states</p>
+          <p className="text-[10px] font-semibold text-pewter uppercase tracking-wider">Interactive — type in these fields to see focus and validation states</p>
 
           {/* Default */}
           <div>
-            <label className="block text-sm font-medium text-stone-700 mb-2">Name</label>
+            <label className="block text-sm font-medium text-iron mb-2">Name</label>
             <input
               type="text"
               placeholder="e.g., Quarterly summary"
-              className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-stone-900 placeholder:text-pewter outline-none focus:border-brand focus:border-2 transition-colors"
+              className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-ink placeholder:text-pewter outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all"
             />
-            <p className="text-xs text-stone-400 mt-1">Helper text provides context or constraints.</p>
+            <p className="text-xs text-slate mt-1">Helper text provides context or constraints.</p>
           </div>
 
           {/* Live validation */}
           <div>
-            <label className="block text-sm font-medium text-stone-700 mb-2">Email Address</label>
+            <label className="block text-sm font-medium text-iron mb-2">Email Address</label>
             <input
               type="text"
               placeholder="name@example.com"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              className="w-full px-3 py-2 text-sm rounded-lg bg-white text-stone-900 placeholder:text-pewter outline-none transition-shadow"
+              className="w-full px-3 py-2 text-sm rounded-lg bg-white text-ink placeholder:text-pewter outline-none focus:ring-2 focus:ring-brand/20 transition-all"
               style={emailValid === null
                 ? { border: '1px solid #E5E7EB' }
                 : emailValid
@@ -59,34 +59,34 @@ export default function Forms() {
             />
             {emailValid === false && <p className="flex items-center gap-1.5 text-xs mt-1" style={{ color: '#F24260' }}><TbX size={14} /> Please enter a valid email address.</p>}
             {emailValid === true && <p className="flex items-center gap-1.5 text-xs mt-1" style={{ color: '#00B6A0' }}><TbCheck size={14} /> Valid email address.</p>}
-            {emailValid === null && <p className="text-xs text-stone-400 mt-1">Type to see live validation.</p>}
+            {emailValid === null && <p className="text-xs text-slate mt-1">Type to see live validation.</p>}
           </div>
 
           {/* Search input */}
           <div>
-            <label className="block text-sm font-medium text-stone-700 mb-2">Search</label>
+            <label className="block text-sm font-medium text-iron mb-2">Search</label>
             <input
               type="text"
               placeholder="Search..."
-              className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-stone-900 placeholder:text-pewter outline-none focus:border-brand focus:border-2 transition-colors"
+              className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-ink placeholder:text-pewter outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all"
             />
           </div>
 
           {/* Disabled */}
           <div>
-            <label className="block text-sm font-medium text-stone-400 mb-2">Workspace (read-only)</label>
+            <label className="block text-sm font-medium text-slate mb-2">Workspace (read-only)</label>
             <input
               type="text"
               defaultValue="Spectrea Inc."
-              className="w-full px-3 py-2 text-sm border border-stone-100 rounded-lg bg-stone-50 text-stone-400 cursor-not-allowed"
+              className="w-full px-3 py-2 text-sm border border-stone-100 rounded-lg bg-cloud text-pewter cursor-not-allowed"
               disabled
             />
           </div>
 
           {/* Select */}
           <div>
-            <label className="block text-sm font-medium text-stone-700 mb-2">Category</label>
-            <select className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-stone-900 outline-none focus:border-brand focus:border-2 transition-colors">
+            <label className="block text-sm font-medium text-iron mb-2">Category</label>
+            <select className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all">
               <option>Select a category...</option>
               <option>Category A</option>
               <option>Category B</option>
@@ -96,11 +96,11 @@ export default function Forms() {
 
           {/* Textarea */}
           <div>
-            <label className="block text-sm font-medium text-stone-700 mb-2">Description</label>
+            <label className="block text-sm font-medium text-iron mb-2">Description</label>
             <textarea
               placeholder="Describe this item..."
               rows={3}
-              className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-stone-900 placeholder:text-pewter resize-none outline-none focus:border-brand focus:border-2 transition-colors"
+              className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-ink placeholder:text-pewter resize-none outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all"
             />
           </div>
         </div>
@@ -108,7 +108,7 @@ export default function Forms() {
 
       {/* ── Input Specifications ─────────────────────────────────── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">Input Specifications</h2>
+        <h2 className="text-xl font-semibold text-ink mb-4">Input Specifications</h2>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
           {[
             { prop: 'Height', value: '36px (default), 32px (compact)', note: 'Compact for tables and dense UI' },
@@ -122,9 +122,9 @@ export default function Forms() {
             { prop: 'Disabled bg', value: 'Stone 50 (#F4F4F1)', note: 'Subtle visual demotion' },
           ].map((row, i) => (
             <div key={row.prop} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < 9 ? '1px solid #F3F4F6' : 'none' }}>
-              <span className="text-sm font-medium text-stone-700">{row.prop}</span>
-              <span className="text-xs font-mono text-stone-600">{row.value}</span>
-              <span className="text-xs text-stone-500">{row.note}</span>
+              <span className="text-sm font-medium text-iron">{row.prop}</span>
+              <span className="text-xs font-mono text-iron">{row.value}</span>
+              <span className="text-xs text-slate">{row.note}</span>
             </div>
           ))}
         </div>
@@ -132,7 +132,7 @@ export default function Forms() {
 
       {/* ── Selection Controls ───────────────────────────────────── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Selection controls let users choose from a set of options. Checkboxes for multi-select, radios for single-select, toggles for binary on/off states.">
             <span>Selection Controls</span>
           </Tooltip>
@@ -140,7 +140,7 @@ export default function Forms() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {/* Checkboxes */}
           <div className="border border-stone-200 rounded-xl p-5 bg-white">
-            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3">Checkbox</p>
+            <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-3">Checkbox</p>
             <div className="space-y-3">
               {[
                 { key: 'optionA', label: 'Option A' },
@@ -157,20 +157,20 @@ export default function Forms() {
                   >
                     {checks[c.key] && <TbCheck size={10} />}
                   </span>
-                  <span className="text-sm text-stone-700 group-hover:text-stone-900 transition-colors">{c.label}</span>
+                  <span className="text-sm text-iron group-hover:text-ink transition-colors">{c.label}</span>
                 </label>
               ))}
               <label className="flex items-center gap-2.5 opacity-40 cursor-not-allowed">
                 <span className="w-4 h-4 rounded flex-shrink-0 flex items-center justify-center border text-[10px]" style={{ borderColor: '#D1D5DB', backgroundColor: 'white' }} />
-                <span className="text-sm text-stone-700">Archived items</span>
+                <span className="text-sm text-iron">Archived items</span>
               </label>
             </div>
-            <p className="text-xs text-stone-400 mt-3">Multi-select. Click to toggle. Use for filters and independent options.</p>
+            <p className="text-xs text-pewter mt-3">Multi-select. Click to toggle. Use for filters and independent options.</p>
           </div>
 
           {/* Radio buttons */}
           <div className="border border-stone-200 rounded-xl p-5 bg-white">
-            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3">Radio</p>
+            <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-3">Radio</p>
             <div className="space-y-3">
               {[
                 { key: 'all', label: 'All items' },
@@ -187,16 +187,16 @@ export default function Forms() {
                   >
                     {radio === r.key && <span className="w-2 h-2 rounded-full" style={{ backgroundColor: '#4271DF' }} />}
                   </span>
-                  <span className="text-sm text-stone-700 group-hover:text-stone-900 transition-colors">{r.label}</span>
+                  <span className="text-sm text-iron group-hover:text-ink transition-colors">{r.label}</span>
                 </label>
               ))}
             </div>
-            <p className="text-xs text-stone-400 mt-3">Single-select. Click to switch. Use when exactly one option must be chosen.</p>
+            <p className="text-xs text-pewter mt-3">Single-select. Click to switch. Use when exactly one option must be chosen.</p>
           </div>
 
           {/* Toggle */}
           <div className="border border-stone-200 rounded-xl p-5 bg-white">
-            <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-3">Toggle</p>
+            <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-3">Toggle</p>
             <div className="space-y-4">
               {[
                 { key: 'autoConnect', label: 'Auto-connect new items' },
@@ -207,7 +207,7 @@ export default function Forms() {
                   className="flex items-center justify-between w-full text-left group"
                   onClick={() => setToggles(p => ({ ...p, [t.key]: !p[t.key] }))}
                 >
-                  <span className="text-sm text-stone-700 group-hover:text-stone-900 transition-colors">{t.label}</span>
+                  <span className="text-sm text-iron group-hover:text-ink transition-colors">{t.label}</span>
                   <span
                     className="relative w-9 h-5 rounded-full flex-shrink-0 transition-colors"
                     style={{ backgroundColor: toggles[t.key] ? '#4271DF' : '#D1D5DB' }}
@@ -220,13 +220,13 @@ export default function Forms() {
                 </button>
               ))}
               <div className="flex items-center justify-between opacity-40 cursor-not-allowed">
-                <span className="text-sm text-stone-700">Dark mode</span>
+                <span className="text-sm text-iron">Dark mode</span>
                 <span className="relative w-9 h-5 rounded-full flex-shrink-0" style={{ backgroundColor: '#D1D5DB' }}>
                   <span className="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white shadow-sm" />
                 </span>
               </div>
             </div>
-            <p className="text-xs text-stone-400 mt-3">Binary on/off. Click to toggle. Use for instant-apply settings.</p>
+            <p className="text-xs text-pewter mt-3">Binary on/off. Click to toggle. Use for instant-apply settings.</p>
           </div>
         </div>
         <div className="mt-3 bg-brand/5 rounded-lg px-4 py-3 border border-brand/10">
@@ -238,7 +238,7 @@ export default function Forms() {
 
       {/* ── Validation Patterns ──────────────────────────────────── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Validation feedback uses semantic colors to communicate state. Messages appear inline below the field, never in modals or toasts.">
             <span>Validation Patterns</span>
           </Tooltip>
@@ -263,10 +263,10 @@ export default function Forms() {
             { rule: 'Preserve input', detail: 'Never clear a field on error. Let users fix, not re-type.' },
           ].map((row, i) => (
             <div key={row.rule} className="flex items-start gap-3 px-4 py-3" style={{ borderBottom: i < 3 ? '1px solid #F3F4F6' : 'none' }}>
-              <span className="text-xs font-semibold text-stone-400 mt-px">{String(i + 1).padStart(2, '0')}</span>
+              <span className="text-xs font-semibold text-pewter mt-px">{String(i + 1).padStart(2, '0')}</span>
               <div>
-                <p className="text-sm font-medium text-stone-700">{row.rule}</p>
-                <p className="text-xs text-stone-500 mt-0.5">{row.detail}</p>
+                <p className="text-sm font-medium text-iron">{row.rule}</p>
+                <p className="text-xs text-slate mt-0.5">{row.detail}</p>
               </div>
             </div>
           ))}
@@ -275,7 +275,7 @@ export default function Forms() {
 
       {/* ── Layout Rules ─────────────────────────────────────────── */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Form layout directly impacts completion rate. These rules are based on usability research — single-column forms consistently outperform multi-column layouts.">
             <span>Layout Rules</span>
           </Tooltip>
@@ -289,9 +289,9 @@ export default function Forms() {
             { rule: 'Primary action at the bottom-right', reason: 'Follows the natural reading direction (LTR)' },
             { rule: 'Always provide a cancel/back option', reason: 'Users should never feel trapped in a form' },
           ].map(item => (
-            <div key={item.rule} className="bg-stone-50 rounded-lg px-4 py-3 border border-stone-100">
-              <p className="text-sm font-medium text-stone-700">{item.rule}</p>
-              <p className="text-xs text-stone-400 mt-0.5">{item.reason}</p>
+            <div key={item.rule} className="bg-cloud rounded-lg px-4 py-3 border border-stone-100">
+              <p className="text-sm font-medium text-iron">{item.rule}</p>
+              <p className="text-xs text-pewter mt-0.5">{item.reason}</p>
             </div>
           ))}
         </div>
@@ -308,9 +308,9 @@ export default function Forms() {
             { rule: 'Keyboard navigation for all controls', detail: 'Tab moves between fields. Space toggles checkboxes. Arrow keys move between radios.' },
             { rule: 'Sufficient contrast on all states', detail: 'Error text at 4.5:1 against background. Disabled state exempt but must still be perceptible.' },
           ].map(item => (
-            <div key={item.rule} className="bg-stone-50 rounded-lg px-4 py-3 border border-stone-100">
-              <p className="text-sm font-medium text-stone-700">{item.rule}</p>
-              <p className="text-xs text-stone-500 mt-0.5">{item.detail}</p>
+            <div key={item.rule} className="bg-cloud rounded-lg px-4 py-3 border border-stone-100">
+              <p className="text-sm font-medium text-iron">{item.rule}</p>
+              <p className="text-xs text-slate mt-0.5">{item.detail}</p>
             </div>
           ))}
         </div>

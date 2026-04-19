@@ -46,7 +46,7 @@ function Tile({ children, label, bg = CLOUD }: { children: React.ReactNode; labe
       >
         {children}
       </div>
-      <p className="mt-2 text-xs text-stone-500">{label}</p>
+      <p className="mt-2 text-xs text-slate">{label}</p>
     </div>
   )
 }
@@ -135,21 +135,21 @@ export default function Illustration() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="rounded-xl border border-amber-200 p-5" style={{ backgroundColor: '#E1900010' }}>
             <p className="text-[10px] font-semibold uppercase tracking-wider mb-2" style={{ color: '#7C4D04' }}>Image-gen via v4 prompt</p>
-            <p className="text-sm font-semibold text-stone-800 mb-2" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Mid- and higher-complexity scenes</p>
-            <p className="text-xs text-stone-600 leading-relaxed">
+            <p className="text-sm font-semibold text-ink mb-2" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Mid- and higher-complexity scenes</p>
+            <p className="text-xs text-iron leading-relaxed">
               Marketing heroes, feature-page illustrations, blog headers, About imagery, onboarding scenes, social posts. Any 16:9 composition with a recognisable scene.
             </p>
-            <p className="text-xs text-stone-500 leading-relaxed mt-2">
+            <p className="text-xs text-slate leading-relaxed mt-2">
               Paste the prompt from <code className="bg-amber-50 px-1 py-0.5 rounded font-mono text-[10px]">docs/illustration-prompt.md</code> into Gemini / Firefly / Imagen, fill the <code className="bg-amber-50 px-1 py-0.5 rounded font-mono text-[10px]">SUBJECT:</code> line, evaluate against the checklist, iterate.
             </p>
           </div>
           <div className="rounded-xl border border-teal-200 p-5" style={{ backgroundColor: '#00B6A010' }}>
             <p className="text-[10px] font-semibold uppercase tracking-wider mb-2" style={{ color: '#007362' }}>Hand-coded SVG</p>
-            <p className="text-sm font-semibold text-stone-800 mb-2" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Basic, simple, direct primitives</p>
-            <p className="text-xs text-stone-600 leading-relaxed">
+            <p className="text-sm font-semibold text-ink mb-2" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Basic, simple, direct primitives</p>
+            <p className="text-xs text-iron leading-relaxed">
               Graph primitives (node, edge, cluster, trail, confidence, highlight), section dividers, in-product state dots, painterly-field backdrop, small threads and constellations.
             </p>
-            <p className="text-xs text-stone-500 leading-relaxed mt-2">
+            <p className="text-xs text-slate leading-relaxed mt-2">
               <strong>Rule of thumb:</strong> if the piece fits in a 120×90 brand-guide vocabulary card, hand-SVG. If it wants to be a 16:9 scene, image-gen.
             </p>
           </div>
@@ -158,8 +158,8 @@ export default function Illustration() {
 
       {/* ─── Palette ratio + tint discipline ─── */}
       <Section title="Palette & tint discipline">
-        <p className="text-sm text-stone-500 mb-5 leading-relaxed">
-          60 / 20 / 10 / 10 by visual weight — Canvas &amp; Paper / Cloud surface / Ink &amp; Pewter structure / Spectrum. One hero primary per composition dominates; the other primaries appear as supporting tints or accents. <strong>Supporting elements use 20–60% tints of the primaries, never default to neutrals</strong> — that's the whole fix for "cold / drab."
+        <p className="text-sm text-slate mb-5 leading-relaxed">
+          60 / 20 / 10 / 10 by visual weight — Canvas &amp; Paper / Cloud surface / Warm Blend structure (Ink / Iron / Slate / Pewter) / Spectrum. One hero primary per composition dominates; the other primaries appear as supporting tints or accents. <strong>Supporting elements use 20–60% tints of the primaries, never default to neutrals</strong> — that's the whole fix for "cold / drab."
         </p>
         <div className="border border-stone-200 rounded-xl overflow-hidden bg-white">
           <div className="h-10 flex">
@@ -172,17 +172,17 @@ export default function Illustration() {
             <div className="flex-[2]" style={{ backgroundColor: ROSE }} />
           </div>
           <div className="grid grid-cols-4 px-4 py-3 text-center">
-            <div><p className="text-sm font-semibold text-stone-800">60%</p><p className="text-xs text-stone-500">Canvas / Paper</p></div>
-            <div><p className="text-sm font-semibold text-stone-800">20%</p><p className="text-xs text-stone-500">Cloud surface</p></div>
-            <div><p className="text-sm font-semibold text-stone-800">10%</p><p className="text-xs text-stone-500">Ink &amp; Pewter</p></div>
-            <div><p className="text-sm font-semibold text-stone-800">10%</p><p className="text-xs text-stone-500">Spectrum accents</p></div>
+            <div><p className="text-sm font-semibold text-ink">60%</p><p className="text-xs text-slate">Canvas / Paper</p></div>
+            <div><p className="text-sm font-semibold text-ink">20%</p><p className="text-xs text-slate">Cloud surface</p></div>
+            <div><p className="text-sm font-semibold text-ink">10%</p><p className="text-xs text-slate">Warm Blend structure</p></div>
+            <div><p className="text-sm font-semibold text-ink">10%</p><p className="text-xs text-slate">Spectrum accents</p></div>
           </div>
         </div>
       </Section>
 
       {/* ─── Warmth checklist ─── */}
       <Section title="Warmth + palette checklist">
-        <p className="text-sm text-stone-500 mb-4 leading-relaxed">
+        <p className="text-sm text-slate mb-4 leading-relaxed">
           Evaluate every image-gen output against these. Ship only if all pass.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -198,8 +198,8 @@ export default function Illustration() {
           ].map(([n, title, desc]) => (
             <div key={n} className="rounded-xl border border-stone-200 p-4">
               <p className="text-[10px] font-semibold uppercase tracking-wider mb-1" style={{ color: COBALT }}>{n}</p>
-              <p className="text-sm font-semibold text-stone-800 mb-1" style={{ fontFamily: "'Albert Sans', sans-serif" }}>{title}</p>
-              <p className="text-xs text-stone-500 leading-relaxed">{desc}</p>
+              <p className="text-sm font-semibold text-ink mb-1" style={{ fontFamily: "'Albert Sans', sans-serif" }}>{title}</p>
+              <p className="text-xs text-slate leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
@@ -207,7 +207,7 @@ export default function Illustration() {
 
       {/* ─── SUBSTRATE · Graph primitives ─── */}
       <Section title="Substrate · graph primitives">
-        <p className="text-sm text-stone-500 mb-5 leading-relaxed">
+        <p className="text-sm text-slate mb-5 leading-relaxed">
           The data-viz vocabulary that matches the product schema. Semantic node colours (Cobalt = entity, Teal = observation, Amber = claim, Pewter = ghost). Edge styles (strong / inferred / weak / curved). Trail, confidence, highlight as state encodings.
         </p>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
@@ -217,9 +217,9 @@ export default function Illustration() {
               <circle cx="60" cy="30" r="9" fill={TEAL} />
               <circle cx="94" cy="30" r="9" fill={AMBER} />
               <circle cx="60" cy="60" r="7" fill={PEWTER} />
-              <text x="26" y="80" textAnchor="middle" fontFamily="ui-monospace,monospace" fontSize="6" fill={PEWTER}>entity</text>
-              <text x="60" y="80" textAnchor="middle" fontFamily="ui-monospace,monospace" fontSize="6" fill={PEWTER}>observ.</text>
-              <text x="94" y="80" textAnchor="middle" fontFamily="ui-monospace,monospace" fontSize="6" fill={PEWTER}>claim</text>
+              <text x="26" y="80" textAnchor="middle" fontFamily="'JetBrains Mono', monospace" fontSize="6" fill={PEWTER}>entity</text>
+              <text x="60" y="80" textAnchor="middle" fontFamily="'JetBrains Mono', monospace" fontSize="6" fill={PEWTER}>observ.</text>
+              <text x="94" y="80" textAnchor="middle" fontFamily="'JetBrains Mono', monospace" fontSize="6" fill={PEWTER}>claim</text>
             </svg>
           </Card>
           <Card label="Edge styles">
@@ -273,7 +273,7 @@ export default function Illustration() {
 
       {/* ─── SUBSTRATE · In-product state dots ─── */}
       <Section title="Substrate · in-product state moments">
-        <p className="text-sm text-stone-500 mb-4 leading-relaxed">
+        <p className="text-sm text-slate mb-4 leading-relaxed">
           Small schematic illustrations the product uses to communicate state. Each composes from atoms only.
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -309,7 +309,7 @@ export default function Illustration() {
             <svg viewBox="0 0 120 90" className="w-full h-24">
               <rect x="32" y="22" width="56" height="44" rx="6" fill={CLOUD} />
               <circle cx="86" cy="26" r="7" fill={ROSE} />
-              <text x="86" y="29" fontFamily="ui-monospace,monospace" fontSize="8" fill="#fff" textAnchor="middle">3</text>
+              <text x="86" y="29" fontFamily="'JetBrains Mono', monospace" fontSize="8" fill="#fff" textAnchor="middle">3</text>
             </svg>
           </Card>
         </div>
@@ -323,7 +323,7 @@ export default function Illustration() {
               <circle cx="100" cy="40" r="9" fill={COBALT} />
               <circle cx="64" cy="50" r="3" fill={PEWTER} opacity="0.4" />
               <circle cx="136" cy="50" r="3" fill={PEWTER} opacity="0.4" />
-              <text x="100" y="80" fontFamily="ui-monospace,monospace" fontSize="9" fill={PEWTER} textAnchor="middle">add your first item</text>
+              <text x="100" y="80" fontFamily="'JetBrains Mono', monospace" fontSize="9" fill={PEWTER} textAnchor="middle">add your first item</text>
             </svg>
           </Card>
           <Card label="Loading skeleton">
@@ -378,7 +378,7 @@ export default function Illustration() {
 
       {/* ─── SUBSTRATE · Painterly-field backdrop ─── */}
       <Section title="Substrate · painterly-field backdrop">
-        <p className="text-sm text-stone-500 mb-4 leading-relaxed">
+        <p className="text-sm text-slate mb-4 leading-relaxed">
           Reusable atmosphere for any scene that needs warmth behind it. Paper ground plus two overlapping soft radial washes in bridge tones. Never the subject.
         </p>
         <Tile label="Paper + Cobalt Wash (upper-left) + Amber Stone (lower-right)">
@@ -404,7 +404,7 @@ export default function Illustration() {
 
       {/* ─── Hero example ─── */}
       <Section title="Hero example">
-        <p className="text-sm text-stone-500 mb-4 leading-relaxed">
+        <p className="text-sm text-slate mb-4 leading-relaxed">
           Generated from the v4 prompt below via Gemini. Subject: a figure working with a flow of brand shapes. Passes the 8-item checklist — zero outlines, tints of primaries on supporting shapes, one hero primary (Teal) dominant with Cobalt figure and small Amber / Rose accents, no facial detail, subtle tonal step on the organic shapes, palette ground (not pure white, not pure grey), both geometric and organic present, asymmetric.
         </p>
         <div className="rounded-xl overflow-hidden border border-stone-200">
@@ -442,7 +442,7 @@ export default function Illustration() {
           <Tile label="Off-palette neon" bg="#FEF3F2"><AntiOffPalette /></Tile>
         </div>
         <div className="mt-5 rounded-lg bg-rose-50 border border-rose-100 p-4">
-          <ul className="text-sm text-stone-700 space-y-1 list-disc list-inside">
+          <ul className="text-sm text-iron space-y-1 list-disc list-inside">
             <li><strong>No mascots.</strong> Spectrea is a mentor, not a pet.</li>
             <li><strong>No stock photography.</strong> For warmth in marketing, use image-gen via the v4 prompt.</li>
             <li><strong>No outlines or line art.</strong> All shapes are filled. Any stroke that sneaks in — delete.</li>

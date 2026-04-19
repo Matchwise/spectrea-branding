@@ -65,7 +65,7 @@ function ColorCard({ name, hex, role, usage, textColor = '#FDFDFB' }: {
         <span className="text-xs font-mono" style={{ color: textColor, opacity: 0.7 }}>{hex}</span>
       </div>
       <div className="p-3 space-y-2">
-        <p className="text-xs text-stone-600 leading-relaxed">{usage}</p>
+        <p className="text-xs text-iron leading-relaxed">{usage}</p>
         <div className="flex gap-1.5 flex-wrap">
           {[
             { label: 'HEX', value: hex },
@@ -76,7 +76,7 @@ function ColorCard({ name, hex, role, usage, textColor = '#FDFDFB' }: {
             <button
               key={f.label}
               onClick={() => copy(f.value, f.label)}
-              className="text-xs font-mono px-2 py-1 rounded border border-stone-200 hover:bg-stone-50 transition-colors btn-focus"
+              className="text-xs font-mono px-2 py-1 rounded border border-stone-200 hover:bg-cloud transition-colors btn-focus"
             >
               {copied === f.label ? 'Copied!' : `${f.label}: ${f.value}`}
             </button>
@@ -95,7 +95,7 @@ export default function PrimaryPalette() {
     >
       {/* Hero Color */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="The hero color appears in primary buttons, links, nav highlights, and key CTAs. It's the color people associate with Spectrea. Use it sparingly and intentionally — it should always signal 'this is the primary action.'">
             <span>Hero Color</span>
           </Tooltip>
@@ -113,7 +113,7 @@ export default function PrimaryPalette() {
 
       {/* Spectrum Accents */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="The spectrum accents are Spectrea's building blocks — each represents a different facet of the platform. They appear as tags, status indicators, chart colors, and secondary actions. Together they form the spectrum; individually they carry specific meaning.">
             <span>Spectrum Accents</span>
           </Tooltip>
@@ -134,8 +134,8 @@ export default function PrimaryPalette() {
             usage="Urgency, energy, importance. Use for: errors, destructive actions (delete, remove), critical alerts, high-priority indicators, notification badges."
           />
         </div>
-        <div className="mt-3 bg-stone-50 rounded-lg px-4 py-3 border border-stone-200">
-          <p className="text-xs text-stone-600">
+        <div className="mt-3 bg-cloud rounded-lg px-4 py-3 border border-stone-200">
+          <p className="text-xs text-iron">
             <strong>Rule:</strong> Spectrum colors should appear as small, purposeful moments — tags, dots, badges, borders — not as large fills. The canvas stays clean; color is reserved for meaning.
           </p>
         </div>
@@ -143,7 +143,7 @@ export default function PrimaryPalette() {
 
       {/* Canvas */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="The canvas is a warm-tinted neutral — it bridges the gap between achromatic grays and the spectrum accents. Canvas is the default background; Cloud is for elevated surfaces (cards, dropdowns, modals). The warmth is subtle (<2% luminance shift) but makes the spectrum feel at home rather than painted on.">
             <span>Canvas</span>
           </Tooltip>
@@ -160,8 +160,8 @@ export default function PrimaryPalette() {
             textColor="#18181C"
           />
         </div>
-        <div className="mt-3 bg-stone-50 rounded-lg px-4 py-3 border border-stone-200">
-          <p className="text-xs text-stone-600">
+        <div className="mt-3 bg-cloud rounded-lg px-4 py-3 border border-stone-200">
+          <p className="text-xs text-iron">
             <strong>Why warm neutrals?</strong> Cold Tailwind grays sit in tension with the warm spectrum accents — the canvas feels like a different system. A whisper of warmth (Canvas <code className="font-mono text-[11px]">#FDFDFB</code> over pure <code className="font-mono text-[11px]">{'#'}FFFFFF</code>) closes the gap so the whole palette reads as one family.
           </p>
         </div>
@@ -169,44 +169,59 @@ export default function PrimaryPalette() {
 
       {/* Text & UI */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
-          <Tooltip content="Text colors create hierarchy. Ink for primary content, Pewter for secondary/supporting. Graphite does double duty — structural Ink-family surface in product chrome (sidebar, tooltips) and the elevated surface role on dark mode.">
+        <h2 className="text-xl font-semibold text-ink mb-4">
+          <Tooltip content="Warm Blend is a seven-token OKLCH-even ladder. Text hierarchy uses four tiers: Ink for headings & primary body, Iron for emphasized body, Slate for secondary body, Pewter as a whisper (below AA — supplementary only). Graphite is a dark-UI surface token, not text.">
             <span>Text & UI</span>
           </Tooltip>
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <p className="text-sm text-iron mb-4 leading-relaxed">
+          Four text tiers on Canvas, from loud to whisper. Slate and Iron fill the perceptual gap between Pewter and Graphite — the old three-token palette jumped straight from 2.85:1 whisper to 15.6:1 dark-surface with nothing in between.
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <ColorCard
-            name="Ink" hex="#18181C" role="text"
-            usage="Primary text, headings, body copy. High contrast on Canvas (17+:1). The default text color."
+            name="Ink" hex="#18181C" role="primary text"
+            usage="Headings, body copy, primary labels. 17.4:1 on Canvas. The default text color."
             textColor="#F4F4F1"
           />
           <ColorCard
-            name="Graphite" hex="#212226" role="primary"
-            usage="Structural Ink-family surface — sidebar, tooltip, footer chrome. Doubles as the elevated surface role on dark mode (equivalent to Cloud on light)."
+            name="Iron" hex="#46464B" role="emphasized body"
+            usage="Table headers, field labels, key body sentences, Dos/Don'ts copy. 9.21:1 (AAA) on Canvas — the load-bearing body token across the app."
             textColor="#F4F4F1"
           />
           <ColorCard
-            name="Pewter" hex="#97979E" role="muted"
-            usage="Secondary text, placeholders, disabled states, timestamps, captions, helper text. Provides hierarchy without distraction."
+            name="Slate" hex="#6D6D72" role="body secondary"
+            usage="Descriptions, helper text, card sub-labels, captions, small-print metadata. 5.05:1 (AA) on Canvas."
+            textColor="#F4F4F1"
+          />
+          <ColorCard
+            name="Pewter" hex="#97979E" role="whisper muted"
+            usage="Overlines, timestamps, meta chips, placeholder text, decorative labels. 2.85:1 — below WCAG AA large-text. Use only where the adjacent context already makes the content obvious; any text that must be read on its own steps up to Slate or Iron."
             textColor="#18181C"
+          />
+        </div>
+        <div className="mt-4">
+          <ColorCard
+            name="Graphite" hex="#212226" role="dark-UI surface"
+            usage="Structural Ink-family surface — sidebar, tooltip, footer chrome on light. Doubles as the elevated surface role on dark mode (equivalent to Cloud on light). Not a text token."
+            textColor="#F4F4F1"
           />
         </div>
       </Section>
 
       {/* Dark Mode */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Dark mode is a parallel surface system, not a separate palette. Roles invert (Ink becomes canvas, Graphite becomes elevated, Cloud becomes text) and two new tokens — Mist and Fog — complete the hierarchy.">
             <span>Dark Mode</span>
           </Tooltip>
         </h2>
-        <p className="text-sm text-stone-600 mb-4 leading-relaxed">
+        <p className="text-sm text-iron mb-4 leading-relaxed">
           Light is Spectrea's default. Dark is a parallel mode — the role mapping inverts, existing tokens carry more weight, and two new tokens (<strong>Mist</strong>, <strong>Fog</strong>) complete the hierarchy. Accents carry over unchanged; all four pass WCAG AA on Ink.
         </p>
 
         {/* Role inversion table */}
         <div className="border border-stone-200 rounded-xl overflow-hidden mb-5">
-          <div className="grid grid-cols-12 px-4 py-2.5 bg-stone-50 border-b border-stone-200 text-[11px] font-semibold uppercase tracking-wider text-stone-500">
+          <div className="grid grid-cols-12 px-4 py-2.5 bg-cloud border-b border-stone-200 text-[11px] font-semibold uppercase tracking-wider text-slate">
             <span className="col-span-3">Role</span>
             <span className="col-span-4">Light</span>
             <span className="col-span-5">Dark</span>
@@ -219,16 +234,16 @@ export default function PrimaryPalette() {
             { role: 'Border / divider', light: { name: 'stone-200', hex: '#E7E5E4', text: '#18181C' }, dark: { name: 'Fog (new)', hex: '#2E2F35', text: '#F4F4F1' } },
           ].map((row, i, arr) => (
             <div key={row.role} className="grid grid-cols-12 items-center px-4 py-2.5" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
-              <span className="col-span-3 text-xs font-medium text-stone-700">{row.role}</span>
+              <span className="col-span-3 text-xs font-medium text-iron">{row.role}</span>
               <div className="col-span-4 flex items-center gap-2">
                 <span className="inline-block w-5 h-5 rounded border border-stone-200" style={{ backgroundColor: row.light.hex }} />
-                <span className="text-xs text-stone-700">{row.light.name}</span>
-                <span className="text-[10px] font-mono text-stone-400">{row.light.hex}</span>
+                <span className="text-xs text-iron">{row.light.name}</span>
+                <span className="text-[10px] font-mono text-pewter">{row.light.hex}</span>
               </div>
               <div className="col-span-5 flex items-center gap-2">
                 <span className="inline-block w-5 h-5 rounded border border-stone-200" style={{ backgroundColor: row.dark.hex }} />
-                <span className="text-xs text-stone-700">{row.dark.name}</span>
-                <span className="text-[10px] font-mono text-stone-400">{row.dark.hex}</span>
+                <span className="text-xs text-iron">{row.dark.name}</span>
+                <span className="text-[10px] font-mono text-pewter">{row.dark.hex}</span>
               </div>
             </div>
           ))}
@@ -260,16 +275,16 @@ export default function PrimaryPalette() {
 
         {/* Accents on dark */}
         <div className="mt-5 border border-stone-200 rounded-xl overflow-hidden">
-          <div className="px-4 py-2.5 bg-stone-50 border-b border-stone-200 flex items-center justify-between">
-            <p className="text-xs font-semibold uppercase tracking-wider text-stone-500">Accents on dark</p>
-            <span className="text-[10px] text-stone-400">All pass WCAG AA on Ink</span>
+          <div className="px-4 py-2.5 bg-cloud border-b border-stone-200 flex items-center justify-between">
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate">Accents on dark</p>
+            <span className="text-[10px] text-pewter">Teal / Amber / Rose pass AA normal text; Cobalt is UI-only — use Cobalt Lift for text</span>
           </div>
           <div className="p-4 space-y-2" style={{ backgroundColor: '#18181C' }}>
             {[
-              { name: 'Cobalt', hex: '#4271DF', contrast: '5.2:1', level: 'AA' },
-              { name: 'Teal', hex: '#00B6A0', contrast: '7.8:1', level: 'AAA' },
-              { name: 'Amber', hex: '#E19000', contrast: '8.4:1', level: 'AAA' },
-              { name: 'Rose', hex: '#F24260', contrast: '5.9:1', level: 'AA' },
+              { name: 'Cobalt', hex: '#4271DF', contrast: '3.93:1', level: 'UI only' },
+              { name: 'Teal', hex: '#00B6A0', contrast: '6.91:1', level: 'AA' },
+              { name: 'Amber', hex: '#E19000', contrast: '6.90:1', level: 'AA' },
+              { name: 'Rose', hex: '#F24260', contrast: '4.82:1', level: 'AA' },
             ].map(a => (
               <div key={a.name} className="flex items-center gap-3">
                 <span className="inline-block w-5 h-5 rounded" style={{ backgroundColor: a.hex }} />
@@ -281,7 +296,7 @@ export default function PrimaryPalette() {
 
         {/* Dark bridge washes */}
         <div className="mt-5">
-          <p className="text-xs font-semibold uppercase tracking-wider text-stone-500 mb-3">Dark bridge washes</p>
+          <p className="text-xs font-semibold uppercase tracking-wider text-slate mb-3">Dark bridge washes</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
               { name: 'Cobalt Deep', hex: '#1B2440', accent: '#4271DF', use: 'Info surface on dark' },
@@ -295,16 +310,16 @@ export default function PrimaryPalette() {
                   <span className="text-[11px] font-mono ml-2" style={{ color: '#B0B0B6' }}>{w.hex}</span>
                 </div>
                 <div className="p-2.5">
-                  <p className="text-xs font-semibold text-stone-800">{w.name}</p>
-                  <p className="text-[11px] text-stone-500 leading-relaxed mt-0.5">{w.use}</p>
+                  <p className="text-xs font-semibold text-ink">{w.name}</p>
+                  <p className="text-[11px] text-slate leading-relaxed mt-0.5">{w.use}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="mt-5 bg-stone-50 rounded-lg px-4 py-3 border border-stone-200">
-          <p className="text-xs text-stone-600 leading-relaxed">
+        <div className="mt-5 bg-cloud rounded-lg px-4 py-3 border border-stone-200">
+          <p className="text-xs text-iron leading-relaxed">
             <strong>When to flip dark.</strong> Product UI follows the user's OS preference. Marketing defaults to light — use Ink for single-panel emphasis, not whole pages. Presentations: Canvas default, Ink for dividers and CTA (≤20% of the deck). PDF and print: always light. Accents never change hex between modes — the brand reads as itself either way.
           </p>
         </div>
@@ -312,7 +327,7 @@ export default function PrimaryPalette() {
 
       {/* Usage ratios */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+        <h2 className="text-xl font-semibold text-ink mb-4">
           <Tooltip content="Color ratios ensure the canvas stays clean and spectrum colors remain meaningful. If everything is colored, nothing stands out.">
             <span>Usage Ratios</span>
           </Tooltip>
@@ -329,24 +344,24 @@ export default function PrimaryPalette() {
           </div>
           <div className="p-4 grid grid-cols-4 gap-3 text-center">
             <div>
-              <p className="text-lg font-semibold text-stone-900">60%</p>
-              <p className="text-xs text-stone-500">Canvas</p>
+              <p className="text-lg font-semibold text-ink">60%</p>
+              <p className="text-xs text-slate">Canvas</p>
             </div>
             <div>
-              <p className="text-lg font-semibold text-stone-900">20%</p>
-              <p className="text-xs text-stone-500">Surface (Cloud)</p>
+              <p className="text-lg font-semibold text-ink">20%</p>
+              <p className="text-xs text-slate">Surface (Cloud)</p>
             </div>
             <div>
-              <p className="text-lg font-semibold text-stone-900">10%</p>
-              <p className="text-xs text-stone-500">Text & UI (Ink, Pewter)</p>
+              <p className="text-lg font-semibold text-ink">10%</p>
+              <p className="text-xs text-slate">Text & UI (Ink / Iron / Slate / Pewter)</p>
             </div>
             <div>
-              <p className="text-lg font-semibold text-stone-900">10%</p>
-              <p className="text-xs text-stone-500">Spectrum (Cobalt + accents)</p>
+              <p className="text-lg font-semibold text-ink">10%</p>
+              <p className="text-xs text-slate">Spectrum (Cobalt + accents)</p>
             </div>
           </div>
         </div>
-        <p className="text-xs text-stone-500 mt-2">The canvas dominates. Color is reserved for meaning. This keeps the interface clean and makes every colored element intentional.</p>
+        <p className="text-xs text-slate mt-2">The canvas dominates. Color is reserved for meaning. This keeps the interface clean and makes every colored element intentional.</p>
       </Section>
 
       {/* Do / Don't */}
@@ -354,7 +369,7 @@ export default function PrimaryPalette() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
-            <ul className="space-y-2 text-sm text-stone-700">
+            <ul className="space-y-2 text-sm text-iron">
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use Cobalt for the single primary action per section</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use spectrum colors as small, meaningful moments (tags, dots, badges)</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use dark text on Teal and Amber backgrounds</li>
@@ -364,7 +379,7 @@ export default function PrimaryPalette() {
           </div>
           <div className="border rounded-xl p-5" style={{ borderColor: '#F2426025', backgroundColor: '#F2426008' }}>
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Don't</h3>
-            <ul className="space-y-2 text-sm text-stone-700">
+            <ul className="space-y-2 text-sm text-iron">
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Fill large areas with accent colors — they lose meaning</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use multiple Cobalt buttons in the same section</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Mix Teal for success AND as a decorative color — pick one meaning</li>

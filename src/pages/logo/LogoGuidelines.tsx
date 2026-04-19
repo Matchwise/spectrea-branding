@@ -41,8 +41,8 @@ export default function LogoGuidelines() {
     >
       {/* Clear space */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">Clear Space</h2>
-        <p className="text-sm text-stone-600 mb-4">The two trailing dots represent connections <em>about to be made</em>. When elements crowd into that space, the dots stop reading as intentional and look like noise.</p>
+        <h2 className="text-xl font-semibold text-ink mb-4">Clear Space</h2>
+        <p className="text-sm text-iron mb-4">The two trailing dots represent connections <em>about to be made</em>. When elements crowd into that space, the dots stop reading as intentional and look like noise.</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <DoExample label="1x mark width on all sides (minimum)">
             <div className="border-2 border-dashed border-brand/20 rounded-full p-6">
@@ -51,20 +51,20 @@ export default function LogoGuidelines() {
           </DoExample>
           <DontExample label="Elements crowding the trailing dots">
             <div className="flex items-center gap-0">
-              <span className="text-xs text-stone-400">Check out</span>
+              <span className="text-xs text-pewter">Check out</span>
               <StaticLogo size={28} colorMode="cool" dotColorMode="grey" />
-              <span className="font-heading font-semibold text-stone-900 text-xs" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
-              <span className="text-xs text-stone-400">today!</span>
+              <span className="font-heading font-semibold text-ink text-xs" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
+              <span className="text-xs text-pewter">today!</span>
             </div>
           </DontExample>
         </div>
-        <p className="text-xs text-stone-500 mt-3">On print, maintain at least 10mm margin from page edges to account for bleed and trim variation.</p>
+        <p className="text-xs text-slate mt-3">On print, maintain at least 10mm margin from page edges to account for bleed and trim variation.</p>
       </Section>
 
       {/* Minimum sizes */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">Minimum Sizes</h2>
-        <p className="text-sm text-stone-600 mb-4">Below these sizes, the dots and stroke become indistinguishable.</p>
+        <h2 className="text-xl font-semibold text-ink mb-4">Minimum Sizes</h2>
+        <p className="text-sm text-iron mb-4">Below these sizes, the dots and stroke become indistinguishable.</p>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
           {[
             { context: 'Full lockup (print)', min: '24mm wide', note: 'Below this, switch to mark only' },
@@ -76,12 +76,12 @@ export default function LogoGuidelines() {
           ].map((row, i) => (
             <div key={row.context} className="flex items-center gap-4 px-4 py-3" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
               <div className="w-44 flex-shrink-0">
-                <p className="text-sm font-medium text-stone-700">{row.context}</p>
+                <p className="text-sm font-medium text-iron">{row.context}</p>
               </div>
               <div className="w-28 flex-shrink-0">
                 <span className="text-xs font-mono text-brand bg-brand/5 px-2 py-1 rounded">{row.min}</span>
               </div>
-              <p className="text-xs text-stone-500">{row.note}</p>
+              <p className="text-xs text-slate">{row.note}</p>
             </div>
           ))}
         </div>
@@ -89,8 +89,8 @@ export default function LogoGuidelines() {
 
       {/* Backgrounds */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">Background Pairing</h2>
-        <p className="text-sm text-stone-600 mb-4">All logo elements must maintain at least 2.5:1 contrast. Mid-tone backgrounds are the danger zone.</p>
+        <h2 className="text-xl font-semibold text-ink mb-4">Background Pairing</h2>
+        <p className="text-sm text-iron mb-4">All logo elements must maintain at least 2.5:1 contrast. Mid-tone backgrounds are the danger zone.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
           <DoExample label="Primary on white or light neutrals">
             <LogotypeGradient fontSize={16} />
@@ -113,7 +113,7 @@ export default function LogoGuidelines() {
           <DontExample label="Any variant on mid-tone backgrounds">
             <div className="bg-stone-400 rounded-lg px-3 py-2 flex items-center gap-2">
               <StaticLogo size={28} colorMode="cool" dotColorMode="grey" />
-              <span className="font-heading font-semibold text-stone-900 text-xs" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
+              <span className="font-heading font-semibold text-ink text-xs" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
             </div>
           </DontExample>
           <DontExample label="Photo without sufficient overlay">
@@ -132,8 +132,8 @@ export default function LogoGuidelines() {
 
       {/* Contained marks */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">Contained Marks</h2>
-        <p className="text-sm text-stone-600 mb-4">Below 48px, the bare mark's dots and stroke are hard to distinguish. Use a circle container. The circle is a legibility aid — use the bare mark whenever size allows.</p>
+        <h2 className="text-xl font-semibold text-ink mb-4">Contained Marks</h2>
+        <p className="text-sm text-iron mb-4">Below 48px, the bare mark's dots and stroke are hard to distinguish. Use a circle container. The circle is a legibility aid — use the bare mark whenever size allows.</p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           <DoExample label="Ink circle at favicon / app icon size">
             <div className="w-10 h-10 rounded-full bg-[#18181C] flex items-center justify-center">
@@ -141,11 +141,11 @@ export default function LogoGuidelines() {
             </div>
           </DoExample>
           <DoExample label="Ink circle in nav sidebar">
-            <div className="bg-stone-100 rounded-lg px-2 py-1.5 flex items-center gap-2">
+            <div className="bg-cloud rounded-lg px-2 py-1.5 flex items-center gap-2">
               <div className="w-7 h-7 rounded-full bg-[#18181C] flex items-center justify-center">
                 <StaticLogo size={18} colorMode="white" />
               </div>
-              <span className="font-heading font-semibold text-stone-700 text-[10px]" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
+              <span className="font-heading font-semibold text-iron text-[10px]" style={{ letterSpacing: '0.02em' }}>Spectrea</span>
             </div>
           </DoExample>
           <DontExample label="Squircle or rounded-square">
@@ -165,8 +165,8 @@ export default function LogoGuidelines() {
 
       {/* Co-branding */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">Co-Branding</h2>
-        <p className="text-sm text-stone-600 mb-4">The spectrum gradient is distinctive — placed next to another brand's colors, it creates visual noise rather than partnership. Switch to ink so both logos sit on equal footing.</p>
+        <h2 className="text-xl font-semibold text-ink mb-4">Co-Branding</h2>
+        <p className="text-sm text-iron mb-4">The spectrum gradient is distinctive — placed next to another brand's colors, it creates visual noise rather than partnership. Switch to ink so both logos sit on equal footing.</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <DoExample label="Ink logos, divider, equal sizing">
             <div className="flex items-center gap-6">
@@ -174,7 +174,7 @@ export default function LogoGuidelines() {
               <div className="w-px h-6 bg-stone-300" />
               <div className="flex items-center gap-2">
                 <div className="w-7 h-7 rounded bg-stone-300" />
-                <span className="text-xs text-stone-400">Partner</span>
+                <span className="text-xs text-pewter">Partner</span>
               </div>
             </div>
           </DoExample>
@@ -188,7 +188,7 @@ export default function LogoGuidelines() {
             </div>
           </DontExample>
         </div>
-        <div className="bg-stone-50 rounded-xl border border-stone-100 p-4 mt-4">
+        <div className="bg-cloud rounded-xl border border-stone-100 p-4 mt-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {[
               { rule: 'Use ink treatment (#3 or #4)', reason: 'Removes color competition — the focus is the partnership, not the palette.' },
@@ -197,8 +197,8 @@ export default function LogoGuidelines() {
               { rule: 'Never merge, interlock, or overlay logos', reason: 'The dots-and-stroke structure must remain intact and readable.' },
             ].map(item => (
               <div key={item.rule} className="bg-white rounded-lg px-3 py-2 border border-stone-100">
-                <p className="text-xs font-medium text-stone-700">{item.rule}</p>
-                <p className="text-xs text-stone-400 mt-0.5">{item.reason}</p>
+                <p className="text-xs font-medium text-iron">{item.rule}</p>
+                <p className="text-xs text-slate mt-0.5">{item.reason}</p>
               </div>
             ))}
           </div>
@@ -207,8 +207,8 @@ export default function LogoGuidelines() {
 
       {/* Accessibility */}
       <Section>
-        <h2 className="text-xl font-semibold text-stone-800 mb-4">Contrast & Accessibility</h2>
-        <p className="text-sm text-stone-600 mb-4">Logos are exempt from WCAG contrast requirements, but we hold ourselves to a 2.5:1 minimum so the mark remains legible in all contexts. The ink and white treatments far exceed this.</p>
+        <h2 className="text-xl font-semibold text-ink mb-4">Contrast & Accessibility</h2>
+        <p className="text-sm text-iron mb-4">Logos are exempt from WCAG contrast requirements, but we hold ourselves to a 2.5:1 minimum so the mark remains legible in all contexts. The ink and white treatments far exceed this.</p>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
           {[
             { element: 'Cobalt stroke on white', ratio: '4.5:1', status: 'Exceeds minimum' },
@@ -219,13 +219,13 @@ export default function LogoGuidelines() {
             { element: 'White mark on Ink', ratio: '17.7:1', status: 'Exceeds WCAG AAA' },
           ].map((row, i) => (
             <div key={row.element} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
-              <span className="text-sm text-stone-700">{row.element}</span>
-              <span className="text-xs font-mono text-stone-600">{row.ratio}</span>
+              <span className="text-sm text-iron">{row.element}</span>
+              <span className="text-xs font-mono text-iron">{row.ratio}</span>
               <span className="text-xs font-medium" style={{ color: '#00B6A0' }}>{row.status}</span>
             </div>
           ))}
         </div>
-        <p className="text-xs text-stone-500 mt-3">When contrast is critical (legal, accessibility-sensitive contexts), use the ink (#3/#4) or white (#8/#9) treatments which provide 17.7:1.</p>
+        <p className="text-xs text-slate mt-3">When contrast is critical (legal, accessibility-sensitive contexts), use the ink (#3/#4) or white (#8/#9) treatments which provide 17.7:1.</p>
       </Section>
     </PageShell>
   )
