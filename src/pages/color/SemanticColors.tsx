@@ -103,13 +103,13 @@ export default function SemanticColors() {
             <div key={sc.name} className="border border-stone-200 rounded-xl overflow-hidden">
               <div className="grid grid-cols-3 h-12">
                 <div className="flex items-center justify-center" style={{ backgroundColor: sc.light }}>
-                  <span className="text-xs font-mono" style={{ color: sc.color }}>Light</span>
+                  <span className="text-xs font-mono" style={{ color: sc.color }}>Wash</span>
                 </div>
                 <div className="flex items-center justify-center" style={{ backgroundColor: sc.color }}>
-                  <span className="text-xs font-mono text-white">Default</span>
+                  <span className="text-xs font-mono text-white">Accent</span>
                 </div>
                 <div className="flex items-center justify-center" style={{ backgroundColor: sc.dark }}>
-                  <span className="text-xs font-mono text-white">Dark</span>
+                  <span className="text-xs font-mono text-white">On-wash text</span>
                 </div>
               </div>
               <div className="p-4">
@@ -119,9 +119,9 @@ export default function SemanticColors() {
                 </div>
                 <p className="text-xs text-stone-600">{sc.usage}</p>
                 <div className="flex gap-2 mt-2 flex-wrap">
-                  <span className="text-xs font-mono text-stone-400">{sc.lightName}: {sc.light}</span>
-                  <span className="text-xs font-mono text-stone-400">Default: {sc.color}</span>
-                  <span className="text-xs font-mono text-stone-400">Dark: {sc.dark}</span>
+                  <span className="text-xs font-mono text-stone-400">Wash ({sc.lightName}): {sc.light}</span>
+                  <span className="text-xs font-mono text-stone-400">Accent: {sc.color}</span>
+                  <span className="text-xs font-mono text-stone-400">On-wash text: {sc.dark}</span>
                 </div>
               </div>
             </div>
@@ -242,6 +242,73 @@ export default function SemanticColors() {
             <strong>Rule of thirds:</strong> most semantic surfaces should be <strong>wash</strong>. The accent appears as a dot, icon, or short emphasis — not as a fill. Dark variants are reserved for text and borders <em>on top of</em> the wash.
           </p>
         </div>
+      </Section>
+
+      {/* Semantic surfaces on dark */}
+      <Section>
+        <h2 className="text-xl font-semibold text-stone-800 mb-4">
+          <Tooltip content="Dark mode rebuilds the bridge tier on a dark base. Same pairing rule: the surface carries context, the saturated accent carries the color. Accents don't change hex between modes.">
+            <span>Semantic Surfaces on Dark</span>
+          </Tooltip>
+        </h2>
+        <p className="text-sm text-stone-600 mb-4 leading-relaxed">
+          On dark surfaces the bridge tier rebuilds at ~8–12% saturation on a dark base. The accents carry over <strong>unchanged</strong> — all four pass WCAG AA on Ink — so the brand reads as itself in either mode.
+        </p>
+
+        <div className="rounded-xl overflow-hidden border border-stone-200">
+          <div className="px-4 py-2.5 bg-stone-50 border-b border-stone-200">
+            <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider">Dark saturation ladder</p>
+          </div>
+          <div className="p-5" style={{ backgroundColor: '#18181C' }}>
+            <div className="space-y-2">
+              {[
+                { label: 'Info', wash: '#1B2440', accent: '#4271DF', name: 'Cobalt Deep' },
+                { label: 'Success', wash: '#0E2E2A', accent: '#00B6A0', name: 'Teal Deep' },
+                { label: 'Warning', wash: '#2E2410', accent: '#E19000', name: 'Amber Deep' },
+                { label: 'Error', wash: '#2E1218', accent: '#F24260', name: 'Rose Deep' },
+              ].map(row => (
+                <div key={row.label} className="grid grid-cols-12 gap-2 items-center">
+                  <span className="col-span-2 text-xs font-semibold" style={{ color: '#F4F4F1' }}>{row.label}</span>
+                  <div className="col-span-10 grid grid-cols-2 gap-2">
+                    <div className="flex flex-col rounded-md overflow-hidden">
+                      <div className="h-8" style={{ backgroundColor: row.wash }} />
+                      <span className="text-[10px] font-mono mt-1" style={{ color: '#B0B0B6' }}>{row.name} — {row.wash}</span>
+                    </div>
+                    <div className="flex flex-col rounded-md overflow-hidden">
+                      <div className="h-8" style={{ backgroundColor: row.accent }} />
+                      <span className="text-[10px] font-mono mt-1" style={{ color: '#B0B0B6' }}>Accent — {row.accent}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Example toasts on dark */}
+        <div className="mt-4 border border-stone-200 rounded-xl p-5 space-y-3" style={{ backgroundColor: '#18181C' }}>
+          <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: '#B0B0B6' }}>Example: toasts on dark</p>
+          <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#0E2E2A', border: '1px solid #00B6A033' }}>
+            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#00B6A0' }} />
+            <p className="text-xs" style={{ color: '#F4F4F1' }}>Item created successfully with 3 initial connections.</p>
+          </div>
+          <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#2E2410', border: '1px solid #E1900033' }}>
+            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#E19000' }} />
+            <p className="text-xs" style={{ color: '#F4F4F1' }}>Confidence score below threshold (62%). Review recommended.</p>
+          </div>
+          <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#2E1218', border: '1px solid #F2426033' }}>
+            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#F24260' }} />
+            <p className="text-xs" style={{ color: '#F4F4F1' }}>Save failed: connection timeout. Your draft is cached locally.</p>
+          </div>
+          <div className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: '#1B2440', border: '1px solid #4271DF33' }}>
+            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#4271DF' }} />
+            <p className="text-xs" style={{ color: '#F4F4F1' }}>3 new documents queued. Processing will begin shortly.</p>
+          </div>
+        </div>
+
+        <p className="text-xs text-stone-500 mt-4 leading-relaxed">
+          <strong>Rule:</strong> dark washes replace light washes 1:1. Accent dots, borders, and icons stay unchanged. On-dark text on washes is Cloud <code className="font-mono text-[11px]">#F4F4F1</code> — the wash provides enough contrast that a darker text variant isn't needed.
+        </p>
       </Section>
 
       {/* Consistency rule */}

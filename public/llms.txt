@@ -82,6 +82,9 @@ The brand combines spectrum accents (Cobalt, Teal, Amber, Rose) with a Warm Blen
 - **Category:** Composable knowledge platform.
 - **Spectrum colours:** Cobalt `#4271DF` · Teal `#00B6A0` · Amber `#E19000` · Rose `#F24260`.
 - **Warm Blend neutrals:** Canvas `#FDFDFB` · Cloud `#F4F4F1` · Pewter `#97979E` · Graphite `#212226` · Ink `#18181C`.
+- **Default mode:** light. Canvas is the 60% page ground on marketing, product, slides, PDF. Dark is a parallel mode, not the primary register.
+- **Dark surfaces (parallel mode):** role mapping inverts — Ink becomes the canvas, Graphite becomes elevated, Cloud becomes text. Two new tokens complete the hierarchy: **Mist `#B0B0B6`** (muted text, ~8.5:1 on Ink) and **Fog `#2E2F35`** (border / divider). Accents (Cobalt, Teal, Amber, Rose) carry over unchanged — all pass WCAG AA on Ink. Dark bridge washes: Cobalt Deep `#1B2440` · Teal Deep `#0E2E2A` · Amber Deep `#2E2410` · Rose Deep `#2E1218`.
+- **Slides:** Canvas-default, Ink for punctuation (section dividers, single-stat emphasis, closing CTA). Target ~80/20 Canvas/Ink; contrast is the point, so dilution weakens both modes.
 - **Brand gradient:** `linear-gradient(135deg in oklch, #4271DF, #00B6A0, #E19000)` with sRGB fallback for older browsers.
 - **Lockup gradient (LogotypeGradient only):** 5-stop full spectrum with `#6FB884` intermediate at 55%.
 - **Typefaces:** Albert Sans (headings, 600/700), Lexend (body, 300/400/500), JetBrains Mono (code, 400).

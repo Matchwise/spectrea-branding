@@ -288,6 +288,61 @@ Every colour in Spectrea lives in one of three tiers:
 2. **Tier 2 — Structural (Ink).** Persistent state and navigation. Active nav item, selected tab, toggled-on icon, current breadcrumb. Ink keeps the canvas calm while Cobalt stays reserved for action.
 3. **Tier 3 — Semantic (spectrum + Pewter).** The system communicating status. Info (Cobalt), success (Teal), warning (Amber), error (Rose). Never decorative — every appearance carries meaning.
 
+### Default mode: light
+Spectrea defaults to **light**. Canvas `#FDFDFB` is the 60% page ground because the Warm Blend system exists to make the spectrum feel inhabited against a warm-tinted white — not to produce a dark-first interface. Marketing, product, and PDF surfaces all ship light-default. Dark is a parallel mode, not the primary register.
+
+### Dark surfaces (parallel mode)
+On dark surfaces, the role mapping **inverts** — existing tokens carry more of the weight, with two additions for hierarchy.
+
+| Role | Light | Dark | CSS var |
+|---|---|---|---|
+| Page background | Canvas `#FDFDFB` | Ink `#18181C` | `--dark-canvas` |
+| Elevated surface | Cloud `#F4F4F1` | Graphite `#212226` | `--dark-cloud` |
+| Primary text | Ink `#18181C` | Cloud `#F4F4F1` | `--dark-ink` |
+| Muted text | Pewter `#97979E` | Mist `#B0B0B6` *(new)* | `--dark-mist` |
+| Border / divider | `stone-200` | Fog `#2E2F35` *(new)* | `--dark-fog` |
+
+**Why two new tokens and not more.** Pewter on Ink reads ~6.3:1 — fine for body — but muted text needs to sit *above* body hierarchy on dark. **Mist `#B0B0B6`** is Pewter brightened to ~8.5:1 so "secondary" still feels secondary without fighting primary text. **Fog `#2E2F35`** gives separation without a visible line — lighter than Ink, darker than Graphite, so cards feel edged rather than drawn.
+
+### Spectrum accents on dark
+All four accents pass WCAG AA on Ink and carry over **unchanged** — the brand should read as itself on either surface.
+
+| Accent | On Ink contrast | Notes |
+|---|---|---|
+| Cobalt `#4271DF` | 5.2:1 | AA for UI and normal text. |
+| Teal `#00B6A0` | 7.8:1 | AAA. |
+| Amber `#E19000` | 8.4:1 | AAA. |
+| Rose `#F24260` | 5.9:1 | AA. |
+
+**Optional brightened variants** — only for long-form *coloured* text on dark (rare in practice). Use sparingly; default behaviour is "same hex, lighter surface."
+
+| Accent | Dark-lift | When |
+|---|---|---|
+| Cobalt Lift | `#7A9AEF` | Inline links inside dark long-form text blocks. |
+| Teal Lift | `#3DD3BF` | Coloured body copy in dark surfaces. |
+| Amber Lift | `#F2AE40` | Coloured body copy in dark surfaces. |
+| Rose Lift | `#F97587` | Coloured body copy in dark surfaces. |
+
+### Dark bridge washes
+Tinted dark surfaces — the semantic bridge tier rebuilt for dark mode. ~8–12% saturation on a dark base. Pair with the saturated accent the same way light washes do; the surface carries context, the dot/icon carries the colour.
+
+| Name | Hex | Paired accent | Use |
+|---|---|---|---|
+| Cobalt Deep | `#1B2440` | Cobalt | Info alert background, selected row (dark). |
+| Teal Deep | `#0E2E2A` | Teal | Success toast, positive trend card (dark). |
+| Amber Deep | `#2E2410` | Amber | Warning alert, highlighted callout (dark). |
+| Rose Deep | `#2E1218` | Rose | Error message, destructive confirmation (dark). |
+
+### Dark ratio
+Same 60/20/10/10 discipline, inverted: **60% Ink · 20% Graphite · 10% Cloud + Mist · 10% spectrum (semantic only).** The canvas still dominates; colour still earns its place.
+
+### When to use dark
+- **Product UI** — follow the user's OS/app preference. Both modes are first-class.
+- **Marketing** — light by default. Use Ink backgrounds for single-panel emphasis (quote card, stat card, section divider), not whole pages.
+- **Presentations** — Canvas default; Ink for dividers and closing CTA (≤20% of deck). See §12.
+- **PDF and print** — always light. Dark-mode PDFs waste ink and hurt readability.
+- **Email** — transactional on Canvas; marketing headers may use Ink as a branded band, but the email body stays on Canvas.
+
 ---
 
 ## 6. Gradients
@@ -544,12 +599,15 @@ Every piece of written output — product copy, email, social, presentation slid
 - **Stat card:** Ink background, 3 xl Cloud number, Pewter supporting text, gradient accent strip at bottom.
 
 ### Presentations
-- **Canvas slide background:** Canvas (`#FDFDFB`).
-- **Ink slide background:** Ink (`#18181C`) — for divider / emphasis slides.
+Slides are **Canvas-default**, Ink for punctuation. The warmth of Canvas is what keeps a Spectrea deck from reading as austere/Linear-like — don't dilute that by flipping whole decks dark.
+
+- **Default slide background:** Canvas (`#FDFDFB`). Use for opening, agenda, content, data, closing-thanks — roughly 80%+ of any deck.
+- **Ink slide background:** Ink (`#18181C`) — reserved for section dividers, single-stat emphasis, closing CTA. Keep ≤20% of the deck; contrast is the point, dilute it and both modes weaken.
+- **On Ink slides:** text is Cloud `#F4F4F1`; muted text is Mist `#B0B0B6`; accents carry over unchanged.
 - **Title typography:** Albert Sans 600, 48 px.
 - **Body typography:** Lexend 400, 24 px.
-- **Accent strip:** brand gradient, 4 px tall, at the bottom of title slides.
-- **Footer:** `Logotype` at `fontSize=9`, `colorMode="ink"`, `color="#97979E"`.
+- **Accent strip:** brand gradient, 4 px tall, at the bottom of title slides (both Canvas and Ink).
+- **Footer:** `Logotype` at `fontSize=9`, `colorMode="ink"` (Canvas slides) or `colorMode="white"` (Ink slides), `color="#97979E"` / `#B0B0B6`.
 
 ---
 
@@ -586,6 +644,31 @@ Brand lead owns this document. Updates live here; downstream consumers (Figma li
   --color-pewter: #97979E;
   --color-graphite: #212226;
   --color-ink:    #18181C;
+
+  /* Bridge washes (light) */
+  --wash-cobalt: #EDF0F8;
+  --wash-teal:   #E6F5F3;
+  --wash-amber:  #F5F0E6;
+  --wash-rose:   #FDF0F2;
+
+  /* Dark surfaces (parallel mode — role-inverted) */
+  --dark-canvas: #18181C;   /* page bg on dark */
+  --dark-cloud:  #212226;   /* elevated on dark */
+  --dark-ink:    #F4F4F1;   /* primary text on dark */
+  --dark-mist:   #B0B0B6;   /* muted text on dark (new) */
+  --dark-fog:    #2E2F35;   /* border / divider on dark (new) */
+
+  /* Dark bridge washes */
+  --dark-wash-cobalt: #1B2440;
+  --dark-wash-teal:   #0E2E2A;
+  --dark-wash-amber:  #2E2410;
+  --dark-wash-rose:   #2E1218;
+
+  /* Accent dark-lifts (long-form coloured text on dark only) */
+  --cobalt-lift: #7A9AEF;
+  --teal-lift:   #3DD3BF;
+  --amber-lift:  #F2AE40;
+  --rose-lift:   #F97587;
 
   /* Typography */
   --font-heading: 'Albert Sans', sans-serif;

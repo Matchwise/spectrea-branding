@@ -8,6 +8,31 @@ export default function Presentations() {
       title="Presentations"
       subtitle="Slide design rules, templates, and visual patterns for Spectrea decks."
     >
+      {/* Mode balance — light default, ink as punctuation */}
+      <Section>
+        <div className="rounded-xl border border-stone-200 overflow-hidden">
+          <div className="px-5 py-3 bg-stone-50 border-b border-stone-200">
+            <p className="text-xs font-semibold uppercase tracking-wider text-stone-500">Deck mode balance</p>
+          </div>
+          <div className="p-5">
+            <p className="text-sm text-stone-700 leading-relaxed mb-3">
+              Decks are <strong>Canvas-default</strong>, Ink for punctuation. Canvas is the warmth that keeps a Spectrea deck from reading as austere — don't dilute that by flipping whole decks dark. Target roughly <strong>80% Canvas / 20% Ink</strong>.
+            </p>
+            <div className="h-7 rounded-md overflow-hidden flex mb-2 border border-stone-200">
+              <div className="flex-[80] flex items-center justify-center" style={{ backgroundColor: '#FDFDFB' }}>
+                <span className="text-[11px] font-semibold text-stone-500">Canvas — 80%</span>
+              </div>
+              <div className="flex-[20] flex items-center justify-center" style={{ backgroundColor: '#18181C' }}>
+                <span className="text-[11px] font-semibold" style={{ color: '#F4F4F1' }}>Ink — 20%</span>
+              </div>
+            </div>
+            <p className="text-xs text-stone-500 leading-relaxed">
+              Canvas for: opening, agenda, content, data, closing-thanks. Ink for: section dividers, single-stat emphasis, closing CTA. On Ink slides, text is Cloud <code className="font-mono text-[11px]">#F4F4F1</code> and muted is Mist <code className="font-mono text-[11px]">#B0B0B6</code>. Accents carry over unchanged.
+            </p>
+          </div>
+        </div>
+      </Section>
+
       {/* Slide anatomy */}
       <Section>
         <h2 className="text-xl font-semibold text-stone-800 mb-4">
@@ -88,7 +113,7 @@ export default function Presentations() {
         </h2>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
           {[
-            { rule: 'Two backgrounds only', detail: 'White for content slides, Ink (#18181C) for emphasis/divider slides. No other backgrounds.' },
+            { rule: 'Canvas-default, Ink for punctuation', detail: 'Canvas (#FDFDFB) for content slides, Ink (#18181C) for emphasis/divider/CTA. Keep Ink to ≤20% of the deck. No other backgrounds.' },
             { rule: 'Title: Albert Sans Semibold', detail: '24–36px for slide titles. Left-aligned on content slides, centered on divider slides.' },
             { rule: 'Body: Lexend Regular', detail: '14–18px for bullet points and descriptions. Maximum 6 lines per slide.' },
             { rule: 'Logo: bottom-left on content slides', detail: 'Small mark + wordmark. Never on title or stat slides (they have the centered mark).' },

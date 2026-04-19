@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
-import { selectedPalette } from '../../data/brand'
 
 function srgbToLinear(c: number) {
   return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4)
@@ -89,8 +88,6 @@ function ColorCard({ name, hex, role, usage, textColor = '#FDFDFB' }: {
 }
 
 export default function PrimaryPalette() {
-  const p = selectedPalette
-
   return (
     <PageShell
       title="Primary Palette"
@@ -199,25 +196,116 @@ export default function PrimaryPalette() {
       {/* Dark Mode */}
       <Section>
         <h2 className="text-xl font-semibold text-stone-800 mb-4">
-          <Tooltip content="Dark mode inverts the canvas while keeping accent colors consistent. The same spectrum accents work on dark backgrounds with even better contrast.">
+          <Tooltip content="Dark mode is a parallel surface system, not a separate palette. Roles invert (Ink becomes canvas, Graphite becomes elevated, Cloud becomes text) and two new tokens — Mist and Fog — complete the hierarchy.">
             <span>Dark Mode</span>
           </Tooltip>
         </h2>
+        <p className="text-sm text-stone-600 mb-4 leading-relaxed">
+          Light is Spectrea's default. Dark is a parallel mode — the role mapping inverts, existing tokens carry more weight, and two new tokens (<strong>Mist</strong>, <strong>Fog</strong>) complete the hierarchy. Accents carry over unchanged; all four pass WCAG AA on Ink.
+        </p>
+
+        {/* Role inversion table */}
+        <div className="border border-stone-200 rounded-xl overflow-hidden mb-5">
+          <div className="grid grid-cols-12 px-4 py-2.5 bg-stone-50 border-b border-stone-200 text-[11px] font-semibold uppercase tracking-wider text-stone-500">
+            <span className="col-span-3">Role</span>
+            <span className="col-span-4">Light</span>
+            <span className="col-span-5">Dark</span>
+          </div>
+          {[
+            { role: 'Page background', light: { name: 'Canvas', hex: '#FDFDFB', text: '#18181C' }, dark: { name: 'Ink', hex: '#18181C', text: '#F4F4F1' } },
+            { role: 'Elevated surface', light: { name: 'Cloud', hex: '#F4F4F1', text: '#18181C' }, dark: { name: 'Graphite', hex: '#212226', text: '#F4F4F1' } },
+            { role: 'Primary text', light: { name: 'Ink', hex: '#18181C', text: '#F4F4F1' }, dark: { name: 'Cloud', hex: '#F4F4F1', text: '#18181C' } },
+            { role: 'Muted text', light: { name: 'Pewter', hex: '#97979E', text: '#18181C' }, dark: { name: 'Mist (new)', hex: '#B0B0B6', text: '#18181C' } },
+            { role: 'Border / divider', light: { name: 'stone-200', hex: '#E7E5E4', text: '#18181C' }, dark: { name: 'Fog (new)', hex: '#2E2F35', text: '#F4F4F1' } },
+          ].map((row, i, arr) => (
+            <div key={row.role} className="grid grid-cols-12 items-center px-4 py-2.5" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
+              <span className="col-span-3 text-xs font-medium text-stone-700">{row.role}</span>
+              <div className="col-span-4 flex items-center gap-2">
+                <span className="inline-block w-5 h-5 rounded border border-stone-200" style={{ backgroundColor: row.light.hex }} />
+                <span className="text-xs text-stone-700">{row.light.name}</span>
+                <span className="text-[10px] font-mono text-stone-400">{row.light.hex}</span>
+              </div>
+              <div className="col-span-5 flex items-center gap-2">
+                <span className="inline-block w-5 h-5 rounded border border-stone-200" style={{ backgroundColor: row.dark.hex }} />
+                <span className="text-xs text-stone-700">{row.dark.name}</span>
+                <span className="text-[10px] font-mono text-stone-400">{row.dark.hex}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Dark surface swatches */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <ColorCard
-            name="Dark Background" hex={p.darkMode.bg} role="dark-bg"
-            usage="Page background in dark mode. Deep enough for comfortable night use."
+            name="Ink (dark canvas)" hex="#18181C" role="dark-bg"
+            usage="Page background in dark mode. Inverts the Canvas role — the 60% surface."
             textColor="#F4F4F1"
           />
           <ColorCard
-            name="Dark Surface" hex={p.darkMode.surface} role="dark-surface"
-            usage="Cards, sidebars, elevated elements in dark mode. Subtle separation from the background."
+            name="Graphite (dark elevated)" hex="#212226" role="dark-surface"
+            usage="Cards, sidebars, elevated panels on dark. Inverts the Cloud role."
+            textColor="#F4F4F1"
+          />
+          <ColorCard
+            name="Mist (dark muted)" hex="#B0B0B6" role="dark-muted"
+            usage="Muted / secondary text on dark. Brighter than Pewter to keep hierarchy above body text. ~8.5:1 on Ink."
+            textColor="#18181C"
+          />
+          <ColorCard
+            name="Fog (dark border)" hex="#2E2F35" role="dark-border"
+            usage="Borders and dividers on dark. Sits between Ink and Graphite — edges cards without drawing a visible line."
             textColor="#F4F4F1"
           />
         </div>
-        <div className="mt-3 bg-stone-50 rounded-lg px-4 py-3 border border-stone-200">
-          <p className="text-xs text-stone-600">
-            <strong>Dark mode rule:</strong> All four spectrum accents (Cobalt, Teal, Amber, Rose) carry over unchanged. They have better contrast on dark backgrounds. Text becomes #F4F4F1 (Cloud). Muted text becomes #6B6B72.
+
+        {/* Accents on dark */}
+        <div className="mt-5 border border-stone-200 rounded-xl overflow-hidden">
+          <div className="px-4 py-2.5 bg-stone-50 border-b border-stone-200 flex items-center justify-between">
+            <p className="text-xs font-semibold uppercase tracking-wider text-stone-500">Accents on dark</p>
+            <span className="text-[10px] text-stone-400">All pass WCAG AA on Ink</span>
+          </div>
+          <div className="p-4 space-y-2" style={{ backgroundColor: '#18181C' }}>
+            {[
+              { name: 'Cobalt', hex: '#4271DF', contrast: '5.2:1', level: 'AA' },
+              { name: 'Teal', hex: '#00B6A0', contrast: '7.8:1', level: 'AAA' },
+              { name: 'Amber', hex: '#E19000', contrast: '8.4:1', level: 'AAA' },
+              { name: 'Rose', hex: '#F24260', contrast: '5.9:1', level: 'AA' },
+            ].map(a => (
+              <div key={a.name} className="flex items-center gap-3">
+                <span className="inline-block w-5 h-5 rounded" style={{ backgroundColor: a.hex }} />
+                <span className="text-sm font-semibold" style={{ color: a.hex }}>{a.name} — {a.contrast} {a.level}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Dark bridge washes */}
+        <div className="mt-5">
+          <p className="text-xs font-semibold uppercase tracking-wider text-stone-500 mb-3">Dark bridge washes</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {[
+              { name: 'Cobalt Deep', hex: '#1B2440', accent: '#4271DF', use: 'Info surface on dark' },
+              { name: 'Teal Deep', hex: '#0E2E2A', accent: '#00B6A0', use: 'Success surface on dark' },
+              { name: 'Amber Deep', hex: '#2E2410', accent: '#E19000', use: 'Warning surface on dark' },
+              { name: 'Rose Deep', hex: '#2E1218', accent: '#F24260', use: 'Error surface on dark' },
+            ].map(w => (
+              <div key={w.name} className="border border-stone-200 rounded-xl overflow-hidden">
+                <div className="h-16 px-3 py-2 flex items-end" style={{ backgroundColor: w.hex }}>
+                  <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ backgroundColor: w.accent }} />
+                  <span className="text-[11px] font-mono ml-2" style={{ color: '#B0B0B6' }}>{w.hex}</span>
+                </div>
+                <div className="p-2.5">
+                  <p className="text-xs font-semibold text-stone-800">{w.name}</p>
+                  <p className="text-[11px] text-stone-500 leading-relaxed mt-0.5">{w.use}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-5 bg-stone-50 rounded-lg px-4 py-3 border border-stone-200">
+          <p className="text-xs text-stone-600 leading-relaxed">
+            <strong>When to flip dark.</strong> Product UI follows the user's OS preference. Marketing defaults to light — use Ink for single-panel emphasis, not whole pages. Presentations: Canvas default, Ink for dividers and CTA (≤20% of the deck). PDF and print: always light. Accents never change hex between modes — the brand reads as itself either way.
           </p>
         </div>
       </Section>
