@@ -369,11 +369,16 @@ function AssetGenerator() {
 
   const selectClass = 'w-full text-sm border border-stone-300 rounded-lg px-2 py-1.5 bg-white text-ink'
 
+  // Full-spectrum lockup wordmark: Ink on light surfaces, White on Ink.
+  // On transparent (checker preview), default to Ink — that's the expected
+  // resting state and prints correctly on paper / light slides.
+  const fullSpectrumWordmarkMode: MonoColorMode = effectiveBg === '#18181C' ? 'white' : 'ink'
+
   // ─── Render the preview ──────────────────────────────────────────
   const preview = (() => {
     if (isLogotype) {
       if (style.id === 'full-spectrum') {
-        return <LogotypeGradient ref={svgRef} fontSize={previewLockupFont} />
+        return <LogotypeGradient ref={svgRef} fontSize={previewLockupFont} colorMode={fullSpectrumWordmarkMode} />
       }
       if (style.monoLockup) {
         const textColor = style.monoLockup === 'white' ? '#FDFDFB' : style.monoLockup === 'ink' ? '#18181C' : '#A3A3A3'
