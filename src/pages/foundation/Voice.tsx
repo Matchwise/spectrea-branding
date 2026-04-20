@@ -13,9 +13,8 @@ export default function Voice() {
           <p className="text-base font-medium leading-relaxed">{voice.formula}</p>
         </div>
         <p className="text-xs text-slate mt-3 leading-relaxed">
-          The formula applies on every surface. Tech doesn't earn its place by impressing or by sleight-of-hand;
-          it earns it by <em>showing its work</em> — pointing to the reasoning, the evidence, the source.
-          Confidence comes from being able to see how the answer was reached, not from being told to trust it.
+          The formula applies on every surface. Spectrea earns trust by <em>showing its work</em> —
+          the reasoning, the evidence, the source — not by claiming magic.
         </p>
       </Section>
 
@@ -126,6 +125,17 @@ export default function Voice() {
             </div>
           ))}
         </div>
+
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="border border-stone-200 rounded-lg p-4 bg-cloud">
+            <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-1">{voice.contextShifts.buyer.label}</p>
+            <p className="text-sm text-iron leading-relaxed">{voice.contextShifts.buyer.detail}</p>
+          </div>
+          <div className="border border-stone-200 rounded-lg p-4 bg-cloud">
+            <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-1">{voice.contextShifts.product.label}</p>
+            <p className="text-sm text-iron leading-relaxed">{voice.contextShifts.product.detail}</p>
+          </div>
+        </div>
       </Section>
 
       {/* Vocabulary */}
@@ -155,7 +165,13 @@ export default function Voice() {
             </div>
           </div>
         </div>
+
+        <div className="mt-4 border border-stone-200 rounded-lg p-4 bg-cloud">
+          <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-1">Density</p>
+          <p className="text-sm text-iron leading-relaxed">{voice.vocabularyDensity}</p>
+        </div>
       </Section>
+
     </PageShell>
   )
 }

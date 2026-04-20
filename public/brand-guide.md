@@ -88,7 +88,7 @@ The brand's *consistency and discipline* — fixed primitives, fixed palette, fi
 ### Voice formula
 **Clarity of explanation + experiential momentum. Tech earns its place by showing its work.**
 
-The formula applies on every surface. Tech doesn't earn its place by impressing or by sleight-of-hand; it earns it by *showing its work* — pointing to the reasoning, the evidence, the source. Confidence comes from being able to see how the answer was reached, not from being told to trust it.
+The formula applies on every surface. Spectrea earns trust by *showing its work* — the reasoning, the evidence, the source — not by claiming magic.
 
 ### One voice — three facets in every moment
 The voice formula is triadic by construction. Every piece of Spectrea copy — regardless of surface — should carry all three facets together. What shifts with context is which facet leads:
@@ -104,14 +104,16 @@ Six contexts, each with the right (left) and wrong (right) version. Read each pa
 
 | Context | Right | Wrong |
 |---|---|---|
-| **Marketing / Landing Page** | *"Stop losing knowledge to silos. Spectrea builds a living graph of everything your organization knows. The more you use it, the sharper it gets."* | *"Spectrea is a next-gen, AI-powered knowledge management solution that leverages cutting-edge graph technology to revolutionize how enterprises handle data."* |
+| **Marketing / Landing Page** | *"Stop losing knowledge to silos. Spectrea builds a living graph of everything your organization knows. The more you use it, the sharper it gets."* | *"Transform how your team works. Unlock the power of connected knowledge — insights, intelligence, impact."* |
 | **Error Message** | *"Save failed: connection timeout. Your draft is cached locally. Retrying…"* | *"Oops! Something went wrong. Please try again later or contact support if the problem persists."* |
-| **Feature Announcement** | *"Every document you add now strengthens what the system already knows. Connections you never noticed start surfacing. The whole gets sharper — your second month is better than your first."* | *"We are excited to announce the launch of our groundbreaking new feature, a world-class breakthrough in knowledge management technology!"* |
+| **Feature Announcement** | *"Every document you add now strengthens what the system already knows. Connections you never noticed start surfacing. The whole gets sharper — your second month is better than your first."* | *"We're excited to share our latest update — it includes improvements that will help you be more productive."* |
 | **Documentation** | *"To add a new item, open the relevant view and choose 'Add'. Pick a type from the list, or create one if you need it. The item appears in place immediately."* | *"Ready to add something? Just head over to the right view and hit that '+ Add' button! Pick a type that fits — or make a new one if nothing works. Easy!"* |
-| **Social Media** | *"What if every document you uploaded made your whole system smarter? That's not a hypothetical — it's how Spectrea works."* | *"Big news! Our AI just got even more powerful! Check out our latest update that will blow your mind!"* |
+| **Social Media** | *"What if every document you uploaded made your whole system smarter? That's not a hypothetical — it's how Spectrea works."* | *"Team productivity has never been easier. Learn how Spectrea can transform your workflow."* |
 | **Beginner Documentation** | *"Think of Spectrea as a web of everything your team knows. When you add a document, Spectrea reads it and weaves what it learns into the web — connecting it to things you've already captured."* | *"Documents are processed through a 6-phase pipeline: parse, chunk, embed, score, review, and integrate."* |
 
-The right-hand versions are bold, direct, concrete. The wrong-hand versions lean on hype words (*next-gen, AI-powered, cutting-edge, revolutionize, world-class, groundbreaking*), forced enthusiasm, or pipeline-internal jargon. In every case, the brand shows its work rather than claiming magic.
+The right-hand versions are bold, direct, concrete — they show what the user experiences. The wrong-hand versions fail in different ways: platitude-marketing (*transform, unlock, impact*), bland agentless announcement (*we're excited to share*), vague apology, forced chirp, clickbait, or engineer-internal jargon in a beginner context. In every case, the brand shows its work rather than claiming magic or reaching for the nearest SaaS cliché.
+
+Two context shifts live within this same voice. **On buyer surfaces** (hero, case studies, pricing), lead with proof — a named customer, a concrete outcome, or a peer-testable claim. Brand vocabulary decorates; it doesn't carry the opening. **Inside the product**, warm up one notch. Warmth comes from specificity, not exclamation points — *"Read. 12 entities, 18 connections added."* beats *"Upload complete! 🎉"* because the first shows the system paid attention.
 
 ### Vocabulary — twelve privileged words
 The twelve brand-evocative words that should appear disproportionately often in copy. Each builds the *feeling* of Spectrea — clarity, aliveness, ownership, the act of seeing — without requiring the reader to know what the product does.
@@ -121,6 +123,8 @@ The twelve brand-evocative words that should appear disproportionately often in 
 Generic B2B SaaS words (insights, intelligence, transform, empower, unlock, enable, build, evolve, grow, deepen, expand) are still allowed but not privileged — they don't make Spectrea sound like Spectrea. Product-specific words (provenance, traceable, auditable, attributed, sourced) are also allowed and useful when describing what the product actually does — they just don't do brand voice work.
 
 **Words we never use:** AI-powered (overused), next-gen, state-of-the-art, world-class, breakthrough, unprecedented, game-changer, revolutionary.
+
+**Density.** Max two privileged words per paragraph, one *"living"* / *"alive"* per page. If a paragraph survives losing every privileged word, the prose is doing its job — if it collapses without them, rewrite.
 
 ---
 

@@ -335,12 +335,28 @@ export const voice = {
     'seamless', 'cutting-edge', 'synergy', 'leverage (as verb)',
   ],
 
+  // Two context shifts within the same voice — folded as compact principles.
+  contextShifts: {
+    buyer: {
+      label: 'On buyer surfaces',
+      detail: 'Hero, case studies, pricing — lead with proof: a named customer, a concrete outcome, or a peer-testable claim. Brand vocabulary decorates; it doesn\'t carry the opening.',
+    },
+    product: {
+      label: 'Inside the product',
+      detail: 'Warm up one notch. Warmth comes from specificity, not exclamation points — "Read. 12 entities, 18 connections added." beats "Upload complete! 🎉" because the first shows the system paid attention.',
+    },
+  },
+
+  // Privileged-vocabulary density rule.
+  vocabularyDensity:
+    'Max two privileged words per paragraph, one "living" / "alive" per page. If a paragraph survives losing every privileged word, the prose is doing its job — if it collapses without them, rewrite.',
+
   toneExamples: [
     {
       context: 'Marketing / Landing Page',
       correct: 'Stop losing knowledge to silos. Spectrea builds a living graph of everything your organization knows. The more you use it, the sharper it gets.',
-      incorrect: 'Spectrea is a next-gen, AI-powered knowledge management solution that leverages cutting-edge graph technology to revolutionize how enterprises handle data.',
-      why: 'Bold and direct. Leads with the problem, then the solution, then the differentiator. No hype words.',
+      incorrect: 'Transform how your team works. Unlock the power of connected knowledge — insights, intelligence, impact.',
+      why: 'Bold and direct. The wrong version isn\'t hype — it\'s platitude. "Transform," "unlock," "insights" say nothing specific. The right version leads with a problem the reader feels, then points at the mechanism.',
     },
     {
       context: 'Error Message',
@@ -351,8 +367,8 @@ export const voice = {
     {
       context: 'Feature Announcement',
       correct: 'Every document you add now strengthens what the system already knows. Connections you never noticed start surfacing. The whole gets sharper — your second month is better than your first.',
-      incorrect: 'We are excited to announce the launch of our groundbreaking new feature, a world-class breakthrough in knowledge management technology!',
-      why: 'Shows what the user experiences, not what we built. Tech earns its place by showing its work.',
+      incorrect: 'We\'re excited to share our latest update — it includes improvements that will help you be more productive.',
+      why: 'Shows what the user experiences, not what we built. The wrong version is the bland-SaaS failure mode: agentless, vague, no specifics. The right version names the shift the user will actually notice.',
     },
     {
       context: 'Documentation',
@@ -363,8 +379,8 @@ export const voice = {
     {
       context: 'Social Media',
       correct: 'What if every document you uploaded made your whole system smarter? That\'s not a hypothetical — it\'s how Spectrea works.',
-      incorrect: 'Big news! Our AI just got even more powerful! Check out our latest update that will blow your mind!',
-      why: 'Thoughtful and engaging. Leads with an idea, invites the reader to think. No clickbait.',
+      incorrect: 'Team productivity has never been easier. Learn how Spectrea can transform your workflow.',
+      why: 'Thoughtful and engaging. The wrong version is a platitude-plus-CTA — the default failure mode of brand social. The right version leads with an idea and invites the reader to think.',
     },
     {
       context: 'Beginner Documentation',
