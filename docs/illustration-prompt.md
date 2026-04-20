@@ -11,10 +11,12 @@
 > person at a desk, a city skyline, a data dashboard, a kitchen scene, or
 > an abstract concept.
 >
-> **Usage loop.** Paste the prompt into your image generator. Fill the
-> `SUBJECT:` line with a single sentence describing the scene. Evaluate
-> against the checklist. Once one output lands, save it as the reference
-> image and attach it as a style anchor for every subsequent generation.
+> **Usage loop.** Paste the prompt into your image generator. Replace
+> the `SUBJECT` line with a single sentence describing the scene — that
+> line sits at the top of the prompt so every downstream rule attaches
+> to something concrete. Evaluate against the checklist. Once one output
+> lands, save it as the reference image and attach it as a style anchor
+> for every subsequent generation.
 >
 > **What this prompt is not.** It is not a subject guide. Choosing which
 > scenarios to illustrate is an editorial decision separate from the style.
@@ -24,75 +26,59 @@
 
 ## The universal prompt
 
+Paste the block below into your image generator. Replace the `SUBJECT` line with one sentence describing what you want rendered. Leave everything else verbatim.
+
 ```
-Modern editorial illustration, flat with subtle depth.
-Filled shapes only — NO outlines, NO borders, NO strokes, NO line art.
+Generate the following image. Render it directly — do not describe or summarise it in text.
 
-PALETTE (Spectrea brand, exact hex codes — use ONLY these and their tints):
-  Primary:  Cobalt #4271DF · Teal #00B6A0 · Amber #E19000 · Rose #F24260
-  Neutrals: Ink #18181C · Pewter #97979E · Cloud #F4F4F1 · Canvas #FDFDFB · Paper #FAF8F2
-  Skin:     #E8C7A0 (light) · #B8835A (mid) · #6B4423 (deep)
+SUBJECT
+[One sentence describing the scene. Example: "A person at a desk reviewing notes by a window at dawn."]
 
-TINTS — use lighter opacity versions (20–60%) of the primary colours liberally
-for supporting elements, mid-ground forms, atmospheric depth, and soft washes.
-Do NOT default supporting elements to pure neutrals or pure tints — that leaves
-the composition unbalanced and drab.
+STYLE
+Modern editorial illustration, flat with subtle depth. Filled shapes only — zero outlines, strokes, or line art. Composed, warm, clean. Reference aesthetic: Linear.app + Stripe brand illustration, slightly warmed.
 
-BACKGROUND comes from the palette — a single neutral (Canvas #FDFDFB
-preferred, Paper #FAF8F2 when a slightly warmer ground is wanted), or a
-soft gradient between two palette values. Pewter and Cloud are structural
-only — not default fills.
+PALETTE (use ONLY these hex and their tints)
+• Primary   Cobalt #4271DF · Teal #00B6A0 · Amber #E19000 · Rose #F24260
+• Neutral   Ink #18181C · Pewter #97979E · Cloud #F4F4F1 · Canvas #FDFDFB · Paper #FAF8F2
+• Skin      #E8C7A0 (light) · #B8835A (mid) · #6B4423 (deep)
 
-COMPOSITION:
-- Balanced in BOTH visual weight AND colour. Every element carries colour —
-  full-saturation primary for focal elements, tints of the primaries for
-  supporting elements. Avoid large empty neutral areas.
-- Asymmetric balance via rule-of-thirds or diagonal flow.
-- One hero primary colour dominates; the other primaries appear as supporting
-  tints or small accents. Not all four primaries at full saturation.
-- Element count fits the subject — rich enough to feel composed, uncluttered
-  enough to read clearly.
+COLOUR RULES
+• One hero primary dominates — full-saturation on focal elements. Other primaries appear as supporting tints or small accents. Never four primaries at full saturation.
+• Every element carries colour. Supporting elements use 20–60% opacity tints of the primaries — never default to pure neutrals or pure tints.
+• Pewter and Cloud are structural only (dividers, thin edges); they are not default fills.
+• Background: Canvas #FDFDFB (preferred), Paper #FAF8F2 for a warmer ground, or a soft gradient between two palette values.
 
-SHAPE VOCABULARY — both modes always present:
-- Basic geometric primitives (circles, rectangles, triangles, arcs, half-circles)
-- Organic curved shapes (soft contours, flowing lines, rounded forms, blobs)
-- Every composition contains both. Exact proportion follows the subject,
-  but geometric content is never below ~15% of the coloured area — even in
-  nature / soft / organic subjects, structural geometry (framing edges,
-  ground planes, horizon lines, background fields) keeps the composition
-  anchored.
-- Do not invent objects unrelated to the subject in order to hit the minimum —
-  introduce geometry through compositional / atmospheric means.
+COMPOSITION
+• Balanced in BOTH visual weight AND colour. Asymmetric balance — rule-of-thirds or diagonal flow. Not centred, not symmetrical.
+• Element density fits the subject — rich enough to feel composed, uncluttered enough to read clearly.
+• No large empty neutral areas.
 
-RENDERING:
-- Filled shapes only. No strokes, outlines, or line art.
-- Soft gradient allowed on background fields only.
-- On rounded organic objects, a single darker tonal step on the shadow side
-  (one deeper value of the same fill colour). No soft gradients on objects
-  themselves — just the one crisp tonal step.
-- Figures (when present in the subject): clean silhouette, flat-block clothing
-  in palette colours, simple hair, suggested face only (one dot per eye or
-  blank). No detailed facial features.
+SHAPE VOCABULARY (both modes always present)
+• Geometric: circles, rectangles, triangles, arcs, half-circles.
+• Organic: soft contours, flowing curves, rounded blobs.
+• Geometric content ≥ ~15% of the coloured area, even for nature / soft subjects — achieved through framing edges, ground planes, horizon lines, or atmospheric fields. Do not invent unrelated objects to hit this floor.
 
-REFERENCE: Linear.app + Stripe brand illustration aesthetic — composed,
-full of life, clean. Not editorial-typographic old. Not Storyset-clipart.
+RENDERING
+• Filled shapes only. Zero strokes, outlines, or line art.
+• Soft gradient permitted on background fields only.
+• Rounded organic objects get one darker tonal step on the shadow side (one deeper value of the same fill colour). No object-level gradients, drop shadows, or glows.
+• Figures: clean silhouette, flat-block clothing in palette colours, simple hair, face suggested only (≤ one dot per eye, or blank). Never detailed facial features.
 
-SUBJECT: [one sentence describing the scene]
+AVOID
+Outlines · strokes · borders · line art · photorealism · 3D · isometric projection · drop shadows · glows · lens flares · textures · noise · grain · hatching · neon · magenta · cyan · bright yellow · pastel pink · detailed facial features · overcrowded scenes · large empty neutral areas · watermarks · text overlays · mascot characters · anthropomorphic objects.
 
-AVOID:
-- Outlines, strokes, borders, line-art rendering
-- Photorealism, 3D rendering, isometric projection
-- Drop shadows, glows, lens flares
-- Textures, noise, grain, hatching
-- Off-brand colours (neon, magenta, cyan, bright yellow, pastel pink)
-- Detailed facial features — suggested shapes only
-- Overcrowded scenes
-- Large empty neutral areas — use tints to balance colour
-- Watermarks, text overlays, mascot characters, anthropomorphic objects
-
-OUTPUT: 16:9, approachable mood, cohesive palette, every element carrying
-colour.
+OUTPUT
+16:9 aspect ratio, approachable mood, cohesive palette, every element carrying colour.
 ```
+
+### Why this structure
+
+- **Intent line first.** General chat models (Gemini, ChatGPT, Claude) can otherwise interpret a structured block as *analyse this* rather than *render this*. The opening line names the action and tells the model to output the image, not a description of it. Dedicated image-gen UIs (Firefly, Midjourney, DALL-E direct) treat it as harmless framing.
+- **Subject second.** Image-generation models weight early tokens more heavily; leading with the subject (right after the intent) lets every downstream rule attach to something concrete.
+- **Sections as stable contracts.** `STYLE` / `PALETTE` / `COLOUR RULES` / `COMPOSITION` / `SHAPE VOCABULARY` / `RENDERING` / `AVOID` / `OUTPUT` are fixed; swap `SUBJECT` between generations and the rest of the prompt stays byte-identical — that's what makes outputs read as one family.
+- **Positive rules before negative.** Constraints that *shape* the output come first; things to avoid are consolidated at the end.
+- **Hex codes, exact percentages, concrete references.** No "nice colours" or "some depth" — every constraint is machine-unambiguous.
+- **One idea per bullet.** Scannable for the human editing the prompt, tokenisable for the model.
 
 ---
 
@@ -183,13 +169,11 @@ itself stays subject-agnostic.
 
 ## Per-generator tweaks
 
-- **Gemini / DALL-E / Bing Image Creator**: prose prompt above works as-written.
-- **Stable Diffusion**: convert to comma-separated tokens with weights, e.g.
-  `(Spectrea brand flat editorial:1.4), (filled shapes no outlines:1.3),
-  (palette #4271DF #00B6A0 #E19000 #F24260 on Paper #FAF8F2:1.3),
-  (one hero primary tints supporting:1.2), (Linear Stripe aesthetic warmed:1.1)…`
-- **Adobe Firefly**: pair the prompt with a reference-image upload once you
-  have one on-brand output to anchor the style.
+- **Gemini / DALL-E / Bing Image Creator**: prompt above works as-written. Lead with the SUBJECT line, keep the rest verbatim.
+- **Stable Diffusion**: convert to comma-separated weighted tokens, subject first:
+  `[subject sentence], (Spectrea brand flat editorial:1.4), (filled shapes no outlines:1.3), (palette #4271DF #00B6A0 #E19000 #F24260 on Canvas #FDFDFB:1.3), (one hero primary tints supporting:1.2), (Linear Stripe aesthetic warmed:1.1)…` — use a negative prompt for the AVOID list.
+- **Adobe Firefly**: pair the prompt with a reference-image upload once you have one on-brand output to anchor the style. Place the subject sentence in the main prompt; leave the rules in a secondary "style" field if the generator separates them.
+- **Midjourney**: put the SUBJECT in plain prose, then append the rules as `--style` parameters where supported, and use `--cref` to anchor an approved reference image.
 
 ---
 
@@ -207,6 +191,22 @@ itself stays subject-agnostic.
 ---
 
 ## Versioning
+
+**v4.1 (2026-04-20)** — Same rules, re-ordered for prompt-engineering
+discipline. Explicit intent line at the very top (*"Generate the
+following image. Render it directly…"*) so general chat models like
+Gemini / ChatGPT / Claude don't interpret the structured block as a
+request to analyse rather than render. SUBJECT moves directly after
+(early tokens carry the most weight); sections become fixed, parallel,
+scannable contracts; positive rules precede negative; AVOID consolidates
+as a single pipe-separated list; OUTPUT anchors the tail. No rule
+changes — outputs should match v4.0 exactly, but the prompt is now
+easier to edit, reason about, and port between generators. (One
+iteration inside v4.1 restored three clauses accidentally dropped
+during condensation: "full-saturation on focal elements" on the hero-
+primary rule, "or pure tints" on the supporting-element guard, and
+"balanced in BOTH visual weight AND colour" on composition. Kept as a
+note so future re-orders don't lose them again.)
 
 **v4 (2026-04-18 → 2026-04-19)** — Universal, subject-agnostic prompt. One
 template for every surface. Key moves: tint discipline (supporting elements
