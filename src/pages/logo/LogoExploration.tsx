@@ -143,6 +143,20 @@ const styles: Style[] = [
     defaultBg: 'transparent',
   },
   {
+    id: 'full-spectrum-white',
+    label: 'Full Spectrum / White',
+    markColorMode: 'color',
+    monoLockup: null,  // routes to LogotypeGradient with markColorMode='color'
+    lockupEnabled: true,
+    circle: null,
+    backgrounds: [
+      { value: 'transparent', label: 'Transparent' },
+      { value: '#18181C', label: 'Ink (dark)' },
+    ],
+    defaultBg: 'transparent',
+    note: 'Full spectrum mark with white wordmark. Use on dark or photographic surfaces.',
+  },
+  {
     id: 'ink',
     label: 'Ink',
     markColorMode: 'ink',
@@ -380,6 +394,9 @@ function AssetGenerator() {
       if (style.id === 'full-spectrum') {
         return <LogotypeGradient ref={svgRef} fontSize={previewLockupFont} colorMode={fullSpectrumWordmarkMode} />
       }
+      if (style.id === 'full-spectrum-white') {
+        return <LogotypeGradient ref={svgRef} fontSize={previewLockupFont} colorMode="white" />
+      }
       if (style.monoLockup) {
         const textColor = style.monoLockup === 'white' ? '#FDFDFB' : style.monoLockup === 'ink' ? '#18181C' : '#A3A3A3'
         return (
@@ -453,16 +470,18 @@ function AssetGenerator() {
             ))}
           </select>
         </div>
-        <div>
-          <label className="text-xs font-semibold text-slate uppercase tracking-wider block mb-1">
-            {isLogotype ? 'Height' : 'Size'}
-          </label>
-          <select value={size} onChange={e => setSize(Number(e.target.value))} className={selectClass}>
-            {availableSizes.map(s => (
-              <option key={s} value={s}>{isLogotype ? `${s}px` : `${s} x ${s}px`}</option>
-            ))}
-          </select>
-        </div>
+        {format !== 'svg' && (
+          <div>
+            <label className="text-xs font-semibold text-slate uppercase tracking-wider block mb-1">
+              {isLogotype ? 'Height' : 'Size'}
+            </label>
+            <select value={size} onChange={e => setSize(Number(e.target.value))} className={selectClass}>
+              {availableSizes.map(s => (
+                <option key={s} value={s}>{isLogotype ? `${s}px` : `${s} x ${s}px`}</option>
+              ))}
+            </select>
+          </div>
+        )}
         <div>
           <label className="text-xs font-semibold text-slate uppercase tracking-wider block mb-1">Format</label>
           <select

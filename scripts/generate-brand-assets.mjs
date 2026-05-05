@@ -331,6 +331,14 @@ await writeFile(resolve(outDir, 'logo-lockup-white.svg'), renderLockup({
   bg: INK,
 }))
 
+// Full spectrum style — Cool Duet mark + white wordmark, transparent background.
+// Same mark as logo-lockup-gradient.svg; white wordmark for dark/photo surfaces.
+await writeFile(resolve(outDir, 'logo-lockup-spectrum-white.svg'), renderLockup({
+  strokeColorFn: coolDuetColorFn,
+  dotFill: DOT_GREY,
+  wordmarkFill: CANVAS,
+}))
+
 // ─── Colour swatches ────────────────────────────────────────────
 
 // A swatch: color block on top, Canvas label strip below with Ink text.

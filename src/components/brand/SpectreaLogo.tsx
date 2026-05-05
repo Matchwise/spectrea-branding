@@ -462,12 +462,10 @@ export const Logotype = forwardRef<SVGSVGElement, LogotypeProps>(function Logoty
   )
 })
 
-// ─── LogotypeGradient: Cool Duet mark + monotone wordmark lockup ──
-// The mark renders identically to the standalone `StaticLogo colorMode="cool"`
-// — 48 per-segment paths along the visible stroke, each with its own solid
-// colour from the Cool Duet (Cobalt → Teal), and all dots grey. The wordmark
-// is a solid mono colour following `Logotype`'s rules: Ink on light, White on
-// dark. No gradient-filled wordmark.
+// ─── LogotypeGradient: gradient mark + monotone wordmark lockup ──
+// The mark colour is controlled by `markColorMode` (default `'cool'` = Cool
+// Duet, Cobalt → Teal). Pass `'color'` for the full-spectrum mark. The
+// wordmark is always a solid mono colour. No gradient-filled wordmark.
 export interface LogotypeGradientProps {
   fontSize: number
   /** Monotone colour mode for the wordmark. `ink` on light surfaces,
@@ -475,10 +473,15 @@ export interface LogotypeGradientProps {
   colorMode?: MonoColorMode
   /** Explicit wordmark colour override. Takes precedence over `colorMode`. */
   wordmarkColor?: string
+  /** Colour mode for the gradient mark. Default `'cool'` (Cool Duet). Pass
+   *  `'color'` for full spectrum (Cobalt → Teal → Amber). */
+  markColorMode?: ColorMode
+  /** Explicit dot fill colour. Default `'#A3A3A3'`. */
+  dotColor?: string
 }
 
 export const LogotypeGradient = forwardRef<SVGSVGElement, LogotypeGradientProps>(function LogotypeGradient(
-  { fontSize, colorMode = 'ink', wordmarkColor },
+  { fontSize, colorMode = 'ink', wordmarkColor, markColorMode = 'cool', dotColor = '#A3A3A3' },
   ref,
 ) {
   const layout = useLockupLayout(fontSize)
@@ -500,14 +503,14 @@ export const LogotypeGradient = forwardRef<SVGSVGElement, LogotypeGradientProps>
     <svg ref={ref} width={layout.totalW} height={layout.totalH} viewBox={`0 0 ${layout.totalW} ${layout.totalH}`}>
       <path ref={layout.pathRef} d={LOGO.pathD} fill="none" stroke="none" />
       {[...layout.connDots, ...layout.tailDotsArr].map((d, i) => (
-        <circle key={i} cx={d.x} cy={d.y} r={layout.vpDotR} fill="#A3A3A3" />
+        <circle key={i} cx={d.x} cy={d.y} r={layout.vpDotR} fill={dotColor} />
       ))}
       <g transform={`translate(0, ${layout.pad})`}>
         {Array.from({ length: STROKE_SEGMENTS }, (_, i) => {
           const segStart = (strokeLen * i) / STROKE_SEGMENTS
           const segEnd = (strokeLen * (i + 1)) / STROKE_SEGMENTS
           const progress = (segStart + segEnd) / 2 / strokeLen
-          const color = fillForMode(progress, 'cool')
+          const color = fillForMode(progress, markColorMode)
           return (
             <path key={i}
               d={layout.vpPath}
