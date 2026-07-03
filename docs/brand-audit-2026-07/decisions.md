@@ -387,3 +387,8 @@ C5 | applied-awaiting-gate | full generate:all run: assets + AI formats re-emitt
 BA-2 | accepted | by critic+codex
 BA-3 | accepted | by critic+codex
 C5 | accepted | by critic+codex
+
+BA-2 | committed | 5ae173a | by integrator
+BA-3 | committed | 5ae173a (PDF leg — all BA-3 surfaces now committed across 60f592c + 5ae173a) | by integrator
+C5 | committed | 5ae173a — one-cluster-one-commit; PDF + deploy.yml freshness guard + generate-pdf.mjs win32 enabling fix; blackboard swept into same commit; build green at commit time | by integrator
+INTEGRATOR | done | all 5 clusters committed — C1 2df71aa, C2 4babd2a, C3 b16be8e, C4 60f592c, C5 5ae173a; nothing pushed (per charter, Darren pushes); open Darren forks untouched: BA-10 lockup third form, BA-24F Singapore origin, on-ramp term | by integrator

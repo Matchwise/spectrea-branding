@@ -2,7 +2,7 @@
 
 > Run record: `ledger.md` (32 findings, all confirmed cross-model) · `decisions.md` (full audit
 > trail) · `plan.md` (implementation spec). Commission: `brief.md`.
-> STATUS: implementation in progress — commit list below finalized at close.
+> STATUS: COMPLETE 2026-07-03 — 5 clusters committed locally (unpushed; Darren pushes).
 
 ## 1. What this run found (one paragraph)
 
@@ -18,20 +18,28 @@ noun. All 32 findings were confirmed by a cross-model critic; zero refuted.
 
 ## 2. What changed (committed locally — Darren pushes)
 
-_Finalized at close; see decisions.md `committed` lines._
+Every cluster was gate-verified by a cross-model reviewer BEFORE its commit.
 
-- C1 — brand.ts canonical extension (9 new exports; de-totalized claims; moat re-anchor;
-  per-viewer + sovereign-data claims; solo audience; voice surface patterns; AI naming;
-  WCAG 2.2 AA pin; trust copy masters; version metadata).
-- C2 — guide + pages sync (drift fixes incl. "five traits", KM-adjacent category copy, stale bios,
-  totalizing text; guide mirrors of every C1 addition; source-of-truth stanza replaces "app wins").
-- C3 — generate:ai pipeline: brand-contract.json + brand-checklist.md + brand-few-shots.md +
-  brand-agent-rules.md + llms.txt, ALL generated from brand.ts (TS-compiler-API in-memory
-  transpile; zero re-declared constants).
-- C4 — asset/generator fixes (type-samples phrase, type-scale ladder, favicon tokens, icons.svg
-  removal).
-- C5 — full regeneration (PDF now carries the ratified noun) + deploy workflow runs generate:all
-  before build so shipped artifacts can never lag sources again.
+- **C1 `2df71aa`** — brand.ts canonical extension (9 new exports: meta, naming, brandTokens,
+  accessibility, logo, graphViz, trustCopy, executiveVoice, originStance; de-totalized claims;
+  moat re-anchor; per-viewer + sovereign-data claims; solo audience; voice surface patterns;
+  AI naming; WCAG 2.2 AA pin; trust copy masters; version metadata v2.1.0).
+- **C2 `4babd2a`** — guide + pages sync (drift fixes incl. "five traits", KM-adjacent category
+  copy, stale bios, totalizing text; guide mirrors of every C1 addition under a verbatim-mirror
+  standard; source-of-truth stanza replaces "app wins"; TopBar version derives from meta.version).
+- **C3 `b16be8e`** — generate:ai pipeline: brand-contract.json + brand-checklist.md +
+  brand-few-shots.md + brand-agent-rules.md + llms.txt router, ALL generated from brand.ts
+  (TS-compiler-API in-memory transpile; zero re-declared brand facts anywhere in the generator —
+  includes a small canon addition, positioning.categoryGuard, so even the bad-substitution
+  examples have a canonical home).
+- **C4 `60f592c`** — asset/generator fixes (type-samples phrase, 13-step type-scale ladder incl.
+  H4/H5/Code SM, favicon on canonical Ink/Canvas tokens, icons.svg deleted). Full asset regen
+  also materialized `logo-lockup-spectrum-white.svg` (generator status quo; see D1 — the file's
+  CONTENT is Cool Duet, only the NAME awaits your call).
+- **C5 `5ae173a`** — full generate:all (PDF regenerated: 37pp, ratified noun ×6, retired noun ×0,
+  gen-date 2026-07-03; assets + AI formats confirmed byte-identical = pipeline idempotent) +
+  deploy.yml runs generate:all before build so shipped artifacts can never lag sources again +
+  an additive win32 Chrome-discovery fix in generate-pdf.mjs (CI path unchanged).
 
 ## 3. AI-reference format recommendation (shipped)
 
@@ -131,8 +139,14 @@ the vision side (VM-73 watch).
 
 - Breadth: 4/4 worker lenses on Codex; verify: Claude critic; implement: Claude integrator;
   wave-2 gate: Codex. Leader/synthesis: Claude (Fable 5, driving session).
-- Deviations: fresh Codex gate panes died 3× pre-restart (usage/session cap) → gate requeued to a
-  fresh Codex session post-restart (GATE-LANE lines); machine restart mid-wave-2 killed panes with
-  zero repo damage (tree was clean; blackboard preserved everything).
-- Cross-model discipline held throughout: no finding self-certified; the one defect the Codex gate
-  caught in Claude-authored work (BA-11 contrast) proves the gate was live, not ceremonial.
+  Pane split 62.5% Codex — on the ~60:40 charter target.
+- Deviations: fresh Codex gate panes died 3× pre-restart (usage/session cap) → after a machine
+  restart mid-wave-2 (zero repo damage — tree was clean, blackboard preserved everything) the gate
+  ran as one fresh Codex session (GATE-LANE lines in decisions.md).
+- Cross-model discipline held and was load-bearing, not ceremonial — the Codex gate caught three
+  real defects in Claude-authored work before commit: (1) BA-11 dark button states failed AA at
+  1.8:1; (2) eleven C2 guide mirrors paraphrased canon and silently dropped clauses — fixed under
+  an adjudicated verbatim/clause-complete standard; (3) the C3 generator hard-coded brand-bearing
+  literals (twice), driven to a true zero-literals pipeline.
+- Gate rounds per cluster: C1×2, C2×3, C3×3, C4×1, C5×1 — later clusters passed first-shot as the
+  standards from earlier adjudications took hold.
