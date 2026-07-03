@@ -125,7 +125,7 @@ export default function Illustration() {
             v4 is a universal, subject-agnostic prompt — one template renders any scene (person at a desk, city skyline, abstract concept, dashboard) in the brand voice. Warmth comes from palette discipline: supporting elements use 20–60% tints of the primaries, never default to neutrals. Subtle depth from a single darker tonal step per rounded object. No outlines anywhere.
           </p>
           <p className="text-sm mt-3 max-w-2xl leading-relaxed" style={{ color: '#B0B0B6' }}>
-            For mid- and higher-complexity illustration, use the prompt in <code className="bg-graphite px-1.5 py-0.5 rounded text-xs">docs/illustration-prompt.md</code> with your image generator. For basic primitives — graph vocabulary, section dividers, in-product state dots — use the hand-coded substrate below.
+            For mid- and higher-complexity illustration, use the prompt in <code className="bg-graphite px-1.5 py-0.5 rounded text-xs">/illustration-prompt.md</code> (published from docs/illustration-prompt.md) with your image generator. For basic primitives — graph vocabulary, section dividers, in-product state dots — use the hand-coded substrate below.
           </p>
         </div>
       </Section>
@@ -140,7 +140,7 @@ export default function Illustration() {
               Marketing heroes, feature-page illustrations, blog headers, About imagery, onboarding scenes, social posts. Any 16:9 composition with a recognisable scene.
             </p>
             <p className="text-xs text-slate leading-relaxed mt-2">
-              Paste the prompt from <code className="bg-amber-50 px-1 py-0.5 rounded font-mono text-[10px]">docs/illustration-prompt.md</code> into Gemini / Firefly / Imagen, fill the <code className="bg-amber-50 px-1 py-0.5 rounded font-mono text-[10px]">SUBJECT:</code> line, evaluate against the checklist, iterate.
+              Paste the prompt from <code className="bg-amber-50 px-1 py-0.5 rounded font-mono text-[10px]">/illustration-prompt.md</code> into Gemini / Firefly / Imagen, fill the <code className="bg-amber-50 px-1 py-0.5 rounded font-mono text-[10px]">SUBJECT:</code> line, evaluate against the checklist, iterate.
             </p>
           </div>
           <div className="rounded-xl border border-teal-200 p-5" style={{ backgroundColor: '#00B6A010' }}>
@@ -423,7 +423,7 @@ export default function Illustration() {
           <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: AMBER }}>Workflow</p>
           <ol className="mt-3 space-y-3 text-sm leading-relaxed" style={{ color: '#B0B0B6' }}>
             <li><strong style={{ color: '#F4F4F1' }}>1.</strong> Write your subject — one sentence. It can be literally anything; the prompt doesn't constrain it.</li>
-            <li><strong style={{ color: '#F4F4F1' }}>2.</strong> Copy the prompt block from <code className="bg-graphite px-1.5 py-0.5 rounded text-xs">docs/illustration-prompt.md</code>. Paste into Gemini / Firefly / Bing / Imagen / Stable Diffusion.</li>
+            <li><strong style={{ color: '#F4F4F1' }}>2.</strong> Copy the prompt block from <code className="bg-graphite px-1.5 py-0.5 rounded text-xs">/illustration-prompt.md</code>. Paste into Gemini / Firefly / Bing / Imagen / Stable Diffusion.</li>
             <li><strong style={{ color: '#F4F4F1' }}>3.</strong> Generate four variants.</li>
             <li><strong style={{ color: '#F4F4F1' }}>4.</strong> Score each against the 8-item checklist above. If 0 of 4 pass, find the rule the model ignored and tighten that section.</li>
             <li><strong style={{ color: '#F4F4F1' }}>5.</strong> When one lands, save it as the <em>reference image</em> and attach it as a style anchor for every subsequent generation.</li>

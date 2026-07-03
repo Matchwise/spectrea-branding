@@ -7,7 +7,7 @@
 **Tagline:** We connect the dots.
 **Category:** Composable intelligence platform.
 **Pronunciation:** /spek-TREE-uh/ (from Latin *spectra* — the full range or spectrum, with a second reading: *revealing*).
-**Version:** 2.2.0 (2026-07-04). Canonical data: `src/data/brand.ts` — this guide is a derived mirror.
+**Version:** 2.3.0 (2026-07-04). Canonical data: `src/data/brand.ts` — this guide is a derived mirror.
 
 **Strategic claim:** Spectrea is the spectrum of clarity. Everything you know, in one living view — alive with possibility, yours to keep. See it whole. Trust what you see. Build on what you find.
 
@@ -338,11 +338,13 @@ The seven tokens form an OKLCH-even ladder (ΔL ≈ 0.14 through the body range,
 | Attention | Amber | `#E19000` | Warnings, pending, confidence. |
 | Urgency / action | Rose | `#F24260` | Errors, destructive actions, critical alerts. |
 
-Hover/active states for each accent:
+Hover/active states for each accent (light surfaces — darken on interaction):
 - Cobalt: base `#4271DF`, hover `#3A63C4`, active `#3255A7`.
 - Teal: base `#00B6A0`, hover `#009E8A`, active `#008775`.
 - Amber: base `#E19000`, hover `#C58200`, active `#A86E00`.
 - Rose: base `#F24260`, hover `#D63B55`, active `#BA3249`.
+
+Dark surfaces (resolved 2026-07-04) — same bases, states lighten instead: Cobalt hover `#5C87E5` / active `#7699EB` · Teal hover `#20C8B2` / active `#40D4C3` · Amber hover `#ECA41E` / active `#F2B63C` · Rose hover `#F56579` / active `#F78892`. On dark surfaces the button lifts toward the light: hover and active fills lighten, and the label flips from White to Ink `#18181C` while the fill is lightened. Base states keep white text. Ink-on-lightened-fill contrast, verified 2026-07-04: cobalt hover 5.10 / active 6.34, rose hover 5.92 / active 7.50, teal hover 8.40 / active 9.63, amber hover 8.34 / active 9.72 — all ≥ 4.5:1 (AA, normal text). Dark secondary: bg `#2E2F35`, hover `#3A3A40`, text Cloud `#F4F4F1`.
 
 ### Bridge tier (tinted washes)
 Tiered between the neutral canvas and the vivid accents — 5–10% saturation versions of each spectrum colour. Always carry semantic meaning; never decorative.
@@ -604,7 +606,7 @@ Spectrea's illustration system is two tracks: one universal prompt for hero scen
 
 ### The universal prompt
 
-A single subject-agnostic prompt template lives at `docs/illustration-prompt.md`. Fill the `SUBJECT:` line with one sentence describing the scene; paste into Gemini / Adobe Firefly / Bing Image Creator / Imagen / Stable Diffusion. The prompt governs **how** the image is rendered — palette, composition, depth, shape vocabulary, figure treatment — not **what** appears in it. The same prompt produces a person at a desk, a city skyline, a data dashboard, or an abstract concept, all in the brand voice.
+A single subject-agnostic prompt template lives at `docs/illustration-prompt.md` (published at [/illustration-prompt.md](/illustration-prompt.md)). Fill the `SUBJECT:` line with one sentence describing the scene; paste into Gemini / Adobe Firefly / Bing Image Creator / Imagen / Stable Diffusion. The prompt governs **how** the image is rendered — palette, composition, depth, shape vocabulary, figure treatment — not **what** appears in it. The same prompt produces a person at a desk, a city skyline, a data dashboard, or an abstract concept, all in the brand voice.
 
 ### Style controls (hard rules)
 
@@ -644,7 +646,7 @@ Every generator output ships only if it hits all eight:
 
 ### Versioning
 
-v4 (2026-04-19) — universal subject-agnostic prompt for scenes, tight hand-SVG substrate for primitives only. Retires v3's two-style split (Editorial Geometry + Living Graph), the ten-noun recurring subject cast, the atoms/forms/treatments/palette four-layer vocabulary as a generation constraint, the four-channel production matrix, the decision rubric, and the `SpectreaFigure` Bauhaus limbs-figure component. Full prompt and checklist at `docs/illustration-prompt.md`.
+v4 (2026-04-19) — universal subject-agnostic prompt for scenes, tight hand-SVG substrate for primitives only. Retires v3's two-style split (Editorial Geometry + Living Graph), the ten-noun recurring subject cast, the atoms/forms/treatments/palette four-layer vocabulary as a generation constraint, the four-channel production matrix, the decision rubric, and the `SpectreaFigure` Bauhaus limbs-figure component. Full prompt and checklist at `docs/illustration-prompt.md` (published at [/illustration-prompt.md](/illustration-prompt.md)).
 
 ---
 
@@ -900,4 +902,4 @@ All via Google Fonts:
 
 ---
 
-*`src/data/brand.ts` is the canonical brand data (v2.2.0, 2026-07-04). The live app at [spectrea.com/brand](/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
+*`src/data/brand.ts` is the canonical brand data (v2.3.0, 2026-07-04). The live app at [spectrea.com/brand](/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*

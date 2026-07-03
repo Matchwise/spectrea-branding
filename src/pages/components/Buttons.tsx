@@ -56,13 +56,17 @@ export default function Buttons() {
   }
   const mode = dark ? 'dark' : 'light'
 
-  /* Hover/active handlers for demo buttons */
+  /* Hover/active handlers for demo buttons.
+     Dark mode: fills lighten and the label flips to Ink while lightened —
+     white text fails AA on every lightened fill (1.82–3.47:1); Ink passes
+     on all of them (5.10–9.72:1). See brandTokens.buttonStates.dark.rule. */
+  const transientText = dark ? '#18181C' : '#FFFFFF'
   const filledHandlers = (color: keyof typeof hc) => ({
-    style: { backgroundColor: hc[color][mode].base } as React.CSSProperties,
-    onMouseEnter: (e: React.MouseEvent<HTMLButtonElement>) => { e.currentTarget.style.backgroundColor = hc[color][mode].hover },
-    onMouseLeave: (e: React.MouseEvent<HTMLButtonElement>) => { e.currentTarget.style.backgroundColor = hc[color][mode].base },
-    onMouseDown: (e: React.MouseEvent<HTMLButtonElement>) => { e.currentTarget.style.backgroundColor = hc[color][mode].active },
-    onMouseUp: (e: React.MouseEvent<HTMLButtonElement>) => { e.currentTarget.style.backgroundColor = hc[color][mode].hover },
+    style: { backgroundColor: hc[color][mode].base, color: '#FFFFFF' } as React.CSSProperties,
+    onMouseEnter: (e: React.MouseEvent<HTMLButtonElement>) => { e.currentTarget.style.backgroundColor = hc[color][mode].hover; e.currentTarget.style.color = transientText },
+    onMouseLeave: (e: React.MouseEvent<HTMLButtonElement>) => { e.currentTarget.style.backgroundColor = hc[color][mode].base; e.currentTarget.style.color = '#FFFFFF' },
+    onMouseDown: (e: React.MouseEvent<HTMLButtonElement>) => { e.currentTarget.style.backgroundColor = hc[color][mode].active; e.currentTarget.style.color = transientText },
+    onMouseUp: (e: React.MouseEvent<HTMLButtonElement>) => { e.currentTarget.style.backgroundColor = hc[color][mode].hover; e.currentTarget.style.color = transientText },
   })
 
   return (
@@ -230,7 +234,7 @@ export default function Buttons() {
           </div>
           <div className="bg-cloud rounded-lg px-4 py-3 border border-stone-100">
             <p className="text-xs font-semibold text-slate mb-1">Dark Mode Hover</p>
-            <p className="text-xs text-slate">Hand-picked lighter shade — buttons lift toward the user on hover.</p>
+            <p className="text-xs text-slate">Hand-picked lighter shade — buttons lift toward the user on hover, and the label flips to Ink while the fill is lightened (white text fails AA on every lightened fill; Ink passes on all of them).</p>
           </div>
         </div>
 
@@ -394,12 +398,12 @@ export default function Buttons() {
             <p className="text-[10px] font-semibold uppercase tracking-wider mb-3" style={{ color: dm.muted }}>Dark Mode</p>
             <div className="flex items-center gap-3 flex-wrap">
               <div className="flex flex-col items-center gap-1.5">
-                <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-white transition-all btn-focus"
-                  style={{ backgroundColor: hc.brand.dark.base }}
-                  onMouseEnter={e => e.currentTarget.style.backgroundColor = hc.brand.dark.hover}
-                  onMouseLeave={e => e.currentTarget.style.backgroundColor = hc.brand.dark.base}
-                  onMouseDown={e => e.currentTarget.style.backgroundColor = hc.brand.dark.active}
-                  onMouseUp={e => e.currentTarget.style.backgroundColor = hc.brand.dark.hover}
+                <button className="px-3 py-1.5 rounded-lg text-xs font-medium transition-all btn-focus"
+                  style={{ backgroundColor: hc.brand.dark.base, color: '#FFFFFF' }}
+                  onMouseEnter={e => { e.currentTarget.style.backgroundColor = hc.brand.dark.hover; e.currentTarget.style.color = '#18181C' }}
+                  onMouseLeave={e => { e.currentTarget.style.backgroundColor = hc.brand.dark.base; e.currentTarget.style.color = '#FFFFFF' }}
+                  onMouseDown={e => { e.currentTarget.style.backgroundColor = hc.brand.dark.active; e.currentTarget.style.color = '#18181C' }}
+                  onMouseUp={e => { e.currentTarget.style.backgroundColor = hc.brand.dark.hover; e.currentTarget.style.color = '#18181C' }}
                 >Hover me</button>
                 <span className="text-[10px] font-mono" style={{ color: dm.muted }}>Interactive</span>
               </div>
@@ -422,8 +426,8 @@ export default function Buttons() {
         <div className="border border-stone-200 rounded-xl overflow-hidden mt-4">
           {[
             { state: 'Default', light: 'Base color', dark: 'Same base color' },
-            { state: 'Hover', light: 'Explicit darker shade', dark: 'Explicit lighter shade' },
-            { state: 'Active', light: 'Explicit darkest shade', dark: 'Explicit lightest shade' },
+            { state: 'Hover', light: 'Explicit darker shade', dark: 'Explicit lighter shade + Ink label' },
+            { state: 'Active', light: 'Explicit darkest shade', dark: 'Explicit lightest shade + Ink label' },
             { state: 'Focus', light: '2px Amber outline, 2px offset', dark: '2px Amber outline, 2px offset' },
             { state: 'Disabled', light: 'opacity-40', dark: 'opacity-40' },
           ].map((row, i) => (
@@ -547,7 +551,7 @@ export default function Buttons() {
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Pair destructive actions with a confirmation step</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use Confirm/Caution only for their defined semantic contexts</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Show loading state with a spinner, not label change</li>
-              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use explicit hover tokens — darken in light mode, lighten in dark mode</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use explicit hover tokens — darken in light mode; lighten + flip the label to Ink in dark mode</li>
             </ul>
           </div>
           <div className="border rounded-xl p-5" style={{ borderColor: '#F2426025', backgroundColor: '#F2426008' }}>

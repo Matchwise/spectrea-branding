@@ -2,7 +2,7 @@
 # Spectrea few-shots — on-brand vs off-brand
 
 Contrastive pairs derived from the canonical voice data (voice.toneExamples and
-voice.surfacePatterns in src/data/brand.ts, v2.2.0). Use these as few-shot
+voice.surfacePatterns in src/data/brand.ts, v2.3.0). Use these as few-shot
 examples when generating Spectrea copy: match the register of the ✅ versions.
 Voice formula: Clarity of explanation + experiential momentum. Tech earns its place by showing its work.
 

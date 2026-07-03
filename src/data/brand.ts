@@ -4,7 +4,7 @@
 
 // --- Meta / Governance ---
 export const meta = {
-  version: '2.2.0',
+  version: '2.3.0',
   lastUpdated: '2026-07-04',
   sourceOfTruth:
     'brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins.',
@@ -575,9 +575,10 @@ export const brandTokens = {
       never: 'linear (feels mechanical) or ease-in alone (feels like something is wrong)',
     },
   },
-  // Light values are canonical (guide-backed). Dark interactive-state colour
-  // design is an OPEN item routed to a product design cycle — the shipped
-  // demo values live under darkExploratory and are NOT canonical.
+  // Both modes canonical (dark resolved 2026-07-04). Dark keeps the deliberate
+  // lighten-on-dark idiom; white text cannot survive lightening (all lightened
+  // fills sit at 1.82–3.47:1 with white), so the transient-state rule flips
+  // the label to Ink — every hover/active pair below is WCAG-verified.
   buttonStates: {
     light: {
       cobalt: { base: '#4271DF', hover: '#3A63C4', active: '#3255A7' },
@@ -586,12 +587,13 @@ export const brandTokens = {
       amber: { base: '#E19000', hover: '#C58200', active: '#A86E00' },
       secondary: { bg: '#F4F4F1', text: '#18181C' },
     },
-    darkExploratory: {
-      status: 'EXPLORATORY — not canonical. These are the Buttons.tsx demo values (lighten-on-dark); the hover/active steps fail WCAG AA contrast with white button text (e.g. teal active #40D4C3 at 1.84:1, amber active #F2B63C at 1.82:1). Dark interactive-state colour design is an OPEN item routed to a product design cycle. Do not promote or mirror these as canon.',
+    dark: {
+      rule: 'On dark surfaces the button lifts toward the light: hover and active fills lighten, and the label flips from White to Ink #18181C while the fill is lightened. Base states keep white text. Ink-on-lightened-fill contrast, verified 2026-07-04: cobalt hover 5.10 / active 6.34, rose hover 5.92 / active 7.50, teal hover 8.40 / active 9.63, amber hover 8.34 / active 9.72 — all ≥ 4.5:1 (AA, normal text).',
       cobalt: { base: '#4271DF', hover: '#5C87E5', active: '#7699EB' },
       rose: { base: '#F24260', hover: '#F56579', active: '#F78892' },
       teal: { base: '#00B6A0', hover: '#20C8B2', active: '#40D4C3' },
       amber: { base: '#E19000', hover: '#ECA41E', active: '#F2B63C' },
+      transientText: '#18181C',
       secondary: { bg: '#2E2F35', hover: '#3A3A40', text: '#F4F4F1' },
     },
   },
