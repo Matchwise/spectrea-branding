@@ -46,6 +46,47 @@ export default function Copy() {
         </div>
       </Section>
 
+      {/* The front door (on-ramp) */}
+      <Section>
+        <h2 className="text-xl font-semibold text-ink mb-4">
+          <Tooltip content="How the first thing a visitor reads should open — decided 2026-07-03. The hero sells the entry job and its outcome; category language stays in boilerplate.">
+            <span>The Front Door (On-Ramp)</span>
+          </Tooltip>
+        </h2>
+        <div className="border-2 border-brand/20 rounded-xl p-5 bg-brand/5 mb-4">
+          <span className="text-xs font-semibold text-brand uppercase tracking-wider">Sanctioned hero example</span>
+          <p className="text-xl font-semibold text-ink mt-2" style={{ fontFamily: "'Albert Sans', sans-serif" }}>{brand.positioning.onRamp.heroExample}</p>
+          <p className="text-sm text-iron mt-2">{brand.positioning.onRamp.posture}</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Market words we adopt</h3>
+            <div className="flex flex-wrap gap-1.5">
+              {brand.positioning.onRamp.adopt.map(term => (
+                <span key={term} className="text-xs px-2 py-1 rounded-md" style={{ backgroundColor: '#00B6A010', color: '#008775' }}>{term}</span>
+              ))}
+            </div>
+          </div>
+          <div className="border rounded-xl p-5" style={{ borderColor: '#F2426025', backgroundColor: '#F2426008' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Terms we don't buy</h3>
+            <div className="flex flex-wrap gap-1.5">
+              {brand.positioning.onRamp.avoid.map(term => (
+                <span key={term} className="text-xs px-2 py-1 rounded-md line-through" style={{ backgroundColor: '#F2426010', color: '#D63B55', textDecorationColor: '#F2426060' }}>{term}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="border border-stone-200 rounded-xl p-5">
+          <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">Coined terms — ours alone</p>
+          <div className="flex flex-wrap gap-1.5 mb-2">
+            {brand.positioning.onRamp.coined.map(term => (
+              <span key={term} className="text-xs px-2 py-1 rounded-md font-semibold" style={{ backgroundColor: '#4271DF10', color: '#4271DF' }}>{term}</span>
+            ))}
+          </div>
+          <p className="text-sm text-iron">{brand.positioning.onRamp.coinRule}</p>
+        </div>
+      </Section>
+
       {/* Headline formulas */}
       <Section>
         <h2 className="text-xl font-semibold text-ink mb-4">

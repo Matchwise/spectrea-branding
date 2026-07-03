@@ -255,7 +255,7 @@ it is regenerated from src/data/brand.ts.
 - Never write the name as: ${listNever}.
 - Voice formula: ${voice.formula} ${voice.techDescription}
 - Outcome-first: ${voice.outcomeFirst}
-- On-ramp: ${brand.positioning.onRamp.posture} ${brand.positioning.onRamp.coinRule} Adopt: ${brand.positioning.onRamp.adopt.join(' · ')}. Avoid: ${brand.positioning.onRamp.avoid.join(' · ')}.
+- On-ramp: ${brand.positioning.onRamp.posture} Hero example: "${brand.positioning.onRamp.heroExample}" ${brand.positioning.onRamp.coinRule} Adopt: ${brand.positioning.onRamp.adopt.join(' · ')}. Avoid: ${brand.positioning.onRamp.avoid.join(' · ')}.
 - Privileged words (max two per paragraph): ${voice.alwaysUse.join(', ')}. ${voice.vocabularyDensity}
 - NEVER use these words: ${listNeverUse}.
 - AI naming: ${aiNamingLine}
@@ -310,6 +310,7 @@ const llms = `${MD_HEADER}
 - **Never-use words:** ${listNeverUse}.
 - **Density:** ${voice.vocabularyDensity}
 - **Outcome-first:** ${voice.outcomeFirst}
+- **On-ramp:** ${brand.positioning.onRamp.posture} Hero example: "${brand.positioning.onRamp.heroExample}"
 - **Anti-values:** ${brand.antiValues.map(a => a.never).join(' · ')}.
 - **AI naming:** ${aiNamingLine}
 - **Compounding claim guardrail:** ${compoundingValue?.usageGuardrail ?? ''}

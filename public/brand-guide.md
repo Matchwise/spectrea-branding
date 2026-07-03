@@ -7,7 +7,7 @@
 **Tagline:** We connect the dots.
 **Category:** Composable intelligence platform.
 **Pronunciation:** /spek-TREE-uh/ (from Latin *spectra* — the full range or spectrum, with a second reading: *revealing*).
-**Version:** 2.1.0 (2026-07-03). Canonical data: `src/data/brand.ts` — this guide is a derived mirror.
+**Version:** 2.2.0 (2026-07-04). Canonical data: `src/data/brand.ts` — this guide is a derived mirror.
 
 **Strategic claim:** Spectrea is the spectrum of clarity. Everything you know, in one living view — alive with possibility, yours to keep. See it whole. Trust what you see. Build on what you find.
 
@@ -146,7 +146,7 @@ Two context shifts live within this same voice. **On buyer surfaces** (hero, cas
 
 **Outcome-first.** Open with the outcome, never the mechanism. On buyer surfaces the graph and the loop never open the copy — they enter after the outcome, as the reason to believe. Exception: graph-native jobs (exploration, visualisation), where the graph is the star and may lead.
 
-**On-ramp posture (decided by Darren 2026-07-03).** Outcome-first hero, no whole-product term. The hero leads with the entry job and its outcome (drop in your docs — get answers that show their sources, and a system that gets sharper every week), never with a category shorthand beyond the ratified noun. Adopt the market's words where they exist: *permission-aware* · *cited answers* · *grounded answers* · *knowledge graph* (exploration surfaces only — the graph stays supporting-cast). Avoid segment-coded or contested terms: *Work AI* · *organizational memory* · *AI workspace* · *AI OS* · *second brain* · *ambient agents* · *bitemporal* · *ontology* · *enterprise graph*. Coin language ONLY for the two differentiators no market term names: **per-viewer truth** and **decisions in the graph**. Everywhere else, use the market's word where one exists (adopt list) or plain outcome language.
+**On-ramp posture (decided by Darren 2026-07-03).** Outcome-first hero, no whole-product term. The hero leads with the entry job and its outcome, never with a category shorthand beyond the ratified noun. The sanctioned hero example: *"Drop in your docs — get answers that show their sources, and a system that gets sharper every week."* Adopt the market's words where they exist: *permission-aware* · *cited answers* · *grounded answers* · *knowledge graph* (exploration surfaces only — the graph stays supporting-cast). Avoid segment-coded or contested terms: *Work AI* · *organizational memory* · *AI workspace* · *AI OS* · *second brain* · *ambient agents* · *bitemporal* · *ontology* · *enterprise graph*. Coin language ONLY for the two differentiators no market term names: **per-viewer truth** and **decisions in the graph**. Everywhere else, use the market's word where one exists (adopt list) or plain outcome language.
 
 ### Surface patterns
 Voice patterns for product and operational surfaces the tone spectrum doesn't cover. Release notes follow the Feature Announcement pair above.
@@ -900,4 +900,4 @@ All via Google Fonts:
 
 ---
 
-*`src/data/brand.ts` is the canonical brand data (v2.1.0, 2026-07-03). The live app at [spectrea.com/brand](/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
+*`src/data/brand.ts` is the canonical brand data (v2.2.0, 2026-07-04). The live app at [spectrea.com/brand](/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*

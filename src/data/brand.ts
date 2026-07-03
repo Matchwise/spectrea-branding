@@ -4,8 +4,8 @@
 
 // --- Meta / Governance ---
 export const meta = {
-  version: '2.1.0',
-  lastUpdated: '2026-07-03',
+  version: '2.2.0',
+  lastUpdated: '2026-07-04',
   sourceOfTruth:
     'brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins.',
   changelog:
@@ -56,7 +56,9 @@ export const brand = {
     // word only where one exists.
     onRamp: {
       posture:
-        'Outcome-first hero, no whole-product term. The hero leads with the entry job and its outcome (drop in your docs — get answers that show their sources, and a system that gets sharper every week), never with a category shorthand beyond the ratified noun.',
+        'Outcome-first hero, no whole-product term. The hero leads with the entry job and its outcome, never with a category shorthand beyond the ratified noun.',
+      heroExample:
+        'Drop in your docs — get answers that show their sources, and a system that gets sharper every week.',
       adopt: ['permission-aware', 'cited answers', 'grounded answers', 'knowledge graph (exploration surfaces only — the graph stays supporting-cast)'],
       avoid: ['Work AI', 'organizational memory', 'AI workspace', 'AI OS', 'second brain', 'ambient agents', 'bitemporal', 'ontology', 'enterprise graph'],
       coined: ['per-viewer truth', 'decisions in the graph'],
