@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "deny": [
+      "Bash(rm:*)",
+      "Bash(git push:*)",
+      "Bash(git push)",
+      "Bash(git reset --hard:*)",
+      "Edit(docs/brand-critical-review.md)",
+      "Write(docs/brand-critical-review.md)",
+      "Edit(docs/matchwise-brand-audit.txt)",
+      "Write(docs/matchwise-brand-audit.txt)",
+      "Edit(docs/naming-proposal-validated.md)",
+      "Write(docs/naming-proposal-validated.md)",
+      "Edit(docs/naming-ranked-list.md)",
+      "Write(docs/naming-ranked-list.md)",
+      "Edit(docs/naming-sprint-50.md)",
+      "Write(docs/naming-sprint-50.md)",
+      "Edit(docs/metaphorical-brand-candidates.md)",
+      "Write(docs/metaphorical-brand-candidates.md)",
+      "Edit(docs/superpowers/**)",
+      "Write(docs/superpowers/**)"
+    ]
+  }
+}

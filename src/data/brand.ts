@@ -2,6 +2,16 @@
 // Spectrea Brand Data — Single source of truth
 // ============================================================
 
+// --- Meta / Governance ---
+export const meta = {
+  version: '2.1.0',
+  lastUpdated: '2026-07-03',
+  sourceOfTruth:
+    'brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins.',
+  changelog:
+    'Versioned in git — the commit history of the spectrea-branding repo is the durable changelog; notable changes are announced in #brand.',
+} as const
+
 // --- Brand Foundation ---
 export const brand = {
   name: 'Spectrea',
@@ -46,7 +56,7 @@ export const brand = {
       theme: 'Connection',
       headline: 'We connect the dots.',
       supporting:
-        'Your knowledge is scattered across dozens of tools. Spectrea brings it together into a single living graph.',
+        'Your knowledge is scattered across dozens of tools. Spectrea brings it together — one connected whole where answers carry their sources and every insight is ready to build on.',
     },
     secondary: [
       {
@@ -59,7 +69,9 @@ export const brand = {
         theme: 'Compounding Intelligence',
         headline: 'It gets smarter with every interaction.',
         supporting:
-          'Every document you add, every idea you capture, every connection you draw — it all compounds. Your second year is incomparably better than your first.',
+          'Every document you add, every idea you capture, every connection you draw — it all compounds. Your second year is measurably sharper than your first — more context retained, more decisions traceable, more outcomes feeding the next cycle.',
+        usageGuardrail:
+          'Use "compounding intelligence" only with its defensible mechanism named — provenance, per-viewer access, and the closed loop that feeds outcomes back in. The phrase is contested in-market (noted 2026-07-03); the mechanism, not the slogan, carries the claim.',
       },
       {
         theme: 'Composability',
@@ -137,17 +149,18 @@ export const brand = {
     {
       name: 'Human-First',
       description: 'Spectrea serves people, not the other way around. AI assists understanding — it never replaces judgment. The system suggests, you decide. Your knowledge belongs to you.',
-      proof: 'Private by default. AI suggests, never overrides silently. Every AI action is reviewable and reversible. The system works without AI; AI elevates, never gates.',
+      proof: 'Private by default. AI suggests, never overrides silently. Every AI action is reviewable and reversible. The system works without AI; AI elevates, never gates. Your data is sovereign: full-fidelity export — structure, data, and provenance — is a first-class guarantee. You can always leave with everything.',
     },
     {
       name: 'Trustworthy Intelligence',
-      description: 'Everything you see is transparent. Every action is reviewable. Every connection can be followed back to where it came from. Understanding that can\'t be verified isn\'t understanding at all.',
+      description: 'Everything you see is transparent. Every action is reviewable. Every connection can be followed back to where it came from. Truth is per-viewer: what you see is synthesized from exactly the claims you can access — coexisting perspectives stay attributed, and nothing leaks from views you can\'t see. Understanding that can\'t be verified isn\'t understanding at all.',
       proof: 'Every piece of information is linked to its source. Confidence levels are visible, never hidden. Every change is logged with reasoning. AI actions are always recorded and explainable.',
     },
     {
       name: 'Compounding Intelligence',
-      description: 'The more you use Spectrea, the more it gives back. Connections surface faster, context deepens, insights compound. Your second year is incomparably better than your first.',
+      description: 'The more you use Spectrea, the more it gives back. Connections surface faster, context deepens, insights compound. Your second year is measurably sharper than your first — more context retained, more decisions traceable, more outcomes feeding the next cycle.',
       proof: 'Every interaction enriches the system, providing richer context for everything that comes next and surfacing connections that would otherwise stay hidden.',
+      usageGuardrail: 'Use "compounding intelligence" only with its defensible mechanism named — provenance, per-viewer access, and the closed loop that feeds outcomes back in. The phrase is contested in-market (noted 2026-07-03); the mechanism, not the slogan, carries the claim.',
     },
     {
       name: 'Composable by Nature',
@@ -156,7 +169,7 @@ export const brand = {
     },
     {
       name: 'Accessible Power',
-      description: 'Deep capability that meets you where you are. No one excluded by complexity, no one limited by simplicity. The floor is high, the ceiling is infinite.',
+      description: 'Deep capability that meets you where you are. No one excluded by complexity, no one limited by simplicity. The floor is high, and the ceiling rises with you.',
       proof: 'The same system reveals different depths depending on how you use it. Beginners get a clear, complete experience; experts get the depth they need without changing tools.',
     },
   ],
@@ -209,6 +222,12 @@ export const brand = {
   // --- Audiences ---
   audiences: [
     {
+      title: 'Solo Knowledge Workers',
+      who: 'Independent researchers, writers, consultants, students — anyone building a personal knowledge practice',
+      need: 'A system that compounds from day one, alone — free and full-featured, no team required.',
+      message: 'Start free, alone, with the full system. Your knowledge starts compounding with the first document — and when you\'re ready, invite a few collaborators without switching tools.',
+    },
+    {
       title: 'Business Leaders',
       who: 'CEOs, COOs, Managing Directors',
       need: 'Strategic clarity. See what the organization actually knows — and what it\'s missing.',
@@ -234,15 +253,26 @@ export const brand = {
     },
   ],
 
+  // Ratified breadth mechanics (2026-07-03): the individual tier is first-class,
+  // not a trial — free is full-featured; paying is about scale, not capability.
+  audienceBreadth:
+    'The designed path: start free alone (full-featured) → invite a few collaborators (bounded invites stay free) → pay when capacity or admin scale demands it. The paid line is capacity and governance administration, never a crippled core — value arrives before payment.',
+
   // --- Differentiators ---
+  // Anchored to the moat (2026-07-03): per-viewer truth, graph-resident
+  // decisions with provenance, outcomes feeding the next cycle, one substrate
+  // from solo to institution — then the supporting brand qualities.
   differentiators: [
-    { spectrea: 'Transparent — everything you see is shown, not assumed', others: 'Black box — data goes in, answers come out' },
-    { spectrea: 'Compounding — gets smarter with use', others: 'Static — same value on day 1 and day 1000' },
-    { spectrea: 'Verifiable — every connection can be followed back', others: 'Unverifiable — no way to audit or trust' },
+    { spectrea: 'Per-viewer truth — coexisting, attributed perspectives; each viewer sees a synthesis of exactly what they can access', others: 'One forced record — or per-user silos that never combine' },
+    { spectrea: 'Decisions live in the graph — choices, doctrines, and commitments carry provenance and stay queryable', others: 'Decisions evaporate into chat scroll and meeting notes' },
+    { spectrea: 'Outcomes feed back — what happened sharpens what the system knows next', others: 'Static — same value on day 1 and day 1000' },
+    { spectrea: 'One substrate, solo to institution — the same system grows from one person to an organization', others: 'A personal tool you outgrow, or an enterprise platform too heavy to start small' },
+    { spectrea: 'Transparent and verifiable — everything you see is shown, and every connection can be followed back', others: 'Black box — data goes in, answers come out' },
     { spectrea: 'Composable — build exactly what you need from simple parts', others: 'Fixed — use what you\'re given' },
-    { spectrea: 'Unified — one place for what was scattered across many', others: 'Fragmented — another app in the stack' },
-    { spectrea: 'Private by default — your knowledge stays yours', others: 'Open by default — data leaks across boundaries' },
+    { spectrea: 'Sovereign by default — private, and fully exportable with structure and provenance', others: 'Open by default, hard to leave — data leaks in, value locks in' },
   ],
+  differentiatorGuardrail:
+    'Never position on retrieval or search quality — it is commoditized across the field. The graph earns its keep through governance, provenance, shared state, and the loop; differentiate on what the substrate makes structural.',
 
   // --- Typography ---
   typography: {
@@ -333,6 +363,9 @@ export const voice = {
     'AI-powered (overused)', 'next-gen', 'state-of-the-art', 'world-class',
     'breakthrough', 'unprecedented', 'game-changer', 'revolutionary',
     'seamless', 'cutting-edge', 'synergy', 'leverage (as verb)',
+    // 2026 AI-hype cluster (added 2026-07-03)
+    'agentic', 'AI-first', 'copilot (as generic noun)', '10x',
+    'supercharge', 'effortless', 'magical',
   ],
 
   // Two context shifts within the same voice — folded as compact principles.
@@ -346,6 +379,12 @@ export const voice = {
       detail: 'Warm up one notch. Warmth comes from specificity, not exclamation points — "Read. 12 entities, 18 connections added." beats "Upload complete! 🎉" because the first shows the system paid attention.',
     },
   },
+
+  // Outcome-first rule (2026-07-03, per the ratified star-where-it-shines
+  // posture): the graph is celebrated where it is functionally best —
+  // exploration and visualisation. Everywhere else, the outcome opens.
+  outcomeFirst:
+    'Open with the outcome, never the mechanism. On buyer surfaces the graph and the loop never open the copy — they enter after the outcome, as the reason to believe. Exception: graph-native jobs (exploration, visualisation), where the graph is the star and may lead.',
 
   // Privileged-vocabulary density rule.
   vocabularyDensity:
@@ -389,6 +428,267 @@ export const voice = {
       why: 'Demonstrates the Adaptive personality: meets beginners where they are, using familiar metaphors instead of technical architecture.',
     },
   ],
+
+  // Voice patterns for product and operational surfaces the tone spectrum
+  // doesn't cover (added 2026-07-03). Each pairs a rule with a right/wrong
+  // example. Release notes are covered by the Feature Announcement pair above.
+  surfacePatterns: [
+    {
+      surface: 'Onboarding',
+      rule: 'Orient by doing, not touring. First screens name the one action that creates value and get out of the way. No feature carousels, no "welcome to the future".',
+      correct: 'Add your first document. Spectrea reads it and starts connecting it to what you add next.',
+      incorrect: 'Welcome to Spectrea! 🎉 Let\'s take a quick tour of all the powerful features that will transform how you work.',
+    },
+    {
+      surface: 'Empty states',
+      rule: 'An empty state is an invitation with a promise, not an apology. Name what will appear here and the single step that starts it.',
+      correct: 'No connections yet. Add a second document and related ideas start linking up here.',
+      incorrect: 'Nothing to see here yet!',
+    },
+    {
+      surface: 'Confirmation dialogs',
+      rule: 'State the consequence plainly, in the user\'s terms — what happens, what\'s reversible, what isn\'t. The confirm button names the action, never "OK".',
+      correct: 'Delete this source? Its 14 extracted claims stay in the graph but lose their citation. This can\'t be undone.',
+      incorrect: 'Are you sure you want to proceed? This action may have consequences. [OK] [Cancel]',
+    },
+    {
+      surface: 'System notifications',
+      rule: 'Specificity is the warmth. Report what the system actually did, with numbers where they exist. No celebration, no vagueness.',
+      correct: 'Read. 12 entities, 18 connections added.',
+      incorrect: 'Upload complete! 🎉 Your document has been processed successfully.',
+    },
+    {
+      surface: 'Settings & security',
+      rule: 'Ground leads. Say exactly what a setting does and what changes when it\'s toggled — especially for privacy and access. Plain sentences, no marketing.',
+      correct: 'Workspace visibility: private. Only people you invite can see anything in this workspace — including the assistant, which sees only what each viewer can see.',
+      incorrect: 'Take control of your data with our industry-leading privacy options!',
+    },
+    {
+      surface: 'Legal & compliance',
+      rule: 'Same voice, zero warmth-decoration: precise, complete sentences that a lawyer and a reader both accept. State facts and obligations; never soften a limitation into a benefit.',
+      correct: 'You can export your full workspace — structure, data, and provenance — at any time. Deleting your account removes your data from live systems within 30 days.',
+      incorrect: 'Don\'t worry — your data is always safe with us, and leaving is a breeze!',
+    },
+    {
+      surface: 'Support replies',
+      rule: 'Ground, then equip: confirm what happened (own it plainly if it\'s our fault), state what\'s true now, give the exact next step. Never open with an apology template.',
+      correct: 'You\'re right — sync failed for files added between 09:10 and 09:40 UTC. They\'re queued and will finish within the hour; nothing was lost. I\'ll reply here when they\'re through.',
+      incorrect: 'We sincerely apologize for any inconvenience this may have caused. Your satisfaction is our top priority.',
+    },
+  ],
+} as const
+
+// --- Naming Rules ---
+// Canonical never-list plus AI and company/product naming rules. Unifies the
+// previously divergent lists in the guide, llms.txt, and the Naming page
+// (2026-07-03); those surfaces mirror this list.
+export const naming = {
+  neverNames: [
+    '"SpectreAI" (not the name)',
+    '"Spectre" / "Spectra" (different words — not the name)',
+    '"spectra" (missing the e — typo)',
+    '"Spectrea AI" as the lead name (AI is not the brand)',
+    '"SPECTREA" (all-caps styling)',
+    '"spectrea" lowercase in headings or prose (lowercase belongs to the logo wordmark treatment only)',
+    '"The Spectrea" (no article)',
+    'Random internal caps ("SpecTrea")',
+  ],
+  aiNaming: {
+    canonicalNoun: 'the assistant',
+    rule: 'In prose, the AI is "the assistant" — lowercase, generic. As a first-class feature name it is "Assistant" (Title-Case, per the feature-naming convention). Never "copilot" (generic or name), never "Spectrea AI" as a name. When describing automated behavior generically, prefer "the assistant" over "agent".',
+    allowedVerbs: ['suggests', 'surfaces', 'drafts'],
+    forbiddenVerbs: ['decides', 'acts without review', 'handles it for you', 'takes over'],
+    verbRule: 'The assistant suggests, surfaces, and drafts. It never "decides", "acts on your behalf" without review, or "handles it for you" — autonomy verbs overclaim agency the product deliberately does not take.',
+  },
+  companyProduct: {
+    company: 'Matchwise Pte. Ltd.',
+    product: 'Spectrea',
+    rule: 'Matchwise Pte. Ltd. is the legal entity — it appears only where a legal entity is required: contracts, invoices, terms, privacy notices ("Spectrea is a product of Matchwise Pte. Ltd."). Spectrea is the product and brand name on every public surface. Never brand a surface "Matchwise"; never combine the two into one name.',
+    legacy: 'Any earlier material using the company name as a product or brand name is superseded; Spectrea is the only product name.',
+  },
+} as const
+
+// --- Machine-Readable Design Tokens ---
+// Canonical numeric/token values that previously lived only in guide prose,
+// CSS snippets, and component code. The guide and generated formats mirror
+// these; on conflict, this table wins.
+export const brandTokens = {
+  radii: [
+    { token: 'sm', px: 4, tailwind: 'rounded', use: 'Tags, badges, inline code' },
+    { token: 'md', px: 6, tailwind: 'rounded-md', use: 'Compact buttons, small controls' },
+    { token: 'lg', px: 8, tailwind: 'rounded-lg', use: 'Buttons, inputs, dropdowns' },
+    { token: 'xl', px: 12, tailwind: 'rounded-xl', use: 'Cards, panels, modals (default container)' },
+    { token: '2xl', px: 16, tailwind: 'rounded-2xl', use: 'Hero sections, large feature cards' },
+    { token: 'full', px: 9999, tailwind: 'rounded-full', use: 'Avatars, spectrum tags, toggles' },
+  ],
+  spacing: {
+    baseUnit: 4,
+    rule: 'Every spacing value is a multiple of 4 px. Fine inline elements (badges, compact controls) may use 2 px increments (6 px, 10 px); never arbitrary values like 5 px, 7 px, or 15 px.',
+    scale: [
+      { token: '2xs', px: 4, tailwind: 'p-1', use: 'Tight inline, icon gaps' },
+      { token: 'xs', px: 8, tailwind: 'p-2', use: 'Input / badge padding, compact gaps' },
+      { token: 'sm', px: 12, tailwind: 'p-3', use: 'Compact card padding, list-item gaps' },
+      { token: 'md', px: 16, tailwind: 'p-4', use: 'Default content gap, section padding' },
+      { token: 'lg', px: 20, tailwind: 'p-5', use: 'Default card padding, modal padding' },
+      { token: 'xl', px: 24, tailwind: 'p-6', use: 'Section spacing, form-field gaps' },
+      { token: '2xl', px: 32, tailwind: 'p-8', use: 'Major section breaks' },
+      { token: '3xl', px: 48, tailwind: 'p-12', use: 'Page top padding, hero spacing' },
+    ],
+  },
+  elevation: [
+    { level: 'Base', zIndex: 0, shadow: 'none', use: 'Page content, cards, sections' },
+    { level: 'Raised', zIndex: 10, shadow: 'shadow-sm', use: 'Sticky headers, toolbars' },
+    { level: 'Dropdown', zIndex: 20, shadow: 'shadow-md', use: 'Dropdowns, popovers, tooltips' },
+    { level: 'Modal', zIndex: 30, shadow: 'shadow-lg', use: 'Modals, dialogs, slide-overs' },
+    { level: 'Overlay', zIndex: 40, shadow: 'shadow-xl', use: 'Modal backdrops, full-screen overlays' },
+    { level: 'Toast', zIndex: 50, shadow: 'shadow-lg', use: 'Notifications, toasts' },
+  ],
+  motion: {
+    durationsMs: { micro: 100, standard: 150, comfortable: 200, deliberate: 300, arrival: 400, formation: 300, spectrumSweep: 600 },
+    easings: {
+      easeOut: { css: 'cubic-bezier(0, 0, 0.2, 1)', use: 'Default — things entering or settling' },
+      easeInOut: { css: 'cubic-bezier(0.4, 0, 0.2, 1)', use: 'Back-and-forth movements, continuous animations' },
+      elasticSettle: { css: 'cubic-bezier(0.34, 1.56, 0.64, 1)', use: 'Arrival primitive — scale-in with soft elastic settle' },
+      never: 'linear (feels mechanical) or ease-in alone (feels like something is wrong)',
+    },
+  },
+  // Light values are canonical (guide-backed). Dark interactive-state colour
+  // design is an OPEN item routed to a product design cycle — the shipped
+  // demo values live under darkExploratory and are NOT canonical.
+  buttonStates: {
+    light: {
+      cobalt: { base: '#4271DF', hover: '#3A63C4', active: '#3255A7' },
+      rose: { base: '#F24260', hover: '#D63B55', active: '#BA3249' },
+      teal: { base: '#00B6A0', hover: '#009E8A', active: '#008775' },
+      amber: { base: '#E19000', hover: '#C58200', active: '#A86E00' },
+      secondary: { bg: '#F4F4F1', text: '#18181C' },
+    },
+    darkExploratory: {
+      status: 'EXPLORATORY — not canonical. These are the Buttons.tsx demo values (lighten-on-dark); the hover/active steps fail WCAG AA contrast with white button text (e.g. teal active #40D4C3 at 1.84:1, amber active #F2B63C at 1.82:1). Dark interactive-state colour design is an OPEN item routed to a product design cycle. Do not promote or mirror these as canon.',
+      cobalt: { base: '#4271DF', hover: '#5C87E5', active: '#7699EB' },
+      rose: { base: '#F24260', hover: '#F56579', active: '#F78892' },
+      teal: { base: '#00B6A0', hover: '#20C8B2', active: '#40D4C3' },
+      amber: { base: '#E19000', hover: '#ECA41E', active: '#F2B63C' },
+      secondary: { bg: '#2E2F35', hover: '#3A3A40', text: '#F4F4F1' },
+    },
+  },
+  focusRing: { color: 'rgba(225, 144, 0, 0.7)', note: 'Alpha-tinted Amber #E19000', width: '2px solid', offset: '2px' },
+  washes: {
+    light: [
+      { name: 'Cobalt Wash', hex: '#EDF0F8', accent: 'Cobalt', use: 'Info alert background, selected row' },
+      { name: 'Teal Mist', hex: '#E6F5F3', accent: 'Teal', use: 'Success toast, positive trend card' },
+      { name: 'Amber Stone', hex: '#F5F0E6', accent: 'Amber', use: 'Warning alert, highlighted callout' },
+      { name: 'Rose Blush', hex: '#FDF0F2', accent: 'Rose', use: 'Error message, destructive confirmation' },
+    ],
+    dark: [
+      { name: 'Cobalt Deep', hex: '#1B2440', accent: 'Cobalt', use: 'Info alert background, selected row (dark)' },
+      { name: 'Teal Deep', hex: '#0E2E2A', accent: 'Teal', use: 'Success toast, positive trend card (dark)' },
+      { name: 'Amber Deep', hex: '#2E2410', accent: 'Amber', use: 'Warning alert, highlighted callout (dark)' },
+      { name: 'Rose Deep', hex: '#2E1218', accent: 'Rose', use: 'Error message, destructive confirmation (dark)' },
+    ],
+  },
+  lifts: [
+    { name: 'Cobalt Lift', hex: '#7A9AEF', use: 'Inline links inside dark long-form text blocks' },
+    { name: 'Teal Lift', hex: '#3DD3BF', use: 'Coloured body copy on dark surfaces' },
+    { name: 'Amber Lift', hex: '#F2AE40', use: 'Coloured body copy on dark surfaces' },
+    { name: 'Rose Lift', hex: '#F97587', use: 'Coloured body copy on dark surfaces' },
+  ],
+} as const
+
+// --- Accessibility ---
+// The floor, pinned (2026-07-03). Most of the content existed in guide prose;
+// the version pin, the 2.2-specific criteria, and the Pewter matrix give it
+// checkable form.
+export const accessibility = {
+  floor: 'WCAG 2.2 AA',
+  contrast: {
+    normalText: '4.5:1',
+    largeTextAndUI: '3:1',
+    tokens: 'On Canvas: Ink 17.4:1 · Iron 9.21:1 (AAA) · Slate 5.05:1 (AA) · Pewter 2.85:1 (supplementary only).',
+  },
+  wcag22Criteria: [
+    'Focus appearance: a visible focus indicator on every interactive element — the Amber focus ring (2 px solid, 2 px offset) is the standard treatment.',
+    'Target size: interactive targets at least 24×24 px, or the equivalent spacing exception.',
+    'Dragging alternatives: any drag interaction (graph manipulation included) has a single-pointer, non-dragging alternative.',
+  ],
+  rules: [
+    'Body text minimum 16 px; never lower for primary content.',
+    'Never rely on colour alone — pair colour coding with icons, patterns, or labels.',
+    'Layout must not break at 200% browser text-zoom.',
+  ],
+  pewterMatrix: {
+    principle: 'Pewter (#97979E, 2.85:1) is a whisper, not a readable tier. Anything that must be read on its own steps up to Slate or Iron.',
+    allowed: ['Overlines', 'Timestamps', 'Meta chips', 'Placeholder text', 'Captions whose adjacent context already makes the content obvious'],
+    denied: 'Any informational text — body copy, labels carrying meaning, values, errors, anything a reader must be able to read on its own.',
+  },
+} as const
+
+// --- Logo Constraints (numeric edge cases) ---
+// Canonical numerics for rules that previously lived only as prose. The
+// lockup FORM COUNT stays at two pending the open lockup-form decision (BA-10).
+export const logo = {
+  constraints: {
+    dotCount: 10,
+    dotRadius: 3.5,
+    strokeWidth: 8,
+    container: 'Circle when contained — never a squircle.',
+    primaryDotColor: '#A3A3A3',
+    lockupForms: 2, // Gradient (LogotypeGradient) and Mono (Logotype) — exactly two
+    wordmarkTailRule: 'The S-mark-replaces-S treatment (lowercase "pectrea" tail) exists only inside the canonical Logotype / LogotypeGradient components. Everywhere else the wordmark is sentence-case "Spectrea" with the mark as a companion glyph.',
+    clearSpace: '0.5× the mark height on all sides.',
+    watermarkMaxOpacity: 0.2,
+    coBrand: 'Use the ink variants (#3 mark / #4 lockup). Match the partner mark by optical height — scale so perceived heights are equal, not bounding boxes — and align on the marks\' vertical centres.',
+  },
+} as const
+
+// --- Graph Visualization (foundation only) ---
+// Colour semantics for graph surfaces, derived from the Tier-3 colour
+// framework and the illustration graph vocabulary (node, edge, cluster,
+// trail, confidence, highlight). This constrains colour MEANING so interim
+// graph work doesn't drift; the full operational rendering spec (sizing,
+// layout, density, interaction physics) is routed to a product design cycle.
+export const graphViz = {
+  semantics: {
+    nodeDefault: 'Neutral — structure is quiet (Slate/Pewter strokes, Canvas/Cloud fills on light; inverted on dark). Colour is reserved for meaning.',
+    nodeHoverFocus: 'Cobalt — Tier 1 responsive: present during hover/focus, then settles.',
+    nodeSelected: 'Ink — Tier 2 structural: persistent selection state (Cloud on dark).',
+    edgeDefault: 'Neutral (Pewter). A newly formed connection may animate with the Formation motion primitive — spectrum gradient along the stroke, settling to resting neutral.',
+    confidence: 'Amber carries confidence/attention. Confidence values render in JetBrains Mono and are never conveyed by colour alone.',
+    status: 'Tier 3 semantic: success/connected = Teal · warning/pending = Amber · error/conflict = Rose · info = Cobalt.',
+    stale: 'Pewter whisper plus a non-colour cue (icon or label) — never colour alone.',
+  },
+  note: 'Foundation only. The operational graph-rendering spec is a product design deliverable, not a brand-guide deliverable.',
+} as const
+
+// --- Trust & Disclosure Copy ---
+// Brand-voiced masters for trust surfaces, derived from the ratified vision
+// (sovereign data, per-viewer access, provenance, managed-path no-train
+// target). REVIEW WITH COUNSEL before any external legal or contractual use.
+export const trustCopy = {
+  counselNote: 'These are brand-voice masters, not legal instruments. Review with counsel before external legal use.',
+  privacy: 'Your knowledge belongs to you. Spectrea is private by default: what you add is visible only to you and the people you explicitly share it with, and the system enforces that per viewer on every surface — including the assistant, which sees only what you can see.',
+  aiUse: 'Spectrea uses AI to suggest, surface, and draft — never to decide for you. Every AI action is recorded, attributed to its sources, and reviewable. On the managed path, your data is not used to train foundation models — a contract we are formalizing, with independent ISO 42001-class attestation as a stated target.',
+  retention: 'You stay in control of what Spectrea keeps. Your workspace persists until you delete it; deletion removes your data from live systems on a published schedule. And you can always leave with everything: full-fidelity export — structure, data, and provenance — is a first-class guarantee.',
+  enterpriseReadiness: 'Trust in Spectrea is architectural first: per-viewer access control, provenance, and privacy are properties of the substrate, not compliance features added afterwards. Data is sovereign — full-fidelity export is guaranteed, and the deployment perimeter widens by tier from managed cloud to single-tenant/VPC to air-gapped. Formal attestations (SOC 2, ISO 27001, ISO 42001-class AI governance) and uptime/incident commitments are staged targets, stated as such: the architecture is the foundation; the program is what makes it independently verifiable.',
+} as const
+
+// --- Executive Voice ---
+// Founder/exec surfaces speak as practitioners — same voice formula, first
+// person (added 2026-07-03).
+export const executiveVoice = {
+  rule: 'Founder and executive surfaces — bylines, talks, investor letters, interviews, personal social — use the same voice formula in the first person. Speak as a practitioner who builds and uses the product: concrete observations, shown work, named trade-offs. No corporate we-speak, no vision without evidence.',
+  example: {
+    correct: 'I kept watching decisions we\'d already settled get re-argued three months later, because nobody could find why we\'d decided. That\'s the problem Spectrea started from.',
+    incorrect: 'We\'re thrilled to announce the next chapter in our journey to revolutionize how the world works with knowledge.',
+    why: 'The right version is a practitioner\'s observation — first person, specific, checkable. The wrong version is corporate we-speak built on a neverUse word.',
+  },
+} as const
+
+// --- Origin Stance ---
+// EXPLICITLY undecided — a fork for Darren, recorded 2026-07-03.
+export const originStance = {
+  status: 'undecided',
+  rule: 'Whether the brand leads with its Singapore origin (e.g. "engineered in Singapore" as a governance/rigor signal) is Darren\'s open decision. Until it is made, brand surfaces stay silent on origin — no origin claims, no locality framing. Do not originate origin copy.',
 } as const
 
 // --- Color Palette Options ---
