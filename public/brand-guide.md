@@ -1,11 +1,11 @@
 # Spectrea Brand Guide
 
-> The complete brand system for Spectrea — a composable knowledge platform that turns scattered information into compounding intelligence.
+> The complete brand system for Spectrea — a composable intelligence platform that turns scattered information into compounding intelligence.
 
 ![Spectrea gradient lockup](/brand-assets/logo-lockup-gradient.svg)
 
 **Tagline:** We connect the dots.
-**Category:** Composable knowledge platform.
+**Category:** Composable intelligence platform.
 **Pronunciation:** /spek-TREE-uh/ (from Latin *spectra* — the full range or spectrum, with a second reading: *revealing*).
 
 **Strategic claim:** Spectrea is the spectrum of clarity. Everything you know, in one living view — alive with possibility, yours to keep. See it whole. Trust what you see. Build on what you find.
@@ -25,9 +25,9 @@ A world where anyone can see the full spectrum of what's known, trust what they 
 
 ### Positioning
 - **For:** Anyone who works with knowledge.
-- **Category:** Composable knowledge platform.
+- **Category:** Composable intelligence platform.
 - **Promise:** Turns scattered information into compounding intelligence.
-- **Tactical:** For anyone who works with knowledge, Spectrea is the composable knowledge platform that turns scattered information into compounding intelligence — unlike fragmented point solutions that silo your knowledge and hide their reasoning.
+- **Tactical:** For anyone who works with knowledge, Spectrea is the composable intelligence platform that turns scattered information into compounding intelligence — unlike fragmented point solutions that silo your knowledge and hide their reasoning.
 
 ### Messaging hierarchy
 Primary theme is **Connection** — the headline "We connect the dots" and the idea that scattered knowledge becomes one living view. Three supporting themes:
@@ -648,7 +648,7 @@ Every piece of written output — product copy, email, social, presentation slid
 ### Social media
 - **Avatar:** gradient mark at 400×400 px (square, no crop).
 - **Cover images:** brand gradient bar + tagline on Ink background (LinkedIn); gradient bar at bottom with tagline centered (Twitter/X).
-- **Bio template:** "We connect the dots. Composable knowledge platform."
+- **Bio template:** "We connect the dots. Composable intelligence platform."
 - **Quote card:** Ink background, Cloud text, Mist (`#B0B0B6`) attribution, `h-1` brand gradient accent strip at bottom.
 - **Stat card:** Ink background, 3 xl Cloud number, Mist (`#B0B0B6`) supporting text, gradient accent strip at bottom.
 

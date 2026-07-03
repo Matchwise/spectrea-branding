@@ -31,13 +31,13 @@ export const brand = {
   // --- Positioning ---
   positioning: {
     for: 'Anyone who works with knowledge',
-    category: 'Composable knowledge platform',
+    category: 'Composable intelligence platform',
     promise:
       'Turns scattered information into compounding intelligence',
     brand:
-      'In an age of information overload and eroding trust, people need more than another tool — they need a way to separate truth from noise, surface insights across boundaries, and build on what they understand. Spectrea is the composable knowledge platform that puts this power in human hands — where everything you see is transparent, every connection inspectable, and understanding compounds with every interaction.',
+      'In an age of information overload and eroding trust, people need more than another tool — they need a way to separate truth from noise, surface insights across boundaries, and build on what they understand. Spectrea is the composable intelligence platform that puts this power in human hands — where everything you see is transparent, every connection inspectable, and understanding compounds with every interaction.',
     tactical:
-      'For anyone who works with knowledge, Spectrea is the composable knowledge platform that turns scattered information into compounding intelligence — unlike fragmented point solutions that silo your knowledge and hide their reasoning.',
+      'For anyone who works with knowledge, Spectrea is the composable intelligence platform that turns scattered information into compounding intelligence — unlike fragmented point solutions that silo your knowledge and hide their reasoning.',
   },
 
   // --- Messaging Hierarchy ---

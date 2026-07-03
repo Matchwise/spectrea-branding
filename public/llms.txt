@@ -1,6 +1,6 @@
 # Spectrea Brand Guide
 
-> The complete brand system for Spectrea — a composable knowledge platform that turns scattered information into compounding intelligence. This index lists the canonical documents an LLM should read to understand Spectrea's voice, visual identity, logo rules, colour system, typography, and component specs.
+> The complete brand system for Spectrea — a composable intelligence platform that turns scattered information into compounding intelligence. This index lists the canonical documents an LLM should read to understand Spectrea's voice, visual identity, logo rules, colour system, typography, and component specs.
 
 **Strategic claim (v2, 2026-04-18):** Spectrea is the spectrum of clarity. Everything you know, in one living view — alive with possibility, yours to keep. See it whole. Trust what you see. Build on what you find.
 
@@ -79,7 +79,7 @@ The brand combines spectrum accents (Cobalt, Teal, Amber, Rose) with a seven-tok
 - **Name:** Spectrea (not "Spectre", "Spectra", or "SpectreAI").
 - **Pronunciation:** /spek-TREE-uh/.
 - **Tagline:** "We connect the dots."
-- **Category:** Composable knowledge platform.
+- **Category:** Composable intelligence platform.
 - **Spectrum colours:** Cobalt `#4271DF` · Teal `#00B6A0` · Amber `#E19000` · Rose `#F24260`.
 - **Warm Blend neutrals (seven-token OKLCH-even ladder):** Canvas `#FDFDFB` (bg) · Cloud `#F4F4F1` (surface) · Pewter `#97979E` (whisper muted, 2.85:1 — supplementary only) · Slate `#6D6D72` (body secondary, 5.05:1 AA) · Iron `#46464B` (emphasized body, 9.21:1 AAA) · Graphite `#212226` (dark UI surface) · Ink `#18181C` (primary text).
 - **Default mode:** light. Canvas is the 60% page ground on marketing, product, slides, PDF. Dark is a parallel mode, not the primary register.

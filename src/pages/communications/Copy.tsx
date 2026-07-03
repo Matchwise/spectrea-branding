@@ -106,9 +106,9 @@ export default function Copy() {
         </h2>
         <div className="space-y-4">
           {[
-            { label: 'One-liner', text: 'Spectrea is the composable knowledge platform that turns scattered information into compounding intelligence.' },
-            { label: 'Short description (50 words)', text: 'Spectrea connects the dots. It\'s a composable knowledge platform where everything you see is transparent, every connection inspectable, and understanding compounds with every interaction. For anyone who works with knowledge — from business leaders to researchers — Spectrea turns scattered information into intelligence you can trust and build on.' },
-            { label: 'Press boilerplate', text: `${brand.name} is a composable knowledge platform that makes knowledge trustworthy, connected, and actionable. Unlike fragmented point solutions that silo knowledge and hide their reasoning, Spectrea gives users a unified substrate where everything is transparent, every connection can be followed back to its source, and intelligence compounds over time. Learn more at spectrea.com.` },
+            { label: 'One-liner', text: 'Spectrea is the composable intelligence platform that turns scattered information into compounding intelligence.' },
+            { label: 'Short description (50 words)', text: 'Spectrea connects the dots. It\'s a composable intelligence platform where everything you see is transparent, every connection inspectable, and understanding compounds with every interaction. For anyone who works with knowledge — from business leaders to researchers — Spectrea turns scattered information into intelligence you can trust and build on.' },
+            { label: 'Press boilerplate', text: `${brand.name} is a composable intelligence platform that makes knowledge trustworthy, connected, and actionable. Unlike fragmented point solutions that silo knowledge and hide their reasoning, Spectrea gives users a unified substrate where everything is transparent, every connection can be followed back to its source, and intelligence compounds over time. Learn more at spectrea.com.` },
           ].map(item => (
             <div key={item.label} className="border border-stone-200 rounded-xl p-5">
               <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">{item.label}</p>

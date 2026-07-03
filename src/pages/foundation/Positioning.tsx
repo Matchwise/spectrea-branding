@@ -57,7 +57,7 @@ export default function Positioning() {
       <Section title="Category Definition">
         <div className="bg-cloud rounded-xl p-5 border border-stone-200">
           <p className="text-sm text-iron leading-relaxed">
-            Spectrea is a <strong>composable knowledge platform</strong> — a new category at the intersection
+            Spectrea is a <strong>composable intelligence platform</strong> — a new category at the intersection
             of knowledge management, graph intelligence, and composable architecture. The real competitor
             isn't Notion or Confluence. It's the fragmented, unverifiable information landscape itself —
             the dozens of disconnected tools and the noise that drowns out signal.
