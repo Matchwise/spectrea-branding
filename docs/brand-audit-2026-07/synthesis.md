@@ -62,7 +62,15 @@ spectrea and any future repo that produces brand-adjacent output.
 
 ## 4. Decisions for Darren (options + recommendation; nothing self-ratified)
 
-### D1 — Lockup third form (BA-10)
+**All four ratified by Darren 2026-07-03 (interview) and implemented in commit `389d436`** —
+D1 re-scope to gradient family · D2 outcome hero, no term · D3 codified silence · D4 keep all.
+Implementation notes: D1 turned out to be pure naming drift — no surface ever rendered a true
+full-spectrum lockup (the app preview at LogoExploration:397 renders LogotypeGradient, i.e. Cool
+Duet); the asset is now `logo-lockup-gradient-white.svg`, form 1's dark rendering. D3's
+brand.ts stance moved from "explicitly undecided" to `decided-silence`. The original decision
+packages are preserved below as presented.
+
+### D1 — Lockup third form (BA-10) — RATIFIED: (b) re-scope to gradient family (2026-07-03)
 Your recent asset-generator commits (751c073, afedac7) added a "Full Spectrum / White" lockup
 style. The guide's two-forms rule forbids full-spectrum lockups — and the feature disagrees with
 itself: the downloadable SVG is actually **Cool Duet** (misnamed "spectrum-white") while the app
@@ -73,7 +81,7 @@ preview renders true full-spectrum (Cobalt→Teal→Amber) on the mark.
   Quality axis: system legibility — the two-forms rule is load-bearing, and the shipped SVG is
   already Cool Duet; only the app preview and the name change.
 
-### D2 — On-ramp term (prepares the rescheduled VM-F-CAT follow-up; pick is yours)
+### D2 — On-ramp term — RATIFIED: outcome hero, no term; codified as positioning.onRamp (2026-07-03)
 Constraints from your ratified forks: deliberate breadth (no term spans individual→institution —
 verified), PLG self-serve, star-where-it-shines graph, north-star noun stays internal.
 The five researched packages (findings-vocab-onramp.md, verbatim market evidence 2026-07-03):
@@ -95,13 +103,13 @@ The five researched packages (findings-vocab-onramp.md, verbatim market evidence
   B is the differentiation play and C is the reach play.
   (If adopted, a follow-up cycle applies it to hero/social copy; nothing in this run pre-commits it.)
 
-### D3 — Singapore origin stance (BA-24F)
+### D3 — Singapore origin stance (BA-24F) — RATIFIED: codified silence (2026-07-03)
 Lean-in ("engineered in Singapore" as rigor/governance signal) vs codified silence.
 **Recommended: codified silence** until a GTM cycle argues otherwise. Quality axis: claim
 discipline — the brand only carries claims with proof surfaces behind them. brand.ts now records
 the stance as explicitly undecided (so AI stops guessing), not as a decision.
 
-### D4 — Easy-veto items (implemented as derivable; say the word and they revert)
+### D4 — Easy-veto items — RATIFIED: keep everything (2026-07-03)
 - neverUse additions: agentic · AI-first · copilot (as generic noun) · 10x · supercharge ·
   effortless · magical (BA-7).
 - GitHub bio: "Open-source tools." → "Open interfaces and developer tools." (per ratified
