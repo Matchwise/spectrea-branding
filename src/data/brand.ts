@@ -42,6 +42,13 @@ export const brand = {
   positioning: {
     for: 'Anyone who works with knowledge',
     category: 'Composable intelligence platform',
+    // Category guard (2026-07-03): the noun is user-ratified (VM-F-CAT).
+    // badSubstitutions lists the retired noun and the adjacent categories the
+    // vision explicitly rejects; derived formats build their rule from this.
+    categoryGuard: {
+      exactNoun: true,
+      badSubstitutions: ['composable knowledge platform', 'knowledge platform', 'knowledge management', 'AI assistant', 'automation tool'],
+    },
     promise:
       'Turns scattered information into compounding intelligence',
     brand:

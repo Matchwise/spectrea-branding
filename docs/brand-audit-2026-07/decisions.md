@@ -315,3 +315,46 @@ C2 | applied-awaiting-gate | adjudication applied to both remaining ids; npm run
 BA-1 | accepted | by critic+codex
 BA-22 | accepted | by critic+codex
 C2 | accepted | by critic+codex
+
+BA-1 | committed | 4babd2a (guide footer/Owner + Downloads stanza legs; llms leg rides C3) | by integrator
+BA-3 | committed | 4babd2a (X-bio leg; generator + regen legs ride C4/C5) | by integrator
+BA-4 | committed | 4babd2a | by integrator
+BA-5 | committed | 4babd2a (all confirmed legs now applied: brand.ts + guide + TypeScale.tsx) | by integrator
+BA-6 | committed | 4babd2a (guide leg; llms leg rides C3) | by integrator
+BA-8 | committed | 4babd2a (guide + Naming page legs; llms leg rides C3) | by integrator
+BA-9 | committed | 4babd2a | by integrator
+BA-14 | committed | 4babd2a (guide mirror leg) | by integrator
+BA-15 | committed | 4babd2a (guide mirror leg) | by integrator
+BA-16 | committed | 4babd2a (guide mirror leg) | by integrator
+BA-17 | committed | 4babd2a (guide mirror leg) | by integrator
+BA-18 | committed | 4babd2a (guide + Positioning mirror legs) | by integrator
+BA-19 | committed | 4babd2a (guide version line + TopBar derivation) | by integrator
+BA-20 | committed | 4babd2a (guide mirror leg) | by integrator
+BA-21 | committed | 4babd2a (Downloads CSS leg; contract leg rides C3) | by integrator
+BA-22 | committed | 4babd2a (guide mirror leg incl. canonical co-brand note) | by integrator
+BA-23 | committed | 4babd2a (guide Trust & disclosures leg) | by integrator
+BA-24 | committed | 4babd2a (guide Executive voice leg) | by integrator
+BA-25 | committed | 4babd2a (guide mirror leg) | by integrator
+BA-26 | committed | 4babd2a (GitHub bio + guide mirror legs) | by integrator
+BA-27 | committed | 4babd2a (guide outcome-first + Copy.tsx legs) | by integrator
+BA-28 | committed | 4babd2a (guide mirror leg) | by integrator
+BA-29 | committed | 4babd2a (guide mirror leg) | by integrator
+C2 | committed | 4babd2a — one-cluster-one-commit; blackboard swept into same commit; build green at commit time | by integrator
+
+BA-31 | applied-awaiting-gate | scripts/generate-ai-formats.mjs (NEW: ts.transpileModule in-memory → temp .mjs → dynamic import of brand.ts AND navigation.ts; ZERO re-declared brand constants — every emitted value read from the imported canon; in-script sanity checks fail the run on drift) + package.json (generate:ai added; generate:all = assets → ai → pdf) + public/brand-contract.json + brand-checklist.md + brand-few-shots.md + brand-agent-rules.md (all NEW, all with DO-NOT-EDIT generated header; JSON carries it as _generated field); few-shots derive from voice.toneExamples + voice.surfacePatterns per plan | by integrator
+BA-30 | applied-awaiting-gate | public/llms.txt REGENERATED as router by generate-ai-formats.mjs: source-of-truth stanza (meta.sourceOfTruth verbatim), 6-step load order, hard key facts now incl. neverUse(19)/density/anti-values/gradient+logo constraints/AI naming/compounding guardrail, SPA routes derived from navigation.ts and explicitly labelled client-rendered with use-the-mirrors caveat | by integrator
+BA-1 | applied-awaiting-gate | public/llms.txt (llms leg — final BA-1 leg): "live app is canonical" replaced by verbatim meta.sourceOfTruth stanza; source-of-truth now consistent across brand.ts/guide/Downloads/llms | by integrator
+C3 | applied-awaiting-gate | cluster complete: generate:ai pipeline authored + run (5 artifacts emitted, sizes 4.9k–22.4k); npm run build GREEN; gate note: spot-check ≥5 contract facts vs brand.ts per plan; uncommitted, awaiting codex gate wP:p3 | by integrator
+BA-30 | accepted | by critic+codex
+BA-31 | GAP | generator still re-declares brand-bearing output literals instead of deriving them from brand.ts/navigation.ts, e.g. hard-coded "Spectrea" document titles and "Assistant"/"Spectrea AI" copy, scripts/generate-ai-formats.mjs:142,167,217,238,255 | by critic+codex
+C3 | GAP | BA-31 unresolved: generate-ai-formats.mjs fails zero re-declared brand constants requirement | by critic+codex
+BA-31 | proposed | REVISED per gate GAP: in generate-ai-formats.mjs replace every brand-BEARING literal with a value read from the imported canon - product name from brand.name, AI-entity nouns from naming.aiNaming, category/tagline/never-name examples from their brand.ts fields (lines flagged: 142,167,217,238,255 + sweep the whole file). Boundary: structural scaffolding (markdown glue, section labels like "Load order") MAY stay literal; anything that would go stale if a brand fact changed MUST interpolate. Re-run generate:ai; emitted artifacts must be byte-identical except where interpolation fixes a latent divergence | by orchestrator
+BA-31 | applied-awaiting-gate | scripts/generate-ai-formats.mjs: all flagged lines (142,167,217,238,255) + full-file sweep fixed — document titles interpolate brand.name; "Assistant"/"Spectrea AI"/category-substitution paraphrases replaced by shared consts built from canon (categoryRule from brand.positioning.category, aiNamingLine = naming.aiNaming.rule + verbRule + verb lists); grep for brand-bearing literals now hits only the script's own non-emitted header comment. Re-ran generate:ai: contract byte-identical (22,404 chars); checklist/agent-rules/llms grew only where paraphrase → canonical sentence (the permitted latent-divergence fix); few-shots byte-identical | by integrator
+C3 | applied-awaiting-gate | BA-31 gate revision applied; generate:ai re-run clean, npm run build GREEN; uncommitted, back to gate wP:p3 | by integrator
+BA-31 | GAP | fresh sweep still finds a generator-side brand-bearing category-substitution literal: "knowledge" for "intelligence" is hard-coded inside categoryRule instead of traced to brand.ts/navigation.ts, scripts/generate-ai-formats.mjs:68; flagged regions and re-emitted artifact values otherwise checked | by critic+codex
+C3 | GAP | BA-31 unresolved: generate-ai-formats.mjs still re-declares a brand-specific category-substitution example, so C3 cannot pass zero re-declared brand constants | by critic+codex
+BA-31 | proposed | FINAL revision per gate GAP: the category-substitution example is brand-bearing (references the retired noun) so it gets a canonical home - add a small field to src/data/brand.ts positioning (e.g. positioning.categoryGuard = { exactNoun: true, badSubstitutions: ['composable knowledge platform', 'knowledge platform', 'AI assistant'] } or equivalent shape consistent with existing style); generator builds categoryRule FROM that field, zero generator-side brand literals remain. This is a canon-completion required by the pipeline and rides the C3 commit (C1 already committed - noted for audit trail) | by orchestrator
+BA-31 | applied-awaiting-gate | src/data/brand.ts positioning.categoryGuard ADDED ({ exactNoun: true, badSubstitutions: [composable knowledge platform, knowledge platform, knowledge management, AI assistant, automation tool] } — retired noun + the vision's rejected adjacent categories, per proposal's "or equivalent" latitude) + scripts/generate-ai-formats.mjs builds categoryRule FROM categoryGuard and the contract now also carries categoryGuard raw; grep "knowledge|intelligence" over the generator = zero hits — zero generator-side brand literals remain; generate:ai re-run clean (contract 22,706 chars — grew only by the categoryGuard data + derived rule text) | by integrator
+C3 | applied-awaiting-gate | FINAL BA-31 revision applied (canon-completion rides C3 commit per proposal); npm run build GREEN; uncommitted, back to gate wP:p3 | by integrator
+BA-31 | accepted | by critic+codex
+C3 | accepted | by critic+codex

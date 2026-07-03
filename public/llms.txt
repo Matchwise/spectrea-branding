@@ -1,97 +1,84 @@
+<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-07-03) -->
 # Spectrea Brand Guide
 
-> The complete brand system for Spectrea — a composable intelligence platform that turns scattered information into compounding intelligence. This index lists the canonical documents an LLM should read to understand Spectrea's voice, visual identity, logo rules, colour system, typography, and component specs.
+> Composable intelligence platform — turns scattered information into compounding intelligence. This file is a generated ROUTER: it tells an AI tool which brand document to load, and in which order. Every document below derives from the same canonical data.
 
-**Strategic claim (v2, 2026-04-18):** Spectrea is the spectrum of clarity. Everything you know, in one living view — alive with possibility, yours to keep. See it whole. Trust what you see. Build on what you find.
+**Source of truth:** brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. (v2.1.0, 2026-07-03)
 
-The brand stakes a position around clarity, aliveness, and ownership — readable on its own without any product context. Differentiates from Notion (substrate-only), Stripe (one-accent infrastructure), Anthropic (editorial-research), Linear (austere modern), and Replit / Vercel (developer tooling).
+## Load order (for AI tools)
 
-Spectrea is **one character with three inseparable facets** — Reveal (Magician: brings the hidden pattern into view), Ground (Sage: shows the evidence and reasoning), Equip (Creator: hands back the tools to build on what's found). These aren't personas for three surfaces; they're facets of a single gesture present in every brand moment. The emphasis shifts with context (reveal leads marketing, ground leads trust surfaces, equip leads product), but all three are always there. Reveal-without-ground is hype; ground-without-equip is stuffy; equip-without-reveal is tools without a reason. The through-line is encoded in the tagline — *We connect the dots* = see them · trust them · build on them.
+1. [Brand contract (JSON)](/brand-contract.json): hard machine constraints — names, category noun, banned terms, palette hexes, design tokens, logo numerics, guardrails.
+2. [Pre-flight checklist](/brand-checklist.md): classify your surface, then run its checks before generating anything.
+3. [Few-shots](/brand-few-shots.md): contrastive on/off-brand pairs — match the on-brand register.
+4. [Agent rules block](/brand-agent-rules.md): drop-in CLAUDE.md/AGENTS.md block for repos that produce Spectrea-branded output.
+5. [Full brand guide (Markdown)](/brand-guide.md): the complete narrative system — foundation, voice, naming, logo, colour, gradients, typography, iconography, illustration, motion, components, communications, governance.
+6. [Full brand guide (PDF)](/brand-guide.pdf): print/offline mirror of the same content.
 
-The brand combines spectrum accents (Cobalt, Teal, Amber, Rose) with a seven-token Warm Blend neutral ladder (Canvas, Cloud, Pewter, Slate, Iron, Graphite, Ink) to feel both precise and human. Tagline: *We connect the dots.* Pronunciation: /spek-TREE-uh/. Etymology — dual reading: (1) *spectrum* — the full range, the complete view; (2) *revealing* — bringing what was hidden into clear view. Together: the spectrum of clarity.
+## Hard key facts
 
-**Illustration system (v4, 2026-04-19) — universal subject-agnostic prompt + hand-SVG primitives.** One prompt template renders any scene (person at a desk, city skyline, abstract concept, dashboard) in the brand voice via Gemini / Firefly / Imagen. Warmth comes from palette discipline: supporting elements use 20–60% tints of the primaries, never default to neutrals. Subtle depth from a single darker tonal step per rounded object. No outlines anywhere. Hand-coded SVG is reserved for primitives — graph vocabulary, dividers, in-product state dots — not for hero scenes. Full prompt and 8-item checklist at `docs/illustration-prompt.md`. v4 retires v3's two-style split (Editorial Geometry + Living Graph), the atoms/forms/treatments/palette four-layer vocabulary as a generation constraint, the four-channel production matrix, and the `SpectreaFigure` Bauhaus limbs-figure component.
-
-**Signature motion (three primitives):** node arrival (~400ms elastic settle + radial pulse), edge formation (~300ms gradient draw), spectrum shift (~600ms Cobalt→Teal→Amber→Rose traversal as the AI-acted signal).
-
-## Canonical documents
-
-- [Full brand guide (Markdown)](/brand-guide.md): Offline mirror of the live app. The live app at [/](/) is canonical; this Markdown exists for LLM-readable and print use. Covers foundation, voice, logo system (two-forms rule, 11 variants, 3 arrangements), Warm Blend colour system, gradient rules (OKLCH with sRGB fallback, 3-stop primary, 2-stop Cool Duet lockup, three duets), typography (Albert Sans / Lexend / JetBrains Mono), iconography (Tabler, 2px stroke), motion, components, communications, and governance. Includes inline SVG visuals for logo, swatches, gradients, and typography.
-- [Full brand guide (PDF)](/brand-guide.pdf): Printable version of the same content.
-
-## Visual assets (referenced from the Markdown)
-
-- [/brand-assets/logo-mark-cool.svg](/brand-assets/logo-mark-cool.svg): Primary S mark — Cool Duet stroke + grey dots.
-- [/brand-assets/logo-mark-ink.svg](/brand-assets/logo-mark-ink.svg): Mono ink mark.
-- [/brand-assets/logo-mark-white.svg](/brand-assets/logo-mark-white.svg): Mono white mark on Ink background.
-- [/brand-assets/logo-mark-spectrum.svg](/brand-assets/logo-mark-spectrum.svg): Full-spectrum mark (animated-frame colour).
-- [/brand-assets/logo-lockup-gradient.svg](/brand-assets/logo-lockup-gradient.svg): Gradient lockup — 2-stop Cool Duet (Cobalt → Teal) on the mark stroke only; wordmark stays monotone.
-- [/brand-assets/logo-lockup-ink.svg](/brand-assets/logo-lockup-ink.svg): Mono ink lockup.
-- [/brand-assets/logo-lockup-white.svg](/brand-assets/logo-lockup-white.svg): Mono white lockup on Ink.
-- [/brand-assets/swatches-spectrum.svg](/brand-assets/swatches-spectrum.svg): Cobalt / Teal / Amber / Rose swatches.
-- [/brand-assets/swatches-neutrals.svg](/brand-assets/swatches-neutrals.svg): Warm Blend seven-token neutral ladder — Canvas / Cloud / Pewter / Slate / Iron / Graphite / Ink.
-- [/brand-assets/swatches-bridge.svg](/brand-assets/swatches-bridge.svg): Bridge-tier tinted washes.
-- [/brand-assets/ratio-bar.svg](/brand-assets/ratio-bar.svg): 60 / 20 / 10 / 10 usage-ratio bar.
-- [/brand-assets/gradient-brand.svg](/brand-assets/gradient-brand.svg): The primary brand gradient.
-- [/brand-assets/gradient-cool-duet.svg](/brand-assets/gradient-cool-duet.svg): Cool Duet strip.
-- [/brand-assets/gradient-balanced-duet.svg](/brand-assets/gradient-balanced-duet.svg): Balanced Duet with #6FB884 bridge.
-- [/brand-assets/gradient-warm-duet.svg](/brand-assets/gradient-warm-duet.svg): Warm Duet strip.
-- [/brand-assets/gradient-full-rose.svg](/brand-assets/gradient-full-rose.svg): Full spectrum with Rose.
-- [/brand-assets/gradient-lockup.svg](/brand-assets/gradient-lockup.svg): 2-stop Cool Duet gradient on the lockup mark stroke (LogotypeGradient only).
-- [/brand-assets/type-samples.svg](/brand-assets/type-samples.svg): Typography samples in Albert Sans, Lexend, JetBrains Mono.
-- [/brand-assets/type-scale.svg](/brand-assets/type-scale.svg): Type scale ladder — Display through Code.
-
-## Live interactive pages
-
-- [Brand guide home](/): Overview and navigation to every section.
-- [Brand story](/foundation/story): Mission, vision, why we exist.
-- [Positioning](/foundation/positioning): Audience, category, tactical positioning.
-- [Voice & tone](/foundation/voice): Voice formula, tone spectrum, vocabulary.
-- [Naming](/foundation/naming): Pronunciation and usage rules.
-- [Logo — The Logo](/logo/primary): Anatomy, construction, animated version.
-- [Logo — Variations](/logo/variations): All 11 approved variants + 3 arrangements + decision guide.
-- [Logo — Guidelines](/logo/guidelines): Clear space, minimum size, background pairing.
-- [Logo — Misuse](/logo/misuse): What not to do.
-- [Logo — Specs & export](/logo/exploration): Technical specs and asset generator (SVG/PNG/JPG).
-- [Colour overview](/color/overview): Warm Blend palette at a glance + usage ratios.
-- [Primary palette](/color/primary): Every colour with role, hex, contrast info.
-- [Semantic colours](/color/semantic): Three-tier framework (Responsive / Structural / Semantic) + bridge tones.
-- [Gradients](/color/gradients): Brand gradient (OKLCH), duets, lockup gradient, usage rules.
-- [Typefaces](/typography/typefaces): Albert Sans, Lexend, JetBrains Mono.
-- [Type scale](/typography/scale): Complete sizing system with responsive scaling.
-- [Typography guidelines](/typography/guidelines): Hierarchy, weight rules, accessibility.
-- [Illustration](/imagery/illustration): Universal subject-agnostic prompt for hero scenes (Gemini / Firefly / Imagen) plus hand-coded SVG substrate for primitives (graph vocabulary, dividers, in-product state dots).
-- [Iconography](/imagery/iconography): Tabler icon system and colour rules.
-- [Motion](/imagery/motion): Durations, easing, three signature motion primitives (arrival, formation, spectrum sweep).
-- [Buttons](/components/buttons): Six variants (Primary, Secondary, Ghost, Destructive, Confirm, Caution).
-- [Forms](/components/forms): Input fields, selects, checkboxes, toggles.
-- [Cards](/components/cards): Container patterns, elevation, content layout.
-- [Layout](/components/layout): Page structure, spacing scale, grid system, elevation.
-- [Copy & taglines](/communications/copy): Messaging hierarchy in practice.
-- [Social media](/communications/social): Profile setup, post templates.
-- [Email](/communications/email): Signature, transactional, marketing patterns.
-- [Presentations](/communications/presentations): Slide specs and templates.
-- [Downloads](/resources/downloads): Asset packages and CSS tokens.
-- [Governance](/resources/governance): Change process and ownership.
-
-## Key facts
-
-- **Name:** Spectrea (not "Spectre", "Spectra", or "SpectreAI").
-- **Pronunciation:** /spek-TREE-uh/.
+- **Name:** Spectrea (/spek-TREE-uh/) — never: "SpectreAI" (not the name) · "Spectre" / "Spectra" (different words — not the name) · "spectra" (missing the e — typo) · "Spectrea AI" as the lead name (AI is not the brand) · "SPECTREA" (all-caps styling) · "spectrea" lowercase in headings or prose (lowercase belongs to the logo wordmark treatment only) · "The Spectrea" (no article) · Random internal caps ("SpecTrea").
+- **Category:** The category noun is exactly "Composable intelligence platform" (lowercase in running prose) — never a substitute: "composable knowledge platform", "knowledge platform", "knowledge management", "AI assistant", "automation tool".
 - **Tagline:** "We connect the dots."
-- **Category:** Composable intelligence platform.
-- **Spectrum colours:** Cobalt `#4271DF` · Teal `#00B6A0` · Amber `#E19000` · Rose `#F24260`.
-- **Warm Blend neutrals (seven-token OKLCH-even ladder):** Canvas `#FDFDFB` (bg) · Cloud `#F4F4F1` (surface) · Pewter `#97979E` (whisper muted, 2.85:1 — supplementary only) · Slate `#6D6D72` (body secondary, 5.05:1 AA) · Iron `#46464B` (emphasized body, 9.21:1 AAA) · Graphite `#212226` (dark UI surface) · Ink `#18181C` (primary text).
-- **Default mode:** light. Canvas is the 60% page ground on marketing, product, slides, PDF. Dark is a parallel mode, not the primary register.
-- **Dark surfaces (parallel mode):** role mapping inverts — Ink becomes the canvas, Graphite becomes elevated, Cloud becomes text. Two new tokens complete the hierarchy: **Mist `#B0B0B6`** (muted text, ~8.5:1 on Ink) and **Fog `#2E2F35`** (border / divider). Accents (Cobalt, Teal, Amber, Rose) carry over unchanged — all pass WCAG AA on Ink. Dark bridge washes: Cobalt Deep `#1B2440` · Teal Deep `#0E2E2A` · Amber Deep `#2E2410` · Rose Deep `#2E1218`.
-- **Slides:** Canvas-default, Ink for punctuation (section dividers, single-stat emphasis, closing CTA). Target ~80/20 Canvas/Ink; contrast is the point, so dilution weakens both modes.
-- **Brand gradient:** `linear-gradient(135deg in oklch, #4271DF, #00B6A0, #E19000)` with sRGB fallback for older browsers.
-- **Lockup gradient (LogotypeGradient only):** 2-stop Cool Duet — Cobalt `#4271DF` → Teal `#00B6A0`, applied to the mark stroke only. The wordmark stays monotone (Ink on light, White on dark).
-- **Typefaces:** Albert Sans (headings, 600/700), Lexend (body, 300/400/500/600), JetBrains Mono (code, 400).
-- **Archetypes (three facets, one motion):** Reveal (Magician) · Ground (Sage) · Equip (Creator). One unified character; every brand moment carries all three. Emphasis shifts with context — reveal leads marketing, ground leads trust surfaces, equip leads product — but no facet is absent.
-- **Personality (v2, 4 traits):** Warm · Perceptive · Grounded · Adaptive (each with a guardrail). The brand's discipline and consistency are enforced structurally by the system rules (fixed primitives, fixed palette, fixed motion language) rather than claimed as a personality trait.
-- **Voice formula (v2):** "Clarity of explanation + experiential momentum. Tech earns its place by **showing its work**." (Replaces the v1 "explaining the magic" formulation.)
-- **Privileged vocabulary (v2, 12 brand-evocative words):** spectrum, clarity, whole, see, reveal, illuminate, surface, connect, compose, compound, alive, transparent. Each builds the brand feeling without product context. Product-specific words (provenance, traceable, auditable, attributed, sourced) are still allowed when describing what the product actually does.
-- **Illustration system (v4, 2026-04-19):** universal subject-agnostic prompt for hero scenes (Gemini / Firefly / Imagen) plus tight hand-coded SVG substrate for primitives only (graph vocabulary, dividers, in-product state dots). Warmth via tinted palette supporting elements (not neutrals), single tonal step for depth, zero outlines. Retires v3's two-style split (Editorial Geometry + Living Graph), the atoms/forms/treatments/palette four-layer vocabulary as a generation constraint, the four-channel production matrix, and the `SpectreaFigure` Bauhaus limbs-figure component. See `docs/illustration-prompt.md`.
-- **Feature naming convention (v2):** Title-case Proper Nouns without brand prefix. The capital signals "this is a named thing in Spectrea." Generic nouns stay lowercase in prose ("the assistant suggested"). Brand prefix reserved for distinct branded surfaces only — separately-paid tiers, developer surfaces, installable companions.
-- **Signature motion primitives (v2):** Arrival (~400ms), Formation (~300ms), Spectrum sweep (~600ms — the brand's signature moment, used sparingly).
+- **Promise:** Turns scattered information into compounding intelligence.
+- **Voice formula:** Clarity of explanation + experiential momentum. Tech earns its place by showing its work.
+- **Never-use words:** AI-powered (overused), next-gen, state-of-the-art, world-class, breakthrough, unprecedented, game-changer, revolutionary, seamless, cutting-edge, synergy, leverage (as verb), agentic, AI-first, copilot (as generic noun), 10x, supercharge, effortless, magical.
+- **Density:** Max two privileged words per paragraph, one "living" / "alive" per page. If a paragraph survives losing every privileged word, the prose is doing its job — if it collapses without them, rewrite.
+- **Outcome-first:** Open with the outcome, never the mechanism. On buyer surfaces the graph and the loop never open the copy — they enter after the outcome, as the reason to believe. Exception: graph-native jobs (exploration, visualisation), where the graph is the star and may lead.
+- **Anti-values:** Never replaces human judgment · Never leaves anyone behind · Never complex or bloated · Never a black box.
+- **AI naming:** In prose, the AI is "the assistant" — lowercase, generic. As a first-class feature name it is "Assistant" (Title-Case, per the feature-naming convention). Never "copilot" (generic or name), never "Spectrea AI" as a name. When describing automated behavior generically, prefer "the assistant" over "agent". The assistant suggests, surfaces, and drafts. It never "decides", "acts on your behalf" without review, or "handles it for you" — autonomy verbs overclaim agency the product deliberately does not take. Allowed verbs: suggests, surfaces, drafts. Forbidden verbs: decides, acts without review, handles it for you, takes over.
+- **Compounding claim guardrail:** Use "compounding intelligence" only with its defensible mechanism named — provenance, per-viewer access, and the closed loop that feeds outcomes back in. The phrase is contested in-market (noted 2026-07-03); the mechanism, not the slogan, carries the claim.
+- **Spectrum accents:** Cobalt #4271DF · Teal #00B6A0 · Amber #E19000 · Rose #F24260.
+- **Warm Blend neutrals:** Graphite #212226 (primary) · Canvas #FDFDFB (background) · Cloud #F4F4F1 (surface) · Ink #18181C (text) · Iron #46464B (body-emphasized) · Slate #6D6D72 (body-secondary) · Pewter #97979E (muted).
+- **Dark mode tokens:** bg #18181C · surface #212226 · text #F4F4F1 · muted #B0B0B6 · border #2E2F35.
+- **Gradient:** #4271DF → #00B6A0 → #E19000 at 135° — never for buttons, text colour, body backgrounds, borders, or small icons.
+- **Logo constraints:** exactly 10 dots (radius 3.5, stroke 8); 2 lockup forms; primary dots #A3A3A3; Circle when contained — never a squircle. Clear space: 0.5× the mark height on all sides. Watermark ≤ 20% opacity. Co-brand: Use the ink variants (#3 mark / #4 lockup). Match the partner mark by optical height — scale so perceived heights are equal, not bounding boxes — and align on the marks' vertical centres.
+- **Typefaces:** Albert Sans (headings) · Lexend (body) · JetBrains Mono (code).
+- **Accessibility floor:** WCAG 2.2 AA (contrast ≥ 4.5:1 normal / 3:1 large+UI).
+- **Personality:** Warm · Perceptive · Grounded · Adaptive (4 traits, each with a guardrail).
+
+## Visual assets
+
+Standalone SVGs live in /brand-assets/ (regenerated by "npm run generate:assets"); core files: logo-mark-cool.svg, logo-lockup-gradient.svg, logo-lockup-ink.svg, logo-lockup-white.svg, swatches-spectrum.svg, swatches-neutrals.svg, type-scale.svg.
+
+## Live interactive pages (SPA — JavaScript-rendered)
+
+NOTE: the routes below are client-rendered React routes; most AI crawlers cannot execute them. Use the Markdown/JSON documents in the load order above instead — they carry the same canonical content. Routes listed for humans and browser-capable agents:
+
+- [Overview](/)
+- [Foundation](/foundation)
+  - [Brand Story](/foundation/story)
+  - [Positioning](/foundation/positioning)
+  - [Voice & Tone](/foundation/voice)
+  - [Naming](/foundation/naming)
+- [Logo](/logo)
+  - [The Logo](/logo/primary)
+  - [Variations](/logo/variations)
+  - [Guidelines](/logo/guidelines)
+  - [Misuse](/logo/misuse)
+  - [Specs & Export](/logo/exploration)
+- [Color](/color)
+  - [Overview](/color/overview)
+  - [Primary Palette](/color/primary)
+  - [Semantic Colors](/color/semantic)
+  - [Gradients](/color/gradients)
+- [Typography](/typography)
+  - [Typefaces](/typography/typefaces)
+  - [Type Scale](/typography/scale)
+  - [Guidelines](/typography/guidelines)
+- [Imagery & Motion](/imagery)
+  - [Illustration](/imagery/illustration)
+  - [Iconography](/imagery/iconography)
+  - [Motion](/imagery/motion)
+- [Components](/components)
+  - [Buttons](/components/buttons)
+  - [Forms](/components/forms)
+  - [Cards](/components/cards)
+  - [Layout](/components/layout)
+- [Communications](/communications)
+  - [Copy & Taglines](/communications/copy)
+  - [Social Media](/communications/social)
+  - [Email](/communications/email)
+  - [Presentations](/communications/presentations)
+- [Resources](/resources)
+  - [Downloads](/resources/downloads)
+  - [Governance](/resources/governance)

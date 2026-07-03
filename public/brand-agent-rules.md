@@ -1,0 +1,29 @@
+<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-07-03) -->
+# Spectrea brand rules — agent drop-in
+
+Copy the block below into a repo's CLAUDE.md / AGENTS.md (or a system prompt)
+whenever that repo produces Spectrea-branded output. Do not hand-edit the block —
+it is regenerated from src/data/brand.ts.
+
+---
+
+## Spectrea brand rules (generated 2026-07-03, brand.ts v2.1.0)
+
+- Product: **Spectrea** (/spek-TREE-uh/). Tagline: "We connect the dots.". Category: **Composable intelligence platform**. The category noun is exactly "Composable intelligence platform" (lowercase in running prose) — never a substitute: "composable knowledge platform", "knowledge platform", "knowledge management", "AI assistant", "automation tool".
+- Company vs product: Matchwise Pte. Ltd. is the legal entity — it appears only where a legal entity is required: contracts, invoices, terms, privacy notices ("Spectrea is a product of Matchwise Pte. Ltd."). Spectrea is the product and brand name on every public surface. Never brand a surface "Matchwise"; never combine the two into one name.
+- Never write the name as: "SpectreAI" (not the name) · "Spectre" / "Spectra" (different words — not the name) · "spectra" (missing the e — typo) · "Spectrea AI" as the lead name (AI is not the brand) · "SPECTREA" (all-caps styling) · "spectrea" lowercase in headings or prose (lowercase belongs to the logo wordmark treatment only) · "The Spectrea" (no article) · Random internal caps ("SpecTrea").
+- Voice formula: Clarity of explanation + experiential momentum. Tech earns its place by showing its work. Start with the human benefit, then introduce the technical concept. Tech earns its place by showing its work — pointing to the source, the trace, the evidence — not by impressing.
+- Outcome-first: Open with the outcome, never the mechanism. On buyer surfaces the graph and the loop never open the copy — they enter after the outcome, as the reason to believe. Exception: graph-native jobs (exploration, visualisation), where the graph is the star and may lead.
+- Privileged words (max two per paragraph): spectrum, clarity, whole, see, reveal, illuminate, surface, connect, compose, compound, alive, transparent. Max two privileged words per paragraph, one "living" / "alive" per page. If a paragraph survives losing every privileged word, the prose is doing its job — if it collapses without them, rewrite.
+- NEVER use these words: AI-powered (overused), next-gen, state-of-the-art, world-class, breakthrough, unprecedented, game-changer, revolutionary, seamless, cutting-edge, synergy, leverage (as verb), agentic, AI-first, copilot (as generic noun), 10x, supercharge, effortless, magical.
+- AI naming: In prose, the AI is "the assistant" — lowercase, generic. As a first-class feature name it is "Assistant" (Title-Case, per the feature-naming convention). Never "copilot" (generic or name), never "Spectrea AI" as a name. When describing automated behavior generically, prefer "the assistant" over "agent". The assistant suggests, surfaces, and drafts. It never "decides", "acts on your behalf" without review, or "handles it for you" — autonomy verbs overclaim agency the product deliberately does not take. Allowed verbs: suggests, surfaces, drafts. Forbidden verbs: decides, acts without review, handles it for you, takes over.
+- Compounding claim: Use "compounding intelligence" only with its defensible mechanism named — provenance, per-viewer access, and the closed loop that feeds outcomes back in. The phrase is contested in-market (noted 2026-07-03); the mechanism, not the slogan, carries the claim.
+- Differentiation: Never position on retrieval or search quality — it is commoditized across the field. The graph earns its keep through governance, provenance, shared state, and the loop; differentiate on what the substrate makes structural.
+- Anti-values: Never replaces human judgment · Never leaves anyone behind · Never complex or bloated · Never a black box.
+- Buyer surfaces: Hero, case studies, pricing — lead with proof: a named customer, a concrete outcome, or a peer-testable claim. Brand vocabulary decorates; it doesn't carry the opening.
+- Product surfaces: Warm up one notch. Warmth comes from specificity, not exclamation points — "Read. 12 entities, 18 connections added." beats "Upload complete! 🎉" because the first shows the system paid attention.
+- Colours (only these): Graphite #212226 (primary) · Cobalt #4271DF (accent) · Teal #00B6A0 (accent) · Amber #E19000 (accent) · Rose #F24260 (accent) · Canvas #FDFDFB (background) · Cloud #F4F4F1 (surface) · Ink #18181C (text) · Iron #46464B (body-emphasized) · Slate #6D6D72 (body-secondary) · Pewter #97979E (muted). Gradient #4271DF → #00B6A0 → #E19000 at 135° — never on buttons, text, borders, or small icons.
+- Typefaces: Albert Sans (headings) · Lexend (body) · JetBrains Mono (code).
+- Accessibility floor: WCAG 2.2 AA. Contrast ≥ 4.5:1 normal text / 3:1 large+UI. On Canvas: Ink 17.4:1 · Iron 9.21:1 (AAA) · Slate 5.05:1 (AA) · Pewter 2.85:1 (supplementary only).
+- Logo: exactly 10 dots; 2 lockup forms; primary dots #A3A3A3; Circle when contained — never a squircle. Clear space: 0.5× the mark height on all sides. Watermark ≤ 20% opacity.
+- Full machine data: /brand-contract.json · full guide: /brand-guide.md. Both are derived mirrors of src/data/brand.ts — on any conflict, brand.ts wins.
