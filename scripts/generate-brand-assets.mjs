@@ -51,6 +51,9 @@ function textToPath(text, fontSize, baselineY, startX = 0) {
 }
 
 // ─── Brand constants ─────────────────────────────────────────────
+// MIRROR of src/data/brand.ts (selectedPalette + logo construction values) —
+// kept in sync by hand pending full derivation via the ts-transpile import
+// used by scripts/generate-ai-formats.mjs. On any conflict, brand.ts wins.
 const COBALT = '#4271DF'
 const TEAL   = '#00B6A0'
 const AMBER  = '#E19000'
@@ -515,7 +518,7 @@ await writeFile(resolve(outDir, 'type-samples.svg'), xml(`
   <text x="0" y="30" font-family="'Albert Sans', sans-serif" font-weight="700" font-size="32" fill="${INK}" letter-spacing="-0.01em">We connect the dots.</text>
   <text x="0" y="52" font-family="'Lexend', sans-serif" font-size="11" font-weight="500" fill="${PEWTER}" letter-spacing="0.05em">ALBERT SANS BOLD 700 · 32px · Display / Hero</text>
 
-  <text x="0" y="100" font-family="'Albert Sans', sans-serif" font-weight="600" font-size="22" fill="${INK}">Knowledge, connected.</text>
+  <text x="0" y="100" font-family="'Albert Sans', sans-serif" font-weight="600" font-size="22" fill="${INK}">Composable intelligence platform.</text>
   <text x="0" y="122" font-family="'Lexend', sans-serif" font-size="11" font-weight="500" fill="${PEWTER}" letter-spacing="0.05em">ALBERT SANS SEMIBOLD 600 · 22px · H2 / Section heading</text>
 
   <text x="0" y="168" font-family="'Lexend', sans-serif" font-size="16" fill="${INK}">Every document you upload enriches your knowledge graph.</text>
@@ -529,7 +532,7 @@ await writeFile(resolve(outDir, 'type-samples.svg'), xml(`
 // ─── Type scale ladder ──────────────────────────────────────────
 
 await writeFile(resolve(outDir, 'type-scale.svg'), xml(`
-<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="440" viewBox="0 0 640 440">
   ${FONT_IMPORT}
   <text x="0" y="50"  font-family="'Albert Sans', sans-serif" font-weight="600" font-size="48" fill="${INK}">Display</text>
   <text x="320" y="50" font-family="'JetBrains Mono', monospace" font-size="12" fill="${PEWTER}">48px · line 1.1</text>
@@ -543,23 +546,32 @@ await writeFile(resolve(outDir, 'type-scale.svg'), xml(`
   <text x="0" y="172" font-family="'Albert Sans', sans-serif" font-weight="600" font-size="24" fill="${INK}">Heading 3</text>
   <text x="320" y="172" font-family="'JetBrains Mono', monospace" font-size="12" fill="${PEWTER}">24px · line 1.3</text>
 
-  <text x="0" y="204" font-family="'Lexend', sans-serif" font-size="18" fill="${INK}">Body Large — leading paragraphs</text>
-  <text x="320" y="204" font-family="'JetBrains Mono', monospace" font-size="12" fill="${PEWTER}">18px · line 1.6</text>
+  <text x="0" y="202" font-family="'Albert Sans', sans-serif" font-weight="600" font-size="20" fill="${INK}">Heading 4</text>
+  <text x="320" y="202" font-family="'JetBrains Mono', monospace" font-size="12" fill="${PEWTER}">20px · line 1.4</text>
 
-  <text x="0" y="232" font-family="'Lexend', sans-serif" font-size="16" fill="${INK}">Body — default paragraphs</text>
-  <text x="320" y="232" font-family="'JetBrains Mono', monospace" font-size="12" fill="${PEWTER}">16px · line 1.6</text>
+  <text x="0" y="230" font-family="'Albert Sans', sans-serif" font-weight="600" font-size="18" fill="${INK}">Heading 5</text>
+  <text x="320" y="230" font-family="'JetBrains Mono', monospace" font-size="12" fill="${PEWTER}">18px · line 1.4</text>
 
-  <text x="0" y="258" font-family="'Lexend', sans-serif" font-size="14" fill="${INK}">Body SM — secondary text</text>
-  <text x="320" y="258" font-family="'JetBrains Mono', monospace" font-size="12" fill="${PEWTER}">14px · line 1.5</text>
+  <text x="0" y="258" font-family="'Lexend', sans-serif" font-size="18" fill="${INK}">Body Large — leading paragraphs</text>
+  <text x="320" y="258" font-family="'JetBrains Mono', monospace" font-size="12" fill="${PEWTER}">18px · line 1.6</text>
 
-  <text x="0" y="282" font-family="'Lexend', sans-serif" font-size="12" font-weight="500" fill="${INK}">Caption — labels, timestamps</text>
-  <text x="320" y="282" font-family="'JetBrains Mono', monospace" font-size="12" fill="${PEWTER}">12px · line 1.5</text>
+  <text x="0" y="286" font-family="'Lexend', sans-serif" font-size="16" fill="${INK}">Body — default paragraphs</text>
+  <text x="320" y="286" font-family="'JetBrains Mono', monospace" font-size="12" fill="${PEWTER}">16px · line 1.6</text>
 
-  <text x="0" y="306" font-family="'Lexend', sans-serif" font-size="12" font-weight="600" fill="${INK}" letter-spacing="0.05em">OVERLINE — SECTION LABELS</text>
-  <text x="320" y="306" font-family="'JetBrains Mono', monospace" font-size="12" fill="${PEWTER}">12px · 0.05em tracking</text>
+  <text x="0" y="312" font-family="'Lexend', sans-serif" font-size="14" fill="${INK}">Body SM — secondary text</text>
+  <text x="320" y="312" font-family="'JetBrains Mono', monospace" font-size="12" fill="${PEWTER}">14px · line 1.5</text>
 
-  <text x="0" y="336" font-family="'JetBrains Mono', monospace" font-size="14" fill="${INK}">code · data values · 0.94</text>
-  <text x="320" y="336" font-family="'JetBrains Mono', monospace" font-size="12" fill="${PEWTER}">14px · mono</text>
+  <text x="0" y="336" font-family="'Lexend', sans-serif" font-size="12" font-weight="500" fill="${INK}">Caption — labels, timestamps</text>
+  <text x="320" y="336" font-family="'JetBrains Mono', monospace" font-size="12" fill="${PEWTER}">12px · line 1.5</text>
+
+  <text x="0" y="360" font-family="'Lexend', sans-serif" font-size="12" font-weight="600" fill="${INK}" letter-spacing="0.05em">OVERLINE — SECTION LABELS</text>
+  <text x="320" y="360" font-family="'JetBrains Mono', monospace" font-size="12" fill="${PEWTER}">12px · 0.05em tracking</text>
+
+  <text x="0" y="390" font-family="'JetBrains Mono', monospace" font-size="14" fill="${INK}">code · data values · 0.94</text>
+  <text x="320" y="390" font-family="'JetBrains Mono', monospace" font-size="12" fill="${PEWTER}">14px · mono</text>
+
+  <text x="0" y="414" font-family="'JetBrains Mono', monospace" font-size="12" fill="${INK}">code sm · trace details · technical metadata</text>
+  <text x="320" y="414" font-family="'JetBrains Mono', monospace" font-size="12" fill="${PEWTER}">12px · mono</text>
 </svg>
 `))
 

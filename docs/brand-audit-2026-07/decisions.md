@@ -358,3 +358,19 @@ BA-31 | applied-awaiting-gate | src/data/brand.ts positioning.categoryGuard ADDE
 C3 | applied-awaiting-gate | FINAL BA-31 revision applied (canon-completion rides C3 commit per proposal); npm run build GREEN; uncommitted, back to gate wP:p3 | by integrator
 BA-31 | accepted | by critic+codex
 C3 | accepted | by critic+codex
+
+BA-30 | committed | b16be8e | by integrator
+BA-31 | committed | b16be8e (incl. positioning.categoryGuard canon-completion per FINAL revision) | by integrator
+BA-1 | committed | b16be8e (final llms leg — rode BA-30/C3 acceptance of the regenerated router; BA-1 now fully applied across brand.ts/guide/Downloads/llms) | by integrator
+C3 | committed | b16be8e — one-cluster-one-commit; blackboard swept into same commit; build green at commit time | by integrator
+
+BA-3 | applied-awaiting-gate | scripts/generate-brand-assets.mjs:518 type-samples H2 specimen "Knowledge, connected." → "Composable intelligence platform." (ratified category line) + brand-constants block annotated MIRROR-of-brand.ts pending full derivation per plan C4 spec; regenerated type-samples.svg verified carrying the new phrase; PDF leg rides C5 | by integrator
+BA-12 | applied-awaiting-gate | scripts/generate-brand-assets.mjs type-scale ladder 10 → 13 steps (H4 20px/1.4 + H5 18px/1.4 + Code SM 12px/mono per critic-widened scope), viewBox 360 → 440; regenerated type-scale.svg verified: 13 rows incl. Heading 4 / Heading 5 / code sm | by integrator
+BA-13 | applied-awaiting-gate | public/favicon.svg: circle fill #111827 → Ink #18181C, all mark fills/strokes #FFFFFF → Canvas #FDFDFB (canonical variant #10 tokens); hand-edited in place (favicon is not generator-emitted) | by integrator
+BA-32 | applied-awaiting-gate | public/icons.svg DELETED via git rm (unreferenced by app, off-brand colours; restorable from git history) | by integrator
+C4 | applied-awaiting-gate | cluster complete; NOTE for gate: "regenerate affected assets" ran the full npm run generate:assets (generator has no selective mode), so ALL committed assets caught up to the generator state they had lagged since 751c073 — including CREATING logo-lockup-spectrum-white.svg as committed-generator status quo (content = Cool Duet; BA-10 generator/app code UNTOUCHED, naming stays with Darren's fork; plan C5 pre-blessed this fallout). npm run build GREEN; uncommitted, awaiting codex gate wP:p3 | by integrator
+BA-3 | accepted | by critic+codex
+BA-12 | accepted | by critic+codex
+BA-13 | accepted | by critic+codex
+BA-32 | accepted | by critic+codex
+C4 | accepted | by critic+codex
