@@ -288,7 +288,7 @@ export default function Buttons() {
         </div>
         <div className="mt-3 bg-cloud rounded-lg px-4 py-3 border border-stone-200">
           <p className="text-xs text-iron">
-            <strong>Contrast note:</strong> White text on Teal and Amber does not meet WCAG AA (4.5:1). This is accepted because semantic buttons are large, infrequent, and carry strong contextual meaning through color. The label is always reinforced by the action context (e.g. a confirmation dialog).
+            <strong>Contrast note:</strong> White text at base state does not meet WCAG AA (4.5:1) on Teal (2.56:1), Amber (2.56:1), or Rose (3.67:1) — only Cobalt passes (4.51:1). This is accepted because semantic buttons are large, infrequent, and carry strong contextual meaning through color; the label is always reinforced by the action context (e.g. a confirmation dialog). Interaction states: light mode darkens, so white-text contrast rises — Cobalt and Rose states pass AA outright (4.55–7.02:1); Teal and Amber improve (3.20–4.45:1) but remain under the same accepted exception. Dark mode lightens with the label flipped to Ink — all dark hover/active pairs pass AA outright (5.10–9.72:1).
           </p>
         </div>
       </Section>
