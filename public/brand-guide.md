@@ -7,6 +7,7 @@
 **Tagline:** We connect the dots.
 **Category:** Composable intelligence platform.
 **Pronunciation:** /spek-TREE-uh/ (from Latin *spectra* — the full range or spectrum, with a second reading: *revealing*).
+**Version:** 2.1.0 (2026-07-03). Canonical data: `src/data/brand.ts` — this guide is a derived mirror.
 
 **Strategic claim:** Spectrea is the spectrum of clarity. Everything you know, in one living view — alive with possibility, yours to keep. See it whole. Trust what you see. Build on what you find.
 
@@ -32,7 +33,7 @@ A world where anyone can see the full spectrum of what's known, trust what they 
 ### Messaging hierarchy
 Primary theme is **Connection** — the headline "We connect the dots" and the idea that scattered knowledge becomes one living view. Three supporting themes:
 1. **Trustworthy Intelligence** — "Intelligence you can trust." Everything you see is transparent; every action is reviewable.
-2. **Compounding Intelligence** — "It gets smarter with every interaction." Your second year is incomparably better than your first.
+2. **Compounding Intelligence** — "It gets smarter with every interaction." Your second year is measurably sharper than your first — more context retained, more decisions traceable, more outcomes feeding the next cycle. *Guardrail:* use "compounding intelligence" only with its defensible mechanism named — provenance, per-viewer access, and the closed loop that feeds outcomes back in. The phrase is contested in-market (noted 2026-07-03); the mechanism, not the slogan, carries the claim.
 3. **Composability** — "Build exactly what you need." Simple, combinable parts assembled into any solution.
 
 ### Archetypes — three facets, one motion
@@ -69,17 +70,45 @@ The brand's *consistency and discipline* — fixed primitives, fixed palette, fi
 **Warm + Intelligent.** Like a brilliant mentor — approachable yet deep. Rich colours, inviting spacing, feels human. References: Stripe, Linear (clarity through restraint). Tradeoff: **power over polish** — capability is sacred; elegance is valued but never at the cost of depth.
 
 ### Values
-1. **Human-First** — Spectrea serves people, not the other way around. AI assists understanding; it never replaces judgment.
-2. **Trustworthy Intelligence** — everything you see is transparent; every action is reviewable; every connection can be followed back.
+1. **Human-First** — Spectrea serves people, not the other way around. AI assists understanding; it never replaces judgment. Your data is sovereign: full-fidelity export — structure, data, and provenance — is a first-class guarantee. You can always leave with everything.
+2. **Trustworthy Intelligence** — everything you see is transparent; every action is reviewable; every connection can be followed back. Truth is per-viewer: what you see is synthesized from exactly the claims you can access — coexisting perspectives stay attributed, and nothing leaks from views you can't see.
 3. **Compounding Intelligence** — the more you use it, the more it gives back.
 4. **Composable by Nature** — build solutions that fit your world; don't reshape your world to fit a tool.
-5. **Accessible Power** — deep capability that meets you where you are. Floor high, ceiling infinite.
+5. **Accessible Power** — deep capability that meets you where you are. The floor is high, and the ceiling rises with you.
 
 ### Anti-values (what Spectrea never does)
 - Never replaces human judgment.
 - Never leaves anyone behind.
 - Never complex or bloated — if it needs a consultant, we failed.
 - Never a black box — you can always ask "why?" and get an answer.
+
+### Audiences
+Five personas — the solo tier is first-class, not a trial. Mirrored from `brand.audiences`:
+
+| Persona | Who | Need | Message |
+|---|---|---|---|
+| **Solo Knowledge Workers** | Independent researchers, writers, consultants, students — anyone building a personal knowledge practice | A system that compounds from day one, alone — free and full-featured, no team required. | *"Start free, alone, with the full system. Your knowledge starts compounding with the first document — and when you're ready, invite a few collaborators without switching tools."* |
+| **Business Leaders** | CEOs, COOs, Managing Directors | Strategic clarity. See what the organization actually knows — and what it's missing. | *"In a world drowning in data, Spectrea surfaces the intelligence that matters — connected, verified, and compounding with every interaction."* |
+| **Knowledge Workers** | Analysts, researchers, consultants | Find trusted connections across sources. Build on what exists instead of reinventing. | *"Stop hunting through 12 tools for information you can't verify. Spectrea connects your knowledge into one living, trustworthy graph."* |
+| **Technology Leaders** | CTOs, IT Directors, architects | A composable, inspectable, extensible knowledge substrate. | *"Composable. Transparent. Built on primitives, not opinions. A platform that earns the trust of an engineering culture that asks 'why' before adopting anything."* |
+| **Growing Teams** | Startup founders, team leads | Preserve institutional knowledge. Turn tribal knowledge into collective intelligence. | *"Every conversation, every document, every decision — captured in a graph that compounds. When someone leaves, their insights stay."* |
+
+**Breadth path:** The designed path: start free alone (full-featured) → invite a few collaborators (bounded invites stay free) → pay when capacity or admin scale demands it. The paid line is capacity and governance administration, never a crippled core — value arrives before payment.
+
+### Differentiators
+Anchored to the moat: per-viewer truth, graph-resident decisions with provenance, outcomes feeding the next cycle, one substrate from solo to institution.
+
+| Spectrea | Traditional tools |
+|---|---|
+| Per-viewer truth — coexisting, attributed perspectives; each viewer sees a synthesis of exactly what they can access | One forced record — or per-user silos that never combine |
+| Decisions live in the graph — choices, doctrines, and commitments carry provenance and stay queryable | Decisions evaporate into chat scroll and meeting notes |
+| Outcomes feed back — what happened sharpens what the system knows next | Static — same value on day 1 and day 1000 |
+| One substrate, solo to institution — the same system grows from one person to an organization | A personal tool you outgrow, or an enterprise platform too heavy to start small |
+| Transparent and verifiable — everything you see is shown, and every connection can be followed back | Black box — data goes in, answers come out |
+| Composable — build exactly what you need from simple parts | Fixed — use what you're given |
+| Sovereign by default — private, and fully exportable with structure and provenance | Open by default, hard to leave — data leaks in, value locks in |
+
+**Guardrail:** never position on retrieval or search quality — it is commoditized across the field. The graph earns its keep through governance, provenance, shared state, and the loop; differentiate on what the substrate makes structural.
 
 ---
 
@@ -115,6 +144,21 @@ The right-hand versions are bold, direct, concrete — they show what the user e
 
 Two context shifts live within this same voice. **On buyer surfaces** (hero, case studies, pricing), lead with proof — a named customer, a concrete outcome, or a peer-testable claim. Brand vocabulary decorates; it doesn't carry the opening. **Inside the product**, warm up one notch. Warmth comes from specificity, not exclamation points — *"Read. 12 entities, 18 connections added."* beats *"Upload complete! 🎉"* because the first shows the system paid attention.
 
+**Outcome-first.** Open with the outcome, never the mechanism. On buyer surfaces the graph and the loop never open the copy — they enter after the outcome, as the reason to believe. Exception: graph-native jobs (exploration, visualisation), where the graph is the star and may lead.
+
+### Surface patterns
+Voice patterns for product and operational surfaces the tone spectrum doesn't cover. Release notes follow the Feature Announcement pair above.
+
+| Surface | Rule | Right | Wrong |
+|---|---|---|---|
+| **Onboarding** | Orient by doing, not touring. First screens name the one action that creates value and get out of the way. No feature carousels, no "welcome to the future". | *"Add your first document. Spectrea reads it and starts connecting it to what you add next."* | *"Welcome to Spectrea! 🎉 Let's take a quick tour of all the powerful features that will transform how you work."* |
+| **Empty states** | An empty state is an invitation with a promise, not an apology. Name what will appear here and the single step that starts it. | *"No connections yet. Add a second document and related ideas start linking up here."* | *"Nothing to see here yet!"* |
+| **Confirmation dialogs** | State the consequence plainly, in the user's terms — what happens, what's reversible, what isn't. The confirm button names the action, never "OK". | *"Delete this source? Its 14 extracted claims stay in the graph but lose their citation. This can't be undone."* | *"Are you sure you want to proceed? This action may have consequences. [OK] [Cancel]"* |
+| **System notifications** | Specificity is the warmth. Report what the system actually did, with numbers where they exist. No celebration, no vagueness. | *"Read. 12 entities, 18 connections added."* | *"Upload complete! 🎉 Your document has been processed successfully."* |
+| **Settings & security** | Ground leads. Say exactly what a setting does and what changes when it's toggled — especially for privacy and access. Plain sentences, no marketing. | *"Workspace visibility: private. Only people you invite can see anything in this workspace — including the assistant, which sees only what each viewer can see."* | *"Take control of your data with our industry-leading privacy options!"* |
+| **Legal & compliance** | Same voice, zero warmth-decoration: precise, complete sentences that a lawyer and a reader both accept. State facts and obligations; never soften a limitation into a benefit. | *"You can export your full workspace — structure, data, and provenance — at any time. Deleting your account removes your data from live systems within 30 days."* | *"Don't worry — your data is always safe with us, and leaving is a breeze!"* |
+| **Support replies** | Ground, then equip: confirm what happened (own it plainly if it's our fault), state what's true now, give the exact next step. Never open with an apology template. | *"You're right — sync failed for files added between 09:10 and 09:40 UTC. They're queued and will finish within the hour; nothing was lost. I'll reply here when they're through."* | *"We sincerely apologize for any inconvenience this may have caused. Your satisfaction is our top priority."* |
+
 ### Vocabulary — twelve privileged words
 The twelve brand-evocative words that should appear disproportionately often in copy. Each builds the *feeling* of Spectrea — clarity, aliveness, ownership, the act of seeing — without requiring the reader to know what the product does.
 
@@ -122,7 +166,7 @@ The twelve brand-evocative words that should appear disproportionately often in 
 
 Generic B2B SaaS words (insights, intelligence, transform, empower, unlock, enable, build, evolve, grow, deepen, expand) are still allowed but not privileged — they don't make Spectrea sound like Spectrea. Product-specific words (provenance, traceable, auditable, attributed, sourced) are also allowed and useful when describing what the product actually does — they just don't do brand voice work.
 
-**Words we never use:** AI-powered (overused), next-gen, state-of-the-art, world-class, breakthrough, unprecedented, game-changer, revolutionary.
+**Words we never use:** AI-powered (overused), next-gen, state-of-the-art, world-class, breakthrough, unprecedented, game-changer, revolutionary, seamless, cutting-edge, synergy, leverage (as a verb), agentic, AI-first, copilot (as a generic noun), 10x, supercharge, effortless, magical.
 
 **Density.** Max two privileged words per paragraph, one *"living"* / *"alive"* per page. If a paragraph survives losing every privileged word, the prose is doing its job — if it collapses without them, rewrite.
 
@@ -136,7 +180,7 @@ Generic B2B SaaS words (insights, intelligence, transform, empower, unlock, enab
   - **Reading 1 — Spectrum:** the full range. The complete view. The whole picture, all in one place.
   - **Reading 2 — Revealing:** bringing what was hidden into clear view. The shift from blur to focus.
   - Together: *the spectrum of clarity* — and the action behind the tagline "We connect the dots."
-- **Never:** "SpectreAI", "Spectrea AI" (lead), "spectra" (missing e).
+- **Never:** "SpectreAI" · "Spectre" / "Spectra" (different words) · "spectra" (missing the e) · "Spectrea AI" as the lead name (AI is not the brand) · "SPECTREA" (all-caps) · lowercase "spectrea" in headings or prose (lowercase belongs to the logo wordmark treatment only) · "The Spectrea" (no article) · random internal caps ("SpecTrea").
 
 ### Feature naming convention
 Apple-style: Title-case Proper Nouns without brand prefix. Each first-class feature stands on its own; the platform context (Spectrea) is implicit. The convention applies to whatever Spectrea ships, today or in the future.
@@ -152,6 +196,14 @@ Apple-style: Title-case Proper Nouns without brand prefix. Each first-class feat
 1. **Default:** Title-case Proper Noun for first-class features. The capital signals "this is a named thing in Spectrea."
 2. **Brand-prefix:** reserved for distinct branded surfaces — separately-paid tiers, developer surfaces, installable companions. Only after deliberate review (a hypothetical *Spectrea Studio* would qualify).
 3. **In running prose:** lowercase generic nouns are acceptable when natural ("the assistant suggested"). Canonical name in marketing headers, documentation cross-references, and product UI labels.
+
+### Naming the AI
+In prose, the AI is **"the assistant"** — lowercase, generic. As a first-class feature name it is **"Assistant"** (Title-Case, per the feature-naming convention). Never "copilot" (generic or name), never "Spectrea AI" as a name. When describing automated behavior generically, prefer "the assistant" over "agent". The assistant suggests, surfaces, and drafts. It never "decides", "acts on your behalf" without review, or "handles it for you" — autonomy verbs overclaim agency the product deliberately does not take.
+
+**Allowed verbs:** suggests · surfaces · drafts. **Forbidden verbs:** decides · acts without review · handles it for you · takes over.
+
+### Company vs product
+**Matchwise Pte. Ltd.** is the legal entity — it appears only where a legal entity is required: contracts, invoices, terms, privacy notices ("Spectrea is a product of Matchwise Pte. Ltd."). **Spectrea** is the product and brand name on every public surface. Never brand a surface "Matchwise"; never combine the two into one name. Earlier material using the company name as a product or brand name is superseded.
 
 ---
 
@@ -230,10 +282,12 @@ The gradient lives in the mark only. No gradient-filled wordmark, no full-spectr
 | Social avatar | #10 | Circular crop on most platforms |
 | Social cover image | #2 or #7 | Full lockup, match cover background |
 | Marketing hero | Logotype or stacked | Logotype inline; stacked centered |
-| Co-branding | #3 or #4 | Ink prevents colour competition |
+| Co-branding | #3 or #4 | Ink prevents colour competition; match the partner mark by optical height — scale so perceived heights are equal, not bounding boxes — and align on the marks' vertical centres |
 | Legal / formal | #4 | Ink lockup — authoritative, max contrast |
-| Watermark | #5 at low opacity | Grey mark, subtle |
+| Watermark | #5 at ≤20% opacity | Grey mark, subtle |
 | Emboss / foil stamp | #3 | Single-tone production |
+
+**Co-branding (canonical rule):** Use the ink variants (#3 mark / #4 lockup). Match the partner mark by optical height — scale so perceived heights are equal, not bounding boxes — and align on the marks' vertical centres.
 
 ### Clear space
 Minimum clear space around the lockup = 0.5× the mark height. No other graphic element (text, border, background image) enters the clear-space box.
@@ -306,7 +360,7 @@ The three dark-on-light text tiers map cleanly to the Warm Blend's three readabl
 | Body secondary | Slate `#6D6D72` | 5.05:1 (AA) | Descriptions, helper text, card sub-labels, secondary prose |
 | Whisper muted | Pewter `#97979E` | 2.85:1 | Supplementary labels only — see below |
 
-**Pewter is a whisper, not a readable tier.** Its 2.85:1 contrast is below WCAG AA large-text (3:1). This is an intentional trade: the whisper register is part of what makes the Warm Blend feel warm rather than clinical. Reserve Pewter for truly supplementary labels: overlines, timestamps, meta chips, placeholder text, and captions where the adjacent context already makes the content obvious. Any text that must be *read on its own* steps up to Slate (body secondary) or Iron (emphasized).
+**Pewter is a whisper, not a readable tier.** Its 2.85:1 contrast is below WCAG AA large-text (3:1). This is an intentional trade: the whisper register is part of what makes the Warm Blend feel warm rather than clinical. As a matrix — **allowed:** overlines, timestamps, meta chips, placeholder text, and captions where the adjacent context already makes the content obvious; **denied:** any informational text — anything that must be *read on its own* steps up to Slate (body secondary) or Iron (emphasized).
 
 ### Tailwind → Warm Blend mapping
 
@@ -392,6 +446,18 @@ Same 60/20/10/10 discipline, inverted: **60% Ink · 20% Graphite · 10% Cloud + 
 - **Presentations** — Canvas default; Ink for dividers and closing CTA (≤20% of deck). See §12.
 - **PDF and print** — always light. Dark-mode PDFs waste ink and hurt readability.
 - **Email** — transactional on Canvas; marketing headers may use Ink as a branded band, but the email body stays on Canvas.
+
+### Graph visualization colour semantics (foundation)
+Graph surfaces follow the tiered framework — colour is reserved for meaning:
+- **Node default:** neutral (Slate/Pewter strokes, Canvas/Cloud fills; inverted on dark). Structure is quiet.
+- **Node hover/focus:** Cobalt (Tier 1 — responsive; present during hover/focus, then settles).
+- **Node selected:** Ink (Tier 2 — structural; Cloud on dark).
+- **Edges:** neutral (Pewter). A newly formed connection may animate with the Formation motion primitive — spectrum gradient along the stroke, settling to resting neutral.
+- **Confidence:** Amber, with the value in JetBrains Mono — never conveyed by colour alone.
+- **Status:** Teal success/connected · Amber warning/pending · Rose error/conflict · Cobalt info (Tier 3 — semantic).
+- **Stale/dormant:** Pewter whisper plus a non-colour cue (icon or label).
+
+Foundation only: the operational graph-rendering spec (sizing, layout, density, interaction physics) is a product-design deliverable, not a brand-guide deliverable.
 
 ---
 
@@ -490,8 +556,10 @@ Desktop (1024+) / Tablet (640–1023) / Mobile (<640):
 - Body / Body SM: unchanged across breakpoints.
 
 ### Accessibility
+The floor is **WCAG 2.2 AA** on every shipped surface.
 - Body text minimum: 16 px. Never lower for primary content.
-- Contrast ratio minimum: 4.5:1 for normal text, 3:1 for large/UI. Ink 17.4:1 · Iron 9.21:1 (AAA) · Slate 5.05:1 (AA) · Pewter 2.85:1 (supplementary only).
+- Contrast ratio minimum: 4.5:1 for normal text, 3:1 for large/UI. Ink 17.4:1 · Iron 9.21:1 (AAA) · Slate 5.05:1 (AA) · Pewter 2.85:1 (supplementary only — see the Pewter allow/deny matrix in §5).
+- WCAG 2.2 specifics: a visible focus indicator on every interactive element (the Amber focus ring — 2 px solid, 2 px offset — is the standard treatment) · interactive targets ≥ 24×24 px (or the equivalent spacing exception) · every drag interaction (graph manipulation included) has a single-pointer, non-dragging alternative.
 - Never rely on colour alone — pair colour coding with icons, patterns, or labels.
 - Layout must not break at 200% browser text-zoom.
 
@@ -663,6 +731,23 @@ Your deck lives on Canvas. The warmth is deliberate — it's what keeps a Spectr
 - **Accent strip:** brand gradient, 2–4 px tall, at the bottom of title, stat, and divider slides (Canvas or Ink). Leave it off content slides so it keeps its meaning.
 - **Logotype, not just the mark, wherever the slide has room.** Centered `LogotypeGradient` on title and closing-CTA slides (the brand's signature hero treatment). Small `Logotype` footer at `fontSize=9`, bottom-left, on content, stat, and divider slides (`colorMode="ink"` on Canvas with `color="#97979E"`; `colorMode="white"` on Ink with `color="#B0B0B6"`). The bare mark is for favicons and tight spaces — not deck hero moments.
 
+### Trust & disclosures (approved masters)
+Brand-voice masters, not legal instruments — **review with counsel before external legal use**.
+
+- **Privacy:** "Your knowledge belongs to you. Spectrea is private by default: what you add is visible only to you and the people you explicitly share it with, and the system enforces that per viewer on every surface — including the assistant, which sees only what you can see."
+- **AI use:** "Spectrea uses AI to suggest, surface, and draft — never to decide for you. Every AI action is recorded, attributed to its sources, and reviewable. On the managed path, your data is not used to train foundation models — a contract we are formalizing, with independent ISO 42001-class attestation as a stated target."
+- **Retention:** "You stay in control of what Spectrea keeps. Your workspace persists until you delete it; deletion removes your data from live systems on a published schedule. And you can always leave with everything: full-fidelity export — structure, data, and provenance — is a first-class guarantee."
+- **Enterprise readiness:** "Trust in Spectrea is architectural first: per-viewer access control, provenance, and privacy are properties of the substrate, not compliance features added afterwards. Data is sovereign — full-fidelity export is guaranteed, and the deployment perimeter widens by tier from managed cloud to single-tenant/VPC to air-gapped. Formal attestations (SOC 2, ISO 27001, ISO 42001-class AI governance) and uptime/incident commitments are staged targets, stated as such: the architecture is the foundation; the program is what makes it independently verifiable."
+
+### Executive voice
+Founder and executive surfaces — bylines, talks, investor letters, interviews, personal social — use the same voice formula in the first person. Speak as a practitioner who builds and uses the product: concrete observations, shown work, named trade-offs. No corporate we-speak, no vision without evidence.
+
+| Right | Wrong |
+|---|---|
+| *"I kept watching decisions we'd already settled get re-argued three months later, because nobody could find why we'd decided. That's the problem Spectrea started from."* | *"We're thrilled to announce the next chapter in our journey to revolutionize how the world works with knowledge."* |
+
+The right version is a practitioner's observation — first person, specific, checkable. The wrong version is corporate we-speak built on a neverUse word. The brand's origin stance (Singapore) is **explicitly undecided and held silent** — do not originate origin copy.
+
 ---
 
 ## 13. Governance
@@ -673,11 +758,11 @@ If you need to ask "is this OK?" — it probably isn't. The logo should always l
 ### Change process
 1. **Propose** — document what you want to change and why.
 2. **Review** — design lead + brand lead sign off.
-3. **Version** — bump this guide and the related code.
-4. **Communicate** — change log posted in `#brand`.
+3. **Version** — bump `meta.version` in `src/data/brand.ts` and the related code; this guide and derived artifacts follow.
+4. **Communicate** — change log posted in `#brand`; the durable changelog is the git history of the spectrea-branding repo.
 
 ### Owner
-Brand lead owns this document. Updates live here; downstream consumers (Figma library, Tailwind config, PDF export) are regenerated from this as source of truth.
+Brand lead owns the brand system. "brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins." (`meta.sourceOfTruth`, quoted verbatim.)
 
 ---
 
@@ -810,4 +895,4 @@ All via Google Fonts:
 
 ---
 
-*The live app at [spectrea.com/brand](/) is the canonical source of truth for the Spectrea brand — interactive demos, the asset generator, and runtime tokens define the system. This document mirrors the app for offline and LLM-readable use. If the two ever disagree, the app wins.*
+*`src/data/brand.ts` is the canonical brand data (v2.1.0, 2026-07-03). The live app at [spectrea.com/brand](/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*

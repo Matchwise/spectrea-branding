@@ -24,8 +24,8 @@ export default function Social() {
           </div>
           {[
             { platform: 'LinkedIn', avatar: 'Gradient mark (400x400px)', cover: 'Brand gradient bar + tagline on Ink background', bio: 'We connect the dots. Composable intelligence platform.' },
-            { platform: 'Twitter / X', avatar: 'Gradient mark (400x400px)', cover: 'Gradient bar at bottom, tagline centered', bio: 'We connect the dots. Knowledge, connected.' },
-            { platform: 'GitHub', avatar: 'Gradient mark (square)', cover: 'N/A', bio: 'Composable intelligence platform. Open-source tools.' },
+            { platform: 'Twitter / X', avatar: 'Gradient mark (400x400px)', cover: 'Gradient bar at bottom, tagline centered', bio: 'We connect the dots. Composable intelligence platform.' },
+            { platform: 'GitHub', avatar: 'Gradient mark (square)', cover: 'N/A', bio: 'Composable intelligence platform. Open interfaces and developer tools.' },
             { platform: 'Product Hunt', avatar: 'Gradient mark', cover: 'Product screenshot with gradient accent', bio: 'Turns scattered info into compounding intelligence.' },
           ].map((row, i) => (
             <div key={row.platform} className="grid grid-cols-4 px-4 py-3" style={{ borderBottom: i < 3 ? '1px solid #F3F4F6' : 'none' }}>

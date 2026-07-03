@@ -26,15 +26,16 @@ export default function Positioning() {
       <Section title="Audience Scope">
         <div className="bg-cloud rounded-xl p-6 border border-stone-200">
           <p className="text-sm text-iron leading-relaxed mb-3">
-            <strong>Mass-appeal: B2C personal use through enterprise.</strong> The four named personas below
-            (Business Leaders, Knowledge Workers, Technology Leaders, Growing Teams) are only the named top tier.
-            The brand also has to work for an individual managing personal knowledge, a freelancer running their
-            own engagements, a five-person team with no IT department, and an enterprise procurement committee.
+            <strong>Mass-appeal: B2C personal use through enterprise.</strong> The five named personas below
+            (Solo Knowledge Workers, Business Leaders, Knowledge Workers, Technology Leaders, Growing Teams)
+            are only the named top tier — the solo tier is first-class, not a trial. The brand also has to work
+            for a five-person team with no IT department and an enterprise procurement committee.
           </p>
-          <p className="text-sm text-iron leading-relaxed">
+          <p className="text-sm text-iron leading-relaxed mb-3">
             Every artefact must read as <em>credible to enterprise</em> and <em>approachable to individuals</em> simultaneously.
             This is why the brand stakes the <em>spectrum + graph + alive</em> identity rather than picking a tier-specific aesthetic.
           </p>
+          <p className="text-sm text-iron leading-relaxed">{brand.audienceBreadth}</p>
         </div>
       </Section>
 
@@ -57,10 +58,11 @@ export default function Positioning() {
       <Section title="Category Definition">
         <div className="bg-cloud rounded-xl p-5 border border-stone-200">
           <p className="text-sm text-iron leading-relaxed">
-            Spectrea is a <strong>composable intelligence platform</strong> — a new category at the intersection
-            of knowledge management, graph intelligence, and composable architecture. The real competitor
-            isn't Notion or Confluence. It's the fragmented, unverifiable information landscape itself —
-            the dozens of disconnected tools and the noise that drowns out signal.
+            Spectrea is a <strong>{brand.positioning.category.toLowerCase()}</strong> — not knowledge management,
+            not an AI assistant, not an automation tool, but a substrate those capabilities emerge from. The
+            category is named for its outcome: scattered information becomes intelligence you can verify and
+            build on. The real competitor isn't Notion or Confluence. It's the fragmented, unverifiable
+            information landscape itself — the dozens of disconnected tools and the noise that drowns out signal.
           </p>
           <p className="text-xs text-pewter mt-3">
             When compared to specific tools, the key message is: <em>"This isn't a better version of X — it's a fundamentally different kind of thing."</em>

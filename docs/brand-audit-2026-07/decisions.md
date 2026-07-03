@@ -210,3 +210,108 @@ BA-11 | applied-awaiting-gate | src/data/brand.ts (buttonStates restructured per
 C1 | applied-awaiting-gate | BA-11 gate revision applied; npm run build GREEN again (tsc -b && vite build); working tree still uncommitted, cluster back to gate wP:p3 | by integrator
 BA-11 | accepted | by critic+codex
 C1 | accepted | by critic+codex
+
+BA-1 | committed | 2df71aa (C1 leg; guide/llms legs ride C2/C3) | by integrator
+BA-5 | committed | 2df71aa (data leg; TypeScale.tsx + guide text legs ride C2) | by integrator
+BA-6 | committed | 2df71aa (canon leg; guide/llms mirrors ride C2/C3) | by integrator
+BA-7 | committed | 2df71aa | by integrator
+BA-8 | committed | 2df71aa (canon leg; guide/Naming/llms mirrors ride C2/C3) | by integrator
+BA-11 | committed | 2df71aa (as revised at gate: light canonical, darkExploratory annotated) | by integrator
+BA-14 | committed | 2df71aa (canon leg; guide mirror rides C2) | by integrator
+BA-15 | committed | 2df71aa (canon leg; guide mirror rides C2) | by integrator
+BA-16 | committed | 2df71aa (foundation only) | by integrator
+BA-17 | committed | 2df71aa (canon leg; guide mirror rides C2) | by integrator
+BA-18 | committed | 2df71aa (canon leg; guide/Positioning mirror rides C2) | by integrator
+BA-19 | committed | 2df71aa (meta leg; TopBar derivation rides C2) | by integrator
+BA-20 | committed | 2df71aa (canon leg; guide mirror rides C2) | by integrator
+BA-21 | committed | 2df71aa (canon leg; Downloads CSS + contract legs ride C2/C3) | by integrator
+BA-22 | committed | 2df71aa (canon leg; guide mirror rides C2) | by integrator
+BA-23 | committed | 2df71aa (canon leg; guide section rides C2) | by integrator
+BA-24 | committed | 2df71aa (executiveVoice + originStance silent; BA-24F fork stays with Darren) | by integrator
+BA-25 | committed | 2df71aa (canon leg; guide mirror rides C2) | by integrator
+BA-26 | committed | 2df71aa (canon leg; GitHub bio rides C2) | by integrator
+BA-27 | committed | 2df71aa (canon leg; Copy.tsx examples ride C2) | by integrator
+BA-28 | committed | 2df71aa (canon leg; guide mirror rides C2) | by integrator
+BA-29 | committed | 2df71aa (canon leg; guide mirror rides C2) | by integrator
+C1 | committed | 2df71aa — one-cluster-one-commit; blackboard swept into same commit; build green at commit time | by integrator
+
+BA-1 | applied-awaiting-gate | public/brand-guide.md (footer "app wins" → brand.ts-canonical stanza; governance Owner + Version steps re-pointed at brand.ts) + src/pages/resources/Downloads.tsx (tooltip/badge/description/regeneration stanza: md+PDF = derived mirrors, brand.ts wins); llms leg rides C3 | by integrator
+BA-3 | applied-awaiting-gate | src/pages/communications/Social.tsx (X bio → "We connect the dots. Composable intelligence platform." per guide:651 template); generator + regen legs ride C4/C5 | by integrator
+BA-4 | applied-awaiting-gate | src/pages/foundation/Positioning.tsx (category derives from brand.positioning.category; knowledge-management-adjacency explanation replaced with vision-ratified not-KM/not-assistant/not-automation + outcome-named category) | by integrator
+BA-5 | applied-awaiting-gate | public/brand-guide.md (guide:35 "incomparably" → measurably-sharper phrasing; guide:76 ceiling → bounded) + src/pages/typography/TypeScale.tsx:130 ("incomparably better" → "measurably sharper still" — critic caveat honored); BA-5 now fully applied across all confirmed legs | by integrator
+BA-6 | applied-awaiting-gate | public/brand-guide.md (neverUse list now mirrors full canon — 19 items incl. BA-7 additions); llms leg rides C3 | by integrator
+BA-8 | applied-awaiting-gate | public/brand-guide.md (§3 Never line = unified 8-entry canon list) + src/pages/foundation/Naming.tsx (incorrect-usage hand list replaced by naming.neverNames derivation); llms leg rides C3 | by integrator
+BA-9 | applied-awaiting-gate | src/pages/foundation/Voice.tsx ("five" → {brand.personality.length}, renders 4 and can never drift again) | by integrator
+BA-14 | applied-awaiting-gate | public/brand-guide.md (§2 Surface patterns table — 7 surfaces, rule + right/wrong each, release-notes pointer to Feature Announcement) | by integrator
+BA-15 | applied-awaiting-gate | public/brand-guide.md (§3 "Naming the AI" mirror of naming.aiNaming) | by integrator
+BA-16 | applied-awaiting-gate | public/brand-guide.md (§5 graph-viz colour semantics foundation + routed-to-design-cycle note) | by integrator
+BA-17 | applied-awaiting-gate | public/brand-guide.md (§7 WCAG 2.2 AA pin + three 2.2 criteria; §5 Pewter prose recast as explicit allow/deny matrix) | by integrator
+BA-18 | applied-awaiting-gate | public/brand-guide.md (§1 Audiences — five personas + breadth path) + src/pages/foundation/Positioning.tsx (Audience Scope: five personas, solo first-class; renders brand.audienceBreadth) | by integrator
+BA-19 | applied-awaiting-gate | public/brand-guide.md (header Version 2.1.0 line; governance version step → meta.version; durable changelog = git history) + src/components/layout/TopBar.tsx (v0.1 → v{meta.version}) | by integrator
+BA-20 | applied-awaiting-gate | public/brand-guide.md (§3 "Company vs product" mirror of naming.companyProduct) | by integrator
+BA-21 | applied-awaiting-gate | src/pages/resources/Downloads.tsx (CSS tokens completed: 6 radii + 8 spacing vars matching guide §14 + elevation reference comment) | by integrator
+BA-22 | applied-awaiting-gate | public/brand-guide.md (watermark row "low opacity" → "≤20% opacity"; co-brand row + optical-height rule) | by integrator
+BA-23 | applied-awaiting-gate | public/brand-guide.md (§12 Trust & disclosures — four approved masters + counsel note) | by integrator
+BA-24 | applied-awaiting-gate | public/brand-guide.md (§12 Executive voice + origin-silence note; fork stays with Darren) | by integrator
+BA-25 | applied-awaiting-gate | public/brand-guide.md (value 2 per-viewer sentence + Differentiators row 1) | by integrator
+BA-26 | applied-awaiting-gate | src/pages/communications/Social.tsx (GitHub bio → "Composable intelligence platform. Open interfaces and developer tools.") + public/brand-guide.md (value 1 sovereign-export sentence + Differentiators row 7) | by integrator
+BA-27 | applied-awaiting-gate | public/brand-guide.md (§2 Outcome-first paragraph) + src/pages/communications/Copy.tsx (short-description + press boilerplate de-totalized and outcome-first; "One graph" formula example → "One connected view"; Do bullet → outcome-first) — all new copy opens with outcome per critic caveat | by integrator
+BA-28 | applied-awaiting-gate | public/brand-guide.md (messaging item 2 measurably-sharper + usage guardrail with dated contested note) | by integrator
+BA-29 | applied-awaiting-gate | public/brand-guide.md (§1 Differentiators table re-anchored to 4 moat rows + retrieval-never guardrail) | by integrator
+C2 | applied-awaiting-gate | cluster complete: public/brand-guide.md mirror sweep + 7 app files (Social, Positioning, Voice, TypeScale, Copy, Downloads, Naming, TopBar); llms.txt untouched per plan (regenerated in C3); npm run build GREEN (tsc -b && vite build); residual grep clean (only deliberate "not knowledge management" negation remains); uncommitted, awaiting codex gate | by integrator
+BA-1 | GAP | guide source-of-truth mirror adds Figma library/Tailwind config as derived mirrors outside meta.sourceOfTruth hierarchy, public/brand-guide.md:752 | by critic+codex
+BA-3 | accepted | by critic+codex
+BA-4 | accepted | by critic+codex
+BA-5 | accepted | by critic+codex
+BA-6 | accepted | by critic+codex
+BA-8 | accepted | by critic+codex
+BA-9 | accepted | by critic+codex
+BA-14 | GAP | guide surface-pattern mirror omits canonical rule clauses, e.g. onboarding drops "No feature carousels, no welcome to the future", public/brand-guide.md:151 | by critic+codex
+BA-15 | GAP | guide AI-naming mirror omits forbidden verb "takes over" from naming.aiNaming.forbiddenVerbs, public/brand-guide.md:198 | by critic+codex
+BA-16 | accepted | by critic+codex
+BA-17 | accepted | by critic+codex
+BA-18 | GAP | guide audience mirror summarizes personas instead of mirroring brand.audiences who/need/message values, e.g. Solo Knowledge Workers need is absent, public/brand-guide.md:87 | by critic+codex
+BA-19 | accepted | by critic+codex
+BA-20 | accepted | by critic+codex
+BA-21 | accepted | by critic+codex
+BA-22 | GAP | guide co-brand row omits the align-on-vertical-centres clause from logo.constraints.coBrand, public/brand-guide.md:280 | by critic+codex
+BA-23 | accepted | by critic+codex
+BA-24 | GAP | guide executive-voice mirror omits the correct/incorrect example pair from executiveVoice.example, public/brand-guide.md:735 | by critic+codex
+BA-25 | GAP | guide Trustworthy Intelligence value mirror drops "coexisting perspectives stay attributed" from brand.values, public/brand-guide.md:74 | by critic+codex
+BA-26 | GAP | guide Human-First value mirror drops "You can always leave with everything" from sovereign-export proof, public/brand-guide.md:73 | by critic+codex
+BA-27 | GAP | new press boilerplate opens with category ("Spectrea is a composable intelligence platform") instead of outcome, src/pages/communications/Copy.tsx:111 | by critic+codex
+BA-28 | GAP | guide compounding guardrail omits "the mechanism, not the slogan, carries the claim" from brand.ts, public/brand-guide.md:36 | by critic+codex
+BA-29 | GAP | guide differentiator guardrail omits "differentiate on what the substrate makes structural" from brand.ts, public/brand-guide.md:108 | by critic+codex
+C2 | GAP | unresolved mirror/copy gaps: BA-1, BA-14, BA-15, BA-18, BA-22, BA-24, BA-25, BA-26, BA-27, BA-28, BA-29 | by critic+codex
+C2 | proposed | REWORK per gate GAPs (11 ids): governing rule for ALL guide mirrors - carry the brand.ts clause VERBATIM, never paraphrase or summarize (paraphrase-divergence is the drift disease this run kills). Fix each individual GAP line exactly: BA-1 remove Figma/Tailwind additions not in meta.sourceOfTruth; BA-14 restore dropped rule clauses; BA-15 add "takes over" to forbidden verbs mirror; BA-18 mirror full who/need/message per persona; BA-22 add align-on-vertical-centres clause; BA-24 include the correct/incorrect example pair; BA-25 restore "coexisting perspectives stay attributed"; BA-26 restore "You can always leave with everything"; BA-27 press boilerplate opens with the outcome sentence THEN the category sentence; BA-28 restore "the mechanism, not the slogan, carries the claim"; BA-29 restore "differentiate on what the substrate makes structural" | by orchestrator
+BA-1 | applied-awaiting-gate | public/brand-guide.md Owner paragraph now mirrors meta.sourceOfTruth verbatim (brand.ts canonical → app renders → guide/llms/PDF/assets derived mirrors → brand.ts wins); Figma library / Tailwind config additions removed | by integrator
+BA-14 | applied-awaiting-gate | public/brand-guide.md surface-patterns Rule column now VERBATIM from voice.surfacePatterns — restored all dropped clauses incl. "No feature carousels...", "in the user's terms", "No celebration, no vagueness", "especially for privacy and access", "State facts and obligations", "Never open with an apology template", "An empty state is" | by integrator
+BA-15 | applied-awaiting-gate | public/brand-guide.md AI-naming mirror now carries aiNaming.rule + verbRule verbatim plus explicit allowed/forbidden verb lists incl. "takes over" | by integrator
+BA-18 | applied-awaiting-gate | public/brand-guide.md Audiences recast as full table mirroring brand.audiences who/need/message verbatim for all five personas; breadth path now verbatim brand.audienceBreadth incl. "The designed path:" | by integrator
+BA-22 | applied-awaiting-gate | public/brand-guide.md co-brand row now carries logo.constraints.coBrand verbatim incl. "align on the marks' vertical centres" | by integrator
+BA-24 | applied-awaiting-gate | public/brand-guide.md Executive voice now includes the correct/incorrect example pair + why, verbatim from executiveVoice.example | by integrator
+BA-25 | applied-awaiting-gate | public/brand-guide.md value 2 restored "coexisting perspectives stay attributed, and" — sentence now verbatim brand.ts | by integrator
+BA-26 | applied-awaiting-gate | public/brand-guide.md value 1 restored "You can always leave with everything." — proof now verbatim brand.ts | by integrator
+BA-27 | applied-awaiting-gate | src/pages/communications/Copy.tsx press boilerplate reordered: outcome sentence ("makes knowledge trustworthy, connected, and actionable") opens, category sentence second | by integrator
+BA-28 | applied-awaiting-gate | public/brand-guide.md compounding guardrail restored "the mechanism, not the slogan, carries the claim" — now verbatim usageGuardrail | by integrator
+BA-29 | applied-awaiting-gate | public/brand-guide.md differentiator guardrail restored "; differentiate on what the substrate makes structural" — now verbatim differentiatorGuardrail | by integrator
+C2 | applied-awaiting-gate | REWORK complete: all 11 gate GAPs fixed under the verbatim-mirror rule (10 guide clauses + 1 Copy.tsx reorder); npm run build GREEN; uncommitted, back to gate wP:p3 | by integrator
+BA-1 | GAP | Owner paragraph is equivalent but not verbatim meta.sourceOfTruth: it uses "src/data/brand.ts" / "this document" / "regenerated from it" instead of the canonical sentence, public/brand-guide.md:763 | by critic+codex
+BA-14 | accepted | by critic+codex
+BA-15 | accepted | by critic+codex
+BA-18 | accepted | by critic+codex
+BA-22 | GAP | co-brand row still does not carry logo.constraints.coBrand verbatim; first sentence "Use the ink variants (#3 mark / #4 lockup)" is represented as row columns plus "Ink prevents colour competition", public/brand-guide.md:285 | by critic+codex
+BA-24 | accepted | by critic+codex
+BA-25 | accepted | by critic+codex
+BA-26 | accepted | by critic+codex
+BA-27 | accepted | by critic+codex
+BA-28 | accepted | by critic+codex
+BA-29 | accepted | by critic+codex
+C2 | GAP | unresolved verbatim-mirror gaps: BA-1 and BA-22 | by critic+codex
+C2 | proposed | ORCHESTRATOR ADJUDICATION on mirror standard (ends the verbatim ping-pong): (1) the source-of-truth stanza is authority-critical - BA-1 fix = quote meta.sourceOfTruth's canonical sentence VERBATIM in the guide Owner paragraph; (2) for FORM-transformed mirrors (tables, rows) the binding standard is CLAUSE-COMPLETE + the canonical sentence quoted at least once adjacent - BA-22 fix = keep the co-brand table row, add logo.constraints.coBrand's canonical sentence verbatim as a note beneath the variant table. Gate: apply this standard to the re-verify; character-level verbatim is required only for authority/guardrail sentences, clause-completeness elsewhere | by orchestrator
+BA-1 | applied-awaiting-gate | public/brand-guide.md Owner paragraph now QUOTES meta.sourceOfTruth verbatim ("brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins.") with explicit source attribution | by integrator
+BA-22 | applied-awaiting-gate | public/brand-guide.md co-brand table row kept; logo.constraints.coBrand canonical sentence added VERBATIM as a note beneath the variant table per adjudicated form-transformed-mirror standard | by integrator
+C2 | applied-awaiting-gate | adjudication applied to both remaining ids; npm run build GREEN; uncommitted, back to gate wP:p3 for re-verify | by integrator
+BA-1 | accepted | by critic+codex
+BA-22 | accepted | by critic+codex
+C2 | accepted | by critic+codex

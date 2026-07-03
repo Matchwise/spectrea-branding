@@ -1,22 +1,13 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
-import { brand } from '../../data/brand'
+import { brand, naming } from '../../data/brand'
 
-const usageExamples = {
-  correct: [
-    'Spectrea helps organizations connect their knowledge.',
-    'Built with Spectrea',
-    'Powered by Spectrea',
-    'the Spectrea platform',
-    'spectrea.com',
-  ],
-  incorrect: [
-    'SPECTREA (all caps in body text)',
-    'spectrea (all lowercase in headings)',
-    'The Spectrea (unnecessary article)',
-    'Spectrea\'s AI-powered... (avoid hype terms)',
-    'SpeCTReA (random capitalization)',
-  ],
-}
+const correctUsage = [
+  'Spectrea helps organizations connect their knowledge.',
+  'Built with Spectrea',
+  'Powered by Spectrea',
+  'the Spectrea platform',
+  'spectrea.com',
+]
 
 export default function Naming() {
   return (
@@ -70,7 +61,7 @@ export default function Naming() {
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Correct Usage</h3>
             <ul className="space-y-2">
-              {usageExamples.correct.map(ex => (
+              {correctUsage.map(ex => (
                 <li key={ex} className="text-sm text-iron flex items-start gap-2">
                   <span className="mt-0.5" style={{ color: '#00B6A0' }}>&#10003;</span>
                   {ex}
@@ -79,9 +70,9 @@ export default function Naming() {
             </ul>
           </div>
           <div className="border rounded-xl p-5" style={{ borderColor: '#F2426025', backgroundColor: '#F2426008' }}>
-            <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Incorrect Usage</h3>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Never (canonical list)</h3>
             <ul className="space-y-2">
-              {usageExamples.incorrect.map(ex => (
+              {naming.neverNames.map(ex => (
                 <li key={ex} className="text-sm text-slate flex items-start gap-2">
                   <span className="mt-0.5" style={{ color: '#F24260' }}>&#10007;</span>
                   {ex}

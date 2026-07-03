@@ -47,7 +47,7 @@ export default function Voice() {
       {/* Personality reminder */}
       <Section title="Voice = Personality in Words">
         <p className="text-sm text-slate mb-4">
-          Spectrea's voice is the verbal expression of its five personality traits. Every piece of writing should feel:
+          Spectrea's voice is the verbal expression of its {brand.personality.length} personality traits. Every piece of writing should feel:
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {brand.personality.map(p => (

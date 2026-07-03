@@ -1,5 +1,6 @@
 import { TbMenu2 } from 'react-icons/tb'
 import { Logotype } from '../brand/SpectreaLogo'
+import { meta } from '../../data/brand'
 
 export default function TopBar({ onMenuToggle }: { onMenuToggle: () => void }) {
   return (
@@ -18,7 +19,7 @@ export default function TopBar({ onMenuToggle }: { onMenuToggle: () => void }) {
         </div>
       </div>
       <div className="flex items-center gap-2">
-        <span className="text-xs font-mono text-pewter bg-cloud px-2 py-1 rounded">v0.1</span>
+        <span className="text-xs font-mono text-pewter bg-cloud px-2 py-1 rounded">v{meta.version}</span>
       </div>
     </header>
   )

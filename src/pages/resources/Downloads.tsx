@@ -11,7 +11,7 @@ export default function Downloads() {
       {/* Guide documents — available now */}
       <Section>
         <h2 className="text-xl font-semibold text-ink mb-1">
-          <Tooltip content="The complete brand guide in two formats. The Markdown version is the single source of truth and is optimised for LLMs and automation. The PDF is for humans who want offline / print reference.">
+          <Tooltip content="The complete brand guide in two formats, both derived mirrors of the canonical brand data (src/data/brand.ts). The Markdown version is optimised for LLMs and automation; the PDF is for humans who want offline / print reference.">
             <span>The Brand Guide</span>
           </Tooltip>
         </h2>
@@ -24,11 +24,11 @@ export default function Downloads() {
           >
             <div className="flex items-center justify-between">
               <TbFileText size={22} className="text-brand" />
-              <span className="text-[10px] font-semibold text-pewter uppercase tracking-wider">Canonical</span>
+              <span className="text-[10px] font-semibold text-pewter uppercase tracking-wider">LLM-ready</span>
             </div>
             <div>
               <p className="text-sm font-semibold text-ink group-hover:text-brand transition-colors">brand-guide.md</p>
-              <p className="text-xs text-slate mt-0.5 leading-relaxed">Full brand guide in Markdown. Source of truth. LLM-friendly.</p>
+              <p className="text-xs text-slate mt-0.5 leading-relaxed">Full brand guide in Markdown. Derived mirror of brand.ts. LLM-friendly.</p>
             </div>
           </a>
           <a
@@ -68,7 +68,7 @@ export default function Downloads() {
             <strong>Visual assets</strong> for the guide (logo marks, lockups, colour swatches, gradient strips, type samples) live in <code className="font-mono text-[11px]">/brand-assets/</code> as standalone SVGs. They're referenced from the Markdown, embedded in the PDF, and regenerable from <code className="font-mono text-[11px]">npm run generate:assets</code>.
           </p>
           <p className="text-xs text-iron leading-relaxed mt-2">
-            <strong>Regeneration:</strong> edit <code className="font-mono text-[11px]">public/brand-guide.md</code> → run <code className="font-mono text-[11px]">npm run generate:all</code> to rebuild assets + PDF in one step.
+            <strong>Regeneration:</strong> the canonical data lives in <code className="font-mono text-[11px]">src/data/brand.ts</code> (mirrored into <code className="font-mono text-[11px]">public/brand-guide.md</code>) → run <code className="font-mono text-[11px]">npm run generate:all</code> to rebuild assets + PDF in one step. On any conflict between surfaces, brand.ts wins.
           </p>
         </div>
       </Section>
@@ -205,10 +205,28 @@ export default function Downloads() {
   --font-body:    'Lexend', 'Inter', sans-serif;
   --font-mono:    'JetBrains Mono', monospace;
 
-  /* Radii */
-  --radius-lg: 8px;
-  --radius-xl: 12px;
+  /* Radii — see the Radii table in the guide */
+  --radius-sm:   4px;  /* tags, badges, inline code */
+  --radius-md:   6px;  /* compact buttons, small controls */
+  --radius-lg:   8px;  /* buttons, inputs, dropdowns */
+  --radius-xl:   12px; /* cards, panels, modals (default container) */
+  --radius-2xl:  16px; /* hero sections, large feature cards */
+  --radius-full: 9999px; /* avatars, spectrum tags, toggles */
+
+  /* Spacing — 4 px base unit, all values are multiples of 4 */
+  --space-2xs:  4px;   /* p-1  — tight inline, icon gaps */
+  --space-xs:   8px;   /* p-2  — input padding, badge padding, compact gaps */
+  --space-sm:   12px;  /* p-3  — compact card padding, list item gaps */
+  --space-md:   16px;  /* p-4  — default content gap, section padding */
+  --space-lg:   20px;  /* p-5  — card padding (default), modal padding */
+  --space-xl:   24px;  /* p-6  — section spacing, form field gaps */
+  --space-2xl:  32px;  /* p-8  — major section breaks */
+  --space-3xl:  48px;  /* p-12 — page top padding, hero spacing */
 }
+
+/* Elevation — z-index steps by 10; shadows are Tailwind classes.
+   Base 0 (—) · Raised 10 (shadow-sm) · Dropdown 20 (shadow-md)
+   · Modal 30 (shadow-lg) · Overlay 40 (shadow-xl) · Toast 50 (shadow-lg) */
 
 /* Brand gradient — OKLCH with sRGB fallback for cross-browser safety.
    Chrome <111, Safari <16.2, Firefox <117 keep the sRGB version;

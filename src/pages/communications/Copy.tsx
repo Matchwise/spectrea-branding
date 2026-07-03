@@ -58,7 +58,7 @@ export default function Copy() {
             { formula: '[Verb] the [noun] that [outcome].', example: 'Surface the connections that drive decisions.' },
             { formula: '[Problem]. [Spectrea solution].', example: 'Information overload. Intelligent clarity.' },
             { formula: 'From [bad state] to [good state].', example: 'From scattered data to compounding intelligence.' },
-            { formula: '[Number/metric] that [emotional benefit].', example: 'One graph that makes everything click.' },
+            { formula: '[Number/metric] that [emotional benefit].', example: 'One connected view that makes everything click.' },
             { formula: 'Your [thing] [compounds/grows/evolves].', example: 'Your understanding compounds with every interaction.' },
             { formula: '[Adjective] enough for [expert]. [Adjective] enough for [beginner].', example: 'Powerful enough for architects. Clear enough for everyone.' },
           ].map(item => (
@@ -107,8 +107,8 @@ export default function Copy() {
         <div className="space-y-4">
           {[
             { label: 'One-liner', text: 'Spectrea is the composable intelligence platform that turns scattered information into compounding intelligence.' },
-            { label: 'Short description (50 words)', text: 'Spectrea connects the dots. It\'s a composable intelligence platform where everything you see is transparent, every connection inspectable, and understanding compounds with every interaction. For anyone who works with knowledge — from business leaders to researchers — Spectrea turns scattered information into intelligence you can trust and build on.' },
-            { label: 'Press boilerplate', text: `${brand.name} is a composable intelligence platform that makes knowledge trustworthy, connected, and actionable. Unlike fragmented point solutions that silo knowledge and hide their reasoning, Spectrea gives users a unified substrate where everything is transparent, every connection can be followed back to its source, and intelligence compounds over time. Learn more at spectrea.com.` },
+            { label: 'Short description (50 words)', text: 'Spectrea connects the dots. Scattered information becomes one connected, trustworthy whole — you can see where each answer came from, what changed, and why. For anyone who works with knowledge — from solo researchers to enterprise teams — Spectrea turns what you already have into intelligence you can verify and build on.' },
+            { label: 'Press boilerplate', text: `${brand.name} makes knowledge trustworthy, connected, and actionable. It is a composable intelligence platform: unlike fragmented point solutions that silo knowledge and hide their reasoning, Spectrea shows its work — every connection can be followed back to its source — and value compounds with use, from a single user to an entire organization. Learn more at spectrea.com.` },
           ].map(item => (
             <div key={item.label} className="border border-stone-200 rounded-xl p-5">
               <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">{item.label}</p>
@@ -129,7 +129,7 @@ export default function Copy() {
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
             <ul className="space-y-2 text-sm text-iron">
-              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Lead with the problem, then the solution</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Open with the problem and the outcome — the mechanism enters as the reason to believe</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use the approved vocabulary list</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Show what the user experiences, not what we built</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use headline formulas for consistency across authors</li>
