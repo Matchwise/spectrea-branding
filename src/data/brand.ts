@@ -49,6 +49,20 @@ export const brand = {
       exactNoun: true,
       badSubstitutions: ['composable knowledge platform', 'knowledge platform', 'knowledge management', 'AI assistant', 'automation tool'],
     },
+    // On-ramp posture (decided by Darren 2026-07-03): no whole-product market
+    // term. Every researched candidate is owned, contested, or segment-coded;
+    // the brand serves solo users through institutions, so the front door
+    // leads with the entry job/outcome, and each surface borrows the market's
+    // word only where one exists.
+    onRamp: {
+      posture:
+        'Outcome-first hero, no whole-product term. The hero leads with the entry job and its outcome (drop in your docs — get answers that show their sources, and a system that gets sharper every week), never with a category shorthand beyond the ratified noun.',
+      adopt: ['permission-aware', 'cited answers', 'grounded answers', 'knowledge graph (exploration surfaces only — the graph stays supporting-cast)'],
+      avoid: ['Work AI', 'organizational memory', 'AI workspace', 'AI OS', 'second brain', 'ambient agents', 'bitemporal', 'ontology', 'enterprise graph'],
+      coined: ['per-viewer truth', 'decisions in the graph'],
+      coinRule:
+        'Coin language ONLY for the two differentiators no market term names: per-viewer truth and decisions in the graph. Everywhere else, use the market\'s word where one exists (adopt list) or plain outcome language.',
+    },
     promise:
       'Turns scattered information into compounding intelligence',
     brand:
@@ -692,10 +706,10 @@ export const executiveVoice = {
 } as const
 
 // --- Origin Stance ---
-// EXPLICITLY undecided — a fork for Darren, recorded 2026-07-03.
+// DECIDED by Darren 2026-07-03: codified silence.
 export const originStance = {
-  status: 'undecided',
-  rule: 'Whether the brand leads with its Singapore origin (e.g. "engineered in Singapore" as a governance/rigor signal) is Darren\'s open decision. Until it is made, brand surfaces stay silent on origin — no origin claims, no locality framing. Do not originate origin copy.',
+  status: 'decided-silence',
+  rule: 'The brand stays silent on origin — no origin claims, no locality framing ("engineered in Singapore" or similar), on any surface. Do not originate origin copy. Decided by Darren 2026-07-03; revisit only if a GTM cycle produces buyer evidence that the signal earns something.',
 } as const
 
 // --- Color Palette Options ---

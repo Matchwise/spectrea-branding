@@ -98,6 +98,7 @@ const contract = {
     density: voice.vocabularyDensity,
     outcomeFirst: voice.outcomeFirst,
     contextShifts: voice.contextShifts,
+    onRamp: brand.positioning.onRamp,
   },
   guardrails: {
     compoundingClaim: compoundingValue?.usageGuardrail ?? null,
@@ -254,6 +255,7 @@ it is regenerated from src/data/brand.ts.
 - Never write the name as: ${listNever}.
 - Voice formula: ${voice.formula} ${voice.techDescription}
 - Outcome-first: ${voice.outcomeFirst}
+- On-ramp: ${brand.positioning.onRamp.posture} ${brand.positioning.onRamp.coinRule} Adopt: ${brand.positioning.onRamp.adopt.join(' · ')}. Avoid: ${brand.positioning.onRamp.avoid.join(' · ')}.
 - Privileged words (max two per paragraph): ${voice.alwaysUse.join(', ')}. ${voice.vocabularyDensity}
 - NEVER use these words: ${listNeverUse}.
 - AI naming: ${aiNamingLine}

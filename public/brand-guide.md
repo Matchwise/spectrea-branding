@@ -146,6 +146,8 @@ Two context shifts live within this same voice. **On buyer surfaces** (hero, cas
 
 **Outcome-first.** Open with the outcome, never the mechanism. On buyer surfaces the graph and the loop never open the copy — they enter after the outcome, as the reason to believe. Exception: graph-native jobs (exploration, visualisation), where the graph is the star and may lead.
 
+**On-ramp posture (decided by Darren 2026-07-03).** Outcome-first hero, no whole-product term. The hero leads with the entry job and its outcome (drop in your docs — get answers that show their sources, and a system that gets sharper every week), never with a category shorthand beyond the ratified noun. Adopt the market's words where they exist: *permission-aware* · *cited answers* · *grounded answers* · *knowledge graph* (exploration surfaces only — the graph stays supporting-cast). Avoid segment-coded or contested terms: *Work AI* · *organizational memory* · *AI workspace* · *AI OS* · *second brain* · *ambient agents* · *bitemporal* · *ontology* · *enterprise graph*. Coin language ONLY for the two differentiators no market term names: **per-viewer truth** and **decisions in the graph**. Everywhere else, use the market's word where one exists (adopt list) or plain outcome language.
+
 ### Surface patterns
 Voice patterns for product and operational surfaces the tone spectrum doesn't cover. Release notes follow the Feature Announcement pair above.
 
@@ -229,8 +231,11 @@ The lockup has **exactly two forms** — no third:
 2. **Mono lockup** — `Logotype` component. Everything renders in a single `ink` / `white` / `grey` colour.
 
 ![Gradient lockup — LogotypeGradient](/brand-assets/logo-lockup-gradient.svg)
+![Gradient lockup, dark-surface rendering — white wordmark](/brand-assets/logo-lockup-gradient-white.svg)
 ![Ink mono lockup](/brand-assets/logo-lockup-ink.svg)
 ![White mono lockup on ink](/brand-assets/logo-lockup-white.svg)
+
+The dark-surface file (`logo-lockup-gradient-white.svg`) is not a third form — it is form 1's "White on dark" wordmark rendering, shipped as its own asset for dark and photographic surfaces. (Resolved 2026-07-03: an earlier draft shipped this asset under the misnomer "spectrum-white"; Darren ratified re-scoping it to the gradient family — no full-spectrum lockup exists.)
 
 The gradient lives in the mark only. No gradient-filled wordmark, no full-spectrum lockup — the wordmark is always solid so it stays legible at every size. Duets (Balanced / Warm) belong to the static mark only; they are not lockup options.
 
@@ -746,7 +751,7 @@ Founder and executive surfaces — bylines, talks, investor letters, interviews,
 |---|---|
 | *"I kept watching decisions we'd already settled get re-argued three months later, because nobody could find why we'd decided. That's the problem Spectrea started from."* | *"We're thrilled to announce the next chapter in our journey to revolutionize how the world works with knowledge."* |
 
-The right version is a practitioner's observation — first person, specific, checkable. The wrong version is corporate we-speak built on a neverUse word. The brand's origin stance (Singapore) is **explicitly undecided and held silent** — do not originate origin copy.
+The right version is a practitioner's observation — first person, specific, checkable. The wrong version is corporate we-speak built on a neverUse word. The brand's origin stance is **decided (Darren, 2026-07-03): codified silence** — the brand stays silent on origin — no origin claims, no locality framing ("engineered in Singapore" or similar), on any surface. Do not originate origin copy.
 
 ---
 

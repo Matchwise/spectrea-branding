@@ -50,7 +50,7 @@ Use the approved masters verbatim (they are in /brand-contract.json under "trust
 
 Founder and executive surfaces — bylines, talks, investor letters, interviews, personal social — use the same voice formula in the first person. Speak as a practitioner who builds and uses the product: concrete observations, shown work, named trade-offs. No corporate we-speak, no vision without evidence.
 
-Origin stance: Whether the brand leads with its Singapore origin (e.g. "engineered in Singapore" as a governance/rigor signal) is Darren's open decision. Until it is made, brand surfaces stay silent on origin — no origin claims, no locality framing. Do not originate origin copy.
+Origin stance: The brand stays silent on origin — no origin claims, no locality framing ("engineered in Singapore" or similar), on any surface. Do not originate origin copy. Decided by Darren 2026-07-03; revisit only if a GTM cycle produces buyer evidence that the signal earns something.
 
 ## Design-surface quick gates
 

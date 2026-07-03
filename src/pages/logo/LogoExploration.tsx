@@ -143,10 +143,10 @@ const styles: Style[] = [
     defaultBg: 'transparent',
   },
   {
-    id: 'full-spectrum-white',
-    label: 'Full Spectrum / White',
-    markColorMode: 'color',
-    monoLockup: null,  // routes to LogotypeGradient with markColorMode='color'
+    id: 'gradient-white',
+    label: 'Gradient / White',
+    markColorMode: 'cool',
+    monoLockup: null,  // routes to LogotypeGradient with a white wordmark
     lockupEnabled: true,
     circle: null,
     backgrounds: [
@@ -154,7 +154,7 @@ const styles: Style[] = [
       { value: '#18181C', label: 'Ink (dark)' },
     ],
     defaultBg: 'transparent',
-    note: 'Full spectrum mark with white wordmark. Use on dark or photographic surfaces.',
+    note: 'Gradient lockup (Cool Duet mark) with white wordmark — the dark-surface rendering of lockup form 1. Use on dark or photographic surfaces.',
   },
   {
     id: 'ink',
@@ -394,7 +394,7 @@ function AssetGenerator() {
       if (style.id === 'full-spectrum') {
         return <LogotypeGradient ref={svgRef} fontSize={previewLockupFont} colorMode={fullSpectrumWordmarkMode} />
       }
-      if (style.id === 'full-spectrum-white') {
+      if (style.id === 'gradient-white') {
         return <LogotypeGradient ref={svgRef} fontSize={previewLockupFont} colorMode="white" />
       }
       if (style.monoLockup) {
