@@ -24,6 +24,9 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      # Freshness guard: regenerate all derived artifacts (assets, AI formats,
+      # PDF) from their sources so shipped output can never lag the canon.
+      - run: npm run generate:all
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:

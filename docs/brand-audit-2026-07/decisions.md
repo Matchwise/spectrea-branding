@@ -374,3 +374,16 @@ BA-12 | accepted | by critic+codex
 BA-13 | accepted | by critic+codex
 BA-32 | accepted | by critic+codex
 C4 | accepted | by critic+codex
+
+BA-3 | committed | 60f592c (generator + regenerated type-samples legs; PDF leg rides C5) | by integrator
+BA-12 | committed | 60f592c | by integrator
+BA-13 | committed | 60f592c | by integrator
+BA-32 | committed | 60f592c | by integrator
+C4 | committed | 60f592c — one-cluster-one-commit; full asset regeneration swept in (incl. logo-lockup-spectrum-white.svg status-quo creation, BA-10 fork untouched); blackboard swept into same commit; build green at commit time | by integrator
+
+BA-2 | applied-awaiting-gate | public/brand-guide.pdf REGENERATED via npm run generate:all (37 pages, gen-date 2026-07-03, from the C2-synced guide): PDF text verified via pypdf — "composable intelligence platform" ×6, retired "knowledge platform" ×0; .github/workflows/deploy.yml freshness guard added (- run: npm run generate:all between npm ci and npm run build, with comment) so shipped artifacts can never lag sources; CI-leg verified: marked declared in package.json + ubuntu-latest ships google-chrome | by integrator
+BA-3 | applied-awaiting-gate | PDF leg (final BA-3 leg): stale "Knowledge, connected." verified ABSENT from regenerated PDF text (×0; ratified "We connect the dots." ×7); with C4's type-samples fix all BA-3 surfaces now clean | by integrator
+C5 | applied-awaiting-gate | full generate:all run: assets + AI formats re-emitted byte-identical (idempotency confirmed — no diff vs C4/C3 commits), PDF regenerated; ENABLING FIX required and made: scripts/generate-pdf.mjs findChrome() was Linux-only (`which google-chrome`) and could not run on this Windows workstation — added CHROME_PATH env override + win32 Chrome/Edge path fallbacks, Linux/CI discovery path unchanged (content of emitted PDF unaffected by this fix); npm run build GREEN; uncommitted, awaiting codex gate wP:p3 | by integrator
+BA-2 | accepted | by critic+codex
+BA-3 | accepted | by critic+codex
+C5 | accepted | by critic+codex

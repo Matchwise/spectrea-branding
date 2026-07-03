@@ -13,7 +13,7 @@
  */
 
 import { readFile, writeFile, mkdtemp, rm } from 'node:fs/promises'
-import { readFileSync } from 'node:fs'
+import { readFileSync, existsSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 import { spawnSync } from 'node:child_process'
@@ -32,8 +32,19 @@ const root = resolve(__dirname, '..')
 const mdPath = join(root, 'public', 'brand-guide.md')
 const pdfPath = join(root, 'public', 'brand-guide.pdf')
 
-// Find a working Chrome/Chromium binary
+// Find a working Chrome/Chromium binary (CHROME_PATH env overrides discovery)
 function findChrome() {
+  if (process.env.CHROME_PATH && existsSync(process.env.CHROME_PATH)) return process.env.CHROME_PATH
+  if (process.platform === 'win32') {
+    const winCandidates = [
+      'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+      'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
+      'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe',
+      'C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe',
+    ]
+    for (const c of winCandidates) if (existsSync(c)) return c
+    throw new Error('No Chrome/Edge binary found (set CHROME_PATH to a browser executable).')
+  }
   const candidates = ['google-chrome', 'google-chrome-stable', 'chromium', 'chromium-browser']
   for (const c of candidates) {
     const r = spawnSync('which', [c], { encoding: 'utf8' })
