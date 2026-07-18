@@ -49,7 +49,7 @@ export default function Copy() {
       {/* The front door (on-ramp) */}
       <Section>
         <h2 className="text-xl font-semibold text-ink mb-4">
-          <Tooltip content="How the first thing a visitor reads should open — decided 2026-07-03. The hero sells the entry job and its outcome; category language stays in boilerplate.">
+          <Tooltip content="How the first thing a visitor reads should open — decided 2026-07-03, amended 2026-07-19. The hero sells the entry job and its outcome; one coined whole-product frame is sanctioned, always paired with plain language that carries the meaning.">
             <span>The Front Door (On-Ramp)</span>
           </Tooltip>
         </h2>

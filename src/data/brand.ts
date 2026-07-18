@@ -4,10 +4,10 @@
 
 // --- Meta / Governance ---
 export const meta = {
-  version: '2.3.0',
-  lastUpdated: '2026-07-04',
+  version: '2.4.0',
+  lastUpdated: '2026-07-19',
   sourceOfTruth:
-    'brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins.',
+    'brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea\'s roadmap — check it before placing a capability claim on a buyer-facing surface.',
   changelog:
     'Versioned in git — the commit history of the spectrea-branding repo is the durable changelog; notable changes are announced in #brand.',
 } as const
@@ -49,24 +49,39 @@ export const brand = {
       exactNoun: true,
       badSubstitutions: ['composable knowledge platform', 'knowledge platform', 'knowledge management', 'AI assistant', 'automation tool'],
     },
-    // On-ramp posture (decided by Darren 2026-07-03): no whole-product market
-    // term. Every researched candidate is owned, contested, or segment-coded;
-    // the brand serves solo users through institutions, so the front door
-    // leads with the entry job/outcome, and each surface borrows the market's
-    // word only where one exists.
+    // On-ramp posture (decided 2026-07-03; amended 2026-07-19): outcome-first
+    // hero with one sanctioned coined whole-product frame ("the operating
+    // system for collective intelligence") and the balance doctrine — market
+    // terms may label a segment-matched surface when plain language carries
+    // the meaning. See ratificationLedger.
     onRamp: {
       posture:
-        'Outcome-first hero, no whole-product term. The hero leads with the entry job and its outcome, never with a category shorthand beyond the ratified noun.',
+        'Outcome-first hero. The hero leads with the entry job and its outcome. One coined whole-product frame is sanctioned (ratified 2026-07-19): "the operating system for collective intelligence" — distinct from generic "AI OS", always paired with plain language that carries the meaning. Balance doctrine (ratified 2026-07-19): avoid-list terms are not blacklisted — one may label a segment-matched surface when a plain-language claim carries the meaning in place; never expect it to carry weight with unfamiliar audiences, and never lead a cross-segment hero with it.',
       heroExample:
         'Drop in your docs — get answers that show their sources, and a system that gets sharper every week.',
       adopt: ['permission-aware', 'cited answers', 'grounded answers', 'knowledge graph (exploration surfaces only — the graph stays supporting-cast)'],
       avoid: ['Work AI', 'organizational memory', 'AI workspace', 'AI OS', 'second brain', 'ambient agents', 'bitemporal', 'ontology', 'enterprise graph'],
-      coined: ['per-viewer truth', 'decisions in the graph'],
+      // Balance doctrine (ratified 2026-07-19): the avoid list guards against
+      // buzzword-led copy, not against the words existing. An industry term may
+      // label a segment-matched surface where a plain-language claim carries the
+      // meaning in place — but never expect the term to carry weight with
+      // audiences who don't know it, and never let it open a cross-segment hero.
+      avoidRule:
+        'Industry terms are not blacklisted or censored: an avoid-list term may label a segment-matched surface when a plain-language claim carries the meaning in place (e.g. "second brain" on the individuals page). Do not expect the term to carry weight with unfamiliar audiences; balance it, and never lead a cross-segment hero with it.',
+      coined: ['per-viewer truth', 'decisions in the graph', 'the operating system for collective intelligence'],
       coinRule:
-        'Coin language ONLY for the two differentiators no market term names: per-viewer truth and decisions in the graph. Everywhere else, use the market\'s word where one exists (adopt list) or plain outcome language.',
+        'Coin language ONLY for the differentiators no market term names: per-viewer truth, decisions in the graph, and the whole-product frame "the operating system for collective intelligence" (ratified 2026-07-19; pair it with plain language — it must not carry the claim alone). Everywhere else, use the market\'s word where one exists (adopt list) or plain outcome language.',
     },
     promise:
       'Turns scattered information into compounding intelligence',
+    // Full-shape claim (vision §1, spectrea-vision.md; adopted 2026-07-19):
+    // compounding (temporal — each cycle sharpens the next) × collective
+    // (cardinality — the org acts as one). Internal north-star, not hero copy.
+    fullShapeClaim: {
+      statement: 'Compounding collective intelligence',
+      usage:
+        'The platform\'s full-shape claim per the ratified vision: compounding intelligence is the temporal property, collective intelligence the cardinality property; Spectrea\'s target is both together. Internal north-star and depth-surface language (docs, vision, architecture narratives) — the on-ramp stays outcome-first.',
+    },
     brand:
       'In an age of information overload and eroding trust, people need more than another tool — they need a way to separate truth from noise, surface insights across boundaries, and build on what they understand. Spectrea is the composable intelligence platform that puts this power in human hands — where everything you see is transparent, every connection inspectable, and understanding compounds with every interaction.',
     tactical:
@@ -201,7 +216,7 @@ export const brand = {
   antiValues: [
     {
       never: 'Never replaces human judgment',
-      because: 'AI assists, suggests, and surfaces — but you decide. Spectrea never makes choices on your behalf or acts without your awareness.',
+      because: 'AI assists, suggests, and surfaces — but you decide. Judgment stays yours: automations act only within guardrails you set, and every AI action is recorded, attributed, and reviewable.',
     },
     {
       never: 'Never leaves anyone behind',
@@ -518,10 +533,12 @@ export const naming = {
   ],
   aiNaming: {
     canonicalNoun: 'the assistant',
-    rule: 'In prose, the AI is "the assistant" — lowercase, generic. As a first-class feature name it is "Assistant" (Title-Case, per the feature-naming convention). Never "copilot" (generic or name), never "Spectrea AI" as a name. When describing automated behavior generically, prefer "the assistant" over "agent".',
+    // Three registers, ratified 2026-07-19 (absorbs the spectrea-web local
+    // ratification of 2026-07-16 into canon).
+    rule: 'Three registers. (1) Homepage/hero narrative: "your AI" is sanctioned to match the hero register. (2) Product and trust surfaces: the AI is "the assistant" — lowercase, generic; as a first-class feature name it is "Assistant" (Title-Case). (3) Technical and architecture writing: "agent" is the umbrella term for an accountable AI actor (delegate or standing agent), per the vision taxonomy — the assistant is the delegate shape\'s product realization. Never "copilot" (generic or name), never "Spectrea AI" as a name.',
     allowedVerbs: ['suggests', 'surfaces', 'drafts'],
-    forbiddenVerbs: ['decides', 'acts without review', 'handles it for you', 'takes over'],
-    verbRule: 'The assistant suggests, surfaces, and drafts. It never "decides", "acts on your behalf" without review, or "handles it for you" — autonomy verbs overclaim agency the product deliberately does not take.',
+    forbiddenVerbs: ['handles it for you', 'takes over'],
+    verbRule: 'The assistant suggests, surfaces, and drafts — it never silently "handles it for you" or "takes over". Automations act within guardrails the user sets: the user decides what runs on its own and what checks with you first (ratified 2026-07-19, per the vision\'s governed-autonomy model). Never describe autonomy without naming its guardrail; never use approval-begging framings ("waiting for your yes").',
   },
   companyProduct: {
     company: 'Matchwise Pte. Ltd.',
@@ -692,10 +709,24 @@ export const graphViz = {
 export const trustCopy = {
   counselNote: 'These are brand-voice masters, not legal instruments. Review with counsel before external legal use.',
   privacy: 'Your knowledge belongs to you. Spectrea is private by default: what you add is visible only to you and the people you explicitly share it with, and the system enforces that per viewer on every surface — including the assistant, which sees only what you can see.',
-  aiUse: 'Spectrea uses AI to suggest, surface, and draft — never to decide for you. Every AI action is recorded, attributed to its sources, and reviewable. On the managed path, your data is not used to train foundation models — a contract we are formalizing, with independent ISO 42001-class attestation as a stated target.',
+  aiUse: 'Spectrea uses AI to suggest, surface, and draft — and to run only the automations you set guardrails for: you decide what runs on its own and what checks with you first. Every AI action is recorded, attributed to its sources, and reviewable. On the managed path, your data is not used to train foundation models — a contract we are formalizing, with independent ISO 42001-class attestation as a stated target.',
   retention: 'You stay in control of what Spectrea keeps. Your workspace persists until you delete it; deletion removes your data from live systems on a published schedule. And you can always leave with everything: full-fidelity export — structure, data, and provenance — is a first-class guarantee.',
   enterpriseReadiness: 'Trust in Spectrea is architectural first: per-viewer access control, provenance, and privacy are properties of the substrate, not compliance features added afterwards. Data is sovereign — full-fidelity export is guaranteed, and the deployment perimeter widens by tier from managed cloud to single-tenant/VPC to air-gapped. Formal attestations (SOC 2, ISO 27001, ISO 42001-class AI governance) and uptime/incident commitments are staged targets, stated as such: the architecture is the foundation; the program is what makes it independently verifiable.',
 } as const
+
+// --- Ratification Ledger ---
+// Single ledger for brand decisions (ratified 2026-07-19). Local per-repo
+// ratifications are absorbed here on sight; a decision recorded only in a
+// consumer repo's AGENTS.md is not canon until it lands in this ledger.
+export const ratificationLedger = [
+  { date: '2026-07-03', decision: 'D1 lockup third form re-scoped to gradient family; D2 outcome-first on-ramp, no whole-product term; D3 origin: codified silence; D4 neverUse additions + bio + trustCopy masters.' },
+  { date: '2026-07-08', decision: 'Claims posture (web, reaffirmed 2026-07-16; absorbed into canon 2026-07-19): pre-launch capability copy speaks the full product vision in present tense — anchored to the ratified vision, not shipped code; no shipped-only scoping, no "soon" hedging. Compliance stays a program, not a badge: attestations and uptime/incident commitments remain staged targets, stated as such.' },
+  { date: '2026-07-09', decision: 'Balance doctrine (web vocabulary nuance; generalized 2026-07-19): avoid/never lists guard against buzzword-led copy, not word existence — an industry term may label a segment-matched surface when plain language carries the meaning in place.' },
+  { date: '2026-07-16', decision: 'AI naming registers (web; absorbed 2026-07-19): "your AI" on homepage narrative; "the assistant" on product/trust surfaces; automation copy uses the guardrails frame ("what runs on its own, and what checks with you first").' },
+  { date: '2026-07-18', decision: 'Vision-anchored branding: brand claims anchor to the ratified vision canon; brand-vs-vision divergences are adjudicated, never auto-conformed to branding. Provenance note added to meta.sourceOfTruth.' },
+  { date: '2026-07-19', decision: 'Hero frame "the operating system for collective intelligence" ratified as a coined whole-product frame (D2 amended; pair with plain language). Full-shape claim "compounding collective intelligence" adopted from vision §1 as internal north-star. Autonomy absolutes replaced by the guardrails frame (aiNaming.verbRule, trustCopy.aiUse). Trust surfaces align UP to present-tense masters (no "building toward launch" hedging). Buttons stay canonical 8px radius (pill was a web spec error, not a decision).' },
+  { date: '2026-07-19', decision: 'Post-wave adjudications: (1) Named-vendor exception — vision-present-tense governs capability copy EXCEPT named third-party integrations, which are stated as current only when live; roadmap framing is allowed for named vendors. (2) Origin silence holds on trust surfaces — the legal-entity/jurisdiction carve-out stays limited to legal instruments (terms, privacy notices); the entity/PDPA line moves off /security. (3) Generator emits fullShapeClaim and ratificationLedger into the machine contract and a governance pointer into the agent-rules drop-in.' },
+] as const
 
 // --- Executive Voice ---
 // Founder/exec surfaces speak as practitioners — same voice formula, first

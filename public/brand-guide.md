@@ -7,7 +7,7 @@
 **Tagline:** We connect the dots.
 **Category:** Composable intelligence platform.
 **Pronunciation:** /spek-TREE-uh/ (from Latin *spectra* — the full range or spectrum, with a second reading: *revealing*).
-**Version:** 2.3.0 (2026-07-04). Canonical data: `src/data/brand.ts` — this guide is a derived mirror.
+**Version:** 2.4.0 (2026-07-19). Canonical data: `src/data/brand.ts` — this guide is a derived mirror.
 
 **Strategic claim:** Spectrea is the spectrum of clarity. Everything you know, in one living view — alive with possibility, yours to keep. See it whole. Trust what you see. Build on what you find.
 
@@ -28,6 +28,7 @@ A world where anyone can see the full spectrum of what's known, trust what they 
 - **For:** Anyone who works with knowledge.
 - **Category:** Composable intelligence platform.
 - **Promise:** Turns scattered information into compounding intelligence.
+- **Full-shape claim (vision §1, adopted 2026-07-19):** Compounding collective intelligence — compounding intelligence is the temporal property (each cycle sharpens the next), collective intelligence the cardinality property (the org acts as one); Spectrea's target is both together. Internal north-star and depth-surface language (docs, vision, architecture narratives) — the on-ramp stays outcome-first.
 - **Tactical:** For anyone who works with knowledge, Spectrea is the composable intelligence platform that turns scattered information into compounding intelligence — unlike fragmented point solutions that silo your knowledge and hide their reasoning.
 
 ### Messaging hierarchy
@@ -146,7 +147,7 @@ Two context shifts live within this same voice. **On buyer surfaces** (hero, cas
 
 **Outcome-first.** Open with the outcome, never the mechanism. On buyer surfaces the graph and the loop never open the copy — they enter after the outcome, as the reason to believe. Exception: graph-native jobs (exploration, visualisation), where the graph is the star and may lead.
 
-**On-ramp posture (decided by Darren 2026-07-03).** Outcome-first hero, no whole-product term. The hero leads with the entry job and its outcome, never with a category shorthand beyond the ratified noun. The sanctioned hero example: *"Drop in your docs — get answers that show their sources, and a system that gets sharper every week."* Adopt the market's words where they exist: *permission-aware* · *cited answers* · *grounded answers* · *knowledge graph* (exploration surfaces only — the graph stays supporting-cast). Avoid segment-coded or contested terms: *Work AI* · *organizational memory* · *AI workspace* · *AI OS* · *second brain* · *ambient agents* · *bitemporal* · *ontology* · *enterprise graph*. Coin language ONLY for the two differentiators no market term names: **per-viewer truth** and **decisions in the graph**. Everywhere else, use the market's word where one exists (adopt list) or plain outcome language.
+**On-ramp posture (decided by Darren 2026-07-03; amended 2026-07-19).** Outcome-first hero. The hero leads with the entry job and its outcome. One coined whole-product frame is sanctioned (ratified 2026-07-19): **"the operating system for collective intelligence"** — distinct from generic "AI OS", always paired with plain language that carries the meaning. The sanctioned hero example: *"Drop in your docs — get answers that show their sources, and a system that gets sharper every week."* Adopt the market's words where they exist: *permission-aware* · *cited answers* · *grounded answers* · *knowledge graph* (exploration surfaces only — the graph stays supporting-cast). Avoid-list terms — *Work AI* · *organizational memory* · *AI workspace* · *AI OS* · *second brain* · *ambient agents* · *bitemporal* · *ontology* · *enterprise graph* — follow the **balance doctrine** (ratified 2026-07-19): industry terms are not blacklisted or censored; an avoid-list term may label a segment-matched surface when a plain-language claim carries the meaning in place (e.g. "second brain" on the individuals page). Do not expect the term to carry weight with unfamiliar audiences; balance it, and never lead a cross-segment hero with it. Coin language ONLY for the differentiators no market term names: **per-viewer truth**, **decisions in the graph**, and the whole-product frame **"the operating system for collective intelligence"** (pair it with plain language — it must not carry the claim alone). Everywhere else, use the market's word where one exists (adopt list) or plain outcome language.
 
 ### Surface patterns
 Voice patterns for product and operational surfaces the tone spectrum doesn't cover. Release notes follow the Feature Announcement pair above.
@@ -200,9 +201,11 @@ Apple-style: Title-case Proper Nouns without brand prefix. Each first-class feat
 3. **In running prose:** lowercase generic nouns are acceptable when natural ("the assistant suggested"). Canonical name in marketing headers, documentation cross-references, and product UI labels.
 
 ### Naming the AI
-In prose, the AI is **"the assistant"** — lowercase, generic. As a first-class feature name it is **"Assistant"** (Title-Case, per the feature-naming convention). Never "copilot" (generic or name), never "Spectrea AI" as a name. When describing automated behavior generically, prefer "the assistant" over "agent". The assistant suggests, surfaces, and drafts. It never "decides", "acts on your behalf" without review, or "handles it for you" — autonomy verbs overclaim agency the product deliberately does not take.
+Three registers (ratified 2026-07-19). **(1) Homepage/hero narrative:** "your AI" is sanctioned to match the hero register. **(2) Product and trust surfaces:** the AI is **"the assistant"** — lowercase, generic; as a first-class feature name it is **"Assistant"** (Title-Case, per the feature-naming convention). **(3) Technical and architecture writing:** "agent" is the umbrella term for an accountable AI actor (delegate or standing agent), per the vision taxonomy — the assistant is the delegate shape's product realization. Never "copilot" (generic or name), never "Spectrea AI" as a name.
 
-**Allowed verbs:** suggests · surfaces · drafts. **Forbidden verbs:** decides · acts without review · handles it for you · takes over.
+The assistant suggests, surfaces, and drafts — it never silently "handles it for you" or "takes over". Automations act within guardrails the user sets: the user decides what runs on its own and what checks with you first (per the vision's governed-autonomy model). Never describe autonomy without naming its guardrail; never use approval-begging framings ("waiting for your yes").
+
+**Allowed verbs:** suggests · surfaces · drafts. **Forbidden verbs:** handles it for you · takes over.
 
 ### Company vs product
 **Matchwise Pte. Ltd.** is the legal entity — it appears only where a legal entity is required: contracts, invoices, terms, privacy notices ("Spectrea is a product of Matchwise Pte. Ltd."). **Spectrea** is the product and brand name on every public surface. Never brand a surface "Matchwise"; never combine the two into one name. Earlier material using the company name as a product or brand name is superseded.
@@ -742,7 +745,7 @@ Your deck lives on Canvas. The warmth is deliberate — it's what keeps a Spectr
 Brand-voice masters, not legal instruments — **review with counsel before external legal use**.
 
 - **Privacy:** "Your knowledge belongs to you. Spectrea is private by default: what you add is visible only to you and the people you explicitly share it with, and the system enforces that per viewer on every surface — including the assistant, which sees only what you can see."
-- **AI use:** "Spectrea uses AI to suggest, surface, and draft — never to decide for you. Every AI action is recorded, attributed to its sources, and reviewable. On the managed path, your data is not used to train foundation models — a contract we are formalizing, with independent ISO 42001-class attestation as a stated target."
+- **AI use:** "Spectrea uses AI to suggest, surface, and draft — and to run only the automations you set guardrails for: you decide what runs on its own and what checks with you first. Every AI action is recorded, attributed to its sources, and reviewable. On the managed path, your data is not used to train foundation models — a contract we are formalizing, with independent ISO 42001-class attestation as a stated target."
 - **Retention:** "You stay in control of what Spectrea keeps. Your workspace persists until you delete it; deletion removes your data from live systems on a published schedule. And you can always leave with everything: full-fidelity export — structure, data, and provenance — is a first-class guarantee."
 - **Enterprise readiness:** "Trust in Spectrea is architectural first: per-viewer access control, provenance, and privacy are properties of the substrate, not compliance features added afterwards. Data is sovereign — full-fidelity export is guaranteed, and the deployment perimeter widens by tier from managed cloud to single-tenant/VPC to air-gapped. Formal attestations (SOC 2, ISO 27001, ISO 42001-class AI governance) and uptime/incident commitments are staged targets, stated as such: the architecture is the foundation; the program is what makes it independently verifiable."
 
@@ -769,7 +772,9 @@ If you need to ask "is this OK?" — it probably isn't. The logo should always l
 4. **Communicate** — change log posted in `#brand`; the durable changelog is the git history of the spectrea-branding repo.
 
 ### Owner
-Brand lead owns the brand system. "brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins." (`meta.sourceOfTruth`, quoted verbatim.)
+Brand lead owns the brand system. "brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea's roadmap — check it before placing a capability claim on a buyer-facing surface." (`meta.sourceOfTruth`, quoted verbatim.)
+
+Brand decisions live in the **ratification ledger** (`ratificationLedger` in `brand.ts`): a decision recorded only in a consumer repo's AGENTS.md is not canon until it lands in the ledger.
 
 ---
 
@@ -902,4 +907,4 @@ All via Google Fonts:
 
 ---
 
-*`src/data/brand.ts` is the canonical brand data (v2.3.0, 2026-07-04). The live app at [spectrea.com/brand](/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
+*`src/data/brand.ts` is the canonical brand data (v2.4.0, 2026-07-19). The live app at [spectrea.com/brand](/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*

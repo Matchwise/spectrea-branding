@@ -1,8 +1,8 @@
-<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-07-03) -->
+<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-07-18) -->
 # Spectrea brand pre-flight checklist
 
 Run this BEFORE generating any Spectrea-branded surface — copy, UI, slide, or image.
-Canonical data: src/data/brand.ts (v2.3.0, 2026-07-04). Hard values: /brand-contract.json.
+Canonical data: src/data/brand.ts (v2.4.0, 2026-07-19). Hard values: /brand-contract.json.
 
 ## Step 1 — classify the surface
 
@@ -33,11 +33,11 @@ Pick the closest context; it selects the tone and pattern you must match (exampl
 - [ ] Differentiation: Never position on retrieval or search quality — it is commoditized across the field. The graph earns its keep through governance, provenance, shared state, and the loop; differentiate on what the substrate makes structural.
 - [ ] Buyer surfaces: Hero, case studies, pricing — lead with proof: a named customer, a concrete outcome, or a peer-testable claim. Brand vocabulary decorates; it doesn't carry the opening.
 - [ ] Product surfaces: Warm up one notch. Warmth comes from specificity, not exclamation points — "Read. 12 entities, 18 connections added." beats "Upload complete! 🎉" because the first shows the system paid attention.
-- [ ] AI naming: In prose, the AI is "the assistant" — lowercase, generic. As a first-class feature name it is "Assistant" (Title-Case, per the feature-naming convention). Never "copilot" (generic or name), never "Spectrea AI" as a name. When describing automated behavior generically, prefer "the assistant" over "agent". The assistant suggests, surfaces, and drafts. It never "decides", "acts on your behalf" without review, or "handles it for you" — autonomy verbs overclaim agency the product deliberately does not take. Allowed verbs: suggests, surfaces, drafts. Forbidden verbs: decides, acts without review, handles it for you, takes over.
+- [ ] AI naming: Three registers. (1) Homepage/hero narrative: "your AI" is sanctioned to match the hero register. (2) Product and trust surfaces: the AI is "the assistant" — lowercase, generic; as a first-class feature name it is "Assistant" (Title-Case). (3) Technical and architecture writing: "agent" is the umbrella term for an accountable AI actor (delegate or standing agent), per the vision taxonomy — the assistant is the delegate shape's product realization. Never "copilot" (generic or name), never "Spectrea AI" as a name. The assistant suggests, surfaces, and drafts — it never silently "handles it for you" or "takes over". Automations act within guardrails the user sets: the user decides what runs on its own and what checks with you first (ratified 2026-07-19, per the vision's governed-autonomy model). Never describe autonomy without naming its guardrail; never use approval-begging framings ("waiting for your yes"). Allowed verbs: suggests, surfaces, drafts. Forbidden verbs: handles it for you, takes over.
 
 ## Step 3 — anti-values (never violated, any surface)
 
-- [ ] Never replaces human judgment — AI assists, suggests, and surfaces — but you decide. Spectrea never makes choices on your behalf or acts without your awareness.
+- [ ] Never replaces human judgment — AI assists, suggests, and surfaces — but you decide. Judgment stays yours: automations act only within guardrails you set, and every AI action is recorded, attributed, and reviewable.
 - [ ] Never leaves anyone behind — If someone feels lost or excluded, we failed — not them. Every interaction must be understandable at the user's depth.
 - [ ] Never complex or bloated — Simplicity and composability are sacred. If it needs a consultant, we failed.
 - [ ] Never a black box — You can always ask "why?" and get an answer. Every recommendation, every connection, every automated action is inspectable.

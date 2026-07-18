@@ -46,6 +46,7 @@ async function importTsModule(tsPath) {
 const {
   brand, voice, naming, brandTokens, accessibility, logo, graphViz,
   trustCopy, executiveVoice, originStance, meta, selectedPalette,
+  ratificationLedger,
 } = await importTsModule(join(root, 'src', 'data', 'brand.ts'))
 const { navigation } = await importTsModule(join(root, 'src', 'data', 'navigation.ts'))
 
@@ -86,6 +87,7 @@ const contract = {
     categoryGuard: brand.positioning.categoryGuard,
     categoryRule,
     promise: brand.positioning.promise,
+    fullShapeClaim: brand.positioning.fullShapeClaim,
   },
   naming: {
     neverNames: naming.neverNames,
@@ -127,6 +129,7 @@ const contract = {
   trustCopy,
   executiveVoice,
   originStance,
+  ratificationLedger,
 }
 
 /* ------------------------------------------------------------------ */
@@ -268,6 +271,7 @@ it is regenerated from src/data/brand.ts.
 - Typefaces: ${fonts}.
 - Accessibility floor: ${accessibility.floor}. Contrast ≥ ${accessibility.contrast.normalText} normal text / ${accessibility.contrast.largeTextAndUI} large+UI. ${accessibility.contrast.tokens}
 - Logo: exactly ${lc.dotCount} dots; ${lc.lockupForms} lockup forms; primary dots ${lc.primaryDotColor}; ${lc.container} Clear space: ${lc.clearSpace} Watermark ≤ ${watermarkPct} opacity.
+- Governance: brand decisions live in the ratification ledger (ratificationLedger in brand.ts; mirrored in /brand-contract.json). A decision recorded only in a consumer repo's AGENTS.md is not canon until it lands in the ledger.
 - Full machine data: /brand-contract.json · full guide: /brand-guide.md. Both are derived mirrors of src/data/brand.ts — on any conflict, brand.ts wins.
 `
 
@@ -306,6 +310,7 @@ const llms = `${MD_HEADER}
 - **Category:** ${categoryRule}
 - **Tagline:** "${brand.tagline.statement}"
 - **Promise:** ${brand.positioning.promise}.
+- **Full-shape claim (internal north-star, not hero copy):** ${brand.positioning.fullShapeClaim.statement}.
 - **Voice formula:** ${voice.formula}
 - **Never-use words:** ${listNeverUse}.
 - **Density:** ${voice.vocabularyDensity}
