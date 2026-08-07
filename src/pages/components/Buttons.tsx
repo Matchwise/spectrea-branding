@@ -114,7 +114,7 @@ export default function Buttons() {
           <div className="flex items-center gap-4 flex-wrap mb-6">
             {/* Primary */}
             <div className="flex flex-col items-center gap-2">
-              <button className="px-4 py-2 rounded-lg text-sm font-medium text-white transition-all btn-focus"
+              <button className={`px-4 py-2 rounded-lg text-sm font-medium text-white transition-all ${dark ? 'btn-focus-dark' : 'btn-focus'}`}
                 {...filledHandlers('brand')}
               >
                 Create
@@ -124,7 +124,7 @@ export default function Buttons() {
             {/* Secondary */}
             <div className="flex flex-col items-center gap-2">
               <button
-                className="px-4 py-2 rounded-lg text-sm font-medium transition-all btn-focus"
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${dark ? 'btn-focus-dark' : 'btn-focus'}`}
                 style={dark
                   ? { backgroundColor: dm.secondaryBg, color: dm.text }
                   : { backgroundColor: '#F3F4F6', color: '#212226' }
@@ -139,7 +139,7 @@ export default function Buttons() {
             {/* Ghost */}
             <div className="flex flex-col items-center gap-2">
               <button
-                className="px-4 py-2 rounded-lg text-sm font-medium border-2 transition-all btn-focus"
+                className={`px-4 py-2 rounded-lg text-sm font-medium border-2 transition-all ${dark ? 'btn-focus-dark' : 'btn-focus'}`}
                 style={dark
                   ? { borderColor: '#B0B0B6', color: '#F4F4F1' }
                   : { borderColor: '#D1D5DB', color: '#97979E' }
@@ -158,7 +158,7 @@ export default function Buttons() {
           <div className="flex items-center gap-4 flex-wrap">
             {/* Destructive (Rose) */}
             <div className="flex flex-col items-center gap-2">
-              <button className="px-4 py-2 rounded-lg text-sm font-medium text-white transition-all btn-focus"
+              <button className={`px-4 py-2 rounded-lg text-sm font-medium text-white transition-all ${dark ? 'btn-focus-dark' : 'btn-focus'}`}
                 {...filledHandlers('rose')}
               >
                 Delete
@@ -167,7 +167,7 @@ export default function Buttons() {
             </div>
             {/* Confirm (Teal) */}
             <div className="flex flex-col items-center gap-2">
-              <button className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium text-white transition-all btn-focus"
+              <button className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium text-white transition-all ${dark ? 'btn-focus-dark' : 'btn-focus'}`}
                 {...filledHandlers('teal')}
               >
                 <TbCheck size={16} /> Confirm
@@ -176,7 +176,7 @@ export default function Buttons() {
             </div>
             {/* Caution (Amber) */}
             <div className="flex flex-col items-center gap-2">
-              <button className="px-4 py-2 rounded-lg text-sm font-medium text-white transition-all btn-focus"
+              <button className={`px-4 py-2 rounded-lg text-sm font-medium text-white transition-all ${dark ? 'btn-focus-dark' : 'btn-focus'}`}
                 {...filledHandlers('amber')}
               >
                 Override Score
@@ -243,7 +243,7 @@ export default function Buttons() {
             { label: 'Font', value: 'Lexend Medium 500' },
             { label: 'Radius', value: '8px (rounded-lg)' },
             { label: 'Semantic text', value: 'White' },
-            { label: 'Focus ring', value: '2px Amber, 2px offset' },
+            { label: 'Focus ring', value: '2px Amber, 2px offset · #A86E00 light / alpha dark' },
           ].map(s => (
             <div key={s.label} className="bg-cloud rounded-lg px-3 py-2 border border-stone-100 text-center">
               <p className="text-xs font-semibold text-slate">{s.label}</p>
@@ -380,11 +380,11 @@ export default function Buttons() {
                 <span className="text-[10px] font-mono text-pewter">Interactive</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
-                <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand" style={{ outline: '2px solid rgba(225, 144, 0, 0.7)', outlineOffset: '2px' }}>Focused</button>
+                <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand" style={{ outline: '2px solid #A86E00', outlineOffset: '2px' }}>Focused</button>
                 <span className="text-[10px] font-mono text-pewter">Amber ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
-                <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate border-2 border-stone-300" style={{ outline: '2px solid rgba(225, 144, 0, 0.7)', outlineOffset: '2px' }}>Focused</button>
+                <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate border-2 border-stone-300" style={{ outline: '2px solid #A86E00', outlineOffset: '2px' }}>Focused</button>
                 <span className="text-[10px] font-mono text-pewter">Ghost + ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
@@ -398,7 +398,7 @@ export default function Buttons() {
             <p className="text-[10px] font-semibold uppercase tracking-wider mb-3" style={{ color: dm.muted }}>Dark Mode</p>
             <div className="flex items-center gap-3 flex-wrap">
               <div className="flex flex-col items-center gap-1.5">
-                <button className="px-3 py-1.5 rounded-lg text-xs font-medium transition-all btn-focus"
+                <button className="px-3 py-1.5 rounded-lg text-xs font-medium transition-all btn-focus-dark"
                   style={{ backgroundColor: hc.brand.dark.base, color: '#FFFFFF' }}
                   onMouseEnter={e => { e.currentTarget.style.backgroundColor = hc.brand.dark.hover; e.currentTarget.style.color = '#18181C' }}
                   onMouseLeave={e => { e.currentTarget.style.backgroundColor = hc.brand.dark.base; e.currentTarget.style.color = '#FFFFFF' }}
@@ -440,7 +440,7 @@ export default function Buttons() {
         </div>
         <div className="mt-3 bg-cloud rounded-lg px-4 py-3 border border-stone-200">
           <p className="text-xs text-iron">
-            <strong>Focus ring:</strong> 2px solid Amber outline with 2px offset. Amber = "attention" in the semantic color system — focus is literally where attention should go. The warm tone contrasts with every button variant and works equally well on light and dark surfaces. Only appears on keyboard navigation (<code className="font-mono bg-cloud px-1 rounded">focus-visible</code>), never on click.
+            <strong>Focus ring:</strong> 2px solid Amber outline with 2px offset. Amber = "attention" in the semantic color system — focus is literally where attention should go. The ring adapts to its surface (ratified 2026-08-07): light surfaces use Amber active <code className="font-mono bg-white px-1 rounded">#A86E00</code> (4.21:1 on Canvas, 3.89:1 on Cloud), dark surfaces use soft alpha Amber <code className="font-mono bg-white px-1 rounded">rgba(225,144,0,0.7)</code> (4.00:1 on Ink) — every pairing clears the 3:1 UI floor. Only appears on keyboard navigation (<code className="font-mono bg-cloud px-1 rounded">focus-visible</code>), never on click.
           </p>
         </div>
       </Section>

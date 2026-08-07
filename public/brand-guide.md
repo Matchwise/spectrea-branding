@@ -7,7 +7,7 @@
 **Tagline:** We connect the dots.
 **Category:** Composable intelligence platform.
 **Pronunciation:** /spek-TREE-uh/ (a coinage from *spectrum* — Latin, from *specere*, "to look"; the full range — with a second reading: *revealing*).
-**Version:** 2.5.0 (2026-08-07). Canonical data: `src/data/brand.ts` — this guide is a derived mirror.
+**Version:** 2.5.1 (2026-08-07). Canonical data: `src/data/brand.ts` — this guide is a derived mirror.
 
 **Strategic claim:** Spectrea is the spectrum of clarity. Everything you know, in one living view — alive with possibility, yours to keep. See it whole. Trust what you see. Build on what you find.
 
@@ -572,7 +572,7 @@ Desktop (1024+) / Tablet (640–1023) / Mobile (<640):
 The floor is **WCAG 2.2 AA** on every shipped surface.
 - Body text minimum: 16 px. Never lower for primary content.
 - Contrast ratio minimum: 4.5:1 for normal text, 3:1 for large/UI. Ink 17.4:1 · Iron 9.21:1 (AAA) · Slate 5.05:1 (AA) · Pewter 2.85:1 (supplementary only — see the Pewter allow/deny matrix in §5).
-- WCAG 2.2 specifics: a visible focus indicator on every interactive element (the Amber focus ring — 2 px solid, 2 px offset — is the standard treatment) · interactive targets ≥ 24×24 px (or the equivalent spacing exception) · every drag interaction (graph manipulation included) has a single-pointer, non-dragging alternative.
+- WCAG 2.2 specifics: a visible focus indicator on every interactive element (the Amber focus ring — 2 px solid, 2 px offset; Amber active `#A86E00` on light surfaces, alpha-tinted Amber on dark — is the standard treatment) · interactive targets ≥ 24×24 px (or the equivalent spacing exception) · every drag interaction (graph manipulation included) has a single-pointer, non-dragging alternative.
 - Never rely on colour alone — pair colour coding with icons, patterns, or labels.
 - Layout must not break at 200% browser text-zoom.
 
@@ -698,7 +698,7 @@ The Spectrea mark animates on a 3-second loop: the spectrum stroke draws along t
 
 Common specs: padding `px-4 py-2` (default), radius `8 px` (rounded-lg), font `Lexend 500`, font-size `14 px`.
 
-Focus ring: Amber `rgba(225, 144, 0, 0.7)` (alpha-tinted `#E19000`), 2 px solid, 2 px offset (`.btn-focus:focus-visible`).
+Focus ring: Amber, 2 px solid, 2 px offset (`.btn-focus:focus-visible`). Light surfaces use Amber active `#A86E00` (4.21:1 on Canvas, 3.89:1 on Cloud); dark surfaces use alpha-tinted Amber `rgba(225, 144, 0, 0.7)` (4.00:1 blended on Ink) — every pairing clears the 3:1 UI floor (ratified 2026-08-07; the previous universal soft ring measured 1.90:1/1.81:1 on light).
 
 ### Forms
 Input fields: `1 px` border (Tailwind `stone-200` ≈ Cloud-adjacent), `8 px` radius, `px-3 py-2` padding, `14 px` Lexend. On focus: `2 px` Cobalt border, no separate shadow ring. Placeholder colour: Pewter.
@@ -910,4 +910,4 @@ All via Google Fonts:
 
 ---
 
-*`src/data/brand.ts` is the canonical brand data (v2.5.0, 2026-08-07). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
+*`src/data/brand.ts` is the canonical brand data (v2.5.1, 2026-08-07). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*

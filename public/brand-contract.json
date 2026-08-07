@@ -1,6 +1,6 @@
 {
   "_generated": "DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-07)",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "lastUpdated": "2026-08-07",
   "sourceOfTruth": "brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea's roadmap — check it before placing a capability claim on a buyer-facing surface.",
   "identity": {
@@ -577,8 +577,9 @@
       }
     },
     "focusRing": {
-      "color": "rgba(225, 144, 0, 0.7)",
-      "note": "Alpha-tinted Amber #E19000",
+      "light": "#A86E00",
+      "dark": "rgba(225, 144, 0, 0.7)",
+      "note": "Amber \"attention\" ring. Light surfaces: Amber active #A86E00 (4.21:1 on Canvas, 3.89:1 on Cloud). Dark surfaces: alpha-tinted Amber #E19000 (4.00:1 blended on Ink). Every pairing clears the 3:1 UI floor.",
       "width": "2px solid",
       "offset": "2px"
     }
@@ -688,11 +689,11 @@
       "accentsOnInk": "On Ink: Teal 6.91:1, Amber 6.90:1, and Rose 4.82:1 pass AA for normal text; Cobalt is 3.93:1 — large-text and UI only. Use Cobalt Lift #7A9AEF for Cobalt-coloured body text on dark."
     },
     "exceptionRegistry": {
-      "rule": "Each entry names the exception, its measured values, its rationale, and its usage bounds. Grants pending ratification (follow-up round): Amber focus-ring scope, sub-AA button text styles.",
+      "rule": "Each entry names the exception, its measured values, its rationale, and its usage bounds. Grant pending ratification (follow-up round): sub-AA button text styles. (The Amber focus-ring candidate was resolved 2026-08-07 as a fix, not an exception — see brandTokens.focusRing.)",
       "entries": []
     },
     "wcag22Criteria": [
-      "Focus appearance: a visible focus indicator on every interactive element — the Amber focus ring (2 px solid, 2 px offset) is the standard treatment.",
+      "Focus appearance: a visible focus indicator on every interactive element — the Amber focus ring (2 px solid, 2 px offset; Amber active #A86E00 on light surfaces, alpha-tinted Amber on dark) is the standard treatment.",
       "Target size: interactive targets at least 24×24 px, or the equivalent spacing exception.",
       "Dragging alternatives: any drag interaction (graph manipulation included) has a single-pointer, non-dragging alternative."
     ],
@@ -780,6 +781,10 @@
     {
       "date": "2026-08-07",
       "decision": "\"Compounding intelligence\" stance: DEFEND — the phrase stays, as one of five differentiator beats (persistent memory, provenance, collective intelligence, composability, the closed loop); the mechanism-tie guardrail carries the claim, not the slogan. Trust-copy counsel trigger added (see trustCopy.counselNote). Name hygiene: knockout search clean (no exact-match \"Spectrea\" collision found; closest neighbours are remote-class SPECTRE marks and crypto-space Spectre AI); formal clearance rides the counsel trigger; etymology restated as a sourced coinage from \"spectrum\"."
+    },
+    {
+      "date": "2026-08-07",
+      "decision": "Focus-ring contrast resolved as a FIX, not an exception (exception round 1/2): light-mode ring switches to Amber active #A86E00 (4.21:1 on Canvas, 3.89:1 on Cloud); dark mode keeps rgba(225,144,0,0.7) (4.00:1 blended on Ink). The previous universal soft ring measured 1.90:1/1.81:1 on light surfaces — below the ratified 3:1 UI floor. The exception registry stays empty."
     }
   ]
 }

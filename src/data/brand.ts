@@ -4,7 +4,7 @@
 
 // --- Meta / Governance ---
 export const meta = {
-  version: '2.5.0',
+  version: '2.5.1',
   lastUpdated: '2026-08-07',
   sourceOfTruth:
     'brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea\'s roadmap — check it before placing a capability claim on a buyer-facing surface.',
@@ -629,7 +629,16 @@ export const brandTokens = {
       secondary: { bg: '#2E2F35', hover: '#3A3A40', text: '#F4F4F1' },
     },
   },
-  focusRing: { color: 'rgba(225, 144, 0, 0.7)', note: 'Alpha-tinted Amber #E19000', width: '2px solid', offset: '2px' },
+  // Ratified 2026-08-07: the universal soft ring measured 1.90:1 on Canvas
+  // and 1.81:1 on Cloud — below the 3:1 UI floor — so light surfaces switch
+  // to the existing Amber active token. Fixed, not exception-listed.
+  focusRing: {
+    light: '#A86E00',
+    dark: 'rgba(225, 144, 0, 0.7)',
+    note: 'Amber "attention" ring. Light surfaces: Amber active #A86E00 (4.21:1 on Canvas, 3.89:1 on Cloud). Dark surfaces: alpha-tinted Amber #E19000 (4.00:1 blended on Ink). Every pairing clears the 3:1 UI floor.',
+    width: '2px solid',
+    offset: '2px',
+  },
   washes: {
     // textOn hexes canonized 2026-08-06 (D36): the accent-tinted dark text
     // values for copy sitting ON a light wash previously lived only in page
@@ -675,11 +684,11 @@ export const accessibility = {
   // departure must be a named, Darren-ratified entry here. A sub-floor usage
   // not listed in this registry is a defect, not a style.
   exceptionRegistry: {
-    rule: 'Each entry names the exception, its measured values, its rationale, and its usage bounds. Grants pending ratification (follow-up round): Amber focus-ring scope, sub-AA button text styles.',
+    rule: 'Each entry names the exception, its measured values, its rationale, and its usage bounds. Grant pending ratification (follow-up round): sub-AA button text styles. (The Amber focus-ring candidate was resolved 2026-08-07 as a fix, not an exception — see brandTokens.focusRing.)',
     entries: [],
   },
   wcag22Criteria: [
-    'Focus appearance: a visible focus indicator on every interactive element — the Amber focus ring (2 px solid, 2 px offset) is the standard treatment.',
+    'Focus appearance: a visible focus indicator on every interactive element — the Amber focus ring (2 px solid, 2 px offset; Amber active #A86E00 on light surfaces, alpha-tinted Amber on dark) is the standard treatment.',
     'Target size: interactive targets at least 24×24 px, or the equivalent spacing exception.',
     'Dragging alternatives: any drag interaction (graph manipulation included) has a single-pointer, non-dragging alternative.',
   ],
@@ -804,6 +813,7 @@ export const ratificationLedger = [
   { date: '2026-07-19', decision: 'Post-wave adjudications: (1) Named-vendor exception — vision-present-tense governs capability copy EXCEPT named third-party integrations, which are stated as current only when live; roadmap framing is allowed for named vendors. (2) Origin silence holds on trust surfaces — the legal-entity/jurisdiction carve-out stays limited to legal instruments (terms, privacy notices); the entity/PDPA line moves off /security. (3) Generator emits fullShapeClaim and ratificationLedger into the machine contract and a governance pointer into the agent-rules drop-in.' },
   { date: '2026-08-06', decision: 'Brand review ratifications (record: docs/brand-review-2026-08): wordmark Albert Sans 600 canonical at every size incl. hero; lockup constants re-derived from font metrics (stroke 0.113em = stem, mark ink 0.714em = S glyph, ink gap 0.131em, dots 7:8); mark geometry K3′ adopted (S-fit spine, deliberate shallow storytelling tail); visual metaphors explicitly co-primary (Prism = identity/reveal, Living Network = product/growth); render-everything propagation doctrine (meta.renderDoctrine); contrast policy = AA/3:1 floors + ratified exception registry; no small-size micro-construction — the mark scales down unchanged.' },
   { date: '2026-08-07', decision: '"Compounding intelligence" stance: DEFEND — the phrase stays, as one of five differentiator beats (persistent memory, provenance, collective intelligence, composability, the closed loop); the mechanism-tie guardrail carries the claim, not the slogan. Trust-copy counsel trigger added (see trustCopy.counselNote). Name hygiene: knockout search clean (no exact-match "Spectrea" collision found; closest neighbours are remote-class SPECTRE marks and crypto-space Spectre AI); formal clearance rides the counsel trigger; etymology restated as a sourced coinage from "spectrum".' },
+  { date: '2026-08-07', decision: 'Focus-ring contrast resolved as a FIX, not an exception (exception round 1/2): light-mode ring switches to Amber active #A86E00 (4.21:1 on Canvas, 3.89:1 on Cloud); dark mode keeps rgba(225,144,0,0.7) (4.00:1 blended on Ink). The previous universal soft ring measured 1.90:1/1.81:1 on light surfaces — below the ratified 3:1 UI floor. The exception registry stays empty.' },
 ] as const
 
 // --- Executive Voice ---
