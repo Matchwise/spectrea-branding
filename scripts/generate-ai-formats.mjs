@@ -88,6 +88,7 @@ const contract = {
     categoryRule,
     promise: brand.positioning.promise,
     fullShapeClaim: brand.positioning.fullShapeClaim,
+    visualMetaphor: brand.visualMetaphor,
   },
   naming: {
     neverNames: naming.neverNames,
@@ -124,6 +125,8 @@ const contract = {
     focusRing: brandTokens.focusRing,
   },
   logoConstraints: logo.constraints,
+  logoLockup: logo.lockup,
+  logoMarkGeometry: logo.markGeometry,
   accessibility,
   graphViz,
   trustCopy,

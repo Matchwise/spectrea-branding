@@ -1,9 +1,9 @@
-<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-07-18) -->
+<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-07) -->
 # Spectrea Brand Guide
 
 > Composable intelligence platform — turns scattered information into compounding intelligence. This file is a generated ROUTER: it tells an AI tool which brand document to load, and in which order. Every document below derives from the same canonical data.
 
-**Source of truth:** brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea's roadmap — check it before placing a capability claim on a buyer-facing surface. (v2.4.0, 2026-07-19)
+**Source of truth:** brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea's roadmap — check it before placing a capability claim on a buyer-facing surface. (v2.5.0, 2026-08-07)
 
 ## Load order (for AI tools)
 
@@ -33,7 +33,7 @@
 - **Warm Blend neutrals:** Graphite #212226 (primary) · Canvas #FDFDFB (background) · Cloud #F4F4F1 (surface) · Ink #18181C (text) · Iron #46464B (body-emphasized) · Slate #6D6D72 (body-secondary) · Pewter #97979E (muted).
 - **Dark mode tokens:** bg #18181C · surface #212226 · text #F4F4F1 · muted #B0B0B6 · border #2E2F35.
 - **Gradient:** #4271DF → #00B6A0 → #E19000 at 135° — never for buttons, text colour, body backgrounds, borders, or small icons.
-- **Logo constraints:** exactly 10 dots (radius 3.5, stroke 8); 2 lockup forms; primary dots #A3A3A3; Circle when contained — never a squircle. Clear space: 0.5× the mark height on all sides. Watermark ≤ 20% opacity. Co-brand: Use the ink variants (#3 mark / #4 lockup). Match the partner mark by optical height — scale so perceived heights are equal, not bounding boxes — and align on the marks' vertical centres.
+- **Logo constraints:** exactly 10 dots (radius 3.9607, stroke 9.0531); 2 lockup forms; primary dots #A3A3A3; Circle when contained — never a squircle. Clear space: 0.5× the mark height on all sides. Watermark ≤ 20% opacity. Co-brand: Use the ink variants (#3 mark / #4 lockup). Match the partner mark by optical height — scale so perceived heights are equal, not bounding boxes — and align on the marks' vertical centres.
 - **Typefaces:** Albert Sans (headings) · Lexend (body) · JetBrains Mono (code).
 - **Accessibility floor:** WCAG 2.2 AA (contrast ≥ 4.5:1 normal / 3:1 large+UI).
 - **Personality:** Warm · Perceptive · Grounded · Adaptive (4 traits, each with a guardrail).

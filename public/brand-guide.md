@@ -6,8 +6,8 @@
 
 **Tagline:** We connect the dots.
 **Category:** Composable intelligence platform.
-**Pronunciation:** /spek-TREE-uh/ (from Latin *spectra* — the full range or spectrum, with a second reading: *revealing*).
-**Version:** 2.4.0 (2026-07-19). Canonical data: `src/data/brand.ts` — this guide is a derived mirror.
+**Pronunciation:** /spek-TREE-uh/ (a coinage from *spectrum* — Latin, from *specere*, "to look"; the full range — with a second reading: *revealing*).
+**Version:** 2.5.0 (2026-08-07). Canonical data: `src/data/brand.ts` — this guide is a derived mirror.
 
 **Strategic claim:** Spectrea is the spectrum of clarity. Everything you know, in one living view — alive with possibility, yours to keep. See it whole. Trust what you see. Build on what you find.
 
@@ -65,7 +65,7 @@ The brand's *consistency and discipline* — fixed primitives, fixed palette, fi
 **Empowerment + Clarity.** Feeling more capable because Spectrea helped you see clearly and choose wisely. Like putting on glasses — everything that was blurry snaps into focus.
 
 ### Visual metaphor
-**Living Network + Prism.** The living network is Spectrea's central visual idea — a web of connections that grows denser and more alive with every interaction. The prism is the etymology echo — what enters as a single stream comes out as the full spectrum, organised and visible. The network is what the brand *feels like*; the prism is where the name *comes from*.
+**Prism + Living Network — explicitly co-primary (ratified 2026-08-06).** Two metaphors with distinct roles; neither is secondary. The **Prism** carries identity and reveal — raw information enters, organised insight exits; hidden structure made visible (the etymology echo: the name comes from it). The **Living Network** carries product and growth — a web of connections that grows denser and more intelligent with every interaction (the promise: it grows with you). When a surface needs a single lead, role decides: identity/reveal surfaces lead with the Prism, product/growth surfaces lead with the Living Network.
 
 ### Aesthetic direction
 **Warm + Intelligent.** Like a brilliant mentor — approachable yet deep. Rich colours, inviting spacing, feels human. References: Stripe, Linear (clarity through restraint). Tradeoff: **power over polish** — capability is sacred; elegance is valued but never at the cost of depth.
@@ -179,7 +179,7 @@ Generic B2B SaaS words (insights, intelligence, transform, empower, unlock, enab
 
 - **Spelling:** Spectrea (capital S, no space).
 - **Pronunciation:** /spek-TREE-uh/ — emphasis on the second syllable.
-- **Etymology — dual reading:** From *spectra* (Latin: the full range or spectrum). The name does double duty:
+- **Etymology — dual reading:** a coinage from *spectrum* (Latin, from *specere*, "to look"; plural *spectra* — the full range). The name does double duty:
   - **Reading 1 — Spectrum:** the full range. The complete view. The whole picture, all in one place.
   - **Reading 2 — Revealing:** bringing what was hidden into clear view. The shift from blur to focus.
   - Together: *the spectrum of clarity* — and the action behind the tagline "We connect the dots."
@@ -222,11 +222,14 @@ The logo has three parts:
 2. **Wordmark** — Albert Sans Semibold 600, 0.02em letter-spacing. Inside the canonical `Logotype` / `LogotypeGradient` components, the S mark replaces the leading `S` and only the tail `pectrea` is typeset in lowercase — a stylistic treatment, not the typed name. In every other context (manual lockups like the sidebar, descriptor variants, prose, headings, URLs-excepted), use the sentence-case `Spectrea` — the mark sits beside it as a companion glyph rather than a letter substitute.
 3. **Lockup** — S mark + lowercase wordmark.
 
-### Construction
-- **Dots:** 10 dots, radius 3.5. Grey (`#A3A3A3`) in the primary treatment.
-- **Stroke:** width 8, round linecap. Cool Duet (Cobalt `#4271DF` → Teal `#00B6A0`) in the static mark and in the gradient lockup's mark.
+### Construction (K3′ geometry + "B" lockup constants, ratified 2026-08-06)
+- **Spine:** three G1-continuous cubics fitted to the Albert Sans 600 S medial axis, with a deliberate shallow storytelling tail. Authoritative coordinates: `brand.ts` `logo.markGeometry` (record: docs/brand-review-2026-08).
+- **Dots:** 10 dots at i/9 arc fractions of the spine, radius 3.961 (native units; dot diameter : stroke width stays 7:8). Grey (`#A3A3A3`) in the primary treatment.
+- **Stroke:** width 9.053 (native units), round linecap. Cool Duet (Cobalt `#4271DF` → Teal `#00B6A0`) in the static mark and in the gradient lockup's mark. In the lockup the rendered stroke equals the wordmark's stem: **0.113em**.
 - **Trailing dots:** the last 2 dots are left visually unconnected — the "about to connect" moment.
+- **Lockup metrics (on ink, never bounding boxes):** mark ink height 0.714em (= the real S glyph's ink), mark→text ink gap 0.131em (= S right side bearing + 0.02em tracking + p left side bearing), mark ink bottom at baseline + 0.007em (the S's baseline overshoot). Wordmark: Albert Sans **600** at every size, 0.02em tracking.
 - **Container:** 64×64 construction viewBox. Circle container when needed at small sizes; never a squircle.
+- **Small sizes:** no micro-construction — the standard mark scales down unchanged; below ~24px the trailing dots read as part of the stroke and that plain-S reading is accepted (ratified 2026-08-06).
 
 ### The two-forms rule (lockup)
 The lockup has **exactly two forms** — no third:
@@ -531,7 +534,7 @@ Must use **adjacent** spectrum pairs. Skip pairs (Cobalt→Amber direct, Teal→
 ### Type system (three typefaces)
 | Role | Family | Weights | Use |
 |---|---|---|---|
-| Headings | Albert Sans | 600 (Semibold), 700 (Bold — logo wordmark, hero only) | Page titles, section headings, card titles, stat values |
+| Headings | Albert Sans | 600 (Semibold — incl. the logo wordmark at every size), 700 (Bold — hero headlines only) | Page titles, section headings, card titles, stat values |
 | Body | Lexend | 300, 400, 500, 600 | Body text, descriptions, form labels, nav items; 600 for overlines and small section labels (uppercase/tracked) |
 | Code / metadata | JetBrains Mono | 400 | Inline code, data values, entity types, provenance |
 

@@ -400,8 +400,10 @@ export default function PaletteCompare() {
               ].map((c, i) => {
                 const vsWhite = contrastRatio(c.hex, '#FFFFFF')
                 const vsInk = contrastRatio(c.hex, '#18181C')
-                const whiteOk = vsWhite >= 2.5
-                const inkOk = vsInk >= 2.5
+                // Canonical floors (accessibility policy): 3:1 is the UI/large-text
+                // pass; 4.5:1 (AA normal text) is flagged separately below.
+                const whiteOk = vsWhite >= 3
+                const inkOk = vsInk >= 3
                 return (
                   <div key={c.name} className="grid grid-cols-4 px-3 py-1.5 items-center" style={{ borderBottom: i < 3 ? '1px solid #F3F4F6' : 'none' }}>
                     <div className="flex items-center gap-1.5">
@@ -409,13 +411,13 @@ export default function PaletteCompare() {
                       <span className="text-[10px] font-medium text-iron">{c.name}</span>
                     </div>
                     <span className="text-[10px] font-mono" style={whiteOk ? { color: '#57534E' } : { color: '#F24260' }}>
-                      {vsWhite.toFixed(2)}:1 {whiteOk ? '' : 'FAIL'}
+                      {vsWhite.toFixed(2)}:1 {vsWhite >= 4.5 ? 'AA' : whiteOk ? 'UI' : 'FAIL'}
                     </span>
                     <span className="text-[10px] font-mono" style={inkOk ? { color: '#57534E' } : { color: '#F24260' }}>
-                      {vsInk.toFixed(2)}:1 {inkOk ? '' : 'FAIL'}
+                      {vsInk.toFixed(2)}:1 {vsInk >= 4.5 ? 'AA' : inkOk ? 'UI' : 'FAIL'}
                     </span>
                     <span className="text-[10px] font-medium" style={{ color: whiteOk && inkOk ? '#008775' : whiteOk || inkOk ? '#D97706' : '#F24260' }}>
-                      {whiteOk && inkOk ? 'Both pass' : whiteOk ? 'White only' : inkOk ? 'Dark only' : 'Neither'}
+                      {whiteOk && inkOk ? 'Both ≥3:1' : whiteOk ? 'White only' : inkOk ? 'Dark only' : 'Neither'}
                     </span>
                   </div>
                 )

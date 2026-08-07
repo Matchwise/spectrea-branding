@@ -114,7 +114,7 @@ export default function Home() {
               <span className="text-pewter">Visual Metaphor</span>
             </Tooltip>
           </p>
-          <p className="text-sm font-semibold text-ink">{brand.visualMetaphor.primary} + {brand.visualMetaphor.secondary}</p>
+          <p className="text-sm font-semibold text-ink">{brand.visualMetaphor.metaphors.map(m => m.name).join(' + ')}</p>
           <p className="text-xs text-slate mt-1">{brand.visualMetaphor.combined}</p>
         </div>
       </div>

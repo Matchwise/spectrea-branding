@@ -139,8 +139,8 @@ export default function TypeExplorer() {
         </h2>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
           {[
-            { font: 'Albert Sans', weight: 700, label: 'Bold', use: 'Logo wordmark, hero headlines only', style: t.heading.css },
-            { font: 'Albert Sans', weight: 600, label: 'Semibold', use: 'Page titles, section headings, card titles, stat values', style: t.heading.css },
+            { font: 'Albert Sans', weight: 700, label: 'Bold', use: 'Hero headlines only', style: t.heading.css },
+            { font: 'Albert Sans', weight: 600, label: 'Semibold', use: 'Logo wordmark (canonical at every size), page titles, section headings, card titles, stat values', style: t.heading.css },
             { font: 'Lexend', weight: 600, label: 'Semibold', use: 'Overlines, uppercase section labels, small card subheads', style: t.body.css },
             { font: 'Lexend', weight: 500, label: 'Medium', use: 'Button labels, nav items, emphasized body text, form labels', style: t.body.css },
             { font: 'Lexend', weight: 400, label: 'Regular', use: 'Body text, descriptions, helper text, tooltips', style: t.body.css },
@@ -178,7 +178,7 @@ export default function TypeExplorer() {
             <ul className="space-y-2 text-sm text-iron">
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Mix in other font families — three is the maximum</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use Albert Sans for long body paragraphs</li>
-              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use Bold 700 for anything except the logo and hero headlines</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use Bold 700 for anything except hero headlines — the logo wordmark is always Semibold 600</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use all-caps for body text (headings only, sparingly)</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Go below 12px for body or prose text (10px is permitted only for uppercase-tracked overlines, numeric badges, and metadata chips; below 10px is specimen-only)</li>
             </ul>

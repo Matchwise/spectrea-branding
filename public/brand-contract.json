@@ -1,7 +1,7 @@
 {
-  "_generated": "DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-07-18)",
-  "version": "2.4.0",
-  "lastUpdated": "2026-07-19",
+  "_generated": "DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-07)",
+  "version": "2.5.0",
+  "lastUpdated": "2026-08-07",
   "sourceOfTruth": "brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea's roadmap — check it before placing a capability claim on a buyer-facing surface.",
   "identity": {
     "name": "Spectrea",
@@ -23,6 +23,23 @@
     "fullShapeClaim": {
       "statement": "Compounding collective intelligence",
       "usage": "The platform's full-shape claim per the ratified vision: compounding intelligence is the temporal property, collective intelligence the cardinality property; Spectrea's target is both together. Internal north-star and depth-surface language (docs, vision, architecture narratives) — the on-ramp stays outcome-first."
+    },
+    "visualMetaphor": {
+      "hierarchy": "co-primary",
+      "tiebreaker": "Identity and reveal surfaces (logo moments, brand story, launch) lead with the Prism; product and growth surfaces (features, onboarding, roadmap) lead with the Living Network. Neither metaphor is ever \"the secondary\".",
+      "metaphors": [
+        {
+          "name": "Prism",
+          "role": "Identity / reveal",
+          "description": "Raw information enters, organized insight exits. The \"reveal\" moment — hidden structure made visible."
+        },
+        {
+          "name": "Living Network",
+          "role": "Product / growth",
+          "description": "A web of connections that grows denser and more intelligent over time. The \"growth\" story."
+        }
+      ],
+      "combined": "The prism is Spectrea's origin (the name). The network is its promise (it grows with you)."
     }
   },
   "naming": {
@@ -233,27 +250,32 @@
           "name": "Cobalt Wash",
           "hex": "#EDF0F8",
           "accent": "Cobalt",
+          "textOn": "#1E3A8A",
           "use": "Info alert background, selected row"
         },
         {
           "name": "Teal Mist",
           "hex": "#E6F5F3",
           "accent": "Teal",
+          "textOn": "#0D5E56",
           "use": "Success toast, positive trend card"
         },
         {
           "name": "Amber Stone",
           "hex": "#F5F0E6",
           "accent": "Amber",
+          "textOn": "#7C4D04",
           "use": "Warning alert, highlighted callout"
         },
         {
           "name": "Rose Blush",
           "hex": "#FDF0F2",
           "accent": "Rose",
+          "textOn": "#9F1239",
           "use": "Error message, destructive confirmation"
         }
       ],
+      "darkTextRule": "Text on a dark wash is Cloud #F4F4F1; text on a light wash uses that wash's textOn value (or Ink) — never the raw accent.",
       "dark": [
         {
           "name": "Cobalt Deep",
@@ -563,22 +585,111 @@
   },
   "logoConstraints": {
     "dotCount": 10,
-    "dotRadius": 3.5,
-    "strokeWidth": 8,
+    "dotRadius": 3.9607,
+    "strokeWidth": 9.0531,
     "container": "Circle when contained — never a squircle.",
     "primaryDotColor": "#A3A3A3",
     "lockupForms": 2,
     "wordmarkTailRule": "The S-mark-replaces-S treatment (lowercase \"pectrea\" tail) exists only inside the canonical Logotype / LogotypeGradient components. Everywhere else the wordmark is sentence-case \"Spectrea\" with the mark as a companion glyph.",
     "clearSpace": "0.5× the mark height on all sides.",
     "watermarkMaxOpacity": 0.2,
-    "coBrand": "Use the ink variants (#3 mark / #4 lockup). Match the partner mark by optical height — scale so perceived heights are equal, not bounding boxes — and align on the marks' vertical centres."
+    "coBrand": "Use the ink variants (#3 mark / #4 lockup). Match the partner mark by optical height — scale so perceived heights are equal, not bounding boxes — and align on the marks' vertical centres.",
+    "smallSizes": "No micro-construction (ratified 2026-08-06, decision 11): the standard mark scales down unchanged at every size. Below ~24px the trailing dots read as part of the stroke; that plain-S reading is accepted."
+  },
+  "logoLockup": {
+    "wordmarkWeight": 600,
+    "trackingEm": 0.02,
+    "strokeEm": 0.113,
+    "markInkHeightEm": 0.714,
+    "markTextInkGapEm": 0.131,
+    "dotToStrokeRatio": "7:8"
+  },
+  "logoMarkGeometry": {
+    "viewBox": 64,
+    "frame": {
+      "ML": 11,
+      "MT": 3,
+      "q": "58/714"
+    },
+    "segs": [
+      [
+        [
+          44.965,
+          14.19
+        ],
+        [
+          39.3,
+          3.346
+        ],
+        [
+          16.635,
+          4.294
+        ],
+        [
+          16.532,
+          18.686
+        ]
+      ],
+      [
+        [
+          16.532,
+          18.686
+        ],
+        [
+          16.412,
+          35.427
+        ],
+        [
+          46.367,
+          26.756
+        ],
+        [
+          46.301,
+          44.482
+        ]
+      ],
+      [
+        [
+          46.301,
+          44.482
+        ],
+        [
+          46.245,
+          59.74
+        ],
+        [
+          26,
+          58.5
+        ],
+        [
+          14.3,
+          50.3
+        ]
+      ]
+    ],
+    "dotRule": "10 dots at i/9 arc fractions; stroke length = (7/9)·total − strokeWidth/2 + dotRadius·0.75 + 1.5, so dots 1-8 form the stroke and dots 9-10 stay visible (\"about to connect\").",
+    "inkExtents": {
+      "left": 10.339,
+      "right": 50.828,
+      "top": 2.338,
+      "bottom": 59.54
+    },
+    "placement": {
+      "inkBottomVsBaselineEm": 0.007,
+      "penAdvanceEm": 0.0643
+    }
   },
   "accessibility": {
     "floor": "WCAG 2.2 AA",
     "contrast": {
       "normalText": "4.5:1",
       "largeTextAndUI": "3:1",
-      "tokens": "On Canvas: Ink 17.4:1 · Iron 9.21:1 (AAA) · Slate 5.05:1 (AA) · Pewter 2.85:1 (supplementary only)."
+      "tokens": "On Canvas: Ink 17.4:1 · Iron 9.21:1 (AAA) · Slate 5.05:1 (AA) · Pewter 2.85:1 (supplementary only).",
+      "accentsOnInk": "On Ink: Teal 6.91:1, Amber 6.90:1, and Rose 4.82:1 pass AA for normal text; Cobalt is 3.93:1 — large-text and UI only. Use Cobalt Lift #7A9AEF for Cobalt-coloured body text on dark."
+    },
+    "exceptionRegistry": {
+      "rule": "Each entry names the exception, its measured values, its rationale, and its usage bounds. Grants pending ratification (follow-up round): Amber focus-ring scope, sub-AA button text styles.",
+      "entries": []
     },
     "wcag22Criteria": [
       "Focus appearance: a visible focus indicator on every interactive element — the Amber focus ring (2 px solid, 2 px offset) is the standard treatment.",
@@ -615,7 +726,7 @@
     "note": "Foundation only. The operational graph-rendering spec is a product design deliverable, not a brand-guide deliverable."
   },
   "trustCopy": {
-    "counselNote": "These are brand-voice masters, not legal instruments. Review with counsel before external legal use.",
+    "counselNote": "These are brand-voice masters, not legal instruments. Review with counsel before external legal use. Trigger (ratified 2026-08-07): before any launch that puts trust, security, or compliance claims on a public page, counsel reads these masters first — the same engagement covers formal trademark clearance of the name.",
     "privacy": "Your knowledge belongs to you. Spectrea is private by default: what you add is visible only to you and the people you explicitly share it with, and the system enforces that per viewer on every surface — including the assistant, which sees only what you can see.",
     "aiUse": "Spectrea uses AI to suggest, surface, and draft — and to run only the automations you set guardrails for: you decide what runs on its own and what checks with you first. Every AI action is recorded, attributed to its sources, and reviewable. On the managed path, your data is not used to train foundation models — a contract we are formalizing, with independent ISO 42001-class attestation as a stated target.",
     "retention": "You stay in control of what Spectrea keeps. Your workspace persists until you delete it; deletion removes your data from live systems on a published schedule. And you can always leave with everything: full-fidelity export — structure, data, and provenance — is a first-class guarantee.",
@@ -661,6 +772,14 @@
     {
       "date": "2026-07-19",
       "decision": "Post-wave adjudications: (1) Named-vendor exception — vision-present-tense governs capability copy EXCEPT named third-party integrations, which are stated as current only when live; roadmap framing is allowed for named vendors. (2) Origin silence holds on trust surfaces — the legal-entity/jurisdiction carve-out stays limited to legal instruments (terms, privacy notices); the entity/PDPA line moves off /security. (3) Generator emits fullShapeClaim and ratificationLedger into the machine contract and a governance pointer into the agent-rules drop-in."
+    },
+    {
+      "date": "2026-08-06",
+      "decision": "Brand review ratifications (record: docs/brand-review-2026-08): wordmark Albert Sans 600 canonical at every size incl. hero; lockup constants re-derived from font metrics (stroke 0.113em = stem, mark ink 0.714em = S glyph, ink gap 0.131em, dots 7:8); mark geometry K3′ adopted (S-fit spine, deliberate shallow storytelling tail); visual metaphors explicitly co-primary (Prism = identity/reveal, Living Network = product/growth); render-everything propagation doctrine (meta.renderDoctrine); contrast policy = AA/3:1 floors + ratified exception registry; no small-size micro-construction — the mark scales down unchanged."
+    },
+    {
+      "date": "2026-08-07",
+      "decision": "\"Compounding intelligence\" stance: DEFEND — the phrase stays, as one of five differentiator beats (persistent memory, provenance, collective intelligence, composability, the closed loop); the mechanism-tie guardrail carries the claim, not the slogan. Trust-copy counsel trigger added (see trustCopy.counselNote). Name hygiene: knockout search clean (no exact-match \"Spectrea\" collision found; closest neighbours are remote-class SPECTRE marks and crypto-space Spectre AI); formal clearance rides the counsel trigger; etymology restated as a sourced coinage from \"spectrum\"."
     }
   ]
 }

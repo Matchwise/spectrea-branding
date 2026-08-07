@@ -4,10 +4,12 @@
 
 // --- Meta / Governance ---
 export const meta = {
-  version: '2.4.0',
-  lastUpdated: '2026-07-19',
+  version: '2.5.0',
+  lastUpdated: '2026-08-07',
   sourceOfTruth:
     'brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea\'s roadmap — check it before placing a capability claim on a buyer-facing surface.',
+  renderDoctrine:
+    'Anything in canon must render somewhere in the guide (ratified 2026-08-06). A canonical field with no rendering surface is a propagation defect: agents must never receive a stricter or newer brand than people.',
   changelog:
     'Versioned in git — the commit history of the spectrea-branding repo is the durable changelog; notable changes are announced in #brand.',
 } as const
@@ -17,7 +19,7 @@ export const brand = {
   name: 'Spectrea',
   pronunciation: '/spek-TREE-uh/',
   etymology:
-    'From "spectra" (Latin: the full range or spectrum). The name does double duty: (1) the full range — the complete view, the whole picture, everything in one place; (2) revealing — bringing what was hidden into clear view. Together: the spectrum of clarity.',
+    'A coinage from "spectrum" (Latin, from specere, "to look"; plural "spectra" — the full range). The name does double duty: (1) the full range — the complete view, the whole picture, everything in one place; (2) revealing — bringing what was hidden into clear view. Together: the spectrum of clarity.',
   tagline: {
     statement: 'We connect the dots.',
     usage: 'The public-facing hook. Appears with the logo, in marketing headlines, and as the one-line summary. Should work at both the product level (connecting data) and the brand level (connecting understanding).',
@@ -241,11 +243,24 @@ export const brand = {
   },
 
   // --- Visual Metaphor ---
+  // Explicitly CO-PRIMARY (ratified 2026-08-06, decision 6): two metaphors with
+  // distinct roles — neither is secondary. When a surface needs a single lead,
+  // role decides (art-direction tiebreaker; Darren may refine).
   visualMetaphor: {
-    primary: 'Prism',
-    primaryDescription: 'Raw information enters, organized insight exits. The "reveal" moment — hidden structure made visible.',
-    secondary: 'Living Network',
-    secondaryDescription: 'A web of connections that grows denser and more intelligent over time. The "growth" story.',
+    hierarchy: 'co-primary',
+    tiebreaker: 'Identity and reveal surfaces (logo moments, brand story, launch) lead with the Prism; product and growth surfaces (features, onboarding, roadmap) lead with the Living Network. Neither metaphor is ever "the secondary".',
+    metaphors: [
+      {
+        name: 'Prism',
+        role: 'Identity / reveal',
+        description: 'Raw information enters, organized insight exits. The "reveal" moment — hidden structure made visible.',
+      },
+      {
+        name: 'Living Network',
+        role: 'Product / growth',
+        description: 'A web of connections that grows denser and more intelligent over time. The "growth" story.',
+      },
+    ],
     combined: 'The prism is Spectrea\'s origin (the name). The network is its promise (it grows with you).',
   },
 
@@ -616,12 +631,16 @@ export const brandTokens = {
   },
   focusRing: { color: 'rgba(225, 144, 0, 0.7)', note: 'Alpha-tinted Amber #E19000', width: '2px solid', offset: '2px' },
   washes: {
+    // textOn hexes canonized 2026-08-06 (D36): the accent-tinted dark text
+    // values for copy sitting ON a light wash previously lived only in page
+    // code. On dark washes, text is Cloud #F4F4F1 (no darker variant needed).
     light: [
-      { name: 'Cobalt Wash', hex: '#EDF0F8', accent: 'Cobalt', use: 'Info alert background, selected row' },
-      { name: 'Teal Mist', hex: '#E6F5F3', accent: 'Teal', use: 'Success toast, positive trend card' },
-      { name: 'Amber Stone', hex: '#F5F0E6', accent: 'Amber', use: 'Warning alert, highlighted callout' },
-      { name: 'Rose Blush', hex: '#FDF0F2', accent: 'Rose', use: 'Error message, destructive confirmation' },
+      { name: 'Cobalt Wash', hex: '#EDF0F8', accent: 'Cobalt', textOn: '#1E3A8A', use: 'Info alert background, selected row' },
+      { name: 'Teal Mist', hex: '#E6F5F3', accent: 'Teal', textOn: '#0D5E56', use: 'Success toast, positive trend card' },
+      { name: 'Amber Stone', hex: '#F5F0E6', accent: 'Amber', textOn: '#7C4D04', use: 'Warning alert, highlighted callout' },
+      { name: 'Rose Blush', hex: '#FDF0F2', accent: 'Rose', textOn: '#9F1239', use: 'Error message, destructive confirmation' },
     ],
+    darkTextRule: 'Text on a dark wash is Cloud #F4F4F1; text on a light wash uses that wash\'s textOn value (or Ink) — never the raw accent.',
     dark: [
       { name: 'Cobalt Deep', hex: '#1B2440', accent: 'Cobalt', use: 'Info alert background, selected row (dark)' },
       { name: 'Teal Deep', hex: '#0E2E2A', accent: 'Teal', use: 'Success toast, positive trend card (dark)' },
@@ -647,6 +666,17 @@ export const accessibility = {
     normalText: '4.5:1',
     largeTextAndUI: '3:1',
     tokens: 'On Canvas: Ink 17.4:1 · Iron 9.21:1 (AAA) · Slate 5.05:1 (AA) · Pewter 2.85:1 (supplementary only).',
+    // Corrects the retired "all four accents pass AA on Ink" claim (D10):
+    // Cobalt does not.
+    accentsOnInk: 'On Ink: Teal 6.91:1, Amber 6.90:1, and Rose 4.82:1 pass AA for normal text; Cobalt is 3.93:1 — large-text and UI only. Use Cobalt Lift #7A9AEF for Cobalt-coloured body text on dark.',
+  },
+  // Contrast policy (ratified 2026-08-06, decision 8): floors + ratified
+  // exceptions. The floors are the defaults everywhere; any deliberate
+  // departure must be a named, Darren-ratified entry here. A sub-floor usage
+  // not listed in this registry is a defect, not a style.
+  exceptionRegistry: {
+    rule: 'Each entry names the exception, its measured values, its rationale, and its usage bounds. Grants pending ratification (follow-up round): Amber focus-ring scope, sub-AA button text styles.',
+    entries: [],
   },
   wcag22Criteria: [
     'Focus appearance: a visible focus indicator on every interactive element — the Amber focus ring (2 px solid, 2 px offset) is the standard treatment.',
@@ -668,11 +698,16 @@ export const accessibility = {
 // --- Logo Constraints (numeric edge cases) ---
 // Canonical numerics for rules that previously lived only as prose. The
 // lockup FORM COUNT stays at two pending the open lockup-form decision (BA-10).
+// Mark geometry + lockup constants ratified 2026-08-06 (decisions 3-5,
+// docs/brand-review-2026-08): the spine is fitted to the Albert Sans 600 S
+// medial axis with a deliberate shallow storytelling tail (K3′); lockup
+// constants are derived from real font metrics, replacing the older
+// hard-coded 0.72em / 8-unit / 0.05em set.
 export const logo = {
   constraints: {
     dotCount: 10,
-    dotRadius: 3.5,
-    strokeWidth: 8,
+    dotRadius: 3.9607, // native 64-box units; diameter:stroke stays 7:8
+    strokeWidth: 9.0531, // native 64-box units
     container: 'Circle when contained — never a squircle.',
     primaryDotColor: '#A3A3A3',
     lockupForms: 2, // Gradient (LogotypeGradient) and Mono (Logotype) — exactly two
@@ -680,6 +715,47 @@ export const logo = {
     clearSpace: '0.5× the mark height on all sides.',
     watermarkMaxOpacity: 0.2,
     coBrand: 'Use the ink variants (#3 mark / #4 lockup). Match the partner mark by optical height — scale so perceived heights are equal, not bounding boxes — and align on the marks\' vertical centres.',
+    smallSizes: 'No micro-construction (ratified 2026-08-06, decision 11): the standard mark scales down unchanged at every size. Below ~24px the trailing dots read as part of the stroke; that plain-S reading is accepted.',
+  },
+  // Lockup constants ("B", ratified 2026-08-06, decision 4). Em values are the
+  // authority; measured from Albert Sans 600 (capHeight 0.700em, 'l' stem
+  // 0.113em, S glyph ink 0.714em). Alignment and gap are measured on stroke
+  // ink, never bounding boxes (the leftmost element is a near-invisible dot).
+  lockup: {
+    wordmarkWeight: 600, // Albert Sans 600 — canonical at every size incl. hero (decision 3)
+    trackingEm: 0.02,
+    strokeEm: 0.113, // rendered mark stroke = the wordmark's stem weight
+    markInkHeightEm: 0.714, // mark ink height = the real S glyph's ink height
+    markTextInkGapEm: 0.131, // ink-to-ink: S right side bearing + tracking + p left side bearing
+    dotToStrokeRatio: '7:8', // dot diameter : stroke width
+  },
+  // Mark geometry (K3′, ratified 2026-08-06, decision 5). Authoritative copy:
+  // docs/brand-review-2026-08/k3-prime-ratified.json. Three G1-continuous
+  // cubics in the native 64-box (frame ML=11 MT=3, scale q=58/714 from the
+  // S medial axis); the 10 dots sit at i/9 arc fractions of the full path,
+  // first 8 covered by the stroke, trailing 2 visible.
+  markGeometry: {
+    viewBox: 64,
+    frame: { ML: 11, MT: 3, q: '58/714' },
+    segs: [
+      [[44.965, 14.19], [39.3, 3.346], [16.635, 4.294], [16.532, 18.686]],
+      [[16.532, 18.686], [16.412, 35.427], [46.367, 26.756], [46.301, 44.482]],
+      [[46.301, 44.482], [46.245, 59.74], [26, 58.5], [14.3, 50.3]],
+    ],
+    dotRule: '10 dots at i/9 arc fractions; stroke length = (7/9)·total − strokeWidth/2 + dotRadius·0.75 + 1.5, so dots 1-8 form the stroke and dots 9-10 stay visible ("about to connect").',
+    // VISIBLE ink box in native 64-box units — the stroke's disk envelope over
+    // the stroked arc plus all ten dot disks. This is the box the lockup
+    // aligns on, never element bounding boxes. Derived jointly with
+    // strokeWidth/dotRadius by fixed-point solve so BOTH B constraints hold
+    // exactly: stroke renders 0.113em AND visible ink renders 0.714em.
+    // (Corrected 2026-08-07 after critic review: the earlier solve measured
+    // the full path as if stroked, inflating the box by the unstroked tail.)
+    inkExtents: { left: 10.339, right: 50.828, top: 2.338, bottom: 59.54 },
+    // Lockup placement on the ink box: mark ink bottom sits at
+    // baseline + 0.007em (the S glyph's baseline overshoot); wordmark pen
+    // starts at mark-ink-right + 0.0643em (S rsb 0.0443 + tracking 0.02 —
+    // the p's own left side bearing 0.067em completes the 0.131em ink gap).
+    placement: { inkBottomVsBaselineEm: 0.007, penAdvanceEm: 0.0643 },
   },
 } as const
 
@@ -707,7 +783,7 @@ export const graphViz = {
 // (sovereign data, per-viewer access, provenance, managed-path no-train
 // target). REVIEW WITH COUNSEL before any external legal or contractual use.
 export const trustCopy = {
-  counselNote: 'These are brand-voice masters, not legal instruments. Review with counsel before external legal use.',
+  counselNote: 'These are brand-voice masters, not legal instruments. Review with counsel before external legal use. Trigger (ratified 2026-08-07): before any launch that puts trust, security, or compliance claims on a public page, counsel reads these masters first — the same engagement covers formal trademark clearance of the name.',
   privacy: 'Your knowledge belongs to you. Spectrea is private by default: what you add is visible only to you and the people you explicitly share it with, and the system enforces that per viewer on every surface — including the assistant, which sees only what you can see.',
   aiUse: 'Spectrea uses AI to suggest, surface, and draft — and to run only the automations you set guardrails for: you decide what runs on its own and what checks with you first. Every AI action is recorded, attributed to its sources, and reviewable. On the managed path, your data is not used to train foundation models — a contract we are formalizing, with independent ISO 42001-class attestation as a stated target.',
   retention: 'You stay in control of what Spectrea keeps. Your workspace persists until you delete it; deletion removes your data from live systems on a published schedule. And you can always leave with everything: full-fidelity export — structure, data, and provenance — is a first-class guarantee.',
@@ -726,6 +802,8 @@ export const ratificationLedger = [
   { date: '2026-07-18', decision: 'Vision-anchored branding: brand claims anchor to the ratified vision canon; brand-vs-vision divergences are adjudicated, never auto-conformed to branding. Provenance note added to meta.sourceOfTruth.' },
   { date: '2026-07-19', decision: 'Hero frame "the operating system for collective intelligence" ratified as a coined whole-product frame (D2 amended; pair with plain language). Full-shape claim "compounding collective intelligence" adopted from vision §1 as internal north-star. Autonomy absolutes replaced by the guardrails frame (aiNaming.verbRule, trustCopy.aiUse). Trust surfaces align UP to present-tense masters (no "building toward launch" hedging). Buttons stay canonical 8px radius (pill was a web spec error, not a decision).' },
   { date: '2026-07-19', decision: 'Post-wave adjudications: (1) Named-vendor exception — vision-present-tense governs capability copy EXCEPT named third-party integrations, which are stated as current only when live; roadmap framing is allowed for named vendors. (2) Origin silence holds on trust surfaces — the legal-entity/jurisdiction carve-out stays limited to legal instruments (terms, privacy notices); the entity/PDPA line moves off /security. (3) Generator emits fullShapeClaim and ratificationLedger into the machine contract and a governance pointer into the agent-rules drop-in.' },
+  { date: '2026-08-06', decision: 'Brand review ratifications (record: docs/brand-review-2026-08): wordmark Albert Sans 600 canonical at every size incl. hero; lockup constants re-derived from font metrics (stroke 0.113em = stem, mark ink 0.714em = S glyph, ink gap 0.131em, dots 7:8); mark geometry K3′ adopted (S-fit spine, deliberate shallow storytelling tail); visual metaphors explicitly co-primary (Prism = identity/reveal, Living Network = product/growth); render-everything propagation doctrine (meta.renderDoctrine); contrast policy = AA/3:1 floors + ratified exception registry; no small-size micro-construction — the mark scales down unchanged.' },
+  { date: '2026-08-07', decision: '"Compounding intelligence" stance: DEFEND — the phrase stays, as one of five differentiator beats (persistent memory, provenance, collective intelligence, composability, the closed loop); the mechanism-tie guardrail carries the claim, not the slogan. Trust-copy counsel trigger added (see trustCopy.counselNote). Name hygiene: knockout search clean (no exact-match "Spectrea" collision found; closest neighbours are remote-class SPECTRE marks and crypto-space Spectre AI); formal clearance rides the counsel trigger; etymology restated as a sourced coinage from "spectrum".' },
 ] as const
 
 // --- Executive Voice ---

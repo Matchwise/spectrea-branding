@@ -216,7 +216,7 @@ export default function PrimaryPalette() {
           </Tooltip>
         </h2>
         <p className="text-sm text-iron mb-4 leading-relaxed">
-          Light is Spectrea's default. Dark is a parallel mode — the role mapping inverts, existing tokens carry more weight, and two new tokens (<strong>Mist</strong>, <strong>Fog</strong>) complete the hierarchy. Accents carry over unchanged; all four pass WCAG AA on Ink.
+          Light is Spectrea's default. Dark is a parallel mode — the role mapping inverts, existing tokens carry more weight, and two new tokens (<strong>Mist</strong>, <strong>Fog</strong>) complete the hierarchy. Accents carry over unchanged; Teal, Amber and Rose pass WCAG AA on Ink, while Cobalt (3.93:1) is large-text/UI only — use Cobalt Lift for body text.
         </p>
 
         {/* Role inversion table */}

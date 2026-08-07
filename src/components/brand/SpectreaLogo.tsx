@@ -1,11 +1,18 @@
 import { useState, useRef, useEffect, useCallback, useMemo, forwardRef } from 'react'
+import { logo } from '../../data/brand'
 
-// ─── Logo configuration (Candidate H) ───────────────────────────
+// ─── Logo configuration (K3′, ratified 2026-08-06) ──────────────
+// Geometry and numerics come from canon (brand.ts logo export); this block
+// only reshapes them for rendering. The spine is fitted to the Albert Sans
+// 600 S medial axis with the deliberate shallow storytelling tail.
+const GEO = logo.markGeometry
 export const LOGO = {
-  pathD: 'M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52',
-  strokeW: 8,
-  dotR: 3.5,
-  totalDots: 10,
+  pathD:
+    `M ${GEO.segs[0][0][0]} ${GEO.segs[0][0][1]} ` +
+    GEO.segs.map(sg => `C ${sg[1][0]} ${sg[1][1]}, ${sg[2][0]} ${sg[2][1]}, ${sg[3][0]} ${sg[3][1]}`).join(' '),
+  strokeW: logo.constraints.strokeWidth,
+  dotR: logo.constraints.dotRadius,
+  totalDots: logo.constraints.dotCount,
   tailDots: 2,
 } as const
 
@@ -355,27 +362,38 @@ function transformPathCoords(pathD: string, ox: number, oy: number, s: number): 
   return out.join(' ')
 }
 
-// Mark content bounds in the native 64x64 viewBox
-const ML = 11, MT = 3, MH = 58, MW = 40
+// Lockup layout constants ("B", ratified 2026-08-06 — decision 4).
+// All alignment happens on the mark's INK box (canon markGeometry.inkExtents),
+// never on element bounding boxes: the scale is set so the rendered stroke
+// equals the wordmark's stem (0.113em), the mark's ink bottom sits at
+// baseline + 0.007em (the S glyph's baseline overshoot), and the wordmark pen
+// starts at ink-right + 0.0643em (S rsb + tracking; the p's own left side
+// bearing completes the ratified 0.131em ink-to-ink gap).
+const INK = GEO.inkExtents
+// Frame padding above/below the lockup — presentation only, carried over from
+// the ratified decision-sheet renders (0.72em cap frame · 8/58 · 0.75).
+const PAD_EM = 0.0745
 
 function useLockupLayout(fontSize: number) {
   const { pathRef, metrics } = usePathMetrics(LOGO.pathD, LOGO.totalDots, LOGO.tailDots)
 
-  const capH = fontSize * 0.72
-  const s = capH / MH
-  const gap = fontSize * 0.05
-  const pad = LOGO.strokeW * s * 0.75
+  const F = fontSize
+  const s = (logo.lockup.strokeEm * F) / LOGO.strokeW
+  const pad = F * PAD_EM
+  const capH = F * 0.72 // frame band; the type's true capHeight is 0.700em
   // Albert Sans descender depth. The `p` in "pectrea" drops below the
   // baseline — without this, the descender gets clipped by the viewBox.
-  const descender = fontSize * 0.24
+  const descender = F * 0.24
 
-  const vpPath = transformPathCoords(LOGO.pathD, -ML, -MT, s)
-  const markW = MW * s
-  const textX = markW + gap
-  const textY = pad + capH
+  const textY = pad + capH // baseline
+  // Vertical mark offset: ink bottom at baseline + 0.007em.
+  const markOY = textY + F * GEO.placement.inkBottomVsBaselineEm - (INK.bottom - INK.top) * s
+  const vpPath = transformPathCoords(LOGO.pathD, -INK.left, -INK.top, s)
+  const markW = (INK.right - INK.left) * s
+  const textX = markW + F * GEO.placement.penAdvanceEm
   // Approximate width of the lowercase wordmark "pectrea" at this fontSize,
   // plus a small right-side buffer. Tighter than the old caps sizing (5.5).
-  const totalW = textX + fontSize * 4.2
+  const totalW = textX + F * 4.2
   const totalH = pad + capH + descender + pad
 
   let vpDots: { x: number; y: number }[] = []
@@ -387,7 +405,7 @@ function useLockupLayout(fontSize: number) {
   let vpTotalLen = 0
 
   if (metrics) {
-    vpDots = metrics.dots.map(d => ({ x: (d.x - ML) * s, y: (d.y - MT) * s + pad }))
+    vpDots = metrics.dots.map(d => ({ x: (d.x - INK.left) * s, y: (d.y - INK.top) * s + markOY }))
     connDots = vpDots.slice(0, LOGO.totalDots - LOGO.tailDots)
     tailDotsArr = vpDots.slice(LOGO.totalDots - LOGO.tailDots)
     vpStrokeW = LOGO.strokeW * s
@@ -397,7 +415,7 @@ function useLockupLayout(fontSize: number) {
   }
 
   return {
-    pathRef, metrics, capH, s, pad, vpPath, markW, textX, textY,
+    pathRef, metrics, capH, s, pad, markOY, vpPath, markW, textX, textY,
     totalW, totalH, connDots, tailDotsArr, vpStrokeW, vpDotR, vpConnLen, vpTotalLen,
   }
 }
@@ -443,7 +461,7 @@ export const Logotype = forwardRef<SVGSVGElement, LogotypeProps>(function Logoty
         <circle key={`t${i}`} cx={d.x} cy={d.y} r={layout.vpDotR}
           fill={dotFill((LOGO.totalDots - LOGO.tailDots + i) / (LOGO.totalDots - 1))} />
       ))}
-      <g transform={`translate(0, ${layout.pad})`}>
+      <g transform={`translate(0, ${layout.markOY})`}>
         <path d={layout.vpPath} fill="none"
           stroke={strokeColor}
           strokeWidth={layout.vpStrokeW}
@@ -454,9 +472,9 @@ export const Logotype = forwardRef<SVGSVGElement, LogotypeProps>(function Logoty
       <text x={layout.textX} y={layout.textY}
         fill={color}
         fontFamily="'Albert Sans', sans-serif"
-        fontWeight={600}
+        fontWeight={logo.lockup.wordmarkWeight}
         fontSize={fontSize}
-        letterSpacing={`${fontSize * 0.02}px`}
+        letterSpacing={`${fontSize * logo.lockup.trackingEm}px`}
       >pectrea</text>
     </svg>
   )
@@ -505,7 +523,7 @@ export const LogotypeGradient = forwardRef<SVGSVGElement, LogotypeGradientProps>
       {[...layout.connDots, ...layout.tailDotsArr].map((d, i) => (
         <circle key={i} cx={d.x} cy={d.y} r={layout.vpDotR} fill={dotColor} />
       ))}
-      <g transform={`translate(0, ${layout.pad})`}>
+      <g transform={`translate(0, ${layout.markOY})`}>
         {Array.from({ length: STROKE_SEGMENTS }, (_, i) => {
           const segStart = (strokeLen * i) / STROKE_SEGMENTS
           const segEnd = (strokeLen * (i + 1)) / STROKE_SEGMENTS
@@ -527,9 +545,9 @@ export const LogotypeGradient = forwardRef<SVGSVGElement, LogotypeGradientProps>
       <text x={layout.textX} y={layout.textY}
         fill={resolvedWordmarkColor}
         fontFamily="'Albert Sans', sans-serif"
-        fontWeight={600}
+        fontWeight={logo.lockup.wordmarkWeight}
         fontSize={fontSize}
-        letterSpacing={`${fontSize * 0.02}px`}
+        letterSpacing={`${fontSize * logo.lockup.trackingEm}px`}
       >pectrea</text>
     </svg>
   )

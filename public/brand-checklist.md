@@ -1,8 +1,8 @@
-<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-07-18) -->
+<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-07) -->
 # Spectrea brand pre-flight checklist
 
 Run this BEFORE generating any Spectrea-branded surface — copy, UI, slide, or image.
-Canonical data: src/data/brand.ts (v2.4.0, 2026-07-19). Hard values: /brand-contract.json.
+Canonical data: src/data/brand.ts (v2.5.0, 2026-08-07). Hard values: /brand-contract.json.
 
 ## Step 1 — classify the surface
 
@@ -44,7 +44,7 @@ Pick the closest context; it selects the tone and pattern you must match (exampl
 
 ## Step 4 — trust and legal surfaces
 
-Use the approved masters verbatim (they are in /brand-contract.json under "trustCopy"): privacy, AI use, retention, enterprise readiness. These are brand-voice masters, not legal instruments. Review with counsel before external legal use.
+Use the approved masters verbatim (they are in /brand-contract.json under "trustCopy"): privacy, AI use, retention, enterprise readiness. These are brand-voice masters, not legal instruments. Review with counsel before external legal use. Trigger (ratified 2026-08-07): before any launch that puts trust, security, or compliance claims on a public page, counsel reads these masters first — the same engagement covers formal trademark clearance of the name.
 
 ## Executive voice
 

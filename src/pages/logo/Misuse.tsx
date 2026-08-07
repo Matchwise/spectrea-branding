@@ -1,5 +1,5 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
-import { StaticLogo } from '../../components/brand/SpectreaLogo'
+import { StaticLogo, LOGO } from '../../components/brand/SpectreaLogo'
 
 function MisuseExample({ title, description, children }: { title: string; description: string; children: React.ReactNode }) {
   return (
@@ -60,7 +60,7 @@ export default function Misuse() {
           {/* Outline only */}
           <MisuseExample title="Don't use only the stroke path" description="The dots are integral to the mark. Never render just the S-curve stroke without dots.">
             <svg width={48} height={48} viewBox="0 0 64 64" fill="none">
-              <path d="M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52" stroke="#4271DF" strokeWidth="3" strokeLinecap="round" fill="none" />
+              <path d={LOGO.pathD} stroke="#4271DF" strokeWidth="3" strokeLinecap="round" fill="none" />
             </svg>
           </MisuseExample>
 

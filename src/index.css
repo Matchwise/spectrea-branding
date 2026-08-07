@@ -37,8 +37,9 @@
   --color-wash-rose:   #FDF0F2;
 
   /* Dark surfaces (parallel mode — roles invert). Mist + Fog are new
-     tokens introduced for dark; all accents carry over unchanged
-     (every spectrum hex passes WCAG AA on Ink). */
+     tokens introduced for dark; all accents carry over unchanged.
+     On Ink: Teal 6.91, Amber 6.90, Rose 4.82 pass AA for normal text;
+     Cobalt 3.93 is large-text/UI only (use Cobalt Lift for body text). */
   --color-dark-canvas: #18181C;  /* page bg on dark */
   --color-dark-cloud:  #212226;  /* elevated on dark */
   --color-dark-ink:    #F4F4F1;  /* primary text on dark */

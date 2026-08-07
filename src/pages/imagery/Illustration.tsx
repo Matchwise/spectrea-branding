@@ -405,7 +405,7 @@ export default function Illustration() {
       {/* ─── Hero example ─── */}
       <Section title="Hero example">
         <p className="text-sm text-slate mb-4 leading-relaxed">
-          Generated from the v4 prompt below via Gemini. Subject: a figure working with a flow of brand shapes. Passes the 8-item checklist — zero outlines, tints of primaries on supporting shapes, one hero primary (Teal) dominant with Cobalt figure and small Amber / Rose accents, no facial detail, subtle tonal step on the organic shapes, palette ground (not pure white, not pure grey), both geometric and organic present, asymmetric.
+          Generated from the v4 prompt below via Gemini. Subject: a figure working with a flow of brand shapes. Passes 6 of the 8 checklist items — zero outlines, no facial detail, subtle tonal step on the organic shapes, palette ground, both geometric and organic present, asymmetric — with two audited breaches (2026-08-06): all four primaries appear at 96–100% canonical saturation (the prompt's own reject condition; supporting shapes should be tints) and neutral-grey supporting forms cover ~5.7% of the frame against the neutral-fill rule. It remains the style anchor for warmth, craft and hue fidelity; a compliant regeneration is scheduled in a dedicated art session.
         </p>
         <div className="rounded-xl overflow-hidden border border-stone-200">
           <img

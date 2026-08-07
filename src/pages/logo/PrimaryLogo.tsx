@@ -68,11 +68,11 @@ export default function PrimaryLogo() {
             <div className="space-y-3">
               <div className="bg-cloud rounded-lg px-4 py-3 border border-stone-100">
                 <p className="text-xs font-semibold text-slate mb-1">Dots</p>
-                <p className="text-sm text-iron">10 dots, radius 3.5. Grey (#A3A3A3) in the primary treatment. Evenly spaced from start to end of the path.</p>
+                <p className="text-sm text-iron">10 dots, radius 3.961 (native units; dot diameter : stroke width = 7:8). Grey (#A3A3A3) in the primary treatment. Evenly spaced by arc length from start to end of the path.</p>
               </div>
               <div className="bg-cloud rounded-lg px-4 py-3 border border-stone-100">
                 <p className="text-xs font-semibold text-slate mb-1">Stroke</p>
-                <p className="text-sm text-iron">Width 8, round linecap. In both the static mark and the lockup, the stroke carries the <strong>Cool Duet</strong> (Cobalt #4271DF → Teal #00B6A0). Connects dots 1–8, visually covering dot 8.</p>
+                <p className="text-sm text-iron">Width 9.053 (native units — renders at 0.113em in the lockup, matching the wordmark's stem), round linecap. In both the static mark and the lockup, the stroke carries the <strong>Cool Duet</strong> (Cobalt #4271DF → Teal #00B6A0). Connects dots 1–8, visually covering dot 8.</p>
               </div>
               <div className="bg-cloud rounded-lg px-4 py-3 border border-stone-100">
                 <p className="text-xs font-semibold text-slate mb-1">Trailing dots</p>

@@ -252,7 +252,7 @@ export default function SemanticColors() {
           </Tooltip>
         </h2>
         <p className="text-sm text-iron mb-4 leading-relaxed">
-          On dark surfaces the bridge tier rebuilds at ~8–12% saturation on a dark base. The accents carry over <strong>unchanged</strong> — all four pass WCAG AA on Ink — so the brand reads as itself in either mode.
+          On dark surfaces the bridge tier rebuilds at ~8–12% saturation on a dark base. The accents carry over <strong>unchanged</strong> — Teal (6.91:1), Amber (6.90:1) and Rose (4.82:1) pass WCAG AA on Ink; Cobalt is 3.93:1, large-text/UI only (use Cobalt Lift for body text) — so the brand reads as itself in either mode.
         </p>
 
         <div className="rounded-xl overflow-hidden border border-stone-200">

@@ -188,16 +188,16 @@ export default function BrandStory() {
           </Tooltip>
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="border border-stone-200 rounded-xl p-5">
-            <h3 className="font-semibold text-ink mb-1">{brand.visualMetaphor.primary}</h3>
-            <p className="text-sm text-iron">{brand.visualMetaphor.primaryDescription}</p>
-          </div>
-          <div className="border border-stone-200 rounded-xl p-5">
-            <h3 className="font-semibold text-ink mb-1">{brand.visualMetaphor.secondary}</h3>
-            <p className="text-sm text-iron">{brand.visualMetaphor.secondaryDescription}</p>
-          </div>
+          {brand.visualMetaphor.metaphors.map(m => (
+            <div key={m.name} className="border border-stone-200 rounded-xl p-5">
+              <p className="text-[11px] font-semibold text-pewter uppercase tracking-wider mb-1">Co-primary · {m.role}</p>
+              <h3 className="font-semibold text-ink mb-1">{m.name}</h3>
+              <p className="text-sm text-iron">{m.description}</p>
+            </div>
+          ))}
         </div>
         <p className="text-sm text-slate mt-3 italic">{brand.visualMetaphor.combined}</p>
+        <p className="text-xs text-slate mt-2">{brand.visualMetaphor.tiebreaker}</p>
       </Section>
 
       {/* Aesthetic Direction */}

@@ -15,8 +15,11 @@
  */
 
 import { writeFile, mkdir, readFile } from 'node:fs/promises'
-import { resolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs'
+import { resolve, join, basename } from 'node:path'
+import { fileURLToPath, pathToFileURL } from 'node:url'
+import { tmpdir } from 'node:os'
+import ts from 'typescript'
 import fontkit from '@pdf-lib/fontkit'
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
@@ -24,73 +27,101 @@ const root = resolve(__dirname, '..')
 const outDir = resolve(root, 'public', 'brand-assets')
 await mkdir(outDir, { recursive: true })
 
+// ─── Canon import (same in-memory transpile as generate-ai-formats.mjs) ──
+// No brand constant is re-declared in this script: palette and logo values
+// are read from src/data/brand.ts so the assets cannot drift from canon.
+async function importTsModule(tsPath) {
+  const source = readFileSync(tsPath, 'utf8')
+  const { outputText } = ts.transpileModule(source, {
+    compilerOptions: { module: ts.ModuleKind.ES2022, target: ts.ScriptTarget.ES2022 },
+    fileName: basename(tsPath),
+  })
+  const dir = mkdtempSync(join(tmpdir(), 'spectrea-assets-'))
+  const file = join(dir, basename(tsPath).replace(/\.ts$/, '.mjs'))
+  writeFileSync(file, outputText)
+  try {
+    return await import(pathToFileURL(file).href)
+  } finally {
+    rmSync(dir, { recursive: true, force: true })
+  }
+}
+const canon = await importTsModule(resolve(root, 'src', 'data', 'brand.ts'))
+
 // ─── Load Albert Sans variable font for text-to-path conversion ─────
 // Rendering the wordmark as a path (not a <text fill="url(#g)">) works around
 // a Chrome --print-to-pdf bug where gradient-filled text renders as a
 // solid rectangle instead of glyph outlines.
 const albertSansBuf = await readFile(resolve(root, 'scripts', 'fonts', 'AlbertSans.ttf'))
-const albertSans600 = fontkit.create(albertSansBuf).getVariation({ wght: 600 })
+const albertSans600 = fontkit.create(albertSansBuf).getVariation({ wght: canon.logo.lockup.wordmarkWeight })
 
 /**
  * Build an SVG path `d` string that renders the given text at the specified
- * fontSize with its baseline at `baselineY`. Handles kerning via fontkit's
- * layout engine. Returns { d, advanceWidth }.
+ * fontSize with its baseline at `baselineY`. Uses fontkit's laid-out advance
+ * positions (kerning applied) plus the canonical 0.02em wordmark tracking —
+ * matching the SPA component (SpectreaLogo.tsx letterSpacing), which the old
+ * raw-advanceWidth version did not (the shipped lockups were 0.144em narrower
+ * and unkerned). Returns { d, advanceWidth }.
  */
-function textToPath(text, fontSize, baselineY, startX = 0) {
+function textToPath(text, fontSize, baselineY, startX = 0, trackingEm = canon.logo.lockup.trackingEm) {
   const run = albertSans600.layout(text)
   const scale = fontSize / albertSans600.unitsPerEm
   let x = startX
   let d = ''
-  for (const glyph of run.glyphs) {
+  for (let i = 0; i < run.glyphs.length; i++) {
     // Scale font units to px, flip Y (font Y up → SVG Y down), place at baseline.
-    const gPath = glyph.path.scale(scale, -scale).translate(x, baselineY)
+    const gPath = run.glyphs[i].path.scale(scale, -scale).translate(x, baselineY)
     d += gPath.toSVG() + ' '
-    x += glyph.advanceWidth * scale
+    x += run.positions[i].xAdvance * scale + trackingEm * fontSize
   }
   return { d: d.trim(), advanceWidth: x - startX }
 }
 
-// ─── Brand constants ─────────────────────────────────────────────
-// MIRROR of src/data/brand.ts (selectedPalette + logo construction values) —
-// kept in sync by hand pending full derivation via the ts-transpile import
-// used by scripts/generate-ai-formats.mjs. On any conflict, brand.ts wins.
-const COBALT = '#4271DF'
-const TEAL   = '#00B6A0'
-const AMBER  = '#E19000'
-const ROSE   = '#F24260'
-const BRIDGE = '#6FB884'
+// ─── Brand constants (derived from canon — closes prior residual R10) ──
+const paletteHex = (name) => {
+  const c = canon.selectedPalette.colors.find(c => c.name === name)
+  if (!c) throw new Error(`palette colour missing from canon: ${name}`)
+  return c.hex
+}
+const COBALT = paletteHex('Cobalt')
+const TEAL   = paletteHex('Teal')
+const AMBER  = paletteHex('Amber')
+const ROSE   = paletteHex('Rose')
+const BRIDGE = '#6FB884' // Balanced Duet intermediate (SpectreaLogo.tsx balancedDuetColor)
 
-const CANVAS   = '#FDFDFB'
-const CLOUD    = '#F4F4F1'
-const PEWTER   = '#97979E'
-const SLATE    = '#6D6D72'
-const IRON     = '#46464B'
-const GRAPHITE = '#212226'
-const INK      = '#18181C'
+const CANVAS   = paletteHex('Canvas')
+const CLOUD    = paletteHex('Cloud')
+const PEWTER   = paletteHex('Pewter')
+const SLATE    = paletteHex('Slate')
+const IRON     = paletteHex('Iron')
+const GRAPHITE = paletteHex('Graphite')
+const INK      = paletteHex('Ink')
 
-const DOT_GREY = '#A3A3A3'
+const DOT_GREY = canon.logo.constraints.primaryDotColor
 
-// ─── Logo geometry (mirrors src/components/brand/SpectreaLogo.tsx) ──
+// ─── Logo geometry (K3′, read from canon markGeometry) ──────────
+const GEO = canon.logo.markGeometry
 const LOGO = {
-  segments: [
-    [[44, 12], [34, 6],  [20, 6],  [20, 18]],
-    [[20, 18], [20, 30], [44, 34], [44, 46]],
-    [[44, 46], [44, 58], [30, 58], [20, 52]],
-  ],
-  pathD: 'M 44 12 C 34 6, 20 6, 20 18 C 20 30, 44 34, 44 46 C 44 58, 30 58, 20 52',
-  strokeW: 8,
-  dotR: 3.5,
-  totalDots: 10,
+  segments: GEO.segs,
+  pathD:
+    `M ${GEO.segs[0][0][0]} ${GEO.segs[0][0][1]} ` +
+    GEO.segs.map(sg => `C ${sg[1][0]} ${sg[1][1]}, ${sg[2][0]} ${sg[2][1]}, ${sg[3][0]} ${sg[3][1]}`).join(' '),
+  strokeW: canon.logo.constraints.strokeWidth,
+  dotR: canon.logo.constraints.dotRadius,
+  totalDots: canon.logo.constraints.dotCount,
   tailDots: 2,
 }
 
-// Visible extent of the glyph within the original 64×64 coordinate space.
-// These are the EXACT values used by the live LogotypeGradient component
-// (ML/MT/MW/MH in src/components/brand/SpectreaLogo.tsx) — keeping them
-// in sync ensures assets match what the app renders.
+// Visible ink extent of the mark within the 64×64 construction canvas —
+// canon's ink box (path + dots, ±strokeWidth/2). The lockup aligns on ink,
+// never element bounding boxes.
+const INK_BOX = GEO.inkExtents
 const MARK = {
-  ML: 11, MT: 3, MW: 40, MH: 58,
-  viewBox: { x: 11, y: 3, w: 40, h: 58 },
+  viewBox: {
+    x: INK_BOX.left,
+    y: INK_BOX.top,
+    w: INK_BOX.right - INK_BOX.left,
+    h: INK_BOX.bottom - INK_BOX.top,
+  },
 }
 
 function bezier(t, [p0, p1, p2, p3]) {
@@ -254,34 +285,60 @@ await writeFile(resolve(outDir, 'logo-mark-spectrum.svg'), renderMark({
   dotFill: DOT_GREY,
 }))
 
+// ─── Favicon (public/favicon.svg) ───────────────────────────────
+// White mono mark on an Ink circle — the canonical contained treatment
+// (circle, never a squircle; the standard mark scales down unchanged per
+// the ratified small-sizes rule). Derived from canon like every other asset.
+{
+  const vb = MARK.viewBox
+  const fit = 44 / Math.max(vb.w, vb.h) // mark ink fits a 44-unit band inside the 64 circle
+  const ox = 32 - (vb.x + vb.w / 2) * fit
+  const oy = 32 - (vb.y + vb.h / 2) * fit
+  const circles = DOTS.map(d =>
+    `<circle cx="${(d.x * fit + ox).toFixed(2)}" cy="${(d.y * fit + oy).toFixed(2)}" r="${(LOGO.dotR * fit).toFixed(2)}" fill="${CANVAS}"/>`
+  ).join('\n  ')
+  const favicon = xml(`
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="32" fill="${INK}"/>
+  ${circles}
+  <path d="${LOGO.pathD}" transform="translate(${ox.toFixed(2)} ${oy.toFixed(2)}) scale(${fit.toFixed(4)})" fill="none" stroke="${CANVAS}" stroke-width="${LOGO.strokeW}" stroke-linecap="round" stroke-dasharray="${(connectedLen - LOGO.strokeW / 2 + LOGO.dotR * 0.75 + 1.5).toFixed(2)} ${totalLen.toFixed(2)}"/>
+</svg>
+`)
+  await writeFile(resolve(root, 'public', 'favicon.svg'), favicon)
+}
+
 // ─── Lockups (mark + pectrea wordmark) ───────────────────────────
 /**
- * Build a lockup SVG. Layout mirrors the live LogotypeGradient component
- * exactly (src/components/brand/SpectreaLogo.tsx `useLockupLayout`):
- *   - cap height = fontSize * 0.72
- *   - mark scale = capH / MH (makes mark visible height == cap height)
- *   - gap between mark and wordmark = fontSize * 0.05
- *   - total width = textX + fontkit-measured advance width of "pectrea"
+ * Build a lockup SVG under the ratified "B" constants (2026-08-06, canon
+ * logo.lockup + logo.markGeometry) — the same math as the live
+ * `useLockupLayout` in src/components/brand/SpectreaLogo.tsx:
+ *   - mark scale: rendered stroke = 0.113em (the wordmark's stem weight)
+ *   - vertical: mark ink bottom at baseline + 0.007em (S baseline overshoot)
+ *   - horizontal: wordmark pen at ink-right + 0.0643em (S rsb + tracking;
+ *     the p's own lsb completes the ratified 0.131em ink-to-ink gap)
+ *   - all alignment on the ink box, never element bounding boxes
  */
 function renderLockup({ strokeFill, strokeColorFn, dotFill, wordmarkFill, bg = null, fontSize = 80 }) {
-  const { ML, MT, MW, MH } = MARK
-  const capH = fontSize * 0.72
-  const s = capH / MH
-  const gap = fontSize * 0.05
-  const pad = LOGO.strokeW * s * 0.75
+  const F = fontSize
+  const s = (canon.logo.lockup.strokeEm * F) / LOGO.strokeW
+  const capH = F * 0.72 // frame band (presentation); true capHeight is 0.700em
+  const pad = F * 0.0745
 
-  const markW = MW * s
-  const textX = markW + gap
-  const textY = pad + capH
+  const inkW = INK_BOX.right - INK_BOX.left
+  const inkH = INK_BOX.bottom - INK_BOX.top
+  const markW = inkW * s
+  const textX = markW + F * GEO.placement.penAdvanceEm
+  const textY = pad + capH // baseline
+  const markOY = textY + F * GEO.placement.inkBottomVsBaselineEm - inkH * s
 
   // Render "pectrea" as an outline path (see textToPath comment) and use
   // its measured width for the lockup totalW, so the SVG box always fits
   // the glyphs exactly with no clipping or dead space.
-  const { d: textD, advanceWidth: textW } = textToPath('pectrea', fontSize, textY, textX)
+  const { d: textD, advanceWidth: textW } = textToPath('pectrea', F, textY, textX)
   const totalW = textX + textW + pad
   // The `p` in "pectrea" drops below the baseline — use the font's actual
   // descent so the viewBox fits the glyph outline exactly.
-  const descender = Math.abs(albertSans600.descent) * (fontSize / albertSans600.unitsPerEm)
+  const descender = Math.abs(albertSans600.descent) * (F / albertSans600.unitsPerEm)
   const totalH = pad + capH + descender + pad
 
   const circles = DOTS.map(d =>
@@ -299,7 +356,7 @@ function renderLockup({ strokeFill, strokeColorFn, dotFill, wordmarkFill, bg = n
   return xml(`
 <svg xmlns="http://www.w3.org/2000/svg" width="${totalW.toFixed(0)}" height="${totalH.toFixed(0)}" viewBox="0 0 ${totalW.toFixed(0)} ${totalH.toFixed(0)}">
   ${bgRect}
-  <g transform="translate(${(-ML * s).toFixed(2)} ${(-MT * s + pad).toFixed(2)}) scale(${s})">
+  <g transform="translate(${(-INK_BOX.left * s).toFixed(2)} ${(-INK_BOX.top * s + markOY).toFixed(2)}) scale(${s})">
     ${circles}
     ${strokeMarkup}
   </g>

@@ -33,7 +33,7 @@ export default function Naming() {
       {/* Etymology — dual reading */}
       <Section title="Etymology">
         <p className="text-sm text-iron leading-relaxed mb-3">
-          <strong>Spectrea</strong> is derived from <em>spectra</em> (Latin: the full range or spectrum).
+          <strong>Spectrea</strong> is a coinage from <em>spectrum</em> (Latin, from <em>specere</em>, "to look"; plural <em>spectra</em> — the full range).
           The name does double duty — two readings that together make it earn its place:
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -81,6 +81,30 @@ export default function Naming() {
             </ul>
           </div>
         </div>
+      </Section>
+
+      {/* AI naming — the ratified three-register taxonomy, rendered from canon */}
+      <Section title="AI Naming — Three Registers">
+        <p className="text-sm text-iron leading-relaxed mb-4">{naming.aiNaming.rule}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>The assistant…</h3>
+            <div className="flex flex-wrap gap-2">
+              {naming.aiNaming.allowedVerbs.map(v => (
+                <span key={v} className="text-xs font-medium text-iron bg-cloud rounded-full px-3 py-1">{v}</span>
+              ))}
+            </div>
+          </div>
+          <div className="border rounded-xl p-5" style={{ borderColor: '#F2426025', backgroundColor: '#F2426008' }}>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Never</h3>
+            <div className="flex flex-wrap gap-2">
+              {naming.aiNaming.forbiddenVerbs.map(v => (
+                <span key={v} className="text-xs font-medium text-slate bg-cloud rounded-full px-3 py-1 line-through">{v}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+        <p className="text-sm text-slate leading-relaxed">{naming.aiNaming.verbRule}</p>
       </Section>
 
       {/* Capitalization */}
