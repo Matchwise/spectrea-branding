@@ -2,7 +2,7 @@
 # Spectrea brand pre-flight checklist
 
 Run this BEFORE generating any Spectrea-branded surface — copy, UI, slide, or image.
-Canonical data: src/data/brand.ts (v2.5.2, 2026-08-07). Hard values: /brand-contract.json.
+Canonical data: src/data/brand.ts (v2.5.3, 2026-08-08). Hard values: /brand-contract.json.
 
 ## Step 1 — classify the surface
 
@@ -27,11 +27,11 @@ Pick the closest context; it selects the tone and pattern you must match (exampl
 - [ ] The name is "Spectrea" and never appears as: "SpectreAI" (not the name) · "Spectre" / "Spectra" (different words — not the name) · "spectra" (missing the e — typo) · "Spectrea AI" as the lead name (AI is not the brand) · "SPECTREA" (all-caps styling) · "spectrea" lowercase in headings or prose (lowercase belongs to the logo wordmark treatment only) · "The Spectrea" (no article) · Random internal caps ("SpecTrea").
 - [ ] None of the never-use words appear: AI-powered (overused), next-gen, state-of-the-art, world-class, breakthrough, unprecedented, game-changer, revolutionary, seamless, cutting-edge, synergy, leverage (as verb), agentic, AI-first, copilot (as generic noun), 10x, supercharge, effortless, magical.
 - [ ] Privileged-word density: Max two privileged words per paragraph, one "living" / "alive" per page. If a paragraph survives losing every privileged word, the prose is doing its job — if it collapses without them, rewrite.
-- [ ] Outcome-first: Open with the outcome, never the mechanism. On buyer surfaces the graph and the loop never open the copy — they enter after the outcome, as the reason to believe. Exception: graph-native jobs (exploration, visualisation), where the graph is the star and may lead.
+- [ ] Hero open: Open on the outcome, written as a reveal — the moment of new sight. Never open with the mechanism, the pain alone, or a platitude. Ground it next with a specific the reader can check; close by equipping the next step. The gesture adapts to any surface — a problem may set up the reveal, proof may carry the grounding — but the open always lands on the outcome. Exception: graph-native jobs (exploration, visualisation), where the graph is the star and may lead.
 - [ ] No totalizing claims — no "incomparably", no "infinite", no unbounded every/always sweeps. Claims stay bounded and mechanism-tied.
 - [ ] Compounding claim: Use "compounding intelligence" only with its defensible mechanism named — provenance, per-viewer access, and the closed loop that feeds outcomes back in. The phrase is contested in-market (noted 2026-07-03); the mechanism, not the slogan, carries the claim.
 - [ ] Differentiation: Never position on retrieval or search quality — it is commoditized across the field. The graph earns its keep through governance, provenance, shared state, and the loop; differentiate on what the substrate makes structural.
-- [ ] Buyer surfaces: Hero, case studies, pricing — lead with proof: a named customer, a concrete outcome, or a peer-testable claim. Brand vocabulary decorates; it doesn't carry the opening.
+- [ ] Buyer surfaces: Hero, case studies, pricing — the open lands on the outcome (heroOpen rule); proof carries the grounding: a named customer, a concrete outcome, or a peer-testable claim. Brand vocabulary decorates; it doesn't carry the opening.
 - [ ] Product surfaces: Warm up one notch. Warmth comes from specificity, not exclamation points — "Read. 12 entities, 18 connections added." beats "Upload complete! 🎉" because the first shows the system paid attention.
 - [ ] AI naming: Three registers. (1) Homepage/hero narrative: "your AI" is sanctioned to match the hero register. (2) Product and trust surfaces: the AI is "the assistant" — lowercase, generic; as a first-class feature name it is "Assistant" (Title-Case). (3) Technical and architecture writing: "agent" is the umbrella term for an accountable AI actor (delegate or standing agent), per the vision taxonomy — the assistant is the delegate shape's product realization. Never "copilot" (generic or name), never "Spectrea AI" as a name. The assistant suggests, surfaces, and drafts — it never silently "handles it for you" or "takes over". Automations act within guardrails the user sets: the user decides what runs on its own and what checks with you first (ratified 2026-07-19, per the vision's governed-autonomy model). Never describe autonomy without naming its guardrail; never use approval-begging framings ("waiting for your yes"). Allowed verbs: suggests, surfaces, drafts. Forbidden verbs: handles it for you, takes over.
 

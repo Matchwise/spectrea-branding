@@ -2,7 +2,7 @@
 # Spectrea few-shots — on-brand vs off-brand
 
 Contrastive pairs derived from the canonical voice data (voice.toneExamples and
-voice.surfacePatterns in src/data/brand.ts, v2.5.2). Use these as few-shot
+voice.surfacePatterns in src/data/brand.ts, v2.5.3). Use these as few-shot
 examples when generating Spectrea copy: match the register of the ✅ versions.
 Voice formula: Clarity of explanation + experiential momentum. Tech earns its place by showing its work.
 
@@ -10,11 +10,11 @@ Voice formula: Clarity of explanation + experiential momentum. Tech earns its pl
 
 ### Marketing / Landing Page
 
-✅ **On-brand:** Stop losing knowledge to silos. Spectrea builds a living graph of everything your organization knows. The more you use it, the sharper it gets.
+✅ **On-brand:** See everything your organization knows in one connected view. Spectrea builds a living graph from your documents — the more you use it, the sharper it gets.
 
 ❌ **Off-brand:** Transform how your team works. Unlock the power of connected knowledge — insights, intelligence, impact.
 
-*Why:* Bold and direct. The wrong version isn't hype — it's platitude. "Transform," "unlock," "insights" say nothing specific. The right version leads with a problem the reader feels, then points at the mechanism.
+*Why:* Bold and direct. The wrong version isn't hype — it's platitude. "Transform," "unlock," "insights" say nothing specific. The right version opens on the outcome written as a reveal — everything in one connected view — then grounds it with the mechanism as the reason to believe, and the compounding claim keeps its mechanism tie.
 
 ### Error Message
 

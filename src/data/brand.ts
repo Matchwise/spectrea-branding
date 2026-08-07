@@ -4,8 +4,8 @@
 
 // --- Meta / Governance ---
 export const meta = {
-  version: '2.5.2',
-  lastUpdated: '2026-08-07',
+  version: '2.5.3',
+  lastUpdated: '2026-08-08',
   sourceOfTruth:
     'brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea\'s roadmap — check it before placing a capability claim on a buyer-facing surface.',
   renderDoctrine:
@@ -58,7 +58,7 @@ export const brand = {
     // the meaning. See ratificationLedger.
     onRamp: {
       posture:
-        'Outcome-first hero. The hero leads with the entry job and its outcome. One coined whole-product frame is sanctioned (ratified 2026-07-19): "the operating system for collective intelligence" — distinct from generic "AI OS", always paired with plain language that carries the meaning. Balance doctrine (ratified 2026-07-19): avoid-list terms are not blacklisted — one may label a segment-matched surface when a plain-language claim carries the meaning in place; never expect it to carry weight with unfamiliar audiences, and never lead a cross-segment hero with it.',
+        'Outcome-first hero per the canonical heroOpen rule: the hero leads with the entry job and its outcome, written as a reveal. One coined whole-product frame is sanctioned (ratified 2026-07-19): "the operating system for collective intelligence" — distinct from generic "AI OS", always paired with plain language that carries the meaning. Balance doctrine (ratified 2026-07-19): avoid-list terms are not blacklisted — one may label a segment-matched surface when a plain-language claim carries the meaning in place; never expect it to carry weight with unfamiliar audiences, and never lead a cross-segment hero with it.',
       heroExample:
         'Drop in your docs — get answers that show their sources, and a system that gets sharper every week.',
       adopt: ['permission-aware', 'cited answers', 'grounded answers', 'knowledge graph (exploration surfaces only — the graph stays supporting-cast)'],
@@ -375,7 +375,9 @@ export const voice = {
     {
       context: 'Marketing / Homepage',
       tone: 'Bold + Direct',
-      example: 'Stop losing knowledge to silos. Spectrea builds a living graph of everything your organization knows. The more you use it, the sharper it gets.',
+      // Shares the D27-ratified exemplar with toneExamples (the two surfaces
+      // carried identical text before the rewrite; kept identical after).
+      example: 'See everything your organization knows in one connected view. Spectrea builds a living graph from your documents — the more you use it, the sharper it gets.',
     },
     {
       context: 'Documentation / Help',
@@ -425,7 +427,7 @@ export const voice = {
   contextShifts: {
     buyer: {
       label: 'On buyer surfaces',
-      detail: 'Hero, case studies, pricing — lead with proof: a named customer, a concrete outcome, or a peer-testable claim. Brand vocabulary decorates; it doesn\'t carry the opening.',
+      detail: 'Hero, case studies, pricing — the open lands on the outcome (heroOpen rule); proof carries the grounding: a named customer, a concrete outcome, or a peer-testable claim. Brand vocabulary decorates; it doesn\'t carry the opening.',
     },
     product: {
       label: 'Inside the product',
@@ -433,11 +435,13 @@ export const voice = {
     },
   },
 
-  // Outcome-first rule (2026-07-03, per the ratified star-where-it-shines
-  // posture): the graph is celebrated where it is functionally best —
-  // exploration and visualisation. Everywhere else, the outcome opens.
-  outcomeFirst:
-    'Open with the outcome, never the mechanism. On buyer surfaces the graph and the loop never open the copy — they enter after the outcome, as the reason to believe. Exception: graph-native jobs (exploration, visualisation), where the graph is the star and may lead.',
+  // The one canonical hero-open (D28 part 1, ratified 2026-08-07): fuses the
+  // outcome-first structure (2026-07-03/19) with the character's reveal
+  // register. Kept simple and adaptable by design — the satellite texts
+  // (contextShifts.buyer, messaging onRamp, character facets) describe steps
+  // of this one gesture, never competing openings.
+  heroOpen:
+    'Open on the outcome, written as a reveal — the moment of new sight. Never open with the mechanism, the pain alone, or a platitude. Ground it next with a specific the reader can check; close by equipping the next step. The gesture adapts to any surface — a problem may set up the reveal, proof may carry the grounding — but the open always lands on the outcome. Exception: graph-native jobs (exploration, visualisation), where the graph is the star and may lead.',
 
   // Privileged-vocabulary density rule.
   vocabularyDensity:
@@ -446,9 +450,10 @@ export const voice = {
   toneExamples: [
     {
       context: 'Marketing / Landing Page',
-      correct: 'Stop losing knowledge to silos. Spectrea builds a living graph of everything your organization knows. The more you use it, the sharper it gets.',
+      // Rewritten per the canonical heroOpen rule (D27, ratified 2026-08-08).
+      correct: 'See everything your organization knows in one connected view. Spectrea builds a living graph from your documents — the more you use it, the sharper it gets.',
       incorrect: 'Transform how your team works. Unlock the power of connected knowledge — insights, intelligence, impact.',
-      why: 'Bold and direct. The wrong version isn\'t hype — it\'s platitude. "Transform," "unlock," "insights" say nothing specific. The right version leads with a problem the reader feels, then points at the mechanism.',
+      why: 'Bold and direct. The wrong version isn\'t hype — it\'s platitude. "Transform," "unlock," "insights" say nothing specific. The right version opens on the outcome written as a reveal — everything in one connected view — then grounds it with the mechanism as the reason to believe, and the compounding claim keeps its mechanism tie.',
     },
     {
       context: 'Error Message',
@@ -833,6 +838,8 @@ export const ratificationLedger = [
   { date: '2026-08-07', decision: '"Compounding intelligence" stance: DEFEND — the phrase stays, as one of five differentiator beats (persistent memory, provenance, collective intelligence, composability, the closed loop); the mechanism-tie guardrail carries the claim, not the slogan. Trust-copy counsel trigger added (see trustCopy.counselNote). Name hygiene: knockout search clean (no exact-match "Spectrea" collision found; closest neighbours are remote-class SPECTRE marks and crypto-space Spectre AI); formal clearance rides the counsel trigger; etymology restated as a sourced coinage from "spectrum".' },
   { date: '2026-08-07', decision: 'Focus-ring contrast resolved as a FIX, not an exception (exception round 1/2): light-mode ring switches to Amber active #A86E00 (4.21:1 on Canvas, 3.89:1 on Cloud); dark mode keeps rgba(225,144,0,0.7) (4.00:1 blended on Ink). The previous universal soft ring measured 1.90:1/1.81:1 on light surfaces — below the ratified 3:1 UI floor. The exception registry stays empty.' },
   { date: '2026-08-07', decision: 'Sub-AA button labels resolved as the registry\'s first GRANTED exception (exception round 2/2): white #FFFFFF labels stay on all four semantic base fills. Darren challenged the WCAG 2.x ranking on perceptual grounds; APCA-W3 re-measurement confirmed white beats or ties Ink on every fill (Lc 76.4/68.4/54.6/54.9 vs Ink 31.7/39.6/53.0/52.7) — the nominally compliant Ink-on-Rose swap would have been perceptually worse. Measurement doctrine added (accessibility.measurement): WCAG 2.x AA stays the conformance floor; APCA-W3 Lc is the recorded perceptual adjudicator; exception grants log both metrics.' },
+  { date: '2026-08-07', decision: 'One canonical hero-open ratified (D28 part 1): voice.heroOpen — "open on the outcome, written as a reveal", kept simple and adaptable per Darren\'s direction. Fuses the ratified outcome-first structure with the character\'s reveal register; the former five competing prescriptions become steps of one gesture (reveal = register of the open, proof = the grounding, entry-job outcome = the on-ramp specialisation, problem = optional setup that must land on the outcome in the same breath). Supersedes voice.outcomeFirst (renamed).' },
+  { date: '2026-08-08', decision: 'Marketing exemplar rewritten under the heroOpen rule (D27): the canonical Marketing/Landing Page example — the few-shot AI tools imitate — now opens on the outcome written as a reveal ("See everything your organization knows in one connected view. Spectrea builds a living graph from your documents — the more you use it, the sharper it gets."), replacing the problem-first open ("Stop losing knowledge to silos…"). Its why-note stops teaching problem-first; the compounding claim keeps its mechanism tie; density at the two-privileged-words cap.' },
 ] as const
 
 // --- Executive Voice ---

@@ -99,7 +99,7 @@ const contract = {
     alwaysUse: voice.alwaysUse,
     neverUse: voice.neverUse,
     density: voice.vocabularyDensity,
-    outcomeFirst: voice.outcomeFirst,
+    heroOpen: voice.heroOpen,
     contextShifts: voice.contextShifts,
     onRamp: brand.positioning.onRamp,
   },
@@ -169,7 +169,7 @@ ${surfaceLines}
 - [ ] The name is "${brand.name}" and never appears as: ${listNever}.
 - [ ] None of the never-use words appear: ${listNeverUse}.
 - [ ] Privileged-word density: ${voice.vocabularyDensity}
-- [ ] Outcome-first: ${voice.outcomeFirst}
+- [ ] Hero open: ${voice.heroOpen}
 - [ ] No totalizing claims — no "incomparably", no "infinite", no unbounded every/always sweeps. Claims stay bounded and mechanism-tied.
 - [ ] Compounding claim: ${compoundingValue?.usageGuardrail ?? ''}
 - [ ] Differentiation: ${brand.differentiatorGuardrail}
@@ -260,7 +260,7 @@ it is regenerated from src/data/brand.ts.
 - Company vs product: ${naming.companyProduct.rule}
 - Never write the name as: ${listNever}.
 - Voice formula: ${voice.formula} ${voice.techDescription}
-- Outcome-first: ${voice.outcomeFirst}
+- Hero open: ${voice.heroOpen}
 - On-ramp: ${brand.positioning.onRamp.posture} Hero example: "${brand.positioning.onRamp.heroExample}" ${brand.positioning.onRamp.coinRule} Adopt: ${brand.positioning.onRamp.adopt.join(' · ')}. Avoid: ${brand.positioning.onRamp.avoid.join(' · ')}.
 - Privileged words (max two per paragraph): ${voice.alwaysUse.join(', ')}. ${voice.vocabularyDensity}
 - NEVER use these words: ${listNeverUse}.
@@ -317,7 +317,7 @@ const llms = `${MD_HEADER}
 - **Voice formula:** ${voice.formula}
 - **Never-use words:** ${listNeverUse}.
 - **Density:** ${voice.vocabularyDensity}
-- **Outcome-first:** ${voice.outcomeFirst}
+- **Hero open:** ${voice.heroOpen}
 - **On-ramp:** ${brand.positioning.onRamp.posture} Hero example: "${brand.positioning.onRamp.heroExample}"
 - **Anti-values:** ${brand.antiValues.map(a => a.never).join(' · ')}.
 - **AI naming:** ${aiNamingLine}

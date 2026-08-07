@@ -94,7 +94,7 @@ export default function Social() {
             <div className="rounded-xl overflow-hidden" style={{ backgroundColor: '#18181C' }}>
               <div className="p-6">
                 <p className="text-sm font-semibold leading-relaxed" style={{ color: '#F4F4F1', fontFamily: "'Albert Sans', sans-serif" }}>
-                  "Stop losing knowledge to silos."
+                  "See everything your organization knows in one connected view."
                 </p>
                 <p className="text-xs mt-3" style={{ color: '#B0B0B6' }}>— Spectrea</p>
               </div>

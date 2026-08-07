@@ -1,7 +1,7 @@
 {
   "_generated": "DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-07)",
-  "version": "2.5.2",
-  "lastUpdated": "2026-08-07",
+  "version": "2.5.3",
+  "lastUpdated": "2026-08-08",
   "sourceOfTruth": "brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea's roadmap — check it before placing a capability claim on a buyer-facing surface.",
   "identity": {
     "name": "Spectrea",
@@ -111,11 +111,11 @@
       "magical"
     ],
     "density": "Max two privileged words per paragraph, one \"living\" / \"alive\" per page. If a paragraph survives losing every privileged word, the prose is doing its job — if it collapses without them, rewrite.",
-    "outcomeFirst": "Open with the outcome, never the mechanism. On buyer surfaces the graph and the loop never open the copy — they enter after the outcome, as the reason to believe. Exception: graph-native jobs (exploration, visualisation), where the graph is the star and may lead.",
+    "heroOpen": "Open on the outcome, written as a reveal — the moment of new sight. Never open with the mechanism, the pain alone, or a platitude. Ground it next with a specific the reader can check; close by equipping the next step. The gesture adapts to any surface — a problem may set up the reveal, proof may carry the grounding — but the open always lands on the outcome. Exception: graph-native jobs (exploration, visualisation), where the graph is the star and may lead.",
     "contextShifts": {
       "buyer": {
         "label": "On buyer surfaces",
-        "detail": "Hero, case studies, pricing — lead with proof: a named customer, a concrete outcome, or a peer-testable claim. Brand vocabulary decorates; it doesn't carry the opening."
+        "detail": "Hero, case studies, pricing — the open lands on the outcome (heroOpen rule); proof carries the grounding: a named customer, a concrete outcome, or a peer-testable claim. Brand vocabulary decorates; it doesn't carry the opening."
       },
       "product": {
         "label": "Inside the product",
@@ -123,7 +123,7 @@
       }
     },
     "onRamp": {
-      "posture": "Outcome-first hero. The hero leads with the entry job and its outcome. One coined whole-product frame is sanctioned (ratified 2026-07-19): \"the operating system for collective intelligence\" — distinct from generic \"AI OS\", always paired with plain language that carries the meaning. Balance doctrine (ratified 2026-07-19): avoid-list terms are not blacklisted — one may label a segment-matched surface when a plain-language claim carries the meaning in place; never expect it to carry weight with unfamiliar audiences, and never lead a cross-segment hero with it.",
+      "posture": "Outcome-first hero per the canonical heroOpen rule: the hero leads with the entry job and its outcome, written as a reveal. One coined whole-product frame is sanctioned (ratified 2026-07-19): \"the operating system for collective intelligence\" — distinct from generic \"AI OS\", always paired with plain language that carries the meaning. Balance doctrine (ratified 2026-07-19): avoid-list terms are not blacklisted — one may label a segment-matched surface when a plain-language claim carries the meaning in place; never expect it to carry weight with unfamiliar audiences, and never lead a cross-segment hero with it.",
       "heroExample": "Drop in your docs — get answers that show their sources, and a system that gets sharper every week.",
       "adopt": [
         "permission-aware",
@@ -802,6 +802,14 @@
     {
       "date": "2026-08-07",
       "decision": "Sub-AA button labels resolved as the registry's first GRANTED exception (exception round 2/2): white #FFFFFF labels stay on all four semantic base fills. Darren challenged the WCAG 2.x ranking on perceptual grounds; APCA-W3 re-measurement confirmed white beats or ties Ink on every fill (Lc 76.4/68.4/54.6/54.9 vs Ink 31.7/39.6/53.0/52.7) — the nominally compliant Ink-on-Rose swap would have been perceptually worse. Measurement doctrine added (accessibility.measurement): WCAG 2.x AA stays the conformance floor; APCA-W3 Lc is the recorded perceptual adjudicator; exception grants log both metrics."
+    },
+    {
+      "date": "2026-08-07",
+      "decision": "One canonical hero-open ratified (D28 part 1): voice.heroOpen — \"open on the outcome, written as a reveal\", kept simple and adaptable per Darren's direction. Fuses the ratified outcome-first structure with the character's reveal register; the former five competing prescriptions become steps of one gesture (reveal = register of the open, proof = the grounding, entry-job outcome = the on-ramp specialisation, problem = optional setup that must land on the outcome in the same breath). Supersedes voice.outcomeFirst (renamed)."
+    },
+    {
+      "date": "2026-08-08",
+      "decision": "Marketing exemplar rewritten under the heroOpen rule (D27): the canonical Marketing/Landing Page example — the few-shot AI tools imitate — now opens on the outcome written as a reveal (\"See everything your organization knows in one connected view. Spectrea builds a living graph from your documents — the more you use it, the sharper it gets.\"), replacing the problem-first open (\"Stop losing knowledge to silos…\"). Its why-note stops teaching problem-first; the compounding claim keeps its mechanism tie; density at the two-privileged-words cap."
     }
   ]
 }

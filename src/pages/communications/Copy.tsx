@@ -49,7 +49,7 @@ export default function Copy() {
       {/* The front door (on-ramp) */}
       <Section>
         <h2 className="text-xl font-semibold text-ink mb-4">
-          <Tooltip content="How the first thing a visitor reads should open — decided 2026-07-03, amended 2026-07-19. The hero sells the entry job and its outcome; one coined whole-product frame is sanctioned, always paired with plain language that carries the meaning.">
+          <Tooltip content="How the first thing a visitor reads should open — decided 2026-07-03, amended 2026-07-19; governed by the canonical hero-open rule (2026-08-07): open on the outcome, written as a reveal. The hero sells the entry job and its outcome; one coined whole-product frame is sanctioned, always paired with plain language that carries the meaning.">
             <span>The Front Door (On-Ramp)</span>
           </Tooltip>
         </h2>
@@ -170,7 +170,7 @@ export default function Copy() {
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
             <ul className="space-y-2 text-sm text-iron">
-              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Open with the problem and the outcome — the mechanism enters as the reason to believe</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Open on the outcome, written as a reveal — a problem may set it up, but the open lands on the outcome; the mechanism enters as the reason to believe</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use the approved vocabulary list</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Show what the user experiences, not what we built</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use headline formulas for consistency across authors</li>
