@@ -1,0 +1,67 @@
+﻿{
+    "ratified":  "K3-prime (2026-08-06)",
+    "frame":  "native 64-box, ML=11 MT=3, uniform q=58/714 from Albert Sans 600 S medial axis (closest-point paired, ends trimmed 1.5%)",
+    "dots":  "10 at i/9 arc fractions of the full path; first 8 connected; stroke ends at strokeLen+dash like SpectreaLogo.tsx",
+    "bConstants":  {
+                       "strokeEm":  0.113,
+                       "inkHeightEm":  0.714,
+                       "inkGapEm":  0.131,
+                       "dotToStroke":  "7:8"
+                   },
+    "segs":  [
+                 [
+                     [
+                         44.965,
+                         14.19
+                     ],
+                     [
+                         39.3,
+                         3.346
+                     ],
+                     [
+                         16.635,
+                         4.294
+                     ],
+                     [
+                         16.532,
+                         18.686
+                     ]
+                 ],
+                 [
+                     [
+                         16.532,
+                         18.686
+                     ],
+                     [
+                         16.412,
+                         35.427
+                     ],
+                     [
+                         46.367,
+                         26.756
+                     ],
+                     [
+                         46.301,
+                         44.482
+                     ]
+                 ],
+                 [
+                     [
+                         46.301,
+                         44.482
+                     ],
+                     [
+                         46.245,
+                         59.74
+                     ],
+                     [
+                         26,
+                         58.5
+                     ],
+                     [
+                         14.3,
+                         50.3
+                     ]
+                 ]
+             ]
+}
