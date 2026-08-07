@@ -1,6 +1,6 @@
 # spectrea-branding — Agent Instructions
 
-Upstream Spectrea brand repository: the brand source of truth plus the deployed brand guide (Vite + React, npm; published via GitHub Pages at https://matchwise.github.io/spectrea-branding/#/).
+Upstream Spectrea brand repository: the brand source of truth plus the deployed brand guide (Vite + React, npm; published via GitHub Pages at https://branding.spectrea.com/#/ — the old matchwise.github.io/spectrea-branding URL 301-redirects here).
 
 ## Commands
 
