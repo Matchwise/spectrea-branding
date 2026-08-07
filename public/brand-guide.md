@@ -7,7 +7,7 @@
 **Tagline:** We connect the dots.
 **Category:** Composable intelligence platform.
 **Pronunciation:** /spek-TREE-uh/ (a coinage from *spectrum* — Latin, from *specere*, "to look"; the full range — with a second reading: *revealing*).
-**Version:** 2.5.1 (2026-08-07). Canonical data: `src/data/brand.ts` — this guide is a derived mirror.
+**Version:** 2.5.2 (2026-08-07). Canonical data: `src/data/brand.ts` — this guide is a derived mirror.
 
 **Strategic claim:** Spectrea is the spectrum of clarity. Everything you know, in one living view — alive with possibility, yours to keep. See it whole. Trust what you see. Build on what you find.
 
@@ -575,6 +575,9 @@ The floor is **WCAG 2.2 AA** on every shipped surface.
 - WCAG 2.2 specifics: a visible focus indicator on every interactive element (the Amber focus ring — 2 px solid, 2 px offset; Amber active `#A86E00` on light surfaces, alpha-tinted Amber on dark — is the standard treatment) · interactive targets ≥ 24×24 px (or the equivalent spacing exception) · every drag interaction (graph manipulation included) has a single-pointer, non-dragging alternative.
 - Never rely on colour alone — pair colour coding with icons, patterns, or labels.
 - Layout must not break at 200% browser text-zoom.
+- **Measurement doctrine (adopted 2026-08-07):** WCAG 2.x relative-luminance ratios are the conformance floor — the metric automated checkers enforce and the level the brand publicly claims. APCA-W3 Lc (the WCAG 3 draft model; ≥45 spot text, ≥60 fluent, ≥75 body) is the recorded perceptual adjudicator, consulted whenever the 2.x formula and trained eyes disagree — 2.x under-credits light text on saturated mid-tone fills and over-credits dark-on-vivid. Exception grants record both metrics. OKLab/OKLCH lightness deltas may inform design exploration but are not conformance measures.
+- **Exception registry** — deliberate, ratified departures from the floors; a sub-floor usage not listed here is a defect, not a style. One entry:
+  - `semantic-button-labels-white` (ratified 2026-08-07): white `#FFFFFF` labels stay on all four semantic button base fills although WCAG 2.x reads Rose 3.67:1, Teal 2.56:1, Amber 2.56:1 (Cobalt passes at 4.51:1). APCA re-measurement showed white beats or ties Ink on every fill (Lc 76.4 Cobalt / 68.4 Rose / 54.6 Teal / 54.9 Amber vs Ink 31.7/39.6/53.0/52.7) — the nominally compliant Ink-on-Rose swap would have read perceptually *worse* — and every white pairing clears the APCA spot-text minimum at base state. Bounds: short action-button labels ≥14 px Lexend Medium, reinforced by action context; never body text, links, or long-form copy. Dark-mode transient states still flip the label to Ink (5.10–9.72:1, AA).
 
 ---
 
@@ -910,4 +913,4 @@ All via Google Fonts:
 
 ---
 
-*`src/data/brand.ts` is the canonical brand data (v2.5.1, 2026-08-07). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
+*`src/data/brand.ts` is the canonical brand data (v2.5.2, 2026-08-07). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*

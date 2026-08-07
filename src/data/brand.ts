@@ -4,7 +4,7 @@
 
 // --- Meta / Governance ---
 export const meta = {
-  version: '2.5.1',
+  version: '2.5.2',
   lastUpdated: '2026-08-07',
   sourceOfTruth:
     'brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea\'s roadmap — check it before placing a capability claim on a buyer-facing surface.',
@@ -671,6 +671,12 @@ export const brandTokens = {
 // checkable form.
 export const accessibility = {
   floor: 'WCAG 2.2 AA',
+  // Measurement doctrine (adopted 2026-08-07, exception round 2/2): the 2.x
+  // ratio is what checkers enforce and what the brand publicly claims, but it
+  // mis-ranks saturated mid-tone fills — so perception disputes are settled
+  // with APCA, and every exception grant records both numbers.
+  measurement:
+    'Conformance floor: WCAG 2.x relative-luminance ratios (4.5:1 normal text; 3:1 large text and UI) — the metric automated checkers enforce and the level the brand publicly claims. Perceptual adjudicator: APCA-W3 Lc (the WCAG 3 draft model; ≥45 spot text, ≥60 fluent, ≥75 body) — consulted whenever the 2.x formula and trained eyes disagree, because 2.x under-credits light text on saturated mid-tone fills and over-credits dark-on-vivid. Exception grants record both metrics. OKLab/OKLCH lightness deltas may inform design exploration but are not conformance measures.',
   contrast: {
     normalText: '4.5:1',
     largeTextAndUI: '3:1',
@@ -684,8 +690,20 @@ export const accessibility = {
   // departure must be a named, Darren-ratified entry here. A sub-floor usage
   // not listed in this registry is a defect, not a style.
   exceptionRegistry: {
-    rule: 'Each entry names the exception, its measured values, its rationale, and its usage bounds. Grant pending ratification (follow-up round): sub-AA button text styles. (The Amber focus-ring candidate was resolved 2026-08-07 as a fix, not an exception — see brandTokens.focusRing.)',
-    entries: [],
+    rule: 'Each entry names the exception, its measured values under both metrics (see accessibility.measurement), its rationale, and its usage bounds. A sub-floor usage not listed here is a defect, not a style. (The Amber focus-ring candidate was resolved 2026-08-07 as a fix, not an exception — see brandTokens.focusRing.)',
+    entries: [
+      {
+        name: 'semantic-button-labels-white',
+        ratified: '2026-08-07',
+        exception: 'White #FFFFFF labels on semantic button base fills sit below the WCAG 2.x AA text floor on Rose, Teal, and Amber.',
+        measured: {
+          wcag2x: 'White on Cobalt 4.51:1 (AA), Rose 3.67:1, Teal 2.56:1, Amber 2.56:1; light-mode hover/active improve to 3.20–7.02:1; dark transient states flip to Ink and pass 5.10–9.72:1.',
+          apca: 'White Lc on Cobalt 76.4, Rose 68.4, Teal 54.6, Amber 54.9 (hover/active 64.2–88.9) vs Ink Lc 31.7/39.6/53.0/52.7 — white beats or ties Ink on every fill, and every white pairing clears the APCA spot-text minimum (45) at base state.',
+        },
+        rationale: 'The WCAG 2.x formula under-credits light text on saturated mid-tone fills and over-credits dark-on-vivid: the nominally compliant Ink-on-Rose swap (4.82:1) would measure APCA Lc 39.6 — perceptually worse than the white it replaced (68.4). White labels are perceptually equal-or-better everywhere and keep one consistent label rule across the semantic set.',
+        bounds: 'Semantic action buttons only: short labels, ≥14px Lexend Medium (500), reinforced by action context per the colour-alone rule. Covers light- and dark-surface base states (dark transient states still flip to Ink). Never body text, links, or long-form copy.',
+      },
+    ],
   },
   wcag22Criteria: [
     'Focus appearance: a visible focus indicator on every interactive element — the Amber focus ring (2 px solid, 2 px offset; Amber active #A86E00 on light surfaces, alpha-tinted Amber on dark) is the standard treatment.',
@@ -814,6 +832,7 @@ export const ratificationLedger = [
   { date: '2026-08-06', decision: 'Brand review ratifications (record: docs/brand-review-2026-08): wordmark Albert Sans 600 canonical at every size incl. hero; lockup constants re-derived from font metrics (stroke 0.113em = stem, mark ink 0.714em = S glyph, ink gap 0.131em, dots 7:8); mark geometry K3′ adopted (S-fit spine, deliberate shallow storytelling tail); visual metaphors explicitly co-primary (Prism = identity/reveal, Living Network = product/growth); render-everything propagation doctrine (meta.renderDoctrine); contrast policy = AA/3:1 floors + ratified exception registry; no small-size micro-construction — the mark scales down unchanged.' },
   { date: '2026-08-07', decision: '"Compounding intelligence" stance: DEFEND — the phrase stays, as one of five differentiator beats (persistent memory, provenance, collective intelligence, composability, the closed loop); the mechanism-tie guardrail carries the claim, not the slogan. Trust-copy counsel trigger added (see trustCopy.counselNote). Name hygiene: knockout search clean (no exact-match "Spectrea" collision found; closest neighbours are remote-class SPECTRE marks and crypto-space Spectre AI); formal clearance rides the counsel trigger; etymology restated as a sourced coinage from "spectrum".' },
   { date: '2026-08-07', decision: 'Focus-ring contrast resolved as a FIX, not an exception (exception round 1/2): light-mode ring switches to Amber active #A86E00 (4.21:1 on Canvas, 3.89:1 on Cloud); dark mode keeps rgba(225,144,0,0.7) (4.00:1 blended on Ink). The previous universal soft ring measured 1.90:1/1.81:1 on light surfaces — below the ratified 3:1 UI floor. The exception registry stays empty.' },
+  { date: '2026-08-07', decision: 'Sub-AA button labels resolved as the registry\'s first GRANTED exception (exception round 2/2): white #FFFFFF labels stay on all four semantic base fills. Darren challenged the WCAG 2.x ranking on perceptual grounds; APCA-W3 re-measurement confirmed white beats or ties Ink on every fill (Lc 76.4/68.4/54.6/54.9 vs Ink 31.7/39.6/53.0/52.7) — the nominally compliant Ink-on-Rose swap would have been perceptually worse. Measurement doctrine added (accessibility.measurement): WCAG 2.x AA stays the conformance floor; APCA-W3 Lc is the recorded perceptual adjudicator; exception grants log both metrics.' },
 ] as const
 
 // --- Executive Voice ---
