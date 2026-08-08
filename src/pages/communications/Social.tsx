@@ -66,7 +66,9 @@ export default function Social() {
             {
               type: 'Question / Engagement',
               template: 'Provocative question → Implied answer → Invitation',
-              example: 'What if every document you uploaded made your whole system smarter? That\'s not a hypothetical — it\'s how compounding intelligence works.',
+              // The compounding claim always carries its mechanism (canon
+              // usageGuardrail): the mechanism, not the slogan, carries it.
+              example: 'What if every document you uploaded made your whole system smarter? Every upload is connected — source attached — to everything you\'ve already added, and each answer feeds the next one. That\'s the loop behind compounding intelligence.',
             },
           ].map(post => (
             <div key={post.type} className="border border-stone-200 rounded-xl p-5">
@@ -83,7 +85,7 @@ export default function Social() {
       {/* Visual templates */}
       <Section>
         <h2 className="text-xl font-semibold text-ink mb-4">
-          <Tooltip content="Social graphics follow a simple template: dark background, brand gradient accent, and clear typography. Keep it clean and confident.">
+          <Tooltip content="Social graphics keep one idea per card with a gradient accent. Ink backgrounds are for quote and single-stat emphasis cards — the earned-Ink rule from decks applies in the feed too. Product visuals and everything else sit on Canvas.">
             <span>Visual Templates</span>
           </Tooltip>
         </h2>
@@ -129,7 +131,7 @@ export default function Social() {
             <ul className="space-y-2 text-sm text-iron">
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Lead with ideas, not product features</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use the approved vocabulary list</li>
-              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Keep visuals clean — dark bg + gradient accent</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Keep visuals clean — Ink is earned (quote / stat emphasis only), Canvas elsewhere</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>End with an invitation, not a hard sell</li>
             </ul>
           </div>

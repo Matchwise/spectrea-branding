@@ -1,0 +1,123 @@
+/* Spectrea design tokens — GENERATED from src/data/brand.ts v2.5.8 (2026-08-08) — do not hand-edit; regenerate with npm run generate:assets. */
+:root {
+  /* Spectrum — first accent in canon order is the brand colour */
+  --color-brand: #4271DF;
+  --color-brand-teal: #00B6A0;
+  --color-brand-amber: #E19000;
+  --color-brand-rose: #F24260;
+
+  /* Warm Blend neutrals — every non-accent palette entry, canon order */
+  --color-graphite: #212226;
+  --color-canvas: #FDFDFB;
+  --color-cloud: #F4F4F1;
+  --color-ink: #18181C;
+  --color-iron: #46464B;
+  --color-slate: #6D6D72;
+  --color-pewter: #97979E;
+
+  /* Bridge washes (light) — text on a wash uses its textOn value, never the raw accent */
+  --wash-cobalt: #EDF0F8;  --wash-cobalt-text: #1E3A8A;
+  --wash-teal: #E6F5F3;  --wash-teal-text: #0D5E56;
+  --wash-amber: #F5F0E6;  --wash-amber-text: #7C4D04;
+  --wash-rose: #FDF0F2;  --wash-rose-text: #9F1239;
+
+  /* Dark surfaces (parallel mode — role-inverted) */
+  --dark-canvas: #18181C;   /* page bg on dark */
+  --dark-cloud:  #212226;   /* elevated on dark */
+  --dark-ink:    #F4F4F1;   /* primary text on dark */
+  --dark-mist:   #B0B0B6;   /* muted text on dark */
+  --dark-fog:    #2E2F35;   /* border / divider on dark */
+
+  /* Dark bridge washes */
+  --dark-wash-cobalt: #1B2440;
+  --dark-wash-teal: #0E2E2A;
+  --dark-wash-amber: #2E2410;
+  --dark-wash-rose: #2E1218;
+
+  /* Accent dark-lifts (long-form coloured text on dark only) */
+  --cobalt-lift: #7A9AEF;
+  --teal-lift: #3DD3BF;
+  --amber-lift: #F2AE40;
+  --rose-lift: #F97587;
+
+  /* Accent text tones (coloured text on LIGHT surfaces — raw accents fail the 4.5:1 text floor) */
+  --teal-text: #007D6E;
+  --rose-text: #BA3249;
+
+  /* Button states — light surfaces */
+  --btn-cobalt: #4271DF;  --btn-cobalt-hover: #3A63C4;  --btn-cobalt-active: #3255A7;
+  --btn-rose: #F24260;  --btn-rose-hover: #D63B55;  --btn-rose-active: #BA3249;
+  --btn-teal: #00B6A0;  --btn-teal-hover: #009E8A;  --btn-teal-active: #008775;
+  --btn-amber: #E19000;  --btn-amber-hover: #C58200;  --btn-amber-active: #A86E00;
+  --btn-secondary-bg: #F4F4F1;  --btn-secondary-text: #18181C;
+
+  /* Button states — dark surfaces (transient fills lighten; their label flips to the transient text colour) */
+  --btn-dark-cobalt: #4271DF;  --btn-dark-cobalt-hover: #6E93EC;  --btn-dark-cobalt-active: #8FACF0;
+  --btn-dark-rose: #F24260;  --btn-dark-rose-hover: #F56579;  --btn-dark-rose-active: #F78892;
+  --btn-dark-teal: #00B6A0;  --btn-dark-teal-hover: #20C8B2;  --btn-dark-teal-active: #40D4C3;
+  --btn-dark-amber: #E19000;  --btn-dark-amber-hover: #ECA41E;  --btn-dark-amber-active: #F2B63C;
+  --btn-dark-secondary-bg: #2E2F35;  --btn-dark-secondary-hover: #3A3A40;  --btn-dark-secondary-text: #F4F4F1;
+  --btn-dark-transient-text: #18181C;
+
+  /* Focus ring — amber "attention" ring */
+  --focus-ring-light: #A86E00;
+  --focus-ring-dark: rgba(225, 144, 0, 0.7);
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+
+  /* Typography */
+  --font-heading: 'Albert Sans', sans-serif;
+  --font-body:    'Lexend', 'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* Type scale — size, line-height, and weight per step */
+  --text-display: 48px;  --text-display-lh: 1.1;  --text-display-weight: 600;  /* hero headlines, landing-page titles */
+  --text-h1: 36px;  --text-h1-lh: 1.2;  --text-h1-weight: 600;  /* page titles */
+  --text-h2: 30px;  --text-h2-lh: 1.25;  --text-h2-weight: 600;  /* major section headings */
+  --text-h3: 24px;  --text-h3-lh: 1.3;  --text-h3-weight: 600;  /* sub-section headings, card titles */
+  --text-h4: 20px;  --text-h4-lh: 1.4;  --text-h4-weight: 600;  /* minor headings, dialog titles */
+  --text-h5: 18px;  --text-h5-lh: 1.4;  --text-h5-weight: 600;  /* sidebar section titles */
+  --text-body-lg: 18px;  --text-body-lg-lh: 1.6;  --text-body-lg-weight: 400;  /* lead paragraphs */
+  --text-body: 16px;  --text-body-lh: 1.6;  --text-body-weight: 400;  /* default body text */
+  --text-body-sm: 14px;  --text-body-sm-lh: 1.5;  --text-body-sm-weight: 400;  /* secondary text, table cells, form inputs */
+  --text-caption: 12px;  --text-caption-lh: 1.5;  --text-caption-weight: 500;  /* labels, timestamps, helper text */
+  --text-overline: 12px;  --text-overline-lh: 1.5;  --text-overline-weight: 600;  /* section labels (uppercase + 0.05em tracking) */
+  --text-code: 14px;  --text-code-lh: 1.5;  --text-code-weight: 400;  /* inline code, data values, type labels (JetBrains Mono) */
+  --text-code-sm: 12px;  --text-code-sm-lh: 1.5;  --text-code-sm-weight: 400;  /* trace details, technical metadata (JetBrains Mono) */
+
+  /* Radii */
+  --radius-sm: 4px;  /* tags, badges, inline code */
+  --radius-md: 6px;  /* compact buttons, small controls */
+  --radius-lg: 8px;  /* buttons, inputs, dropdowns */
+  --radius-xl: 12px;  /* cards, panels, modals (default container) */
+  --radius-2xl: 16px;  /* hero sections, large feature cards */
+  --radius-full: 9999px;  /* avatars, spectrum tags, toggles */
+
+  /* Spacing — 4 px base unit */
+  --space-2xs: 4px;  /* p-1 — tight inline, icon gaps */
+  --space-xs: 8px;  /* p-2 — input / badge padding, compact gaps */
+  --space-sm: 12px;  /* p-3 — compact card padding, list-item gaps */
+  --space-md: 16px;  /* p-4 — default content gap, section padding */
+  --space-lg: 20px;  /* p-5 — default card padding, modal padding */
+  --space-xl: 24px;  /* p-6 — section spacing, form-field gaps */
+  --space-2xl: 32px;  /* p-8 — major section breaks */
+  --space-3xl: 48px;  /* p-12 — page top padding, hero spacing */
+}
+
+/* Elevation — z-index steps; shadows are Tailwind classes.
+   Base 0 (none) ·
+   Raised 10 (shadow-sm) ·
+   Dropdown 20 (shadow-md) ·
+   Modal 30 (shadow-lg) ·
+   Overlay 40 (shadow-xl) ·
+   Toast 50 (shadow-lg) */
+
+/* Brand gradient — OKLCH with sRGB fallback for cross-browser safety. */
+.brand-gradient {
+  background: linear-gradient(135deg, #4271DF, #00B6A0, #E19000);
+}
+@supports (background: linear-gradient(in oklch, red, blue)) {
+  .brand-gradient {
+    background: linear-gradient(135deg in oklch, #4271DF, #00B6A0, #E19000);
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "//": "Asset manifest — GENERATED from src/data/brand.ts v2.5.8 (2026-08-08) — do not hand-edit; regenerate with npm run generate:assets",
+  "version": "2.5.8",
+  "groups": [
+    {
+      "title": "Logo marks",
+      "items": [
+        {
+          "path": "/brand-assets/logo-mark-cool.svg",
+          "label": "Mark — Cool Duet",
+          "desc": "Primary mark: gradient-stroked spine over the grey dot field. Default on light surfaces.",
+          "pngs": [
+            "/brand-assets/logo-mark-cool.png",
+            "/brand-assets/logo-mark-cool@2x.png",
+            "/brand-assets/logo-mark-cool@4x.png"
+          ]
+        },
+        {
+          "path": "/brand-assets/logo-mark-spectrum.svg",
+          "label": "Mark — Full Spectrum",
+          "desc": "Full-spectrum stroke variant. Marketing moments only.",
+          "pngs": [
+            "/brand-assets/logo-mark-spectrum.png",
+            "/brand-assets/logo-mark-spectrum@2x.png",
+            "/brand-assets/logo-mark-spectrum@4x.png"
+          ]
+        },
+        {
+          "path": "/brand-assets/logo-mark-ink.svg",
+          "label": "Mark — Ink",
+          "desc": "Monotone Ink mark for single-colour contexts.",
+          "pngs": [
+            "/brand-assets/logo-mark-ink.png",
+            "/brand-assets/logo-mark-ink@2x.png",
+            "/brand-assets/logo-mark-ink@4x.png"
+          ]
+        },
+        {
+          "path": "/brand-assets/logo-mark-white.svg",
+          "label": "Mark — White",
+          "desc": "White mark on its Ink plate for dark-surface use (the plate ships in the SVG and its PNGs).",
+          "pngs": [
+            "/brand-assets/logo-mark-white.png",
+            "/brand-assets/logo-mark-white@2x.png",
+            "/brand-assets/logo-mark-white@4x.png"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Logo lockups",
+      "items": [
+        {
+          "path": "/brand-assets/logo-lockup-gradient.svg",
+          "label": "Lockup — Gradient",
+          "desc": "Mark + wordmark, gradient mark with Ink wordmark. Default lockup on light surfaces.",
+          "pngs": [
+            "/brand-assets/logo-lockup-gradient.png",
+            "/brand-assets/logo-lockup-gradient@2x.png",
+            "/brand-assets/logo-lockup-gradient@4x.png"
+          ]
+        },
+        {
+          "path": "/brand-assets/logo-lockup-gradient-white.svg",
+          "label": "Lockup — Gradient / White",
+          "desc": "Gradient mark with White wordmark for dark surfaces (white-on-transparent).",
+          "pngs": [
+            "/brand-assets/logo-lockup-gradient-white.png",
+            "/brand-assets/logo-lockup-gradient-white@2x.png",
+            "/brand-assets/logo-lockup-gradient-white@4x.png"
+          ]
+        },
+        {
+          "path": "/brand-assets/logo-lockup-ink.svg",
+          "label": "Lockup — Ink",
+          "desc": "Monotone Ink lockup for single-colour contexts.",
+          "pngs": [
+            "/brand-assets/logo-lockup-ink.png",
+            "/brand-assets/logo-lockup-ink@2x.png",
+            "/brand-assets/logo-lockup-ink@4x.png"
+          ]
+        },
+        {
+          "path": "/brand-assets/logo-lockup-white.svg",
+          "label": "Lockup — White",
+          "desc": "Monotone White lockup on its Ink plate (the plate ships in the SVG and its PNGs).",
+          "pngs": [
+            "/brand-assets/logo-lockup-white.png",
+            "/brand-assets/logo-lockup-white@2x.png",
+            "/brand-assets/logo-lockup-white@4x.png"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Colour swatches",
+      "items": [
+        {
+          "path": "/brand-assets/swatches-spectrum.svg",
+          "label": "Spectrum accents",
+          "desc": "The four accent swatches with names and values."
+        },
+        {
+          "path": "/brand-assets/swatches-neutrals.svg",
+          "label": "Warm Blend neutrals",
+          "desc": "The seven-token neutral ladder with names and values."
+        },
+        {
+          "path": "/brand-assets/swatches-bridge.svg",
+          "label": "Bridge washes",
+          "desc": "The four tinted wash swatches with names and values."
+        }
+      ]
+    },
+    {
+      "title": "Gradient strips",
+      "items": [
+        {
+          "path": "/brand-assets/gradient-brand.svg",
+          "label": "Brand gradient",
+          "desc": "The three-stop brand gradient with its CSS recipe."
+        },
+        {
+          "path": "/brand-assets/gradient-cool-duet.svg",
+          "label": "Cool Duet",
+          "desc": "Cobalt-to-Teal duet strip."
+        },
+        {
+          "path": "/brand-assets/gradient-balanced-duet.svg",
+          "label": "Balanced Duet",
+          "desc": "Teal-to-Amber strip through the green midpoint."
+        },
+        {
+          "path": "/brand-assets/gradient-warm-duet.svg",
+          "label": "Warm Duet",
+          "desc": "Amber-to-Rose duet strip."
+        },
+        {
+          "path": "/brand-assets/gradient-full-rose.svg",
+          "label": "Full spectrum + Rose",
+          "desc": "Four-stop marketing gradient. Use sparingly."
+        },
+        {
+          "path": "/brand-assets/gradient-lockup.svg",
+          "label": "Lockup gradient",
+          "desc": "The gradient the lockup mark carries."
+        }
+      ]
+    },
+    {
+      "title": "Typography specimens",
+      "items": [
+        {
+          "path": "/brand-assets/type-samples.svg",
+          "label": "Type samples",
+          "desc": "The three typefaces in their roles, with embedded fonts — renders correctly everywhere."
+        },
+        {
+          "path": "/brand-assets/type-scale.svg",
+          "label": "Type scale ladder",
+          "desc": "Display through code sizes, with embedded fonts."
+        }
+      ]
+    },
+    {
+      "title": "Usage",
+      "items": [
+        {
+          "path": "/brand-assets/ratio-bar.svg",
+          "label": "Colour usage ratio",
+          "desc": "The neutral-to-accent usage ratio bar."
+        }
+      ]
+    },
+    {
+      "title": "Design tokens",
+      "items": [
+        {
+          "path": "/spectrea-tokens.css",
+          "label": "CSS custom properties",
+          "desc": "Colour, wash, button-state, focus-ring, font-stack, type-scale (size / line-height / weight), radius, and spacing tokens as CSS variables. Generated from canon."
+        },
+        {
+          "path": "/spectrea-tailwind.config.js",
+          "label": "Tailwind theme extension",
+          "desc": "Brand colours and font stacks as a theme.extend block. Generated from canon."
+        }
+      ]
+    }
+  ]
+}

@@ -1,14 +1,42 @@
+import { useEffect, useState } from 'react'
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
-import { TbFileText, TbFileTypePdf, TbRobot } from 'react-icons/tb'
+import { TbFileText, TbFileTypePdf, TbRobot, TbDownload, TbBrandCss3, TbBrandTailwind } from 'react-icons/tb'
+import manifest from '../../data/brand-assets-manifest.json'
+
+interface ManifestItem {
+  path: string
+  label: string
+  desc: string
+  pngs?: string[]
+}
+interface ManifestGroup {
+  title: string
+  items: ManifestItem[]
+}
+
+const TOKEN_ICONS: Record<string, React.ReactNode> = {
+  '/spectrea-tokens.css': <TbBrandCss3 size={22} className="text-brand" />,
+  '/spectrea-tailwind.config.js': <TbBrandTailwind size={22} className="text-brand" />,
+}
 
 export default function Downloads() {
+  const [tokensCss, setTokensCss] = useState<string | null>(null)
+  useEffect(() => {
+    fetch('/spectrea-tokens.css')
+      .then(r => (r.ok ? r.text() : Promise.reject(new Error(String(r.status)))))
+      .then(setTokensCss)
+      .catch(() => setTokensCss('/* Could not load /spectrea-tokens.css — download it directly. */'))
+  }, [])
+
+  const groups = manifest.groups as ManifestGroup[]
+
   return (
     <PageShell
       title="Downloads"
-      subtitle="Everything you need to make something that looks like Spectrea — logos, swatches, templates, and the tokens that tie it together."
+      subtitle="Everything you need to make something that looks like Spectrea — logos, swatches, specimens, and the tokens that tie it together."
     >
-      {/* Guide documents — available now */}
+      {/* Guide documents */}
       <Section>
         <h2 className="text-xl font-semibold text-ink mb-1">
           <Tooltip content="The complete brand guide in two formats, both derived mirrors of the canonical brand data (src/data/brand.ts). The Markdown version is optimised for LLMs and automation; the PDF is for humans who want offline / print reference.">
@@ -65,64 +93,70 @@ export default function Downloads() {
             <strong>LLM readability:</strong> the <code className="font-mono">brand-guide.md</code> and <code className="font-mono">llms.txt</code> files are designed for AI tools (Claude, ChatGPT browsing, Perplexity) to read directly. <code className="font-mono">robots.txt</code> explicitly allows GPTBot, ClaudeBot, CCBot, PerplexityBot, and Google-Extended.
           </p>
           <p className="text-xs text-iron leading-relaxed mt-2">
-            <strong>Visual assets</strong> for the guide (logo marks, lockups, colour swatches, gradient strips, type samples) live in <code className="font-mono">/brand-assets/</code> as standalone SVGs. They're referenced from the Markdown, embedded in the PDF, and regenerable from <code className="font-mono">npm run generate:assets</code>.
-          </p>
-          <p className="text-xs text-iron leading-relaxed mt-2">
             <strong>Regeneration:</strong> the canonical data lives in <code className="font-mono">src/data/brand.ts</code> (mirrored into <code className="font-mono">public/brand-guide.md</code>) → run <code className="font-mono">npm run generate:all</code> to rebuild assets + PDF in one step. On any conflict between surfaces, brand.ts wins.
           </p>
         </div>
       </Section>
 
-      {/* Asset packages */}
+      {/* Brand assets — rendered from the generated manifest */}
       <Section>
-        <h2 className="text-xl font-semibold text-ink mb-4">
-          <Tooltip content="These asset packages contain everything you need to create on-brand materials. Always use assets from this kit — never recreate the logo or modify colors.">
-            <span>Asset Packages</span>
+        <h2 className="text-xl font-semibold text-ink mb-1">
+          <Tooltip content="Every asset listed here exists and downloads directly. The listing is rendered from a manifest the asset generator writes, so this page cannot advertise files that do not ship. Always use these assets — never recreate the logo or modify colours.">
+            <span>Brand Assets</span>
           </Tooltip>
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {[
-            {
-              name: 'Logo Kit',
-              description: 'All logo variations in SVG, PNG (1x, 2x, 4x), and PDF formats. Includes mark-only, wordmark-only, and full lockup in all color treatments.',
-              contents: ['SVG (vector)', 'PNG @1x, @2x, @4x', 'PDF (print)', 'All color variations'],
-            },
-            {
-              name: 'Color Palette',
-              description: 'Complete color system in multiple formats for design tools and development.',
-              contents: ['Figma variables', 'CSS custom properties', 'Tailwind config', 'ASE (Adobe Swatch)'],
-            },
-            {
-              name: 'Typography',
-              description: 'Font files and configuration for the three-font system.',
-              contents: ['Google Fonts links', 'Font weight reference', 'Type scale tokens', 'Figma text styles'],
-            },
-            {
-              name: 'Presentation Template',
-              description: 'Slide deck template with all approved layouts and brand elements.',
-              contents: ['Google Slides template', 'PowerPoint template', 'Keynote template', 'Slide masters'],
-            },
-            {
-              name: 'Social Media Kit',
-              description: 'Templates for social media profiles, posts, and story formats.',
-              contents: ['Profile images (all platforms)', 'Post templates', 'Story templates', 'Cover images'],
-            },
-            {
-              name: 'Email Templates',
-              description: 'HTML email templates for transactional and marketing communications.',
-              contents: ['Transactional HTML', 'Newsletter HTML', 'Signature HTML', 'Plain-text templates'],
-            },
-          ].map(pkg => (
-            <div key={pkg.name} className="border border-stone-200 rounded-xl p-5">
-              <div className="flex items-start justify-between mb-2">
-                <p className="text-sm font-semibold text-ink">{pkg.name}</p>
-                <span className="text-xs font-mono text-pewter bg-cloud px-1.5 py-0.5 rounded">Coming soon</span>
-              </div>
-              <p className="text-xs text-iron leading-relaxed">{pkg.description}</p>
-              <div className="mt-3 flex flex-wrap gap-1.5">
-                {pkg.contents.map(item => (
-                  <span key={item} className="text-xs bg-cloud text-slate px-2 py-0.5 rounded border border-stone-100">{item}</span>
-                ))}
+        <p className="text-xs text-slate mb-4">
+          {groups.filter(g => g.title !== 'Design tokens').reduce((n, g) => n + g.items.length, 0)} assets, regenerable with <code className="font-mono">npm run generate:assets</code>. Logo files also ship as PNG at 1×/2×/4×.
+        </p>
+        <div className="space-y-6">
+          {groups.map(group => (
+            <div key={group.title}>
+              <h3 className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">{group.title}</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {group.items.map(item => {
+                  const isSvg = item.path.endsWith('.svg')
+                  const darkPreview = /white/i.test(item.path)
+                  return (
+                    <div key={item.path} className="border border-stone-200 rounded-xl p-4 flex gap-4 items-start">
+                      {isSvg ? (
+                        <div
+                          className={`shrink-0 w-24 h-16 rounded-lg border border-stone-100 flex items-center justify-center overflow-hidden ${darkPreview ? 'bg-ink' : 'bg-cloud'}`}
+                        >
+                          <img src={item.path} alt={item.label} className="max-w-full max-h-full object-contain" loading="lazy" />
+                        </div>
+                      ) : (
+                        <div className="shrink-0 w-24 h-16 rounded-lg border border-stone-100 bg-cloud flex items-center justify-center">
+                          {TOKEN_ICONS[item.path] ?? <TbDownload size={22} className="text-brand" />}
+                        </div>
+                      )}
+                      <div className="min-w-0">
+                        <p className="text-sm font-semibold text-ink">{item.label}</p>
+                        <p className="text-xs text-slate mt-0.5 leading-relaxed">{item.desc}</p>
+                        <div className="mt-2 flex flex-wrap gap-1.5">
+                          <a
+                            href={item.path}
+                            download
+                            aria-label={`Download ${item.label} — ${isSvg ? 'SVG' : item.path.split('/').pop()}`}
+                            className="text-xs font-mono text-brand border border-brand/30 hover:bg-brand/5 px-2 py-0.5 rounded transition-colors"
+                          >
+                            {isSvg ? 'SVG' : item.path.split('/').pop()}
+                          </a>
+                          {item.pngs?.map((png, i) => (
+                            <a
+                              key={png}
+                              href={png}
+                              download
+                              aria-label={`Download ${item.label} — PNG ${['1×', '2×', '4×'][i] ?? ''}`}
+                              className="text-xs font-mono text-slate border border-stone-200 hover:border-brand/40 hover:text-brand px-2 py-0.5 rounded transition-colors"
+                            >
+                              PNG {['1×', '2×', '4×'][i] ?? ''}
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
               </div>
             </div>
           ))}
@@ -155,90 +189,14 @@ export default function Downloads() {
         </div>
       </Section>
 
-      {/* CSS tokens */}
+      {/* CSS tokens — displayed from the same generated file that downloads */}
       <Section title="CSS Tokens">
+        <p className="text-xs text-slate mb-3">
+          Shown from <code className="font-mono">/spectrea-tokens.css</code> — the displayed CSS and the downloadable file are the same generated artifact, so they cannot drift from <code className="font-mono">brand.ts</code>.
+        </p>
         <div className="bg-ink rounded-xl p-5 overflow-x-auto">
           <pre className="text-xs leading-relaxed" style={{ fontFamily: "'JetBrains Mono', monospace", color: '#B0B0B6' }}>
-{`:root {
-  /* Spectrum */
-  --color-brand: #4271DF;
-  --color-brand-teal: #00B6A0;
-  --color-brand-amber: #E19000;
-  --color-brand-rose: #F24260;
-
-  /* Warm Blend neutrals — OKLCH-even seven-token ladder */
-  --color-canvas:   #FDFDFB;
-  --color-cloud:    #F4F4F1;
-  --color-pewter:   #97979E;
-  --color-slate:    #6D6D72;
-  --color-iron:     #46464B;
-  --color-graphite: #212226;
-  --color-ink:      #18181C;
-
-  /* Bridge washes (light) */
-  --wash-cobalt: #EDF0F8;
-  --wash-teal:   #E6F5F3;
-  --wash-amber:  #F5F0E6;
-  --wash-rose:   #FDF0F2;
-
-  /* Dark surfaces (parallel mode — role-inverted) */
-  --dark-canvas: #18181C;   /* page bg on dark */
-  --dark-cloud:  #212226;   /* elevated on dark */
-  --dark-ink:    #F4F4F1;   /* primary text on dark */
-  --dark-mist:   #B0B0B6;   /* muted text on dark (new) */
-  --dark-fog:    #2E2F35;   /* border / divider on dark (new) */
-
-  /* Dark bridge washes */
-  --dark-wash-cobalt: #1B2440;
-  --dark-wash-teal:   #0E2E2A;
-  --dark-wash-amber:  #2E2410;
-  --dark-wash-rose:   #2E1218;
-
-  /* Accent dark-lifts (long-form coloured text on dark only) */
-  --cobalt-lift: #7A9AEF;
-  --teal-lift:   #3DD3BF;
-  --amber-lift:  #F2AE40;
-  --rose-lift:   #F97587;
-
-  /* Typography */
-  --font-heading: 'Albert Sans', sans-serif;
-  --font-body:    'Lexend', 'Inter', sans-serif;
-  --font-mono:    'JetBrains Mono', monospace;
-
-  /* Radii — see the Radii table in the guide */
-  --radius-sm:   4px;  /* tags, badges, inline code */
-  --radius-md:   6px;  /* compact buttons, small controls */
-  --radius-lg:   8px;  /* buttons, inputs, dropdowns */
-  --radius-xl:   12px; /* cards, panels, modals (default container) */
-  --radius-2xl:  16px; /* hero sections, large feature cards */
-  --radius-full: 9999px; /* avatars, spectrum tags, toggles */
-
-  /* Spacing — 4 px base unit, all values are multiples of 4 */
-  --space-2xs:  4px;   /* p-1  — tight inline, icon gaps */
-  --space-xs:   8px;   /* p-2  — input padding, badge padding, compact gaps */
-  --space-sm:   12px;  /* p-3  — compact card padding, list item gaps */
-  --space-md:   16px;  /* p-4  — default content gap, section padding */
-  --space-lg:   20px;  /* p-5  — card padding (default), modal padding */
-  --space-xl:   24px;  /* p-6  — section spacing, form field gaps */
-  --space-2xl:  32px;  /* p-8  — major section breaks */
-  --space-3xl:  48px;  /* p-12 — page top padding, hero spacing */
-}
-
-/* Elevation — z-index steps by 10; shadows are Tailwind classes.
-   Base 0 (—) · Raised 10 (shadow-sm) · Dropdown 20 (shadow-md)
-   · Modal 30 (shadow-lg) · Overlay 40 (shadow-xl) · Toast 50 (shadow-lg) */
-
-/* Brand gradient — OKLCH with sRGB fallback for cross-browser safety.
-   Chrome <111, Safari <16.2, Firefox <117 keep the sRGB version;
-   modern browsers upgrade to perceptual interpolation. */
-.brand-gradient {
-  background: linear-gradient(135deg, #4271DF, #00B6A0, #E19000);
-}
-@supports (background: linear-gradient(in oklch, red, blue)) {
-  .brand-gradient {
-    background: linear-gradient(135deg in oklch, #4271DF, #00B6A0, #E19000);
-  }
-}`}
+            {tokensCss ?? '/* Loading /spectrea-tokens.css… */'}
           </pre>
         </div>
       </Section>

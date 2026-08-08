@@ -15,10 +15,11 @@
  */
 
 import { writeFile, mkdir, readFile } from 'node:fs/promises'
-import { readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs'
-import { resolve, join, basename } from 'node:path'
+import { readFileSync, writeFileSync, mkdtempSync, rmSync, existsSync, readdirSync, statSync } from 'node:fs'
+import { resolve, join, basename, sep } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { tmpdir } from 'node:os'
+import { spawnSync } from 'node:child_process'
 import ts from 'typescript'
 import fontkit from '@pdf-lib/fontkit'
 
@@ -562,12 +563,30 @@ await writeFile(resolve(outDir, 'gradient-lockup.svg'), gradientStrip({
 }))
 
 // ─── Typography samples ─────────────────────────────────────────
-// The `<style>` block embeds a Google Fonts @import so the SVG renders
-// with the correct typefaces when viewed standalone (GitHub, VSCode,
-// direct browser open). In the PDF pipeline the fonts are also loaded
-// via a <link> in the HTML wrapper.
+// The `<style>` block EMBEDS the three brand fonts as data-URI woff2
+// subsets (printable ASCII + the specimens' punctuation: · – — ‘ ’ “ ”),
+// so the specimens render with the real typefaces EVERYWHERE — including
+// `<img>` contexts, which block external loads. The previous Google Fonts
+// @import never worked in any <img> consumer (specimens silently rendered
+// in fallback fonts precisely where typeface fidelity was the point), and
+// when the PDF pipeline inlined the SVGs the import joined the document
+// stylesheet and evicted non-latin glyphs from the brand families (D42/D43).
+// The PDF inliner strips this whole <style> block — inside the PDF document
+// the same faces are already declared, so the embed is redundant there.
+//
+// The subset files were fetched once from Google Fonts (variable weight
+// ranges) and glyph-coverage-verified; refetch + reverify if the specimen
+// text ever needs glyphs outside ASCII + the punctuation above. Never trust
+// a `text=` subset's declared unicode-range — Google echoes the request
+// while silently omitting glyphs the font lacks (D42).
+const specimenFace = (family, weight, file) => {
+  const b64 = readFileSync(resolve(root, 'scripts', 'fonts', file)).toString('base64')
+  return `@font-face { font-family: '${family}'; font-style: normal; font-weight: ${weight}; src: url(data:font/woff2;base64,${b64}) format('woff2'); }`
+}
 const FONT_IMPORT = `<defs><style type="text/css"><![CDATA[
-  @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600;700&family=Lexend:wght@400;500&family=JetBrains+Mono:wght@400&display=swap');
+  ${specimenFace('Albert Sans', '100 900', 'specimen-albertsans.woff2')}
+  ${specimenFace('Lexend', '100 900', 'specimen-lexend.woff2')}
+  ${specimenFace('JetBrains Mono', '100 800', 'specimen-jetbrainsmono.woff2')}
 ]]></style></defs>`
 
 await writeFile(resolve(outDir, 'type-samples.svg'), xml(`
@@ -632,5 +651,321 @@ await writeFile(resolve(outDir, 'type-scale.svg'), xml(`
   <text x="320" y="414" font-family="'JetBrains Mono', monospace" font-size="12" fill="${PEWTER}">12px · mono</text>
 </svg>
 `))
+
+// ─── PNG logo exports (D43) ─────────────────────────────────────
+// Rasterised at 1x/2x/4x from the SVGs just written, via the same headless
+// Chrome the PDF pipeline uses. The screenshot background is transparent,
+// so each PNG inherits exactly what its SVG draws: the Gradient/White
+// lockup and the colour/Ink variants are transparent-backed, while the
+// plain White mark and White lockup SVGs carry their own Ink plates (the
+// PNGs keep them — the manifest descriptions say so).
+function findChrome() {
+  if (process.env.CHROME_PATH && existsSync(process.env.CHROME_PATH)) return process.env.CHROME_PATH
+  if (process.platform === 'win32') {
+    const winCandidates = [
+      'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+      'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe',
+      'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe',
+      'C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe',
+    ]
+    for (const c of winCandidates) if (existsSync(c)) return c
+    throw new Error('No Chrome/Edge binary found (set CHROME_PATH to a browser executable).')
+  }
+  const candidates = ['google-chrome', 'google-chrome-stable', 'chromium', 'chromium-browser']
+  for (const c of candidates) {
+    const r = spawnSync('which', [c], { encoding: 'utf8' })
+    if (r.status === 0) return r.stdout.trim()
+  }
+  throw new Error('No Chrome/Chromium binary found on PATH.')
+}
+const RASTER_ASSETS = [
+  'logo-mark-cool.svg', 'logo-mark-ink.svg', 'logo-mark-white.svg', 'logo-mark-spectrum.svg',
+  'logo-lockup-gradient.svg', 'logo-lockup-gradient-white.svg', 'logo-lockup-ink.svg', 'logo-lockup-white.svg',
+]
+const chrome = findChrome()
+const pngsFor = {}
+for (const svgFile of RASTER_ASSETS) {
+  const svgPath = resolve(outDir, svgFile)
+  const svg = readFileSync(svgPath, 'utf8')
+  const w = Number(svg.match(/<svg[^>]*\swidth="(\d+)"/)?.[1])
+  const h = Number(svg.match(/<svg[^>]*\sheight="(\d+)"/)?.[1])
+  if (!w || !h) throw new Error(`Cannot read width/height from ${svgFile}`)
+  pngsFor[svgFile] = []
+  for (const scale of [1, 2, 4]) {
+    const out = svgFile.replace(/\.svg$/, scale === 1 ? '.png' : `@${scale}x.png`)
+    const r = spawnSync(chrome, [
+      '--headless=new', '--disable-gpu', '--no-sandbox', '--hide-scrollbars',
+      `--window-size=${w},${h}`, `--force-device-scale-factor=${scale}`,
+      '--default-background-color=00000000',
+      `--screenshot=${resolve(outDir, out)}`,
+      'file://' + svgPath,
+    ], { encoding: 'utf8' })
+    if (r.status !== 0 || !existsSync(resolve(outDir, out))) {
+      throw new Error(`PNG export failed for ${svgFile} @${scale}x (Chrome status ${r.status})`)
+    }
+    pngsFor[svgFile].push(out)
+  }
+}
+console.log(`PNG exports written (${RASTER_ASSETS.length} assets × 3 scales)`)
+
+// ─── Design token files (D43) ───────────────────────────────────
+// Downloadable, GENERATED mirrors of canon. The Downloads page fetches
+// spectrea-tokens.css to DISPLAY it, so the shown CSS and the downloaded
+// file are one artifact and cannot drift from brand.ts (the page previously
+// hand-mirrored this block). No value below is declared here — everything
+// is read from canon.
+const publicDir = resolve(root, 'public')
+const T = canon.brandTokens
+const pal = canon.selectedPalette
+const typo = canon.brand.typography
+const grad = pal.gradient
+const versionLine = `GENERATED from src/data/brand.ts v${canon.meta.version} (${canon.meta.lastUpdated}) — do not hand-edit; regenerate with npm run generate:assets`
+
+// Palette entries derived from canon ROLES, not name or role lists — the
+// accent/neutral split is the only structure declared here, so adding or
+// renaming ANY canonical palette entry propagates automatically (no fixed
+// role ladder to fall out of date, no find() to hide a duplicate role).
+// The first accent in canon order is the brand colour.
+const ACCENTS = pal.colors.filter(c => c.role === 'accent')
+const NEUTRALS = pal.colors.filter(c => c.role !== 'accent')
+if (!ACCENTS.length || !NEUTRALS.length) throw new Error('Palette derivation produced an empty accent or neutral set')
+const accentVar = (name) => name.split(' ')[0].toLowerCase()
+const lc = (s) => s.charAt(0).toLowerCase() + s.slice(1)
+const gradStops = [grad.from, grad.via, grad.to].filter(Boolean).join(', ')
+// Button state groups: any entry with a base fill is an accent ladder;
+// entries keyed bg/text are the secondary treatment.
+const btnGroupVars = (states, prefix) => Object.entries(states)
+  .filter(([, v]) => typeof v === 'object')
+  .map(([k, v]) => {
+    const vars = Object.entries(v).map(([sk, sv]) =>
+      `--btn-${prefix}${k}${sk === 'base' ? '' : `-${sk}`}: ${sv};`)
+    return '  ' + vars.join('  ')
+  })
+  .join('\n')
+
+const tokensCss = `/* Spectrea design tokens — ${versionLine}. */
+:root {
+  /* Spectrum — first accent in canon order is the brand colour */
+  --color-brand: ${ACCENTS[0].hex};
+${ACCENTS.slice(1).map(a => `  --color-brand-${a.name.toLowerCase()}: ${a.hex};`).join('\n')}
+
+  /* Warm Blend neutrals — every non-accent palette entry, canon order */
+${NEUTRALS.map(n => `  --color-${n.name.toLowerCase()}: ${n.hex};`).join('\n')}
+
+  /* Bridge washes (light) — text on a wash uses its textOn value, never the raw accent */
+${T.washes.light.map(w => `  --wash-${accentVar(w.accent)}: ${w.hex};  --wash-${accentVar(w.accent)}-text: ${w.textOn};`).join('\n')}
+
+  /* Dark surfaces (parallel mode — role-inverted) */
+  --dark-canvas: ${pal.darkMode.bg};   /* page bg on dark */
+  --dark-cloud:  ${pal.darkMode.surface};   /* elevated on dark */
+  --dark-ink:    ${pal.darkMode.text};   /* primary text on dark */
+  --dark-mist:   ${pal.darkMode.muted};   /* muted text on dark */
+  --dark-fog:    ${pal.darkMode.border};   /* border / divider on dark */
+
+  /* Dark bridge washes */
+${T.washes.dark.map(w => `  --dark-wash-${accentVar(w.accent)}: ${w.hex};`).join('\n')}
+
+  /* Accent dark-lifts (long-form coloured text on dark only) */
+${T.lifts.map(l => `  --${accentVar(l.name)}-lift: ${l.hex};`).join('\n')}
+
+  /* Accent text tones (coloured text on LIGHT surfaces — raw accents fail the 4.5:1 text floor) */
+${T.accentText.map(a => `  --${accentVar(a.name)}-text: ${a.hex};`).join('\n')}
+
+  /* Button states — light surfaces */
+${btnGroupVars(T.buttonStates.light, '')}
+
+  /* Button states — dark surfaces (transient fills lighten; their label flips to the transient text colour) */
+${btnGroupVars(T.buttonStates.dark, 'dark-')}
+  --btn-dark-transient-text: ${T.buttonStates.dark.transientText};
+
+  /* Focus ring — ${lc(T.focusRing.note.split('.')[0])} */
+  --focus-ring-light: ${T.focusRing.light};
+  --focus-ring-dark: ${T.focusRing.dark};
+  --focus-ring-width: ${T.focusRing.width.split(' ')[0]};
+  --focus-ring-offset: ${T.focusRing.offset};
+
+  /* Typography */
+  --font-heading: ${typo.heading.css};
+  --font-body:    ${typo.body.css};
+  --font-mono:    ${typo.mono.css};
+
+  /* Type scale — size, line-height, and weight per step */
+${typo.scale.map(s => {
+  const n = s.name.toLowerCase().replace(/ /g, '-')
+  return `  --text-${n}: ${s.px}px;  --text-${n}-lh: ${s.lineHeight};  --text-${n}-weight: ${s.weight};  /* ${lc(s.use)} */`
+}).join('\n')}
+
+  /* Radii */
+${T.radii.map(r => `  --radius-${r.token}: ${r.px}px;  /* ${lc(r.use)} */`).join('\n')}
+
+  /* Spacing — ${T.spacing.baseUnit} px base unit */
+${T.spacing.scale.map(s => `  --space-${s.token}: ${s.px}px;  /* ${s.tailwind} — ${lc(s.use)} */`).join('\n')}
+}
+
+/* Elevation — z-index steps; shadows are Tailwind classes.
+${T.elevation.map(e => `   ${e.level} ${e.zIndex} (${e.shadow})`).join(' ·\n')} */
+
+/* Brand gradient — OKLCH with sRGB fallback for cross-browser safety. */
+.brand-gradient {
+  background: linear-gradient(${grad.angle}deg, ${gradStops});
+}
+@supports (background: linear-gradient(in oklch, red, blue)) {
+  .brand-gradient {
+    background: linear-gradient(${grad.angle}deg in oklch, ${gradStops});
+  }
+}
+`
+await writeFile(resolve(publicDir, 'spectrea-tokens.css'), tokensCss)
+
+const fontList = (t) => JSON.stringify([t.family, ...t.fallback.split(',').map(s => s.trim().replace(/^'|'$/g, ''))])
+const tailwindSnippet = `/**
+ * Spectrea brand — Tailwind theme extension.
+ * ${versionLine}.
+ * Merge into your tailwind.config.js theme.extend.
+ */
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          DEFAULT: '${ACCENTS[0].hex}',
+${ACCENTS.slice(1).map(a => `          ${a.name.toLowerCase()}: '${a.hex}',`).join('\n')}
+        },
+${NEUTRALS.map(n => `        ${n.name.toLowerCase()}: '${n.hex}',`).join('\n')}
+        wash: {
+${T.washes.light.map(w => `          ${accentVar(w.accent)}: '${w.hex}',`).join('\n')}
+        },
+        'wash-dark': {
+${T.washes.dark.map(w => `          ${accentVar(w.accent)}: '${w.hex}',`).join('\n')}
+        },
+        lift: {
+${T.lifts.map(l => `          ${accentVar(l.name)}: '${l.hex}',`).join('\n')}
+        },
+        'accent-text': {
+${T.accentText.map(a => `          ${accentVar(a.name)}: '${a.hex}',`).join('\n')}
+        },
+      },
+      fontFamily: {
+        heading: ${fontList(typo.heading)},
+        body: ${fontList(typo.body)},
+        mono: ${fontList(typo.mono)},
+      },
+    },
+  },
+}
+`
+await writeFile(resolve(publicDir, 'spectrea-tailwind.config.js'), tailwindSnippet)
+console.log('Token files written: spectrea-tokens.css, spectrea-tailwind.config.js')
+
+// ─── Asset manifest (D43) ───────────────────────────────────────
+// The Downloads page renders its asset listing FROM this manifest, so the
+// page cannot drift from what the generator actually ships (0/20 finding).
+// Descriptions name treatments and uses, never canon values.
+const item = (file, label, desc) => ({
+  path: `/brand-assets/${file}`,
+  label,
+  desc,
+  ...(pngsFor[file] ? { pngs: pngsFor[file].map(p => `/brand-assets/${p}`) } : {}),
+})
+const manifest = {
+  '//': `Asset manifest — ${versionLine}`,
+  version: canon.meta.version,
+  groups: [
+    {
+      title: 'Logo marks',
+      items: [
+        item('logo-mark-cool.svg', 'Mark — Cool Duet', 'Primary mark: gradient-stroked spine over the grey dot field. Default on light surfaces.'),
+        item('logo-mark-spectrum.svg', 'Mark — Full Spectrum', 'Full-spectrum stroke variant. Marketing moments only.'),
+        item('logo-mark-ink.svg', 'Mark — Ink', 'Monotone Ink mark for single-colour contexts.'),
+        item('logo-mark-white.svg', 'Mark — White', 'White mark on its Ink plate for dark-surface use (the plate ships in the SVG and its PNGs).'),
+      ],
+    },
+    {
+      title: 'Logo lockups',
+      items: [
+        item('logo-lockup-gradient.svg', 'Lockup — Gradient', 'Mark + wordmark, gradient mark with Ink wordmark. Default lockup on light surfaces.'),
+        item('logo-lockup-gradient-white.svg', 'Lockup — Gradient / White', 'Gradient mark with White wordmark for dark surfaces (white-on-transparent).'),
+        item('logo-lockup-ink.svg', 'Lockup — Ink', 'Monotone Ink lockup for single-colour contexts.'),
+        item('logo-lockup-white.svg', 'Lockup — White', 'Monotone White lockup on its Ink plate (the plate ships in the SVG and its PNGs).'),
+      ],
+    },
+    {
+      title: 'Colour swatches',
+      items: [
+        item('swatches-spectrum.svg', 'Spectrum accents', 'The four accent swatches with names and values.'),
+        item('swatches-neutrals.svg', 'Warm Blend neutrals', 'The seven-token neutral ladder with names and values.'),
+        item('swatches-bridge.svg', 'Bridge washes', 'The four tinted wash swatches with names and values.'),
+      ],
+    },
+    {
+      title: 'Gradient strips',
+      items: [
+        item('gradient-brand.svg', 'Brand gradient', 'The three-stop brand gradient with its CSS recipe.'),
+        item('gradient-cool-duet.svg', 'Cool Duet', 'Cobalt-to-Teal duet strip.'),
+        item('gradient-balanced-duet.svg', 'Balanced Duet', 'Teal-to-Amber strip through the green midpoint.'),
+        item('gradient-warm-duet.svg', 'Warm Duet', 'Amber-to-Rose duet strip.'),
+        item('gradient-full-rose.svg', 'Full spectrum + Rose', 'Four-stop marketing gradient. Use sparingly.'),
+        item('gradient-lockup.svg', 'Lockup gradient', 'The gradient the lockup mark carries.'),
+      ],
+    },
+    {
+      title: 'Typography specimens',
+      items: [
+        item('type-samples.svg', 'Type samples', 'The three typefaces in their roles, with embedded fonts — renders correctly everywhere.'),
+        item('type-scale.svg', 'Type scale ladder', 'Display through code sizes, with embedded fonts.'),
+      ],
+    },
+    {
+      title: 'Usage',
+      items: [
+        item('ratio-bar.svg', 'Colour usage ratio', 'The neutral-to-accent usage ratio bar.'),
+      ],
+    },
+    {
+      title: 'Design tokens',
+      items: [
+        { path: '/spectrea-tokens.css', label: 'CSS custom properties', desc: 'Colour, wash, button-state, focus-ring, font-stack, type-scale (size / line-height / weight), radius, and spacing tokens as CSS variables. Generated from canon.' },
+        { path: '/spectrea-tailwind.config.js', label: 'Tailwind theme extension', desc: 'Brand colours and font stacks as a theme.extend block. Generated from canon.' },
+      ],
+    },
+  ],
+}
+await writeFile(
+  resolve(root, 'src', 'data', 'brand-assets-manifest.json'),
+  JSON.stringify(manifest, null, 2) + '\n'
+)
+console.log('Asset manifest written: src/data/brand-assets-manifest.json')
+
+// Validate the manifest both ways: every advertised path must exist under
+// public/, and every file the generator shipped into public/brand-assets/
+// must be advertised. Either miss fails the build — the "cannot drift"
+// guarantee above is enforced, not asserted.
+const advertised = new Set()
+for (const group of manifest.groups) {
+  for (const entry of group.items) {
+    advertised.add(entry.path)
+    for (const p of entry.pngs ?? []) advertised.add(p)
+  }
+}
+const escaped = []
+const missing = []
+for (const p of advertised) {
+  const abs = resolve(publicDir, p.slice(1))
+  // Containment first: a traversal path like /../x can resolve to a real file
+  // OUTSIDE public/ that will not ship — existence alone would pass it.
+  if (!abs.startsWith(publicDir + sep)) { escaped.push(p); continue }
+  if (!existsSync(abs) || !statSync(abs).isFile()) missing.push(p)
+}
+if (escaped.length) {
+  throw new Error(`Manifest advertises paths that resolve outside public/: ${escaped.join(', ')}`)
+}
+if (missing.length) {
+  throw new Error(`Manifest advertises paths that are not real files under public/: ${missing.join(', ')}`)
+}
+const unlisted = readdirSync(outDir).filter(f => !advertised.has(`/brand-assets/${f}`))
+if (unlisted.length) {
+  throw new Error(`Files in public/brand-assets/ not advertised in the manifest: ${unlisted.join(', ')}`)
+}
+console.log(`Manifest validated: ${advertised.size} advertised paths all exist; no unlisted files in brand-assets/`)
 
 console.log('Brand assets written to', outDir)

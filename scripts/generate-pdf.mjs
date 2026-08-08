@@ -302,19 +302,25 @@ async function main() {
         // declares single-weight latin-subset faces AFTER our data-URI
         // variable faces. Those exact-weight faces then win font selection at
         // their weights and evict every non-latin glyph (Δ → ↔ ≈ ≤ ≥ ′) from
-        // the family — the D42 host-font fallback (Segoe UI/Arial). Inlined
-        // SVGs are meant to use the document's embedded faces; imports are
-        // both unnecessary and poisonous here. Handled per <style> block so
-        // the strip can never span from one style element across intervening
-        // SVG content into another; within a block only the @import RULES are
-        // removed (comments go first so a mere mention inside one can't
-        // corrupt a rule), and the block itself is dropped only when nothing
-        // but whitespace/CDATA shell remains.
+        // the family — the D42 host-font fallback (Segoe UI/Arial). The same
+        // applies to @font-face rules the assets carry for standalone
+        // fidelity (the type specimens embed data-URI subsets, D43): inside
+        // THIS document the same families are already declared with full
+        // coverage, so an inlined subset face would shadow them at its
+        // weights and reintroduce fallback for glyphs outside the subset.
+        // Inlined SVGs are meant to use the document's embedded faces.
+        // Handled per <style> block so the strip can never span from one
+        // style element across intervening SVG content into another; within
+        // a block only the @import/@font-face RULES are removed (comments go
+        // first so a mere mention inside one can't corrupt a rule), and the
+        // block itself is dropped only when nothing but whitespace/CDATA
+        // shell remains.
         .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, block => {
-          if (!/@import/i.test(block)) return block
+          if (!/@import|@font-face/i.test(block)) return block
           const cleaned = block
             .replace(/\/\*[\s\S]*?\*\//g, '')
             .replace(/@import\b[^;]*;?/gi, '')
+            .replace(/@font-face\b\s*\{[^}]*\}/gi, '')
           const inner = cleaned
             .replace(/^<style[^>]*>/i, '')
             .replace(/<\/style>$/i, '')
