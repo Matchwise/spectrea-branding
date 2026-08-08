@@ -1,5 +1,6 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
+import { meta, ratificationLedger } from '../../data/brand'
 
 export default function Governance() {
   return (
@@ -7,6 +8,27 @@ export default function Governance() {
       title="Governance"
       subtitle="Who owns the brand, how to request changes, and the approval process."
     >
+      {/* Source of truth — how the brand system actually propagates */}
+      <Section title="Source of Truth">
+        <div className="bg-ink text-white rounded-xl p-6 mb-4">
+          <div className="flex items-center gap-3 mb-3">
+            <span className="text-xs font-mono px-2 py-0.5 rounded" style={{ backgroundColor: '#4271DF30', color: '#7A9AEF' }}>v{meta.version}</span>
+            <span className="text-xs" style={{ color: '#B0B0B6' }}>last updated {meta.lastUpdated}</span>
+          </div>
+          <p className="text-sm leading-relaxed">{meta.sourceOfTruth}</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-cloud rounded-xl p-5 border border-stone-200">
+            <p className="text-xs font-semibold uppercase tracking-wider text-pewter mb-2">Render doctrine</p>
+            <p className="text-sm text-iron leading-relaxed">{meta.renderDoctrine}</p>
+          </div>
+          <div className="bg-cloud rounded-xl p-5 border border-stone-200">
+            <p className="text-xs font-semibold uppercase tracking-wider text-pewter mb-2">Changelog</p>
+            <p className="text-sm text-iron leading-relaxed">{meta.changelog}</p>
+          </div>
+        </div>
+      </Section>
+
       {/* Brand ownership */}
       <Section>
         <h2 className="text-xl font-semibold text-ink mb-4">
@@ -115,6 +137,22 @@ export default function Governance() {
             <div key={item.q} className="border border-stone-200 rounded-xl p-4">
               <p className="text-sm font-medium text-ink">{item.q}</p>
               <p className="text-xs text-iron mt-1 leading-relaxed">{item.a}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Ratification ledger — the durable decision record */}
+      <Section title="Ratification Ledger">
+        <p className="text-sm text-slate mb-4 leading-relaxed">
+          The single durable record of ratified brand decisions. Local per-repo ratifications are absorbed
+          here on sight — a decision recorded only in a consumer repo is not canon until it lands in this ledger.
+        </p>
+        <div className="border border-stone-200 rounded-xl overflow-hidden">
+          {ratificationLedger.map((entry, i) => (
+            <div key={i} className="px-5 py-4 border-b last:border-b-0 border-stone-100 flex gap-4">
+              <span className="text-xs font-mono text-pewter flex-shrink-0 mt-0.5 w-20">{entry.date}</span>
+              <p className="text-sm text-iron leading-relaxed">{entry.decision}</p>
             </div>
           ))}
         </div>

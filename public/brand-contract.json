@@ -1,6 +1,6 @@
 {
   "_generated": "DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-08)",
-  "version": "2.5.5",
+  "version": "2.5.6",
   "lastUpdated": "2026-08-08",
   "sourceOfTruth": "brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea's roadmap — check it before placing a capability claim on a buyer-facing surface.",
   "identity": {
@@ -944,6 +944,10 @@
     {
       "date": "2026-08-08",
       "decision": "Hybrid guide generation, wave 1 (decision 2 programme item): brand-guide.md gains generator-owned marker blocks — version stamps, tone-register table, logo construction + clear space, accent states, washes (light/dark), lifts, type system/minimum sizes/type scale/responsive (scale data moved INTO brand.typography), accessibility block, motion durations/easings, radii/spacing/elevation — rewritten from canon by scripts/generate-guide.mjs (npm run generate:guide, wired into generate:all before the PDF). Prose outside markers stays hand-written. Deferred to wave 2 (recorded): §5 neutral/accent/Tailwind/dark-role tables (need a canon colour-model expansion: OKLCH ladder, CSS vars, meanings), §6 gradient family, §11 component specs, §14 CSS-token block."
+    },
+    {
+      "date": "2026-08-08",
+      "decision": "Render-everything SPA build (decision 7 programme item): every previously agent-only canon export now has a human-visible surface. New Trust & Disclosures page (/communications/trust) renders trustCopy verbatim with the counsel note. Voice & Tone gains Surface Patterns (all 7) and Executive Voice. Naming gains Company & Product and the Origin stance. Positioning gains the Full-Shape Claim, the compounding usageGuardrail (also on Copy & Taglines), and the differentiatorGuardrail. Copy & Taglines renders voice.heroOpen verbatim. Primary Palette gains Contrast Policy & Measurement (accessibility.measurement + exception registry rendered from data); the two hand-written \"never white on Teal/Amber\" don'ts now carry the ratified button-label carve-out. Governance renders meta.sourceOfTruth, renderDoctrine, version, and the full ratification ledger."
     }
   ]
 }

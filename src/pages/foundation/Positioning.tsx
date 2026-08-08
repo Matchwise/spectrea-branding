@@ -54,6 +54,16 @@ export default function Positioning() {
         </div>
       </Section>
 
+      {/* Full-shape claim — internal north star (vision §1, adopted 2026-07-19) */}
+      <Section title="Full-Shape Claim — Internal North Star">
+        <div className="border-2 border-stone-800 rounded-xl p-6">
+          <p className="text-2xl font-semibold text-ink" style={{ fontFamily: "'Albert Sans', sans-serif" }}>
+            {brand.positioning.fullShapeClaim.statement}
+          </p>
+          <p className="text-sm text-iron mt-3 leading-relaxed">{brand.positioning.fullShapeClaim.usage}</p>
+        </div>
+      </Section>
+
       {/* Category */}
       <Section title="Category Definition">
         <div className="bg-cloud rounded-xl p-5 border border-stone-200">
@@ -93,6 +103,11 @@ export default function Positioning() {
               </span>
               <h3 className="text-base font-semibold text-ink mt-2">{msg.headline}</h3>
               <p className="text-sm text-iron mt-1 leading-relaxed">{msg.supporting}</p>
+              {'usageGuardrail' in msg && (
+                <div className="mt-3 rounded-lg px-3 py-2" style={{ backgroundColor: '#E1900010', border: '1px solid #E1900025' }}>
+                  <p className="text-xs leading-relaxed" style={{ color: '#A86E00' }}><strong>Guardrail:</strong> {msg.usageGuardrail}</p>
+                </div>
+              )}
               <span className="text-xs text-pewter mt-2 inline-block">Theme: {msg.theme}</span>
             </div>
           ))}
@@ -137,6 +152,9 @@ export default function Positioning() {
               </div>
             </div>
           ))}
+        </div>
+        <div className="mt-4 rounded-lg px-4 py-3" style={{ backgroundColor: '#E1900010', border: '1px solid #E1900025' }}>
+          <p className="text-xs leading-relaxed" style={{ color: '#A86E00' }}><strong>Guardrail:</strong> {brand.differentiatorGuardrail}</p>
         </div>
       </Section>
     </PageShell>

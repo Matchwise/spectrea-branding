@@ -1,5 +1,5 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
-import { brand, naming } from '../../data/brand'
+import { brand, naming, originStance } from '../../data/brand'
 
 const correctUsage = [
   'Spectrea helps organizations connect their knowledge.',
@@ -114,6 +114,30 @@ export default function Naming() {
           <p>The lowercase <code className="bg-cloud px-1.5 py-0.5 rounded font-mono text-xs">pectrea</code> wordmark in the lockup is a stylistic treatment, not the typed name. Plain-text contexts (email, contracts, search results, browser tabs) always use sentence-case "Spectrea."</p>
           <p>In URLs and email addresses, use all lowercase: <code className="bg-cloud px-1.5 py-0.5 rounded font-mono text-xs">spectrea.com</code></p>
           <p>In code references, follow the convention of the codebase (typically <code className="bg-cloud px-1.5 py-0.5 rounded font-mono text-xs">spectrea</code> in lowercase).</p>
+        </div>
+      </Section>
+
+      {/* Company vs product — the legal-entity rule */}
+      <Section title="Company & Product">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="bg-cloud rounded-xl p-5 border border-stone-200">
+            <p className="text-xs font-semibold uppercase tracking-wider text-pewter mb-1">Legal entity</p>
+            <p className="text-lg font-semibold text-ink">{naming.companyProduct.company}</p>
+          </div>
+          <div className="bg-cloud rounded-xl p-5 border border-stone-200">
+            <p className="text-xs font-semibold uppercase tracking-wider text-pewter mb-1">Product &amp; brand</p>
+            <p className="text-lg font-semibold text-ink">{naming.companyProduct.product}</p>
+          </div>
+        </div>
+        <p className="text-sm text-iron leading-relaxed mb-3">{naming.companyProduct.rule}</p>
+        <p className="text-xs text-slate leading-relaxed">{naming.companyProduct.legacy}</p>
+      </Section>
+
+      {/* Origin stance — codified silence */}
+      <Section title="Origin">
+        <div className="border rounded-xl p-5" style={{ borderColor: '#E1900025', backgroundColor: '#E1900008' }}>
+          <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: '#A86E00' }}>Codified silence</p>
+          <p className="text-sm text-iron leading-relaxed">{originStance.rule}</p>
         </div>
       </Section>
 

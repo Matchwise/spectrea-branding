@@ -1,5 +1,5 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
-import { voice, brand } from '../../data/brand'
+import { voice, brand, executiveVoice } from '../../data/brand'
 
 export default function Voice() {
   return (
@@ -152,6 +152,54 @@ export default function Voice() {
         <div className="mt-4 border border-stone-200 rounded-lg p-4 bg-cloud">
           <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-1">Density</p>
           <p className="text-sm text-iron leading-relaxed">{voice.vocabularyDensity}</p>
+        </div>
+      </Section>
+
+      {/* Surface patterns — the surface spec the register taxonomy doesn't cover */}
+      <Section title="Surface Patterns — Product & Operational Surfaces">
+        <p className="text-sm text-slate mb-4 leading-relaxed">
+          The registers above cover content classes; these patterns cover product surfaces — each pairs a rule
+          with a right/wrong example. The register rule above declares how the two structures relate.
+        </p>
+        <div className="space-y-4">
+          {voice.surfacePatterns.map(p => (
+            <div key={p.surface} className="border border-stone-200 rounded-xl overflow-hidden">
+              <div className="bg-cloud px-5 py-2.5 border-b border-stone-200">
+                <span className="text-xs font-semibold text-slate uppercase tracking-wider">{p.surface}</span>
+                <p className="text-sm text-iron mt-1 leading-relaxed">{p.rule}</p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2">
+                <div className="p-4 border-b md:border-b-0 md:border-r border-stone-100">
+                  <span className="text-xs font-semibold uppercase" style={{ color: '#008775' }}>&#10003; {brand.name} voice</span>
+                  <p className="text-sm text-iron leading-relaxed mt-1.5">{p.correct}</p>
+                </div>
+                <div className="p-4" style={{ backgroundColor: '#F2426008' }}>
+                  <span className="text-xs font-semibold uppercase" style={{ color: '#D63B55' }}>&#10007; Not this</span>
+                  <p className="text-sm text-slate leading-relaxed mt-1.5">{p.incorrect}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Executive voice */}
+      <Section title="Executive Voice">
+        <p className="text-sm text-iron mb-4 leading-relaxed">{executiveVoice.rule}</p>
+        <div className="border border-stone-200 rounded-xl overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            <div className="p-5 border-b md:border-b-0 md:border-r border-stone-100">
+              <span className="text-xs font-semibold uppercase" style={{ color: '#008775' }}>&#10003; {brand.name} voice</span>
+              <p className="text-sm text-iron leading-relaxed mt-2">{executiveVoice.example.correct}</p>
+            </div>
+            <div className="p-5" style={{ backgroundColor: '#F2426008' }}>
+              <span className="text-xs font-semibold uppercase" style={{ color: '#D63B55' }}>&#10007; Not this</span>
+              <p className="text-sm text-slate leading-relaxed mt-2">{executiveVoice.example.incorrect}</p>
+            </div>
+          </div>
+          <div className="px-5 py-2.5 bg-cloud border-t border-stone-100">
+            <p className="text-xs text-pewter">{executiveVoice.example.why}</p>
+          </div>
         </div>
       </Section>
 

@@ -144,7 +144,7 @@ export default function ColorOverview() {
           {[
             'One Cobalt primary action per section — if everything is Cobalt, nothing stands out',
             'Spectrum colors appear as small, purposeful moments — tags, dots, badges — not large fills',
-            'Use dark text on Teal and Amber backgrounds (white text has insufficient contrast)',
+            'Use dark text on Teal and Amber backgrounds — white text sits below the WCAG 2.x floor there unless covered by a ratified entry in the exception registry (see Primary Palette)',
             'The gradient is for brand moments only — hero sections, logo, marketing. Never on buttons or small UI',
             'Neutrals dominate: 60% Canvas, 20% Cloud, 10% Text, 10% Spectrum',
             'Each semantic color carries one consistent meaning — never reuse a color for decoration',

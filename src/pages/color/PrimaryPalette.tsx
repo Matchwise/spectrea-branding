@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
+import { accessibility } from '../../data/brand'
 
 function srgbToLinear(c: number) {
   return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4)
@@ -364,6 +365,45 @@ export default function PrimaryPalette() {
         <p className="text-xs text-slate mt-2">The canvas dominates. Color is reserved for meaning. This keeps the interface clean and makes every colored element intentional.</p>
       </Section>
 
+      {/* Contrast policy — floors, measurement doctrine, exception registry */}
+      <Section title="Contrast Policy & Measurement">
+        <p className="text-sm text-slate mb-4 leading-relaxed">
+          The conformance floor is <strong>{accessibility.floor}</strong>. Token contrast on Canvas: {accessibility.contrast.tokens}{' '}
+          {accessibility.contrast.accentsOnInk}
+        </p>
+        <div className="bg-cloud rounded-xl p-5 border border-stone-200 mb-4">
+          <p className="text-xs font-semibold uppercase tracking-wider text-pewter mb-2">Measurement doctrine</p>
+          <p className="text-sm text-iron leading-relaxed">{accessibility.measurement}</p>
+        </div>
+        <div className="border border-stone-200 rounded-xl overflow-hidden">
+          <div className="bg-cloud px-5 py-2.5 border-b border-stone-200">
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate">Exception registry</p>
+            <p className="text-xs text-iron mt-1 leading-relaxed">{accessibility.exceptionRegistry.rule}</p>
+          </div>
+          {accessibility.exceptionRegistry.entries.map(e => (
+            <div key={e.name} className="px-5 py-4 border-b last:border-b-0 border-stone-100">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-sm font-semibold text-ink font-mono">{e.name}</span>
+                <span className="text-xs text-pewter">ratified {e.ratified}</span>
+              </div>
+              <p className="text-sm text-iron mt-2 leading-relaxed">{e.exception}</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+                <div className="bg-cloud rounded-lg p-3">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-pewter mb-1">WCAG 2.x</p>
+                  <p className="text-xs text-iron leading-relaxed">{e.measured.wcag2x}</p>
+                </div>
+                <div className="bg-cloud rounded-lg p-3">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-pewter mb-1">APCA-W3</p>
+                  <p className="text-xs text-iron leading-relaxed">{e.measured.apca}</p>
+                </div>
+              </div>
+              <p className="text-xs text-slate mt-3 leading-relaxed"><strong>Rationale:</strong> {e.rationale}</p>
+              <p className="text-xs text-slate mt-1.5 leading-relaxed"><strong>Bounds:</strong> {e.bounds}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
       {/* Do / Don't */}
       <Section title="Color Dos & Don'ts">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -383,7 +423,7 @@ export default function PrimaryPalette() {
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Fill large areas with accent colors — they lose meaning</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use multiple Cobalt buttons in the same section</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Mix Teal for success AND as a decorative color — pick one meaning</li>
-              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use white text on Teal or Amber (insufficient contrast)</li>
+              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use white text on Teal or Amber — below the WCAG 2.x text floor unless covered by a ratified entry in the exception registry above</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use the gradient on small UI elements — reserve for brand moments</li>
             </ul>
           </div>

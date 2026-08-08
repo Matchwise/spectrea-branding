@@ -41,9 +41,30 @@ export default function Copy() {
               <span className="text-xs font-semibold text-pewter uppercase tracking-wider">Secondary — {msg.theme}</span>
               <p className="text-lg font-semibold text-ink mt-2" style={{ fontFamily: "'Albert Sans', sans-serif" }}>{msg.headline}</p>
               <p className="text-sm text-iron mt-1">{msg.supporting}</p>
+              {'usageGuardrail' in msg && (
+                <div className="mt-3 rounded-lg px-3 py-2" style={{ backgroundColor: '#E1900010', border: '1px solid #E1900025' }}>
+                  <p className="text-xs leading-relaxed" style={{ color: '#A86E00' }}><strong>Guardrail:</strong> {msg.usageGuardrail}</p>
+                </div>
+              )}
             </div>
           ))}
         </div>
+      </Section>
+
+      {/* The canonical hero-open rule (D28 part 1, ratified 2026-08-07) */}
+      <Section>
+        <h2 className="text-xl font-semibold text-ink mb-4">
+          <Tooltip content="The canonical rule for how a surface opens. It fuses the outcome-first structure with the character's reveal register; other opening guidance (on-ramp, buyer shifts, facets) describes steps of this same gesture.">
+            <span>The Hero Open</span>
+          </Tooltip>
+        </h2>
+        <div className="bg-ink text-white rounded-xl p-6">
+          <p className="text-base font-medium leading-relaxed">{voice.heroOpen}</p>
+        </div>
+        <p className="text-xs text-slate mt-3 leading-relaxed">
+          The on-ramp below is this rule specialised to the homepage; the tone registers on
+          Voice &amp; Tone show it landing in different content classes.
+        </p>
       </Section>
 
       {/* The front door (on-ramp) */}

@@ -8,7 +8,7 @@
 **Category:** Composable intelligence platform.
 **Pronunciation:** /spek-TREE-uh/ (a coinage from *spectrum* — Latin, from *specere*, "to look"; the full range — with a second reading: *revealing*).
 <!-- generated:version-header -->
-**Version:** 2.5.5 (2026-08-08). Canonical data: `src/data/brand.ts` — this guide is a hybrid mirror: prose is hand-written; fenced data blocks are generated from canon (`npm run generate:guide`).
+**Version:** 2.5.6 (2026-08-08). Canonical data: `src/data/brand.ts` — this guide is a hybrid mirror: prose is hand-written; fenced data blocks are generated from canon (`npm run generate:guide`).
 <!-- /generated:version-header -->
 
 **Strategic claim:** Spectrea is the spectrum of clarity. Everything you know, in one living view — alive with possibility, yours to keep. See it whole. Trust what you see. Build on what you find.
@@ -952,5 +952,5 @@ All via Google Fonts:
 ---
 
 <!-- generated:version-footer -->
-*`src/data/brand.ts` is the canonical brand data (v2.5.5, 2026-08-08). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
+*`src/data/brand.ts` is the canonical brand data (v2.5.6, 2026-08-08). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
 <!-- /generated:version-footer -->

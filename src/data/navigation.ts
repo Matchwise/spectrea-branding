@@ -73,6 +73,7 @@ export const navigation: NavItem[] = [
     path: '/communications',
     children: [
       { label: 'Copy & Taglines', path: '/communications/copy' },
+      { label: 'Trust & Disclosures', path: '/communications/trust' },
       { label: 'Social Media', path: '/communications/social' },
       { label: 'Email', path: '/communications/email' },
       { label: 'Presentations', path: '/communications/presentations' },
