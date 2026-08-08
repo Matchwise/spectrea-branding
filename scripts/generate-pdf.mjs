@@ -411,16 +411,22 @@ ${css}</style>
   // Hardening (critic round 2): names are matched EXACTLY (allowed family +
   // optional instance suffix — 'InterloperHost' must not ride 'Inter');
   // finding ZERO font records fails the gate (a scanner/PDF-layout mismatch
-  // must fail loud, not open); and the two families that are also plausible
-  // HOST fonts get glyph restrictions decoded from their ToUnicode CMaps:
-  // Inter may carry only the arrow subset it exists for (′ → ↔), and
-  // Segoe UI Emoji — the sole accepted host face — only the 🎉 the guide's
-  // anti-examples use (colour emoji is host-rendered by design).
-  const NAME_RE = /^(Albert-?Sans|Lexend|JetBrains-?Mono|Inter|SegoeUIEmoji)(-[A-Za-z0-9]+)?$/
-  const FAMILY_RE = /^(Albert Sans|Lexend|JetBrains Mono|Inter|Segoe UI Emoji)$/
+  // must fail loud, not open); and every family that is also a plausible
+  // HOST font gets a glyph restriction decoded from its ToUnicode CMap:
+  // Inter may carry only the arrow subset it exists for (′ → ↔), and the
+  // platform colour-emoji face — the sole accepted host font, whose NAME
+  // varies by build host (Segoe UI Emoji on Windows, Noto Color Emoji on
+  // Linux CI, Apple Color Emoji on macOS) — only the 🎉 the guide's
+  // anti-examples use (colour emoji is host-rendered by design; the bound is
+  // what keeps text glyphs from riding an emoji face through the gate).
+  const EMOJI_GLYPHS = new Set([0x1F389, 0xFE0F])
+  const NAME_RE = /^(Albert-?Sans|Lexend|JetBrains-?Mono|Inter|SegoeUIEmoji|Noto-?Color-?Emoji|Apple-?Color-?Emoji)(-[A-Za-z0-9]+)?$/
+  const FAMILY_RE = /^(Albert Sans|Lexend|JetBrains Mono|Inter|Segoe UI Emoji|Noto Color Emoji|Apple Color Emoji)$/
   const GLYPH_BOUNDS = [
     { name: /^Inter\b/, family: 'Inter', allowed: new Set([0x2032, 0x2192, 0x2194]) },
-    { name: /^SegoeUIEmoji\b/, family: 'Segoe UI Emoji', allowed: new Set([0x1F389, 0xFE0F]) },
+    { name: /^SegoeUIEmoji\b/, family: 'Segoe UI Emoji', allowed: EMOJI_GLYPHS },
+    { name: /^Noto-?Color-?Emoji\b/, family: 'Noto Color Emoji', allowed: EMOJI_GLYPHS },
+    { name: /^Apple-?Color-?Emoji\b/, family: 'Apple Color Emoji', allowed: EMOJI_GLYPHS },
   ]
   const pdfBytes = readFileSync(pdfPath).toString('latin1')
   const objects = new Map()
