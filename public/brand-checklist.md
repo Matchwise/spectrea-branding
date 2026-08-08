@@ -1,17 +1,19 @@
-<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-07) -->
+<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-08) -->
 # Spectrea brand pre-flight checklist
 
 Run this BEFORE generating any Spectrea-branded surface — copy, UI, slide, or image.
-Canonical data: src/data/brand.ts (v2.5.3, 2026-08-08). Hard values: /brand-contract.json.
+Canonical data: src/data/brand.ts (v2.5.4, 2026-08-08). Hard values: /brand-contract.json.
 
 ## Step 1 — classify the surface
 
 Pick the closest context; it selects the tone and pattern you must match (examples in /brand-few-shots.md):
 
-- **Marketing / Homepage** → tone: Bold + Direct.
-- **Documentation / Help** → tone: Precise + Helpful.
-- **Social Media / Community** → tone: Thoughtful + Engaging.
-- **Error Messages / System** → tone: Direct + Informative.
+- **Marketing / Landing Page** → tone: Bold + Direct.
+- **Error Message** → tone: Direct + Informative.
+- **Feature Announcement** → tone: Concrete + Confident.
+- **Documentation** → tone: Precise + Helpful.
+- **Social Media** → tone: Thoughtful + Engaging.
+- **Beginner Documentation** → tone: Plain + Welcoming.
 - **Onboarding** → Orient by doing, not touring. First screens name the one action that creates value and get out of the way. No feature carousels, no "welcome to the future".
 - **Empty states** → An empty state is an invitation with a promise, not an apology. Name what will appear here and the single step that starts it.
 - **Confirmation dialogs** → State the consequence plainly, in the user's terms — what happens, what's reversible, what isn't. The confirm button names the action, never "OK".

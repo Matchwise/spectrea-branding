@@ -7,7 +7,7 @@
 **Tagline:** We connect the dots.
 **Category:** Composable intelligence platform.
 **Pronunciation:** /spek-TREE-uh/ (a coinage from *spectrum* — Latin, from *specere*, "to look"; the full range — with a second reading: *revealing*).
-**Version:** 2.5.3 (2026-08-08). Canonical data: `src/data/brand.ts` — this guide is a derived mirror.
+**Version:** 2.5.4 (2026-08-08). Canonical data: `src/data/brand.ts` — this guide is a derived mirror.
 
 **Strategic claim:** Spectrea is the spectrum of clarity. Everything you know, in one living view — alive with possibility, yours to keep. See it whole. Trust what you see. Build on what you find.
 
@@ -129,17 +129,17 @@ The voice formula is triadic by construction. Every piece of Spectrea copy — r
 
 The facet that leads changes; the other two are always present. A marketing page that only reveals is hype. A doc page that only grounds is stuffy. A product screen that only equips is a toolbar. Spectrea reads as Spectrea when all three are in every moment.
 
-### Tone spectrum
-Six contexts, each with the right (left) and wrong (right) version. Read each pair together — the contrast is what the rule looks like in practice.
+### Tone registers (one taxonomy, ratified 2026-08-08)
+Six content classes, each with a tone label and the right (left) and wrong (right) version. Read each pair together — the contrast is what the rule looks like in practice. Two structures, two jobs: these registers say how a content class *sounds*; the surface patterns below say what a product surface *says* (a surface inherits its register from the nearest content class — system notifications from Error Message, release notes from Feature Announcement).
 
-| Context | Right | Wrong |
+| Context · Tone | Right | Wrong |
 |---|---|---|
-| **Marketing / Landing Page** | *"See everything your organization knows in one connected view. Spectrea builds a living graph from your documents — the more you use it, the sharper it gets."* | *"Transform how your team works. Unlock the power of connected knowledge — insights, intelligence, impact."* |
-| **Error Message** | *"Save failed: connection timeout. Your draft is cached locally. Retrying…"* | *"Oops! Something went wrong. Please try again later or contact support if the problem persists."* |
-| **Feature Announcement** | *"Every document you add now strengthens what the system already knows. Connections you never noticed start surfacing. The whole gets sharper — your second month is better than your first."* | *"We're excited to share our latest update — it includes improvements that will help you be more productive."* |
-| **Documentation** | *"To add a new item, open the relevant view and choose 'Add'. Pick a type from the list, or create one if you need it. The item appears in place immediately."* | *"Ready to add something? Just head over to the right view and hit that '+ Add' button! Pick a type that fits — or make a new one if nothing works. Easy!"* |
-| **Social Media** | *"What if every document you uploaded made your whole system smarter? That's not a hypothetical — it's how Spectrea works."* | *"Team productivity has never been easier. Learn how Spectrea can transform your workflow."* |
-| **Beginner Documentation** | *"Think of Spectrea as a web of everything your team knows. When you add a document, Spectrea reads it and weaves what it learns into the web — connecting it to things you've already captured."* | *"Documents are processed through a 6-phase pipeline: parse, chunk, embed, score, review, and integrate."* |
+| **Marketing / Landing Page** · Bold + Direct | *"See everything your organization knows in one connected view. Spectrea builds a living graph from your documents — the more you use it, the sharper it gets."* | *"Transform how your team works. Unlock the power of connected knowledge — insights, intelligence, impact."* |
+| **Error Message** · Direct + Informative | *"Save failed: connection timeout. Your draft is cached locally. Retrying…"* | *"Oops! Something went wrong. Please try again later or contact support if the problem persists."* |
+| **Feature Announcement** · Concrete + Confident | *"Every document you add now strengthens what the system already knows. Connections you never noticed start surfacing. The whole gets sharper — your second month is better than your first."* | *"We're excited to share our latest update — it includes improvements that will help you be more productive."* |
+| **Documentation** · Precise + Helpful | *"To add a new item, open the relevant view and choose 'Add'. Pick a type from the list, or create one if you need it. The item appears in place immediately."* | *"Ready to add something? Just head over to the right view and hit that '+ Add' button! Pick a type that fits — or make a new one if nothing works. Easy!"* |
+| **Social Media** · Thoughtful + Engaging | *"What if every document you uploaded made your whole system smarter? That's not a hypothetical — it's how Spectrea works."* | *"Team productivity has never been easier. Learn how Spectrea can transform your workflow."* |
+| **Beginner Documentation** · Plain + Welcoming | *"Think of Spectrea as a web of everything your team knows. When you add a document, Spectrea reads it and weaves what it learns into the web — connecting it to things you've already captured."* | *"Documents are processed through a 6-phase pipeline: parse, chunk, embed, score, review, and integrate."* |
 
 The right-hand versions are bold, direct, concrete — they show what the user experiences. The wrong-hand versions fail in different ways: platitude-marketing (*transform, unlock, impact*), bland agentless announcement (*we're excited to share*), vague apology, forced chirp, clickbait, or engineer-internal jargon in a beginner context. In every case, the brand shows its work rather than claiming magic or reaching for the nearest SaaS cliché.
 
@@ -150,7 +150,7 @@ Two context shifts live within this same voice. **On buyer surfaces** (hero, cas
 **On-ramp posture (decided by Darren 2026-07-03; amended 2026-07-19).** Outcome-first hero per the canonical hero-open rule above: the hero leads with the entry job and its outcome, written as a reveal. One coined whole-product frame is sanctioned (ratified 2026-07-19): **"the operating system for collective intelligence"** — distinct from generic "AI OS", always paired with plain language that carries the meaning. The sanctioned hero example: *"Drop in your docs — get answers that show their sources, and a system that gets sharper every week."* Adopt the market's words where they exist: *permission-aware* · *cited answers* · *grounded answers* · *knowledge graph* (exploration surfaces only — the graph stays supporting-cast). Avoid-list terms — *Work AI* · *organizational memory* · *AI workspace* · *AI OS* · *second brain* · *ambient agents* · *bitemporal* · *ontology* · *enterprise graph* — follow the **balance doctrine** (ratified 2026-07-19): industry terms are not blacklisted or censored; an avoid-list term may label a segment-matched surface when a plain-language claim carries the meaning in place (e.g. "second brain" on the individuals page). Do not expect the term to carry weight with unfamiliar audiences; balance it, and never lead a cross-segment hero with it. Coin language ONLY for the differentiators no market term names: **per-viewer truth**, **decisions in the graph**, and the whole-product frame **"the operating system for collective intelligence"** (pair it with plain language — it must not carry the claim alone). Everywhere else, use the market's word where one exists (adopt list) or plain outcome language.
 
 ### Surface patterns
-Voice patterns for product and operational surfaces the tone spectrum doesn't cover. Release notes follow the Feature Announcement pair above.
+Voice patterns for product and operational surfaces the register taxonomy doesn't cover — what each surface *says*, inheriting its register from the nearest content class above. Release notes follow the Feature Announcement register.
 
 | Surface | Rule | Right | Wrong |
 |---|---|---|---|
@@ -913,4 +913,4 @@ All via Google Fonts:
 
 ---
 
-*`src/data/brand.ts` is the canonical brand data (v2.5.3, 2026-08-08). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
+*`src/data/brand.ts` is the canonical brand data (v2.5.4, 2026-08-08). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*

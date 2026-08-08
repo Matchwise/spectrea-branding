@@ -1,6 +1,6 @@
 {
-  "_generated": "DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-07)",
-  "version": "2.5.3",
+  "_generated": "DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-08)",
+  "version": "2.5.4",
   "lastUpdated": "2026-08-08",
   "sourceOfTruth": "brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea's roadmap — check it before placing a capability claim on a buyer-facing surface.",
   "identity": {
@@ -810,6 +810,10 @@
     {
       "date": "2026-08-08",
       "decision": "Marketing exemplar rewritten under the heroOpen rule (D27): the canonical Marketing/Landing Page example — the few-shot AI tools imitate — now opens on the outcome written as a reveal (\"See everything your organization knows in one connected view. Spectrea builds a living graph from your documents — the more you use it, the sharper it gets.\"), replacing the problem-first open (\"Stop losing knowledge to silos…\"). Its why-note stops teaching problem-first; the compounding claim keeps its mechanism tie; density at the two-privileged-words cap."
+    },
+    {
+      "date": "2026-08-08",
+      "decision": "One register taxonomy (D28 part 2): toneSpectrum retired — it duplicated four toneExamples entries verbatim under colliding labels; its tone labels moved into toneExamples (two authored to complete the set: Feature Announcement = Concrete + Confident, Beginner Documentation = Plain + Welcoming). voice.registerRule declares the two remaining structures' jobs: toneExamples = register taxonomy (how a content class sounds), surfacePatterns = surface spec (what a product surface says; inherits its register from the nearest content class)."
     }
   ]
 }

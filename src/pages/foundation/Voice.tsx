@@ -70,34 +70,17 @@ export default function Voice() {
         </div>
       </Section>
 
-      {/* Tone spectrum */}
-      <Section title="Tone Spectrum">
+      {/* Tone registers — the one taxonomy (D28 part 2): tone + right/wrong pair per context */}
+      <Section title="Tone Registers — Voice in Action">
         <p className="text-sm text-slate mb-4">
-          The voice stays consistent. The tone shifts with context:
+          The voice stays consistent; the tone shifts with context. {voice.registerRule}
         </p>
-        <div className="border border-stone-200 rounded-xl overflow-hidden">
-          <div className="hidden sm:grid grid-cols-3 bg-cloud border-b border-stone-200 px-4 py-2">
-            <span className="text-xs font-semibold text-pewter uppercase tracking-wider">Context</span>
-            <span className="text-xs font-semibold text-pewter uppercase tracking-wider">Tone</span>
-            <span className="text-xs font-semibold text-pewter uppercase tracking-wider">Example</span>
-          </div>
-          {voice.toneSpectrum.map(t => (
-            <div key={t.context} className="grid grid-cols-1 sm:grid-cols-3 gap-y-1 sm:gap-y-0 border-b last:border-b-0 border-stone-100 px-4 py-3">
-              <span className="text-sm text-iron font-semibold sm:font-medium">{t.context}</span>
-              <span className="text-sm text-iron">{t.tone}</span>
-              <span className="text-xs text-slate italic leading-relaxed">{t.example}</span>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      {/* Do / Don't examples */}
-      <Section title="Voice in Action">
         <div className="space-y-6">
           {voice.toneExamples.map(ex => (
             <div key={ex.context} className="border border-stone-200 rounded-xl overflow-hidden">
               <div className="bg-cloud px-5 py-2 border-b border-stone-200 flex items-center justify-between">
                 <span className="text-xs font-semibold text-slate uppercase tracking-wider">{ex.context}</span>
+                <span className="text-xs font-medium text-pewter">{ex.tone}</span>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="p-5 border-b md:border-b-0 md:border-r border-stone-100">

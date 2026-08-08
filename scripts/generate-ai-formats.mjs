@@ -139,7 +139,7 @@ const contract = {
 /* 2. brand-checklist.md — generation-time pre-flight                  */
 /* ------------------------------------------------------------------ */
 
-const toneLines = voice.toneSpectrum
+const toneLines = voice.toneExamples
   .map(t => `- **${t.context}** → tone: ${t.tone}.`)
   .join('\n')
 const surfaceLines = voice.surfacePatterns

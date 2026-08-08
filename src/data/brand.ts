@@ -4,7 +4,7 @@
 
 // --- Meta / Governance ---
 export const meta = {
-  version: '2.5.3',
+  version: '2.5.4',
   lastUpdated: '2026-08-08',
   sourceOfTruth:
     'brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea\'s roadmap — check it before placing a capability claim on a buyer-facing surface.',
@@ -371,31 +371,6 @@ export const voice = {
   techDescription:
     'Start with the human benefit, then introduce the technical concept. Tech earns its place by showing its work — pointing to the source, the trace, the evidence — not by impressing.',
 
-  toneSpectrum: [
-    {
-      context: 'Marketing / Homepage',
-      tone: 'Bold + Direct',
-      // Shares the D27-ratified exemplar with toneExamples (the two surfaces
-      // carried identical text before the rewrite; kept identical after).
-      example: 'See everything your organization knows in one connected view. Spectrea builds a living graph from your documents — the more you use it, the sharper it gets.',
-    },
-    {
-      context: 'Documentation / Help',
-      tone: 'Precise + Helpful',
-      example: 'To add a new item, open the relevant view and choose "Add". Pick a type from the list, or create one if you need it. The item appears in place immediately.',
-    },
-    {
-      context: 'Social Media / Community',
-      tone: 'Thoughtful + Engaging',
-      example: 'What if every document you uploaded made your whole system smarter? That\'s not a hypothetical — it\'s how Spectrea works.',
-    },
-    {
-      context: 'Error Messages / System',
-      tone: 'Direct + Informative',
-      example: 'Save failed: connection timeout. Your draft is cached locally. Retrying...',
-    },
-  ],
-
   // The 12 brand-evocative privileged words.
   // These read brand-pure (no product knowledge required) and shape the Spectrea voice.
   // Product-flavoured words (provenance, traceable, auditable, attributed) are still
@@ -447,9 +422,16 @@ export const voice = {
   vocabularyDensity:
     'Max two privileged words per paragraph, one "living" / "alive" per page. If a paragraph survives losing every privileged word, the prose is doing its job — if it collapses without them, rewrite.',
 
+  // One register taxonomy (D28 part 2, ratified 2026-08-08): toneExamples IS
+  // the tone spectrum. The retired standalone toneSpectrum duplicated four of
+  // these entries verbatim under colliding labels; its tone labels moved here.
+  registerRule:
+    'Two structures, two jobs. toneExamples is the register taxonomy: how a content class sounds — a tone label plus a right/wrong pair and the why. surfacePatterns is the surface spec: what a product surface says. A product surface inherits its register from the nearest content class (System notifications ↔ Error Message; release notes ↔ Feature Announcement).',
+
   toneExamples: [
     {
       context: 'Marketing / Landing Page',
+      tone: 'Bold + Direct',
       // Rewritten per the canonical heroOpen rule (D27, ratified 2026-08-08).
       correct: 'See everything your organization knows in one connected view. Spectrea builds a living graph from your documents — the more you use it, the sharper it gets.',
       incorrect: 'Transform how your team works. Unlock the power of connected knowledge — insights, intelligence, impact.',
@@ -457,39 +439,45 @@ export const voice = {
     },
     {
       context: 'Error Message',
+      tone: 'Direct + Informative',
       correct: 'Save failed: connection timeout. Your draft is cached locally. Retrying...',
       incorrect: 'Oops! Something went wrong. Please try again later or contact support if the problem persists.',
       why: 'Direct and informative. States what happened, what\'s safe, and what\'s next. No vague apologies.',
     },
     {
       context: 'Feature Announcement',
+      tone: 'Concrete + Confident',
       correct: 'Every document you add now strengthens what the system already knows. Connections you never noticed start surfacing. The whole gets sharper — your second month is better than your first.',
       incorrect: 'We\'re excited to share our latest update — it includes improvements that will help you be more productive.',
       why: 'Shows what the user experiences, not what we built. The wrong version is the bland-SaaS failure mode: agentless, vague, no specifics. The right version names the shift the user will actually notice.',
     },
     {
       context: 'Documentation',
+      tone: 'Precise + Helpful',
       correct: 'To add a new item, open the relevant view and choose "Add". Pick a type from the list, or create one if you need it. The item appears in place immediately.',
       incorrect: 'Ready to add something? Just head over to the right view and hit that "+ Add" button! Pick a type that fits — or make a new one if nothing works. Easy!',
       why: 'Precise and helpful. No forced enthusiasm. Respects the user\'s time and intelligence.',
     },
     {
       context: 'Social Media',
+      tone: 'Thoughtful + Engaging',
       correct: 'What if every document you uploaded made your whole system smarter? That\'s not a hypothetical — it\'s how Spectrea works.',
       incorrect: 'Team productivity has never been easier. Learn how Spectrea can transform your workflow.',
       why: 'Thoughtful and engaging. The wrong version is a platitude-plus-CTA — the default failure mode of brand social. The right version leads with an idea and invites the reader to think.',
     },
     {
       context: 'Beginner Documentation',
+      tone: 'Plain + Welcoming',
       correct: 'Think of Spectrea as a web of everything your team knows. When you add a document, Spectrea reads it and weaves what it learns into the web — connecting it to things you\'ve already captured.',
       incorrect: 'Documents are processed through a 6-phase pipeline: parse, chunk, embed, score, review, and integrate.',
       why: 'Demonstrates the Adaptive personality: meets beginners where they are, using familiar metaphors instead of technical architecture.',
     },
   ],
 
-  // Voice patterns for product and operational surfaces the tone spectrum
-  // doesn't cover (added 2026-07-03). Each pairs a rule with a right/wrong
-  // example. Release notes are covered by the Feature Announcement pair above.
+  // Voice patterns for product and operational surfaces the register taxonomy
+  // doesn't cover (added 2026-07-03; relation declared in registerRule). Each
+  // pairs a rule with a right/wrong example. Release notes are covered by the
+  // Feature Announcement register above.
   surfacePatterns: [
     {
       surface: 'Onboarding',
@@ -840,6 +828,7 @@ export const ratificationLedger = [
   { date: '2026-08-07', decision: 'Sub-AA button labels resolved as the registry\'s first GRANTED exception (exception round 2/2): white #FFFFFF labels stay on all four semantic base fills. Darren challenged the WCAG 2.x ranking on perceptual grounds; APCA-W3 re-measurement confirmed white beats or ties Ink on every fill (Lc 76.4/68.4/54.6/54.9 vs Ink 31.7/39.6/53.0/52.7) — the nominally compliant Ink-on-Rose swap would have been perceptually worse. Measurement doctrine added (accessibility.measurement): WCAG 2.x AA stays the conformance floor; APCA-W3 Lc is the recorded perceptual adjudicator; exception grants log both metrics.' },
   { date: '2026-08-07', decision: 'One canonical hero-open ratified (D28 part 1): voice.heroOpen — "open on the outcome, written as a reveal", kept simple and adaptable per Darren\'s direction. Fuses the ratified outcome-first structure with the character\'s reveal register; the former five competing prescriptions become steps of one gesture (reveal = register of the open, proof = the grounding, entry-job outcome = the on-ramp specialisation, problem = optional setup that must land on the outcome in the same breath). Supersedes voice.outcomeFirst (renamed).' },
   { date: '2026-08-08', decision: 'Marketing exemplar rewritten under the heroOpen rule (D27): the canonical Marketing/Landing Page example — the few-shot AI tools imitate — now opens on the outcome written as a reveal ("See everything your organization knows in one connected view. Spectrea builds a living graph from your documents — the more you use it, the sharper it gets."), replacing the problem-first open ("Stop losing knowledge to silos…"). Its why-note stops teaching problem-first; the compounding claim keeps its mechanism tie; density at the two-privileged-words cap.' },
+  { date: '2026-08-08', decision: 'One register taxonomy (D28 part 2): toneSpectrum retired — it duplicated four toneExamples entries verbatim under colliding labels; its tone labels moved into toneExamples (two authored to complete the set: Feature Announcement = Concrete + Confident, Beginner Documentation = Plain + Welcoming). voice.registerRule declares the two remaining structures\' jobs: toneExamples = register taxonomy (how a content class sounds), surfacePatterns = surface spec (what a product surface says; inherits its register from the nearest content class).' },
 ] as const
 
 // --- Executive Voice ---
