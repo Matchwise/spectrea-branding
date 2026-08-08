@@ -50,14 +50,14 @@ export default function Presentations() {
             </p>
             <div className="h-7 rounded-md overflow-hidden flex mb-2 border border-stone-200">
               <div className="flex-[80] flex items-center justify-center" style={{ backgroundColor: '#FDFDFB' }}>
-                <span className="text-[11px] font-semibold text-slate">Canvas — 80%</span>
+                <span className="text-xs font-semibold text-slate">Canvas — 80%</span>
               </div>
               <div className="flex-[20] flex items-center justify-center" style={{ backgroundColor: '#18181C' }}>
-                <span className="text-[11px] font-semibold" style={{ color: '#F4F4F1' }}>Ink — 20%</span>
+                <span className="text-xs font-semibold" style={{ color: '#F4F4F1' }}>Ink — 20%</span>
               </div>
             </div>
             <p className="text-xs text-slate leading-relaxed">
-              Canvas carries the everyday — opening, agenda, content, data, close. Ink marks the moments you want the room to feel. When you do go dark, text shifts to Cloud <code className="font-mono text-[11px]">#F4F4F1</code>, muted to Mist <code className="font-mono text-[11px]">#B0B0B6</code>; accents don't flinch. The brand keeps its voice across both.
+              Canvas carries the everyday — opening, agenda, content, data, close. Ink marks the moments you want the room to feel. When you do go dark, text shifts to Cloud <code className="font-mono">#F4F4F1</code>, muted to Mist <code className="font-mono">#B0B0B6</code>; accents don't flinch. The brand keeps its voice across both.
             </p>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function Presentations() {
               <div className="h-full flex flex-col items-center justify-center p-6 relative">
                 <LogotypeGradient fontSize={22} />
                 <p className="text-base font-semibold text-center mt-4" style={{ color: '#18181C', fontFamily: "'Albert Sans', sans-serif" }}>We connect the dots.</p>
-                <p className="text-xs mt-1" style={{ color: '#97979E' }}>Composable intelligence platform</p>
+                <p className="text-xs mt-1" style={{ color: '#6D6D72' }}>Composable intelligence platform</p>
               </div>
               <div className="absolute bottom-0 left-0 right-0 h-0.5" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
             </div>
@@ -121,7 +121,7 @@ export default function Presentations() {
               <CanvasWisp />
               <div className="h-full flex flex-col items-center justify-center p-6 relative">
                 <p className="text-5xl font-semibold" style={{ color: '#4271DF', fontFamily: "'Albert Sans', sans-serif" }}>94%</p>
-                <p className="text-xs mt-2" style={{ color: '#97979E' }}>average confidence across all items</p>
+                <p className="text-xs mt-2" style={{ color: '#6D6D72' }}>average confidence across all items</p>
               </div>
               <div className="absolute bottom-3 left-4">
                 <Logotype fontSize={9} colorMode="ink" color="#97979E" />
@@ -263,7 +263,7 @@ export default function Presentations() {
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
-            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#007D6E' }}>Do</h3>
             <ul className="space-y-2 text-sm text-iron leading-relaxed">
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Pick one idea and let it breathe.</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Save the gradient bar for the slides that earn it — title, stat, divider.</li>

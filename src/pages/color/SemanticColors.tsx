@@ -175,9 +175,9 @@ export default function SemanticColors() {
               <div className="p-3 space-y-1.5">
                 <div className="flex items-center justify-between">
                   <p className="text-xs font-semibold text-ink">{t.name}</p>
-                  <span className="text-[10px] font-mono text-pewter">from {t.source}</span>
+                  <span className="text-xs font-mono text-pewter">from {t.source}</span>
                 </div>
-                <p className="text-[11px] font-semibold uppercase tracking-wider" style={{ color: '#97979E' }}>{t.when}</p>
+                <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: '#97979E' }}>{t.when}</p>
                 <p className="text-xs text-iron leading-relaxed">{t.usage}</p>
               </div>
             </div>
@@ -224,15 +224,15 @@ export default function SemanticColors() {
                 <div className="col-span-10 grid grid-cols-3 gap-2">
                   <div className="flex flex-col rounded-md overflow-hidden">
                     <div className="h-8" style={{ backgroundColor: row.bg }} />
-                    <span className="text-[10px] font-mono text-pewter mt-1">Wash — {row.bg}</span>
+                    <span className="text-xs font-mono text-pewter mt-1">Wash — {row.bg}</span>
                   </div>
                   <div className="flex flex-col rounded-md overflow-hidden">
                     <div className="h-8" style={{ backgroundColor: row.accent }} />
-                    <span className="text-[10px] font-mono text-pewter mt-1">Accent — {row.accent}</span>
+                    <span className="text-xs font-mono text-pewter mt-1">Accent — {row.accent}</span>
                   </div>
                   <div className="flex flex-col rounded-md overflow-hidden">
                     <div className="h-8" style={{ backgroundColor: row.dark }} />
-                    <span className="text-[10px] font-mono text-pewter mt-1">Dark — {row.dark}</span>
+                    <span className="text-xs font-mono text-pewter mt-1">Dark — {row.dark}</span>
                   </div>
                 </div>
               </div>
@@ -272,11 +272,11 @@ export default function SemanticColors() {
                   <div className="col-span-10 grid grid-cols-2 gap-2">
                     <div className="flex flex-col rounded-md overflow-hidden">
                       <div className="h-8" style={{ backgroundColor: row.wash }} />
-                      <span className="text-[10px] font-mono mt-1" style={{ color: '#B0B0B6' }}>{row.name} — {row.wash}</span>
+                      <span className="text-xs font-mono mt-1" style={{ color: '#B0B0B6' }}>{row.name} — {row.wash}</span>
                     </div>
                     <div className="flex flex-col rounded-md overflow-hidden">
                       <div className="h-8" style={{ backgroundColor: row.accent }} />
-                      <span className="text-[10px] font-mono mt-1" style={{ color: '#B0B0B6' }}>Accent — {row.accent}</span>
+                      <span className="text-xs font-mono mt-1" style={{ color: '#B0B0B6' }}>Accent — {row.accent}</span>
                     </div>
                   </div>
                 </div>
@@ -307,7 +307,7 @@ export default function SemanticColors() {
         </div>
 
         <p className="text-xs text-slate mt-4 leading-relaxed">
-          <strong>Rule:</strong> dark washes replace light washes 1:1. Accent dots, borders, and icons stay unchanged. On-dark text on washes is Cloud <code className="font-mono text-[11px]">#F4F4F1</code> — the wash provides enough contrast that a darker text variant isn't needed.
+          <strong>Rule:</strong> dark washes replace light washes 1:1. Accent dots, borders, and icons stay unchanged. On-dark text on washes is Cloud <code className="font-mono">#F4F4F1</code> — the wash provides enough contrast that a darker text variant isn't needed.
         </p>
       </Section>
 

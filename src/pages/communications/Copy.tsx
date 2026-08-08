@@ -81,10 +81,10 @@ export default function Copy() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
-            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Market words we adopt</h3>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#007D6E' }}>Market words we adopt</h3>
             <div className="flex flex-wrap gap-1.5">
               {brand.positioning.onRamp.adopt.map(term => (
-                <span key={term} className="text-xs px-2 py-1 rounded-md" style={{ backgroundColor: '#00B6A010', color: '#008775' }}>{term}</span>
+                <span key={term} className="text-xs px-2 py-1 rounded-md" style={{ backgroundColor: '#00B6A010', color: '#007D6E' }}>{term}</span>
               ))}
             </div>
           </div>
@@ -92,7 +92,7 @@ export default function Copy() {
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Terms we don't buy</h3>
             <div className="flex flex-wrap gap-1.5">
               {brand.positioning.onRamp.avoid.map(term => (
-                <span key={term} className="text-xs px-2 py-1 rounded-md line-through" style={{ backgroundColor: '#F2426010', color: '#D63B55', textDecorationColor: '#F2426060' }}>{term}</span>
+                <span key={term} className="text-xs px-2 py-1 rounded-md line-through" style={{ backgroundColor: '#F2426010', color: '#BA3249', textDecorationColor: '#F2426060' }}>{term}</span>
               ))}
             </div>
           </div>
@@ -141,10 +141,10 @@ export default function Copy() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
-            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Words We Use</h3>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#007D6E' }}>Words We Use</h3>
             <div className="flex flex-wrap gap-1.5">
               {voice.alwaysUse.map(word => (
-                <span key={word} className="text-xs px-2 py-1 rounded-md" style={{ backgroundColor: '#00B6A010', color: '#008775' }}>{word}</span>
+                <span key={word} className="text-xs px-2 py-1 rounded-md" style={{ backgroundColor: '#00B6A010', color: '#007D6E' }}>{word}</span>
               ))}
             </div>
           </div>
@@ -152,7 +152,7 @@ export default function Copy() {
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Words We Never Use</h3>
             <div className="flex flex-wrap gap-1.5">
               {voice.neverUse.map(word => (
-                <span key={word} className="text-xs px-2 py-1 rounded-md line-through" style={{ backgroundColor: '#F2426010', color: '#D63B55', textDecorationColor: '#F2426060' }}>{word}</span>
+                <span key={word} className="text-xs px-2 py-1 rounded-md line-through" style={{ backgroundColor: '#F2426010', color: '#BA3249', textDecorationColor: '#F2426060' }}>{word}</span>
               ))}
             </div>
           </div>
@@ -189,7 +189,7 @@ export default function Copy() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
-            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#007D6E' }}>Do</h3>
             <ul className="space-y-2 text-sm text-iron">
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Open on the outcome, written as a reveal — a problem may set it up, but the open lands on the outcome; the mechanism enters as the reason to believe</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use the approved vocabulary list</li>

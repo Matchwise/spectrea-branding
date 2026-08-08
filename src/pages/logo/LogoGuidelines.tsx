@@ -11,7 +11,7 @@ function DoExample({ label, children }: { label: string; children: React.ReactNo
         </div>
       </div>
       <div className="px-3 py-2 border-t" style={{ borderColor: '#00B6A015' }}>
-        <p className="text-xs" style={{ color: '#008775' }}>{label}</p>
+        <p className="text-xs" style={{ color: '#007D6E' }}>{label}</p>
       </div>
     </div>
   )
@@ -27,7 +27,7 @@ function DontExample({ label, children }: { label: string; children: React.React
         </div>
       </div>
       <div className="px-3 py-2 border-t" style={{ borderColor: '#F2426015' }}>
-        <p className="text-xs" style={{ color: '#D63B55' }}>{label}</p>
+        <p className="text-xs" style={{ color: '#BA3249' }}>{label}</p>
       </div>
     </div>
   )

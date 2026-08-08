@@ -20,7 +20,7 @@ export default function Email() {
             <div className="border-t-2 border-stone-200 pt-3 mt-2">
               <p className="text-sm font-semibold text-ink">Sarah Chen</p>
               <p className="text-xs text-slate">Head of Product, Spectrea</p>
-              <p className="text-xs text-pewter mt-1">sarah@spectrea.com</p>
+              <p className="text-xs text-slate mt-1">sarah@spectrea.com</p>
               <div className="flex items-center gap-2 mt-2">
                 <Logotype fontSize={11} colorMode="ink" color="#212226" />
                 <span className="text-xs text-pewter">| We connect the dots.</span>
@@ -55,7 +55,7 @@ export default function Email() {
                 <p className="text-sm font-semibold text-ink mb-2" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Your item was added</p>
                 <p className="text-xs text-iron leading-relaxed mb-3">"[Item title]" is in. We've already linked it to a few related things you have.</p>
                 <button className="px-3 py-1.5 rounded-md text-xs font-medium text-white btn-focus" style={{ backgroundColor: '#4271DF' }}>Open</button>
-                <p className="text-xs text-pewter mt-4 pt-3 border-t border-stone-100">You received this because you added something to Spectrea.</p>
+                <p className="text-xs text-slate mt-4 pt-3 border-t border-stone-100">You received this because you added something to Spectrea.</p>
               </div>
             </div>
           </div>
@@ -115,7 +115,7 @@ export default function Email() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
-            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#007D6E' }}>Do</h3>
             <ul className="space-y-2 text-sm text-iron">
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use direct, specific subject lines</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Include the logo mark + "Spectrea" in every email</li>

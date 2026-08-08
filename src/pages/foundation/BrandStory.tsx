@@ -100,7 +100,7 @@ export default function BrandStory() {
                 <h3 className="font-semibold text-ink">{v.name}</h3>
               </div>
               <p className="text-sm text-iron leading-relaxed mb-2">{v.description}</p>
-              <p className="text-xs text-pewter italic">Proof: {v.proof}</p>
+              <p className="text-xs text-slate italic">Proof: {v.proof}</p>
             </div>
           ))}
         </div>
@@ -171,7 +171,7 @@ export default function BrandStory() {
           The through-line is already in the tagline — <em>We connect the dots</em> = see them (reveal) · trust them (ground) · build on them (equip). If any of the three is missing, the copy doesn't sound like Spectrea.
         </p>
         <div className="mt-5 pt-5 border-t border-stone-200">
-          <p className="text-xs text-pewter">
+          <p className="text-xs text-slate">
             Reference brands: {brand.aspirationalBrands.join(', ')}
           </p>
           <p className="text-xs text-slate mt-1">
@@ -190,7 +190,7 @@ export default function BrandStory() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {brand.visualMetaphor.metaphors.map(m => (
             <div key={m.name} className="border border-stone-200 rounded-xl p-5">
-              <p className="text-[11px] font-semibold text-pewter uppercase tracking-wider mb-1">Co-primary · {m.role}</p>
+              <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-1">Co-primary · {m.role}</p>
               <h3 className="font-semibold text-ink mb-1">{m.name}</h3>
               <p className="text-sm text-iron">{m.description}</p>
             </div>

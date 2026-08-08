@@ -186,7 +186,7 @@ function HarmonyBadge({ deltaL, deltaC }: { deltaL: number; deltaC: number }) {
   const perfect = deltaL <= 0.02 && deltaC <= 0.015
   const label = perfect ? 'Perfect' : (lOk && cOk) ? 'Harmonious' : lOk ? 'Chroma mismatch' : cOk ? 'Lightness mismatch' : 'Out of harmony'
   const style = (perfect || (lOk && cOk))
-    ? { color: '#008775', backgroundColor: '#00B6A010', border: '1px solid #00B6A025' }
+    ? { color: '#007D6E', backgroundColor: '#00B6A010', border: '1px solid #00B6A025' }
     : { color: '#92400E', backgroundColor: '#FFFBEB', border: '1px solid #FDE68A' }
   return (
     <span className="text-[10px] font-medium px-2 py-0.5 rounded-full" style={style}>
@@ -320,13 +320,13 @@ export default function PaletteCompare() {
                     <span className="text-xs font-medium text-iron">Chroma</span>
                     <button
                       onClick={() => setChromaMode('matched')}
-                      className={`text-[10px] font-medium px-2 py-0.5 rounded transition-colors btn-focus ${chromaMode === 'matched' ? 'bg-white text-ink shadow-sm border border-stone-200' : 'text-slate'}`}
+                      className={`text-xs font-medium px-2 py-0.5 rounded transition-colors btn-focus ${chromaMode === 'matched' ? 'bg-white text-ink shadow-sm border border-stone-200' : 'text-slate'}`}
                     >
                       Matched (same absolute C)
                     </button>
                     <button
                       onClick={() => setChromaMode('relative')}
-                      className={`text-[10px] font-medium px-2 py-0.5 rounded transition-colors btn-focus ${chromaMode === 'relative' ? 'bg-white text-ink shadow-sm border border-stone-200' : 'text-slate'}`}
+                      className={`text-xs font-medium px-2 py-0.5 rounded transition-colors btn-focus ${chromaMode === 'relative' ? 'bg-white text-ink shadow-sm border border-stone-200' : 'text-slate'}`}
                     >
                       Relative (% of each max)
                     </button>
@@ -375,10 +375,10 @@ export default function PaletteCompare() {
                 <div key={c.name} className="flex-1">
                   <div className="h-16 rounded-lg border border-black/5" style={{ backgroundColor: c.hex }} />
                   <div className="mt-1.5 flex items-center justify-between">
-                    <span className="text-[10px] font-medium text-iron">{c.name}</span>
-                    <span className="text-[10px] font-mono text-pewter">{c.hex}</span>
+                    <span className="text-xs font-medium text-iron">{c.name}</span>
+                    <span className="text-xs font-mono text-slate">{c.hex}</span>
                   </div>
-                  <p className="text-[9px] font-mono text-pewter">L={c.L.toFixed(3)} C={c.C.toFixed(3)} h={c.h}</p>
+                  <p className="text-xs font-mono text-slate">L={c.L.toFixed(3)} C={c.C.toFixed(3)} h={c.h}</p>
                 </div>
               ))}
             </div>
@@ -408,15 +408,15 @@ export default function PaletteCompare() {
                   <div key={c.name} className="grid grid-cols-4 px-3 py-1.5 items-center" style={{ borderBottom: i < 3 ? '1px solid #F3F4F6' : 'none' }}>
                     <div className="flex items-center gap-1.5">
                       <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: c.hex }} />
-                      <span className="text-[10px] font-medium text-iron">{c.name}</span>
+                      <span className="text-xs font-medium text-iron">{c.name}</span>
                     </div>
-                    <span className="text-[10px] font-mono" style={whiteOk ? { color: '#57534E' } : { color: '#F24260' }}>
+                    <span className="text-xs font-mono" style={whiteOk ? { color: '#57534E' } : { color: '#F24260' }}>
                       {vsWhite.toFixed(2)}:1 {vsWhite >= 4.5 ? 'AA' : whiteOk ? 'UI' : 'FAIL'}
                     </span>
-                    <span className="text-[10px] font-mono" style={inkOk ? { color: '#57534E' } : { color: '#F24260' }}>
+                    <span className="text-xs font-mono" style={inkOk ? { color: '#57534E' } : { color: '#F24260' }}>
                       {vsInk.toFixed(2)}:1 {vsInk >= 4.5 ? 'AA' : inkOk ? 'UI' : 'FAIL'}
                     </span>
-                    <span className="text-[10px] font-medium" style={{ color: whiteOk && inkOk ? '#008775' : whiteOk || inkOk ? '#D97706' : '#F24260' }}>
+                    <span className="text-xs font-medium" style={{ color: whiteOk && inkOk ? '#007D6E' : whiteOk || inkOk ? '#D97706' : '#F24260' }}>
                       {whiteOk && inkOk ? 'Both ≥3:1' : whiteOk ? 'White only' : inkOk ? 'Dark only' : 'Neither'}
                     </span>
                   </div>
@@ -449,7 +449,7 @@ export default function PaletteCompare() {
             <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-3">vs current palette</p>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-[10px] text-slate mb-1">Current</p>
+                <p className="text-xs text-slate mb-1">Current</p>
                 <div className="flex gap-1.5 mb-2">
                   <div className="flex-1 h-8 rounded" style={{ backgroundColor: '#4271DF' }} />
                   <div className="flex-1 h-8 rounded" style={{ backgroundColor: '#00B6A0' }} />
@@ -457,10 +457,10 @@ export default function PaletteCompare() {
                   <div className="flex-1 h-8 rounded" style={{ backgroundColor: '#F24260' }} />
                 </div>
                 <GradientStrip cobalt="#4271DF" teal="#00B6A0" amber="#E19000" height={16} />
-                <p className="text-[9px] font-mono text-pewter mt-1">L: {current.cobalt.L.toFixed(2)} / {current.teal.L.toFixed(2)} / {current.amber.L.toFixed(2)} / {current.rose.L.toFixed(2)} — dL={Math.max(Math.abs(current.cobalt.L - current.teal.L), Math.abs(current.cobalt.L - current.amber.L), Math.abs(current.cobalt.L - current.rose.L), Math.abs(current.teal.L - current.amber.L), Math.abs(current.teal.L - current.rose.L), Math.abs(current.amber.L - current.rose.L)).toFixed(3)}</p>
+                <p className="text-xs font-mono text-slate mt-1">L: {current.cobalt.L.toFixed(2)} / {current.teal.L.toFixed(2)} / {current.amber.L.toFixed(2)} / {current.rose.L.toFixed(2)} — dL={Math.max(Math.abs(current.cobalt.L - current.teal.L), Math.abs(current.cobalt.L - current.amber.L), Math.abs(current.cobalt.L - current.rose.L), Math.abs(current.teal.L - current.amber.L), Math.abs(current.teal.L - current.rose.L), Math.abs(current.amber.L - current.rose.L)).toFixed(3)}</p>
               </div>
               <div>
-                <p className="text-[10px] text-slate mb-1">Generated</p>
+                <p className="text-xs text-slate mb-1">Generated</p>
                 <div className="flex gap-1.5 mb-2">
                   <div className="flex-1 h-8 rounded" style={{ backgroundColor: result.cobalt.hex }} />
                   <div className="flex-1 h-8 rounded" style={{ backgroundColor: result.teal.hex }} />
@@ -468,7 +468,7 @@ export default function PaletteCompare() {
                   <div className="flex-1 h-8 rounded" style={{ backgroundColor: result.rose.hex }} />
                 </div>
                 <GradientStrip cobalt={result.cobalt.hex} teal={result.teal.hex} amber={result.amber.hex} height={16} />
-                <p className="text-[9px] font-mono text-pewter mt-1">L: {result.cobalt.L.toFixed(2)} / {result.teal.L.toFixed(2)} / {result.amber.L.toFixed(2)} / {result.rose.L.toFixed(2)} — dL={result.deltaL.toFixed(3)}</p>
+                <p className="text-xs font-mono text-slate mt-1">L: {result.cobalt.L.toFixed(2)} / {result.teal.L.toFixed(2)} / {result.amber.L.toFixed(2)} / {result.rose.L.toFixed(2)} — dL={result.deltaL.toFixed(3)}</p>
               </div>
             </div>
           </div>
@@ -519,7 +519,7 @@ function SliderRow({ label, value, min, max, step, onChange, format, color, devi
         </label>
         <span className="text-xs font-mono text-pewter flex items-center gap-1.5">
           {deviation !== undefined && Math.abs(deviation) >= 0.001 && (
-            <span className={`text-[9px] px-1 py-px rounded ${Math.abs(deviation) > 0.04 ? 'bg-amber-50 text-amber-600' : 'bg-cloud text-pewter'}`}>
+            <span className={`text-[10px] px-1 py-px rounded ${Math.abs(deviation) > 0.04 ? 'bg-amber-50 text-amber-600' : 'bg-cloud text-pewter'}`}>
               {deviation > 0 ? '+' : ''}{deviation.toFixed(3)}
             </span>
           )}
@@ -528,6 +528,7 @@ function SliderRow({ label, value, min, max, step, onChange, format, color, devi
       </div>
       <input
         type="range"
+        aria-label={label}
         min={min}
         max={max}
         step={step}

@@ -12,10 +12,10 @@ function Swatch({ name, hex, role, textColor = '#FDFDFB' }: { name: string; hex:
       title={`Copy ${hex}`}
     >
       <div className="h-16 rounded-lg border border-black/5 group-hover:scale-105 transition-transform flex items-end p-2" style={{ backgroundColor: hex }}>
-        <span className="text-[9px] font-mono opacity-80" style={{ color: textColor }}>{copied ? 'Copied!' : hex}</span>
+        <span className="text-xs font-mono opacity-80" style={{ color: textColor }}>{copied ? 'Copied!' : hex}</span>
       </div>
-      <p className="text-[10px] font-medium text-iron mt-1">{name}</p>
-      <p className="text-[9px] text-pewter">{role}</p>
+      <p className="text-xs font-medium text-iron mt-1">{name}</p>
+      <p className="text-xs text-slate">{role}</p>
     </button>
   )
 }
@@ -116,7 +116,7 @@ export default function ColorOverview() {
                 <p className="text-xs font-medium text-ink">{c.name}</p>
               </div>
               <div className="w-28 flex-shrink-0">
-                <p className="text-[10px] text-pewter">{c.role}</p>
+                <p className="text-xs text-slate">{c.role}</p>
               </div>
               <p className="text-xs text-iron">{c.usage}</p>
             </div>

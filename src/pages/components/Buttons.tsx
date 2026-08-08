@@ -119,7 +119,7 @@ export default function Buttons() {
               >
                 Create
               </button>
-              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#97979E' }}>Primary</span>
+              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#6D6D72' }}>Primary</span>
             </div>
             {/* Secondary */}
             <div className="flex flex-col items-center gap-2">
@@ -134,7 +134,7 @@ export default function Buttons() {
               >
                 View Details
               </button>
-              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#97979E' }}>Secondary</span>
+              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#6D6D72' }}>Secondary</span>
             </div>
             {/* Ghost */}
             <div className="flex flex-col items-center gap-2">
@@ -142,14 +142,14 @@ export default function Buttons() {
                 className={`px-4 py-2 rounded-lg text-sm font-medium border-2 transition-all ${dark ? 'btn-focus-dark' : 'btn-focus'}`}
                 style={dark
                   ? { borderColor: '#B0B0B6', color: '#F4F4F1' }
-                  : { borderColor: '#D1D5DB', color: '#97979E' }
+                  : { borderColor: '#D1D5DB', color: '#6D6D72' }
                 }
                 onMouseEnter={e => { e.currentTarget.style.backgroundColor = dark ? dm.secondaryBg : '#F4F4F1'; e.currentTarget.style.borderColor = dark ? '#F4F4F1' : '#97979E' }}
                 onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.borderColor = dark ? '#B0B0B6' : '#D1D5DB' }}
               >
                 Cancel
               </button>
-              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#97979E' }}>Ghost</span>
+              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#6D6D72' }}>Ghost</span>
             </div>
           </div>
 
@@ -163,7 +163,7 @@ export default function Buttons() {
               >
                 Delete
               </button>
-              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#97979E' }}>Destructive</span>
+              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#6D6D72' }}>Destructive</span>
             </div>
             {/* Confirm (Teal) */}
             <div className="flex flex-col items-center gap-2">
@@ -172,7 +172,7 @@ export default function Buttons() {
               >
                 <TbCheck size={16} /> Confirm
               </button>
-              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#97979E' }}>Confirm</span>
+              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#6D6D72' }}>Confirm</span>
             </div>
             {/* Caution (Amber) */}
             <div className="flex flex-col items-center gap-2">
@@ -181,7 +181,7 @@ export default function Buttons() {
               >
                 Override Score
               </button>
-              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#97979E' }}>Caution</span>
+              <span className="text-xs font-mono" style={{ color: dark ? dm.muted : '#6D6D72' }}>Caution</span>
             </div>
           </div>
         </div>
@@ -210,7 +210,7 @@ export default function Buttons() {
           {[
             { variant: 'Primary', lightBg: 'Cobalt', darkBg: 'Cobalt', text: 'White', hover: '#3A63C4 / #5C87E5', usage: 'Main CTA. One per section.' },
             { variant: 'Secondary', lightBg: 'Stone 100', darkBg: 'Graphite tint', text: 'Stone 700 / Cloud', hover: 'Stone 200 / #3A3A40', usage: 'Supporting actions.' },
-            { variant: 'Ghost', lightBg: 'Transparent', darkBg: 'Transparent', text: 'Stone 500 / Stone 300', hover: 'Stone 50 / Graphite tint', usage: 'Tertiary actions. 2px border.' },
+            { variant: 'Ghost', lightBg: 'Transparent', darkBg: 'Transparent', text: 'Slate / Stone 300', hover: 'Stone 50 / Graphite tint', usage: 'Tertiary actions. 2px border.' },
             { variant: 'Destructive', lightBg: 'Rose', darkBg: 'Rose', text: 'White', hover: '#D63B55 / #F56579', usage: 'Irreversible actions.' },
             { variant: 'Confirm', lightBg: 'Teal', darkBg: 'Teal', text: 'White', hover: '#009E8A / #20C8B2', usage: 'Verify, approve, connect.' },
             { variant: 'Caution', lightBg: 'Amber', darkBg: 'Amber', text: 'White', hover: '#C58200 / #ECA41E', usage: 'Override, merge, proceed.' },
@@ -247,7 +247,7 @@ export default function Buttons() {
           ].map(s => (
             <div key={s.label} className="bg-cloud rounded-lg px-3 py-2 border border-stone-100 text-center">
               <p className="text-xs font-semibold text-slate">{s.label}</p>
-              <p className="text-xs font-mono text-pewter">{s.value}</p>
+              <p className="text-xs font-mono text-slate">{s.value}</p>
             </div>
           ))}
         </div>
@@ -309,7 +309,7 @@ export default function Buttons() {
             ].map(s => (
               <div key={s.name} className="flex flex-col items-center gap-2">
                 <button className={`${s.padding} ${s.radius} ${s.text} font-medium text-white bg-brand transition-all hover:bg-brand-hover active:bg-brand-active btn-focus`}>{s.name}</button>
-                <span className="text-xs font-mono text-pewter">{s.h}</span>
+                <span className="text-xs font-mono text-slate">{s.h}</span>
                 <CopyValue value={`${s.padding} ${s.radius} ${s.text}`} />
               </div>
             ))}
@@ -377,19 +377,19 @@ export default function Buttons() {
             <div className="flex items-center gap-3 flex-wrap">
               <div className="flex flex-col items-center gap-1.5">
                 <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand transition-all hover:bg-brand-hover active:bg-brand-active btn-focus">Hover me</button>
-                <span className="text-[10px] font-mono text-pewter">Interactive</span>
+                <span className="text-xs font-mono text-slate">Interactive</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
                 <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand" style={{ outline: '2px solid #A86E00', outlineOffset: '2px' }}>Focused</button>
-                <span className="text-[10px] font-mono text-pewter">Amber ring</span>
+                <span className="text-xs font-mono text-slate">Amber ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
                 <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate border-2 border-stone-300" style={{ outline: '2px solid #A86E00', outlineOffset: '2px' }}>Focused</button>
-                <span className="text-[10px] font-mono text-pewter">Ghost + ring</span>
+                <span className="text-xs font-mono text-slate">Ghost + ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
                 <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand opacity-40 cursor-not-allowed" disabled>Disabled</button>
-                <span className="text-[10px] font-mono text-pewter">40% opacity</span>
+                <span className="text-xs font-mono text-slate">40% opacity</span>
               </div>
             </div>
           </div>
@@ -405,19 +405,19 @@ export default function Buttons() {
                   onMouseDown={e => { e.currentTarget.style.backgroundColor = hc.brand.dark.active; e.currentTarget.style.color = '#18181C' }}
                   onMouseUp={e => { e.currentTarget.style.backgroundColor = hc.brand.dark.hover; e.currentTarget.style.color = '#18181C' }}
                 >Hover me</button>
-                <span className="text-[10px] font-mono" style={{ color: dm.muted }}>Interactive</span>
+                <span className="text-xs font-mono" style={{ color: dm.muted }}>Interactive</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
                 <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand" style={{ outline: '2px solid rgba(225, 144, 0, 0.7)', outlineOffset: '2px' }}>Focused</button>
-                <span className="text-[10px] font-mono" style={{ color: dm.muted }}>Amber ring</span>
+                <span className="text-xs font-mono" style={{ color: dm.muted }}>Amber ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
                 <button className="px-3 py-1.5 rounded-lg text-xs font-medium border-2" style={{ borderColor: '#97979E', color: '#D1D5DB', outline: '2px solid rgba(225, 144, 0, 0.7)', outlineOffset: '2px' }}>Focused</button>
-                <span className="text-[10px] font-mono" style={{ color: dm.muted }}>Ghost + ring</span>
+                <span className="text-xs font-mono" style={{ color: dm.muted }}>Ghost + ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
                 <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand opacity-40 cursor-not-allowed" disabled>Disabled</button>
-                <span className="text-[10px] font-mono" style={{ color: dm.muted }}>40% opacity</span>
+                <span className="text-xs font-mono" style={{ color: dm.muted }}>40% opacity</span>
               </div>
             </div>
           </div>
@@ -463,7 +463,7 @@ export default function Buttons() {
               >
                 {loading.primary ? <><Spinner /> Creating...</> : <><TbPlus size={16} /> Create</>}
               </button>
-              <span className="text-xs font-mono text-pewter">Primary</span>
+              <span className="text-xs font-mono text-slate">Primary</span>
             </div>
             <div className="flex flex-col items-center gap-2">
               <button
@@ -473,7 +473,7 @@ export default function Buttons() {
               >
                 {loading.secondary ? <><Spinner /> Saving...</> : 'Save Draft'}
               </button>
-              <span className="text-xs font-mono text-pewter">Secondary</span>
+              <span className="text-xs font-mono text-slate">Secondary</span>
             </div>
             <div className="flex flex-col items-center gap-2">
               <button
@@ -483,7 +483,7 @@ export default function Buttons() {
               >
                 {loading.destructive ? <><Spinner /> Deleting...</> : 'Delete'}
               </button>
-              <span className="text-xs font-mono text-pewter">Destructive</span>
+              <span className="text-xs font-mono text-slate">Destructive</span>
             </div>
           </div>
         </div>
@@ -544,7 +544,7 @@ export default function Buttons() {
       <Section title="Dos & Don'ts">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
-            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#007D6E' }}>Do</h3>
             <ul className="space-y-2 text-sm text-iron">
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use verb-first labels: "Create", "Save Draft", "Open"</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>One Primary button per section maximum</li>

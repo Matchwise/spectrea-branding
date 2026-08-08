@@ -21,17 +21,17 @@ export default function TypographyGuidelines() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-cloud rounded-lg p-4 border border-stone-100 text-center">
               <p className="text-2xl font-semibold mb-2" style={{ fontFamily: t.heading.css }}>Headings</p>
-              <p className="text-xs font-mono text-pewter">Albert Sans</p>
+              <p className="text-xs font-mono text-slate">Albert Sans</p>
               <p className="text-xs text-slate mt-1">Signals structure and hierarchy</p>
             </div>
             <div className="bg-cloud rounded-lg p-4 border border-stone-100 text-center">
               <p className="text-2xl mb-2" style={{ fontFamily: t.body.css }}>Body text</p>
-              <p className="text-xs font-mono text-pewter">Lexend</p>
+              <p className="text-xs font-mono text-slate">Lexend</p>
               <p className="text-xs text-slate mt-1">Optimized for reading fluency</p>
             </div>
             <div className="bg-cloud rounded-lg p-4 border border-stone-100 text-center">
               <p className="text-2xl mb-2" style={{ fontFamily: t.mono.css }}>Data & code</p>
-              <p className="text-xs font-mono text-pewter">JetBrains Mono</p>
+              <p className="text-xs font-mono text-slate">JetBrains Mono</p>
               <p className="text-xs text-slate mt-1">Signals technical precision</p>
             </div>
           </div>
@@ -53,27 +53,27 @@ export default function TypographyGuidelines() {
         <div className="border border-stone-200 rounded-xl p-6 bg-white">
           <div className="max-w-lg space-y-4">
             <div>
-              <p className="text-xs font-mono text-pewter mb-1">Level 1 — Albert Sans 600, 30px, Ink</p>
+              <p className="text-xs font-mono text-slate mb-1">Level 1 — Albert Sans 600, 30px, Ink</p>
               <p className="text-3xl font-semibold text-ink" style={{ fontFamily: t.heading.css }}>Knowledge Overview</p>
             </div>
             <div>
-              <p className="text-xs font-mono text-pewter mb-1">Level 2 — Albert Sans 600, 20px, Ink</p>
+              <p className="text-xs font-mono text-slate mb-1">Level 2 — Albert Sans 600, 20px, Ink</p>
               <p className="text-xl font-semibold text-ink" style={{ fontFamily: t.heading.css }}>Recent Connections</p>
             </div>
             <div>
-              <p className="text-xs font-mono text-pewter mb-1">Level 3 — Lexend 500, 14px, Ink</p>
+              <p className="text-xs font-mono text-slate mb-1">Level 3 — Lexend 500, 14px, Ink</p>
               <p className="text-sm font-medium text-ink" style={{ fontFamily: t.body.css }}>Sample item title</p>
             </div>
             <div>
-              <p className="text-xs font-mono text-pewter mb-1">Body — Lexend 400, 16px, Ink</p>
+              <p className="text-xs font-mono text-slate mb-1">Body — Lexend 400, 16px, Ink</p>
               <p className="text-base text-iron" style={{ fontFamily: t.body.css }}>This item connects to 12 others across 3 areas, with a confidence of 94%.</p>
             </div>
             <div>
-              <p className="text-xs font-mono text-pewter mb-1">Secondary — Lexend 400, 14px, Pewter</p>
+              <p className="text-xs font-mono text-slate mb-1">Secondary — Lexend 400, 14px, Pewter</p>
               <p className="text-sm text-slate" style={{ fontFamily: t.body.css }}>Last updated 2 hours ago by Sarah Chen</p>
             </div>
             <div>
-              <p className="text-xs font-mono text-pewter mb-1">Metadata — JetBrains Mono 400, 12px, Pewter</p>
+              <p className="text-xs font-mono text-slate mb-1">Metadata — JetBrains Mono 400, 12px, Pewter</p>
               <p className="text-xs text-pewter" style={{ fontFamily: t.mono.css }}>type: "Sample" | confidence: 0.94</p>
             </div>
           </div>
@@ -89,14 +89,14 @@ export default function TypographyGuidelines() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="rounded-xl p-5" style={{ border: '1px solid #00B6A025', backgroundColor: '#00B6A008' }}>
-            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Correct</h3>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#007D6E' }}>Correct</h3>
             <div className="space-y-3">
               <div className="bg-white rounded-lg p-3" style={{ border: '1px solid #00B6A015' }}>
                 <p className="text-lg font-semibold text-ink" style={{ fontFamily: t.heading.css }}>Page Title</p>
                 <p className="text-sm text-iron" style={{ fontFamily: t.body.css }}>Body text at regular weight. Nice and readable.</p>
                 <p className="text-xs text-slate mt-1" style={{ fontFamily: t.body.css }}>Caption text, lighter color, same weight.</p>
               </div>
-              <p className="text-xs" style={{ color: '#008775' }}>Clear distinction: size + font family creates hierarchy without excessive bolding.</p>
+              <p className="text-xs" style={{ color: '#007D6E' }}>Clear distinction: size + font family creates hierarchy without excessive bolding.</p>
             </div>
           </div>
           <div className="rounded-xl p-5" style={{ border: '1px solid #F2426025', backgroundColor: '#F2426008' }}>

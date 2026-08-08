@@ -76,7 +76,7 @@ function VariantCard({ v, highlight }: { v: Variant; highlight?: boolean }) {
       </div>
       <div className="p-2.5 border-t border-stone-100 bg-white">
         <p className="text-xs font-semibold text-iron">{v.id}. {v.name}</p>
-        {v.note && <p className="text-[10px] text-pewter mt-0.5">{v.note}</p>}
+        {v.note && <p className="text-xs text-pewter mt-0.5">{v.note}</p>}
       </div>
     </div>
   )
@@ -106,12 +106,12 @@ export default function Variations() {
                 <p className="text-base font-semibold text-ink">Cool Duet</p>
                 <span className="text-[10px] text-brand bg-brand/10 px-1.5 py-0.5 rounded font-semibold uppercase tracking-wider">The primary mark</span>
               </div>
-              <p className="text-[11px] font-mono text-pewter">Cobalt #4271DF → Teal #00B6A0 · grey dots #A3A3A3</p>
+              <p className="text-xs font-mono text-pewter">Cobalt #4271DF → Teal #00B6A0 · grey dots #A3A3A3</p>
               <p className="text-xs text-iron leading-relaxed">
                 <strong>Intelligence + growth.</strong> Cold precision meeting verified insight. The brand's resting state — restrained, professional, calm. If you're not sure which gradient to reach for, use this one.
               </p>
               <div>
-                <p className="text-[11px] font-semibold text-slate uppercase tracking-wider mb-1.5">Use for</p>
+                <p className="text-xs font-semibold text-slate uppercase tracking-wider mb-1.5">Use for</p>
                 <ul className="text-xs text-iron space-y-1 pl-4 list-disc">
                   <li>Every everyday UI placement — sidebar, nav, breadcrumbs, headers</li>
                   <li>Documentation, settings, dashboards, admin surfaces</li>

@@ -56,19 +56,19 @@ export default function Downloads() {
             </div>
             <div>
               <p className="text-sm font-semibold text-ink group-hover:text-brand transition-colors">llms.txt</p>
-              <p className="text-xs text-slate mt-0.5 leading-relaxed">Small index file per <code className="font-mono text-[11px]">llmstxt.org</code>. Points AI tools at the canonical docs.</p>
+              <p className="text-xs text-slate mt-0.5 leading-relaxed">Small index file per <code className="font-mono">llmstxt.org</code>. Points AI tools at the canonical docs.</p>
             </div>
           </a>
         </div>
         <div className="mt-3 bg-cloud rounded-lg px-4 py-3 border border-stone-100">
           <p className="text-xs text-iron leading-relaxed">
-            <strong>LLM readability:</strong> the <code className="font-mono text-[11px]">brand-guide.md</code> and <code className="font-mono text-[11px]">llms.txt</code> files are designed for AI tools (Claude, ChatGPT browsing, Perplexity) to read directly. <code className="font-mono text-[11px]">robots.txt</code> explicitly allows GPTBot, ClaudeBot, CCBot, PerplexityBot, and Google-Extended.
+            <strong>LLM readability:</strong> the <code className="font-mono">brand-guide.md</code> and <code className="font-mono">llms.txt</code> files are designed for AI tools (Claude, ChatGPT browsing, Perplexity) to read directly. <code className="font-mono">robots.txt</code> explicitly allows GPTBot, ClaudeBot, CCBot, PerplexityBot, and Google-Extended.
           </p>
           <p className="text-xs text-iron leading-relaxed mt-2">
-            <strong>Visual assets</strong> for the guide (logo marks, lockups, colour swatches, gradient strips, type samples) live in <code className="font-mono text-[11px]">/brand-assets/</code> as standalone SVGs. They're referenced from the Markdown, embedded in the PDF, and regenerable from <code className="font-mono text-[11px]">npm run generate:assets</code>.
+            <strong>Visual assets</strong> for the guide (logo marks, lockups, colour swatches, gradient strips, type samples) live in <code className="font-mono">/brand-assets/</code> as standalone SVGs. They're referenced from the Markdown, embedded in the PDF, and regenerable from <code className="font-mono">npm run generate:assets</code>.
           </p>
           <p className="text-xs text-iron leading-relaxed mt-2">
-            <strong>Regeneration:</strong> the canonical data lives in <code className="font-mono text-[11px]">src/data/brand.ts</code> (mirrored into <code className="font-mono text-[11px]">public/brand-guide.md</code>) → run <code className="font-mono text-[11px]">npm run generate:all</code> to rebuild assets + PDF in one step. On any conflict between surfaces, brand.ts wins.
+            <strong>Regeneration:</strong> the canonical data lives in <code className="font-mono">src/data/brand.ts</code> (mirrored into <code className="font-mono">public/brand-guide.md</code>) → run <code className="font-mono">npm run generate:all</code> to rebuild assets + PDF in one step. On any conflict between surfaces, brand.ts wins.
           </p>
         </div>
       </Section>

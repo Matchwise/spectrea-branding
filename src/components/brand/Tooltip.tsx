@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react'
+import { useId, useState, type ReactNode } from 'react'
 
 interface TooltipProps {
   content: string
@@ -7,6 +7,7 @@ interface TooltipProps {
 
 export default function Tooltip({ content, children }: TooltipProps) {
   const [visible, setVisible] = useState(false)
+  const id = useId()
 
   return (
     <span
@@ -15,10 +16,23 @@ export default function Tooltip({ content, children }: TooltipProps) {
       onMouseLeave={() => setVisible(false)}
     >
       {children}
-      <span className="ml-1 inline-flex items-center justify-center w-4 h-4 rounded-full bg-stone-200 text-slate text-xs font-semibold cursor-help select-none flex-shrink-0">
+      <button
+        type="button"
+        aria-label="More information"
+        aria-expanded={visible}
+        aria-describedby={visible ? id : undefined}
+        onFocus={() => setVisible(true)}
+        onBlur={() => setVisible(false)}
+        onKeyDown={e => {
+          if (e.key === 'Escape') setVisible(false)
+        }}
+        className="btn-focus ml-1 inline-flex items-center justify-center w-6 h-6 rounded-full bg-stone-200 text-slate text-xs font-semibold cursor-help select-none flex-shrink-0"
+      >
         ?
-      </span>
+      </button>
       <span
+        id={id}
+        role="tooltip"
         className="absolute left-0 bottom-full mb-2 z-50 w-64 px-3 py-2 text-xs text-white bg-ink rounded-lg shadow-lg leading-relaxed pointer-events-none transition-opacity duration-150"
         style={{ opacity: visible ? 1 : 0 }}
       >

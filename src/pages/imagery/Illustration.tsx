@@ -140,7 +140,7 @@ export default function Illustration() {
               Marketing heroes, feature-page illustrations, blog headers, About imagery, onboarding scenes, social posts. Any 16:9 composition with a recognisable scene.
             </p>
             <p className="text-xs text-slate leading-relaxed mt-2">
-              Paste the prompt from <code className="bg-amber-50 px-1 py-0.5 rounded font-mono text-[10px]">/illustration-prompt.md</code> into Gemini / Firefly / Imagen, fill the <code className="bg-amber-50 px-1 py-0.5 rounded font-mono text-[10px]">SUBJECT:</code> line, evaluate against the checklist, iterate.
+              Paste the prompt from <code className="bg-amber-50 px-1 py-0.5 rounded font-mono text-xs">/illustration-prompt.md</code> into Gemini / Firefly / Imagen, fill the <code className="bg-amber-50 px-1 py-0.5 rounded font-mono text-xs">SUBJECT:</code> line, evaluate against the checklist, iterate.
             </p>
           </div>
           <div className="rounded-xl border border-teal-200 p-5" style={{ backgroundColor: '#00B6A010' }}>

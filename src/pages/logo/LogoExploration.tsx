@@ -517,7 +517,7 @@ function AssetGenerator() {
         }}
       >
         {preview}
-        <p className="text-xs" style={{ color: effectiveBg === '#18181C' ? '#B0B0B6' : '#97979E' }}>
+        <p className="text-xs" style={{ color: effectiveBg === '#18181C' ? '#B0B0B6' : '#6D6D72' }}>
           {label} — {isLogotype ? `${size}px height` : `${size}x${size}px`} — {format.toUpperCase()}{effectiveBg !== 'transparent' ? ` on ${effectiveBg === '#FDFDFB' ? 'canvas' : 'ink'}` : ''}
         </p>
       </div>

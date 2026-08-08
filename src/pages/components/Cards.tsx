@@ -225,7 +225,7 @@ export default function Cards() {
                 {removedTags.size > 0 && (
                   <button
                     onClick={() => setRemovedTags(new Set())}
-                    className="text-xs text-pewter hover:text-iron transition-colors"
+                    className="text-xs text-slate hover:text-iron transition-colors"
                   >
                     Reset
                   </button>
@@ -311,7 +311,7 @@ export default function Cards() {
       <Section title="Dos & Don'ts">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
-            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#007D6E' }}>Do</h3>
             <ul className="space-y-2 text-sm text-iron">
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Keep card content scannable: title, summary, metadata</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use consistent padding and radius across all cards</li>

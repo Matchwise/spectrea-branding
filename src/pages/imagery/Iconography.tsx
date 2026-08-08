@@ -61,17 +61,17 @@ export default function Iconography() {
         <div className="grid grid-cols-3 gap-3 mt-4">
           <div className="bg-cloud rounded-lg px-3 py-2 border border-stone-100">
             <p className="text-xs font-semibold text-iron">Library</p>
-            <code className="text-[10px] text-brand font-mono">react-icons/tb</code>
+            <code className="text-xs text-brand font-mono">react-icons/tb</code>
             <p className="text-xs text-slate mt-0.5">Tabler Icons</p>
           </div>
           <div className="bg-cloud rounded-lg px-3 py-2 border border-stone-100">
             <p className="text-xs font-semibold text-iron">Outline</p>
-            <code className="text-[10px] text-brand font-mono">TbSearch, TbBell…</code>
+            <code className="text-xs text-brand font-mono">TbSearch, TbBell…</code>
             <p className="text-xs text-slate mt-0.5">5,963 icons</p>
           </div>
           <div className="bg-cloud rounded-lg px-3 py-2 border border-stone-100">
             <p className="text-xs font-semibold text-iron">Filled</p>
-            <code className="text-[10px] text-brand font-mono">TbBellFilled…</code>
+            <code className="text-xs text-brand font-mono">TbBellFilled…</code>
             <p className="text-xs text-slate mt-0.5">999 matched variants</p>
           </div>
         </div>
@@ -138,7 +138,7 @@ export default function Iconography() {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {[
             { color: '#18181C', name: 'Ink', hex: '#18181C', use: 'Primary — nav, headings, actions', bg: 'bg-white', border: true },
-            { color: '#97979E', name: 'Pewter', hex: '#97979E', use: 'Secondary — helpers, disabled, muted', bg: 'bg-white', border: true },
+            { color: '#6D6D72', name: 'Slate', hex: '#6D6D72', use: 'Secondary — helpers, muted labels', bg: 'bg-white', border: true },
             { color: '#4271DF', name: 'Cobalt', hex: '#4271DF', use: 'Active state, selected, links', bg: 'bg-white', border: true },
             { color: '#F4F4F1', name: 'Cloud', hex: '#F4F4F1', use: 'On dark backgrounds', bg: 'bg-ink', border: false },
           ].map(c => (
@@ -150,13 +150,13 @@ export default function Iconography() {
               </div>
               <p className="text-xs font-semibold" style={{ color: c.border ? '#212226' : '#F4F4F1' }}>{c.name}</p>
               <p className="text-xs font-mono" style={{ color: c.border ? '#97979E' : '#B0B0B6' }}>{c.hex}</p>
-              <p className="text-xs mt-1" style={{ color: c.border ? '#97979E' : '#B0B0B6' }}>{c.use}</p>
+              <p className="text-xs mt-1" style={{ color: c.border ? '#6D6D72' : '#B0B0B6' }}>{c.use}</p>
             </div>
           ))}
         </div>
         <div className="mt-3 bg-cloud rounded-lg px-4 py-3 border border-stone-200">
           <p className="text-xs text-iron">
-            <strong>Rule:</strong> Never use spectrum accent colors (Teal, Amber, Rose) for decorative icons. These colors are reserved for semantic meaning (success, warning, error).
+            <strong>Rule:</strong> Never use spectrum accent colors (Teal, Amber, Rose) for decorative icons. These colors are reserved for semantic meaning (success, warning, error). Pewter (#97979E) is reserved for disabled and decorative glyphs only — any icon that carries meaning uses Slate or darker.
           </p>
         </div>
       </Section>
@@ -178,11 +178,11 @@ export default function Iconography() {
                 <p className="text-sm font-semibold text-ink">Default</p>
                 <p className="text-xs text-slate mt-0.5">Resting state — no interaction, no selection, no status.</p>
               </div>
-              <span className="text-xs font-mono text-pewter">Pewter #97979E</span>
+              <span className="text-xs font-mono text-slate">Slate #6D6D72</span>
             </div>
             <div className="p-5 flex items-center gap-5">
               {[TbSearch, TbHome, TbSettings, TbUser, TbBell, TbStar, TbEye].map((Icon, i) => (
-                <Icon key={i} size={24} className="text-pewter" />
+                <Icon key={i} size={24} className="text-slate" />
               ))}
             </div>
           </div>
@@ -199,17 +199,17 @@ export default function Iconography() {
             <div className="p-5">
               <div className="flex items-center gap-6">
                 <div className="flex items-center gap-3">
-                  <TbBell size={22} className="text-pewter" />
+                  <TbBell size={22} className="text-slate" />
                   <span className="text-pewter text-xs">hover →</span>
                   <TbBell size={22} className="text-brand" />
                 </div>
                 <div className="flex items-center gap-3">
-                  <TbStar size={22} className="text-pewter" />
+                  <TbStar size={22} className="text-slate" />
                   <span className="text-pewter text-xs">hover →</span>
                   <TbStar size={22} className="text-brand" />
                 </div>
               </div>
-              <p className="text-xs text-slate mt-3">Outline stays outline. Color changes from Pewter to Cobalt. Reverts when interaction ends.</p>
+              <p className="text-xs text-slate mt-3">Outline stays outline. Color changes from Slate to Cobalt. Reverts when interaction ends.</p>
             </div>
           </div>
 
@@ -232,15 +232,15 @@ export default function Iconography() {
                 ].map(pair => (
                   <div key={pair.label} className="flex flex-col items-center gap-2">
                     <div className="flex items-center gap-3">
-                      <pair.outline size={22} className="text-pewter" />
+                      <pair.outline size={22} className="text-slate" />
                       <span className="text-pewter text-xs">→</span>
                       <pair.filled size={22} className="text-ink" />
                     </div>
-                    <span className="text-[10px] text-pewter">{pair.label}</span>
+                    <span className="text-xs text-slate">{pair.label}</span>
                   </div>
                 ))}
               </div>
-              <p className="text-xs text-slate mt-3">Outline becomes filled. Color changes from Pewter to Ink. Weight signals the state, not color — canvas stays neutral.</p>
+              <p className="text-xs text-slate mt-3">Outline becomes filled. Color changes from Slate to Ink. Weight signals the state, not color — canvas stays neutral.</p>
             </div>
           </div>
 
@@ -257,15 +257,15 @@ export default function Iconography() {
               <div className="flex items-center gap-8">
                 <div className="flex flex-col items-center gap-1">
                   <TbCheck size={22} style={{ color: '#00B6A0' }} />
-                  <span className="text-[10px] text-pewter">Success</span>
+                  <span className="text-xs text-slate">Success</span>
                 </div>
                 <div className="flex flex-col items-center gap-1">
                   <TbBell size={22} style={{ color: '#E19000' }} />
-                  <span className="text-[10px] text-pewter">Warning</span>
+                  <span className="text-xs text-slate">Warning</span>
                 </div>
                 <div className="flex flex-col items-center gap-1">
                   <TbX size={22} style={{ color: '#F24260' }} />
-                  <span className="text-[10px] text-pewter">Error</span>
+                  <span className="text-xs text-slate">Error</span>
                 </div>
               </div>
               <p className="text-xs text-slate mt-3">Outline stays outline. Color matches the semantic meaning. Never use semantic colors for decoration.</p>
@@ -295,7 +295,7 @@ export default function Iconography() {
       <Section title="Icon Dos & Don'ts">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
-            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#007D6E' }}>Do</h3>
             <ul className="space-y-2 text-sm text-iron">
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Import all icons from <code className="text-xs bg-cloud px-1 rounded">react-icons/tb</code></li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Pair icons with text labels for clarity</li>

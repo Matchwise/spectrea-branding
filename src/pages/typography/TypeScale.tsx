@@ -54,7 +54,7 @@ export default function TypeScale() {
             return (
               <div key={s.name} className="flex items-center gap-3 sm:gap-4 px-4 py-3" style={{ borderBottom: i < scale.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
                 <div className="w-16 sm:w-20 flex-shrink-0">
-                  <p className="text-xs font-semibold text-pewter">{s.name}</p>
+                  <p className="text-xs font-semibold text-slate">{s.name}</p>
                   <CopyButton value={`${s.size} / ${s.lineHeight}`} />
                 </div>
                 <div className="flex-1 min-w-0 overflow-hidden">

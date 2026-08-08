@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
-import { accessibility } from '../../data/brand'
+import { accessibility, brandTokens } from '../../data/brand'
 
 function srgbToLinear(c: number) {
   return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4)
@@ -163,7 +163,7 @@ export default function PrimaryPalette() {
         </div>
         <div className="mt-3 bg-cloud rounded-lg px-4 py-3 border border-stone-200">
           <p className="text-xs text-iron">
-            <strong>Why warm neutrals?</strong> Cold Tailwind grays sit in tension with the warm spectrum accents — the canvas feels like a different system. A whisper of warmth (Canvas <code className="font-mono text-[11px]">#FDFDFB</code> over pure <code className="font-mono text-[11px]">{'#'}FFFFFF</code>) closes the gap so the whole palette reads as one family.
+            <strong>Why warm neutrals?</strong> Cold Tailwind grays sit in tension with the warm spectrum accents — the canvas feels like a different system. A whisper of warmth (Canvas <code className="font-mono">#FDFDFB</code> over pure <code className="font-mono">{'#'}FFFFFF</code>) closes the gap so the whole palette reads as one family.
           </p>
         </div>
       </Section>
@@ -222,7 +222,7 @@ export default function PrimaryPalette() {
 
         {/* Role inversion table */}
         <div className="border border-stone-200 rounded-xl overflow-hidden mb-5">
-          <div className="grid grid-cols-12 px-4 py-2.5 bg-cloud border-b border-stone-200 text-[11px] font-semibold uppercase tracking-wider text-slate">
+          <div className="grid grid-cols-12 px-4 py-2.5 bg-cloud border-b border-stone-200 text-xs font-semibold uppercase tracking-wider text-slate">
             <span className="col-span-3">Role</span>
             <span className="col-span-4">Light</span>
             <span className="col-span-5">Dark</span>
@@ -239,12 +239,12 @@ export default function PrimaryPalette() {
               <div className="col-span-4 flex items-center gap-2">
                 <span className="inline-block w-5 h-5 rounded border border-stone-200" style={{ backgroundColor: row.light.hex }} />
                 <span className="text-xs text-iron">{row.light.name}</span>
-                <span className="text-[10px] font-mono text-pewter">{row.light.hex}</span>
+                <span className="text-xs font-mono text-pewter">{row.light.hex}</span>
               </div>
               <div className="col-span-5 flex items-center gap-2">
                 <span className="inline-block w-5 h-5 rounded border border-stone-200" style={{ backgroundColor: row.dark.hex }} />
                 <span className="text-xs text-iron">{row.dark.name}</span>
-                <span className="text-[10px] font-mono text-pewter">{row.dark.hex}</span>
+                <span className="text-xs font-mono text-pewter">{row.dark.hex}</span>
               </div>
             </div>
           ))}
@@ -278,7 +278,7 @@ export default function PrimaryPalette() {
         <div className="mt-5 border border-stone-200 rounded-xl overflow-hidden">
           <div className="px-4 py-2.5 bg-cloud border-b border-stone-200 flex items-center justify-between">
             <p className="text-xs font-semibold uppercase tracking-wider text-slate">Accents on dark</p>
-            <span className="text-[10px] text-pewter">Teal / Amber / Rose pass AA normal text; Cobalt is UI-only — use Cobalt Lift for text</span>
+            <span className="text-xs text-slate">Teal / Amber / Rose pass AA normal text; Cobalt is UI-only — use Cobalt Lift for text</span>
           </div>
           <div className="p-4 space-y-2" style={{ backgroundColor: '#18181C' }}>
             {[
@@ -308,11 +308,11 @@ export default function PrimaryPalette() {
               <div key={w.name} className="border border-stone-200 rounded-xl overflow-hidden">
                 <div className="h-16 px-3 py-2 flex items-end" style={{ backgroundColor: w.hex }}>
                   <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ backgroundColor: w.accent }} />
-                  <span className="text-[11px] font-mono ml-2" style={{ color: '#B0B0B6' }}>{w.hex}</span>
+                  <span className="text-xs font-mono ml-2" style={{ color: '#B0B0B6' }}>{w.hex}</span>
                 </div>
                 <div className="p-2.5">
                   <p className="text-xs font-semibold text-ink">{w.name}</p>
-                  <p className="text-[11px] text-slate leading-relaxed mt-0.5">{w.use}</p>
+                  <p className="text-xs text-slate leading-relaxed mt-0.5">{w.use}</p>
                 </div>
               </div>
             ))}
@@ -375,6 +375,25 @@ export default function PrimaryPalette() {
           <p className="text-xs font-semibold uppercase tracking-wider text-pewter mb-2">Measurement doctrine</p>
           <p className="text-sm text-iron leading-relaxed">{accessibility.measurement}</p>
         </div>
+        <div className="border border-stone-200 rounded-xl p-5 mb-4">
+          <p className="text-xs font-semibold uppercase tracking-wider text-pewter mb-1">Accent text tones (light surfaces)</p>
+          <p className="text-xs text-slate mb-3 leading-relaxed">
+            Accent-coloured text on light surfaces uses these tones, not the raw accents — raw accents fail the
+            4.5:1 text floor on light grounds. Raw accents remain correct for fills, dots, borders, and UI at 3:1.
+            On dark surfaces, use the lifts.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {brandTokens.accentText.map(t => (
+              <div key={t.name} className="flex items-start gap-3">
+                <span className="inline-block w-5 h-5 rounded flex-shrink-0 mt-0.5" style={{ backgroundColor: t.hex }} />
+                <div>
+                  <p className="text-sm font-semibold" style={{ color: t.hex }}>{t.name} — {t.hex}</p>
+                  <p className="text-xs text-slate leading-relaxed">{t.use}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
           <div className="bg-cloud px-5 py-2.5 border-b border-stone-200">
             <p className="text-xs font-semibold uppercase tracking-wider text-slate">Exception registry</p>
@@ -408,7 +427,7 @@ export default function PrimaryPalette() {
       <Section title="Color Dos & Don'ts">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
-            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#007D6E' }}>Do</h3>
             <ul className="space-y-2 text-sm text-iron">
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use Cobalt for the single primary action per section</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use spectrum colors as small, meaningful moments (tags, dots, badges)</li>

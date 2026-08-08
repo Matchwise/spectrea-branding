@@ -61,8 +61,8 @@ export default function Gradients() {
                 <div key={s.hex} className="rounded-md border border-stone-100 overflow-hidden">
                   <div className="h-8" style={{ backgroundColor: s.hex }} />
                   <div className="px-1.5 py-1">
-                    <p className="text-[10px] font-medium text-iron">{s.name}</p>
-                    <p className="text-[9px] font-mono text-pewter">{s.hex}</p>
+                    <p className="text-xs font-medium text-iron">{s.name}</p>
+                    <p className="text-xs font-mono text-slate">{s.hex}</p>
                   </div>
                 </div>
               ))}
@@ -75,7 +75,7 @@ export default function Gradients() {
       <Section title="When to Use the Gradient">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
-            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Use for</h3>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#007D6E' }}>Use for</h3>
             <ul className="space-y-2 text-sm text-iron">
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Logo mark background</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Hero section accent bars</li>
@@ -108,47 +108,47 @@ export default function Gradients() {
           <div>
             <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">Primary (the brand gradient)</p>
             <div className="h-10 rounded-lg brand-gradient" />
-            <p className="text-xs font-mono text-pewter mt-1">135° — Cobalt → Teal → Amber, OKLCH-interpolated with sRGB fallback. The default for everyday brand moments.</p>
+            <p className="text-xs font-mono text-slate mt-1">135° — Cobalt → Teal → Amber, OKLCH-interpolated with sRGB fallback. The default for everyday brand moments.</p>
           </div>
           <div>
             <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">Horizontal (90°)</p>
             <div className="h-10 rounded-lg brand-gradient-h" />
-            <p className="text-xs font-mono text-pewter mt-1">For horizontal bars, dividers, and accent strips</p>
+            <p className="text-xs font-mono text-slate mt-1">For horizontal bars, dividers, and accent strips</p>
           </div>
           <div>
             <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">Cool Duet — Cobalt → Teal</p>
             <div className="h-10 rounded-lg" style={{ background: 'linear-gradient(135deg, #4271DF, #00B6A0)' }} />
-            <p className="text-xs font-mono text-pewter mt-1">Intelligence + growth. The resting-state duet — use for data, technical contexts, and the static S mark.</p>
+            <p className="text-xs font-mono text-slate mt-1">Intelligence + growth. The resting-state duet — use for data, technical contexts, and the static S mark.</p>
           </div>
           <div>
             <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">Balanced Duet — Teal → Amber (requires intermediate)</p>
             <div className="h-10 rounded-lg" style={{ background: 'linear-gradient(135deg, #00B6A0 0%, #6FB884 65%, #E19000 100%)' }} />
-            <p className="text-xs font-mono text-pewter mt-1"><strong>Must include #6FB884 at 65%.</strong> Without the intermediate, teal and amber desaturate into muddy olive. For product/ecosystem moments.</p>
+            <p className="text-xs font-mono text-slate mt-1"><strong>Must include #6FB884 at 65%.</strong> Without the intermediate, teal and amber desaturate into muddy olive. For product/ecosystem moments.</p>
           </div>
           <div>
             <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">Warm Duet — Amber → Rose</p>
             <div className="h-10 rounded-lg" style={{ background: 'linear-gradient(135deg, #E19000, #F24260)' }} />
-            <p className="text-xs font-mono text-pewter mt-1">Energy + urgency. For marketing, launches, and attention moments.</p>
+            <p className="text-xs font-mono text-slate mt-1">Energy + urgency. For marketing, launches, and attention moments.</p>
           </div>
           <div>
             <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">Full spectrum with Rose</p>
             <div className="h-10 rounded-lg" style={{ background: 'linear-gradient(135deg, #4271DF, #00B6A0, #E19000, #F24260)' }} />
-            <p className="text-xs font-mono text-pewter mt-1">All four spectrum colours. Use sparingly, for maximum brand expression.</p>
+            <p className="text-xs font-mono text-slate mt-1">All four spectrum colours. Use sparingly, for maximum brand expression.</p>
           </div>
           <div>
             <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">Lockup gradient (LogotypeGradient only)</p>
             <div className="h-10 rounded-lg" style={{ background: 'linear-gradient(135deg, #4271DF 0%, #00B6A0 33%, #6FB884 55%, #E19000 66%, #F24260 100%)' }} />
-            <p className="text-xs font-mono text-slate mt-1">2-stop Cool Duet (Cobalt <code>#4271DF</code> → Teal <code>#00B6A0</code>) on the mark stroke only; the wordmark stays monotone (Ink on light, White on dark). Baked into <code className="font-mono text-[11px]">LogotypeGradient</code> — not a general-purpose decorative gradient.</p>
+            <p className="text-xs font-mono text-slate mt-1">2-stop Cool Duet (Cobalt <code>#4271DF</code> → Teal <code>#00B6A0</code>) on the mark stroke only; the wordmark stays monotone (Ink on light, White on dark). Baked into <code className="font-mono">LogotypeGradient</code> — not a general-purpose decorative gradient.</p>
           </div>
           <div>
             <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">Subtle (low opacity)</p>
             <div className="h-10 rounded-lg" style={{ background: 'linear-gradient(135deg, #4271DF15, #00B6A015, #E1900015)' }} />
-            <p className="text-xs font-mono text-pewter mt-1">15% opacity — for background accents</p>
+            <p className="text-xs font-mono text-slate mt-1">15% opacity — for background accents</p>
           </div>
           <div>
             <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">Accent bar (thin)</p>
             <div className="h-1.5 rounded-full" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
-            <p className="text-xs font-mono text-pewter mt-1">For card borders, section dividers, progress indicators</p>
+            <p className="text-xs font-mono text-slate mt-1">For card borders, section dividers, progress indicators</p>
           </div>
         </div>
       </Section>

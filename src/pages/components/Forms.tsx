@@ -165,7 +165,7 @@ export default function Forms() {
                 <span className="text-sm text-iron">Archived items</span>
               </label>
             </div>
-            <p className="text-xs text-pewter mt-3">Multi-select. Click to toggle. Use for filters and independent options.</p>
+            <p className="text-xs text-slate mt-3">Multi-select. Click to toggle. Use for filters and independent options.</p>
           </div>
 
           {/* Radio buttons */}
@@ -191,7 +191,7 @@ export default function Forms() {
                 </label>
               ))}
             </div>
-            <p className="text-xs text-pewter mt-3">Single-select. Click to switch. Use when exactly one option must be chosen.</p>
+            <p className="text-xs text-slate mt-3">Single-select. Click to switch. Use when exactly one option must be chosen.</p>
           </div>
 
           {/* Toggle */}
@@ -226,7 +226,7 @@ export default function Forms() {
                 </span>
               </div>
             </div>
-            <p className="text-xs text-pewter mt-3">Binary on/off. Click to toggle. Use for instant-apply settings.</p>
+            <p className="text-xs text-slate mt-3">Binary on/off. Click to toggle. Use for instant-apply settings.</p>
           </div>
         </div>
         <div className="mt-3 bg-brand/5 rounded-lg px-4 py-3 border border-brand/10">
@@ -291,7 +291,7 @@ export default function Forms() {
           ].map(item => (
             <div key={item.rule} className="bg-cloud rounded-lg px-4 py-3 border border-stone-100">
               <p className="text-sm font-medium text-iron">{item.rule}</p>
-              <p className="text-xs text-pewter mt-0.5">{item.reason}</p>
+              <p className="text-xs text-slate mt-0.5">{item.reason}</p>
             </div>
           ))}
         </div>

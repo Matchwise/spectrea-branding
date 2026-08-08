@@ -4,7 +4,7 @@
 
 // --- Meta / Governance ---
 export const meta = {
-  version: '2.5.6',
+  version: '2.5.7',
   lastUpdated: '2026-08-08',
   sourceOfTruth:
     'brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea\'s roadmap — check it before placing a capability claim on a buyer-facing surface.',
@@ -686,6 +686,16 @@ export const brandTokens = {
     { name: 'Amber Lift', hex: '#F2AE40', use: 'Coloured body copy on dark surfaces' },
     { name: 'Rose Lift', hex: '#F97587', use: 'Coloured body copy on dark surfaces' },
   ],
+  // Accent-coloured TEXT on light surfaces (ratified 2026-08-08, D40): the
+  // light-surface sibling of the lifts. Raw accents fail the 4.5:1 text floor
+  // on light grounds (the retired teal text tone #008775 measured 4.04–4.45:1);
+  // these tones clear it on Canvas, Cloud, white, and the tinted example
+  // cards. Raw accents remain correct for fills, dots, borders, and large/UI
+  // elements at the 3:1 floor.
+  accentText: [
+    { name: 'Teal text', hex: '#007D6E', use: 'Success/correct headings, privileged-word chips, positive labels on light surfaces (4.58–5.05:1; APCA Lc 68–74)' },
+    { name: 'Rose text', hex: '#BA3249', use: 'Error/incorrect headings and labels on light surfaces (5.24–5.77:1) — names the tone the guide already shipped' },
+  ],
 } as const
 
 // --- Accessibility ---
@@ -863,6 +873,7 @@ export const ratificationLedger = [
   { date: '2026-08-08', decision: 'One register taxonomy (D28 part 2): toneSpectrum retired — it duplicated four toneExamples entries verbatim under colliding labels; its tone labels moved into toneExamples (two authored to complete the set: Feature Announcement = Concrete + Confident, Beginner Documentation = Plain + Welcoming). voice.registerRule declares the two remaining structures\' jobs: toneExamples = register taxonomy (how a content class sounds), surfacePatterns = surface spec (what a product surface says; inherits its register from the nearest content class).' },
   { date: '2026-08-08', decision: 'Hybrid guide generation, wave 1 (decision 2 programme item): brand-guide.md gains generator-owned marker blocks — version stamps, tone-register table, logo construction + clear space, accent states, washes (light/dark), lifts, type system/minimum sizes/type scale/responsive (scale data moved INTO brand.typography), accessibility block, motion durations/easings, radii/spacing/elevation — rewritten from canon by scripts/generate-guide.mjs (npm run generate:guide, wired into generate:all before the PDF). Prose outside markers stays hand-written. Deferred to wave 2 (recorded): §5 neutral/accent/Tailwind/dark-role tables (need a canon colour-model expansion: OKLCH ladder, CSS vars, meanings), §6 gradient family, §11 component specs, §14 CSS-token block.' },
   { date: '2026-08-08', decision: 'Render-everything SPA build (decision 7 programme item): every previously agent-only canon export now has a human-visible surface. New Trust & Disclosures page (/communications/trust) renders trustCopy verbatim with the counsel note. Voice & Tone gains Surface Patterns (all 7) and Executive Voice. Naming gains Company & Product and the Origin stance. Positioning gains the Full-Shape Claim, the compounding usageGuardrail (also on Copy & Taglines), and the differentiatorGuardrail. Copy & Taglines renders voice.heroOpen verbatim. Primary Palette gains Contrast Policy & Measurement (accessibility.measurement + exception registry rendered from data); the two hand-written "never white on Teal/Amber" don\'ts now carry the ratified button-label carve-out. Governance renders meta.sourceOfTruth, renderDoctrine, version, and the full ratification ledger.' },
+  { date: '2026-08-08', decision: 'D40/D35 accessibility cluster, wave 1: (1) Tooltip gains a full keyboard path — focusable button affordance at the 24px target size, opens on focus, Escape dismisses, aria-describedby announcement. (2) Palette-tool sliders carry accessible names. (3) Text floors enforced app-wide (~90 sites bumped to the 12px caption floor; the 10px canon carve-outs — uppercase overlines, numeric badges, metadata chips — and specimen mini-previews untouched; four legal 11px uppercase overlines also normalized to 12px for consistency with the app-wide overline idiom). (4) Pewter stepped to Slate wherever it carried meaning (~50 sites), including the Ghost button light-mode label (was Pewter 2.85:1, an interactive label) and the Iconography page, which taught Pewter as the secondary icon tier against pewterMatrix — the taught tier is now Slate, with Pewter reserved for disabled/decorative glyphs. (5) brandTokens.accentText ratified (Darren, Option A): accent-coloured text on light surfaces uses Teal text #007D6E (new; visually near-identical to the retired #008775, which measured 4.04–4.45:1 as text) and Rose text #BA3249 (existing tone, now named); ~30 text sites swept. Button state fills (hover/active) are unchanged — they are fills, not text. Remaining D40 item, deliberately open: the dark-mode Ink-on-lightened-Cobalt hover label (APCA Lc 40.5 despite WCAG 4.5:1+) awaits its own adjudication.' },
 ] as const
 
 // --- Executive Voice ---

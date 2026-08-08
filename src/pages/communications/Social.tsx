@@ -71,7 +71,7 @@ export default function Social() {
           ].map(post => (
             <div key={post.type} className="border border-stone-200 rounded-xl p-5">
               <p className="text-sm font-semibold text-ink mb-1">{post.type}</p>
-              <p className="text-xs text-pewter font-mono mb-3">{post.template}</p>
+              <p className="text-xs text-slate font-mono mb-3">{post.template}</p>
               <div className="bg-cloud rounded-lg p-3 border border-stone-100">
                 <p className="text-xs text-iron leading-relaxed italic">"{post.example}"</p>
               </div>
@@ -125,7 +125,7 @@ export default function Social() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
-            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#007D6E' }}>Do</h3>
             <ul className="space-y-2 text-sm text-iron">
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Lead with ideas, not product features</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use the approved vocabulary list</li>

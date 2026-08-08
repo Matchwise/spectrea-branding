@@ -59,7 +59,7 @@ export default function Naming() {
       <Section title="Name Usage">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
-            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Correct Usage</h3>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#007D6E' }}>Correct Usage</h3>
             <ul className="space-y-2">
               {correctUsage.map(ex => (
                 <li key={ex} className="text-sm text-iron flex items-start gap-2">
@@ -88,7 +88,7 @@ export default function Naming() {
         <p className="text-sm text-iron leading-relaxed mb-4">{naming.aiNaming.rule}</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
-            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>The assistant…</h3>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#007D6E' }}>The assistant…</h3>
             <div className="flex flex-wrap gap-2">
               {naming.aiNaming.allowedVerbs.map(v => (
                 <span key={v} className="text-xs font-medium text-iron bg-cloud rounded-full px-3 py-1">{v}</span>

@@ -74,7 +74,7 @@ export default function Positioning() {
             build on. The real competitor isn't Notion or Confluence. It's the fragmented, unverifiable
             information landscape itself — the dozens of disconnected tools and the noise that drowns out signal.
           </p>
-          <p className="text-xs text-pewter mt-3">
+          <p className="text-xs text-slate mt-3">
             When compared to specific tools, the key message is: <em>"This isn't a better version of X — it's a fundamentally different kind of thing."</em>
           </p>
         </div>
@@ -123,7 +123,7 @@ export default function Positioning() {
           {brand.audiences.map(a => (
             <div key={a.title} className="border border-stone-200 rounded-xl p-5">
               <h3 className="font-semibold text-ink mb-0.5">{a.title}</h3>
-              <p className="text-xs text-pewter mb-3">{a.who}</p>
+              <p className="text-xs text-slate mb-3">{a.who}</p>
               <p className="text-xs text-pewter uppercase tracking-wider mb-1">What they need</p>
               <p className="text-sm text-iron mb-3">{a.need}</p>
               <p className="text-xs text-pewter uppercase tracking-wider mb-1">What we say</p>
@@ -146,8 +146,8 @@ export default function Positioning() {
                 <span className="mt-0.5 flex-shrink-0 text-xs" style={{ color: '#00B6A0' }}>&#10003;</span>
                 {d.spectrea}
               </div>
-              <div className="px-4 py-3 text-sm text-pewter flex items-start gap-2">
-                <span className="text-pewter mt-0.5 flex-shrink-0 text-xs">&#10007;</span>
+              <div className="px-4 py-3 text-sm text-slate flex items-start gap-2">
+                <span className="text-slate mt-0.5 flex-shrink-0 text-xs">&#10007;</span>
                 {d.others}
               </div>
             </div>

@@ -77,7 +77,7 @@ export default function TypeExplorer() {
             <div className="grid grid-cols-3 gap-2 mb-4">
               {['Items', 'Connections', 'Confidence'].map((label, i) => (
                 <div key={label} className="rounded-lg border border-stone-200 p-3">
-                  <p className="text-xs text-pewter mb-0.5" style={{ fontFamily: t.body.css }}>{label}</p>
+                  <p className="text-xs text-slate mb-0.5" style={{ fontFamily: t.body.css }}>{label}</p>
                   <p className="text-lg font-semibold text-ink" style={{ fontFamily: t.heading.css }}>
                     {['2,847', '8,291', '94%'][i]}
                   </p>
@@ -152,7 +152,7 @@ export default function TypeExplorer() {
                 {w.font}
               </p>
               <div className="sm:w-20 sm:flex-shrink-0">
-                <span className="text-xs font-mono text-pewter">{w.weight} {w.label}</span>
+                <span className="text-xs font-mono text-slate">{w.weight} {w.label}</span>
               </div>
               <p className="text-xs text-iron">{w.use}</p>
             </div>
@@ -164,7 +164,7 @@ export default function TypeExplorer() {
       <Section title="Typography Dos & Don'ts">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="rounded-xl p-5" style={{ border: '1px solid #00B6A025', backgroundColor: '#00B6A008' }}>
-            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Do</h3>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#007D6E' }}>Do</h3>
             <ul className="space-y-2 text-sm text-iron">
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use Albert Sans only for headings and display text</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use Lexend for all body text and UI labels</li>

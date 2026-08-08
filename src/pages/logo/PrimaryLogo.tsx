@@ -41,14 +41,14 @@ export default function PrimaryLogo() {
                 style={{ fontSize: 32, letterSpacing: '0.02em', color: '#18181C' }}
               >Spectrea</span>
             </div>
-            <p className="text-xs text-slate mt-4">Albert Sans Semibold 600, sentence-case with 0.02em tracking. Shown here as the full word for the structural anatomy — in production the wordmark never appears alone; inside the canonical <code className="font-mono text-[10px]">Logotype</code> / <code className="font-mono text-[10px]">LogotypeGradient</code>, the S mark replaces the leading <code className="font-mono text-[10px]">S</code> and only the tail <code className="font-mono text-[10px]">pectrea</code> is typeset in lowercase.</p>
+            <p className="text-xs text-slate mt-4">Albert Sans Semibold 600, sentence-case with 0.02em tracking. Shown here as the full word for the structural anatomy — in production the wordmark never appears alone; inside the canonical <code className="font-mono">Logotype</code> / <code className="font-mono">LogotypeGradient</code>, the S mark replaces the leading <code className="font-mono">S</code> and only the tail <code className="font-mono">pectrea</code> is typeset in lowercase.</p>
           </div>
           <div className="border border-stone-200 rounded-xl p-6 flex flex-col items-center text-center">
             <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-4">Lockup</p>
             <div className="h-20 flex items-center">
               <LogotypeGradient fontSize={22} />
             </div>
-            <p className="text-xs text-slate mt-4">S mark carries the Cool Duet gradient; the wordmark is monotone Ink (or White on dark). The lockup has exactly two forms: <code className="font-mono text-[11px]">LogotypeGradient</code> (two-tone mark + mono wordmark) and <code className="font-mono text-[11px]">Logotype</code> (fully mono — ink, white, or grey). See Variants for details.</p>
+            <p className="text-xs text-slate mt-4">S mark carries the Cool Duet gradient; the wordmark is monotone Ink (or White on dark). The lockup has exactly two forms: <code className="font-mono">LogotypeGradient</code> (two-tone mark + mono wordmark) and <code className="font-mono">Logotype</code> (fully mono — ink, white, or grey). See Variants for details.</p>
           </div>
         </div>
       </Section>

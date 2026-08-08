@@ -134,7 +134,7 @@ export default function Home() {
                   <p className="text-sm font-medium text-ink group-hover:text-brand transition-colors duration-150">{item.label}</p>
                   <p className="text-xs text-slate mt-0.5">{item.desc}</p>
                 </div>
-                <TbChevronRight size={16} className="text-pewter group-hover:text-brand/60 transition-colors duration-150" />
+                <TbChevronRight size={16} className="text-slate group-hover:text-brand/60 transition-colors duration-150" />
               </Link>
             ))}
           </div>

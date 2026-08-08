@@ -80,7 +80,7 @@ export default function Voice() {
             <div key={ex.context} className="border border-stone-200 rounded-xl overflow-hidden">
               <div className="bg-cloud px-5 py-2 border-b border-stone-200 flex items-center justify-between">
                 <span className="text-xs font-semibold text-slate uppercase tracking-wider">{ex.context}</span>
-                <span className="text-xs font-medium text-pewter">{ex.tone}</span>
+                <span className="text-xs font-medium text-slate">{ex.tone}</span>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="p-5 border-b md:border-b-0 md:border-r border-stone-100">
@@ -88,7 +88,7 @@ export default function Voice() {
                     <span className="w-4 h-4 rounded-full flex items-center justify-center" style={{ backgroundColor: '#00B6A010' }}>
                       <span className="text-xs" style={{ color: '#00B6A0' }}>&#10003;</span>
                     </span>
-                    <span className="text-xs font-semibold uppercase" style={{ color: '#008775' }}>Spectrea voice</span>
+                    <span className="text-xs font-semibold uppercase" style={{ color: '#007D6E' }}>Spectrea voice</span>
                   </div>
                   <p className="text-sm text-iron leading-relaxed">{ex.correct}</p>
                 </div>
@@ -97,13 +97,13 @@ export default function Voice() {
                     <span className="w-4 h-4 rounded-full flex items-center justify-center" style={{ backgroundColor: '#F2426010' }}>
                       <span className="text-xs" style={{ color: '#F24260' }}>&#10007;</span>
                     </span>
-                    <span className="text-xs font-semibold uppercase" style={{ color: '#D63B55' }}>Not this</span>
+                    <span className="text-xs font-semibold uppercase" style={{ color: '#BA3249' }}>Not this</span>
                   </div>
                   <p className="text-sm text-slate leading-relaxed">{ex.incorrect}</p>
                 </div>
               </div>
               <div className="px-5 py-2 bg-cloud border-t border-stone-100">
-                <p className="text-xs text-pewter">{ex.why}</p>
+                <p className="text-xs text-slate">{ex.why}</p>
               </div>
             </div>
           ))}
@@ -132,10 +132,10 @@ export default function Voice() {
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
-            <h3 className="text-sm font-semibold mb-3" style={{ color: '#008775' }}>Privileged words ({voice.alwaysUse.length})</h3>
+            <h3 className="text-sm font-semibold mb-3" style={{ color: '#007D6E' }}>Privileged words ({voice.alwaysUse.length})</h3>
             <div className="flex flex-wrap gap-1.5">
               {voice.alwaysUse.map(word => (
-                <span key={word} className="text-xs px-2 py-1 rounded-md" style={{ backgroundColor: '#00B6A010', color: '#008775' }}>{word}</span>
+                <span key={word} className="text-xs px-2 py-1 rounded-md" style={{ backgroundColor: '#00B6A010', color: '#007D6E' }}>{word}</span>
               ))}
             </div>
           </div>
@@ -143,7 +143,7 @@ export default function Voice() {
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Words we never use</h3>
             <div className="flex flex-wrap gap-1.5">
               {voice.neverUse.map(word => (
-                <span key={word} className="text-xs px-2 py-1 rounded-md line-through" style={{ backgroundColor: '#F2426010', color: '#D63B55', textDecorationColor: '#F2426060' }}>{word}</span>
+                <span key={word} className="text-xs px-2 py-1 rounded-md line-through" style={{ backgroundColor: '#F2426010', color: '#BA3249', textDecorationColor: '#F2426060' }}>{word}</span>
               ))}
             </div>
           </div>
@@ -170,11 +170,11 @@ export default function Voice() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="p-4 border-b md:border-b-0 md:border-r border-stone-100">
-                  <span className="text-xs font-semibold uppercase" style={{ color: '#008775' }}>&#10003; {brand.name} voice</span>
+                  <span className="text-xs font-semibold uppercase" style={{ color: '#007D6E' }}>&#10003; {brand.name} voice</span>
                   <p className="text-sm text-iron leading-relaxed mt-1.5">{p.correct}</p>
                 </div>
                 <div className="p-4" style={{ backgroundColor: '#F2426008' }}>
-                  <span className="text-xs font-semibold uppercase" style={{ color: '#D63B55' }}>&#10007; Not this</span>
+                  <span className="text-xs font-semibold uppercase" style={{ color: '#BA3249' }}>&#10007; Not this</span>
                   <p className="text-sm text-slate leading-relaxed mt-1.5">{p.incorrect}</p>
                 </div>
               </div>
@@ -189,16 +189,16 @@ export default function Voice() {
         <div className="border border-stone-200 rounded-xl overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="p-5 border-b md:border-b-0 md:border-r border-stone-100">
-              <span className="text-xs font-semibold uppercase" style={{ color: '#008775' }}>&#10003; {brand.name} voice</span>
+              <span className="text-xs font-semibold uppercase" style={{ color: '#007D6E' }}>&#10003; {brand.name} voice</span>
               <p className="text-sm text-iron leading-relaxed mt-2">{executiveVoice.example.correct}</p>
             </div>
             <div className="p-5" style={{ backgroundColor: '#F2426008' }}>
-              <span className="text-xs font-semibold uppercase" style={{ color: '#D63B55' }}>&#10007; Not this</span>
+              <span className="text-xs font-semibold uppercase" style={{ color: '#BA3249' }}>&#10007; Not this</span>
               <p className="text-sm text-slate leading-relaxed mt-2">{executiveVoice.example.incorrect}</p>
             </div>
           </div>
           <div className="px-5 py-2.5 bg-cloud border-t border-stone-100">
-            <p className="text-xs text-pewter">{executiveVoice.example.why}</p>
+            <p className="text-xs text-slate">{executiveVoice.example.why}</p>
           </div>
         </div>
       </Section>

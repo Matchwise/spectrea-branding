@@ -63,7 +63,7 @@ function DurationDemo() {
           <div key={`${t.name}-${key}`} className="flex items-center gap-3">
             <div className="w-16 flex-shrink-0">
               <span className="text-xs font-semibold text-iron">{t.name}</span>
-              <p className="text-[10px] font-mono text-pewter">{t.ms}ms</p>
+              <p className="text-xs font-mono text-slate">{t.ms}ms</p>
             </div>
             <div className="flex-1 h-6 bg-cloud rounded-full overflow-hidden relative">
               <div
@@ -75,7 +75,7 @@ function DurationDemo() {
                 }}
               />
             </div>
-            <span className="text-[10px] font-mono text-pewter w-20 flex-shrink-0">{t.tw}</span>
+            <span className="text-xs font-mono text-slate w-20 flex-shrink-0">{t.tw}</span>
           </div>
         ))}
       </div>
@@ -95,7 +95,7 @@ function HoverScaleDemo() {
         <p className="text-sm font-semibold text-ink" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Sample card</p>
         <p className="text-xs text-slate mt-1">12 connections · 94% confidence</p>
       </div>
-      <span className="text-[10px] font-mono text-pewter">scale(1.02) · 150ms · ease-out</span>
+      <span className="text-xs font-mono text-slate">scale(1.02) · 150ms · ease-out</span>
     </div>
   )
 }
@@ -122,7 +122,7 @@ function FadeInDemo() {
       </div>
       <button
         onClick={() => { setVisible(false); setTimeout(() => { setKey(k => k + 1); setVisible(true) }, 250) }}
-        className="text-[10px] font-mono text-pewter hover:text-brand transition-colors cursor-pointer"
+        className="text-xs font-mono text-slate hover:text-brand transition-colors cursor-pointer"
       >
         replay · 200ms · ease-out
       </button>
@@ -144,7 +144,7 @@ function SlideDownDemo() {
           <span className="text-xs">Select type</span>
           <TbChevronDown
             size={14}
-            className="text-pewter transition-transform duration-200"
+            className="text-slate transition-transform duration-200"
             style={{ transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }}
           />
         </button>
@@ -164,7 +164,7 @@ function SlideDownDemo() {
           </div>
         </div>
       </div>
-      <span className="text-[10px] font-mono text-pewter">maxHeight · 200ms · ease-in-out</span>
+      <span className="text-xs font-mono text-slate">maxHeight · 200ms · ease-in-out</span>
     </div>
   )
 }
@@ -194,7 +194,7 @@ function ScaleUpDemo() {
           >
             <div className="flex items-center justify-between mb-3">
               <p className="text-sm font-semibold text-ink" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Create</p>
-              <button onClick={() => setOpen(false)} aria-label="Close" className="text-pewter hover:text-iron transition-colors btn-focus">
+              <button onClick={() => setOpen(false)} aria-label="Close" className="text-slate hover:text-iron transition-colors btn-focus">
                 <TbX size={16} />
               </button>
             </div>
@@ -206,7 +206,7 @@ function ScaleUpDemo() {
           </div>
         </div>
       )}
-      <span className="text-[10px] font-mono text-pewter">scale(0.95→1) + fade · 200ms</span>
+      <span className="text-xs font-mono text-slate">scale(0.95→1) + fade · 200ms</span>
       <style>{`
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes scaleUp { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
@@ -230,7 +230,7 @@ function ColorTransitionDemo() {
           Ghost
         </button>
       </div>
-      <span className="text-[10px] font-mono text-pewter">background-color · 150ms · ease-out</span>
+      <span className="text-xs font-mono text-slate">background-color · 150ms · ease-out</span>
     </div>
   )
 }
@@ -244,7 +244,7 @@ function FocusRingDemo() {
         placeholder="Tab to focus..."
         className="px-3 py-2 text-xs border border-stone-200 rounded-lg bg-white text-iron placeholder:text-pewter transition-all duration-150 ease-out focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 w-48"
       />
-      <span className="text-[10px] font-mono text-pewter">border + ring · 150ms · ease-out</span>
+      <span className="text-xs font-mono text-slate">border + ring · 150ms · ease-out</span>
     </div>
   )
 }
@@ -272,7 +272,7 @@ function SignaturePrimitiveCard({
     <div className="border border-stone-200 rounded-xl overflow-hidden flex flex-col">
       <div className="bg-cloud px-4 py-2 border-b border-stone-200 flex items-center justify-between">
         <span className="text-xs font-semibold uppercase tracking-wider text-slate">{label}</span>
-        <span className="text-[10px] font-mono text-pewter">{duration}</span>
+        <span className="text-xs font-mono text-slate">{duration}</span>
       </div>
       <div className="bg-canvas h-40 flex items-center justify-center">{demo}</div>
       <div className="px-4 py-3 border-t border-stone-100 space-y-1.5">
@@ -307,7 +307,7 @@ function NodeArrivalDemo() {
       `}</style>
       <div key={`pulse-${key}`} className="absolute" style={{ width: 32, height: 32, borderRadius: '50%', background: color, animation: 'spectrea-node-pulse 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards', animationDelay: '120ms' }} />
       <div key={`node-${key}`} className="relative z-10" style={{ width: 32, height: 32, borderRadius: '50%', background: color, animation: 'spectrea-node-arrival 400ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards' }} />
-      <button onClick={play} className="absolute bottom-2 right-2 text-[10px] px-2 py-1 rounded bg-cloud text-slate hover:bg-stone-200 transition-colors font-mono">Play</button>
+      <button onClick={play} className="absolute bottom-2 right-2 text-xs px-2 py-1 rounded bg-cloud text-slate hover:bg-stone-200 transition-colors font-mono">Play</button>
     </div>
   )
 }
@@ -346,7 +346,7 @@ function EdgeFormationDemo() {
           }}
         />
       </svg>
-      <button onClick={play} className="absolute bottom-2 right-2 text-[10px] px-2 py-1 rounded bg-cloud text-slate hover:bg-stone-200 transition-colors font-mono">Play</button>
+      <button onClick={play} className="absolute bottom-2 right-2 text-xs px-2 py-1 rounded bg-cloud text-slate hover:bg-stone-200 transition-colors font-mono">Play</button>
     </div>
   )
 }
@@ -364,7 +364,7 @@ function SpectrumShiftDemo() {
           100% { background-position: 100% 50%; opacity: 0; }
         }
       `}</style>
-      <div className="text-[11px] text-pewter font-mono mb-2 absolute top-3 left-3">Spectrum sweep — the brand's signature moment</div>
+      <div className="text-xs text-pewter font-mono mb-2 absolute top-3 left-3">Spectrum sweep — the brand's signature moment</div>
       <div
         key={key}
         className="w-3/4 rounded-full"
@@ -375,7 +375,7 @@ function SpectrumShiftDemo() {
           animation: 'spectrea-spectrum-shift 600ms cubic-bezier(0.65, 0, 0.35, 1) forwards',
         }}
       />
-      <button onClick={play} className="absolute bottom-2 right-2 text-[10px] px-2 py-1 rounded bg-cloud text-slate hover:bg-stone-200 transition-colors font-mono">Play</button>
+      <button onClick={play} className="absolute bottom-2 right-2 text-xs px-2 py-1 rounded bg-cloud text-slate hover:bg-stone-200 transition-colors font-mono">Play</button>
     </div>
   )
 }
