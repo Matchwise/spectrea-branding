@@ -324,6 +324,18 @@
         "hex": "#F97587",
         "use": "Coloured body copy on dark surfaces"
       }
+    ],
+    "accentText": [
+      {
+        "name": "Teal text",
+        "hex": "#007D6E",
+        "use": "Success/correct headings, privileged-word chips, positive labels on light surfaces (4.58–5.05:1; APCA Lc 68–74)"
+      },
+      {
+        "name": "Rose text",
+        "hex": "#BA3249",
+        "use": "Error/incorrect headings and labels on light surfaces (5.24–5.77:1) — names the tone the guide already shipped"
+      }
     ]
   },
   "typography": {

@@ -114,6 +114,7 @@ const contract = {
     darkMode: selectedPalette.darkMode,
     washes: brandTokens.washes,
     lifts: brandTokens.lifts,
+    accentText: brandTokens.accentText,
   },
   typography: brand.typography,
   tokens: {
