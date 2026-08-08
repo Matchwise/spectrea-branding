@@ -86,6 +86,24 @@ h1, h2, h3, h4, h5, h6 {
   outline-offset: 2px;
 }
 
+/* ─── Reduced motion (D41) ─────────────────────────────────────────
+   The blanket rule the Motion page documents, applied to the guide app
+   itself: all CSS transitions and animations collapse to effectively
+   instant. JS-driven animation (AnimatedLogo's rAF loop) checks the
+   same media query in code — CSS cannot stop a rAF loop. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+  html {
+    scroll-behavior: auto !important;
+  }
+}
+
 /* ─── Canonical brand gradient ─────────────────────────────────────
    sRGB baseline renders everywhere. Modern browsers (Chrome 111+,
    Safari 16.2+, Firefox 117+) override with OKLCH interpolation for

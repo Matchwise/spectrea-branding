@@ -8,7 +8,7 @@
 **Category:** Composable intelligence platform.
 **Pronunciation:** /spek-TREE-uh/ (a coinage from *spectrum* — Latin, from *specere*, "to look"; the full range — with a second reading: *revealing*).
 <!-- generated:version-header -->
-**Version:** 2.5.8 (2026-08-08). Canonical data: `src/data/brand.ts` — this guide is a hybrid mirror: prose is hand-written; fenced data blocks are generated from canon (`npm run generate:guide`).
+**Version:** 2.5.9 (2026-08-09). Canonical data: `src/data/brand.ts` — this guide is a hybrid mirror: prose is hand-written; fenced data blocks are generated from canon (`npm run generate:guide`).
 <!-- /generated:version-header -->
 
 **Strategic claim:** Spectrea is the spectrum of clarity. Everything you know, in one living view — alive with possibility, yours to keep. See it whole. Trust what you see. Build on what you find.
@@ -690,7 +690,9 @@ v4 (2026-04-19) — universal subject-agnostic prompt for scenes, tight hand-SVG
 ## 10. Motion
 
 ### Philosophy
+<!-- generated:motion-philosophy -->
 Purposeful, subtle, natural — and alive. Every animation answers "what does this help the user understand?" — if the answer is "nothing," remove it. Most interactive motion stays restrained (150–300ms hovers, focus, state changes). Three signature primitives below carry the brand's "alive, growing, compounding" claim — used purposefully, not decoratively.
+<!-- /generated:motion-philosophy -->
 
 ### Durations
 <!-- generated:motion-durations -->
@@ -698,26 +700,39 @@ Purposeful, subtle, natural — and alive. Every animation answers "what does th
 - 150 ms — standard (UI transitions, dropdowns)
 - 200 ms — comfortable (modals, slide-overs)
 - 300 ms — deliberate (page transitions, choreographed sequences)
+- 400 ms — arrival (the Arrival signature primitive)
+- 300 ms — formation (the Formation signature primitive)
+- 600 ms — spectrumSweep (the Spectrum sweep signature primitive)
 <!-- /generated:motion-durations -->
 
 ### Easing
 <!-- generated:motion-easing -->
 - `ease-out` (`cubic-bezier(0, 0, 0.2, 1)`) — default for things entering or settling.
 - `ease-in-out` (`cubic-bezier(0.4, 0, 0.2, 1)`) — for back-and-forth movements, continuous animations.
+- `elastic-settle` (`cubic-bezier(0.34, 1.56, 0.64, 1)`) — the Arrival primitive — scale-in with soft elastic settle.
 - Never use linear (feels mechanical) or ease-in alone (feels like something is wrong).
 <!-- /generated:motion-easing -->
 
 ### Signature motion primitives (three)
 Three brand-distinctive motion patterns. Reusable across any Spectrea surface — used at meaningful moments, not decoratively. Each carries one part of the *alive, growing, compounding* brand claim.
 
-**1. Arrival (~400ms).** When something important enters the frame — a new card, a fresh result, an inserted item. Spec: scale from 0 with soft elastic settle (`cubic-bezier(0.34, 1.56, 0.64, 1)`), then a brief radial pulse in a brand spectrum colour. Reads as "something just arrived and is alive."
+<!-- generated:signature-primitives -->
+**1. Arrival (400ms).** When something important enters the frame — a new card, a fresh result, an inserted item. Spec: scale from 0 with soft elastic settle (`cubic-bezier(0.34, 1.56, 0.64, 1)`), then a brief radial pulse in a brand spectrum colour. Reads as "something just arrived and is alive."
 
-**2. Formation (~300ms).** When two things visibly connect — a line, a link, a relationship being shown. Spec: a curved stroke draws between two points with the spectrum gradient running along the line (`stroke-dashoffset` animation on an SVG path with a linear gradient stroke), then settles to its resting colour. Echoes the Bézier curve in the brand mark.
+**2. Formation (300ms).** When two things visibly connect — a line, a link, a relationship being shown. Spec: a curved stroke draws between two points with the spectrum gradient running along the line (`stroke-dashoffset` animation on an SVG path with a linear gradient stroke), then settles to its resting colour. Echoes the Bézier curve in the brand mark.
 
-**3. Spectrum sweep (~600ms).** The brand's signature moment — used sparingly when something meaningful happens that deserves the brand's full voice. Spec: a thin gradient strip (4px tall, ~75% width of its container) traverses Cobalt → Teal → Amber → Rose with `background-position` animation across a 4× wide gradient, fading in at 15% and out at 85%. Spectrea's most distinctive motion. Reserve for moments that genuinely matter — overuse dilutes it.
+**3. Spectrum sweep (600ms).** The brand's signature moment — used sparingly when something meaningful happens that deserves the brand's full voice. Spec: a thin gradient strip (4px tall, ~75% width of its container) traverses Cobalt → Teal → Amber → Rose with `background-position` animation across a 4× wide gradient, fading in at 15% and out at 85%. Spectrea's most distinctive motion. Reserve for moments that genuinely matter — overuse dilutes it.
+<!-- /generated:signature-primitives -->
 
 ### Animated mark
-The Spectrea mark animates on a 3-second loop: the spectrum stroke draws along the S curve, pauses, then dissolves to reveal the dots again. Always uses the **full spectrum** (Cobalt → Teal → Amber) — the "reveal" moment. Use for loading states, hero animations, and motion assets.
+<!-- generated:logo-animation -->
+The connecting-dots loop is the logo's OWN canonical spec (`logo.animation`) — deliberately outside the UI motion tokens:
+- Loop: 3 s, infinite. Phases of the timeline: draw to 0.57, hold to 0.6, dissolve to 0.97, then an empty beat until restart. The dissolving edge fades over 15% of the path length.
+- Easing: Quadratic phase ease — the draw eases out, the dissolve eases in. The logo's own spec, not one of the UI easing tokens.
+- Reduced motion: Under prefers-reduced-motion the loop does not run: the completed mark holds as a static frame.
+- Use: Loading states, hero moments, splash. Never inline UI — too prominent.
+<!-- /generated:logo-animation -->
+Always uses the **full spectrum** (Cobalt → Teal → Amber) — the "reveal" moment.
 
 ---
 
@@ -952,5 +967,5 @@ All via Google Fonts:
 ---
 
 <!-- generated:version-footer -->
-*`src/data/brand.ts` is the canonical brand data (v2.5.8, 2026-08-08). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
+*`src/data/brand.ts` is the canonical brand data (v2.5.9, 2026-08-09). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
 <!-- /generated:version-footer -->

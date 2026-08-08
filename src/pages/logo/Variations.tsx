@@ -1,5 +1,6 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
 import { StaticLogo, AnimatedLogo, Logotype, LogotypeGradient, ColorMode } from '../../components/brand/SpectreaLogo'
+import { logo } from '../../data/brand'
 
 interface Variant {
   id: string
@@ -166,7 +167,7 @@ export default function Variations() {
       <Section>
         <h2 className="text-lg font-semibold text-ink mb-1">Animated Mark</h2>
         <p className="text-xs text-slate mb-4">
-          The animated mark always uses the <strong>full spectrum</strong> — the "reveal" moment. The stroke draws in and erases in a 3-second loop, carrying cobalt → teal → amber across the S curve.
+          The animated mark always uses the <strong>full spectrum</strong> — the "reveal" moment. The stroke draws in and erases in a {logo.animation.loopSeconds}-second loop (canon logo.animation), carrying cobalt → teal → amber across the S curve.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="border-2 border-brand/20 rounded-xl p-6 flex flex-col items-center gap-3 bg-white">

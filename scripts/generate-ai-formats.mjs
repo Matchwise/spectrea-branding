@@ -128,6 +128,7 @@ const contract = {
   logoConstraints: logo.constraints,
   logoLockup: logo.lockup,
   logoMarkGeometry: logo.markGeometry,
+  logoAnimation: logo.animation,
   accessibility,
   graphViz,
   trustCopy,

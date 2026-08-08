@@ -4,8 +4,8 @@
 
 // --- Meta / Governance ---
 export const meta = {
-  version: '2.5.8',
-  lastUpdated: '2026-08-08',
+  version: '2.5.9',
+  lastUpdated: '2026-08-09',
   sourceOfTruth:
     'brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea\'s roadmap — check it before placing a capability claim on a buyer-facing surface.',
   renderDoctrine:
@@ -819,6 +819,28 @@ export const logo = {
     // the p's own left side bearing 0.067em completes the 0.131em ink gap).
     placement: { inkBottomVsBaselineEm: 0.007, penAdvanceEm: 0.0643 },
   },
+  // Signature animation (ratified 2026-08-09, decision 27). The loop is the
+  // logo's OWN motion spec — deliberately outside the UI motion tokens
+  // (brandTokens.motion): a brand-asset behaviour, not an interface
+  // transition. AnimatedLogo and the Motion page read these values;
+  // previously the spec lived only in component code (the markGeometry
+  // precedent, applied to motion).
+  animation: {
+    loopSeconds: 3,
+    // Normalized boundaries on the loop timeline. Each phase's quadratic
+    // ease is part of the spec: the draw eases out, the dissolve eases in —
+    // the mark leaves the way it arrived. After dissolveEnd the frame is
+    // empty until the loop restarts.
+    phases: {
+      drawEnd: 0.57, // 0 → drawEnd: stroke draws tip-first, quadratic ease-out
+      holdEnd: 0.6, // drawEnd → holdEnd: the completed mark rests
+      dissolveEnd: 0.97, // holdEnd → dissolveEnd: stroke releases from the start, quadratic ease-in
+    },
+    trailingFadeFraction: 0.15, // the dissolving edge fades over this fraction of path length
+    easing: 'Quadratic phase ease — the draw eases out, the dissolve eases in. The logo\'s own spec, not one of the UI easing tokens.',
+    reducedMotion: 'Under prefers-reduced-motion the loop does not run: the completed mark holds as a static frame.',
+    use: 'Loading states, hero moments, splash. Never inline UI — too prominent.',
+  },
 } as const
 
 // --- Graph Visualization (foundation only) ---
@@ -875,6 +897,7 @@ export const ratificationLedger = [
   { date: '2026-08-08', decision: 'Render-everything SPA build (decision 7 programme item): every previously agent-only canon export now has a human-visible surface. New Trust & Disclosures page (/communications/trust) renders trustCopy verbatim with the counsel note. Voice & Tone gains Surface Patterns (all 7) and Executive Voice. Naming gains Company & Product and the Origin stance. Positioning gains the Full-Shape Claim, the compounding usageGuardrail (also on Copy & Taglines), and the differentiatorGuardrail. Copy & Taglines renders voice.heroOpen verbatim. Primary Palette gains Contrast Policy & Measurement (accessibility.measurement + exception registry rendered from data); the two hand-written "never white on Teal/Amber" don\'ts now carry the ratified button-label carve-out. Governance renders meta.sourceOfTruth, renderDoctrine, version, and the full ratification ledger.' },
   { date: '2026-08-08', decision: 'D40/D35 accessibility cluster, wave 1: (1) Tooltip gains a full keyboard path — focusable button affordance at the 24px target size, opens on focus, Escape dismisses, aria-describedby announcement. (2) Palette-tool sliders carry accessible names. (3) Text floors enforced app-wide (~90 sites bumped to the 12px caption floor; the 10px canon carve-outs — uppercase overlines, numeric badges, metadata chips — and specimen mini-previews untouched; four legal 11px uppercase overlines also normalized to 12px for consistency with the app-wide overline idiom). (4) Pewter stepped to Slate wherever it carried meaning (~50 sites), including the Ghost button light-mode label (was Pewter 2.85:1, an interactive label) and the Iconography page, which taught Pewter as the secondary icon tier against pewterMatrix — the taught tier is now Slate, with Pewter reserved for disabled/decorative glyphs. (5) brandTokens.accentText ratified (Darren, Option A): accent-coloured text on light surfaces uses Teal text #007D6E (new; visually near-identical to the retired #008775, which measured 4.04–4.45:1 as text) and Rose text #BA3249 (existing tone, now named); ~30 text sites swept. Button state fills (hover/active) are unchanged — they are fills, not text. Remaining D40 item, deliberately open: the dark-mode Ink-on-lightened-Cobalt hover label (APCA Lc 40.5 despite WCAG 4.5:1+) awaits its own adjudication.' },
   { date: '2026-08-08', decision: 'Dark Cobalt hover re-lightened (D40 closing item, Darren-ratified Option A): the dark transient ladder for Cobalt was the only state below the APCA spot-text line (old hover #5C87E5: WCAG 5.10:1 but APCA Lc 40.5 vs the 45 minimum; every other accent ≥46.7) — the same 2.x formula artefact as the button-label grant, opposite direction (2.x over-credits dark-on-vivid-blue). New ladder lightens one further notch along the existing lift-toward-the-light direction: hover #6E93EC (5.94:1, Lc 46.3 — parity with Rose), active #8FACF0 (7.86:1, Lc 58.1). Base state and all other accents unchanged; the one-rule dark idiom (Ink label on lightened fill) holds; every dark transient state now clears both metrics. Registry entry measured range updated 5.10–9.72 → 5.92–9.72 (consequence of the canon change, not a re-grant). White-label-on-hover alternative rejected (APCA 67.5 but WCAG 3.47 — would need an exception and break the idiom). This closes D40.' },
+  { date: '2026-08-09', decision: 'Logo signature animation canonized (D41 closing item, Darren-ratified): logo.animation carries the loop spec — 3 s loop; phase boundaries draw→0.57 (quadratic ease-out), hold→0.60, dissolve→0.97 (quadratic ease-in); 15% trailing fade; reduced-motion = hold the completed frame. Deliberately the logo\'s own spec OUTSIDE the UI motion tokens; AnimatedLogo and the Motion page read it (previously the spec lived only in component code — the markGeometry precedent applied to motion). Same wave, Motion page conformance (D41): the page renders all seven duration tiers and the three easings + never-rule from brandTokens.motion; easing plots computed from the canonical control points; demos animate on canonical curves only; prefers-reduced-motion implemented app-wide (CSS blanket block + rAF-loop media-query check); the focus-ring demo shows the canonical Amber ring.' },
 ] as const
 
 // --- Executive Voice ---

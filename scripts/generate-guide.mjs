@@ -199,6 +199,9 @@ const blocks = {
       `- ${d.standard} ms — standard (UI transitions, dropdowns)`,
       `- ${d.comfortable} ms — comfortable (modals, slide-overs)`,
       `- ${d.deliberate} ms — deliberate (page transitions, choreographed sequences)`,
+      `- ${d.arrival} ms — arrival (the Arrival signature primitive)`,
+      `- ${d.formation} ms — formation (the Formation signature primitive)`,
+      `- ${d.spectrumSweep} ms — spectrumSweep (the Spectrum sweep signature primitive)`,
     ].join('\n')
   },
 
@@ -206,9 +209,41 @@ const blocks = {
     const e = brandTokens.motion.easings
     // Easing names derive from the canonical keys (easeOut → ease-out).
     const kebab = k => k.replace(/[A-Z]/g, m => '-' + m.toLowerCase())
-    const desc = k => e[k].use.replace(/^Default — /, 'default for ').replace(/^Back/, 'for back')
+    const desc = k => e[k].use
+      .replace(/^Default — /, 'default for ')
+      .replace(/^Back/, 'for back')
+      .replace(/^Arrival primitive — /, 'the Arrival primitive — ')
     const line = k => `- \`${kebab(k)}\` (\`${e[k].css}\`) — ${desc(k)}.`
-    return [line('easeOut'), line('easeInOut'), `- Never use ${e.never}.`].join('\n')
+    return [line('easeOut'), line('easeInOut'), line('elasticSettle'), `- Never use ${e.never}.`].join('\n')
+  },
+
+  'motion-philosophy': () => {
+    const d = brandTokens.motion.durationsMs
+    return `Purposeful, subtle, natural — and alive. Every animation answers "what does this help the user understand?" — if the answer is "nothing," remove it. Most interactive motion stays restrained (${d.standard}–${d.deliberate}ms hovers, focus, state changes). Three signature primitives below carry the brand's "alive, growing, compounding" claim — used purposefully, not decoratively.`
+  },
+
+  'signature-primitives': () => {
+    const d = brandTokens.motion.durationsMs
+    const e = brandTokens.motion.easings
+    return [
+      `**1. Arrival (${d.arrival}ms).** When something important enters the frame — a new card, a fresh result, an inserted item. Spec: scale from 0 with soft elastic settle (\`${e.elasticSettle.css}\`), then a brief radial pulse in a brand spectrum colour. Reads as "something just arrived and is alive."`,
+      ``,
+      `**2. Formation (${d.formation}ms).** When two things visibly connect — a line, a link, a relationship being shown. Spec: a curved stroke draws between two points with the spectrum gradient running along the line (\`stroke-dashoffset\` animation on an SVG path with a linear gradient stroke), then settles to its resting colour. Echoes the Bézier curve in the brand mark.`,
+      ``,
+      `**3. Spectrum sweep (${d.spectrumSweep}ms).** The brand's signature moment — used sparingly when something meaningful happens that deserves the brand's full voice. Spec: a thin gradient strip (4px tall, ~75% width of its container) traverses Cobalt → Teal → Amber → Rose with \`background-position\` animation across a 4× wide gradient, fading in at 15% and out at 85%. Spectrea's most distinctive motion. Reserve for moments that genuinely matter — overuse dilutes it.`,
+    ].join('\n')
+  },
+
+  'logo-animation': () => {
+    const a = logo.animation
+    const p = a.phases
+    return [
+      `The connecting-dots loop is the logo's OWN canonical spec (\`logo.animation\`) — deliberately outside the UI motion tokens:`,
+      `- Loop: ${a.loopSeconds} s, infinite. Phases of the timeline: draw to ${p.drawEnd}, hold to ${p.holdEnd}, dissolve to ${p.dissolveEnd}, then an empty beat until restart. The dissolving edge fades over ${a.trailingFadeFraction * 100}% of the path length.`,
+      `- Easing: ${a.easing}`,
+      `- Reduced motion: ${a.reducedMotion}`,
+      `- Use: ${a.use}`,
+    ].join('\n')
   },
 
   radii: () => {

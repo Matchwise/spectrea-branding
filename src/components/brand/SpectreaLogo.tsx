@@ -240,6 +240,28 @@ export interface AnimatedLogoProps {
   duration?: number
 }
 
+// The draw loop is rAF-driven, so the app-wide reduced-motion CSS block
+// cannot stop it — the component checks the same media query in code.
+function usePrefersReducedMotion() {
+  const [reduced, setReduced] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+  )
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const onChange = () => setReduced(mq.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
+  return reduced
+}
+
+// The loop spec is canon (logo.animation, ratified 2026-08-09): loop length,
+// phase boundaries, trailing fade, reduced-motion behaviour. The quadratic
+// ease formulas below IMPLEMENT the phases the spec names.
+const ANIM = logo.animation
+// Resting frame: the midpoint of the hold window — the completed mark.
+const RESTING_PROGRESS = (ANIM.phases.drawEnd + ANIM.phases.holdEnd) / 2
+
 export function AnimatedLogo({
   size = 200,
   colorMode = 'color',
@@ -249,11 +271,14 @@ export function AnimatedLogo({
   dotR = LOGO.dotR,
   totalDots = LOGO.totalDots,
   tailDots = LOGO.tailDots,
-  duration = 3,
+  duration = ANIM.loopSeconds,
 }: AnimatedLogoProps) {
   const effectiveDotMode = resolveDotMode(colorMode, dotColorMode)
   const { pathRef, metrics } = usePathMetrics(pathD, totalDots, tailDots)
-  const [progress, setProgress] = useState(0)
+  const reducedMotion = usePrefersReducedMotion()
+  // Start ON the resting frame under reduced motion — initialising to 0 would
+  // paint a dots-only frame until the effect below runs.
+  const [progress, setProgress] = useState(reducedMotion ? RESTING_PROGRESS : 0)
   const animRef = useRef<number>(0)
   const startRef = useRef<number>(0)
 
@@ -265,26 +290,33 @@ export function AnimatedLogo({
 
   useEffect(() => {
     if (!metrics) return
+    if (reducedMotion) {
+      // Hold the resting frame: progress inside the fully-drawn window
+      // (a = 0, b = totalLen) — the completed mark, no loop.
+      setProgress(RESTING_PROGRESS)
+      return
+    }
     startRef.current = performance.now()
     animRef.current = requestAnimationFrame(animate)
     return () => cancelAnimationFrame(animRef.current)
-  }, [metrics, animate])
+  }, [metrics, animate, reducedMotion])
 
   let a = 0
   let b = 0
 
   if (metrics) {
     const L = metrics.totalLen
-    if (progress < 0.57) {
-      const t = progress / 0.57
+    const { drawEnd, holdEnd, dissolveEnd } = ANIM.phases
+    if (progress < drawEnd) {
+      const t = progress / drawEnd
       a = 0
-      b = (1 - Math.pow(1 - t, 2)) * L
-    } else if (progress < 0.60) {
+      b = (1 - Math.pow(1 - t, 2)) * L // quadratic ease-out (canon: the draw eases out)
+    } else if (progress < holdEnd) {
       a = 0
       b = L
-    } else if (progress < 0.97) {
-      const t = (progress - 0.60) / 0.37
-      a = t * t * L
+    } else if (progress < dissolveEnd) {
+      const t = (progress - holdEnd) / (dissolveEnd - holdEnd)
+      a = t * t * L // quadratic ease-in (canon: the dissolve eases in)
       b = L
     } else {
       a = 0
@@ -294,8 +326,8 @@ export function AnimatedLogo({
 
   const segmentLen = b - a
   const showStroke = segmentLen > 0.5
-  const isUndrawing = progress >= 0.60 && progress < 0.97
-  const fadeLen = metrics ? metrics.totalLen * 0.15 : 0
+  const isUndrawing = progress >= ANIM.phases.holdEnd && progress < ANIM.phases.dissolveEnd
+  const fadeLen = metrics ? metrics.totalLen * ANIM.trailingFadeFraction : 0
 
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" fill="none">

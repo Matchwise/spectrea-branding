@@ -1,6 +1,7 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
 import { StaticLogo, AnimatedLogo, LogotypeGradient } from '../../components/brand/SpectreaLogo'
+import { logo } from '../../data/brand'
 
 export default function PrimaryLogo() {
   return (
@@ -90,10 +91,10 @@ export default function PrimaryLogo() {
       {/* Animated */}
       <Section>
         <h2 className="text-xl font-semibold text-ink mb-4">Animated Version</h2>
-        <p className="text-sm text-iron mb-4">The spectrum stroke draws along the S connecting the dots, pauses, then dissolves to reveal them again. 3-second loop. Use for loading states, hero animations, and motion assets.</p>
+        <p className="text-sm text-iron mb-4">The spectrum stroke draws along the S connecting the dots, pauses, then dissolves to reveal them again. {logo.animation.loopSeconds}-second loop (canon logo.animation). {logo.animation.use}</p>
         <div className="border border-stone-200 rounded-xl overflow-hidden inline-block">
           <div className="bg-white p-6 flex items-center justify-center">
-            <AnimatedLogo size={200} duration={3} dotColorMode="grey" />
+            <AnimatedLogo size={200} dotColorMode="grey" />
           </div>
         </div>
       </Section>
