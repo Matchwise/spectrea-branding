@@ -7,7 +7,9 @@
 **Tagline:** We connect the dots.
 **Category:** Composable intelligence platform.
 **Pronunciation:** /spek-TREE-uh/ (a coinage from *spectrum* — Latin, from *specere*, "to look"; the full range — with a second reading: *revealing*).
-**Version:** 2.5.4 (2026-08-08). Canonical data: `src/data/brand.ts` — this guide is a derived mirror.
+<!-- generated:version-header -->
+**Version:** 2.5.5 (2026-08-08). Canonical data: `src/data/brand.ts` — this guide is a hybrid mirror: prose is hand-written; fenced data blocks are generated from canon (`npm run generate:guide`).
+<!-- /generated:version-header -->
 
 **Strategic claim:** Spectrea is the spectrum of clarity. Everything you know, in one living view — alive with possibility, yours to keep. See it whole. Trust what you see. Build on what you find.
 
@@ -132,6 +134,7 @@ The facet that leads changes; the other two are always present. A marketing page
 ### Tone registers (one taxonomy, ratified 2026-08-08)
 Six content classes, each with a tone label and the right (left) and wrong (right) version. Read each pair together — the contrast is what the rule looks like in practice. Two structures, two jobs: these registers say how a content class *sounds*; the surface patterns below say what a product surface *says* (a surface inherits its register from the nearest content class — system notifications from Error Message, release notes from Feature Announcement).
 
+<!-- generated:tone-registers -->
 | Context · Tone | Right | Wrong |
 |---|---|---|
 | **Marketing / Landing Page** · Bold + Direct | *"See everything your organization knows in one connected view. Spectrea builds a living graph from your documents — the more you use it, the sharper it gets."* | *"Transform how your team works. Unlock the power of connected knowledge — insights, intelligence, impact."* |
@@ -140,6 +143,7 @@ Six content classes, each with a tone label and the right (left) and wrong (righ
 | **Documentation** · Precise + Helpful | *"To add a new item, open the relevant view and choose 'Add'. Pick a type from the list, or create one if you need it. The item appears in place immediately."* | *"Ready to add something? Just head over to the right view and hit that '+ Add' button! Pick a type that fits — or make a new one if nothing works. Easy!"* |
 | **Social Media** · Thoughtful + Engaging | *"What if every document you uploaded made your whole system smarter? That's not a hypothetical — it's how Spectrea works."* | *"Team productivity has never been easier. Learn how Spectrea can transform your workflow."* |
 | **Beginner Documentation** · Plain + Welcoming | *"Think of Spectrea as a web of everything your team knows. When you add a document, Spectrea reads it and weaves what it learns into the web — connecting it to things you've already captured."* | *"Documents are processed through a 6-phase pipeline: parse, chunk, embed, score, review, and integrate."* |
+<!-- /generated:tone-registers -->
 
 The right-hand versions are bold, direct, concrete — they show what the user experiences. The wrong-hand versions fail in different ways: platitude-marketing (*transform, unlock, impact*), bland agentless announcement (*we're excited to share*), vague apology, forced chirp, clickbait, or engineer-internal jargon in a beginner context. In every case, the brand shows its work rather than claiming magic or reaching for the nearest SaaS cliché.
 
@@ -223,13 +227,15 @@ The logo has three parts:
 3. **Lockup** — S mark + lowercase wordmark.
 
 ### Construction (K3′ geometry + "B" lockup constants, ratified 2026-08-06)
-- **Spine:** three G1-continuous cubics fitted to the Albert Sans 600 S medial axis, with a deliberate shallow storytelling tail. Authoritative coordinates: `brand.ts` `logo.markGeometry` (record: docs/brand-review-2026-08).
+<!-- generated:logo-construction -->
+- **Spine:** 3 G1-continuous cubics fitted to the Albert Sans 600 S medial axis, with a deliberate shallow storytelling tail. Authoritative coordinates: `brand.ts` `logo.markGeometry` (record: docs/brand-review-2026-08).
 - **Dots:** 10 dots at i/9 arc fractions of the spine, radius 3.961 (native units; dot diameter : stroke width stays 7:8). Grey (`#A3A3A3`) in the primary treatment.
 - **Stroke:** width 9.053 (native units), round linecap. Cool Duet (Cobalt `#4271DF` → Teal `#00B6A0`) in the static mark and in the gradient lockup's mark. In the lockup the rendered stroke equals the wordmark's stem: **0.113em**.
 - **Trailing dots:** the last 2 dots are left visually unconnected — the "about to connect" moment.
 - **Lockup metrics (on ink, never bounding boxes):** mark ink height 0.714em (= the real S glyph's ink), mark→text ink gap 0.131em (= S right side bearing + 0.02em tracking + p left side bearing), mark ink bottom at baseline + 0.007em (the S's baseline overshoot). Wordmark: Albert Sans **600** at every size, 0.02em tracking.
-- **Container:** 64×64 construction viewBox. Circle container when needed at small sizes; never a squircle.
-- **Small sizes:** no micro-construction — the standard mark scales down unchanged; below ~24px the trailing dots read as part of the stroke and that plain-S reading is accepted (ratified 2026-08-06).
+- **Container:** 64×64 construction viewBox. Circle when contained — never a squircle.
+- **Small sizes:** No micro-construction (ratified 2026-08-06, decision 11): the standard mark scales down unchanged at every size. Below ~24px the trailing dots read as part of the stroke; that plain-S reading is accepted.
+<!-- /generated:logo-construction -->
 
 ### The two-forms rule (lockup)
 The lockup has **exactly two forms** — no third:
@@ -301,7 +307,9 @@ The gradient lives in the mark only. No gradient-filled wordmark, no full-spectr
 **Co-branding (canonical rule):** Use the ink variants (#3 mark / #4 lockup). Match the partner mark by optical height — scale so perceived heights are equal, not bounding boxes — and align on the marks' vertical centres.
 
 ### Clear space
-Minimum clear space around the lockup = 0.5× the mark height. No other graphic element (text, border, background image) enters the clear-space box.
+<!-- generated:clear-space -->
+Minimum clear space around the lockup: 0.5× the mark height on all sides. No other graphic element (text, border, background image) enters the clear-space box.
+<!-- /generated:clear-space -->
 
 ### Misuse
 Never: stretch or distort · change colours (spectrum gradient is Cobalt → Teal → Amber; never substitute) · rotate · add drop shadows, glows, bevels · use only the stroke path without dots · use on low-contrast backgrounds (< 2.5:1) · change dot count (always exactly 10) · swap mark and wordmark positions · violate clear space · use a squircle container (always round) · colour the dots in the primary treatment · substitute the wordmark typeface.
@@ -344,23 +352,29 @@ The seven tokens form an OKLCH-even ladder (ΔL ≈ 0.14 through the body range,
 | Attention | Amber | `#E19000` | Warnings, pending, confidence. |
 | Urgency / action | Rose | `#F24260` | Errors, destructive actions, critical alerts. |
 
+<!-- generated:accent-states -->
 Hover/active states for each accent (light surfaces — darken on interaction):
 - Cobalt: base `#4271DF`, hover `#3A63C4`, active `#3255A7`.
 - Teal: base `#00B6A0`, hover `#009E8A`, active `#008775`.
 - Amber: base `#E19000`, hover `#C58200`, active `#A86E00`.
 - Rose: base `#F24260`, hover `#D63B55`, active `#BA3249`.
 
-Dark surfaces (resolved 2026-07-04) — same bases, states lighten instead: Cobalt hover `#5C87E5` / active `#7699EB` · Teal hover `#20C8B2` / active `#40D4C3` · Amber hover `#ECA41E` / active `#F2B63C` · Rose hover `#F56579` / active `#F78892`. On dark surfaces the button lifts toward the light: hover and active fills lighten, and the label flips from White to Ink `#18181C` while the fill is lightened. Base states keep white text. Ink-on-lightened-fill contrast, verified 2026-07-04: cobalt hover 5.10 / active 6.34, rose hover 5.92 / active 7.50, teal hover 8.40 / active 9.63, amber hover 8.34 / active 9.72 — all ≥ 4.5:1 (AA, normal text). Dark secondary: bg `#2E2F35`, hover `#3A3A40`, text Cloud `#F4F4F1`.
+Dark surfaces (resolved 2026-07-04) — same bases, states lighten instead: Cobalt hover `#5C87E5` / active `#7699EB` · Teal hover `#20C8B2` / active `#40D4C3` · Amber hover `#ECA41E` / active `#F2B63C` · Rose hover `#F56579` / active `#F78892`. On dark surfaces the button lifts toward the light: hover and active fills lighten, and the label flips from White to Ink #18181C while the fill is lightened. Base states keep white text. Ink-on-lightened-fill contrast, verified 2026-07-04: cobalt hover 5.10 / active 6.34, rose hover 5.92 / active 7.50, teal hover 8.40 / active 9.63, amber hover 8.34 / active 9.72 — all ≥ 4.5:1 (AA, normal text). Dark secondary: bg `#2E2F35`, hover `#3A3A40`, text Cloud `#F4F4F1`.
+<!-- /generated:accent-states -->
 
 ### Bridge tier (tinted washes)
 Tiered between the neutral canvas and the vivid accents — 5–10% saturation versions of each spectrum colour. Always carry semantic meaning; never decorative.
 
+<!-- generated:washes-light -->
 | Name | Hex | Paired accent | Use |
 |---|---|---|---|
-| Cobalt Wash | `#EDF0F8` | Cobalt | Info alert background, selected row |
-| Teal Mist | `#E6F5F3` | Teal | Success toast, positive trend card |
-| Amber Stone | `#F5F0E6` | Amber | Warning alert, highlighted callout |
-| Rose Blush | `#FDF0F2` | Rose | Error message, destructive confirmation |
+| Cobalt Wash | `#EDF0F8` | Cobalt | Info alert background, selected row (text on wash: `#1E3A8A`) |
+| Teal Mist | `#E6F5F3` | Teal | Success toast, positive trend card (text on wash: `#0D5E56`) |
+| Amber Stone | `#F5F0E6` | Amber | Warning alert, highlighted callout (text on wash: `#7C4D04`) |
+| Rose Blush | `#FDF0F2` | Rose | Error message, destructive confirmation (text on wash: `#9F1239`) |
+
+Text on a dark wash is Cloud #F4F4F1; text on a light wash uses that wash's textOn value (or Ink) — never the raw accent.
+<!-- /generated:washes-light -->
 
 ### Text hierarchy — which token for which tier
 
@@ -433,22 +447,26 @@ Three of four accents pass WCAG AA for normal text on Ink; Cobalt is **UI-only**
 
 **Optional brightened variants** — only for long-form *coloured* text on dark (rare in practice). Use sparingly; default behaviour is "same hex, lighter surface."
 
+<!-- generated:lifts -->
 | Accent | Dark-lift | When |
 |---|---|---|
 | Cobalt Lift | `#7A9AEF` | Inline links inside dark long-form text blocks. |
-| Teal Lift | `#3DD3BF` | Coloured body copy in dark surfaces. |
-| Amber Lift | `#F2AE40` | Coloured body copy in dark surfaces. |
-| Rose Lift | `#F97587` | Coloured body copy in dark surfaces. |
+| Teal Lift | `#3DD3BF` | Coloured body copy on dark surfaces. |
+| Amber Lift | `#F2AE40` | Coloured body copy on dark surfaces. |
+| Rose Lift | `#F97587` | Coloured body copy on dark surfaces. |
+<!-- /generated:lifts -->
 
 ### Dark bridge washes
 Tinted dark surfaces — the semantic bridge tier rebuilt for dark mode. ~8–12% saturation on a dark base. Pair with the saturated accent the same way light washes do; the surface carries context, the dot/icon carries the colour.
 
+<!-- generated:washes-dark -->
 | Name | Hex | Paired accent | Use |
 |---|---|---|---|
-| Cobalt Deep | `#1B2440` | Cobalt | Info alert background, selected row (dark). |
-| Teal Deep | `#0E2E2A` | Teal | Success toast, positive trend card (dark). |
-| Amber Deep | `#2E2410` | Amber | Warning alert, highlighted callout (dark). |
-| Rose Deep | `#2E1218` | Rose | Error message, destructive confirmation (dark). |
+| Cobalt Deep | `#1B2440` | Cobalt | Info alert background, selected row (dark) |
+| Teal Deep | `#0E2E2A` | Teal | Success toast, positive trend card (dark) |
+| Amber Deep | `#2E2410` | Amber | Warning alert, highlighted callout (dark) |
+| Rose Deep | `#2E1218` | Rose | Error message, destructive confirmation (dark) |
+<!-- /generated:washes-dark -->
 
 ### Dark ratio
 Same 60/20/10/10 discipline, inverted: **60% Ink · 20% Graphite · 10% Cloud + Mist · 10% spectrum (semantic only).** The canvas still dominates; colour still earns its place.
@@ -532,18 +550,23 @@ Must use **adjacent** spectrum pairs. Skip pairs (Cobalt→Amber direct, Teal→
 ![Typography samples — Albert Sans headings, Lexend body, JetBrains Mono code](/brand-assets/type-samples.svg)
 
 ### Type system (three typefaces)
+<!-- generated:type-system -->
 | Role | Family | Weights | Use |
 |---|---|---|---|
 | Headings | Albert Sans | 600 (Semibold — incl. the logo wordmark at every size), 700 (Bold — hero headlines only) | Page titles, section headings, card titles, stat values |
 | Body | Lexend | 300, 400, 500, 600 | Body text, descriptions, form labels, nav items; 600 for overlines and small section labels (uppercase/tracked) |
 | Code / metadata | JetBrains Mono | 400 | Inline code, data values, entity types, provenance |
+<!-- /generated:type-system -->
 
+<!-- generated:min-sizes -->
 **Minimum sizes.** Body and prose: 16 px preferred, 14 px minimum. Captions and secondary labels: 12 px minimum. 10 px is permitted only for uppercase-tracked overlines, numeric badges, and metadata chips where the letter-spacing and weight restore legibility. Below 10 px is specimen-only (mini-preview UI illustrating another system at small scale) and must never appear in shipped production surfaces.
+<!-- /generated:min-sizes -->
 
 ### Type scale
 
 ![Type scale ladder — Display through Code](/brand-assets/type-scale.svg)
 
+<!-- generated:type-scale -->
 | Size | Value | Line height | Weight | Use |
 |---|---|---|---|---|
 | Display | 48 px | 1.1 | 600 | Hero headlines, landing-page titles |
@@ -559,25 +582,30 @@ Must use **adjacent** spectrum pairs. Skip pairs (Cobalt→Amber direct, Teal→
 | Overline | 12 px | 1.5 | 600 | Section labels (uppercase + 0.05em tracking) |
 | Code | 14 px | 1.5 | 400 | Inline code, data values, type labels (JetBrains Mono) |
 | Code SM | 12 px | 1.5 | 400 | Trace details, technical metadata (JetBrains Mono) |
+<!-- /generated:type-scale -->
 
 ### Responsive scale
+<!-- generated:responsive-scale -->
 Desktop (1024+) / Tablet (640–1023) / Mobile (<640):
 - Display: 48 / 36 / 30
 - H1: 36 / 30 / 24
 - H2: 30 / 24 / 20
 - H3: 24 / 20 / 18
 - Body / Body SM: unchanged across breakpoints.
+<!-- /generated:responsive-scale -->
 
 ### Accessibility
+<!-- generated:accessibility -->
 The floor is **WCAG 2.2 AA** on every shipped surface.
-- Body text minimum: 16 px. Never lower for primary content.
-- Contrast ratio minimum: 4.5:1 for normal text, 3:1 for large/UI. Ink 17.4:1 · Iron 9.21:1 (AAA) · Slate 5.05:1 (AA) · Pewter 2.85:1 (supplementary only — see the Pewter allow/deny matrix in §5).
-- WCAG 2.2 specifics: a visible focus indicator on every interactive element (the Amber focus ring — 2 px solid, 2 px offset; Amber active `#A86E00` on light surfaces, alpha-tinted Amber on dark — is the standard treatment) · interactive targets ≥ 24×24 px (or the equivalent spacing exception) · every drag interaction (graph manipulation included) has a single-pointer, non-dragging alternative.
+- Body text minimum 16 px; never lower for primary content.
+- Contrast ratio minimum: 4.5:1 for normal text, 3:1 for large/UI. On Canvas: Ink 17.4:1 · Iron 9.21:1 (AAA) · Slate 5.05:1 (AA) · Pewter 2.85:1 (supplementary only) — see the Pewter allow/deny matrix in §5.
+- WCAG 2.2 specifics: Focus appearance: a visible focus indicator on every interactive element — the Amber focus ring (2 px solid, 2 px offset; Amber active #A86E00 on light surfaces, alpha-tinted Amber on dark) is the standard treatment · Target size: interactive targets at least 24×24 px, or the equivalent spacing exception · Dragging alternatives: any drag interaction (graph manipulation included) has a single-pointer, non-dragging alternative.
 - Never rely on colour alone — pair colour coding with icons, patterns, or labels.
 - Layout must not break at 200% browser text-zoom.
-- **Measurement doctrine (adopted 2026-08-07):** WCAG 2.x relative-luminance ratios are the conformance floor — the metric automated checkers enforce and the level the brand publicly claims. APCA-W3 Lc (the WCAG 3 draft model; ≥45 spot text, ≥60 fluent, ≥75 body) is the recorded perceptual adjudicator, consulted whenever the 2.x formula and trained eyes disagree — 2.x under-credits light text on saturated mid-tone fills and over-credits dark-on-vivid. Exception grants record both metrics. OKLab/OKLCH lightness deltas may inform design exploration but are not conformance measures.
+- **Measurement doctrine (adopted 2026-08-07):** Conformance floor: WCAG 2.x relative-luminance ratios (4.5:1 normal text; 3:1 large text and UI) — the metric automated checkers enforce and the level the brand publicly claims. Perceptual adjudicator: APCA-W3 Lc (the WCAG 3 draft model; ≥45 spot text, ≥60 fluent, ≥75 body) — consulted whenever the 2.x formula and trained eyes disagree, because 2.x under-credits light text on saturated mid-tone fills and over-credits dark-on-vivid. Exception grants record both metrics. OKLab/OKLCH lightness deltas may inform design exploration but are not conformance measures.
 - **Exception registry** — deliberate, ratified departures from the floors; a sub-floor usage not listed here is a defect, not a style. One entry:
-  - `semantic-button-labels-white` (ratified 2026-08-07): white `#FFFFFF` labels stay on all four semantic button base fills although WCAG 2.x reads Rose 3.67:1, Teal 2.56:1, Amber 2.56:1 (Cobalt passes at 4.51:1). APCA re-measurement showed white beats or ties Ink on every fill (Lc 76.4 Cobalt / 68.4 Rose / 54.6 Teal / 54.9 Amber vs Ink 31.7/39.6/53.0/52.7) — the nominally compliant Ink-on-Rose swap would have read perceptually *worse* — and every white pairing clears the APCA spot-text minimum at base state. Bounds: short action-button labels ≥14 px Lexend Medium, reinforced by action context; never body text, links, or long-form copy. Dark-mode transient states still flip the label to Ink (5.10–9.72:1, AA).
+  - `semantic-button-labels-white` (ratified 2026-08-07): White #FFFFFF labels on semantic button base fills sit below the WCAG 2.x AA text floor on Rose, Teal, and Amber. **Measured — WCAG 2.x:** White on Cobalt 4.51:1 (AA), Rose 3.67:1, Teal 2.56:1, Amber 2.56:1; light-mode hover/active improve to 3.20–7.02:1; dark transient states flip to Ink and pass 5.10–9.72:1. **APCA:** White Lc on Cobalt 76.4, Rose 68.4, Teal 54.6, Amber 54.9 (hover/active 64.2–88.9) vs Ink Lc 31.7/39.6/53.0/52.7 — white beats or ties Ink on every fill, and every white pairing clears the APCA spot-text minimum (45) at base state. **Rationale:** The WCAG 2.x formula under-credits light text on saturated mid-tone fills and over-credits dark-on-vivid: the nominally compliant Ink-on-Rose swap (4.82:1) would measure APCA Lc 39.6 — perceptually worse than the white it replaced (68.4). White labels are perceptually equal-or-better everywhere and keep one consistent label rule across the semantic set. **Bounds:** Semantic action buttons only: short labels, ≥14px Lexend Medium (500), reinforced by action context per the colour-alone rule. Covers light- and dark-surface base states (dark transient states still flip to Ink). Never body text, links, or long-form copy.
+<!-- /generated:accessibility -->
 
 ---
 
@@ -665,15 +693,19 @@ v4 (2026-04-19) — universal subject-agnostic prompt for scenes, tight hand-SVG
 Purposeful, subtle, natural — and alive. Every animation answers "what does this help the user understand?" — if the answer is "nothing," remove it. Most interactive motion stays restrained (150–300ms hovers, focus, state changes). Three signature primitives below carry the brand's "alive, growing, compounding" claim — used purposefully, not decoratively.
 
 ### Durations
+<!-- generated:motion-durations -->
 - 100 ms — micro (hover tints, colour shifts)
 - 150 ms — standard (UI transitions, dropdowns)
 - 200 ms — comfortable (modals, slide-overs)
 - 300 ms — deliberate (page transitions, choreographed sequences)
+<!-- /generated:motion-durations -->
 
 ### Easing
+<!-- generated:motion-easing -->
 - `ease-out` (`cubic-bezier(0, 0, 0.2, 1)`) — default for things entering or settling.
 - `ease-in-out` (`cubic-bezier(0.4, 0, 0.2, 1)`) — for back-and-forth movements, continuous animations.
 - Never use linear (feels mechanical) or ease-in alone (feels like something is wrong).
+<!-- /generated:motion-easing -->
 
 ### Signature motion primitives (three)
 Three brand-distinctive motion patterns. Reusable across any Spectrea surface — used at meaningful moments, not decoratively. Each carries one part of the *alive, growing, compounding* brand claim.
@@ -867,32 +899,37 @@ Brand decisions live in the **ratification ledger** (`ratificationLedger` in `br
 ### Radii
 Six tokens. Container `xl` (12 px) is the default; buttons and inputs land on `lg` (8 px); everything else pegs to this scale.
 
+<!-- generated:radii -->
 | Token | Value | Tailwind | Use |
 | --- | --- | --- | --- |
 | sm | 4 px | `rounded` | Tags, badges, inline code |
 | md | 6 px | `rounded-md` | Compact buttons, small controls |
 | lg | 8 px | `rounded-lg` | Buttons, inputs, dropdowns |
-| xl | 12 px | `rounded-xl` | Cards, panels, modals (default) |
+| xl | 12 px | `rounded-xl` | Cards, panels, modals (default container) |
 | 2xl | 16 px | `rounded-2xl` | Hero sections, large feature cards |
 | full | 9999 px | `rounded-full` | Avatars, spectrum tags, toggles |
+<!-- /generated:radii -->
 
 ### Spacing
-4 px base unit. Every spacing value in the app is a multiple of 4. Fine inline elements (badges, compact controls) may use 2 px increments (6 px, 10 px); never arbitrary values like 5 px, 7 px, or 15 px.
+<!-- generated:spacing -->
+4 px base unit. Every spacing value is a multiple of 4 px. Fine inline elements (badges, compact controls) may use 2 px increments (6 px, 10 px); never arbitrary values like 5 px, 7 px, or 15 px.
 
 | Token | Value | Tailwind | Use |
 | --- | --- | --- | --- |
-| 2xs | 4 px | `p-1`  | Tight inline, icon gaps |
-| xs | 8 px | `p-2`  | Input / badge padding, compact gaps |
-| sm | 12 px | `p-3`  | Compact card padding, list-item gaps |
-| md | 16 px | `p-4`  | Default content gap, section padding |
-| lg | 20 px | `p-5`  | Default card padding, modal padding |
-| xl | 24 px | `p-6`  | Section spacing, form-field gaps |
-| 2xl | 32 px | `p-8`  | Major section breaks |
+| 2xs | 4 px | `p-1` | Tight inline, icon gaps |
+| xs | 8 px | `p-2` | Input / badge padding, compact gaps |
+| sm | 12 px | `p-3` | Compact card padding, list-item gaps |
+| md | 16 px | `p-4` | Default content gap, section padding |
+| lg | 20 px | `p-5` | Default card padding, modal padding |
+| xl | 24 px | `p-6` | Section spacing, form-field gaps |
+| 2xl | 32 px | `p-8` | Major section breaks |
 | 3xl | 48 px | `p-12` | Page top padding, hero spacing |
+<!-- /generated:spacing -->
 
 ### Elevation
 Six levels. Z-index increments by 10 to leave room for intermediate layers.
 
+<!-- generated:elevation -->
 | Level | z-index | Shadow | Use |
 | --- | --- | --- | --- |
 | Base | 0 | — | Page content, cards, sections |
@@ -901,6 +938,7 @@ Six levels. Z-index increments by 10 to leave room for intermediate layers.
 | Modal | 30 | `shadow-lg` | Modals, dialogs, slide-overs |
 | Overlay | 40 | `shadow-xl` | Modal backdrops, full-screen overlays |
 | Toast | 50 | `shadow-lg` | Notifications, toasts |
+<!-- /generated:elevation -->
 
 ### Icon library
 Tabler Icons via `react-icons/tb` — outline and filled from one library. 2 px stroke, round caps/joins, 24×24 grid.
@@ -913,4 +951,6 @@ All via Google Fonts:
 
 ---
 
-*`src/data/brand.ts` is the canonical brand data (v2.5.4, 2026-08-08). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
+<!-- generated:version-footer -->
+*`src/data/brand.ts` is the canonical brand data (v2.5.5, 2026-08-08). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
+<!-- /generated:version-footer -->

@@ -4,7 +4,7 @@
 
 // --- Meta / Governance ---
 export const meta = {
-  version: '2.5.4',
+  version: '2.5.5',
   lastUpdated: '2026-08-08',
   sourceOfTruth:
     'brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea\'s roadmap — check it before placing a capability claim on a buyer-facing surface.',
@@ -352,6 +352,36 @@ export const brand = {
       weights: { regular: 400 },
       defaultWeight: 400,
       usage: 'Code snippets, type labels, trace details, data values, confidence scores, technical identifiers.',
+    },
+    // Moved from guide prose into canon 2026-08-08 (decision 2, hybrid guide
+    // generation): sizes and weights are data, so the guide sections that
+    // carry them are generated from here.
+    minSizes:
+      'Body and prose: 16 px preferred, 14 px minimum. Captions and secondary labels: 12 px minimum. 10 px is permitted only for uppercase-tracked overlines, numeric badges, and metadata chips where the letter-spacing and weight restore legibility. Below 10 px is specimen-only (mini-preview UI illustrating another system at small scale) and must never appear in shipped production surfaces.',
+    scale: [
+      { name: 'Display', px: 48, lineHeight: 1.1, weight: 600, use: 'Hero headlines, landing-page titles' },
+      { name: 'H1', px: 36, lineHeight: 1.2, weight: 600, use: 'Page titles' },
+      { name: 'H2', px: 30, lineHeight: 1.25, weight: 600, use: 'Major section headings' },
+      { name: 'H3', px: 24, lineHeight: 1.3, weight: 600, use: 'Sub-section headings, card titles' },
+      { name: 'H4', px: 20, lineHeight: 1.4, weight: 600, use: 'Minor headings, dialog titles' },
+      { name: 'H5', px: 18, lineHeight: 1.4, weight: 600, use: 'Sidebar section titles' },
+      { name: 'Body LG', px: 18, lineHeight: 1.6, weight: 400, use: 'Lead paragraphs' },
+      { name: 'Body', px: 16, lineHeight: 1.6, weight: 400, use: 'Default body text' },
+      { name: 'Body SM', px: 14, lineHeight: 1.5, weight: 400, use: 'Secondary text, table cells, form inputs' },
+      { name: 'Caption', px: 12, lineHeight: 1.5, weight: 500, use: 'Labels, timestamps, helper text' },
+      { name: 'Overline', px: 12, lineHeight: 1.5, weight: 600, use: 'Section labels (uppercase + 0.05em tracking)' },
+      { name: 'Code', px: 14, lineHeight: 1.5, weight: 400, use: 'Inline code, data values, type labels (JetBrains Mono)' },
+      { name: 'Code SM', px: 12, lineHeight: 1.5, weight: 400, use: 'Trace details, technical metadata (JetBrains Mono)' },
+    ],
+    responsive: {
+      note: 'Desktop (1024+) / Tablet (640–1023) / Mobile (<640)',
+      rows: [
+        { name: 'Display', desktop: 48, tablet: 36, mobile: 30 },
+        { name: 'H1', desktop: 36, tablet: 30, mobile: 24 },
+        { name: 'H2', desktop: 30, tablet: 24, mobile: 20 },
+        { name: 'H3', desktop: 24, tablet: 20, mobile: 18 },
+      ],
+      unchanged: 'Body / Body SM: unchanged across breakpoints.',
     },
   },
 
@@ -726,6 +756,7 @@ export const accessibility = {
 export const logo = {
   constraints: {
     dotCount: 10,
+    trailingDots: 2, // visually unconnected — the "about to connect" moment
     dotRadius: 3.9607, // native 64-box units; diameter:stroke stays 7:8
     strokeWidth: 9.0531, // native 64-box units
     container: 'Circle when contained — never a squircle.',
@@ -756,6 +787,7 @@ export const logo = {
   // first 8 covered by the stroke, trailing 2 visible.
   markGeometry: {
     viewBox: 64,
+    continuity: 'G1', // tangent-continuous at both cubic joins
     frame: { ML: 11, MT: 3, q: '58/714' },
     segs: [
       [[44.965, 14.19], [39.3, 3.346], [16.635, 4.294], [16.532, 18.686]],
@@ -829,6 +861,7 @@ export const ratificationLedger = [
   { date: '2026-08-07', decision: 'One canonical hero-open ratified (D28 part 1): voice.heroOpen — "open on the outcome, written as a reveal", kept simple and adaptable per Darren\'s direction. Fuses the ratified outcome-first structure with the character\'s reveal register; the former five competing prescriptions become steps of one gesture (reveal = register of the open, proof = the grounding, entry-job outcome = the on-ramp specialisation, problem = optional setup that must land on the outcome in the same breath). Supersedes voice.outcomeFirst (renamed).' },
   { date: '2026-08-08', decision: 'Marketing exemplar rewritten under the heroOpen rule (D27): the canonical Marketing/Landing Page example — the few-shot AI tools imitate — now opens on the outcome written as a reveal ("See everything your organization knows in one connected view. Spectrea builds a living graph from your documents — the more you use it, the sharper it gets."), replacing the problem-first open ("Stop losing knowledge to silos…"). Its why-note stops teaching problem-first; the compounding claim keeps its mechanism tie; density at the two-privileged-words cap.' },
   { date: '2026-08-08', decision: 'One register taxonomy (D28 part 2): toneSpectrum retired — it duplicated four toneExamples entries verbatim under colliding labels; its tone labels moved into toneExamples (two authored to complete the set: Feature Announcement = Concrete + Confident, Beginner Documentation = Plain + Welcoming). voice.registerRule declares the two remaining structures\' jobs: toneExamples = register taxonomy (how a content class sounds), surfacePatterns = surface spec (what a product surface says; inherits its register from the nearest content class).' },
+  { date: '2026-08-08', decision: 'Hybrid guide generation, wave 1 (decision 2 programme item): brand-guide.md gains generator-owned marker blocks — version stamps, tone-register table, logo construction + clear space, accent states, washes (light/dark), lifts, type system/minimum sizes/type scale/responsive (scale data moved INTO brand.typography), accessibility block, motion durations/easings, radii/spacing/elevation — rewritten from canon by scripts/generate-guide.mjs (npm run generate:guide, wired into generate:all before the PDF). Prose outside markers stays hand-written. Deferred to wave 2 (recorded): §5 neutral/accent/Tailwind/dark-role tables (need a canon colour-model expansion: OKLCH ladder, CSS vars, meanings), §6 gradient family, §11 component specs, §14 CSS-token block.' },
 ] as const
 
 // --- Executive Voice ---
