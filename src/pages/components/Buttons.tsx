@@ -49,7 +49,7 @@ export default function Buttons() {
 
   /* Explicit hover/active colors for filled buttons */
   const hc = {
-    brand:  { light: { base: '#4271DF', hover: '#3A63C4', active: '#3255A7' }, dark: { base: '#4271DF', hover: '#5C87E5', active: '#7699EB' } },
+    brand:  { light: { base: '#4271DF', hover: '#3A63C4', active: '#3255A7' }, dark: { base: '#4271DF', hover: '#6E93EC', active: '#8FACF0' } },
     rose:   { light: { base: '#F24260', hover: '#D63B55', active: '#BA3249' }, dark: { base: '#F24260', hover: '#F56579', active: '#F78892' } },
     teal:   { light: { base: '#00B6A0', hover: '#009E8A', active: '#008775' }, dark: { base: '#00B6A0', hover: '#20C8B2', active: '#40D4C3' } },
     amber:  { light: { base: '#E19000', hover: '#C58200', active: '#A86E00' }, dark: { base: '#E19000', hover: '#ECA41E', active: '#F2B63C' } },
@@ -58,8 +58,8 @@ export default function Buttons() {
 
   /* Hover/active handlers for demo buttons.
      Dark mode: fills lighten and the label flips to Ink while lightened —
-     white text fails AA on every lightened fill (1.82–3.47:1); Ink passes
-     on all of them (5.10–9.72:1). See brandTokens.buttonStates.dark.rule. */
+     white text fails AA on every lightened fill (1.82–2.99:1); Ink passes
+     on all of them (5.92–9.72:1). See brandTokens.buttonStates.dark.rule. */
   const transientText = dark ? '#18181C' : '#FFFFFF'
   const filledHandlers = (color: keyof typeof hc) => ({
     style: { backgroundColor: hc[color][mode].base, color: '#FFFFFF' } as React.CSSProperties,
@@ -208,7 +208,7 @@ export default function Buttons() {
             ))}
           </div>
           {[
-            { variant: 'Primary', lightBg: 'Cobalt', darkBg: 'Cobalt', text: 'White', hover: '#3A63C4 / #5C87E5', usage: 'Main CTA. One per section.' },
+            { variant: 'Primary', lightBg: 'Cobalt', darkBg: 'Cobalt', text: 'White', hover: '#3A63C4 / #6E93EC', usage: 'Main CTA. One per section.' },
             { variant: 'Secondary', lightBg: 'Stone 100', darkBg: 'Graphite tint', text: 'Stone 700 / Cloud', hover: 'Stone 200 / #3A3A40', usage: 'Supporting actions.' },
             { variant: 'Ghost', lightBg: 'Transparent', darkBg: 'Transparent', text: 'Slate / Stone 300', hover: 'Stone 50 / Graphite tint', usage: 'Tertiary actions. 2px border.' },
             { variant: 'Destructive', lightBg: 'Rose', darkBg: 'Rose', text: 'White', hover: '#D63B55 / #F56579', usage: 'Irreversible actions.' },
@@ -288,7 +288,7 @@ export default function Buttons() {
         </div>
         <div className="mt-3 bg-cloud rounded-lg px-4 py-3 border border-stone-200">
           <p className="text-xs text-iron">
-            <strong>Contrast note — ratified exception <code className="font-mono bg-white px-1 rounded">semantic-button-labels-white</code> (2026-08-07):</strong> White text at base state does not meet WCAG 2.x AA (4.5:1) on Teal (2.56:1), Amber (2.56:1), or Rose (3.67:1) — only Cobalt passes (4.51:1). The grant rests on the perceptual adjudicator in the measurement doctrine: under APCA-W3, white beats or ties Ink on every fill (Lc 76.4 Cobalt / 68.4 Rose / 54.6 Teal / 54.9 Amber vs Ink 31.7/39.6/53.0/52.7) — the nominally compliant Ink-on-Rose swap would read <em>worse</em> — and every white pairing clears the APCA spot-text minimum. Bounds: short action-button labels ≥14px Lexend Medium, reinforced by action context; never body text. Interaction states: light mode darkens, so white-text contrast rises (Cobalt and Rose states pass AA outright, 4.55–7.02:1; Teal and Amber reach APCA 64–76); dark mode lightens with the label flipped to Ink — all dark hover/active pairs pass AA outright (5.10–9.72:1).
+            <strong>Contrast note — ratified exception <code className="font-mono bg-white px-1 rounded">semantic-button-labels-white</code> (2026-08-07):</strong> White text at base state does not meet WCAG 2.x AA (4.5:1) on Teal (2.56:1), Amber (2.56:1), or Rose (3.67:1) — only Cobalt passes (4.51:1). The grant rests on the perceptual adjudicator in the measurement doctrine: under APCA-W3, white beats or ties Ink on every fill (Lc 76.4 Cobalt / 68.4 Rose / 54.6 Teal / 54.9 Amber vs Ink 31.7/39.6/53.0/52.7) — the nominally compliant Ink-on-Rose swap would read <em>worse</em> — and every white pairing clears the APCA spot-text minimum. Bounds: short action-button labels ≥14px Lexend Medium, reinforced by action context; never body text. Interaction states: light mode darkens, so white-text contrast rises (Cobalt and Rose states pass AA outright, 4.55–7.02:1; Teal and Amber reach APCA 64–76); dark mode lightens with the label flipped to Ink — all dark hover/active pairs pass AA outright (5.92–9.72:1), and since the 2026-08-08 Cobalt re-lightening every dark transient state also clears the APCA spot-text line.
           </p>
         </div>
       </Section>

@@ -4,7 +4,7 @@
 
 // --- Meta / Governance ---
 export const meta = {
-  version: '2.5.7',
+  version: '2.5.8',
   lastUpdated: '2026-08-08',
   sourceOfTruth:
     'brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea\'s roadmap — check it before placing a capability claim on a buyer-facing surface.',
@@ -632,7 +632,7 @@ export const brandTokens = {
   },
   // Both modes canonical (dark resolved 2026-07-04). Dark keeps the deliberate
   // lighten-on-dark idiom; white text cannot survive lightening (all lightened
-  // fills sit at 1.82–3.47:1 with white), so the transient-state rule flips
+  // fills sit at 1.82–2.99:1 with white), so the transient-state rule flips
   // the label to Ink — every hover/active pair below is WCAG-verified.
   buttonStates: {
     light: {
@@ -643,8 +643,8 @@ export const brandTokens = {
       secondary: { bg: '#F4F4F1', text: '#18181C' },
     },
     dark: {
-      rule: 'On dark surfaces the button lifts toward the light: hover and active fills lighten, and the label flips from White to Ink #18181C while the fill is lightened. Base states keep white text. Ink-on-lightened-fill contrast, verified 2026-07-04: cobalt hover 5.10 / active 6.34, rose hover 5.92 / active 7.50, teal hover 8.40 / active 9.63, amber hover 8.34 / active 9.72 — all ≥ 4.5:1 (AA, normal text).',
-      cobalt: { base: '#4271DF', hover: '#5C87E5', active: '#7699EB' },
+      rule: 'On dark surfaces the button lifts toward the light: hover and active fills lighten, and the label flips from White to Ink #18181C while the fill is lightened. Base states keep white text. Ink-on-lightened-fill contrast, verified 2026-07-04 (cobalt re-lightened 2026-08-08, D40 — the old hover #5C87E5 read APCA Lc 40.5, below the 45 spot line; the new ladder puts every dark transient state at APCA parity): cobalt hover 5.94 / active 7.86, rose hover 5.92 / active 7.50, teal hover 8.40 / active 9.63, amber hover 8.34 / active 9.72 — all ≥ 4.5:1 (AA, normal text).',
+      cobalt: { base: '#4271DF', hover: '#6E93EC', active: '#8FACF0' },
       rose: { base: '#F24260', hover: '#F56579', active: '#F78892' },
       teal: { base: '#00B6A0', hover: '#20C8B2', active: '#40D4C3' },
       amber: { base: '#E19000', hover: '#ECA41E', active: '#F2B63C' },
@@ -730,7 +730,7 @@ export const accessibility = {
         ratified: '2026-08-07',
         exception: 'White #FFFFFF labels on semantic button base fills sit below the WCAG 2.x AA text floor on Rose, Teal, and Amber.',
         measured: {
-          wcag2x: 'White on Cobalt 4.51:1 (AA), Rose 3.67:1, Teal 2.56:1, Amber 2.56:1; light-mode hover/active improve to 3.20–7.02:1; dark transient states flip to Ink and pass 5.10–9.72:1.',
+          wcag2x: 'White on Cobalt 4.51:1 (AA), Rose 3.67:1, Teal 2.56:1, Amber 2.56:1; light-mode hover/active improve to 3.20–7.02:1; dark transient states flip to Ink and pass 5.92–9.72:1.',
           apca: 'White Lc on Cobalt 76.4, Rose 68.4, Teal 54.6, Amber 54.9 (hover/active 64.2–88.9) vs Ink Lc 31.7/39.6/53.0/52.7 — white beats or ties Ink on every fill, and every white pairing clears the APCA spot-text minimum (45) at base state.',
         },
         rationale: 'The WCAG 2.x formula under-credits light text on saturated mid-tone fills and over-credits dark-on-vivid: the nominally compliant Ink-on-Rose swap (4.82:1) would measure APCA Lc 39.6 — perceptually worse than the white it replaced (68.4). White labels are perceptually equal-or-better everywhere and keep one consistent label rule across the semantic set.',
@@ -874,6 +874,7 @@ export const ratificationLedger = [
   { date: '2026-08-08', decision: 'Hybrid guide generation, wave 1 (decision 2 programme item): brand-guide.md gains generator-owned marker blocks — version stamps, tone-register table, logo construction + clear space, accent states, washes (light/dark), lifts, type system/minimum sizes/type scale/responsive (scale data moved INTO brand.typography), accessibility block, motion durations/easings, radii/spacing/elevation — rewritten from canon by scripts/generate-guide.mjs (npm run generate:guide, wired into generate:all before the PDF). Prose outside markers stays hand-written. Deferred to wave 2 (recorded): §5 neutral/accent/Tailwind/dark-role tables (need a canon colour-model expansion: OKLCH ladder, CSS vars, meanings), §6 gradient family, §11 component specs, §14 CSS-token block.' },
   { date: '2026-08-08', decision: 'Render-everything SPA build (decision 7 programme item): every previously agent-only canon export now has a human-visible surface. New Trust & Disclosures page (/communications/trust) renders trustCopy verbatim with the counsel note. Voice & Tone gains Surface Patterns (all 7) and Executive Voice. Naming gains Company & Product and the Origin stance. Positioning gains the Full-Shape Claim, the compounding usageGuardrail (also on Copy & Taglines), and the differentiatorGuardrail. Copy & Taglines renders voice.heroOpen verbatim. Primary Palette gains Contrast Policy & Measurement (accessibility.measurement + exception registry rendered from data); the two hand-written "never white on Teal/Amber" don\'ts now carry the ratified button-label carve-out. Governance renders meta.sourceOfTruth, renderDoctrine, version, and the full ratification ledger.' },
   { date: '2026-08-08', decision: 'D40/D35 accessibility cluster, wave 1: (1) Tooltip gains a full keyboard path — focusable button affordance at the 24px target size, opens on focus, Escape dismisses, aria-describedby announcement. (2) Palette-tool sliders carry accessible names. (3) Text floors enforced app-wide (~90 sites bumped to the 12px caption floor; the 10px canon carve-outs — uppercase overlines, numeric badges, metadata chips — and specimen mini-previews untouched; four legal 11px uppercase overlines also normalized to 12px for consistency with the app-wide overline idiom). (4) Pewter stepped to Slate wherever it carried meaning (~50 sites), including the Ghost button light-mode label (was Pewter 2.85:1, an interactive label) and the Iconography page, which taught Pewter as the secondary icon tier against pewterMatrix — the taught tier is now Slate, with Pewter reserved for disabled/decorative glyphs. (5) brandTokens.accentText ratified (Darren, Option A): accent-coloured text on light surfaces uses Teal text #007D6E (new; visually near-identical to the retired #008775, which measured 4.04–4.45:1 as text) and Rose text #BA3249 (existing tone, now named); ~30 text sites swept. Button state fills (hover/active) are unchanged — they are fills, not text. Remaining D40 item, deliberately open: the dark-mode Ink-on-lightened-Cobalt hover label (APCA Lc 40.5 despite WCAG 4.5:1+) awaits its own adjudication.' },
+  { date: '2026-08-08', decision: 'Dark Cobalt hover re-lightened (D40 closing item, Darren-ratified Option A): the dark transient ladder for Cobalt was the only state below the APCA spot-text line (old hover #5C87E5: WCAG 5.10:1 but APCA Lc 40.5 vs the 45 minimum; every other accent ≥46.7) — the same 2.x formula artefact as the button-label grant, opposite direction (2.x over-credits dark-on-vivid-blue). New ladder lightens one further notch along the existing lift-toward-the-light direction: hover #6E93EC (5.94:1, Lc 46.3 — parity with Rose), active #8FACF0 (7.86:1, Lc 58.1). Base state and all other accents unchanged; the one-rule dark idiom (Ink label on lightened fill) holds; every dark transient state now clears both metrics. Registry entry measured range updated 5.10–9.72 → 5.92–9.72 (consequence of the canon change, not a re-grant). White-label-on-hover alternative rejected (APCA 67.5 but WCAG 3.47 — would need an exception and break the idiom). This closes D40.' },
 ] as const
 
 // --- Executive Voice ---

@@ -7,7 +7,7 @@ it is regenerated from src/data/brand.ts.
 
 ---
 
-## Spectrea brand rules (generated 2026-08-08, brand.ts v2.5.7)
+## Spectrea brand rules (generated 2026-08-08, brand.ts v2.5.8)
 
 - Product: **Spectrea** (/spek-TREE-uh/). Tagline: "We connect the dots.". Category: **Composable intelligence platform**. The category noun is exactly "Composable intelligence platform" (lowercase in running prose) — never a substitute: "composable knowledge platform", "knowledge platform", "knowledge management", "AI assistant", "automation tool".
 - Company vs product: Matchwise Pte. Ltd. is the legal entity — it appears only where a legal entity is required: contracts, invoices, terms, privacy notices ("Spectrea is a product of Matchwise Pte. Ltd."). Spectrea is the product and brand name on every public surface. Never brand a surface "Matchwise"; never combine the two into one name.
