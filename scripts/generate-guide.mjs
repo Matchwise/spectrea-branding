@@ -48,7 +48,7 @@ async function importTsModule(tsPath) {
 }
 
 const canon = await importTsModule(join(root, 'src', 'data', 'brand.ts'))
-const { meta, brand, voice, brandTokens, accessibility, logo, selectedPalette } = canon
+const { meta, brand, voice, brandTokens, accessibility, logo, selectedPalette, colorSystem } = canon
 
 /** Canonical hex for a named palette colour. */
 const hexOf = name => {
@@ -62,6 +62,26 @@ const nameOfHex = hex => {
   const c = selectedPalette.colors.find(x => x.hex === hex)
   if (!c) throw new Error(`palette colour with hex "${hex}" not found in canon`)
   return c.name
+}
+
+/* ---------------------------------------------------------------- */
+/* Colour math — OKLCH lightness and WCAG contrast are COMPUTED from */
+/* canon hexes (decision 30): stored numbers could drift from the    */
+/* hexes; computed ones cannot.                                      */
+/* ---------------------------------------------------------------- */
+
+const hexRgb = hex => [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16))
+const srgbLin = c => { const v = c / 255; return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4 }
+const relLuminance = hex => { const [r, g, b] = hexRgb(hex).map(srgbLin); return 0.2126 * r + 0.7152 * g + 0.0722 * b }
+const contrast = (a, b) => { const [hi, lo] = [relLuminance(a), relLuminance(b)].sort((x, y) => y - x); return (hi + 0.05) / (lo + 0.05) }
+// r >= 10 shows one decimal (17.4:1); below, two (5.05:1); exact 1 shows 1:1.
+const ratioStr = r => `${r < 1.005 ? '1' : r >= 10 ? r.toFixed(1) : r.toFixed(2)}:1`
+const oklchL = hex => {
+  const [r, g, b] = hexRgb(hex).map(srgbLin)
+  const l = 0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b
+  const m = 0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b
+  const s = 0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b
+  return 0.2104542553 * Math.cbrt(l) + 0.7936177850 * Math.cbrt(m) - 0.0040720468 * Math.cbrt(s)
 }
 
 /* ---------------------------------------------------------------- */
@@ -187,7 +207,12 @@ const blocks = {
     return [
       `The floor is **${a.floor}** on every shipped surface.`,
       `- ${a.rules[0]}`,
-      `- Contrast ratio minimum: ${a.contrast.normalText} for normal text, ${a.contrast.largeTextAndUI} for large/UI. ${noDot(a.contrast.tokens)} — see the Pewter allow/deny matrix in §5.`,
+      `- Contrast ratio minimum: ${a.contrast.normalText} for normal text, ${a.contrast.largeTextAndUI} for large/UI. On Canvas (computed): ${colorSystem.textHierarchy
+        .map(t => {
+          const r = contrast(hexOf(t.token), hexOf('Canvas'))
+          return `${t.token} ${ratioStr(r)}${r >= 7 ? ' (AAA)' : r >= 4.5 ? ' (AA)' : ' (supplementary only)'}`
+        })
+        .join(' · ')} — see the Pewter allow/deny matrix in §5.`,
       `- WCAG 2.2 specifics: ${a.wcag22Criteria.map(noDot).join(' · ')}.`,
       `- ${a.rules[1]}`,
       `- ${a.rules[2]}`,
@@ -321,6 +346,122 @@ const blocks = {
       '',
       '**Never for:**',
       ...g.neverFor.map(s => `- ${s}`),
+    ].join('\n')
+  },
+
+  // ── Colour system (§5) — colorSystem, canonized 2026-08-09 ──────
+
+  'neutral-ladder': () => {
+    const n = colorSystem.neutrals
+    const canvas = hexOf('Canvas')
+    const rows = n.tokens
+      .map(t => {
+        const hex = hexOf(t.name)
+        return `| ${t.roleLabel} | ${t.name} | \`${hex}\` | ${oklchL(hex).toFixed(3)} | ${ratioStr(contrast(hex, canvas))} | \`--color-${t.name.toLowerCase()}\` |`
+      })
+      .join('\n')
+    return `${n.intro}\n\n| Role | Name | Hex | OKLCH L | Contrast on Canvas | CSS var |\n|---|---|---|---|---|---|\n${rows}\n\n${n.ladderNote}`
+  },
+
+  'accent-meanings': () => {
+    const rows = colorSystem.accents
+      .map(a => `| ${a.roleLabel} | ${a.name} | \`${hexOf(a.name)}\` | ${a.meaning} |`)
+      .join('\n')
+    return `| Role | Name | Hex | Meaning |\n|---|---|---|---|\n${rows}`
+  },
+
+  'text-hierarchy': () => {
+    const canvas = hexOf('Canvas')
+    // Conformance label derived from the computed ratio (AAA ≥ 7, AA ≥ 4.5).
+    const label = r => (r >= 7 ? ' (AAA)' : r >= 4.5 ? ' (AA)' : '')
+    const rows = colorSystem.textHierarchy
+      .map(t => {
+        const hex = hexOf(t.token)
+        const r = contrast(hex, canvas)
+        return `| ${t.tier} | ${t.token} \`${hex}\` | ${ratioStr(r)}${label(r)} | ${t.use} |`
+      })
+      .join('\n')
+    const m = accessibility.pewterMatrix
+    return [
+      `The dark-on-light text tiers map to the Warm Blend's readable tokens:`,
+      '',
+      `| Tier | Token | Contrast | Use for |`,
+      `|---|---|---|---|`,
+      rows,
+      '',
+      `**Pewter is a whisper, not a readable tier.** ${m.principle} As a matrix — **allowed:** ${m.allowed.join(' · ')}. **Denied:** ${m.denied}`,
+    ].join('\n')
+  },
+
+  'tailwind-mapping': () => {
+    const t = colorSystem.tailwindMapping
+    const rows = t.rows
+      .map(r => `| \`${r.tailwind}\` | ${r.token === 'keep as-is' ? '**keep as-is**' : `\`${r.token}\``} | ${r.note} |`)
+      .join('\n')
+    return `${t.note}\n\n| Tailwind stone class | Brand token | Notes |\n|---|---|---|\n${rows}`
+  },
+
+  'colour-ratio': () =>
+    colorSystem.ratio.light.map(r => `- **${r.pct}%** ${r.token} (${r.what})`).join('\n'),
+
+  'colour-tiers': () =>
+    [
+      'Every colour in Spectrea lives in one of three tiers:',
+      '',
+      ...colorSystem.tiers.map(t => `${t.tier}. **Tier ${t.tier} — ${t.name} (${t.carrier}).** ${t.rule}`),
+    ].join('\n'),
+
+  'light-default': () => colorSystem.lightDefault,
+
+  'dark-roles': () => {
+    const d = colorSystem.darkRoles
+    const dm = selectedPalette.darkMode
+    const lightCell = name =>
+      selectedPalette.colors.some(c => c.name === name) ? `${name} \`${hexOf(name)}\`` : `\`${name}\``
+    const rows = d.rows
+      .map(r => `| ${r.role} | ${lightCell(r.light)} | ${r.dark} \`${dm[r.darkModeKey]}\`${r.isNew ? ' *(new)*' : ''} | \`${r.cssVar}\` |`)
+      .join('\n')
+    // The whyTwoTokens rationale carries no stored figures; the on-Ink
+    // ratios are computed from the hexes here.
+    const ink = hexOf('Ink')
+    const figures = `Computed on Ink: Pewter ${ratioStr(contrast(hexOf('Pewter'), ink))}, Mist ${ratioStr(contrast(dm.muted, ink))}.`
+    return `${d.intro}\n\n| Role | Light | Dark | CSS var |\n|---|---|---|---|\n${rows}\n\n**Why two new tokens and not more.** ${d.whyTwoTokens} ${figures}`
+  },
+
+  'dark-ratio': () => colorSystem.ratio.darkRule,
+
+  'dark-accents': () => {
+    const ink = hexOf('Ink')
+    const rows = colorSystem.accents
+      .map(a => {
+        const hex = hexOf(a.name)
+        const r = contrast(hex, ink)
+        // Conformance note derived from the computed ratio; a sub-AA accent
+        // points at its canonical lift (matched by name).
+        let note
+        if (r >= 4.5) note = 'AA normal text.'
+        else {
+          const lift = brandTokens.lifts.find(l => l.name.startsWith(a.name))
+          note = `UI only (passes 3:1 for non-text UI).${lift ? ` **For coloured text on Ink use ${lift.name} \`${lift.hex}\`.**` : ''}`
+        }
+        return `| ${a.name} \`${hex}\` | ${ratioStr(r)} | ${note} |`
+      })
+      .join('\n')
+    return `${colorSystem.accentsOnDark}\n\n| Accent | On Ink contrast | Notes |\n|---|---|---|\n${rows}`
+  },
+
+  // §14 — the real generated token sheet, inlined (decision 30): the shown
+  // CSS, the downloadable /spectrea-tokens.css, and the Downloads page's
+  // display are one artifact.
+  'css-tokens': () => {
+    const tokensPath = join(root, 'public', 'spectrea-tokens.css')
+    const css = readFileSync(tokensPath, 'utf8').trimEnd()
+    return [
+      'The complete generated token sheet — the same file served at [`/spectrea-tokens.css`](/spectrea-tokens.css) and on the Downloads page:',
+      '',
+      '```css',
+      css,
+      '```',
     ].join('\n')
   },
 

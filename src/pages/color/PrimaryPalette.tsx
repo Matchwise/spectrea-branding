@@ -1,11 +1,50 @@
 import { useState } from 'react'
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
-import { accessibility, brandTokens } from '../../data/brand'
+import { accessibility, brandTokens, colorSystem, selectedPalette } from '../../data/brand'
 
 function srgbToLinear(c: number) {
   return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4)
 }
+
+// Canon lookups + computed contrast (decision 30): dark-role names, ratio
+// percentages, and accent-on-Ink figures render from colorSystem /
+// selectedPalette, with WCAG ratios computed from the hexes.
+const HEX = (name: string) => {
+  const c = selectedPalette.colors.find(x => x.name === name)
+  if (!c) throw new Error(`palette colour missing from canon: ${name}`)
+  return c.hex
+}
+const DARK = selectedPalette.darkMode
+const luminance = (hex: string) => {
+  const [r, g, b] = [1, 3, 5].map(i => srgbToLinear(parseInt(hex.slice(i, i + 2), 16) / 255))
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b
+}
+const wcagContrast = (a: string, b: string) => {
+  const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x)
+  return (hi + 0.05) / (lo + 0.05)
+}
+const ratioStr = (r: number) => `${r >= 10 ? r.toFixed(1) : r.toFixed(2)}:1`
+// Role chips render colorSystem roleLabels verbatim — no private page copies.
+const ROLE = (name: string) => {
+  const e = [...colorSystem.accents, ...colorSystem.neutrals.tokens].find(x => x.name === name)
+  if (!e) throw new Error(`colorSystem role missing: ${name}`)
+  return e.roleLabel
+}
+const DARK_ROLE = (darkName: string) => {
+  const r = colorSystem.darkRoles.rows.find(x => x.dark === darkName)
+  if (!r) throw new Error(`colorSystem dark role missing: ${darkName}`)
+  return r.role
+}
+// Contrast-on-Canvas figure with its conformance label, computed from the
+// hexes (AAA ≥ 7, AA ≥ 4.5).
+const CANVAS_RATIO = (name: string) => {
+  const r = wcagContrast(HEX(name), HEX('Canvas'))
+  return `${ratioStr(r)}${r >= 7 ? ' (AAA)' : r >= 4.5 ? ' (AA)' : ''}`
+}
+// Tailwind stone-200 — the sanctioned light border family (a Tailwind
+// constant, not a palette token).
+const STONE_200 = '#E7E5E4'
 
 function hexToHSL(hex: string) {
   let r = parseInt(hex.slice(1, 3), 16) / 255
@@ -102,7 +141,7 @@ export default function PrimaryPalette() {
           </Tooltip>
         </h2>
         <ColorCard
-          name="Cobalt" hex="#4271DF" role="hero"
+          name="Cobalt" hex="#4271DF" role={ROLE('Cobalt')}
           usage="Primary buttons, links, focused inputs, hover accents. Reactive and temporary — appears when the user interacts, settles when done. Persistent selections use Ink instead."
         />
         <div className="mt-3 bg-brand/5 rounded-lg px-4 py-3 border border-brand/10">
@@ -121,17 +160,17 @@ export default function PrimaryPalette() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <ColorCard
-            name="Teal" hex="#00B6A0" role="spectrum"
+            name="Teal" hex="#00B6A0" role={ROLE('Teal')}
             usage="Growth, success, positive change. Use for: success states, positive trends (+12%), completion indicators, healthy active states, 'connected' status."
             textColor="#18181C"
           />
           <ColorCard
-            name="Amber" hex="#E19000" role="spectrum"
+            name="Amber" hex="#E19000" role={ROLE('Amber')}
             usage="Attention, warmth, highlights. Use for: warnings, pending states, starred/bookmarked items, confidence scores, insight badges."
             textColor="#18181C"
           />
           <ColorCard
-            name="Rose" hex="#F24260" role="spectrum"
+            name="Rose" hex="#F24260" role={ROLE('Rose')}
             usage="Urgency, energy, importance. Use for: errors, destructive actions (delete, remove), critical alerts, high-priority indicators, notification badges."
           />
         </div>
@@ -151,12 +190,12 @@ export default function PrimaryPalette() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <ColorCard
-            name="Canvas" hex="#FDFDFB" role="background"
+            name="Canvas" hex="#FDFDFB" role={ROLE('Canvas')}
             usage="Page background. Warm-tinted white. The default canvas — inhabited, not sterile."
             textColor="#18181C"
           />
           <ColorCard
-            name="Cloud" hex="#F4F4F1" role="surface"
+            name="Cloud" hex="#F4F4F1" role={ROLE('Cloud')}
             usage="Elevated surfaces: cards, sidebars, dropdowns, table headers, modal backgrounds. Creates subtle depth without color."
             textColor="#18181C"
           />
@@ -176,33 +215,33 @@ export default function PrimaryPalette() {
           </Tooltip>
         </h2>
         <p className="text-sm text-iron mb-4 leading-relaxed">
-          Four text tiers on Canvas, from loud to whisper. Slate and Iron fill the perceptual gap between Pewter and Graphite — the old three-token palette jumped straight from 2.85:1 whisper to 15.6:1 dark-surface with nothing in between.
+          Four text tiers on Canvas, from loud to whisper. Slate and Iron fill the perceptual gap between Pewter and Graphite — the old three-token palette jumped straight from {ratioStr(wcagContrast(HEX('Pewter'), HEX('Canvas')))} whisper to {ratioStr(wcagContrast(HEX('Graphite'), HEX('Canvas')))} dark-surface with nothing in between.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <ColorCard
-            name="Ink" hex="#18181C" role="primary text"
-            usage="Headings, body copy, primary labels. 17.4:1 on Canvas. The default text color."
+            name="Ink" hex="#18181C" role={ROLE('Ink')}
+            usage={`Headings, body copy, primary labels. ${CANVAS_RATIO('Ink')} on Canvas. The default text color.`}
             textColor="#F4F4F1"
           />
           <ColorCard
-            name="Iron" hex="#46464B" role="emphasized body"
-            usage="Table headers, field labels, key body sentences, Dos/Don'ts copy. 9.21:1 (AAA) on Canvas — the load-bearing body token across the app."
+            name="Iron" hex="#46464B" role={ROLE('Iron')}
+            usage={`Table headers, field labels, key body sentences, Dos/Don'ts copy. ${CANVAS_RATIO('Iron')} on Canvas — the load-bearing body token across the app.`}
             textColor="#F4F4F1"
           />
           <ColorCard
-            name="Slate" hex="#6D6D72" role="body secondary"
-            usage="Descriptions, helper text, card sub-labels, captions, small-print metadata. 5.05:1 (AA) on Canvas."
+            name="Slate" hex="#6D6D72" role={ROLE('Slate')}
+            usage={`Descriptions, helper text, card sub-labels, captions, small-print metadata. ${CANVAS_RATIO('Slate')} on Canvas.`}
             textColor="#F4F4F1"
           />
           <ColorCard
-            name="Pewter" hex="#97979E" role="whisper muted"
-            usage="Overlines, timestamps, meta chips, placeholder text, decorative labels. 2.85:1 — below WCAG AA large-text. Use only where the adjacent context already makes the content obvious; any text that must be read on its own steps up to Slate or Iron."
+            name="Pewter" hex="#97979E" role={ROLE('Pewter')}
+            usage={`Overlines, timestamps, meta chips, placeholder text, decorative labels. ${CANVAS_RATIO('Pewter')} — below WCAG AA large-text. Use only where the adjacent context already makes the content obvious; any text that must be read on its own steps up to Slate or Iron.`}
             textColor="#18181C"
           />
         </div>
         <div className="mt-4">
           <ColorCard
-            name="Graphite" hex="#212226" role="dark-UI surface"
+            name="Graphite" hex="#212226" role={ROLE('Graphite')}
             usage="Structural Ink-family surface — sidebar, tooltip, footer chrome on light. Doubles as the elevated surface role on dark mode (equivalent to Cloud on light). Not a text token."
             textColor="#F4F4F1"
           />
@@ -217,23 +256,21 @@ export default function PrimaryPalette() {
           </Tooltip>
         </h2>
         <p className="text-sm text-iron mb-4 leading-relaxed">
-          Light is Spectrea's default. Dark is a parallel mode — the role mapping inverts, existing tokens carry more weight, and two new tokens (<strong>Mist</strong>, <strong>Fog</strong>) complete the hierarchy. Accents carry over unchanged; Teal, Amber and Rose pass WCAG AA on Ink, while Cobalt (3.93:1) is large-text/UI only — use Cobalt Lift for body text.
+          {colorSystem.lightDefault} {colorSystem.darkRoles.intro} {colorSystem.accentsOnDark}
         </p>
 
-        {/* Role inversion table */}
+        {/* Role inversion table — colorSystem.darkRoles + darkMode hexes */}
         <div className="border border-stone-200 rounded-xl overflow-hidden mb-5">
           <div className="grid grid-cols-12 px-4 py-2.5 bg-cloud border-b border-stone-200 text-xs font-semibold uppercase tracking-wider text-slate">
             <span className="col-span-3">Role</span>
             <span className="col-span-4">Light</span>
             <span className="col-span-5">Dark</span>
           </div>
-          {[
-            { role: 'Page background', light: { name: 'Canvas', hex: '#FDFDFB', text: '#18181C' }, dark: { name: 'Ink', hex: '#18181C', text: '#F4F4F1' } },
-            { role: 'Elevated surface', light: { name: 'Cloud', hex: '#F4F4F1', text: '#18181C' }, dark: { name: 'Graphite', hex: '#212226', text: '#F4F4F1' } },
-            { role: 'Primary text', light: { name: 'Ink', hex: '#18181C', text: '#F4F4F1' }, dark: { name: 'Cloud', hex: '#F4F4F1', text: '#18181C' } },
-            { role: 'Muted text', light: { name: 'Pewter', hex: '#97979E', text: '#18181C' }, dark: { name: 'Mist (new)', hex: '#B0B0B6', text: '#18181C' } },
-            { role: 'Border / divider', light: { name: 'stone-200', hex: '#E7E5E4', text: '#18181C' }, dark: { name: 'Fog (new)', hex: '#2E2F35', text: '#F4F4F1' } },
-          ].map((row, i, arr) => (
+          {colorSystem.darkRoles.rows.map(r => ({
+            role: r.role,
+            light: { name: r.light, hex: r.light === 'stone-200' ? STONE_200 : HEX(r.light) },
+            dark: { name: 'isNew' in r && r.isNew ? `${r.dark} (new)` : r.dark, hex: DARK[r.darkModeKey] },
+          })).map((row, i, arr) => (
             <div key={row.role} className="grid grid-cols-12 items-center px-4 py-2.5" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
               <span className="col-span-3 text-xs font-medium text-iron">{row.role}</span>
               <div className="col-span-4 flex items-center gap-2">
@@ -253,22 +290,22 @@ export default function PrimaryPalette() {
         {/* Dark surface swatches */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <ColorCard
-            name="Ink (dark canvas)" hex="#18181C" role="dark-bg"
+            name="Ink (dark canvas)" hex="#18181C" role={DARK_ROLE('Ink')}
             usage="Page background in dark mode. Inverts the Canvas role — the 60% surface."
             textColor="#F4F4F1"
           />
           <ColorCard
-            name="Graphite (dark elevated)" hex="#212226" role="dark-surface"
+            name="Graphite (dark elevated)" hex="#212226" role={DARK_ROLE('Graphite')}
             usage="Cards, sidebars, elevated panels on dark. Inverts the Cloud role."
             textColor="#F4F4F1"
           />
           <ColorCard
-            name="Mist (dark muted)" hex="#B0B0B6" role="dark-muted"
-            usage="Muted / secondary text on dark. Brighter than Pewter to keep hierarchy above body text. ~8.5:1 on Ink."
+            name="Mist (dark muted)" hex={DARK.muted} role={DARK_ROLE('Mist')}
+            usage={`Muted / secondary text on dark. Brighter than Pewter to keep hierarchy above body text. ${ratioStr(wcagContrast(DARK.muted, HEX('Ink')))} on Ink.`}
             textColor="#18181C"
           />
           <ColorCard
-            name="Fog (dark border)" hex="#2E2F35" role="dark-border"
+            name="Fog (dark border)" hex={DARK.border} role={DARK_ROLE('Fog')}
             usage="Borders and dividers on dark. Sits between Ink and Graphite — edges cards without drawing a visible line."
             textColor="#F4F4F1"
           />
@@ -278,15 +315,14 @@ export default function PrimaryPalette() {
         <div className="mt-5 border border-stone-200 rounded-xl overflow-hidden">
           <div className="px-4 py-2.5 bg-cloud border-b border-stone-200 flex items-center justify-between">
             <p className="text-xs font-semibold uppercase tracking-wider text-slate">Accents on dark</p>
-            <span className="text-xs text-slate">Teal / Amber / Rose pass AA normal text; Cobalt is UI-only — use Cobalt Lift for text</span>
+            <span className="text-xs text-slate">Ratios computed on Ink</span>
           </div>
-          <div className="p-4 space-y-2" style={{ backgroundColor: '#18181C' }}>
-            {[
-              { name: 'Cobalt', hex: '#4271DF', contrast: '3.93:1', level: 'UI only' },
-              { name: 'Teal', hex: '#00B6A0', contrast: '6.91:1', level: 'AA' },
-              { name: 'Amber', hex: '#E19000', contrast: '6.90:1', level: 'AA' },
-              { name: 'Rose', hex: '#F24260', contrast: '4.82:1', level: 'AA' },
-            ].map(a => (
+          <div className="p-4 space-y-2" style={{ backgroundColor: HEX('Ink') }}>
+            {colorSystem.accents.map(a => {
+              const hex = HEX(a.name)
+              const r = wcagContrast(hex, HEX('Ink'))
+              return { name: a.name, hex, contrast: ratioStr(r), level: r >= 4.5 ? 'AA' : 'UI only' }
+            }).map(a => (
               <div key={a.name} className="flex items-center gap-3">
                 <span className="inline-block w-5 h-5 rounded" style={{ backgroundColor: a.hex }} />
                 <span className="text-sm font-semibold" style={{ color: a.hex }}>{a.name} — {a.contrast} {a.level}</span>
@@ -299,12 +335,7 @@ export default function PrimaryPalette() {
         <div className="mt-5">
           <p className="text-xs font-semibold uppercase tracking-wider text-slate mb-3">Dark bridge washes</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {[
-              { name: 'Cobalt Deep', hex: '#1B2440', accent: '#4271DF', use: 'Info surface on dark' },
-              { name: 'Teal Deep', hex: '#0E2E2A', accent: '#00B6A0', use: 'Success surface on dark' },
-              { name: 'Amber Deep', hex: '#2E2410', accent: '#E19000', use: 'Warning surface on dark' },
-              { name: 'Rose Deep', hex: '#2E1218', accent: '#F24260', use: 'Error surface on dark' },
-            ].map(w => (
+            {brandTokens.washes.dark.map(w => ({ name: w.name, hex: w.hex, accent: HEX(w.accent), use: w.use })).map(w => (
               <div key={w.name} className="border border-stone-200 rounded-xl overflow-hidden">
                 <div className="h-16 px-3 py-2 flex items-end" style={{ backgroundColor: w.hex }}>
                   <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ backgroundColor: w.accent }} />
@@ -334,32 +365,24 @@ export default function PrimaryPalette() {
           </Tooltip>
         </h2>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
+          {/* Bar geometry derives from colorSystem.ratio.light percentages;
+              the spectrum segment splits evenly across the accents (mirrors
+              ratio-bar.svg). Segment fills are presentational. */}
           <div className="h-8 flex">
-            <div className="flex-[60]" style={{ backgroundColor: '#FDFDFB' }} />
-            <div className="flex-[20]" style={{ backgroundColor: '#F4F4F1' }} />
-            <div className="flex-[8]" style={{ backgroundColor: '#97979E' }} />
-            <div className="flex-[5]" style={{ backgroundColor: '#4271DF' }} />
-            <div className="flex-[3]" style={{ backgroundColor: '#00B6A0' }} />
-            <div className="flex-[2]" style={{ backgroundColor: '#E19000' }} />
-            <div className="flex-[2]" style={{ backgroundColor: '#F24260' }} />
+            <div style={{ flex: colorSystem.ratio.light[0].pct, backgroundColor: HEX('Canvas') }} />
+            <div style={{ flex: colorSystem.ratio.light[1].pct, backgroundColor: HEX('Cloud') }} />
+            <div style={{ flex: colorSystem.ratio.light[2].pct, backgroundColor: HEX('Ink') }} />
+            {colorSystem.accents.map(a => (
+              <div key={a.name} style={{ flex: colorSystem.ratio.light[3].pct / colorSystem.accents.length, backgroundColor: HEX(a.name) }} />
+            ))}
           </div>
           <div className="p-4 grid grid-cols-4 gap-3 text-center">
-            <div>
-              <p className="text-lg font-semibold text-ink">60%</p>
-              <p className="text-xs text-slate">Canvas</p>
-            </div>
-            <div>
-              <p className="text-lg font-semibold text-ink">20%</p>
-              <p className="text-xs text-slate">Surface (Cloud)</p>
-            </div>
-            <div>
-              <p className="text-lg font-semibold text-ink">10%</p>
-              <p className="text-xs text-slate">Text & UI (Ink / Iron / Slate / Pewter)</p>
-            </div>
-            <div>
-              <p className="text-lg font-semibold text-ink">10%</p>
-              <p className="text-xs text-slate">Spectrum (Cobalt + accents)</p>
-            </div>
+            {colorSystem.ratio.light.map(r => (
+              <div key={r.token}>
+                <p className="text-lg font-semibold text-ink">{r.pct}%</p>
+                <p className="text-xs text-slate">{r.token}</p>
+              </div>
+            ))}
           </div>
         </div>
         <p className="text-xs text-slate mt-2">The canvas dominates. Color is reserved for meaning. This keeps the interface clean and makes every colored element intentional.</p>
@@ -368,8 +391,12 @@ export default function PrimaryPalette() {
       {/* Contrast policy — floors, measurement doctrine, exception registry */}
       <Section title="Contrast Policy & Measurement">
         <p className="text-sm text-slate mb-4 leading-relaxed">
-          The conformance floor is <strong>{accessibility.floor}</strong>. Token contrast on Canvas: {accessibility.contrast.tokens}{' '}
-          {accessibility.contrast.accentsOnInk}
+          The conformance floor is <strong>{accessibility.floor}</strong>. Token contrast on Canvas (computed):{' '}
+          {colorSystem.textHierarchy.map(t => {
+            const r = wcagContrast(HEX(t.token), HEX('Canvas'))
+            return `${t.token} ${ratioStr(r)}${r >= 7 ? ' (AAA)' : r >= 4.5 ? ' (AA)' : ' (supplementary only)'}`
+          }).join(' · ')}. {colorSystem.accentsOnDark} Computed on Ink:{' '}
+          {colorSystem.accents.map(a => `${a.name} ${ratioStr(wcagContrast(HEX(a.name), HEX('Ink')))}`).join(', ')}.
         </p>
         <div className="bg-cloud rounded-xl p-5 border border-stone-200 mb-4">
           <p className="text-xs font-semibold uppercase tracking-wider text-pewter mb-2">Measurement doctrine</p>

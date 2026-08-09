@@ -457,54 +457,53 @@ function renderSwatchRow(swatches, { rowLabel, w = 140 }) {
 `)
 }
 
-await writeFile(resolve(outDir, 'swatches-spectrum.svg'), renderSwatchRow([
-  { color: COBALT, name: 'Cobalt', hex: '#4271DF' },
-  { color: TEAL,   name: 'Teal',   hex: '#00B6A0' },
-  { color: AMBER,  name: 'Amber',  hex: '#E19000' },
-  { color: ROSE,   name: 'Rose',   hex: '#F24260' },
-], { rowLabel: 'SPECTRUM ACCENTS' }))
+// Swatch rows derive from canon (colorSystem order, palette/wash hexes) —
+// decision 30: no label hex is declared here.
+const CS = canon.colorSystem
+const paletteSwatch = name => ({ color: paletteHex(name), name, hex: paletteHex(name) })
 
-await writeFile(resolve(outDir, 'swatches-neutrals.svg'), renderSwatchRow([
-  { color: CANVAS,   name: 'Canvas',   hex: '#FDFDFB' },
-  { color: CLOUD,    name: 'Cloud',    hex: '#F4F4F1' },
-  { color: PEWTER,   name: 'Pewter',   hex: '#97979E' },
-  { color: SLATE,    name: 'Slate',    hex: '#6D6D72' },
-  { color: IRON,     name: 'Iron',     hex: '#46464B' },
-  { color: GRAPHITE, name: 'Graphite', hex: '#212226' },
-  { color: INK,      name: 'Ink',      hex: '#18181C' },
-], { rowLabel: 'WARM BLEND NEUTRALS (OKLCH-EVEN LADDER)' }))
+await writeFile(resolve(outDir, 'swatches-spectrum.svg'), renderSwatchRow(
+  CS.accents.map(a => paletteSwatch(a.name)),
+  { rowLabel: 'SPECTRUM ACCENTS' }))
 
-await writeFile(resolve(outDir, 'swatches-bridge.svg'), renderSwatchRow([
-  { color: '#EDF0F8', name: 'Cobalt Wash', hex: '#EDF0F8' },
-  { color: '#E6F5F3', name: 'Teal Mist',   hex: '#E6F5F3' },
-  { color: '#F5F0E6', name: 'Amber Stone', hex: '#F5F0E6' },
-  { color: '#FDF0F2', name: 'Rose Blush',  hex: '#FDF0F2' },
-], { rowLabel: 'BRIDGE TIER (TINTED WASHES)' }))
+await writeFile(resolve(outDir, 'swatches-neutrals.svg'), renderSwatchRow(
+  CS.neutrals.tokens.map(t => paletteSwatch(t.name)),
+  { rowLabel: 'WARM BLEND NEUTRALS (OKLCH-EVEN LADDER)' }))
 
-// ─── Usage ratio bar (60 / 20 / 10 / 10) ────────────────────────
-// Labels sit directly below each section. To avoid overlap at the tight
-// 10% + 10% end, the two right labels stack on two lines each.
-await writeFile(resolve(outDir, 'ratio-bar.svg'), xml(`
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="84" viewBox="0 0 600 84" font-family="Lexend, sans-serif">
+await writeFile(resolve(outDir, 'swatches-bridge.svg'), renderSwatchRow(
+  canon.brandTokens.washes.light.map(w => ({ color: w.hex, name: w.name, hex: w.hex })),
+  { rowLabel: 'BRIDGE TIER (TINTED WASHES)' }))
+
+// ─── Usage ratio bar ────────────────────────────────────────────
+// Geometry derives from colorSystem.ratio.light percentages (600 px = 100%);
+// the spectrum segment splits evenly across the four accents. The short
+// section labels are presentational abbreviations of the canon tokens.
+{
+  const RATIO_W = 600
+  const segs = CS.ratio.light.map(r => ({ ...r, w: (r.pct / 100) * RATIO_W }))
+  let x = 0
+  const xs = segs.map(s => { const at = x; x += s.w; return at })
+  const accentHexes = CS.accents.map(a => paletteHex(a.name))
+  const sliceW = segs[3].w / accentHexes.length
+  const spectrumRects = accentHexes
+    .map((hex, i) => `<rect x="${xs[3] + i * sliceW}" width="${sliceW}" height="40" fill="${hex}"/>`)
+    .join('\n    ')
+  const shortLabels = ['Canvas', 'Cloud', 'Text', 'Spectrum']
+  const labels = segs
+    .map((s, i) => `<text x="${xs[i]}" y="58" font-size="10" font-weight="600" fill="${INK}">${s.pct}%</text>\n  <text x="${xs[i]}" y="72" font-size="10" fill="${PEWTER}">${shortLabels[i]}</text>`)
+    .join('\n  ')
+  await writeFile(resolve(outDir, 'ratio-bar.svg'), xml(`
+<svg xmlns="http://www.w3.org/2000/svg" width="${RATIO_W}" height="84" viewBox="0 0 ${RATIO_W} 84" font-family="Lexend, sans-serif">
   <g>
-    <rect width="360" height="40" fill="${CANVAS}" stroke="${CLOUD}"/>
-    <rect x="360" width="120" height="40" fill="${CLOUD}"/>
-    <rect x="480" width="60" height="40" fill="${INK}"/>
-    <rect x="540" width="15" height="40" fill="${COBALT}"/>
-    <rect x="555" width="15" height="40" fill="${TEAL}"/>
-    <rect x="570" width="15" height="40" fill="${AMBER}"/>
-    <rect x="585" width="15" height="40" fill="${ROSE}"/>
+    <rect width="${segs[0].w}" height="40" fill="${CANVAS}" stroke="${CLOUD}"/>
+    <rect x="${xs[1]}" width="${segs[1].w}" height="40" fill="${CLOUD}"/>
+    <rect x="${xs[2]}" width="${segs[2].w}" height="40" fill="${INK}"/>
+    ${spectrumRects}
   </g>
-  <text x="0"   y="58" font-size="10" font-weight="600" fill="${INK}">60%</text>
-  <text x="0"   y="72" font-size="10" fill="${PEWTER}">Canvas</text>
-  <text x="360" y="58" font-size="10" font-weight="600" fill="${INK}">20%</text>
-  <text x="360" y="72" font-size="10" fill="${PEWTER}">Cloud</text>
-  <text x="480" y="58" font-size="10" font-weight="600" fill="${INK}">10%</text>
-  <text x="480" y="72" font-size="10" fill="${PEWTER}">Text</text>
-  <text x="540" y="58" font-size="10" font-weight="600" fill="${INK}">10%</text>
-  <text x="540" y="72" font-size="10" fill="${PEWTER}">Spectrum</text>
+  ${labels}
 </svg>
 `))
+}
 
 // ─── Gradient strips ────────────────────────────────────────────
 
@@ -734,7 +733,9 @@ const ACCENTS = pal.colors.filter(c => c.role === 'accent')
 const NEUTRALS = pal.colors.filter(c => c.role !== 'accent')
 if (!ACCENTS.length || !NEUTRALS.length) throw new Error('Palette derivation produced an empty accent or neutral set')
 const accentVar = (name) => name.split(' ')[0].toLowerCase()
-const lc = (s) => s.charAt(0).toLowerCase() + s.slice(1)
+// Canon strings render verbatim in comments — no case-folding (round-1 critic
+// finding: §14 inlines this file into the guide, so folded labels would be a
+// paraphrase of canon).
 const gradStops = [grad.from, grad.via, grad.to].filter(Boolean).join(', ')
 // Button state groups: any entry with a base fill is an accent ladder;
 // entries keyed bg/text are the secondary treatment.
@@ -759,12 +760,8 @@ ${NEUTRALS.map(n => `  --color-${n.name.toLowerCase()}: ${n.hex};`).join('\n')}
   /* Bridge washes (light) — text on a wash uses its textOn value, never the raw accent */
 ${T.washes.light.map(w => `  --wash-${accentVar(w.accent)}: ${w.hex};  --wash-${accentVar(w.accent)}-text: ${w.textOn};`).join('\n')}
 
-  /* Dark surfaces (parallel mode — role-inverted) */
-  --dark-canvas: ${pal.darkMode.bg};   /* page bg on dark */
-  --dark-cloud:  ${pal.darkMode.surface};   /* elevated on dark */
-  --dark-ink:    ${pal.darkMode.text};   /* primary text on dark */
-  --dark-mist:   ${pal.darkMode.muted};   /* muted text on dark */
-  --dark-fog:    ${pal.darkMode.border};   /* border / divider on dark */
+  /* Dark surfaces (parallel mode — role-inverted; names + roles from colorSystem.darkRoles) */
+${CS.darkRoles.rows.map(r => `  ${r.cssVar}: ${pal.darkMode[r.darkModeKey]};   /* ${r.dark} — ${r.role} on dark */`).join('\n')}
 
   /* Dark bridge washes */
 ${T.washes.dark.map(w => `  --dark-wash-${accentVar(w.accent)}: ${w.hex};`).join('\n')}
@@ -782,7 +779,7 @@ ${btnGroupVars(T.buttonStates.light, '')}
 ${btnGroupVars(T.buttonStates.dark, 'dark-')}
   --btn-dark-transient-text: ${T.buttonStates.dark.transientText};
 
-  /* Focus ring — ${lc(T.focusRing.note.split('.')[0])} */
+  /* Focus ring — ${T.focusRing.note.split('.')[0]} */
   --focus-ring-light: ${T.focusRing.light};
   --focus-ring-dark: ${T.focusRing.dark};
   --focus-ring-width: ${T.focusRing.width.split(' ')[0]};
@@ -796,14 +793,14 @@ ${btnGroupVars(T.buttonStates.dark, 'dark-')}
   /* Type scale — size, line-height, and weight per step */
 ${typo.scale.map(s => {
   const n = s.name.toLowerCase().replace(/ /g, '-')
-  return `  --text-${n}: ${s.px}px;  --text-${n}-lh: ${s.lineHeight};  --text-${n}-weight: ${s.weight};  /* ${lc(s.use)} */`
+  return `  --text-${n}: ${s.px}px;  --text-${n}-lh: ${s.lineHeight};  --text-${n}-weight: ${s.weight};  /* ${s.use} */`
 }).join('\n')}
 
   /* Radii */
-${T.radii.map(r => `  --radius-${r.token}: ${r.px}px;  /* ${lc(r.use)} */`).join('\n')}
+${T.radii.map(r => `  --radius-${r.token}: ${r.px}px;  /* ${r.use} */`).join('\n')}
 
   /* Spacing — ${T.spacing.baseUnit} px base unit */
-${T.spacing.scale.map(s => `  --space-${s.token}: ${s.px}px;  /* ${s.tailwind} — ${lc(s.use)} */`).join('\n')}
+${T.spacing.scale.map(s => `  --space-${s.token}: ${s.px}px;  /* ${s.tailwind} — ${s.use} */`).join('\n')}
 }
 
 /* Elevation — z-index steps; shadows are Tailwind classes.

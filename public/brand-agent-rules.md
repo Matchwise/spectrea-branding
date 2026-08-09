@@ -7,7 +7,7 @@ it is regenerated from src/data/brand.ts.
 
 ---
 
-## Spectrea brand rules (generated 2026-08-09, brand.ts v2.6.0)
+## Spectrea brand rules (generated 2026-08-09, brand.ts v2.7.0)
 
 - Product: **Spectrea** (/spek-TREE-uh/). Tagline: "We connect the dots.". Category: **Composable intelligence platform**. The category noun is exactly "Composable intelligence platform" (lowercase in running prose) — never a substitute: "composable knowledge platform", "knowledge platform", "knowledge management", "AI assistant", "automation tool".
 - Company vs product: Matchwise Pte. Ltd. is the legal entity — it appears only where a legal entity is required: contracts, invoices, terms, privacy notices ("Spectrea is a product of Matchwise Pte. Ltd."). Spectrea is the product and brand name on every public surface. Never brand a surface "Matchwise"; never combine the two into one name.
@@ -26,7 +26,7 @@ it is regenerated from src/data/brand.ts.
 - Product surfaces: Warm up one notch. Warmth comes from specificity, not exclamation points — "Read. 12 entities, 18 connections added." beats "Upload complete! 🎉" because the first shows the system paid attention.
 - Colours (only these): Graphite #212226 (primary) · Cobalt #4271DF (accent) · Teal #00B6A0 (accent) · Amber #E19000 (accent) · Rose #F24260 (accent) · Canvas #FDFDFB (background) · Cloud #F4F4F1 (surface) · Ink #18181C (text) · Iron #46464B (body-emphasized) · Slate #6D6D72 (body-secondary) · Pewter #97979E (muted). Gradient #4271DF → #00B6A0 → #E19000 at 135° — never on buttons, text, borders, or small icons.
 - Typefaces: Albert Sans (headings) · Lexend (body) · JetBrains Mono (code).
-- Accessibility floor: WCAG 2.2 AA. Contrast ≥ 4.5:1 normal text / 3:1 large+UI. On Canvas: Ink 17.4:1 · Iron 9.21:1 (AAA) · Slate 5.05:1 (AA) · Pewter 2.85:1 (supplementary only).
+- Accessibility floor: WCAG 2.2 AA. Contrast ≥ 4.5:1 normal text / 3:1 large+UI. On Canvas (computed): Ink 17.4:1 (AAA) · Iron 9.21:1 (AAA) · Slate 5.05:1 (AA) · Pewter 2.85:1 (supplementary only).
 - Logo: exactly 10 dots; 2 lockup forms; primary dots #A3A3A3; Circle when contained — never a squircle. Clear space: 0.5× the mark height on all sides. Watermark ≤ 20% opacity.
 - Governance: brand decisions live in the ratification ledger (ratificationLedger in brand.ts; mirrored in /brand-contract.json). A decision recorded only in a consumer repo's AGENTS.md is not canon until it lands in the ledger.
 - Full machine data: /brand-contract.json · full guide: /brand-guide.md. Both are derived mirrors of src/data/brand.ts — on any conflict, brand.ts wins.

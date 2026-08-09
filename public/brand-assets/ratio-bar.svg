@@ -8,8 +8,8 @@
   <rect x="570" width="15" height="40" fill="#E19000"/>
   <rect x="585" width="15" height="40" fill="#F24260"/>
   </g>
-  <text x="0"   y="58" font-size="10" font-weight="600" fill="#18181C">60%</text>
-  <text x="0"   y="72" font-size="10" fill="#97979E">Canvas</text>
+  <text x="0" y="58" font-size="10" font-weight="600" fill="#18181C">60%</text>
+  <text x="0" y="72" font-size="10" fill="#97979E">Canvas</text>
   <text x="360" y="58" font-size="10" font-weight="600" fill="#18181C">20%</text>
   <text x="360" y="72" font-size="10" fill="#97979E">Cloud</text>
   <text x="480" y="58" font-size="10" font-weight="600" fill="#18181C">10%</text>

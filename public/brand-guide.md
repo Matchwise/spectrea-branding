@@ -8,7 +8,7 @@
 **Category:** Composable intelligence platform.
 **Pronunciation:** /spek-TREE-uh/ (a coinage from *spectrum* — Latin, from *specere*, "to look"; the full range — with a second reading: *revealing*).
 <!-- generated:version-header -->
-**Version:** 2.6.0 (2026-08-09). Canonical data: `src/data/brand.ts` — this guide is a hybrid mirror: prose is hand-written; fenced data blocks are generated from canon (`npm run generate:guide`).
+**Version:** 2.7.0 (2026-08-09). Canonical data: `src/data/brand.ts` — this guide is a hybrid mirror: prose is hand-written; fenced data blocks are generated from canon (`npm run generate:guide`).
 <!-- /generated:version-header -->
 
 **Strategic claim:** Spectrea is the spectrum of clarity. Everything you know, in one living view — alive with possibility, yours to keep. See it whole. Trust what you see. Build on what you find.
@@ -340,6 +340,7 @@ The four-colour spectrum (Cobalt + Teal + Amber + Rose) is the brand's central v
 In **product UI**, the same four colours stay strictly *semantic* (Tier 3 framework below): Cobalt for action, Teal for success, Amber for attention, Rose for urgency. The discipline doesn't change; only the airtime does. Marketing spends budget on spectrum hero moments; product reserves it for meaning.
 
 ### Warm Blend neutrals (applied system-wide)
+<!-- generated:neutral-ladder -->
 A subtle warm tint layered under the spectrum — closes the gap between cold Tailwind grays and the warm accents. Seven tokens, perceptually-uniform in OKLCH L-space from surface to primary text.
 
 | Role | Name | Hex | OKLCH L | Contrast on Canvas | CSS var |
@@ -347,20 +348,23 @@ A subtle warm tint layered under the spectrum — closes the gap between cold Ta
 | Background | Canvas | `#FDFDFB` | 0.993 | 1:1 | `--color-canvas` |
 | Elevated surface | Cloud | `#F4F4F1` | 0.966 | 1.08:1 | `--color-cloud` |
 | Whisper muted | Pewter | `#97979E` | 0.679 | 2.85:1 | `--color-pewter` |
-| Body secondary | Slate | `#6D6D72` | 0.537 | 5.05:1 | `--color-slate` |
-| Emphasized body | Iron | `#46464B` | 0.395 | 9.21:1 | `--color-iron` |
+| Body secondary | Slate | `#6D6D72` | 0.536 | 5.05:1 | `--color-slate` |
+| Emphasized body | Iron | `#46464B` | 0.396 | 9.21:1 | `--color-iron` |
 | Dark UI surface | Graphite | `#212226` | 0.253 | 15.6:1 | `--color-graphite` |
 | Primary text / dark bg | Ink | `#18181C` | 0.211 | 17.4:1 | `--color-ink` |
 
 The seven tokens form an OKLCH-even ladder (ΔL ≈ 0.14 through the body range, with tighter pairs at each end: Canvas↔Cloud and Graphite↔Ink). Slate and Iron exist because the body-text hierarchy needs three working tiers (quiet / body / emphasized) and the old five-token palette had a single ~0.43-wide L gap between Pewter and Graphite with nothing in between.
+<!-- /generated:neutral-ladder -->
 
 ### Spectrum accents (the four spectrum colours)
+<!-- generated:accent-meanings -->
 | Role | Name | Hex | Meaning |
 |---|---|---|---|
 | Hero / primary | Cobalt | `#4271DF` | Intelligence, trust, focus. One primary action per section. |
 | Positive / growth | Teal | `#00B6A0` | Success, growth, connected status. |
 | Attention | Amber | `#E19000` | Warnings, pending, confidence. |
 | Urgency / action | Rose | `#F24260` | Errors, destructive actions, critical alerts. |
+<!-- /generated:accent-meanings -->
 
 <!-- generated:accent-states -->
 Hover/active states for each accent (light surfaces — darken on interaction):
@@ -387,53 +391,62 @@ Text on a dark wash is Cloud #F4F4F1; text on a light wash uses that wash's text
 <!-- /generated:washes-light -->
 
 ### Text hierarchy — which token for which tier
-
-The three dark-on-light text tiers map cleanly to the Warm Blend's three readable tokens:
+<!-- generated:text-hierarchy -->
+The dark-on-light text tiers map to the Warm Blend's readable tokens:
 
 | Tier | Token | Contrast | Use for |
 |---|---|---|---|
-| Primary | Ink `#18181C` | 17.4:1 | Headings, stat values, body emphasis, logo wordmark |
+| Primary | Ink `#18181C` | 17.4:1 (AAA) | Headings, stat values, body emphasis, logo wordmark |
 | Emphasized body | Iron `#46464B` | 9.21:1 (AAA) | Table headers, field labels, key body sentences |
 | Body secondary | Slate `#6D6D72` | 5.05:1 (AA) | Descriptions, helper text, card sub-labels, secondary prose |
-| Whisper muted | Pewter `#97979E` | 2.85:1 | Supplementary labels only — see below |
+| Whisper muted | Pewter `#97979E` | 2.85:1 | Supplementary labels only — governed by the Pewter matrix (accessibility.pewterMatrix) |
 
-**Pewter is a whisper, not a readable tier.** Its 2.85:1 contrast is below WCAG AA large-text (3:1). This is an intentional trade: the whisper register is part of what makes the Warm Blend feel warm rather than clinical. As a matrix — **allowed:** overlines, timestamps, meta chips, placeholder text, and captions where the adjacent context already makes the content obvious; **denied:** any informational text — anything that must be *read on its own* steps up to Slate (body secondary) or Iron (emphasized).
+**Pewter is a whisper, not a readable tier.** Pewter (#97979E, 2.85:1) is a whisper, not a readable tier. Anything that must be read on its own steps up to Slate or Iron. As a matrix — **allowed:** Overlines · Timestamps · Meta chips · Placeholder text · Captions whose adjacent context already makes the content obvious. **Denied:** Any informational text — body copy, labels carrying meaning, values, errors, anything a reader must be able to read on its own.
+<!-- /generated:text-hierarchy -->
 
 ### Tailwind → Warm Blend mapping
-
-The app uses Tailwind utility classes; the Warm Blend tokens are exported into the `@theme` so the brand names are first-class utilities. The required mapping:
+<!-- generated:tailwind-mapping -->
+The app uses Tailwind utility classes; the Warm Blend tokens are exported into the @theme so the brand names are first-class utilities.
 
 | Tailwind stone class | Brand token | Notes |
 |---|---|---|
-| `text-stone-900`, `text-stone-800` | `text-ink` | primary |
-| `text-stone-700`, `text-stone-600` | `text-iron` | emphasized body |
+| `text-stone-900, text-stone-800` | `text-ink` | primary |
+| `text-stone-700, text-stone-600` | `text-iron` | emphasized body |
 | `text-stone-500` | `text-slate` | body secondary |
-| `text-stone-400`, `text-stone-300` | `text-pewter` | whisper — never for informational text |
-| `bg-stone-50`, `bg-stone-100` | `bg-cloud` | elevated surface |
+| `text-stone-400, text-stone-300` | `text-pewter` | whisper — never for informational text |
+| `bg-stone-50, bg-stone-100` | `bg-cloud` | elevated surface |
 | `bg-stone-800` | `bg-ink` | active dark fill (Tier 2 Structural) |
 | `border-stone-*` | **keep as-is** | Tailwind stones are the sanctioned border family |
-| `bg-stone-200`, `bg-stone-300` | **keep as-is** | hover / active / press backgrounds, skeleton placeholders |
+| `bg-stone-200, bg-stone-300` | **keep as-is** | hover / active / press backgrounds, skeleton placeholders |
+<!-- /generated:tailwind-mapping -->
 
 ### Colour ratio (the 60/20/10/10 rule)
+<!-- generated:colour-ratio -->
 - **60%** Canvas (page background)
 - **20%** Cloud (elevated surfaces: cards, sidebars, dropdowns)
 - **10%** Ink + Pewter (text and UI)
 - **10%** Spectrum accents (semantic moments only)
+<!-- /generated:colour-ratio -->
 
 ![Usage ratio bar — 60% Canvas, 20% Cloud, 10% text, 10% spectrum](/brand-assets/ratio-bar.svg)
 
 ### Tiered colour framework
+<!-- generated:colour-tiers -->
 Every colour in Spectrea lives in one of three tiers:
 
 1. **Tier 1 — Responsive (Cobalt).** Action-oriented elements — things that trigger an operation. Temporary and reactive: present during hover, focus, press, then settles. Primary buttons, links, CTAs, input focus, hovered icons.
 2. **Tier 2 — Structural (Ink).** Persistent state and navigation. Active nav item, selected tab, toggled-on icon, current breadcrumb. Ink keeps the canvas calm while Cobalt stays reserved for action.
 3. **Tier 3 — Semantic (spectrum + Pewter).** The system communicating status. Info (Cobalt), success (Teal), warning (Amber), error (Rose). Never decorative — every appearance carries meaning.
+<!-- /generated:colour-tiers -->
 
 ### Default mode: light
-Spectrea defaults to **light**. Canvas `#FDFDFB` is the 60% page ground because the Warm Blend system exists to make the spectrum feel inhabited against a warm-tinted white — not to produce a dark-first interface. Marketing, product, and PDF surfaces all ship light-default. Dark is a parallel mode, not the primary register.
+<!-- generated:light-default -->
+Spectrea defaults to light. Canvas is the 60% page ground because the Warm Blend system exists to make the spectrum feel inhabited against a warm-tinted white — not to produce a dark-first interface. Marketing, product, and PDF surfaces all ship light-default. Dark is a parallel mode, not the primary register.
+<!-- /generated:light-default -->
 
 ### Dark surfaces (parallel mode)
-On dark surfaces, the role mapping **inverts** — existing tokens carry more of the weight, with two additions for hierarchy.
+<!-- generated:dark-roles -->
+On dark surfaces the role mapping inverts — existing tokens carry more of the weight, with two additions for hierarchy.
 
 | Role | Light | Dark | CSS var |
 |---|---|---|---|
@@ -443,17 +456,20 @@ On dark surfaces, the role mapping **inverts** — existing tokens carry more of
 | Muted text | Pewter `#97979E` | Mist `#B0B0B6` *(new)* | `--dark-mist` |
 | Border / divider | `stone-200` | Fog `#2E2F35` *(new)* | `--dark-fog` |
 
-**Why two new tokens and not more.** Pewter on Ink reads ~6.3:1 — fine for body — but muted text needs to sit *above* body hierarchy on dark. **Mist `#B0B0B6`** is Pewter brightened to ~8.5:1 so "secondary" still feels secondary without fighting primary text. **Fog `#2E2F35`** gives separation without a visible line — lighter than Ink, darker than Graphite, so cards feel edged rather than drawn.
+**Why two new tokens and not more.** Pewter passes for body text on Ink, but muted text needs to sit above the body hierarchy on dark — Mist is Pewter brightened so secondary still feels secondary without fighting primary text. Fog gives separation without a visible line — lighter than Ink, darker than Graphite, so cards feel edged rather than drawn. Computed on Ink: Pewter 6.10:1, Mist 8.20:1.
+<!-- /generated:dark-roles -->
 
 ### Spectrum accents on dark
-Three of four accents pass WCAG AA for normal text on Ink; Cobalt is **UI-only** at this contrast — for coloured text on Ink use Cobalt Lift instead. Accents carry over **unchanged** — the brand should read as itself on either surface.
+<!-- generated:dark-accents -->
+Accents carry over unchanged — the brand should read as itself on either surface. Three of four accents pass WCAG AA for normal text on Ink; Cobalt is UI-only at this contrast — for coloured text on Ink use Cobalt Lift.
 
 | Accent | On Ink contrast | Notes |
 |---|---|---|
 | Cobalt `#4271DF` | 3.93:1 | UI only (passes 3:1 for non-text UI). **For coloured text on Ink use Cobalt Lift `#7A9AEF`.** |
-| Teal `#00B6A0` | 6.91:1 | AA normal text; AA large. |
-| Amber `#E19000` | 6.90:1 | AA normal text; AA large. |
+| Teal `#00B6A0` | 6.91:1 | AA normal text. |
+| Amber `#E19000` | 6.90:1 | AA normal text. |
 | Rose `#F24260` | 4.82:1 | AA normal text. |
+<!-- /generated:dark-accents -->
 
 **Optional brightened variants** — only for long-form *coloured* text on dark (rare in practice). Use sparingly; default behaviour is "same hex, lighter surface."
 
@@ -479,7 +495,9 @@ Tinted dark surfaces — the semantic bridge tier rebuilt for dark mode. ~8–12
 <!-- /generated:washes-dark -->
 
 ### Dark ratio
-Same 60/20/10/10 discipline, inverted: **60% Ink · 20% Graphite · 10% Cloud + Mist · 10% spectrum (semantic only).** The canvas still dominates; colour still earns its place.
+<!-- generated:dark-ratio -->
+Same 60/20/10/10 discipline, inverted: 60% Ink · 20% Graphite · 10% Cloud + Mist · 10% spectrum (semantic only). The canvas still dominates; colour still earns its place.
+<!-- /generated:dark-ratio -->
 
 ### When to use dark
 - **Product UI** — follow the user's OS/app preference. Both modes are first-class.
@@ -633,7 +651,7 @@ Desktop (1024+) / Tablet (640–1023) / Mobile (<640):
 <!-- generated:accessibility -->
 The floor is **WCAG 2.2 AA** on every shipped surface.
 - Body text minimum 16 px; never lower for primary content.
-- Contrast ratio minimum: 4.5:1 for normal text, 3:1 for large/UI. On Canvas: Ink 17.4:1 · Iron 9.21:1 (AAA) · Slate 5.05:1 (AA) · Pewter 2.85:1 (supplementary only) — see the Pewter allow/deny matrix in §5.
+- Contrast ratio minimum: 4.5:1 for normal text, 3:1 for large/UI. On Canvas (computed): Ink 17.4:1 (AAA) · Iron 9.21:1 (AAA) · Slate 5.05:1 (AA) · Pewter 2.85:1 (supplementary only) — see the Pewter allow/deny matrix in §5.
 - WCAG 2.2 specifics: Focus appearance: a visible focus indicator on every interactive element — the Amber focus ring (2 px solid, 2 px offset; Amber active #A86E00 on light surfaces, alpha-tinted Amber on dark) is the standard treatment · Target size: interactive targets at least 24×24 px, or the equivalent spacing exception · Dragging alternatives: any drag interaction (graph manipulation included) has a single-pointer, non-dragging alternative.
 - Never rely on colour alone — pair colour coding with icons, patterns, or labels.
 - Layout must not break at 200% browser text-zoom.
@@ -874,73 +892,125 @@ Brand decisions live in the **ratification ledger** (`ratificationLedger` in `br
 ## 14. Resources
 
 ### CSS tokens
+<!-- generated:css-tokens -->
+The complete generated token sheet — the same file served at [`/spectrea-tokens.css`](/spectrea-tokens.css) and on the Downloads page:
+
 ```css
+/* Spectrea design tokens — GENERATED from src/data/brand.ts v2.7.0 (2026-08-09) — do not hand-edit; regenerate with npm run generate:assets. */
 :root {
-  /* Spectrum */
+  /* Spectrum — first accent in canon order is the brand colour */
   --color-brand: #4271DF;
   --color-brand-teal: #00B6A0;
   --color-brand-amber: #E19000;
   --color-brand-rose: #F24260;
 
-  /* Warm Blend neutrals — OKLCH-even seven-token ladder */
-  --color-canvas:   #FDFDFB;
-  --color-cloud:    #F4F4F1;
-  --color-pewter:   #97979E;
-  --color-slate:    #6D6D72;
-  --color-iron:     #46464B;
+  /* Warm Blend neutrals — every non-accent palette entry, canon order */
   --color-graphite: #212226;
-  --color-ink:      #18181C;
+  --color-canvas: #FDFDFB;
+  --color-cloud: #F4F4F1;
+  --color-ink: #18181C;
+  --color-iron: #46464B;
+  --color-slate: #6D6D72;
+  --color-pewter: #97979E;
 
-  /* Bridge washes (light) */
-  --wash-cobalt: #EDF0F8;
-  --wash-teal:   #E6F5F3;
-  --wash-amber:  #F5F0E6;
-  --wash-rose:   #FDF0F2;
+  /* Bridge washes (light) — text on a wash uses its textOn value, never the raw accent */
+  --wash-cobalt: #EDF0F8;  --wash-cobalt-text: #1E3A8A;
+  --wash-teal: #E6F5F3;  --wash-teal-text: #0D5E56;
+  --wash-amber: #F5F0E6;  --wash-amber-text: #7C4D04;
+  --wash-rose: #FDF0F2;  --wash-rose-text: #9F1239;
 
-  /* Dark surfaces (parallel mode — role-inverted) */
-  --dark-canvas: #18181C;   /* page bg on dark */
-  --dark-cloud:  #212226;   /* elevated on dark */
-  --dark-ink:    #F4F4F1;   /* primary text on dark */
-  --dark-mist:   #B0B0B6;   /* muted text on dark (new) */
-  --dark-fog:    #2E2F35;   /* border / divider on dark (new) */
+  /* Dark surfaces (parallel mode — role-inverted; names + roles from colorSystem.darkRoles) */
+  --dark-canvas: #18181C;   /* Ink — Page background on dark */
+  --dark-cloud: #212226;   /* Graphite — Elevated surface on dark */
+  --dark-ink: #F4F4F1;   /* Cloud — Primary text on dark */
+  --dark-mist: #B0B0B6;   /* Mist — Muted text on dark */
+  --dark-fog: #2E2F35;   /* Fog — Border / divider on dark */
 
   /* Dark bridge washes */
   --dark-wash-cobalt: #1B2440;
-  --dark-wash-teal:   #0E2E2A;
-  --dark-wash-amber:  #2E2410;
-  --dark-wash-rose:   #2E1218;
+  --dark-wash-teal: #0E2E2A;
+  --dark-wash-amber: #2E2410;
+  --dark-wash-rose: #2E1218;
 
   /* Accent dark-lifts (long-form coloured text on dark only) */
   --cobalt-lift: #7A9AEF;
-  --teal-lift:   #3DD3BF;
-  --amber-lift:  #F2AE40;
-  --rose-lift:   #F97587;
+  --teal-lift: #3DD3BF;
+  --amber-lift: #F2AE40;
+  --rose-lift: #F97587;
+
+  /* Accent text tones (coloured text on LIGHT surfaces — raw accents fail the 4.5:1 text floor) */
+  --teal-text: #007D6E;
+  --rose-text: #BA3249;
+
+  /* Button states — light surfaces */
+  --btn-cobalt: #4271DF;  --btn-cobalt-hover: #3A63C4;  --btn-cobalt-active: #3255A7;
+  --btn-rose: #F24260;  --btn-rose-hover: #D63B55;  --btn-rose-active: #BA3249;
+  --btn-teal: #00B6A0;  --btn-teal-hover: #009E8A;  --btn-teal-active: #008775;
+  --btn-amber: #E19000;  --btn-amber-hover: #C58200;  --btn-amber-active: #A86E00;
+  --btn-secondary-bg: #F4F4F1;  --btn-secondary-text: #18181C;
+
+  /* Button states — dark surfaces (transient fills lighten; their label flips to the transient text colour) */
+  --btn-dark-cobalt: #4271DF;  --btn-dark-cobalt-hover: #6E93EC;  --btn-dark-cobalt-active: #8FACF0;
+  --btn-dark-rose: #F24260;  --btn-dark-rose-hover: #F56579;  --btn-dark-rose-active: #F78892;
+  --btn-dark-teal: #00B6A0;  --btn-dark-teal-hover: #20C8B2;  --btn-dark-teal-active: #40D4C3;
+  --btn-dark-amber: #E19000;  --btn-dark-amber-hover: #ECA41E;  --btn-dark-amber-active: #F2B63C;
+  --btn-dark-secondary-bg: #2E2F35;  --btn-dark-secondary-hover: #3A3A40;  --btn-dark-secondary-text: #F4F4F1;
+  --btn-dark-transient-text: #18181C;
+
+  /* Focus ring — Amber "attention" ring */
+  --focus-ring-light: #A86E00;
+  --focus-ring-dark: rgba(225, 144, 0, 0.7);
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
 
   /* Typography */
   --font-heading: 'Albert Sans', sans-serif;
   --font-body:    'Lexend', 'Inter', sans-serif;
   --font-mono:    'JetBrains Mono', monospace;
 
-  /* Radii — see Radii table below */
-  --radius-sm:   4px;  /* tags, badges, inline code */
-  --radius-md:   6px;  /* compact buttons, small controls */
-  --radius-lg:   8px;  /* buttons, inputs, dropdowns */
-  --radius-xl:   12px; /* cards, panels, modals (default container) */
-  --radius-2xl:  16px; /* hero sections, large feature cards */
-  --radius-full: 9999px; /* avatars, spectrum tags, toggles */
+  /* Type scale — size, line-height, and weight per step */
+  --text-display: 48px;  --text-display-lh: 1.1;  --text-display-weight: 600;  /* Hero headlines, landing-page titles */
+  --text-h1: 36px;  --text-h1-lh: 1.2;  --text-h1-weight: 600;  /* Page titles */
+  --text-h2: 30px;  --text-h2-lh: 1.25;  --text-h2-weight: 600;  /* Major section headings */
+  --text-h3: 24px;  --text-h3-lh: 1.3;  --text-h3-weight: 600;  /* Sub-section headings, card titles */
+  --text-h4: 20px;  --text-h4-lh: 1.4;  --text-h4-weight: 600;  /* Minor headings, dialog titles */
+  --text-h5: 18px;  --text-h5-lh: 1.4;  --text-h5-weight: 600;  /* Sidebar section titles */
+  --text-body-lg: 18px;  --text-body-lg-lh: 1.6;  --text-body-lg-weight: 400;  /* Lead paragraphs */
+  --text-body: 16px;  --text-body-lh: 1.6;  --text-body-weight: 400;  /* Default body text */
+  --text-body-sm: 14px;  --text-body-sm-lh: 1.5;  --text-body-sm-weight: 400;  /* Secondary text, table cells, form inputs */
+  --text-caption: 12px;  --text-caption-lh: 1.5;  --text-caption-weight: 500;  /* Labels, timestamps, helper text */
+  --text-overline: 12px;  --text-overline-lh: 1.5;  --text-overline-weight: 600;  /* Section labels (uppercase + 0.05em tracking) */
+  --text-code: 14px;  --text-code-lh: 1.5;  --text-code-weight: 400;  /* Inline code, data values, type labels (JetBrains Mono) */
+  --text-code-sm: 12px;  --text-code-sm-lh: 1.5;  --text-code-sm-weight: 400;  /* Trace details, technical metadata (JetBrains Mono) */
 
-  /* Spacing — 4 px base unit, all values are multiples of 4 */
-  --space-2xs:  4px;   /* p-1  — tight inline, icon gaps */
-  --space-xs:   8px;   /* p-2  — input padding, badge padding, compact gaps */
-  --space-sm:   12px;  /* p-3  — compact card padding, list item gaps */
-  --space-md:   16px;  /* p-4  — default content gap, section padding */
-  --space-lg:   20px;  /* p-5  — card padding (default), modal padding */
-  --space-xl:   24px;  /* p-6  — section spacing, form field gaps */
-  --space-2xl:  32px;  /* p-8  — major section breaks */
-  --space-3xl:  48px;  /* p-12 — page top padding, hero spacing */
+  /* Radii */
+  --radius-sm: 4px;  /* Tags, badges, inline code */
+  --radius-md: 6px;  /* Compact buttons, small controls */
+  --radius-lg: 8px;  /* Buttons, inputs, dropdowns */
+  --radius-xl: 12px;  /* Cards, panels, modals (default container) */
+  --radius-2xl: 16px;  /* Hero sections, large feature cards */
+  --radius-full: 9999px;  /* Avatars, spectrum tags, toggles */
+
+  /* Spacing — 4 px base unit */
+  --space-2xs: 4px;  /* p-1 — Tight inline, icon gaps */
+  --space-xs: 8px;  /* p-2 — Input / badge padding, compact gaps */
+  --space-sm: 12px;  /* p-3 — Compact card padding, list-item gaps */
+  --space-md: 16px;  /* p-4 — Default content gap, section padding */
+  --space-lg: 20px;  /* p-5 — Default card padding, modal padding */
+  --space-xl: 24px;  /* p-6 — Section spacing, form-field gaps */
+  --space-2xl: 32px;  /* p-8 — Major section breaks */
+  --space-3xl: 48px;  /* p-12 — Page top padding, hero spacing */
 }
 
-/* Brand gradient — OKLCH with sRGB fallback */
+/* Elevation — z-index steps; shadows are Tailwind classes.
+   Base 0 (none) ·
+   Raised 10 (shadow-sm) ·
+   Dropdown 20 (shadow-md) ·
+   Modal 30 (shadow-lg) ·
+   Overlay 40 (shadow-xl) ·
+   Toast 50 (shadow-lg) */
+
+/* Brand gradient — OKLCH with sRGB fallback for cross-browser safety. */
 .brand-gradient {
   background: linear-gradient(135deg, #4271DF, #00B6A0, #E19000);
 }
@@ -950,6 +1020,7 @@ Brand decisions live in the **ratification ledger** (`ratificationLedger` in `br
   }
 }
 ```
+<!-- /generated:css-tokens -->
 
 ### Radii
 Six tokens. Container `xl` (12 px) is the default; buttons and inputs land on `lg` (8 px); everything else pegs to this scale.
@@ -1007,5 +1078,5 @@ All via Google Fonts:
 ---
 
 <!-- generated:version-footer -->
-*`src/data/brand.ts` is the canonical brand data (v2.6.0, 2026-08-09). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
+*`src/data/brand.ts` is the canonical brand data (v2.7.0, 2026-08-09). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
 <!-- /generated:version-footer -->

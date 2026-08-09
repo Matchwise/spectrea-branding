@@ -4,7 +4,7 @@
 
 // --- Meta / Governance ---
 export const meta = {
-  version: '2.6.0',
+  version: '2.7.0',
   lastUpdated: '2026-08-09',
   sourceOfTruth:
     'brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea\'s roadmap — check it before placing a capability claim on a buyer-facing surface.',
@@ -779,6 +779,95 @@ export const brandTokens = {
   ],
 } as const
 
+// --- Colour System Doctrine ---
+// Canonized 2026-08-09 (guide wave 2 §5): the colour-system doctrine that
+// previously lived only in guide §5 prose and page code. Hexes are NOT
+// re-declared here — entries reference palette colours by NAME
+// (selectedPalette.colors is the hex source). Two things are deliberately
+// DERIVED by consumers, never stored: OKLCH lightness and WCAG contrast
+// ratios are computed from the hexes (the D41 computed-plots precedent), and
+// neutral/accent CSS custom-property names follow the tokens file's
+// mechanical convention (--color-<name>). The five dark-role vars are the
+// one stored exception (darkRoles.rows.cssVar) — their names are not
+// mechanically derivable.
+export const colorSystem = {
+  neutrals: {
+    intro: 'A subtle warm tint layered under the spectrum — closes the gap between cold Tailwind grays and the warm accents. Seven tokens, perceptually-uniform in OKLCH L-space from surface to primary text.',
+    ladderNote: 'The seven tokens form an OKLCH-even ladder (ΔL ≈ 0.14 through the body range, with tighter pairs at each end: Canvas↔Cloud and Graphite↔Ink). Slate and Iron exist because the body-text hierarchy needs three working tiers (quiet / body / emphasized) and the old five-token palette had a single ~0.43-wide L gap between Pewter and Graphite with nothing in between.',
+    // Ladder order surface → primary text; names key into selectedPalette.
+    tokens: [
+      { name: 'Canvas', roleLabel: 'Background' },
+      { name: 'Cloud', roleLabel: 'Elevated surface' },
+      { name: 'Pewter', roleLabel: 'Whisper muted' },
+      { name: 'Slate', roleLabel: 'Body secondary' },
+      { name: 'Iron', roleLabel: 'Emphasized body' },
+      { name: 'Graphite', roleLabel: 'Dark UI surface' },
+      { name: 'Ink', roleLabel: 'Primary text / dark bg' },
+    ],
+  },
+  accents: [
+    { name: 'Cobalt', roleLabel: 'Hero / primary', meaning: 'Intelligence, trust, focus. One primary action per section.' },
+    { name: 'Teal', roleLabel: 'Positive / growth', meaning: 'Success, growth, connected status.' },
+    { name: 'Amber', roleLabel: 'Attention', meaning: 'Warnings, pending, confidence.' },
+    { name: 'Rose', roleLabel: 'Urgency / action', meaning: 'Errors, destructive actions, critical alerts.' },
+  ],
+  textHierarchy: [
+    { tier: 'Primary', token: 'Ink', use: 'Headings, stat values, body emphasis, logo wordmark' },
+    { tier: 'Emphasized body', token: 'Iron', use: 'Table headers, field labels, key body sentences' },
+    { tier: 'Body secondary', token: 'Slate', use: 'Descriptions, helper text, card sub-labels, secondary prose' },
+    { tier: 'Whisper muted', token: 'Pewter', use: 'Supplementary labels only — governed by the Pewter matrix (accessibility.pewterMatrix)' },
+  ],
+  tailwindMapping: {
+    note: 'The app uses Tailwind utility classes; the Warm Blend tokens are exported into the @theme so the brand names are first-class utilities.',
+    rows: [
+      { tailwind: 'text-stone-900, text-stone-800', token: 'text-ink', note: 'primary' },
+      { tailwind: 'text-stone-700, text-stone-600', token: 'text-iron', note: 'emphasized body' },
+      { tailwind: 'text-stone-500', token: 'text-slate', note: 'body secondary' },
+      { tailwind: 'text-stone-400, text-stone-300', token: 'text-pewter', note: 'whisper — never for informational text' },
+      { tailwind: 'bg-stone-50, bg-stone-100', token: 'bg-cloud', note: 'elevated surface' },
+      { tailwind: 'bg-stone-800', token: 'bg-ink', note: 'active dark fill (Tier 2 Structural)' },
+      { tailwind: 'border-stone-*', token: 'keep as-is', note: 'Tailwind stones are the sanctioned border family' },
+      { tailwind: 'bg-stone-200, bg-stone-300', token: 'keep as-is', note: 'hover / active / press backgrounds, skeleton placeholders' },
+    ],
+  },
+  ratio: {
+    light: [
+      { pct: 60, token: 'Canvas', what: 'page background' },
+      { pct: 20, token: 'Cloud', what: 'elevated surfaces: cards, sidebars, dropdowns' },
+      { pct: 10, token: 'Ink + Pewter', what: 'text and UI' },
+      { pct: 10, token: 'Spectrum accents', what: 'semantic moments only' },
+    ],
+    darkRule: 'Same 60/20/10/10 discipline, inverted: 60% Ink · 20% Graphite · 10% Cloud + Mist · 10% spectrum (semantic only). The canvas still dominates; colour still earns its place.',
+  },
+  tiers: [
+    { tier: 1, name: 'Responsive', carrier: 'Cobalt', rule: 'Action-oriented elements — things that trigger an operation. Temporary and reactive: present during hover, focus, press, then settles. Primary buttons, links, CTAs, input focus, hovered icons.' },
+    { tier: 2, name: 'Structural', carrier: 'Ink', rule: 'Persistent state and navigation. Active nav item, selected tab, toggled-on icon, current breadcrumb. Ink keeps the canvas calm while Cobalt stays reserved for action.' },
+    { tier: 3, name: 'Semantic', carrier: 'spectrum + Pewter', rule: 'The system communicating status. Info (Cobalt), success (Teal), warning (Amber), error (Rose). Never decorative — every appearance carries meaning.' },
+  ],
+  lightDefault: 'Spectrea defaults to light. Canvas is the 60% page ground because the Warm Blend system exists to make the spectrum feel inhabited against a warm-tinted white — not to produce a dark-first interface. Marketing, product, and PDF surfaces all ship light-default. Dark is a parallel mode, not the primary register.',
+  darkRoles: {
+    intro: 'On dark surfaces the role mapping inverts — existing tokens carry more of the weight, with two additions for hierarchy.',
+    // darkModeKey indexes selectedPalette.darkMode (the hex source). Mist and
+    // Fog are the two dark-only tokens; their light column names the token
+    // (or Tailwind family) whose role they take over. The cssVar names are
+    // stored (not derived): they mix light-token metaphors (--dark-canvas is
+    // the dark Canvas-role) with the dark-only token names — the tokens file
+    // and the guide both render these strings.
+    rows: [
+      { role: 'Page background', light: 'Canvas', dark: 'Ink', darkModeKey: 'bg', cssVar: '--dark-canvas' },
+      { role: 'Elevated surface', light: 'Cloud', dark: 'Graphite', darkModeKey: 'surface', cssVar: '--dark-cloud' },
+      { role: 'Primary text', light: 'Ink', dark: 'Cloud', darkModeKey: 'text', cssVar: '--dark-ink' },
+      { role: 'Muted text', light: 'Pewter', dark: 'Mist', darkModeKey: 'muted', cssVar: '--dark-mist', isNew: true },
+      { role: 'Border / divider', light: 'stone-200', dark: 'Fog', darkModeKey: 'border', cssVar: '--dark-fog', isNew: true },
+    ],
+    // Contrast figures are deliberately absent here — Pewter-on-Ink and
+    // Mist-on-Ink ratios are computed from the hexes wherever this renders.
+    whyTwoTokens: 'Pewter passes for body text on Ink, but muted text needs to sit above the body hierarchy on dark — Mist is Pewter brightened so secondary still feels secondary without fighting primary text. Fog gives separation without a visible line — lighter than Ink, darker than Graphite, so cards feel edged rather than drawn.',
+  },
+  accentsOnDark:
+    'Accents carry over unchanged — the brand should read as itself on either surface. Three of four accents pass WCAG AA for normal text on Ink; Cobalt is UI-only at this contrast — for coloured text on Ink use Cobalt Lift.',
+} as const
+
 // --- Accessibility ---
 // The floor, pinned (2026-07-03). Most of the content existed in guide prose;
 // the version pin, the 2.2-specific criteria, and the Pewter matrix give it
@@ -794,10 +883,11 @@ export const accessibility = {
   contrast: {
     normalText: '4.5:1',
     largeTextAndUI: '3:1',
-    tokens: 'On Canvas: Ink 17.4:1 · Iron 9.21:1 (AAA) · Slate 5.05:1 (AA) · Pewter 2.85:1 (supplementary only).',
-    // Corrects the retired "all four accents pass AA on Ink" claim (D10):
-    // Cobalt does not.
-    accentsOnInk: 'On Ink: Teal 6.91:1, Amber 6.90:1, and Rose 4.82:1 pass AA for normal text; Cobalt is 3.93:1 — large-text and UI only. Use Cobalt Lift #7A9AEF for Cobalt-coloured body text on dark.',
+    // Palette-derived figures are deliberately absent (decision 30): the
+    // on-Canvas token ladder (membership = colorSystem.textHierarchy) and
+    // the accents-on-Ink statement (= colorSystem.accentsOnDark, which
+    // preserves the D10 correction that Cobalt does not pass AA on Ink)
+    // are computed from the hexes wherever they render.
   },
   // Contrast policy (ratified 2026-08-06, decision 8): floors + ratified
   // exceptions. The floors are the defaults everywhere; any deliberate
@@ -982,6 +1072,7 @@ export const ratificationLedger = [
   { date: '2026-08-08', decision: 'Dark Cobalt hover re-lightened (D40 closing item, Darren-ratified Option A): the dark transient ladder for Cobalt was the only state below the APCA spot-text line (old hover #5C87E5: WCAG 5.10:1 but APCA Lc 40.5 vs the 45 minimum; every other accent ≥46.7) — the same 2.x formula artefact as the button-label grant, opposite direction (2.x over-credits dark-on-vivid-blue). New ladder lightens one further notch along the existing lift-toward-the-light direction: hover #6E93EC (5.94:1, Lc 46.3 — parity with Rose), active #8FACF0 (7.86:1, Lc 58.1). Base state and all other accents unchanged; the one-rule dark idiom (Ink label on lightened fill) holds; every dark transient state now clears both metrics. Registry entry measured range updated 5.10–9.72 → 5.92–9.72 (consequence of the canon change, not a re-grant). White-label-on-hover alternative rejected (APCA 67.5 but WCAG 3.47 — would need an exception and break the idiom). This closes D40.' },
   { date: '2026-08-09', decision: 'Logo signature animation canonized (D41 closing item, Darren-ratified): logo.animation carries the loop spec — 3 s loop; phase boundaries draw→0.57 (quadratic ease-out), hold→0.60, dissolve→0.97 (quadratic ease-in); 15% trailing fade; reduced-motion = hold the completed frame. Deliberately the logo\'s own spec OUTSIDE the UI motion tokens; AnimatedLogo and the Motion page read it (previously the spec lived only in component code — the markGeometry precedent applied to motion). Same wave, Motion page conformance (D41): the page renders all seven duration tiers and the three easings + never-rule from brandTokens.motion; easing plots computed from the canonical control points; demos animate on canonical curves only; prefers-reduced-motion implemented app-wide (CSS blanket block + rAF-loop media-query check); the focus-ring demo shows the canonical Amber ring.' },
   { date: '2026-08-09', decision: 'Governance sweep (D20/D22/D25/D29, Darren-ratified; v2.6.0 — a new token family plus process doctrine): (1) Gradient family canonized as brandTokens.gradients in the audit-recommended shape (AIF-25): primary incl. the OKLCH recipe, the three duets with the Balanced Duet #6FB884@65% bridge, full-spectrum-with-Rose, the adjacency rule, and the use/never lists — previously the bridge had no canonical source (component lerps, page markup, asset generator, guide prose only). The Gradients page, SpectreaLogo duet ramps, asset generator, and guide §6 now all render canon; the page\'s mislabeled 5-stop "lockup gradient" swatch is corrected to the canonical 2-stop Cool Duet. (2) package.json version generator-synced to meta.version (was 0.1.0 since scaffold). (3) One canonical change process (meta.changeProcess): Propose → Review → Test → Ratify & version → Regenerate & communicate — the guide §13 and the Governance page previously taught divergent four- and five-step lists; both now render this field, cross-referenced. (4) OS-frame worked example (positioning.onRamp.osFrameExample): the sanctioned coined frame gains a right/wrong pair honoring "paired with plain language" / "must not carry the claim alone" — previously the frame appeared only as rule statements, never applied copy. Also mechanical (D20a): the 8 section-parent routes llms.txt links now redirect to each section\'s first page instead of Not-found.' },
+  { date: '2026-08-09', decision: 'Colour-model canonization, guide wave 2 §5+§14 (Darren-ratified full scope; v2.7.0): new colorSystem export carries the colour doctrine that lived only in guide §5 prose and page code — the Warm Blend neutral ladder (role labels + ladder rationale; entries key into selectedPalette by NAME, no hex re-declaration), the four accent meanings, the text-hierarchy tiers, the Tailwind→Warm-Blend mapping, the 60/20/10/10 ratio (light rows + dark rule), the Responsive/Structural/Semantic tier framework, the light-default rule, the named dark roles — Mist and Fog existed as shipped hexes (selectedPalette.darkMode) and tokens-file vars but their NAMES and the why-two-tokens rationale had no canonical source — and the accents-on-dark rule. Two value classes are deliberately DERIVED by consumers, never stored: OKLCH lightness and WCAG contrast ratios are computed from the palette hexes (the D41 computed-plots precedent — numbers can never disagree with the hexes), and CSS custom-property names follow the tokens file\'s mechanical convention. Guide §5\'s hand tables became generated blocks and §14\'s abridged hand CSS block now inlines the real generated spectrea-tokens.css (one artifact shown, shipped, and downloaded); the colour pages render colorSystem instead of private copies. Critic-gate deltas folded in the same wave: the computed OKLCH ladder corrected two hand-rounded values (Slate 0.537→0.536, Iron 0.395→0.396); the stored contrast summaries accessibility.contrast.tokens/accentsOnInk were DELETED (their figures now compute at every render site — guide, agent rules, Primary Palette; the on-Ink statement is colorSystem.accentsOnDark, preserving the D10 Cobalt correction); and darkRoles.whyTwoTokens dropped its stored approximate ratios after the critic showed them wrong (stored ~6.3:1/~8.5:1 vs computed 6.10:1/8.20:1 — the doctrine\'s own proof). Guide wave 2 is now closed except §11 component specs (its own wave).' },
 ] as const
 
 // --- Executive Voice ---

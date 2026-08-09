@@ -46,7 +46,7 @@ async function importTsModule(tsPath) {
 const {
   brand, voice, naming, brandTokens, accessibility, logo, graphViz,
   trustCopy, executiveVoice, originStance, meta, selectedPalette,
-  ratificationLedger,
+  colorSystem, ratificationLedger,
 } = await importTsModule(join(root, 'src', 'data', 'brand.ts'))
 const { navigation } = await importTsModule(join(root, 'src', 'data', 'navigation.ts'))
 
@@ -67,6 +67,24 @@ const lc = logo.constraints
 const watermarkPct = `${Math.round(lc.watermarkMaxOpacity * 100)}%`
 const fonts = `${brand.typography.heading.family} (headings) · ${brand.typography.body.family} (body) · ${brand.typography.mono.family} (code)`
 const cg = brand.positioning.categoryGuard
+
+// Palette-derived contrast figures are COMPUTED from the canon hexes
+// (decision 30) — never stored. WCAG 2.x relative luminance.
+const srgbLin = c => { const v = c / 255; return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4 }
+const relLum = hex => { const [r, gc, b] = [1, 3, 5].map(i => srgbLin(parseInt(hex.slice(i, i + 2), 16))); return 0.2126 * r + 0.7152 * gc + 0.0722 * b }
+const wcagRatio = (a, b) => { const [hi, lo] = [relLum(a), relLum(b)].sort((x, y) => y - x); return (hi + 0.05) / (lo + 0.05) }
+const ratioStr = r => `${r >= 10 ? r.toFixed(1) : r.toFixed(2)}:1`
+const paletteHexOf = name => {
+  const c = selectedPalette.colors.find(x => x.name === name)
+  if (!c) throw new Error(`palette colour missing from canon: ${name}`)
+  return c.hex
+}
+const tokenLadderLine = colorSystem.textHierarchy
+  .map(t => {
+    const r = wcagRatio(paletteHexOf(t.token), paletteHexOf('Canvas'))
+    return `${t.token} ${ratioStr(r)}${r >= 7 ? ' (AAA)' : r >= 4.5 ? ' (AA)' : ' (supplementary only)'}`
+  })
+  .join(' · ')
 const categoryRule = `The category noun is ${cg.exactNoun ? 'exactly ' : ''}"${brand.positioning.category}" (lowercase in running prose) — never a substitute: ${cg.badSubstitutions.map(s => `"${s}"`).join(', ')}.`
 const aiNamingLine = `${naming.aiNaming.rule} ${naming.aiNaming.verbRule} Allowed verbs: ${naming.aiNaming.allowedVerbs.join(', ')}. Forbidden verbs: ${naming.aiNaming.forbiddenVerbs.join(', ')}.`
 
@@ -113,6 +131,7 @@ const contract = {
     palette: selectedPalette.colors,
     gradient: selectedPalette.gradient,
     gradients: brandTokens.gradients,
+    system: colorSystem,
     darkMode: selectedPalette.darkMode,
     washes: brandTokens.washes,
     lifts: brandTokens.lifts,
@@ -277,7 +296,7 @@ it is regenerated from src/data/brand.ts.
 - Product surfaces: ${voice.contextShifts.product.detail}
 - Colours (only these): ${paletteLine}. Gradient ${gradientLine} — never on buttons, text, borders, or small icons.
 - Typefaces: ${fonts}.
-- Accessibility floor: ${accessibility.floor}. Contrast ≥ ${accessibility.contrast.normalText} normal text / ${accessibility.contrast.largeTextAndUI} large+UI. ${accessibility.contrast.tokens}
+- Accessibility floor: ${accessibility.floor}. Contrast ≥ ${accessibility.contrast.normalText} normal text / ${accessibility.contrast.largeTextAndUI} large+UI. On Canvas (computed): ${tokenLadderLine}.
 - Logo: exactly ${lc.dotCount} dots; ${lc.lockupForms} lockup forms; primary dots ${lc.primaryDotColor}; ${lc.container} Clear space: ${lc.clearSpace} Watermark ≤ ${watermarkPct} opacity.
 - Governance: brand decisions live in the ratification ledger (ratificationLedger in brand.ts; mirrored in /brand-contract.json). A decision recorded only in a consumer repo's AGENTS.md is not canon until it lands in the ledger.
 - Full machine data: /brand-contract.json · full guide: /brand-guide.md. Both are derived mirrors of src/data/brand.ts — on any conflict, brand.ts wins.

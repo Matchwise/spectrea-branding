@@ -1,4 +1,4 @@
-/* Spectrea design tokens — GENERATED from src/data/brand.ts v2.6.0 (2026-08-09) — do not hand-edit; regenerate with npm run generate:assets. */
+/* Spectrea design tokens — GENERATED from src/data/brand.ts v2.7.0 (2026-08-09) — do not hand-edit; regenerate with npm run generate:assets. */
 :root {
   /* Spectrum — first accent in canon order is the brand colour */
   --color-brand: #4271DF;
@@ -21,12 +21,12 @@
   --wash-amber: #F5F0E6;  --wash-amber-text: #7C4D04;
   --wash-rose: #FDF0F2;  --wash-rose-text: #9F1239;
 
-  /* Dark surfaces (parallel mode — role-inverted) */
-  --dark-canvas: #18181C;   /* page bg on dark */
-  --dark-cloud:  #212226;   /* elevated on dark */
-  --dark-ink:    #F4F4F1;   /* primary text on dark */
-  --dark-mist:   #B0B0B6;   /* muted text on dark */
-  --dark-fog:    #2E2F35;   /* border / divider on dark */
+  /* Dark surfaces (parallel mode — role-inverted; names + roles from colorSystem.darkRoles) */
+  --dark-canvas: #18181C;   /* Ink — Page background on dark */
+  --dark-cloud: #212226;   /* Graphite — Elevated surface on dark */
+  --dark-ink: #F4F4F1;   /* Cloud — Primary text on dark */
+  --dark-mist: #B0B0B6;   /* Mist — Muted text on dark */
+  --dark-fog: #2E2F35;   /* Fog — Border / divider on dark */
 
   /* Dark bridge washes */
   --dark-wash-cobalt: #1B2440;
@@ -59,7 +59,7 @@
   --btn-dark-secondary-bg: #2E2F35;  --btn-dark-secondary-hover: #3A3A40;  --btn-dark-secondary-text: #F4F4F1;
   --btn-dark-transient-text: #18181C;
 
-  /* Focus ring — amber "attention" ring */
+  /* Focus ring — Amber "attention" ring */
   --focus-ring-light: #A86E00;
   --focus-ring-dark: rgba(225, 144, 0, 0.7);
   --focus-ring-width: 2px;
@@ -71,37 +71,37 @@
   --font-mono:    'JetBrains Mono', monospace;
 
   /* Type scale — size, line-height, and weight per step */
-  --text-display: 48px;  --text-display-lh: 1.1;  --text-display-weight: 600;  /* hero headlines, landing-page titles */
-  --text-h1: 36px;  --text-h1-lh: 1.2;  --text-h1-weight: 600;  /* page titles */
-  --text-h2: 30px;  --text-h2-lh: 1.25;  --text-h2-weight: 600;  /* major section headings */
-  --text-h3: 24px;  --text-h3-lh: 1.3;  --text-h3-weight: 600;  /* sub-section headings, card titles */
-  --text-h4: 20px;  --text-h4-lh: 1.4;  --text-h4-weight: 600;  /* minor headings, dialog titles */
-  --text-h5: 18px;  --text-h5-lh: 1.4;  --text-h5-weight: 600;  /* sidebar section titles */
-  --text-body-lg: 18px;  --text-body-lg-lh: 1.6;  --text-body-lg-weight: 400;  /* lead paragraphs */
-  --text-body: 16px;  --text-body-lh: 1.6;  --text-body-weight: 400;  /* default body text */
-  --text-body-sm: 14px;  --text-body-sm-lh: 1.5;  --text-body-sm-weight: 400;  /* secondary text, table cells, form inputs */
-  --text-caption: 12px;  --text-caption-lh: 1.5;  --text-caption-weight: 500;  /* labels, timestamps, helper text */
-  --text-overline: 12px;  --text-overline-lh: 1.5;  --text-overline-weight: 600;  /* section labels (uppercase + 0.05em tracking) */
-  --text-code: 14px;  --text-code-lh: 1.5;  --text-code-weight: 400;  /* inline code, data values, type labels (JetBrains Mono) */
-  --text-code-sm: 12px;  --text-code-sm-lh: 1.5;  --text-code-sm-weight: 400;  /* trace details, technical metadata (JetBrains Mono) */
+  --text-display: 48px;  --text-display-lh: 1.1;  --text-display-weight: 600;  /* Hero headlines, landing-page titles */
+  --text-h1: 36px;  --text-h1-lh: 1.2;  --text-h1-weight: 600;  /* Page titles */
+  --text-h2: 30px;  --text-h2-lh: 1.25;  --text-h2-weight: 600;  /* Major section headings */
+  --text-h3: 24px;  --text-h3-lh: 1.3;  --text-h3-weight: 600;  /* Sub-section headings, card titles */
+  --text-h4: 20px;  --text-h4-lh: 1.4;  --text-h4-weight: 600;  /* Minor headings, dialog titles */
+  --text-h5: 18px;  --text-h5-lh: 1.4;  --text-h5-weight: 600;  /* Sidebar section titles */
+  --text-body-lg: 18px;  --text-body-lg-lh: 1.6;  --text-body-lg-weight: 400;  /* Lead paragraphs */
+  --text-body: 16px;  --text-body-lh: 1.6;  --text-body-weight: 400;  /* Default body text */
+  --text-body-sm: 14px;  --text-body-sm-lh: 1.5;  --text-body-sm-weight: 400;  /* Secondary text, table cells, form inputs */
+  --text-caption: 12px;  --text-caption-lh: 1.5;  --text-caption-weight: 500;  /* Labels, timestamps, helper text */
+  --text-overline: 12px;  --text-overline-lh: 1.5;  --text-overline-weight: 600;  /* Section labels (uppercase + 0.05em tracking) */
+  --text-code: 14px;  --text-code-lh: 1.5;  --text-code-weight: 400;  /* Inline code, data values, type labels (JetBrains Mono) */
+  --text-code-sm: 12px;  --text-code-sm-lh: 1.5;  --text-code-sm-weight: 400;  /* Trace details, technical metadata (JetBrains Mono) */
 
   /* Radii */
-  --radius-sm: 4px;  /* tags, badges, inline code */
-  --radius-md: 6px;  /* compact buttons, small controls */
-  --radius-lg: 8px;  /* buttons, inputs, dropdowns */
-  --radius-xl: 12px;  /* cards, panels, modals (default container) */
-  --radius-2xl: 16px;  /* hero sections, large feature cards */
-  --radius-full: 9999px;  /* avatars, spectrum tags, toggles */
+  --radius-sm: 4px;  /* Tags, badges, inline code */
+  --radius-md: 6px;  /* Compact buttons, small controls */
+  --radius-lg: 8px;  /* Buttons, inputs, dropdowns */
+  --radius-xl: 12px;  /* Cards, panels, modals (default container) */
+  --radius-2xl: 16px;  /* Hero sections, large feature cards */
+  --radius-full: 9999px;  /* Avatars, spectrum tags, toggles */
 
   /* Spacing — 4 px base unit */
-  --space-2xs: 4px;  /* p-1 — tight inline, icon gaps */
-  --space-xs: 8px;  /* p-2 — input / badge padding, compact gaps */
-  --space-sm: 12px;  /* p-3 — compact card padding, list-item gaps */
-  --space-md: 16px;  /* p-4 — default content gap, section padding */
-  --space-lg: 20px;  /* p-5 — default card padding, modal padding */
-  --space-xl: 24px;  /* p-6 — section spacing, form-field gaps */
-  --space-2xl: 32px;  /* p-8 — major section breaks */
-  --space-3xl: 48px;  /* p-12 — page top padding, hero spacing */
+  --space-2xs: 4px;  /* p-1 — Tight inline, icon gaps */
+  --space-xs: 8px;  /* p-2 — Input / badge padding, compact gaps */
+  --space-sm: 12px;  /* p-3 — Compact card padding, list-item gaps */
+  --space-md: 16px;  /* p-4 — Default content gap, section padding */
+  --space-lg: 20px;  /* p-5 — Default card padding, modal padding */
+  --space-xl: 24px;  /* p-6 — Section spacing, form-field gaps */
+  --space-2xl: 32px;  /* p-8 — Major section breaks */
+  --space-3xl: 48px;  /* p-12 — Page top padding, hero spacing */
 }
 
 /* Elevation — z-index steps; shadows are Tailwind classes.

@@ -1,5 +1,31 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
+import { colorSystem, selectedPalette } from '../../data/brand'
+
+// The three-tier framework renders canon (colorSystem.tiers, decision 30);
+// the per-tier application tables below each rule are page-specific detail.
+const TIERS = colorSystem.tiers
+
+// Accent-on-Ink contrast figures are computed from the canon hexes — the
+// numbers can never disagree with the palette.
+const HEX = (name: string) => {
+  const c = selectedPalette.colors.find(x => x.name === name)
+  if (!c) throw new Error(`palette colour missing from canon: ${name}`)
+  return c.hex
+}
+const srgbLin = (c: number) => { const v = c / 255; return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4 }
+const luminance = (hex: string) => {
+  const [r, g, b] = [1, 3, 5].map(i => srgbLin(parseInt(hex.slice(i, i + 2), 16)))
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b
+}
+const contrast = (a: string, b: string) => {
+  const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x)
+  return (hi + 0.05) / (lo + 0.05)
+}
+const ON_INK = (name: string) => {
+  const r = contrast(HEX(name), HEX('Ink'))
+  return `${r >= 10 ? r.toFixed(1) : r.toFixed(2)}:1`
+}
 
 const semanticColors = [
   {
@@ -252,7 +278,7 @@ export default function SemanticColors() {
           </Tooltip>
         </h2>
         <p className="text-sm text-iron mb-4 leading-relaxed">
-          On dark surfaces the bridge tier rebuilds at ~8–12% saturation on a dark base. The accents carry over <strong>unchanged</strong> — Teal (6.91:1), Amber (6.90:1) and Rose (4.82:1) pass WCAG AA on Ink; Cobalt is 3.93:1, large-text/UI only (use Cobalt Lift for body text) — so the brand reads as itself in either mode.
+          On dark surfaces the bridge tier rebuilds at ~8–12% saturation on a dark base. {colorSystem.accentsOnDark} Computed on Ink: Teal {ON_INK('Teal')}, Amber {ON_INK('Amber')}, Rose {ON_INK('Rose')}; Cobalt {ON_INK('Cobalt')}.
         </p>
 
         <div className="rounded-xl overflow-hidden border border-stone-200">
@@ -338,14 +364,14 @@ export default function SemanticColors() {
             <div className="px-5 py-3 bg-brand/5 border-b border-brand/10">
               <div className="flex items-center gap-3">
                 <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#4271DF' }} />
-                <p className="text-sm font-semibold text-ink">Tier 1: Responsive</p>
-                <span className="text-xs font-mono text-brand bg-brand/10 px-1.5 py-0.5 rounded">Cobalt #4271DF</span>
+                <p className="text-sm font-semibold text-ink">Tier {TIERS[0].tier}: {TIERS[0].name}</p>
+                <span className="text-xs font-mono text-brand bg-brand/10 px-1.5 py-0.5 rounded">{TIERS[0].carrier} #4271DF</span>
               </div>
               <p className="text-xs text-slate mt-1">Personality: <strong>Perceptive</strong> — the system responds to you</p>
             </div>
             <div className="p-5">
               <p className="text-xs text-iron leading-relaxed mb-3">
-                Cobalt appears on <strong>action-oriented elements</strong> — things that trigger an operation or navigate to a new context. It's temporary and reactive: present during hover, focus, and press, then settles. This keeps Cobalt rare and powerful.
+                {TIERS[0].rule} This keeps Cobalt rare and powerful.
               </p>
               <div className="border border-stone-200 rounded-lg overflow-hidden">
                 {[
@@ -370,14 +396,14 @@ export default function SemanticColors() {
             <div className="px-5 py-3 bg-cloud border-b border-stone-200">
               <div className="flex items-center gap-3">
                 <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#18181C' }} />
-                <p className="text-sm font-semibold text-ink">Tier 2: Structural</p>
-                <span className="text-xs font-mono text-iron bg-stone-200 px-1.5 py-0.5 rounded">Ink #18181C</span>
+                <p className="text-sm font-semibold text-ink">Tier {TIERS[1].tier}: {TIERS[1].name}</p>
+                <span className="text-xs font-mono text-iron bg-stone-200 px-1.5 py-0.5 rounded">{TIERS[1].carrier} #18181C</span>
               </div>
               <p className="text-xs text-slate mt-1">Personality: <strong>Grounded</strong> — confident, understated, persistent</p>
             </div>
             <div className="p-5">
               <p className="text-xs text-iron leading-relaxed mb-3">
-                Ink signals <strong>persistent state</strong> and <strong>structural navigation</strong>. The current page, the selected tab, the toggled-on icon — and the hover state of elements that are part of the persistent UI chrome (sidebar, tabs, breadcrumbs). These elements are always visible, so Ink keeps the canvas calm while Cobalt stays reserved for action-oriented moments.
+                {TIERS[1].rule} The hover state of persistent chrome (sidebar, tabs, breadcrumbs) follows Ink, not Cobalt.
               </p>
               <div className="border border-stone-200 rounded-lg overflow-hidden">
                 {[
@@ -409,14 +435,14 @@ export default function SemanticColors() {
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#F24260' }} />
                   <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#97979E' }} />
                 </div>
-                <p className="text-sm font-semibold text-ink">Tier 3: Semantic</p>
-                <span className="text-xs font-mono text-slate bg-cloud px-1.5 py-0.5 rounded">Cobalt / Teal / Amber / Rose / Pewter</span>
+                <p className="text-sm font-semibold text-ink">Tier {TIERS[2].tier}: {TIERS[2].name}</p>
+                <span className="text-xs font-mono text-slate bg-cloud px-1.5 py-0.5 rounded">{TIERS[2].carrier}</span>
               </div>
               <p className="text-xs text-slate mt-1">Personality: <strong>Trustworthy</strong> — the system communicates clearly</p>
             </div>
             <div className="p-5">
               <p className="text-xs text-iron leading-relaxed mb-3">
-                Semantic colors appear when the <strong>system communicates status</strong>. Info, success, warning, error. Cobalt doubles as the informational semantic color — giving notices visual weight. These colors are never decorative — every appearance carries meaning that users learn to trust.
+                {TIERS[2].rule} Cobalt doubles as the informational semantic color — giving notices visual weight.
               </p>
               <div className="border border-stone-200 rounded-lg overflow-hidden">
                 {[
