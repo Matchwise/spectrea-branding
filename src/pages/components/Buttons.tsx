@@ -1,7 +1,48 @@
 import { useState } from 'react'
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
+import { accessibility, brandTokens, components, selectedPalette } from '../../data/brand'
 import { TbPlus, TbSearch, TbSettings, TbCheck } from 'react-icons/tb'
+
+/* Specs render canon (components + buttonStates + focusRing, decision 31);
+   demo styling stays page-side. */
+const BS = brandTokens.buttonStates
+const BTN = components.buttons
+const TYPE = (name: string) => {
+  const t = BTN.types.find(x => x.name === name)
+  if (!t) throw new Error(`button type missing from canon: ${name}`)
+  return t
+}
+const RADIUS = (token: string) => {
+  const r = brandTokens.radii.find(x => x.token === token)
+  if (!r) throw new Error(`radius token missing from canon: ${token}`)
+  return r
+}
+const EXCEPTION = (() => {
+  const e = accessibility.exceptionRegistry.entries.find(x => x.name === 'semantic-button-labels-white')
+  if (!e) throw new Error('semantic-button-labels-white registry entry missing')
+  return e
+})()
+const destructiveType = TYPE('Destructive')
+const SEMANTIC_TEXT = 'label' in destructiveType ? destructiveType.label : '—'
+const DEFAULT_SIZE = (() => {
+  const s = BTN.sizes.find(x => x.name === 'Default')
+  if (!s) throw new Error('Default button size missing from canon')
+  return s
+})()
+const HEX = (name: string) => {
+  const c = selectedPalette.colors.find(x => x.name === name)
+  if (!c) throw new Error(`palette colour missing from canon: ${name}`)
+  return c.hex
+}
+const SEMANTIC_CARDS = (['Confirm', 'Caution'] as const).map(name => {
+  const t = TYPE(name)
+  if (!('detail' in t) || !('examples' in t) || !('palette' in t)) throw new Error(`semantic detail missing on ${name}`)
+  return t
+})
+// Tailwind constants (not canon): stone border family + text-size utilities.
+const STONE_200 = '#E7E5E4'
+const TEXT_CLASS: Record<number, string> = { 12: 'text-xs', 14: 'text-sm', 16: 'text-base' }
 
 /* ------------------------------------------------------------------ */
 
@@ -36,31 +77,32 @@ export default function Buttons() {
     setTimeout(() => setLoading(p => ({ ...p, [key]: false })), 2000)
   }
 
-  /* Dark mode surface colors — Warm Blend palette (parallel mode) */
+  /* Dark mode surface colors — selectedPalette.darkMode + dark secondary
+     states (canon; no private copies) */
+  const DM = selectedPalette.darkMode
   const dm = {
-    bg: '#18181C',       // Ink — canvas role
-    surface: '#212226',  // Graphite — elevated role
-    border: '#2E2F35',   // Fog — border / divider
-    text: '#F4F4F1',     // Cloud — primary text
-    muted: '#B0B0B6',    // Mist — muted text on dark
-    secondaryBg: '#2E2F35',
-    secondaryHover: '#3A3A40',
+    bg: DM.bg,           // Ink — canvas role
+    surface: DM.surface, // Graphite — elevated role
+    border: DM.border,   // Fog — border / divider
+    text: DM.text,       // Cloud — primary text
+    muted: DM.muted,     // Mist — muted text on dark
+    secondaryBg: BS.dark.secondary.bg,
+    secondaryHover: BS.dark.secondary.hover,
   }
 
-  /* Explicit hover/active colors for filled buttons */
+  /* Hover/active ladders for filled buttons — brandTokens.buttonStates */
   const hc = {
-    brand:  { light: { base: '#4271DF', hover: '#3A63C4', active: '#3255A7' }, dark: { base: '#4271DF', hover: '#6E93EC', active: '#8FACF0' } },
-    rose:   { light: { base: '#F24260', hover: '#D63B55', active: '#BA3249' }, dark: { base: '#F24260', hover: '#F56579', active: '#F78892' } },
-    teal:   { light: { base: '#00B6A0', hover: '#009E8A', active: '#008775' }, dark: { base: '#00B6A0', hover: '#20C8B2', active: '#40D4C3' } },
-    amber:  { light: { base: '#E19000', hover: '#C58200', active: '#A86E00' }, dark: { base: '#E19000', hover: '#ECA41E', active: '#F2B63C' } },
+    brand:  { light: BS.light.cobalt, dark: BS.dark.cobalt },
+    rose:   { light: BS.light.rose, dark: BS.dark.rose },
+    teal:   { light: BS.light.teal, dark: BS.dark.teal },
+    amber:  { light: BS.light.amber, dark: BS.dark.amber },
   }
   const mode = dark ? 'dark' : 'light'
 
   /* Hover/active handlers for demo buttons.
      Dark mode: fills lighten and the label flips to Ink while lightened —
-     white text fails AA on every lightened fill (1.82–2.99:1); Ink passes
-     on all of them (5.92–9.72:1). See brandTokens.buttonStates.dark.rule. */
-  const transientText = dark ? '#18181C' : '#FFFFFF'
+     see brandTokens.buttonStates.dark.rule. */
+  const transientText = dark ? BS.dark.transientText : '#FFFFFF'
   const filledHandlers = (color: keyof typeof hc) => ({
     style: { backgroundColor: hc[color][mode].base, color: '#FFFFFF' } as React.CSSProperties,
     onMouseEnter: (e: React.MouseEvent<HTMLButtonElement>) => { e.currentTarget.style.backgroundColor = hc[color][mode].hover; e.currentTarget.style.color = transientText },
@@ -77,7 +119,7 @@ export default function Buttons() {
       {/* ── Variants ─────────────────────────────────────────────── */}
       <Section>
         <h2 className="text-xl font-semibold text-ink mb-4">
-          <Tooltip content="Spectrea uses four core button variants plus two semantic variants. Primary (Cobalt) is the hero action. Confirm (Teal) and Caution (Amber) are reserved for specific semantic contexts.">
+          <Tooltip content={`Six canonical types — Hierarchy (${BTN.types.filter(t => t.tier === 'Hierarchy').map(t => t.name).join(', ')}) and Semantic (${BTN.types.filter(t => t.tier === 'Semantic').map(t => t.name).join(', ')}). ${BTN.rule}`}>
             <span>Button Variants</span>
           </Tooltip>
         </h2>
@@ -127,10 +169,10 @@ export default function Buttons() {
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${dark ? 'btn-focus-dark' : 'btn-focus'}`}
                 style={dark
                   ? { backgroundColor: dm.secondaryBg, color: dm.text }
-                  : { backgroundColor: '#F3F4F6', color: '#212226' }
+                  : { backgroundColor: BS.light.secondary.bg, color: BS.light.secondary.text }
                 }
-                onMouseEnter={e => e.currentTarget.style.backgroundColor = dark ? dm.secondaryHover : '#E5E7EB'}
-                onMouseLeave={e => e.currentTarget.style.backgroundColor = dark ? dm.secondaryBg : '#F3F4F6'}
+                onMouseEnter={e => e.currentTarget.style.backgroundColor = dark ? dm.secondaryHover : STONE_200}
+                onMouseLeave={e => e.currentTarget.style.backgroundColor = dark ? dm.secondaryBg : BS.light.secondary.bg}
               >
                 View Details
               </button>
@@ -188,7 +230,7 @@ export default function Buttons() {
 
         <div className="mt-3 bg-brand/5 rounded-lg px-4 py-3 border border-brand/10">
           <p className="text-xs text-brand">
-            <strong>Rule:</strong> One Primary button per section maximum. Confirm and Caution are reserved for specific semantic contexts — never as general-purpose actions.
+            <strong>Rule:</strong> {BTN.rule}
           </p>
         </div>
       </Section>
@@ -196,7 +238,7 @@ export default function Buttons() {
       {/* ── Specifications ───────────────────────────────────────── */}
       <Section>
         <h2 className="text-xl font-semibold text-ink mb-4">
-          <Tooltip content="Every button has consistent padding, radius, and typography. Dark mode inverts hover direction: lighten instead of darken.">
+          <Tooltip content="Every button has consistent padding, radius, and typography. The transient direction per surface is canonical — see the two cards below the table.">
             <span>Specifications</span>
           </Tooltip>
         </h2>
@@ -207,14 +249,31 @@ export default function Buttons() {
               <span key={h} className="text-[10px] font-semibold text-pewter uppercase tracking-wider">{h}</span>
             ))}
           </div>
-          {[
-            { variant: 'Primary', lightBg: 'Cobalt', darkBg: 'Cobalt', text: 'White', hover: '#3A63C4 / #6E93EC', usage: 'Main CTA. One per section.' },
-            { variant: 'Secondary', lightBg: 'Stone 100', darkBg: 'Graphite tint', text: 'Stone 700 / Cloud', hover: 'Stone 200 / #3A3A40', usage: 'Supporting actions.' },
-            { variant: 'Ghost', lightBg: 'Transparent', darkBg: 'Transparent', text: 'Slate / Stone 300', hover: 'Stone 50 / Graphite tint', usage: 'Tertiary actions. 2px border.' },
-            { variant: 'Destructive', lightBg: 'Rose', darkBg: 'Rose', text: 'White', hover: '#D63B55 / #F56579', usage: 'Irreversible actions.' },
-            { variant: 'Confirm', lightBg: 'Teal', darkBg: 'Teal', text: 'White', hover: '#009E8A / #20C8B2', usage: 'Verify, approve, connect.' },
-            { variant: 'Caution', lightBg: 'Amber', darkBg: 'Amber', text: 'White', hover: '#C58200 / #ECA41E', usage: 'Override, merge, proceed.' },
-          ].map((row, i) => (
+          {BTN.types.map(t => {
+            if ('palette' in t) {
+              const k = t.stateKey
+              return {
+                variant: t.name, lightBg: t.palette, darkBg: t.palette, text: t.label,
+                hover: `${BS.light[k].hover} / ${BS.dark[k].hover}`, usage: t.role,
+              }
+            }
+            /* structural branch: stateKey without palette = fill/text-shaped
+               state group — never keyed on the group's name */
+            if ('stateKey' in t) {
+              const s = BS.light[t.stateKey]
+              const d = BS.dark[t.stateKey]
+              return {
+                variant: t.name, lightBg: s.bg, darkBg: d.bg,
+                text: `${s.text} / ${d.text}`,
+                hover: `— / ${d.hover}`,
+                usage: `${t.role}${'treatment' in t ? ` ${t.treatment}` : ''}`,
+              }
+            }
+            return {
+              variant: t.name, lightBg: '—', darkBg: '—', text: '—', hover: '—',
+              usage: `${t.role}${'treatment' in t ? ` ${t.treatment}` : ''}`,
+            }
+          }).map((row, i) => (
             <div key={row.variant} className="grid grid-cols-6 px-4 py-2.5 items-center" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
               <span className="text-sm font-medium text-ink">{row.variant}</span>
               <span className="text-xs font-mono text-iron">{row.lightBg}</span>
@@ -230,20 +289,20 @@ export default function Buttons() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
           <div className="bg-cloud rounded-lg px-4 py-3 border border-stone-100">
             <p className="text-xs font-semibold text-slate mb-1">Light Mode Hover</p>
-            <p className="text-xs text-slate">Hand-picked darker shade — buttons recede into the surface on press.</p>
+            <p className="text-xs text-slate">{BTN.lightHoverRule}</p>
           </div>
           <div className="bg-cloud rounded-lg px-4 py-3 border border-stone-100">
             <p className="text-xs font-semibold text-slate mb-1">Dark Mode Hover</p>
-            <p className="text-xs text-slate">Hand-picked lighter shade — buttons lift toward the user on hover, and the label flips to Ink while the fill is lightened (white text fails AA on every lightened fill; Ink passes on all of them).</p>
+            <p className="text-xs text-slate">{BS.dark.rule}</p>
           </div>
         </div>
 
         <div className="grid grid-cols-4 gap-3 mt-3">
           {[
-            { label: 'Font', value: 'Lexend Medium 500' },
-            { label: 'Radius', value: '8px (rounded-lg)' },
-            { label: 'Semantic text', value: 'White' },
-            { label: 'Focus ring', value: '2px Amber, 2px offset · #A86E00 light / alpha dark' },
+            { label: 'Font', value: BTN.font },
+            { label: 'Radius', value: `${RADIUS(DEFAULT_SIZE.radiusToken).px}px (${RADIUS(DEFAULT_SIZE.radiusToken).tailwind})` },
+            { label: 'Semantic text', value: SEMANTIC_TEXT },
+            { label: 'Focus ring', value: `${brandTokens.focusRing.width}, ${brandTokens.focusRing.offset} offset · ${brandTokens.focusRing.light} light / ${brandTokens.focusRing.dark} dark` },
           ].map(s => (
             <div key={s.label} className="bg-cloud rounded-lg px-3 py-2 border border-stone-100 text-center">
               <p className="text-xs font-semibold text-slate">{s.label}</p>
@@ -261,34 +320,29 @@ export default function Buttons() {
           </Tooltip>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A030', backgroundColor: '#00B6A005' }}>
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#00B6A0' }} />
-              <h3 className="text-sm font-semibold text-ink">Confirm (Teal)</h3>
-            </div>
-            <p className="text-xs text-iron mb-3">For actions that affirm, verify, or establish positive connections. The outcome is constructive.</p>
-            <div className="space-y-1.5">
-              {['Verify', 'Approve', 'Connect', 'Mark as Trusted'].map(ex => (
-                <p key={ex} className="text-xs font-mono text-slate">"{ex}"</p>
-              ))}
-            </div>
-          </div>
-          <div className="border rounded-xl p-5" style={{ borderColor: '#E1900030', backgroundColor: '#E1900005' }}>
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: '#E19000' }} />
-              <h3 className="text-sm font-semibold text-ink">Caution (Amber)</h3>
-            </div>
-            <p className="text-xs text-iron mb-3">For actions that acknowledge a warning or override a safeguard. Reversible but consequential.</p>
-            <div className="space-y-1.5">
-              {['Override', 'Merge', 'Proceed Anyway', 'Dismiss Warning'].map(ex => (
-                <p key={ex} className="text-xs font-mono text-slate">"{ex}"</p>
-              ))}
-            </div>
-          </div>
+          {SEMANTIC_CARDS.map(t => {
+            const hex = HEX(t.palette)
+            return (
+              <div key={t.name} className="border rounded-xl p-5" style={{ borderColor: `${hex}30`, backgroundColor: `${hex}05` }}>
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: hex }} />
+                  <h3 className="text-sm font-semibold text-ink">{t.name} ({t.palette})</h3>
+                </div>
+                <p className="text-xs text-iron mb-3">{t.detail}</p>
+                <div className="space-y-1.5">
+                  {t.examples.map(ex => (
+                    <p key={ex} className="text-xs font-mono text-slate">"{ex}"</p>
+                  ))}
+                </div>
+              </div>
+            )
+          })}
         </div>
         <div className="mt-3 bg-cloud rounded-lg px-4 py-3 border border-stone-200">
           <p className="text-xs text-iron">
-            <strong>Contrast note — ratified exception <code className="font-mono bg-white px-1 rounded">semantic-button-labels-white</code> (2026-08-07):</strong> White text at base state does not meet WCAG 2.x AA (4.5:1) on Teal (2.56:1), Amber (2.56:1), or Rose (3.67:1) — only Cobalt passes (4.51:1). The grant rests on the perceptual adjudicator in the measurement doctrine: under APCA-W3, white beats or ties Ink on every fill (Lc 76.4 Cobalt / 68.4 Rose / 54.6 Teal / 54.9 Amber vs Ink 31.7/39.6/53.0/52.7) — the nominally compliant Ink-on-Rose swap would read <em>worse</em> — and every white pairing clears the APCA spot-text minimum. Bounds: short action-button labels ≥14px Lexend Medium, reinforced by action context; never body text. Interaction states: light mode darkens, so white-text contrast rises (Cobalt and Rose states pass AA outright, 4.55–7.02:1; Teal and Amber reach APCA 64–76); dark mode lightens with the label flipped to Ink — all dark hover/active pairs pass AA outright (5.92–9.72:1), and since the 2026-08-08 Cobalt re-lightening every dark transient state also clears the APCA spot-text line.
+            <strong>Contrast note — ratified exception <code className="font-mono bg-white px-1 rounded">{EXCEPTION.name}</code> ({EXCEPTION.ratified}):</strong>{' '}
+            {EXCEPTION.exception} <strong>Measured — WCAG 2.x:</strong> {EXCEPTION.measured.wcag2x} <strong>APCA:</strong> {EXCEPTION.measured.apca}{' '}
+            <strong>Rationale:</strong> {EXCEPTION.rationale} <strong>Bounds:</strong> {EXCEPTION.bounds}
           </p>
         </div>
       </Section>
@@ -296,17 +350,16 @@ export default function Buttons() {
       {/* ── Sizes ────────────────────────────────────────────────── */}
       <Section>
         <h2 className="text-xl font-semibold text-ink mb-4">
-          <Tooltip content="Button sizes match the density of the surrounding UI. Compact for toolbars and tables, Default for most contexts, Large for standalone CTAs.">
+          <Tooltip content={`Button sizes match the density of the surrounding UI. ${BTN.sizes.map(s => `${s.name} — ${s.use}`).join(' · ')}.`}>
             <span>Sizes</span>
           </Tooltip>
         </h2>
         <div className="border border-stone-200 rounded-xl p-6">
           <div className="flex items-end justify-center gap-8 flex-wrap">
-            {[
-              { name: 'Compact', h: '32px', padding: 'px-3 py-1.5', text: 'text-xs', radius: 'rounded-md' },
-              { name: 'Default', h: '36px', padding: 'px-4 py-2', text: 'text-sm', radius: 'rounded-lg' },
-              { name: 'Large', h: '48px', padding: 'px-6 py-3', text: 'text-base', radius: 'rounded-lg' },
-            ].map(s => (
+            {BTN.sizes.map(t => ({
+              name: t.name, h: `${t.heightPx}px`, padding: t.padding,
+              text: TEXT_CLASS[t.fontSizePx] ?? 'text-sm', radius: RADIUS(t.radiusToken).tailwind,
+            })).map(s => (
               <div key={s.name} className="flex flex-col items-center gap-2">
                 <button className={`${s.padding} ${s.radius} ${s.text} font-medium text-white bg-brand transition-all hover:bg-brand-hover active:bg-brand-active btn-focus`}>{s.name}</button>
                 <span className="text-xs font-mono text-slate">{s.h}</span>
@@ -366,7 +419,7 @@ export default function Buttons() {
       {/* ── States ───────────────────────────────────────────────── */}
       <Section>
         <h2 className="text-xl font-semibold text-ink mb-4">
-          <Tooltip content="Button states provide feedback. In dark mode, hover direction reverses: buttons brighten toward the user instead of darkening into the surface.">
+          <Tooltip content="Button states provide feedback. The dark-mode transient direction is canonical (buttonStates.dark.rule) — rendered in full under Specifications.">
             <span>States</span>
           </Tooltip>
         </h2>
@@ -380,11 +433,11 @@ export default function Buttons() {
                 <span className="text-xs font-mono text-slate">Interactive</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
-                <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand" style={{ outline: '2px solid #A86E00', outlineOffset: '2px' }}>Focused</button>
+                <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand" style={{ outline: `2px solid ${brandTokens.focusRing.light}`, outlineOffset: '2px' }}>Focused</button>
                 <span className="text-xs font-mono text-slate">Amber ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
-                <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate border-2 border-stone-300" style={{ outline: '2px solid #A86E00', outlineOffset: '2px' }}>Focused</button>
+                <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate border-2 border-stone-300" style={{ outline: `2px solid ${brandTokens.focusRing.light}`, outlineOffset: '2px' }}>Focused</button>
                 <span className="text-xs font-mono text-slate">Ghost + ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
@@ -408,11 +461,11 @@ export default function Buttons() {
                 <span className="text-xs font-mono" style={{ color: dm.muted }}>Interactive</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
-                <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand" style={{ outline: '2px solid rgba(225, 144, 0, 0.7)', outlineOffset: '2px' }}>Focused</button>
+                <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand" style={{ outline: `2px solid ${brandTokens.focusRing.dark}`, outlineOffset: '2px' }}>Focused</button>
                 <span className="text-xs font-mono" style={{ color: dm.muted }}>Amber ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
-                <button className="px-3 py-1.5 rounded-lg text-xs font-medium border-2" style={{ borderColor: '#97979E', color: '#D1D5DB', outline: '2px solid rgba(225, 144, 0, 0.7)', outlineOffset: '2px' }}>Focused</button>
+                <button className="px-3 py-1.5 rounded-lg text-xs font-medium border-2" style={{ borderColor: '#97979E', color: '#D1D5DB', outline: `2px solid ${brandTokens.focusRing.dark}`, outlineOffset: '2px' }}>Focused</button>
                 <span className="text-xs font-mono" style={{ color: dm.muted }}>Ghost + ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
@@ -428,8 +481,8 @@ export default function Buttons() {
             { state: 'Default', light: 'Base color', dark: 'Same base color' },
             { state: 'Hover', light: 'Explicit darker shade', dark: 'Explicit lighter shade + Ink label' },
             { state: 'Active', light: 'Explicit darkest shade', dark: 'Explicit lightest shade + Ink label' },
-            { state: 'Focus', light: '2px Amber outline, 2px offset', dark: '2px Amber outline, 2px offset' },
-            { state: 'Disabled', light: 'opacity-40', dark: 'opacity-40' },
+            { state: 'Focus', light: `${brandTokens.focusRing.width} Amber outline, ${brandTokens.focusRing.offset} offset`, dark: `${brandTokens.focusRing.width} Amber outline, ${brandTokens.focusRing.offset} offset` },
+            { state: 'Disabled', light: BTN.disabled, dark: BTN.disabled },
           ].map((row, i) => (
             <div key={row.state} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < 4 ? '1px solid #F3F4F6' : 'none' }}>
               <span className="text-sm font-medium text-iron">{row.state}</span>
@@ -440,7 +493,7 @@ export default function Buttons() {
         </div>
         <div className="mt-3 bg-cloud rounded-lg px-4 py-3 border border-stone-200">
           <p className="text-xs text-iron">
-            <strong>Focus ring:</strong> 2px solid Amber outline with 2px offset. Amber = "attention" in the semantic color system — focus is literally where attention should go. The ring adapts to its surface (ratified 2026-08-07): light surfaces use Amber active <code className="font-mono bg-white px-1 rounded">#A86E00</code> (4.21:1 on Canvas, 3.89:1 on Cloud), dark surfaces use soft alpha Amber <code className="font-mono bg-white px-1 rounded">rgba(225,144,0,0.7)</code> (4.00:1 on Ink) — every pairing clears the 3:1 UI floor. Only appears on keyboard navigation (<code className="font-mono bg-cloud px-1 rounded">focus-visible</code>), never on click.
+            <strong>Focus ring:</strong> {brandTokens.focusRing.width} outline with {brandTokens.focusRing.offset} offset. Focus is literally where attention should go. {brandTokens.focusRing.note} Only appears on keyboard navigation (<code className="font-mono bg-cloud px-1 rounded">focus-visible</code>), never on click.
           </p>
         </div>
       </Section>
@@ -547,19 +600,15 @@ export default function Buttons() {
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#007D6E' }}>Do</h3>
             <ul className="space-y-2 text-sm text-iron">
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use verb-first labels: "Create", "Save Draft", "Open"</li>
-              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>One Primary button per section maximum</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>{BTN.rule}</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Pair destructive actions with a confirmation step</li>
-              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use Confirm/Caution only for their defined semantic contexts</li>
               <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Show loading state with a spinner, not label change</li>
-              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use explicit hover tokens — darken in light mode; lighten + flip the label to Ink in dark mode</li>
+              <li className="flex gap-2"><span style={{ color: '#00B6A0' }}>&#10003;</span>Use the explicit hover tokens from buttonStates — never ad-hoc shades</li>
             </ul>
           </div>
           <div className="border rounded-xl p-5" style={{ borderColor: '#F2426025', backgroundColor: '#F2426008' }}>
             <h3 className="text-sm font-semibold mb-3" style={{ color: '#BA3249' }}>Don't</h3>
             <ul className="space-y-2 text-sm text-iron">
-              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Put two Primary buttons next to each other</li>
-              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use semantic buttons as general-purpose actions</li>
-              <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use semantic buttons where a Primary would do</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use the gradient on buttons (solid colors only)</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Use vague labels: "Submit", "Click Here", "OK"</li>
               <li className="flex gap-2"><span style={{ color: '#F24260' }}>&#10007;</span>Disable buttons without explaining why</li>

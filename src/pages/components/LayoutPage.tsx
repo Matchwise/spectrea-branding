@@ -1,6 +1,22 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
 import { Logotype } from '../../components/brand/SpectreaLogo'
+import { brandTokens, components, selectedPalette } from '../../data/brand'
+
+/* Layout, spacing, radii, and elevation specs render canon
+   (components.layout + brandTokens, decision 31); demo mock-ups stay
+   page-side. */
+const L = components.layout
+const HEX = (name: string) => {
+  const c = selectedPalette.colors.find(x => x.name === name)
+  if (!c) throw new Error(`palette colour missing from canon: ${name}`)
+  return c.hex
+}
+const GRID_GAP = (() => {
+  const s = brandTokens.spacing.scale.find(x => x.token === L.gridGapToken)
+  if (!s) throw new Error('layout gridGapToken missing from canon')
+  return s
+})()
 
 /* ------------------------------------------------------------------ */
 
@@ -59,9 +75,9 @@ export default function LayoutPage() {
         </div>
         <div className="grid grid-cols-3 gap-3 mt-3">
           {[
-            { label: 'Sidebar', value: '256px fixed width', note: 'Collapsible on mobile' },
-            { label: 'Top Bar', value: '40-48px height', note: 'Search + user menu' },
-            { label: 'Content Area', value: 'Fluid, scrollable', note: 'Cloud (#F4F4F1) background' },
+            { label: 'Sidebar', value: `${L.sidebar.widthPx}px`, note: L.sidebar.note },
+            { label: 'Top Bar', value: `${L.topBar.height} height`, note: L.topBar.note },
+            { label: 'Content Area', value: L.contentArea.note, note: `${L.contentArea.background} (${HEX(L.contentArea.background)}) background` },
           ].map(s => (
             <div key={s.label} className="bg-cloud rounded-lg px-3 py-2 border border-stone-100 text-center">
               <p className="text-xs font-semibold text-slate">{s.label}</p>
@@ -75,21 +91,12 @@ export default function LayoutPage() {
       {/* ── Spacing Scale ────────────────────────────────────────── */}
       <Section>
         <h2 className="text-xl font-semibold text-ink mb-4">
-          <Tooltip content="Consistent spacing creates rhythm. Spectrea uses a 4px base unit. All spacing values are multiples of 4. This prevents arbitrary values and keeps the UI harmonious.">
+          <Tooltip content={`Consistent spacing creates rhythm. ${brandTokens.spacing.baseUnit}px base unit — ${brandTokens.spacing.rule}`}>
             <span>Spacing Scale</span>
           </Tooltip>
         </h2>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
-          {[
-            { name: '2xs', value: '4px', tw: 'p-1', use: 'Tight inline spacing, icon gaps' },
-            { name: 'xs', value: '8px', tw: 'p-2', use: 'Input padding, badge padding, compact gaps' },
-            { name: 'sm', value: '12px', tw: 'p-3', use: 'Card internal padding (compact), list item gaps' },
-            { name: 'md', value: '16px', tw: 'p-4', use: 'Default content gap, section padding' },
-            { name: 'lg', value: '20px', tw: 'p-5', use: 'Card padding (default), modal padding' },
-            { name: 'xl', value: '24px', tw: 'p-6', use: 'Section spacing, form field gaps' },
-            { name: '2xl', value: '32px', tw: 'p-8', use: 'Major section breaks' },
-            { name: '3xl', value: '48px', tw: 'p-12', use: 'Page top padding, hero spacing' },
-          ].map((row, i) => (
+          {brandTokens.spacing.scale.map(s => ({ name: s.token, value: `${s.px}px`, tw: s.tailwind, use: s.use })).map((row, i) => (
             <div key={row.name} className="flex items-center gap-4 px-4 py-2.5" style={{ borderBottom: i < 7 ? '1px solid #F3F4F6' : 'none' }}>
               <div className="w-12 flex-shrink-0">
                 <span className="text-xs font-semibold text-slate">{row.name}</span>
@@ -109,7 +116,7 @@ export default function LayoutPage() {
         </div>
         <div className="mt-3 bg-brand/5 rounded-lg px-4 py-3 border border-brand/10">
           <p className="text-xs text-brand">
-            <strong>Rule:</strong> Primary spacing (margins, section padding, gaps between elements) uses the 4px grid. Small inline elements — badges, labels, compact controls — may use 2px increments (6px, 10px) for fine control. Never use arbitrary values like 5px, 7px, or 15px.
+            <strong>Rule:</strong> {brandTokens.spacing.baseUnit}px base unit. {brandTokens.spacing.rule}
           </p>
         </div>
       </Section>
@@ -117,7 +124,7 @@ export default function LayoutPage() {
       {/* ── Grid System ──────────────────────────────────────────── */}
       <Section>
         <h2 className="text-xl font-semibold text-ink mb-4">
-          <Tooltip content="The content area uses a responsive grid. Column counts change at breakpoints. Gap stays consistent at 16px. Tailwind's grid utilities handle all layout.">
+          <Tooltip content={`The content area uses a responsive grid. Column counts change at breakpoints. Gap stays consistent at ${GRID_GAP.px}px. Tailwind's grid utilities handle all layout.`}>
             <span>Grid System</span>
           </Tooltip>
         </h2>
@@ -128,12 +135,7 @@ export default function LayoutPage() {
               <span key={h} className="text-xs font-semibold text-pewter uppercase tracking-wider">{h}</span>
             ))}
           </div>
-          {[
-            { bp: 'Mobile', width: '<640px', cols: '1 column', usage: 'Stacked cards, full-width forms' },
-            { bp: 'Tablet', width: '640-1023px', cols: '2 columns', usage: 'Side-by-side cards, split views' },
-            { bp: 'Desktop', width: '1024-1279px', cols: '3 columns', usage: 'Dashboard grids, item listings' },
-            { bp: 'Wide', width: '1280px+', cols: '4 columns', usage: 'Dense dashboards, data tables' },
-          ].map((row, i) => (
+          {L.breakpoints.map(b => ({ bp: b.name, width: b.range, cols: `${b.cols} ${b.cols === 1 ? 'column' : 'columns'}`, usage: b.use })).map((row, i) => (
             <div key={row.bp} className="grid grid-cols-4 px-4 py-2.5" style={{ borderBottom: i < 3 ? '1px solid #F3F4F6' : 'none' }}>
               <span className="text-sm font-medium text-iron">{row.bp}</span>
               <span className="text-xs font-mono text-iron">{row.width}</span>
@@ -153,18 +155,14 @@ export default function LayoutPage() {
               </div>
             ))}
           </div>
-          <p className="text-xs text-slate mt-2">16px gap between cells. Cards fill available width within their column.</p>
+          <p className="text-xs text-slate mt-2">{GRID_GAP.px}px gap between cells. Cards fill available width within their column.</p>
         </div>
       </Section>
 
       {/* ── Content Width ────────────────────────────────────────── */}
       <Section title="Content Width">
         <div className="space-y-3">
-          {[
-            { label: 'Max content width', value: '768px (max-w-3xl)', note: 'For reading-focused pages: docs, settings, forms' },
-            { label: 'Max dashboard width', value: 'Full width', note: 'Dashboards and data views use all available space' },
-            { label: 'Max prose width', value: '65ch (max-w-prose)', note: 'For long-form text blocks within any page' },
-          ].map(item => (
+          {L.contentWidths.map(w => ({ label: w.label, value: w.value, note: w.use })).map(item => (
             <div key={item.label} className="bg-cloud rounded-lg px-4 py-3 border border-stone-100 flex items-center gap-4">
               <div className="w-40 flex-shrink-0">
                 <p className="text-sm font-medium text-iron">{item.label}</p>
@@ -185,14 +183,7 @@ export default function LayoutPage() {
         </h2>
         <div className="border border-stone-200 rounded-xl overflow-x-auto">
           <div className="min-w-[600px]">
-          {[
-            { level: 'Base', z: '0', shadow: 'none', use: 'Page content, cards, sections', example: 'bg-white border' },
-            { level: 'Raised', z: '10', shadow: 'shadow-sm', use: 'Sticky headers, toolbars', example: 'shadow-sm' },
-            { level: 'Dropdown', z: '20', shadow: 'shadow-md', use: 'Dropdowns, popovers, tooltips', example: 'shadow-md' },
-            { level: 'Modal', z: '30', shadow: 'shadow-lg', use: 'Modals, dialogs, slide-overs', example: 'shadow-lg' },
-            { level: 'Overlay', z: '40', shadow: 'shadow-xl', use: 'Modal backdrops, full-screen overlays', example: 'shadow-xl' },
-            { level: 'Toast', z: '50', shadow: 'shadow-lg', use: 'Notifications, toasts (above everything)', example: 'shadow-lg' },
-          ].map((row, i) => (
+          {brandTokens.elevation.map(e => ({ level: e.level, z: String(e.zIndex), shadow: e.shadow, use: e.use, example: e.shadow === 'none' ? 'bg-white border' : e.shadow })).map((row, i) => (
             <div key={row.level} className="grid grid-cols-5 px-4 py-3 items-center" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
               <span className="text-sm font-medium text-iron">{row.level}</span>
               <span className="text-xs font-mono text-brand">z-{row.z}</span>
@@ -207,7 +198,7 @@ export default function LayoutPage() {
         </div>
         <div className="mt-3 bg-cloud rounded-lg px-4 py-3 border border-stone-200">
           <p className="text-xs text-iron">
-            <strong>Convention:</strong> Z-index values increment by 10 to leave room for intermediate layers. Never use arbitrary z-index values outside this scale.
+            <strong>Convention:</strong> {L.elevationRule}
           </p>
         </div>
       </Section>
@@ -220,14 +211,7 @@ export default function LayoutPage() {
           </Tooltip>
         </h2>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
-          {[
-            { name: 'sm', value: '4px', tw: 'rounded', use: 'Tags, badges, inline code' },
-            { name: 'md', value: '6px', tw: 'rounded-md', use: 'Compact buttons, small controls' },
-            { name: 'lg', value: '8px', tw: 'rounded-lg', use: 'Buttons, inputs, dropdowns' },
-            { name: 'xl', value: '12px', tw: 'rounded-xl', use: 'Cards, panels, modals' },
-            { name: '2xl', value: '16px', tw: 'rounded-2xl', use: 'Hero sections, large feature cards' },
-            { name: 'full', value: '9999px', tw: 'rounded-full', use: 'Avatars, spectrum tags, toggles' },
-          ].map((row, i) => (
+          {brandTokens.radii.map(r => ({ name: r.token, value: `${r.px}px`, tw: r.tailwind, use: r.use })).map((row, i) => (
             <div key={row.name} className="flex items-center gap-4 px-4 py-2.5" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
               <div className="w-12 flex-shrink-0">
                 <span className="text-xs font-semibold text-slate">{row.name}</span>
@@ -255,14 +239,7 @@ export default function LayoutPage() {
           </Tooltip>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {[
-            { rule: 'Sidebar collapses to overlay on mobile', detail: 'Below 1024px, the sidebar becomes a slide-over panel triggered by the menu button.' },
-            { rule: 'Grids collapse to single column', detail: 'Below 640px, all multi-column grids stack vertically. Cards go full-width.' },
-            { rule: 'Tables scroll horizontally', detail: 'Don\'t hide columns. Wrap the table in a horizontal scroll container with a fade edge.' },
-            { rule: 'Touch targets: 44px minimum', detail: 'Buttons, links, and interactive elements must be at least 44x44px on touch devices.' },
-            { rule: 'Modals become full-screen on mobile', detail: 'Below 640px, modals take the full viewport. No side margins, full-height content.' },
-            { rule: 'Heading sizes scale down at breakpoints', detail: 'Body text stays at 16px minimum. Headings reduce proportionally — see Typography for the full responsive scaling table.' },
-          ].map(item => (
+          {L.responsiveRules.map(item => (
             <div key={item.rule} className="bg-cloud rounded-lg px-4 py-3 border border-stone-100">
               <p className="text-sm font-medium text-iron">{item.rule}</p>
               <p className="text-xs text-slate mt-0.5">{item.detail}</p>

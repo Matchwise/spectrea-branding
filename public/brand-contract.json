@@ -1,6 +1,6 @@
 {
   "_generated": "DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-09)",
-  "version": "2.7.0",
+  "version": "2.8.0",
   "lastUpdated": "2026-08-09",
   "sourceOfTruth": "brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea's roadmap — check it before placing a capability claim on a buyer-facing surface.",
   "changeProcess": [
@@ -1079,6 +1079,211 @@
       "offset": "2px"
     }
   },
+  "components": {
+    "buttons": {
+      "types": [
+        {
+          "name": "Primary",
+          "tier": "Hierarchy",
+          "palette": "Cobalt",
+          "stateKey": "cobalt",
+          "label": "White",
+          "role": "The hero action. One per section."
+        },
+        {
+          "name": "Secondary",
+          "tier": "Hierarchy",
+          "stateKey": "secondary",
+          "role": "Supporting actions.",
+          "treatment": "Cloud-family fill, Ink-family text (light); Graphite-tint fill, Cloud text (dark)."
+        },
+        {
+          "name": "Ghost",
+          "tier": "Hierarchy",
+          "role": "Tertiary actions.",
+          "treatment": "2 px stone-300 border, transparent fill; label Slate (light) / stone-300 (dark)."
+        },
+        {
+          "name": "Destructive",
+          "tier": "Semantic",
+          "palette": "Rose",
+          "stateKey": "rose",
+          "label": "White",
+          "role": "Irreversible actions."
+        },
+        {
+          "name": "Confirm",
+          "tier": "Semantic",
+          "palette": "Teal",
+          "stateKey": "teal",
+          "label": "White",
+          "role": "Verify, approve, connect.",
+          "detail": "For actions that affirm, verify, or establish positive connections. The outcome is constructive.",
+          "examples": [
+            "Verify",
+            "Approve",
+            "Connect",
+            "Mark as Trusted"
+          ]
+        },
+        {
+          "name": "Caution",
+          "tier": "Semantic",
+          "palette": "Amber",
+          "stateKey": "amber",
+          "label": "White",
+          "role": "Override, merge, proceed.",
+          "detail": "For actions that acknowledge a warning or override a safeguard. Reversible but consequential.",
+          "examples": [
+            "Override",
+            "Merge",
+            "Proceed Anyway",
+            "Dismiss Warning"
+          ]
+        }
+      ],
+      "rule": "One Primary button per section maximum. Confirm and Caution are reserved for specific semantic contexts — never as general-purpose actions.",
+      "sizes": [
+        {
+          "name": "Compact",
+          "heightPx": 32,
+          "padding": "px-3 py-1.5",
+          "fontSizePx": 12,
+          "radiusToken": "md",
+          "use": "Toolbars, tables, dense UI"
+        },
+        {
+          "name": "Default",
+          "heightPx": 36,
+          "padding": "px-4 py-2",
+          "fontSizePx": 14,
+          "radiusToken": "lg",
+          "use": "Most contexts"
+        },
+        {
+          "name": "Large",
+          "heightPx": 48,
+          "padding": "px-6 py-3",
+          "fontSizePx": 16,
+          "radiusToken": "lg",
+          "use": "Standalone CTAs"
+        }
+      ],
+      "font": "Lexend Medium 500",
+      "disabled": "opacity-40, cursor-not-allowed",
+      "lightHoverRule": "Hover and active darken along the hand-picked ladder — buttons recede into the surface on press."
+    },
+    "forms": {
+      "heights": {
+        "defaultPx": 36,
+        "compactPx": 32
+      },
+      "border": "1 px solid stone-200",
+      "radiusToken": "lg",
+      "padding": "px-3 py-2",
+      "font": "Lexend Regular 400, 14 px",
+      "placeholder": "Pewter",
+      "focus": "2 px solid Cobalt border — thicker on focus, no separate shadow ring; one clear signal",
+      "error": "Rose border",
+      "disabledBg": "Cloud"
+    },
+    "cards": {
+      "border": "1 px solid stone-200",
+      "hoverBorder": "stone-300",
+      "radiusToken": "xl",
+      "paddingToken": "lg",
+      "background": "Canvas",
+      "surfaceNote": "Cards sit on the Cloud surface — the Canvas-vs-Cloud contrast gives them \"home.\"",
+      "elevated": "shadow-md — floating elements only; hover may lift to shadow-lg",
+      "gapToken": "md",
+      "titleFont": "Albert Sans 600 (the heading font)"
+    },
+    "layout": {
+      "sidebar": {
+        "widthPx": 256,
+        "note": "Fixed width; collapsible on mobile"
+      },
+      "topBar": {
+        "height": "40–48 px",
+        "note": "Search + user menu"
+      },
+      "contentArea": {
+        "background": "Cloud",
+        "note": "Fluid, scrollable"
+      },
+      "breakpoints": [
+        {
+          "name": "Mobile",
+          "range": "<640 px",
+          "cols": 1,
+          "use": "Stacked cards, full-width forms"
+        },
+        {
+          "name": "Tablet",
+          "range": "640–1023 px",
+          "cols": 2,
+          "use": "Side-by-side cards, split views"
+        },
+        {
+          "name": "Desktop",
+          "range": "1024–1279 px",
+          "cols": 3,
+          "use": "Dashboard grids, item listings"
+        },
+        {
+          "name": "Wide",
+          "range": "1280 px+",
+          "cols": 4,
+          "use": "Dense dashboards, data tables"
+        }
+      ],
+      "gridGapToken": "md",
+      "contentWidths": [
+        {
+          "label": "Max content width",
+          "value": "768 px (max-w-3xl)",
+          "use": "Reading-focused pages: docs, settings, forms"
+        },
+        {
+          "label": "Max dashboard width",
+          "value": "Full width",
+          "use": "Dashboards and data views use all available space"
+        },
+        {
+          "label": "Max prose width",
+          "value": "65ch (max-w-prose)",
+          "use": "Long-form text blocks within any page"
+        }
+      ],
+      "elevationRule": "Z-index values increment by 10 to leave room for intermediate layers. Never use arbitrary z-index values outside this scale.",
+      "responsiveRules": [
+        {
+          "rule": "Sidebar collapses to overlay on mobile",
+          "detail": "Below 1024 px, the sidebar becomes a slide-over panel triggered by the menu button."
+        },
+        {
+          "rule": "Grids collapse to single column",
+          "detail": "Below 640 px, all multi-column grids stack vertically. Cards go full-width."
+        },
+        {
+          "rule": "Tables scroll horizontally",
+          "detail": "Don't hide columns. Wrap the table in a horizontal scroll container with a fade edge."
+        },
+        {
+          "rule": "Touch targets: 44 px minimum",
+          "detail": "Buttons, links, and interactive elements must be at least 44x44 px on touch devices."
+        },
+        {
+          "rule": "Modals become full-screen on mobile",
+          "detail": "Below 640 px, modals take the full viewport. No side margins, full-height content."
+        },
+        {
+          "rule": "Heading sizes scale down at breakpoints",
+          "detail": "Body text stays at 16 px minimum. Headings reduce proportionally — see Typography for the full responsive scaling table."
+        }
+      ]
+    }
+  },
   "logoConstraints": {
     "dotCount": 10,
     "trailingDots": 2,
@@ -1349,6 +1554,10 @@
     {
       "date": "2026-08-09",
       "decision": "Colour-model canonization, guide wave 2 §5+§14 (Darren-ratified full scope; v2.7.0): new colorSystem export carries the colour doctrine that lived only in guide §5 prose and page code — the Warm Blend neutral ladder (role labels + ladder rationale; entries key into selectedPalette by NAME, no hex re-declaration), the four accent meanings, the text-hierarchy tiers, the Tailwind→Warm-Blend mapping, the 60/20/10/10 ratio (light rows + dark rule), the Responsive/Structural/Semantic tier framework, the light-default rule, the named dark roles — Mist and Fog existed as shipped hexes (selectedPalette.darkMode) and tokens-file vars but their NAMES and the why-two-tokens rationale had no canonical source — and the accents-on-dark rule. Two value classes are deliberately DERIVED by consumers, never stored: OKLCH lightness and WCAG contrast ratios are computed from the palette hexes (the D41 computed-plots precedent — numbers can never disagree with the hexes), and CSS custom-property names follow the tokens file's mechanical convention. Guide §5's hand tables became generated blocks and §14's abridged hand CSS block now inlines the real generated spectrea-tokens.css (one artifact shown, shipped, and downloaded); the colour pages render colorSystem instead of private copies. Critic-gate deltas folded in the same wave: the computed OKLCH ladder corrected two hand-rounded values (Slate 0.537→0.536, Iron 0.395→0.396); the stored contrast summaries accessibility.contrast.tokens/accentsOnInk were DELETED (their figures now compute at every render site — guide, agent rules, Primary Palette; the on-Ink statement is colorSystem.accentsOnDark, preserving the D10 Cobalt correction); and darkRoles.whyTwoTokens dropped its stored approximate ratios after the critic showed them wrong (stored ~6.3:1/~8.5:1 vs computed 6.10:1/8.20:1 — the doctrine's own proof). Guide wave 2 is now closed except §11 component specs (its own wave)."
+    },
+    {
+      "date": "2026-08-09",
+      "decision": "Component doctrine canonized, guide wave 2 §11 (Darren-ratified full scope; v2.8.0): new components export carries the specs that lived only in guide §11 prose and the four component pages — the six-type button taxonomy (Primary/Secondary/Ghost/Destructive/Confirm/Caution with roles, tiers, semantic details + example labels, and stateKey references into brandTokens.buttonStates), the button rule, three sizes, font/disabled treatment, and the light-hover direction (the dark direction stays buttonStates.dark.rule); the form-field spec; the card spec; and the layout system (sidebar 256 px, top bar, content area, four breakpoints with column counts, content widths, the z-index convention, and six responsive rules incl. the 44 px touch-target floor). References name their tokens — radius/spacing/elevation px resolve from brandTokens, palette colours by name, state hexes from buttonStates — never re-declared. Guide §11 became generated blocks; the four component pages render components (their private copies deleted — Buttons.tsx duplicated the full buttonStates ladders, LayoutPage duplicated spacing/radii/elevation verbatim-with-drift). Drift corrected by canonization: two pages taught the border family as #E5E7EB, which is Tailwind gray-200 — the sanctioned family is stone-200 #E7E5E4. Guide wave 2 is now fully closed."
     }
   ]
 }

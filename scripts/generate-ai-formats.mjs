@@ -46,7 +46,7 @@ async function importTsModule(tsPath) {
 const {
   brand, voice, naming, brandTokens, accessibility, logo, graphViz,
   trustCopy, executiveVoice, originStance, meta, selectedPalette,
-  colorSystem, ratificationLedger,
+  colorSystem, components, ratificationLedger,
 } = await importTsModule(join(root, 'src', 'data', 'brand.ts'))
 const { navigation } = await importTsModule(join(root, 'src', 'data', 'navigation.ts'))
 
@@ -146,6 +146,7 @@ const contract = {
     buttonStates: brandTokens.buttonStates,
     focusRing: brandTokens.focusRing,
   },
+  components,
   logoConstraints: logo.constraints,
   logoLockup: logo.lockup,
   logoMarkGeometry: logo.markGeometry,

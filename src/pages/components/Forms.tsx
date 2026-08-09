@@ -1,7 +1,24 @@
 import { useState } from 'react'
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
+import { brandTokens, components, selectedPalette } from '../../data/brand'
 import { TbCheck, TbAlertTriangle, TbX } from 'react-icons/tb'
+
+/* Input spec renders canon (components.forms, decision 31); demo styling and
+   the notes column stay page-side. */
+const F = components.forms
+const HEX = (name: string) => {
+  const c = selectedPalette.colors.find(x => x.name === name)
+  if (!c) throw new Error(`palette colour missing from canon: ${name}`)
+  return c.hex
+}
+const FR = (() => {
+  const r = brandTokens.radii.find(x => x.token === F.radiusToken)
+  if (!r) throw new Error(`radius token missing from canon: ${F.radiusToken}`)
+  return r
+})()
+// Tailwind constant (not canon): the sanctioned stone border family.
+const STONE_200 = '#E7E5E4'
 
 /* ------------------------------------------------------------------ */
 
@@ -111,15 +128,15 @@ export default function Forms() {
         <h2 className="text-xl font-semibold text-ink mb-4">Input Specifications</h2>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
           {[
-            { prop: 'Height', value: '36px (default), 32px (compact)', note: 'Compact for tables and dense UI' },
-            { prop: 'Border', value: '1px solid Stone 200 (#E5E7EB)', note: 'Subtle but visible' },
-            { prop: 'Border radius', value: '8px (rounded-lg)', note: 'Matches button radius' },
-            { prop: 'Padding', value: '8px 12px (py-2 px-3)', note: 'Comfortable click target' },
-            { prop: 'Font', value: 'Lexend Regular 400, 14px', note: 'Body SM size for input text' },
-            { prop: 'Placeholder', value: 'Stone 400 (#97979E)', note: 'Clearly distinct from entered text' },
-            { prop: 'Focus border', value: '2px solid Cobalt #4271DF', note: 'Thicker on focus, no glow — one clear signal' },
-            { prop: 'Error border', value: 'Rose #F24260', note: 'Semantic error color' },
-            { prop: 'Disabled bg', value: 'Stone 50 (#F4F4F1)', note: 'Subtle visual demotion' },
+            { prop: 'Height', value: `${F.heights.defaultPx}px (default), ${F.heights.compactPx}px (compact)`, note: 'Compact for tables and dense UI' },
+            { prop: 'Border', value: `${F.border} (${STONE_200})`, note: 'Subtle but visible' },
+            { prop: 'Border radius', value: `${FR.px}px (${FR.tailwind})`, note: 'Matches button radius' },
+            { prop: 'Padding', value: F.padding, note: 'Comfortable click target' },
+            { prop: 'Font', value: F.font, note: 'Body SM size for input text' },
+            { prop: 'Placeholder', value: `${F.placeholder} (${HEX(F.placeholder)})`, note: 'Clearly distinct from entered text' },
+            { prop: 'Focus border', value: F.focus, note: `Cobalt ${HEX('Cobalt')}` },
+            { prop: 'Error border', value: `${F.error} (${HEX('Rose')})`, note: 'Semantic error color' },
+            { prop: 'Disabled bg', value: `${F.disabledBg} (${HEX(F.disabledBg)})`, note: 'Subtle visual demotion' },
           ].map((row, i) => (
             <div key={row.prop} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < 9 ? '1px solid #F3F4F6' : 'none' }}>
               <span className="text-sm font-medium text-iron">{row.prop}</span>

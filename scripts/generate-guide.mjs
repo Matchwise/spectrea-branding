@@ -48,7 +48,11 @@ async function importTsModule(tsPath) {
 }
 
 const canon = await importTsModule(join(root, 'src', 'data', 'brand.ts'))
-const { meta, brand, voice, brandTokens, accessibility, logo, selectedPalette, colorSystem } = canon
+const { meta, brand, voice, brandTokens, accessibility, logo, selectedPalette, colorSystem, components } = canon
+
+// Tailwind stone constants (the sanctioned border family per
+// colorSystem.tailwindMapping) — Tailwind values, not canon.
+const TW_STONE = { 'stone-200': '#E7E5E4', 'stone-300': '#D6D3D1' }
 
 /** Canonical hex for a named palette colour. */
 const hexOf = name => {
@@ -504,7 +508,113 @@ const blocks = {
     const rows = brandTokens.elevation
       .map(e => `| ${e.level} | ${e.zIndex} | ${e.shadow === 'none' ? '—' : `\`${e.shadow}\``} | ${e.use} |`)
       .join('\n')
-    return `| Level | z-index | Shadow | Use |\n| --- | --- | --- | --- |\n${rows}`
+    return `| Level | z-index | Shadow | Use |\n| --- | --- | --- | --- |\n${rows}\n\n${components.layout.elevationRule}`
+  },
+
+  // ── Components (§11) — components, canonized 2026-08-09 ─────────
+  // Token references resolve through brandTokens (radii/spacing) and
+  // buttonStates; palette names through hexOf. stone-* hexes are Tailwind
+  // constants, not canon values.
+
+  'buttons-types': () => {
+    const B = components.buttons
+    const L = brandTokens.buttonStates.light
+    const D = brandTokens.buttonStates.dark
+    const bullets = B.types
+      .map(t => {
+        if (t.stateKey) {
+          if (!L[t.stateKey] || !D[t.stateKey]) throw new Error(`buttonStates missing stateKey: ${t.stateKey}`)
+        }
+        if (t.palette) {
+          const s = L[t.stateKey]
+          const d = D[t.stateKey]
+          return `- **${t.name} (${t.palette})** — ${t.role} \`${s.base}\`, ${t.label} text; hover \`${s.hover}\` light / \`${d.hover}\` dark; active \`${s.active}\` light / \`${d.active}\` dark.`
+        }
+        // A stateKey without a palette is a fill/text-shaped state group —
+        // structural branch, never keyed on the state group's name.
+        if (t.stateKey) {
+          const s = L[t.stateKey]
+          const d = D[t.stateKey]
+          if (!s.bg || !s.text || !d.bg || !d.hover || !d.text) throw new Error(`state group ${t.stateKey} is not fill/text-shaped`)
+          return `- **${t.name}** — ${t.role} ${t.treatment} Fills \`${s.bg}\` light / \`${d.bg}\` dark (dark hover \`${d.hover}\`); text \`${s.text}\` light / \`${d.text}\` dark.`
+        }
+        return `- **${t.name}** — ${t.role} ${t.treatment}`
+      })
+      .join('\n')
+    const entry = accessibility.exceptionRegistry.entries.find(e => e.name === 'semantic-button-labels-white')
+    if (!entry) throw new Error('semantic-button-labels-white registry entry missing')
+    return `${bullets}\n\n${B.rule} White labels at base state ride the ratified exception \`${entry.name}\` (ratified ${entry.ratified} — see the accessibility exception registry).`
+  },
+
+  'buttons-spec': () => {
+    const B = components.buttons
+    const radiusOf = token => {
+      const r = brandTokens.radii.find(x => x.token === token)
+      if (!r) throw new Error(`radius token missing: ${token}`)
+      return r
+    }
+    const def = B.sizes.find(s => s.name === 'Default')
+    if (!def) throw new Error('Default button size missing')
+    const defR = radiusOf(def.radiusToken)
+    const sizes = B.sizes
+      .map(s => `${s.name} ${s.heightPx} px (\`${s.padding}\`, ${s.fontSizePx} px, \`${radiusOf(s.radiusToken).tailwind}\`) — ${s.use}`)
+      .join(' · ')
+    return `Common specs: font ${B.font}; default padding \`${def.padding}\`, radius ${defR.px} px (\`${defR.tailwind}\`), font-size ${def.fontSizePx} px; disabled ${B.disabled}.\n\nSizes: ${sizes}.\n\n${B.lightHoverRule} ${brandTokens.buttonStates.dark.rule}`
+  },
+
+  'focus-ring': () => {
+    const f = brandTokens.focusRing
+    return `Focus ring: ${f.width}, ${f.offset} offset (\`.btn-focus:focus-visible\`) — \`${f.light}\` light / \`${f.dark}\` dark. ${f.note}`
+  },
+
+  'forms-spec': () => {
+    const F = components.forms
+    const r = brandTokens.radii.find(x => x.token === F.radiusToken)
+    if (!r) throw new Error(`radius token missing: ${F.radiusToken}`)
+    const rows = [
+      ['Height', `${F.heights.defaultPx} px default, ${F.heights.compactPx} px compact`],
+      ['Border', `${F.border} (\`${TW_STONE['stone-200']}\`)`],
+      ['Radius', `${r.px} px (\`${r.tailwind}\`)`],
+      ['Padding', `\`${F.padding}\``],
+      ['Font', F.font],
+      ['Placeholder', `${F.placeholder} \`${hexOf(F.placeholder)}\``],
+      ['Focus', F.focus],
+      ['Error', `${F.error} (\`${hexOf('Rose')}\`)`],
+      ['Disabled', `${F.disabledBg} background (\`${hexOf(F.disabledBg)}\`)`],
+    ]
+      .map(([p, v]) => `| ${p} | ${v} |`)
+      .join('\n')
+    return `| Property | Value |\n|---|---|\n${rows}`
+  },
+
+  'cards-spec': () => {
+    const C = components.cards
+    const r = brandTokens.radii.find(x => x.token === C.radiusToken)
+    const pad = brandTokens.spacing.scale.find(x => x.token === C.paddingToken)
+    const gap = brandTokens.spacing.scale.find(x => x.token === C.gapToken)
+    if (!r || !pad || !gap) throw new Error('cards token reference missing')
+    return [
+      `Container: ${C.border} (\`${TW_STONE['stone-200']}\`), ${r.px} px radius (\`${r.tailwind}\`), ${pad.px} px padding (\`${pad.tailwind}\`), ${C.background} background (\`${hexOf(C.background)}\`). Hover border ${C.hoverBorder} (\`${TW_STONE['stone-300']}\`). Elevated variant: ${C.elevated}. Grid gap ${gap.px} px. Titles: ${C.titleFont}.`,
+      '',
+      C.surfaceNote,
+    ].join('\n')
+  },
+
+  'layout-spec': () => {
+    const L = components.layout
+    const gap = brandTokens.spacing.scale.find(x => x.token === L.gridGapToken)
+    if (!gap) throw new Error('layout gridGapToken missing')
+    const bullets = [
+      `- **Sidebar:** ${L.sidebar.widthPx} px. ${L.sidebar.note}.`,
+      `- **Top bar:** ${L.topBar.height} height. ${L.topBar.note}.`,
+      `- **Content area:** ${L.contentArea.note}; ${L.contentArea.background} (\`${hexOf(L.contentArea.background)}\`) background.`,
+      `- **Breakpoints:** ${L.breakpoints.map(b => `${b.name} \`${b.range}\` (${b.cols} ${b.cols === 1 ? 'column' : 'columns'})`).join(', ')}. Grid gap ${gap.px} px.`,
+      `- **Content widths:** ${L.contentWidths.map(w => `${w.label} ${w.value} — ${w.use}`).join(' · ')}.`,
+      `- **Base spacing unit:** ${brandTokens.spacing.baseUnit} px. ${brandTokens.spacing.rule}`,
+      `- **Elevation:** ${L.elevationRule} Full ladder in §14.`,
+    ].join('\n')
+    const responsive = L.responsiveRules.map(x => `- **${x.rule}.** ${x.detail}`).join('\n')
+    return `${bullets}\n\n**Responsive behaviour:**\n${responsive}`
   },
 }
 

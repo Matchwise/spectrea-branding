@@ -1,7 +1,28 @@
 import { useState } from 'react'
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
+import { brandTokens, components, selectedPalette } from '../../data/brand'
 import { TbChevronRight, TbX, TbInfoCircle, TbCircleCheck, TbAlertTriangle, TbAlertCircle } from 'react-icons/tb'
+
+/* Card spec renders canon (components.cards, decision 31); demo styling and
+   the notes column stay page-side. */
+const C = components.cards
+const HEX = (name: string) => {
+  const c = selectedPalette.colors.find(x => x.name === name)
+  if (!c) throw new Error(`palette colour missing from canon: ${name}`)
+  return c.hex
+}
+const tokenOf = <T,>(arr: readonly T[], pred: (t: T) => boolean, what: string): T => {
+  const t = arr.find(pred)
+  if (!t) throw new Error(`cards token reference missing from canon: ${what}`)
+  return t
+}
+const CR = tokenOf(brandTokens.radii, r => r.token === C.radiusToken, C.radiusToken)
+const CPAD = tokenOf(brandTokens.spacing.scale, s => s.token === C.paddingToken, C.paddingToken)
+const CGAP = tokenOf(brandTokens.spacing.scale, s => s.token === C.gapToken, C.gapToken)
+// Tailwind constants (not canon): the sanctioned stone border family.
+const STONE_200 = '#E7E5E4'
+const STONE_300 = '#D6D3D1'
 
 /* ------------------------------------------------------------------ */
 
@@ -42,7 +63,7 @@ export default function Cards() {
                 <span className="text-xs px-2 py-0.5 rounded-full" style={{ backgroundColor: '#00B6A015', color: '#00B6A0', border: '1px solid #00B6A030' }}>connected</span>
               </div>
             </div>
-            <p className="text-xs text-slate mt-2">White background, Stone 200 border, rounded-xl.</p>
+            <p className="text-xs text-slate mt-2">{C.background} background, stone-200 border, {CR.tailwind}.</p>
           </div>
 
           {/* Elevated card */}
@@ -85,14 +106,14 @@ export default function Cards() {
         <h2 className="text-xl font-semibold text-ink mb-4">Specifications</h2>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
           {[
-            { prop: 'Border', value: '1px solid Stone 200 (#E5E7EB)', note: 'Default container border' },
-            { prop: 'Border radius', value: '12px (rounded-xl)', note: 'Friendly, modern corners' },
-            { prop: 'Padding', value: '20px (p-5)', note: 'Comfortable inner spacing' },
-            { prop: 'Background', value: 'Canvas #FDFDFB', note: 'Cards sit on the Cloud surface' },
-            { prop: 'Shadow (elevated)', value: 'shadow-md', note: 'For floating elements only' },
-            { prop: 'Hover border', value: 'Stone 300 (#D1D5DB)', note: 'Subtle darkening on interactive cards' },
-            { prop: 'Card gap', value: '16px (gap-4)', note: 'Space between cards in a grid' },
-            { prop: 'Title font', value: 'Albert Sans Semibold 600', note: 'Card titles use the heading font' },
+            { prop: 'Border', value: `${C.border} (${STONE_200})`, note: 'Default container border' },
+            { prop: 'Border radius', value: `${CR.px}px (${CR.tailwind})`, note: 'Friendly, modern corners' },
+            { prop: 'Padding', value: `${CPAD.px}px (${CPAD.tailwind})`, note: 'Comfortable inner spacing' },
+            { prop: 'Background', value: `${C.background} ${HEX(C.background)}`, note: C.surfaceNote },
+            { prop: 'Shadow (elevated)', value: C.elevated, note: 'For floating elements only' },
+            { prop: 'Hover border', value: `${C.hoverBorder} (${STONE_300})`, note: 'Subtle darkening on interactive cards' },
+            { prop: 'Card gap', value: `${CGAP.px}px (gap-4)`, note: 'Space between cards in a grid' },
+            { prop: 'Title font', value: C.titleFont, note: 'Card titles use the heading font' },
           ].map((row, i) => (
             <div key={row.prop} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < 7 ? '1px solid #F3F4F6' : 'none' }}>
               <span className="text-sm font-medium text-iron">{row.prop}</span>

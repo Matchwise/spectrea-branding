@@ -8,7 +8,7 @@
 **Category:** Composable intelligence platform.
 **Pronunciation:** /spek-TREE-uh/ (a coinage from *spectrum* — Latin, from *specere*, "to look"; the full range — with a second reading: *revealing*).
 <!-- generated:version-header -->
-**Version:** 2.7.0 (2026-08-09). Canonical data: `src/data/brand.ts` — this guide is a hybrid mirror: prose is hand-written; fenced data blocks are generated from canon (`npm run generate:guide`).
+**Version:** 2.8.0 (2026-08-09). Canonical data: `src/data/brand.ts` — this guide is a hybrid mirror: prose is hand-written; fenced data blocks are generated from canon (`npm run generate:guide`).
 <!-- /generated:version-header -->
 
 **Strategic claim:** Spectrea is the spectrum of clarity. Everything you know, in one living view — alive with possibility, yours to keep. See it whole. Trust what you see. Build on what you find.
@@ -792,29 +792,69 @@ Always uses the **full spectrum** (Cobalt → Teal → Amber) — the "reveal" m
 ## 11. Components
 
 ### Buttons
-- **Primary (Cobalt)** — the hero action. One per section. `#4271DF`, white text; hover `#3A63C4`; active `#3255A7`.
-- **Secondary** — supporting actions. Cloud (`#F4F4F1`) background, Ink text (light); Graphite tint background, Cloud text (dark).
-- **Ghost** — tertiary actions. 2-px border, transparent background.
-- **Destructive (Rose)** — irreversible actions. `#F24260`, white text.
-- **Confirm (Teal)** — verify, approve, connect. `#00B6A0`, white text.
-- **Caution (Amber)** — override, merge, proceed. `#E19000`, white text.
+<!-- generated:buttons-types -->
+- **Primary (Cobalt)** — The hero action. One per section. `#4271DF`, White text; hover `#3A63C4` light / `#6E93EC` dark; active `#3255A7` light / `#8FACF0` dark.
+- **Secondary** — Supporting actions. Cloud-family fill, Ink-family text (light); Graphite-tint fill, Cloud text (dark). Fills `#F4F4F1` light / `#2E2F35` dark (dark hover `#3A3A40`); text `#18181C` light / `#F4F4F1` dark.
+- **Ghost** — Tertiary actions. 2 px stone-300 border, transparent fill; label Slate (light) / stone-300 (dark).
+- **Destructive (Rose)** — Irreversible actions. `#F24260`, White text; hover `#D63B55` light / `#F56579` dark; active `#BA3249` light / `#F78892` dark.
+- **Confirm (Teal)** — Verify, approve, connect. `#00B6A0`, White text; hover `#009E8A` light / `#20C8B2` dark; active `#008775` light / `#40D4C3` dark.
+- **Caution (Amber)** — Override, merge, proceed. `#E19000`, White text; hover `#C58200` light / `#ECA41E` dark; active `#A86E00` light / `#F2B63C` dark.
 
-Common specs: padding `px-4 py-2` (default), radius `8 px` (rounded-lg), font `Lexend 500`, font-size `14 px`.
+One Primary button per section maximum. Confirm and Caution are reserved for specific semantic contexts — never as general-purpose actions. White labels at base state ride the ratified exception `semantic-button-labels-white` (ratified 2026-08-07 — see the accessibility exception registry).
+<!-- /generated:buttons-types -->
 
-Focus ring: Amber, 2 px solid, 2 px offset (`.btn-focus:focus-visible`). Light surfaces use Amber active `#A86E00` (4.21:1 on Canvas, 3.89:1 on Cloud); dark surfaces use alpha-tinted Amber `rgba(225, 144, 0, 0.7)` (4.00:1 blended on Ink) — every pairing clears the 3:1 UI floor (ratified 2026-08-07; the previous universal soft ring measured 1.90:1/1.81:1 on light).
+<!-- generated:buttons-spec -->
+Common specs: font Lexend Medium 500; default padding `px-4 py-2`, radius 8 px (`rounded-lg`), font-size 14 px; disabled opacity-40, cursor-not-allowed.
+
+Sizes: Compact 32 px (`px-3 py-1.5`, 12 px, `rounded-md`) — Toolbars, tables, dense UI · Default 36 px (`px-4 py-2`, 14 px, `rounded-lg`) — Most contexts · Large 48 px (`px-6 py-3`, 16 px, `rounded-lg`) — Standalone CTAs.
+
+Hover and active darken along the hand-picked ladder — buttons recede into the surface on press. On dark surfaces the button lifts toward the light: hover and active fills lighten, and the label flips from White to Ink #18181C while the fill is lightened. Base states keep white text. Ink-on-lightened-fill contrast, verified 2026-07-04 (cobalt re-lightened 2026-08-08, D40 — the old hover #5C87E5 read APCA Lc 40.5, below the 45 spot line; the new ladder puts every dark transient state at APCA parity): cobalt hover 5.94 / active 7.86, rose hover 5.92 / active 7.50, teal hover 8.40 / active 9.63, amber hover 8.34 / active 9.72 — all ≥ 4.5:1 (AA, normal text).
+<!-- /generated:buttons-spec -->
+
+<!-- generated:focus-ring -->
+Focus ring: 2px solid, 2px offset (`.btn-focus:focus-visible`) — `#A86E00` light / `rgba(225, 144, 0, 0.7)` dark. Amber "attention" ring. Light surfaces: Amber active #A86E00 (4.21:1 on Canvas, 3.89:1 on Cloud). Dark surfaces: alpha-tinted Amber #E19000 (4.00:1 blended on Ink). Every pairing clears the 3:1 UI floor.
+<!-- /generated:focus-ring -->
 
 ### Forms
-Input fields: `1 px` border (Tailwind `stone-200` ≈ Cloud-adjacent), `8 px` radius, `px-3 py-2` padding, `14 px` Lexend. On focus: `2 px` Cobalt border, no separate shadow ring. Placeholder colour: Pewter.
+<!-- generated:forms-spec -->
+| Property | Value |
+|---|---|
+| Height | 36 px default, 32 px compact |
+| Border | 1 px solid stone-200 (`#E7E5E4`) |
+| Radius | 8 px (`rounded-lg`) |
+| Padding | `px-3 py-2` |
+| Font | Lexend Regular 400, 14 px |
+| Placeholder | Pewter `#97979E` |
+| Focus | 2 px solid Cobalt border — thicker on focus, no separate shadow ring; one clear signal |
+| Error | Rose border (`#F24260`) |
+| Disabled | Cloud background (`#F4F4F1`) |
+<!-- /generated:forms-spec -->
 
 ### Cards
-Container: `1 px` border (Tailwind `stone-200`), `12 px` radius (rounded-xl), `20 px` padding (p-5), Canvas background. Elevated variant adds `shadow-md` (floating elements only). Cards sit on the Cloud surface — the Canvas-vs-Cloud contrast gives them "home."
+<!-- generated:cards-spec -->
+Container: 1 px solid stone-200 (`#E7E5E4`), 12 px radius (`rounded-xl`), 20 px padding (`p-5`), Canvas background (`#FDFDFB`). Hover border stone-300 (`#D6D3D1`). Elevated variant: shadow-md — floating elements only; hover may lift to shadow-lg. Grid gap 16 px. Titles: Albert Sans 600 (the heading font).
+
+Cards sit on the Cloud surface — the Canvas-vs-Cloud contrast gives them "home."
+<!-- /generated:cards-spec -->
 
 ### Layout
-- **Sidebar:** 256 px fixed width, collapsible on mobile.
+<!-- generated:layout-spec -->
+- **Sidebar:** 256 px. Fixed width; collapsible on mobile.
 - **Top bar:** 40–48 px height. Search + user menu.
-- **Content area:** fluid, scrollable, Cloud (`#F4F4F1`) background.
-- **Breakpoints:** mobile `<640 px` (1 column), tablet `640–1023` (2 cols), desktop `1024–1279` (3 cols), wide `1280+` (4 cols).
-- **Base spacing unit:** 4 px. All spacing values are multiples of 4.
+- **Content area:** Fluid, scrollable; Cloud (`#F4F4F1`) background.
+- **Breakpoints:** Mobile `<640 px` (1 column), Tablet `640–1023 px` (2 columns), Desktop `1024–1279 px` (3 columns), Wide `1280 px+` (4 columns). Grid gap 16 px.
+- **Content widths:** Max content width 768 px (max-w-3xl) — Reading-focused pages: docs, settings, forms · Max dashboard width Full width — Dashboards and data views use all available space · Max prose width 65ch (max-w-prose) — Long-form text blocks within any page.
+- **Base spacing unit:** 4 px. Every spacing value is a multiple of 4 px. Fine inline elements (badges, compact controls) may use 2 px increments (6 px, 10 px); never arbitrary values like 5 px, 7 px, or 15 px.
+- **Elevation:** Z-index values increment by 10 to leave room for intermediate layers. Never use arbitrary z-index values outside this scale. Full ladder in §14.
+
+**Responsive behaviour:**
+- **Sidebar collapses to overlay on mobile.** Below 1024 px, the sidebar becomes a slide-over panel triggered by the menu button.
+- **Grids collapse to single column.** Below 640 px, all multi-column grids stack vertically. Cards go full-width.
+- **Tables scroll horizontally.** Don't hide columns. Wrap the table in a horizontal scroll container with a fade edge.
+- **Touch targets: 44 px minimum.** Buttons, links, and interactive elements must be at least 44x44 px on touch devices.
+- **Modals become full-screen on mobile.** Below 640 px, modals take the full viewport. No side margins, full-height content.
+- **Heading sizes scale down at breakpoints.** Body text stays at 16 px minimum. Headings reduce proportionally — see Typography for the full responsive scaling table.
+<!-- /generated:layout-spec -->
 
 ---
 
@@ -896,7 +936,7 @@ Brand decisions live in the **ratification ledger** (`ratificationLedger` in `br
 The complete generated token sheet — the same file served at [`/spectrea-tokens.css`](/spectrea-tokens.css) and on the Downloads page:
 
 ```css
-/* Spectrea design tokens — GENERATED from src/data/brand.ts v2.7.0 (2026-08-09) — do not hand-edit; regenerate with npm run generate:assets. */
+/* Spectrea design tokens — GENERATED from src/data/brand.ts v2.8.0 (2026-08-09) — do not hand-edit; regenerate with npm run generate:assets. */
 :root {
   /* Spectrum — first accent in canon order is the brand colour */
   --color-brand: #4271DF;
@@ -1064,6 +1104,8 @@ Six levels. Z-index increments by 10 to leave room for intermediate layers.
 | Modal | 30 | `shadow-lg` | Modals, dialogs, slide-overs |
 | Overlay | 40 | `shadow-xl` | Modal backdrops, full-screen overlays |
 | Toast | 50 | `shadow-lg` | Notifications, toasts |
+
+Z-index values increment by 10 to leave room for intermediate layers. Never use arbitrary z-index values outside this scale.
 <!-- /generated:elevation -->
 
 ### Icon library
@@ -1078,5 +1120,5 @@ All via Google Fonts:
 ---
 
 <!-- generated:version-footer -->
-*`src/data/brand.ts` is the canonical brand data (v2.7.0, 2026-08-09). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
+*`src/data/brand.ts` is the canonical brand data (v2.8.0, 2026-08-09). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
 <!-- /generated:version-footer -->
