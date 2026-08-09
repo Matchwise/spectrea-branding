@@ -57,6 +57,13 @@ const hexOf = name => {
   return c.hex
 }
 
+/** Canonical name for a palette hex (gradient stops that ARE palette colours). */
+const nameOfHex = hex => {
+  const c = selectedPalette.colors.find(x => x.hex === hex)
+  if (!c) throw new Error(`palette colour with hex "${hex}" not found in canon`)
+  return c.name
+}
+
 /* ---------------------------------------------------------------- */
 /* Rendering helpers                                                 */
 /* ---------------------------------------------------------------- */
@@ -243,6 +250,97 @@ const blocks = {
       `- Easing: ${a.easing}`,
       `- Reduced motion: ${a.reducedMotion}`,
       `- Use: ${a.use}`,
+    ].join('\n')
+  },
+
+  // ── Gradient family (§6) — brandTokens.gradients, canonized 2026-08-09 ──
+
+  'gradient-primary': () => {
+    const g = brandTokens.gradients
+    const names = g.primary.stops.map(s => nameOfHex(s.hex)).join(' → ')
+    return `**${names}** at ${g.angleDeg}°, interpolated in **OKLCH** on modern browsers with a clean sRGB fallback. ${g.primary.use}`
+  },
+
+  'gradient-recipe': () => {
+    const g = brandTokens.gradients.primary
+    return [
+      '```css',
+      '.brand-gradient {',
+      `  background: ${g.fallbackCss};`,
+      '}',
+      '@supports (background: linear-gradient(in oklch, red, blue)) {',
+      '  .brand-gradient {',
+      `    background: ${g.css};`,
+      '  }',
+      '}',
+      '```',
+      '',
+      `Interpolation: ${g.interpolation} Browsers that don't understand OKLCH silently ignore the \`@supports\` block and keep the sRGB base.`,
+    ].join('\n')
+  },
+
+  'gradient-lockup': () => {
+    const cool = brandTokens.gradients.duets.cool
+    return [
+      `Two-tone ${cool.name} — the same gradient as the primary static mark. The wordmark stays monotone (Ink / White); only the mark carries colour.`,
+      '```',
+      cool.stops.map(s => `${Math.round(s.at * 100)}% ${s.hex}`).join('  →  '),
+      '```',
+      'Implemented in SVG (`<linearGradient>`). **Never used as a general-purpose decorative gradient.**',
+    ].join('\n')
+  },
+
+  'gradient-full-rose': () => {
+    const g = brandTokens.gradients
+    const names = g.fullSpectrumWithRose.stops.map(s => nameOfHex(s.hex)).join(' → ')
+    return `\`${names}\` at ${g.angleDeg}°. ${g.fullSpectrumWithRose.use}`
+  },
+
+  'gradient-duets': () => {
+    const g = brandTokens.gradients
+    const stopLabel = s => {
+      const c = selectedPalette.colors.find(x => x.hex === s.hex)
+      return c ? c.name : `\`${s.hex}\` at ${Math.round(s.at * 100)}%`
+    }
+    const duetLine = d =>
+      `- **${d.name}** — ${d.stops.map(stopLabel).join(' → ')}. ${'bridgeRule' in d ? `*${d.bridgeRule}* ` : ''}${d.use}`
+    return [
+      g.adjacencyRule,
+      duetLine(g.duets.cool),
+      duetLine(g.duets.balanced),
+      duetLine(g.duets.warm),
+    ].join('\n')
+  },
+
+  'gradient-rules': () => {
+    // Canon strings render verbatim — one bullet per item, no case-folding.
+    const g = brandTokens.gradients
+    return [
+      '**Use for:**',
+      ...g.useFor.map(s => `- ${s}`),
+      '',
+      '**Never for:**',
+      ...g.neverFor.map(s => `- ${s}`),
+    ].join('\n')
+  },
+
+  'change-process': () => {
+    const steps = meta.changeProcess
+      .map((s, i) => `${i + 1}. **${s.step}** (${s.owner}) — ${s.detail}`)
+      .join('\n')
+    return `${steps}\n\nOne canonical process (\`meta.changeProcess\`, merged 2026-08-09) — the Governance page of the live guide renders these same five steps. Change severity sets each step's depth and approval weight, never which steps happen.`
+  },
+
+  'os-frame-example': () => {
+    const ex = brand.positioning.onRamp.osFrameExample
+    return [
+      '**The coined frame, applied** (worked example, ratified 2026-08-09):',
+      '',
+      '| Right | Wrong |',
+      '|---|---|',
+      `| *"${mdExample(ex.right)}"* | *"${mdExample(ex.wrong)}"* |`,
+      '',
+      ex.why,
     ].join('\n')
   },
 

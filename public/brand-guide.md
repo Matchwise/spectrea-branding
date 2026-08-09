@@ -8,7 +8,7 @@
 **Category:** Composable intelligence platform.
 **Pronunciation:** /spek-TREE-uh/ (a coinage from *spectrum* — Latin, from *specere*, "to look"; the full range — with a second reading: *revealing*).
 <!-- generated:version-header -->
-**Version:** 2.5.9 (2026-08-09). Canonical data: `src/data/brand.ts` — this guide is a hybrid mirror: prose is hand-written; fenced data blocks are generated from canon (`npm run generate:guide`).
+**Version:** 2.6.0 (2026-08-09). Canonical data: `src/data/brand.ts` — this guide is a hybrid mirror: prose is hand-written; fenced data blocks are generated from canon (`npm run generate:guide`).
 <!-- /generated:version-header -->
 
 **Strategic claim:** Spectrea is the spectrum of clarity. Everything you know, in one living view — alive with possibility, yours to keep. See it whole. Trust what you see. Build on what you find.
@@ -153,6 +153,16 @@ Two context shifts live within this same voice. **On buyer surfaces** (hero, cas
 
 **On-ramp posture (decided by Darren 2026-07-03; amended 2026-07-19).** Outcome-first hero per the canonical hero-open rule above: the hero leads with the entry job and its outcome, written as a reveal. One coined whole-product frame is sanctioned (ratified 2026-07-19): **"the operating system for collective intelligence"** — distinct from generic "AI OS", always paired with plain language that carries the meaning. The sanctioned hero example: *"Drop in your docs — get answers that show their sources, and a system that gets sharper every week."* Adopt the market's words where they exist: *permission-aware* · *cited answers* · *grounded answers* · *knowledge graph* (exploration surfaces only — the graph stays supporting-cast). Avoid-list terms — *Work AI* · *organizational memory* · *AI workspace* · *AI OS* · *second brain* · *ambient agents* · *bitemporal* · *ontology* · *enterprise graph* — follow the **balance doctrine** (ratified 2026-07-19): industry terms are not blacklisted or censored; an avoid-list term may label a segment-matched surface when a plain-language claim carries the meaning in place (e.g. "second brain" on the individuals page). Do not expect the term to carry weight with unfamiliar audiences; balance it, and never lead a cross-segment hero with it. Coin language ONLY for the differentiators no market term names: **per-viewer truth**, **decisions in the graph**, and the whole-product frame **"the operating system for collective intelligence"** (pair it with plain language — it must not carry the claim alone). Everywhere else, use the market's word where one exists (adopt list) or plain outcome language.
 
+<!-- generated:os-frame-example -->
+**The coined frame, applied** (worked example, ratified 2026-08-09):
+
+| Right | Wrong |
+|---|---|
+| *"See everything your organization knows in one connected view — Spectrea is the operating system for collective intelligence: the place where what your team knows connects, compounds, and answers back."* | *"Spectrea: the operating system for collective intelligence."* |
+
+The right version opens on the outcome and pairs the frame with plain language that carries the meaning in the same breath. The wrong version asks the frame to carry the claim alone — forbidden by the coinRule — and leads with it, against the on-ramp's outcome-first posture.
+<!-- /generated:os-frame-example -->
+
 ### Surface patterns
 Voice patterns for product and operational surfaces the register taxonomy doesn't cover — what each surface *says*, inheriting its register from the nearest content class above. Release notes follow the Feature Announcement register.
 
@@ -254,7 +264,7 @@ The gradient lives in the mark only. No gradient-filled wordmark, no full-spectr
 ### Mark colour modes
 - `'color'` — full spectrum (Cobalt → Teal → Amber). Default for `AnimatedLogo`. Used for hero moments.
 - `'cool'` — Cool Duet (Cobalt → Teal). Default for `StaticLogo`. Primary static mark for everyday use.
-- `'balanced'` — Balanced Duet (Teal → `#6FB884` at 65% → Amber). For product/ecosystem moments.
+- `'balanced'` — Balanced Duet (Teal → Amber through the intermediate bridge — stops in §6). For product/ecosystem moments.
 - `'warm'` — Warm Duet (Amber → Rose). For marketing attention.
 - `'grey'` — Pewter. Watermarks only.
 - `'white'` — Canvas `#FDFDFB`. Dark backgrounds.
@@ -497,11 +507,14 @@ Foundation only: the operational graph-rendering spec (sizing, layout, density, 
 **Three gradients — don't conflate them.**
 
 ### Primary brand gradient (the default)
-**Cobalt → Teal → Amber** at 135°, interpolated in **OKLCH** on modern browsers with a clean sRGB fallback. This is the everyday brand gradient — hero sections, accent bars, dividers, decorative strips, progress indicators.
+<!-- generated:gradient-primary -->
+**Cobalt → Teal → Amber** at 135°, interpolated in **OKLCH** on modern browsers with a clean sRGB fallback. The everyday brand gradient — hero sections, accent bars, marketing headers, dividers, progress indicators.
+<!-- /generated:gradient-primary -->
 
 ![Brand gradient](/brand-assets/gradient-brand.svg)
 
 #### Cross-browser CSS recipe
+<!-- generated:gradient-recipe -->
 ```css
 .brand-gradient {
   background: linear-gradient(135deg, #4271DF, #00B6A0, #E19000);
@@ -513,35 +526,57 @@ Foundation only: the operational graph-rendering spec (sizing, layout, density, 
 }
 ```
 
-The `@supports` block is silently ignored by browsers that don't understand OKLCH (Chrome <111, Safari <16.2, Firefox <117) — they keep the sRGB base. Modern browsers apply the OKLCH override for a perceptually richer middle that avoids the muddy olive zone.
+Interpolation: OKLCH on modern browsers (Chrome 111+ / Safari 16.2+ / Firefox 117+) with the sRGB fallback on older ones — the OKLCH path keeps chroma high through the middle and avoids the muddy olive zone. Browsers that don't understand OKLCH silently ignore the `@supports` block and keep the sRGB base.
+<!-- /generated:gradient-recipe -->
 
 ### Lockup mark gradient (inside `LogotypeGradient` only)
+<!-- generated:gradient-lockup -->
 Two-tone Cool Duet — the same gradient as the primary static mark. The wordmark stays monotone (Ink / White); only the mark carries colour.
 ```
 0% #4271DF  →  100% #00B6A0
 ```
 Implemented in SVG (`<linearGradient>`). **Never used as a general-purpose decorative gradient.**
+<!-- /generated:gradient-lockup -->
 
 ![Lockup mark gradient — Cool Duet](/brand-assets/gradient-lockup.svg)
 
 ### Full spectrum with Rose (sparingly)
-`Cobalt → Teal → Amber → Rose` at 135°. Use only for peak brand expression — landing-page heroes, launch moments. Reserving it keeps its impact.
+<!-- generated:gradient-full-rose -->
+`Cobalt → Teal → Amber → Rose` at 135°. All four spectrum colours — peak brand expression only (landing-page heroes, launch moments). Use sparingly; reserving it keeps its impact.
+<!-- /generated:gradient-full-rose -->
 
 ![Full spectrum with Rose](/brand-assets/gradient-full-rose.svg)
 
 ### Two-colour duets (adjacent pairs only)
-Must use **adjacent** spectrum pairs. Skip pairs (Cobalt→Amber direct, Teal→Rose, Cobalt→Rose) break the continuous-spectrum metaphor and are off-brand.
-- **Cool Duet** — Cobalt → Teal. Intelligence + growth. The resting-state duet. Used by the static S mark and data/technical contexts.
-- **Balanced Duet** — Teal → `#6FB884` at 65% → Amber. *Must* include the `#6FB884` intermediate; without it, teal and amber desaturate into muddy olive. For product/ecosystem moments.
-- **Warm Duet** — Amber → Rose. Energy + urgency. Marketing, launches, attention.
+<!-- generated:gradient-duets -->
+Two-colour gradients (duets) use ADJACENT spectrum pairs only. Skip pairs (Cobalt→Amber direct, Teal→Rose, Cobalt→Rose) break the continuous-spectrum metaphor and are off-brand.
+- **Cool Duet** — Cobalt → Teal. Intelligence + growth. The resting-state duet — data, technical contexts, and the static S mark. Also the lockup mark's gradient (LogotypeGradient, mark stroke only; the wordmark stays monotone) — never a general-purpose decorative gradient there.
+- **Balanced Duet** — Teal → `#6FB884` at 65% → Amber. *Must include the #6FB884 intermediate at 65% — without it, teal and amber desaturate into muddy olive.* Product/ecosystem moments.
+- **Warm Duet** — Amber → Rose. Energy + urgency. Marketing, launches, attention moments.
+<!-- /generated:gradient-duets -->
 
 ![Cool Duet](/brand-assets/gradient-cool-duet.svg)
 ![Balanced Duet — with the #6FB884 intermediate bridge](/brand-assets/gradient-balanced-duet.svg)
 ![Warm Duet](/brand-assets/gradient-warm-duet.svg)
 
 ### Gradient rules
-- **Use for:** logo mark background, hero accent bars, marketing page headers, loading progress bars, slide deck title dividers, social media profile accents.
-- **Never for:** buttons (use solid Cobalt), text colour, body backgrounds, borders, small icons or badges, repeated elements.
+<!-- generated:gradient-rules -->
+**Use for:**
+- Logo mark background
+- Hero section accent bars
+- Marketing page headers
+- Loading progress bars
+- Slide deck title dividers
+- Social media profile accents
+
+**Never for:**
+- Buttons (use solid Cobalt)
+- Text colour (unreadable)
+- Body backgrounds (overwhelming)
+- Borders or outlines (too busy)
+- Small icons or badges
+- Repeated elements (it stops being special)
+<!-- /generated:gradient-rules -->
 
 ---
 
@@ -819,10 +854,15 @@ The right version is a practitioner's observation — first person, specific, ch
 If you need to ask "is this OK?" — it probably isn't. The logo should always look exactly like the approved versions on the Variations page. When in doubt, use the primary treatment (grey dots, Cool-Duet stroke) on Canvas — that's always correct.
 
 ### Change process
-1. **Propose** — document what you want to change and why.
-2. **Review** — design lead + brand lead sign off.
-3. **Version** — bump `meta.version` in `src/data/brand.ts` and the related code; this guide and derived artifacts follow.
-4. **Communicate** — change log posted in `#brand`; the durable changelog is the git history of the spectrea-branding repo.
+<!-- generated:change-process -->
+1. **Propose** (Proposer) — Document the change, the reason, and the impact — with visual mockups where applicable.
+2. **Review** (Lead) — The relevant lead (Design or Content) reviews and may request revisions; the Brand Lead joins for brand-level changes.
+3. **Test** (Design) — Apply the change in a staging build and verify it across contexts: light/dark, mobile/desktop, print/digital.
+4. **Ratify & version** (Brand Lead) — Brand Lead approves. The change lands in src/data/brand.ts with a meta.version bump; brand decisions also get a ratificationLedger entry.
+5. **Regenerate & communicate** (Design + Dev) — Run npm run generate:all so the guide, contract, agent rules, assets, and PDF follow, then announce in #brand. The durable changelog is the git history of the spectrea-branding repo.
+
+One canonical process (`meta.changeProcess`, merged 2026-08-09) — the Governance page of the live guide renders these same five steps. Change severity sets each step's depth and approval weight, never which steps happen.
+<!-- /generated:change-process -->
 
 ### Owner
 Brand lead owns the brand system. "brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea's roadmap — check it before placing a capability claim on a buyer-facing surface." (`meta.sourceOfTruth`, quoted verbatim.)
@@ -967,5 +1007,5 @@ All via Google Fonts:
 ---
 
 <!-- generated:version-footer -->
-*`src/data/brand.ts` is the canonical brand data (v2.5.9, 2026-08-09). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
+*`src/data/brand.ts` is the canonical brand data (v2.6.0, 2026-08-09). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
 <!-- /generated:version-footer -->

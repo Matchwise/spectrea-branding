@@ -1,8 +1,35 @@
 {
   "_generated": "DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-09)",
-  "version": "2.5.9",
+  "version": "2.6.0",
   "lastUpdated": "2026-08-09",
   "sourceOfTruth": "brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea's roadmap — check it before placing a capability claim on a buyer-facing surface.",
+  "changeProcess": [
+    {
+      "step": "Propose",
+      "owner": "Proposer",
+      "detail": "Document the change, the reason, and the impact — with visual mockups where applicable."
+    },
+    {
+      "step": "Review",
+      "owner": "Lead",
+      "detail": "The relevant lead (Design or Content) reviews and may request revisions; the Brand Lead joins for brand-level changes."
+    },
+    {
+      "step": "Test",
+      "owner": "Design",
+      "detail": "Apply the change in a staging build and verify it across contexts: light/dark, mobile/desktop, print/digital."
+    },
+    {
+      "step": "Ratify & version",
+      "owner": "Brand Lead",
+      "detail": "Brand Lead approves. The change lands in src/data/brand.ts with a meta.version bump; brand decisions also get a ratificationLedger entry."
+    },
+    {
+      "step": "Regenerate & communicate",
+      "owner": "Design + Dev",
+      "detail": "Run npm run generate:all so the guide, contract, agent rules, assets, and PDF follow, then announce in #brand. The durable changelog is the git history of the spectrea-branding repo."
+    }
+  ],
   "identity": {
     "name": "Spectrea",
     "pronunciation": "/spek-TREE-uh/",
@@ -148,7 +175,12 @@
         "decisions in the graph",
         "the operating system for collective intelligence"
       ],
-      "coinRule": "Coin language ONLY for the differentiators no market term names: per-viewer truth, decisions in the graph, and the whole-product frame \"the operating system for collective intelligence\" (ratified 2026-07-19; pair it with plain language — it must not carry the claim alone). Everywhere else, use the market's word where one exists (adopt list) or plain outcome language."
+      "coinRule": "Coin language ONLY for the differentiators no market term names: per-viewer truth, decisions in the graph, and the whole-product frame \"the operating system for collective intelligence\" (ratified 2026-07-19; pair it with plain language — it must not carry the claim alone). Everywhere else, use the market's word where one exists (adopt list) or plain outcome language.",
+      "osFrameExample": {
+        "right": "See everything your organization knows in one connected view — Spectrea is the operating system for collective intelligence: the place where what your team knows connects, compounds, and answers back.",
+        "wrong": "Spectrea: the operating system for collective intelligence.",
+        "why": "The right version opens on the outcome and pairs the frame with plain language that carries the meaning in the same breath. The wrong version asks the frame to carry the claim alone — forbidden by the coinRule — and leads with it, against the on-ramp's outcome-first posture."
+      }
     }
   },
   "guardrails": {
@@ -236,6 +268,118 @@
       "via": "#00B6A0",
       "to": "#E19000",
       "angle": 135
+    },
+    "gradients": {
+      "angleDeg": 135,
+      "primary": {
+        "name": "Brand gradient",
+        "stops": [
+          {
+            "hex": "#4271DF",
+            "at": 0
+          },
+          {
+            "hex": "#00B6A0",
+            "at": 0.5
+          },
+          {
+            "hex": "#E19000",
+            "at": 1
+          }
+        ],
+        "css": "linear-gradient(135deg in oklch, #4271DF, #00B6A0, #E19000)",
+        "fallbackCss": "linear-gradient(135deg, #4271DF, #00B6A0, #E19000)",
+        "interpolation": "OKLCH on modern browsers (Chrome 111+ / Safari 16.2+ / Firefox 117+) with the sRGB fallback on older ones — the OKLCH path keeps chroma high through the middle and avoids the muddy olive zone.",
+        "use": "The everyday brand gradient — hero sections, accent bars, marketing headers, dividers, progress indicators."
+      },
+      "adjacencyRule": "Two-colour gradients (duets) use ADJACENT spectrum pairs only. Skip pairs (Cobalt→Amber direct, Teal→Rose, Cobalt→Rose) break the continuous-spectrum metaphor and are off-brand.",
+      "duets": {
+        "cool": {
+          "name": "Cool Duet",
+          "stops": [
+            {
+              "hex": "#4271DF",
+              "at": 0
+            },
+            {
+              "hex": "#00B6A0",
+              "at": 1
+            }
+          ],
+          "use": "Intelligence + growth. The resting-state duet — data, technical contexts, and the static S mark. Also the lockup mark's gradient (LogotypeGradient, mark stroke only; the wordmark stays monotone) — never a general-purpose decorative gradient there."
+        },
+        "balanced": {
+          "name": "Balanced Duet",
+          "stops": [
+            {
+              "hex": "#00B6A0",
+              "at": 0
+            },
+            {
+              "hex": "#6FB884",
+              "at": 0.65
+            },
+            {
+              "hex": "#E19000",
+              "at": 1
+            }
+          ],
+          "bridgeRule": "Must include the #6FB884 intermediate at 65% — without it, teal and amber desaturate into muddy olive.",
+          "use": "Product/ecosystem moments."
+        },
+        "warm": {
+          "name": "Warm Duet",
+          "stops": [
+            {
+              "hex": "#E19000",
+              "at": 0
+            },
+            {
+              "hex": "#F24260",
+              "at": 1
+            }
+          ],
+          "use": "Energy + urgency. Marketing, launches, attention moments."
+        }
+      },
+      "fullSpectrumWithRose": {
+        "name": "Full spectrum with Rose",
+        "stops": [
+          {
+            "hex": "#4271DF",
+            "at": 0
+          },
+          {
+            "hex": "#00B6A0",
+            "at": 0.33
+          },
+          {
+            "hex": "#E19000",
+            "at": 0.66
+          },
+          {
+            "hex": "#F24260",
+            "at": 1
+          }
+        ],
+        "use": "All four spectrum colours — peak brand expression only (landing-page heroes, launch moments). Use sparingly; reserving it keeps its impact."
+      },
+      "useFor": [
+        "Logo mark background",
+        "Hero section accent bars",
+        "Marketing page headers",
+        "Loading progress bars",
+        "Slide deck title dividers",
+        "Social media profile accents"
+      ],
+      "neverFor": [
+        "Buttons (use solid Cobalt)",
+        "Text colour (unreadable)",
+        "Body backgrounds (overwhelming)",
+        "Borders or outlines (too busy)",
+        "Small icons or badges",
+        "Repeated elements (it stops being special)"
+      ]
     },
     "darkMode": {
       "bg": "#18181C",
@@ -984,6 +1128,10 @@
     {
       "date": "2026-08-09",
       "decision": "Logo signature animation canonized (D41 closing item, Darren-ratified): logo.animation carries the loop spec — 3 s loop; phase boundaries draw→0.57 (quadratic ease-out), hold→0.60, dissolve→0.97 (quadratic ease-in); 15% trailing fade; reduced-motion = hold the completed frame. Deliberately the logo's own spec OUTSIDE the UI motion tokens; AnimatedLogo and the Motion page read it (previously the spec lived only in component code — the markGeometry precedent applied to motion). Same wave, Motion page conformance (D41): the page renders all seven duration tiers and the three easings + never-rule from brandTokens.motion; easing plots computed from the canonical control points; demos animate on canonical curves only; prefers-reduced-motion implemented app-wide (CSS blanket block + rAF-loop media-query check); the focus-ring demo shows the canonical Amber ring."
+    },
+    {
+      "date": "2026-08-09",
+      "decision": "Governance sweep (D20/D22/D25/D29, Darren-ratified; v2.6.0 — a new token family plus process doctrine): (1) Gradient family canonized as brandTokens.gradients in the audit-recommended shape (AIF-25): primary incl. the OKLCH recipe, the three duets with the Balanced Duet #6FB884@65% bridge, full-spectrum-with-Rose, the adjacency rule, and the use/never lists — previously the bridge had no canonical source (component lerps, page markup, asset generator, guide prose only). The Gradients page, SpectreaLogo duet ramps, asset generator, and guide §6 now all render canon; the page's mislabeled 5-stop \"lockup gradient\" swatch is corrected to the canonical 2-stop Cool Duet. (2) package.json version generator-synced to meta.version (was 0.1.0 since scaffold). (3) One canonical change process (meta.changeProcess): Propose → Review → Test → Ratify & version → Regenerate & communicate — the guide §13 and the Governance page previously taught divergent four- and five-step lists; both now render this field, cross-referenced. (4) OS-frame worked example (positioning.onRamp.osFrameExample): the sanctioned coined frame gains a right/wrong pair honoring \"paired with plain language\" / \"must not carry the claim alone\" — previously the frame appeared only as rule statements, never applied copy. Also mechanical (D20a): the 8 section-parent routes llms.txt links now redirect to each section's first page instead of Not-found."
     }
   ]
 }

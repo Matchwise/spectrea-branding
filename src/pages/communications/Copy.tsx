@@ -97,7 +97,7 @@ export default function Copy() {
             </div>
           </div>
         </div>
-        <div className="border border-stone-200 rounded-xl p-5">
+        <div className="border border-stone-200 rounded-xl p-5 mb-4">
           <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">Coined terms — ours alone</p>
           <div className="flex flex-wrap gap-1.5 mb-2">
             {brand.positioning.onRamp.coined.map(term => (
@@ -106,6 +106,18 @@ export default function Copy() {
           </div>
           <p className="text-sm text-iron">{brand.positioning.onRamp.coinRule}</p>
         </div>
+        {/* Worked example for the coined whole-product frame (ratified 2026-08-09, D29) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="border rounded-xl p-5" style={{ borderColor: '#00B6A025', backgroundColor: '#00B6A008' }}>
+            <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: '#007D6E' }}>The frame, applied — right</p>
+            <p className="text-sm text-iron leading-relaxed italic">"{brand.positioning.onRamp.osFrameExample.right}"</p>
+          </div>
+          <div className="border rounded-xl p-5" style={{ borderColor: '#F2426025', backgroundColor: '#F2426008' }}>
+            <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: '#BA3249' }}>The frame alone — wrong</p>
+            <p className="text-sm text-iron leading-relaxed italic">"{brand.positioning.onRamp.osFrameExample.wrong}"</p>
+          </div>
+        </div>
+        <p className="text-xs text-slate mt-3 leading-relaxed">{brand.positioning.onRamp.osFrameExample.why}</p>
       </Section>
 
       {/* Headline formulas */}

@@ -9,6 +9,11 @@ import {
   type ColorMode,
   type MonoColorMode,
 } from '../../components/brand/SpectreaLogo'
+import { brandTokens } from '../../data/brand'
+
+// Cool Duet stops from canon (brandTokens.gradients) — the spec table below
+// renders these rather than declaring its own copies.
+const COOL_STOPS = brandTokens.gradients.duets.cool.stops
 
 // ─── Export helpers ────────────────────────────────────────────────
 
@@ -585,10 +590,10 @@ export default function LogoExploration() {
               <p className="text-xs font-semibold text-pewter uppercase tracking-wider">Colours</p>
             </div>
             {[
-              { label: 'Mark — Cool Duet start', value: 'Cobalt #4271DF' },
-              { label: 'Mark — Cool Duet end', value: 'Teal #00B6A0' },
-              { label: 'Lockup gradient — stop 1', value: 'Cobalt #4271DF (0%)' },
-              { label: 'Lockup gradient — stop 2', value: 'Teal #00B6A0 (100%)' },
+              { label: 'Mark — Cool Duet start', value: `Cobalt ${COOL_STOPS[0].hex}` },
+              { label: 'Mark — Cool Duet end', value: `Teal ${COOL_STOPS[1].hex}` },
+              { label: 'Lockup gradient — stop 1', value: `Cobalt ${COOL_STOPS[0].hex} (${Math.round(COOL_STOPS[0].at * 100)}%)` },
+              { label: 'Lockup gradient — stop 2', value: `Teal ${COOL_STOPS[1].hex} (${Math.round(COOL_STOPS[1].at * 100)}%)` },
               { label: 'Lockup wordmark', value: 'Monotone — Ink #18181C (light) / Canvas #FDFDFB (dark)' },
               { label: 'Grey (dots / watermark)', value: '#A3A3A3' },
               { label: 'Ink', value: '#18181C' },

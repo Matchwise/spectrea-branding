@@ -65,39 +65,38 @@ export default function Governance() {
         </div>
       </Section>
 
-      {/* Change process */}
+      {/* Change process — one canonical list (meta.changeProcess, merged 2026-08-09) */}
       <Section>
         <h2 className="text-xl font-semibold text-ink mb-4">
-          <Tooltip content="Brand changes go through a structured process to prevent inconsistency. Minor updates can be fast-tracked; major changes need full review.">
+          <Tooltip content="One canonical change process (meta.changeProcess) — this page and the brand guide's Governance section render the same five steps. Change severity sets each step's depth and approval weight, never which steps happen.">
             <span>Change Process</span>
           </Tooltip>
         </h2>
         <div className="border border-stone-200 rounded-xl p-6">
           <div className="space-y-4">
-            {[
-              { step: '01', title: 'Propose', description: 'Document the change, the reason, and the impact. Include visual mockups if applicable.', time: 'Proposer' },
-              { step: '02', title: 'Review', description: 'Relevant lead reviews the proposal. May request revisions or additional context.', time: 'Lead' },
-              { step: '03', title: 'Test', description: 'Apply the change in a staging environment. Verify it works across all contexts (light/dark, mobile/desktop, print/digital).', time: 'Design' },
-              { step: '04', title: 'Approve', description: 'Brand Lead gives final approval. Change is documented in the brand guide with a changelog entry.', time: 'Brand Lead' },
-              { step: '05', title: 'Implement', description: 'Update the brand guide, design system tokens, and notify all stakeholders of the change.', time: 'Design + Dev' },
-            ].map(item => (
+            {meta.changeProcess.map((item, i) => (
               <div key={item.step} className="flex gap-4">
                 <div className="flex-shrink-0">
                   <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-semibold bg-brand">
-                    {item.step}
+                    {String(i + 1).padStart(2, '0')}
                   </div>
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
-                    <p className="text-sm font-semibold text-ink">{item.title}</p>
-                    <span className="text-xs font-mono text-pewter bg-cloud px-1.5 py-0.5 rounded">{item.time}</span>
+                    <p className="text-sm font-semibold text-ink">{item.step}</p>
+                    <span className="text-xs font-mono text-pewter bg-cloud px-1.5 py-0.5 rounded">{item.owner}</span>
                   </div>
-                  <p className="text-xs text-iron mt-0.5">{item.description}</p>
+                  <p className="text-xs text-iron mt-0.5">{item.detail}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
+        <p className="text-xs text-slate mt-3 leading-relaxed">
+          One canonical process (<code className="font-mono">meta.changeProcess</code>) — the brand guide's
+          Governance section renders these same five steps. The severity table below sets each step's depth
+          and approval weight, never which steps happen.
+        </p>
       </Section>
 
       {/* Severity levels */}

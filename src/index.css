@@ -105,6 +105,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ─── Canonical brand gradient ─────────────────────────────────────
+   ENFORCED MIRROR of brandTokens.gradients.primary (brand.ts): these
+   four declarations must equal canon's css/fallbackCss (and their
+   90deg rotations) — generate-brand-assets.mjs validates them on
+   every run and fails the build on drift. App code uses these
+   classes; no page declares its own primary-gradient string.
    sRGB baseline renders everywhere. Modern browsers (Chrome 111+,
    Safari 16.2+, Firefox 117+) override with OKLCH interpolation for
    a richer middle — the teal→amber transition stops dipping through

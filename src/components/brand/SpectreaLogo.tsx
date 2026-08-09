@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback, useMemo, forwardRef } from 'react'
-import { logo } from '../../data/brand'
+import { logo, brandTokens } from '../../data/brand'
 
 // ─── Logo configuration (K3′, ratified 2026-08-06) ──────────────
 // Geometry and numerics come from canon (brand.ts logo export); this block
@@ -33,35 +33,49 @@ function rgb(r: number, g: number, b: number) {
   return `rgb(${Math.round(r)},${Math.round(g)},${Math.round(b)})`
 }
 
-// Full spectrum — Cobalt #4271DF → Teal #00B6A0 → Amber #E19000
+// Gradient ramps read canon (brandTokens.gradients, canonized 2026-08-09) —
+// piecewise-linear sRGB interpolation across the canonical stop lists. The
+// rendered colours are identical to the former hardcoded lerps; the stop
+// hexes and offsets now have exactly one source.
+const GRADIENTS = brandTokens.gradients
+
+type GradientStop = { readonly hex: string; readonly at: number }
+function channel(hex: string, i: number) { return parseInt(hex.slice(1 + i * 2, 3 + i * 2), 16) }
+function stopsColor(stops: readonly GradientStop[], t: number): string {
+  if (t <= stops[0].at) return rgb(channel(stops[0].hex, 0), channel(stops[0].hex, 1), channel(stops[0].hex, 2))
+  for (let i = 1; i < stops.length; i++) {
+    if (t <= stops[i].at) {
+      const a = stops[i - 1], b = stops[i]
+      const p = (t - a.at) / (b.at - a.at)
+      return rgb(
+        lerp(channel(a.hex, 0), channel(b.hex, 0), p),
+        lerp(channel(a.hex, 1), channel(b.hex, 1), p),
+        lerp(channel(a.hex, 2), channel(b.hex, 2), p),
+      )
+    }
+  }
+  const last = stops[stops.length - 1]
+  return rgb(channel(last.hex, 0), channel(last.hex, 1), channel(last.hex, 2))
+}
+
+// Full spectrum — the primary brand gradient. Used by AnimatedLogo.
 export function gradientColor(t: number): string {
-  if (t < 0.5) {
-    const p = t / 0.5
-    return rgb(lerp(66, 0, p), lerp(113, 182, p), lerp(223, 160, p))
-  }
-  const p = (t - 0.5) / 0.5
-  return rgb(lerp(0, 225, p), lerp(182, 144, p), lerp(160, 0, p))
+  return stopsColor(GRADIENTS.primary.stops, t)
 }
 
-// Cool Duet — Cobalt #4271DF → Teal #00B6A0
+// Cool Duet — the resting-state duet and the lockup mark's gradient.
 export function coolDuetColor(t: number): string {
-  return rgb(lerp(66, 0, t), lerp(113, 182, t), lerp(223, 160, t))
+  return stopsColor(GRADIENTS.duets.cool.stops, t)
 }
 
-// Balanced Duet — Teal #00B6A0 → #6FB884 (at 65%) → Amber #E19000
-// Late-shift intermediate avoids muddy olive desaturation.
+// Balanced Duet — carries the canonical late-shift bridge stop.
 export function balancedDuetColor(t: number): string {
-  if (t < 0.65) {
-    const p = t / 0.65
-    return rgb(lerp(0, 111, p), lerp(182, 184, p), lerp(160, 132, p))
-  }
-  const p = (t - 0.65) / 0.35
-  return rgb(lerp(111, 225, p), lerp(184, 144, p), lerp(132, 0, p))
+  return stopsColor(GRADIENTS.duets.balanced.stops, t)
 }
 
-// Warm Duet — Amber #E19000 → Rose #F24260
+// Warm Duet.
 export function warmDuetColor(t: number): string {
-  return rgb(lerp(225, 242, t), lerp(144, 66, t), lerp(0, 96, t))
+  return stopsColor(GRADIENTS.duets.warm.stops, t)
 }
 
 export function fillForMode(t: number, mode: ColorMode): string {

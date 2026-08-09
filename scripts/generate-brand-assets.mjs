@@ -87,7 +87,33 @@ const COBALT = paletteHex('Cobalt')
 const TEAL   = paletteHex('Teal')
 const AMBER  = paletteHex('Amber')
 const ROSE   = paletteHex('Rose')
-const BRIDGE = '#6FB884' // Balanced Duet intermediate (SpectreaLogo.tsx balancedDuetColor)
+
+// Gradient family from canon (brandTokens.gradients, canonized 2026-08-09).
+const GRADIENTS = canon.brandTokens.gradients
+const gradStopsOf = g => g.stops.map(s => ({ offset: `${Math.round(s.at * 100)}%`, color: s.hex }))
+const gradChain = g => g.stops.map(s => s.hex).join(' → ')
+const BRIDGE = GRADIENTS.duets.balanced.stops.find(s => s.at === 0.65)?.hex
+if (!BRIDGE) throw new Error('Balanced Duet bridge stop (at 0.65) missing from canon')
+
+// src/index.css is the app's ENFORCED mirror of the primary gradient: its
+// .brand-gradient / .brand-gradient-h utility classes must carry canon's
+// exact css/fallbackCss strings (and their 90deg rotations). Every page
+// uses these classes; validating here makes canon-vs-CSS drift a build
+// failure instead of a silent stale consumer.
+{
+  const indexCss = readFileSync(resolve(root, 'src', 'index.css'), 'utf8')
+  const rotate = s => s.replace(`${GRADIENTS.angleDeg}deg`, '90deg')
+  const required = [
+    GRADIENTS.primary.fallbackCss,
+    GRADIENTS.primary.css,
+    rotate(GRADIENTS.primary.fallbackCss),
+    rotate(GRADIENTS.primary.css),
+  ]
+  const missing = required.filter(s => !indexCss.includes(s))
+  if (missing.length) {
+    throw new Error(`src/index.css brand-gradient classes drifted from canon (brandTokens.gradients.primary); missing: ${missing.join(' | ')}`)
+  }
+}
 
 const CANVAS   = paletteHex('Canvas')
 const CLOUD    = paletteHex('Cloud')
@@ -500,66 +526,44 @@ function gradientStrip({ id, stops, label, sublabel, w = 600, h = 80 }) {
 
 await writeFile(resolve(outDir, 'gradient-brand.svg'), gradientStrip({
   id: 'g-brand',
-  stops: [
-    { offset: '0%',   color: COBALT },
-    { offset: '50%',  color: TEAL },
-    { offset: '100%', color: AMBER },
-  ],
+  stops: gradStopsOf(GRADIENTS.primary),
   label: 'Brand gradient',
-  sublabel: 'linear-gradient(135deg in oklch, #4271DF, #00B6A0, #E19000) — sRGB fallback',
+  sublabel: `${GRADIENTS.primary.css} — sRGB fallback`,
 }))
 
 await writeFile(resolve(outDir, 'gradient-cool-duet.svg'), gradientStrip({
   id: 'g-cool',
-  stops: [
-    { offset: '0%',   color: COBALT },
-    { offset: '100%', color: TEAL },
-  ],
+  stops: gradStopsOf(GRADIENTS.duets.cool),
   label: 'Cool Duet — intelligence + growth',
-  sublabel: '#4271DF → #00B6A0',
+  sublabel: gradChain(GRADIENTS.duets.cool),
 }))
 
 await writeFile(resolve(outDir, 'gradient-balanced-duet.svg'), gradientStrip({
   id: 'g-bal',
-  stops: [
-    { offset: '0%',   color: TEAL },
-    { offset: '65%',  color: BRIDGE },
-    { offset: '100%', color: AMBER },
-  ],
-  label: 'Balanced Duet — must include #6FB884 bridge',
-  sublabel: '#00B6A0 → #6FB884 (65%) → #E19000',
+  stops: gradStopsOf(GRADIENTS.duets.balanced),
+  label: `Balanced Duet — must include ${BRIDGE} bridge`,
+  sublabel: GRADIENTS.duets.balanced.stops.map(s => (s.at > 0 && s.at < 1 ? `${s.hex} (${Math.round(s.at * 100)}%)` : s.hex)).join(' → '),
 }))
 
 await writeFile(resolve(outDir, 'gradient-warm-duet.svg'), gradientStrip({
   id: 'g-warm',
-  stops: [
-    { offset: '0%',   color: AMBER },
-    { offset: '100%', color: ROSE },
-  ],
+  stops: gradStopsOf(GRADIENTS.duets.warm),
   label: 'Warm Duet — energy + urgency',
-  sublabel: '#E19000 → #F24260',
+  sublabel: gradChain(GRADIENTS.duets.warm),
 }))
 
 await writeFile(resolve(outDir, 'gradient-full-rose.svg'), gradientStrip({
   id: 'g-full',
-  stops: [
-    { offset: '0%',   color: COBALT },
-    { offset: '33%',  color: TEAL },
-    { offset: '66%',  color: AMBER },
-    { offset: '100%', color: ROSE },
-  ],
+  stops: gradStopsOf(GRADIENTS.fullSpectrumWithRose),
   label: 'Full spectrum with Rose — marketing only, use sparingly',
-  sublabel: '#4271DF → #00B6A0 → #E19000 → #F24260',
+  sublabel: gradChain(GRADIENTS.fullSpectrumWithRose),
 }))
 
 await writeFile(resolve(outDir, 'gradient-lockup.svg'), gradientStrip({
   id: 'g-lock',
-  stops: [
-    { offset: '0%',   color: COBALT },
-    { offset: '100%', color: TEAL },
-  ],
+  stops: gradStopsOf(GRADIENTS.duets.cool),
   label: 'Lockup mark gradient — LogotypeGradient only, Cool Duet',
-  sublabel: '0% #4271DF → 100% #00B6A0 (wordmark stays monotone Ink / White)',
+  sublabel: `${GRADIENTS.duets.cool.stops.map(s => `${Math.round(s.at * 100)}% ${s.hex}`).join(' → ')} (wordmark stays monotone Ink / White)`,
 }))
 
 // ─── Typography samples ─────────────────────────────────────────

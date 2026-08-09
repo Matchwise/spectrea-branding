@@ -85,7 +85,7 @@ export default function Presentations() {
                 <p className="text-base font-semibold text-center mt-4" style={{ color: '#18181C', fontFamily: "'Albert Sans', sans-serif" }}>We connect the dots.</p>
                 <p className="text-xs mt-1" style={{ color: '#6D6D72' }}>Composable intelligence platform</p>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 h-0.5" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 brand-gradient-h" />
             </div>
           </div>
 
@@ -126,7 +126,7 @@ export default function Presentations() {
               <div className="absolute bottom-3 left-4">
                 <Logotype fontSize={9} colorMode="ink" color="#97979E" />
               </div>
-              <div className="absolute bottom-0 left-0 right-0 h-0.5" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 brand-gradient-h" />
             </div>
           </div>
 
@@ -142,7 +142,7 @@ export default function Presentations() {
               <div className="absolute bottom-3 left-4">
                 <Logotype fontSize={9} colorMode="ink" color="#97979E" />
               </div>
-              <div className="absolute bottom-0 left-0 right-0 h-1" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
+              <div className="absolute bottom-0 left-0 right-0 h-1 brand-gradient-h" />
             </div>
           </div>
 
@@ -186,7 +186,7 @@ export default function Presentations() {
                 <p className="text-lg font-semibold mt-2" style={{ color: '#F4F4F1', fontFamily: "'Albert Sans', sans-serif" }}>Start connecting the dots.</p>
                 <p className="text-xs" style={{ color: '#B0B0B6' }}>spectrea.com</p>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 h-1" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
+              <div className="absolute bottom-0 left-0 right-0 h-1 brand-gradient-h" />
             </div>
           </div>
 

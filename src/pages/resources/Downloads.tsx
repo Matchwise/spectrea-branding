@@ -3,6 +3,7 @@ import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
 import { TbFileText, TbFileTypePdf, TbRobot, TbDownload, TbBrandCss3, TbBrandTailwind } from 'react-icons/tb'
 import manifest from '../../data/brand-assets-manifest.json'
+import { brandTokens } from '../../data/brand'
 
 interface ManifestItem {
   path: string
@@ -176,7 +177,7 @@ export default function Downloads() {
             { resource: 'Heading font', value: 'Albert Sans — Google Fonts' },
             { resource: 'Body font', value: 'Lexend — Google Fonts' },
             { resource: 'Mono font', value: 'JetBrains Mono — Google Fonts' },
-            { resource: 'Brand gradient', value: 'linear-gradient(135deg in oklch, #4271DF, #00B6A0, #E19000)  —  sRGB fallback for <Chrome 111 / <Safari 16.2 / <Firefox 117' },
+            { resource: 'Brand gradient', value: `${brandTokens.gradients.primary.css}  —  sRGB fallback for <Chrome 111 / <Safari 16.2 / <Firefox 117` },
             { resource: 'Icon library', value: 'Tabler Icons via react-icons/tb (outline, 2px stroke)' },
             { resource: 'Border radius (cards)', value: '12px (rounded-xl)' },
             { resource: 'Border radius (buttons)', value: '8px (rounded-lg)' },

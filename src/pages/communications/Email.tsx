@@ -47,7 +47,7 @@ export default function Email() {
           <div>
             <p className="text-xs font-semibold text-pewter uppercase tracking-wider mb-2">Transactional</p>
             <div className="border border-stone-200 rounded-xl overflow-hidden">
-              <div className="h-1" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
+              <div className="h-1 brand-gradient-h" />
               <div className="p-5">
                 <div className="mb-4">
                   <LogotypeGradient fontSize={13} />
@@ -71,7 +71,7 @@ export default function Email() {
                 <p className="text-lg font-semibold mb-2" style={{ color: '#F4F4F1', fontFamily: "'Albert Sans', sans-serif" }}>Your knowledge compounds.</p>
                 <p className="text-xs leading-relaxed mb-3" style={{ color: '#B0B0B6' }}>This month: a few quiet improvements that make the everyday faster — plus one new view we're excited about.</p>
               </div>
-              <div className="h-1" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
+              <div className="h-1 brand-gradient-h" />
               <div className="p-5 bg-white">
                 <p className="text-xs text-iron leading-relaxed">Every interaction now strengthens what you already have. Connections you might have missed start surfacing on their own...</p>
                 <button className="mt-3 px-3 py-1.5 rounded-md text-xs font-medium text-white btn-focus" style={{ backgroundColor: '#4271DF' }}>Read More</button>

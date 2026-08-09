@@ -32,7 +32,7 @@ function MiniPreview({ dark }: { dark?: boolean }) {
       {/* Nav */}
       <div className="flex items-center px-3 py-1.5" style={{ borderBottom: `1px solid ${border}` }}>
         <div className="flex items-center gap-1">
-          <div className="w-3.5 h-3.5 rounded" style={{ background: 'linear-gradient(135deg, #4271DF, #00B6A0, #E19000)' }} />
+          <div className="w-3.5 h-3.5 rounded brand-gradient" />
           <span className="text-[8px] font-bold" style={{ color: text }}>Spectrea</span>
         </div>
         <div className="flex-1" />
@@ -59,7 +59,7 @@ function MiniPreview({ dark }: { dark?: boolean }) {
           ))}
         </div>
       </div>
-      <div className="h-0.5" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
+      <div className="h-0.5 brand-gradient-h" />
     </div>
   )
 }

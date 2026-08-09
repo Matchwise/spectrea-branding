@@ -79,6 +79,7 @@ const contract = {
   version: meta.version,
   lastUpdated: meta.lastUpdated,
   sourceOfTruth: meta.sourceOfTruth,
+  changeProcess: meta.changeProcess,
   identity: {
     name: brand.name,
     pronunciation: brand.pronunciation,
@@ -111,6 +112,7 @@ const contract = {
   color: {
     palette: selectedPalette.colors,
     gradient: selectedPalette.gradient,
+    gradients: brandTokens.gradients,
     darkMode: selectedPalette.darkMode,
     washes: brandTokens.washes,
     lifts: brandTokens.lifts,
@@ -264,6 +266,7 @@ it is regenerated from src/data/brand.ts.
 - Voice formula: ${voice.formula} ${voice.techDescription}
 - Hero open: ${voice.heroOpen}
 - On-ramp: ${brand.positioning.onRamp.posture} Hero example: "${brand.positioning.onRamp.heroExample}" ${brand.positioning.onRamp.coinRule} Adopt: ${brand.positioning.onRamp.adopt.join(' · ')}. Avoid: ${brand.positioning.onRamp.avoid.join(' · ')}.
+- Coined-frame worked example — RIGHT: "${brand.positioning.onRamp.osFrameExample.right}" WRONG: "${brand.positioning.onRamp.osFrameExample.wrong}" Why: ${brand.positioning.onRamp.osFrameExample.why}
 - Privileged words (max two per paragraph): ${voice.alwaysUse.join(', ')}. ${voice.vocabularyDensity}
 - NEVER use these words: ${listNeverUse}.
 - AI naming: ${aiNamingLine}
@@ -381,4 +384,25 @@ for (const [name, content] of outputs) {
   writeFileSync(join(outDir, name), content)
   console.log(`✓ public/${name} (${content.length.toLocaleString()} chars)`)
 }
+
+/* ------------------------------------------------------------------ */
+/* Version sync (D22, ratified 2026-08-09): package.json (and the lock */
+/* file's root entries) carry meta.version — the repo has exactly one  */
+/* version, canon's. Formatting is preserved by JSON round-trip with   */
+/* the files' own 2-space indent and trailing newline.                 */
+/* ------------------------------------------------------------------ */
+
+for (const rel of ['package.json', 'package-lock.json']) {
+  const path = join(root, rel)
+  const pkg = JSON.parse(readFileSync(path, 'utf8'))
+  const rootEntry = pkg.packages?.['']
+  if (pkg.version !== meta.version || (rootEntry && rootEntry.version !== meta.version)) {
+    const from = pkg.version
+    pkg.version = meta.version
+    if (rootEntry) rootEntry.version = meta.version
+    writeFileSync(path, JSON.stringify(pkg, null, 2) + '\n')
+    console.log(`✓ ${rel} version ${from} → ${meta.version} (synced to canon)`)
+  }
+}
+
 console.log(`Done — derived from brand.ts v${meta.version} (${meta.lastUpdated}), generated ${TODAY}.`)

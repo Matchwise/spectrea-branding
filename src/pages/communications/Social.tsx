@@ -100,7 +100,7 @@ export default function Social() {
                 </p>
                 <p className="text-xs mt-3" style={{ color: '#B0B0B6' }}>— Spectrea</p>
               </div>
-              <div className="h-1" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
+              <div className="h-1 brand-gradient-h" />
             </div>
           </div>
 
@@ -112,7 +112,7 @@ export default function Social() {
                 <p className="text-3xl font-semibold" style={{ color: '#F4F4F1', fontFamily: "'Albert Sans', sans-serif" }}>94%</p>
                 <p className="text-xs mt-1" style={{ color: '#B0B0B6' }}>average confidence across all items</p>
               </div>
-              <div className="h-1" style={{ background: 'linear-gradient(90deg, #4271DF, #00B6A0, #E19000)' }} />
+              <div className="h-1 brand-gradient-h" />
             </div>
           </div>
         </div>

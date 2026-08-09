@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import Sidebar from './components/layout/Sidebar'
 import TopBar from './components/layout/TopBar'
 import Home from './pages/Home'
@@ -53,6 +53,17 @@ export default function App() {
         <main ref={mainRef} className="flex-1 overflow-y-auto">
           <Routes>
             <Route path="/" element={<Home />} />
+            {/* Section-parent redirects: llms.txt links each section root; a
+                bare section URL lands on its first page instead of Not found
+                (audit finding D20). */}
+            <Route path="/foundation" element={<Navigate to="/foundation/story" replace />} />
+            <Route path="/logo" element={<Navigate to="/logo/primary" replace />} />
+            <Route path="/color" element={<Navigate to="/color/overview" replace />} />
+            <Route path="/typography" element={<Navigate to="/typography/typefaces" replace />} />
+            <Route path="/imagery" element={<Navigate to="/imagery/illustration" replace />} />
+            <Route path="/components" element={<Navigate to="/components/buttons" replace />} />
+            <Route path="/communications" element={<Navigate to="/communications/copy" replace />} />
+            <Route path="/resources" element={<Navigate to="/resources/downloads" replace />} />
             <Route path="/foundation/story" element={<BrandStory />} />
             <Route path="/foundation/positioning" element={<Positioning />} />
             <Route path="/foundation/voice" element={<Voice />} />

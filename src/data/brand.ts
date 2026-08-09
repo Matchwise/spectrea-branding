@@ -4,12 +4,24 @@
 
 // --- Meta / Governance ---
 export const meta = {
-  version: '2.5.9',
+  version: '2.6.0',
   lastUpdated: '2026-08-09',
   sourceOfTruth:
     'brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea\'s roadmap — check it before placing a capability claim on a buyer-facing surface.',
   renderDoctrine:
     'Anything in canon must render somewhere in the guide (ratified 2026-08-06). A canonical field with no rendering surface is a propagation defect: agents must never receive a stricter or newer brand than people.',
+  // One canonical change process (merged 2026-08-09, D25): the guide taught a
+  // four-step list carrying the version/regenerate mechanics while the
+  // Governance page taught a five-step list without them. Both surfaces now
+  // render THIS list. Severity (Governance page) sets each step's depth and
+  // approval weight, never which steps happen.
+  changeProcess: [
+    { step: 'Propose', owner: 'Proposer', detail: 'Document the change, the reason, and the impact — with visual mockups where applicable.' },
+    { step: 'Review', owner: 'Lead', detail: 'The relevant lead (Design or Content) reviews and may request revisions; the Brand Lead joins for brand-level changes.' },
+    { step: 'Test', owner: 'Design', detail: 'Apply the change in a staging build and verify it across contexts: light/dark, mobile/desktop, print/digital.' },
+    { step: 'Ratify & version', owner: 'Brand Lead', detail: 'Brand Lead approves. The change lands in src/data/brand.ts with a meta.version bump; brand decisions also get a ratificationLedger entry.' },
+    { step: 'Regenerate & communicate', owner: 'Design + Dev', detail: 'Run npm run generate:all so the guide, contract, agent rules, assets, and PDF follow, then announce in #brand. The durable changelog is the git history of the spectrea-branding repo.' },
+  ],
   changelog:
     'Versioned in git — the commit history of the spectrea-branding repo is the durable changelog; notable changes are announced in #brand.',
 } as const
@@ -73,6 +85,14 @@ export const brand = {
       coined: ['per-viewer truth', 'decisions in the graph', 'the operating system for collective intelligence'],
       coinRule:
         'Coin language ONLY for the differentiators no market term names: per-viewer truth, decisions in the graph, and the whole-product frame "the operating system for collective intelligence" (ratified 2026-07-19; pair it with plain language — it must not carry the claim alone). Everywhere else, use the market\'s word where one exists (adopt list) or plain outcome language.',
+      // Worked example for the coined whole-product frame (ratified 2026-08-09,
+      // D29): every comparable voice rule ships a right/wrong pair; the frame's
+      // pairing rule previously existed only as rule statements — never applied.
+      osFrameExample: {
+        right: 'See everything your organization knows in one connected view — Spectrea is the operating system for collective intelligence: the place where what your team knows connects, compounds, and answers back.',
+        wrong: 'Spectrea: the operating system for collective intelligence.',
+        why: 'The right version opens on the outcome and pairs the frame with plain language that carries the meaning in the same breath. The wrong version asks the frame to carry the claim alone — forbidden by the coinRule — and leads with it, against the on-ramp\'s outcome-first posture.',
+      },
     },
     promise:
       'Turns scattered information into compounding intelligence',
@@ -630,6 +650,67 @@ export const brandTokens = {
       never: 'linear (feels mechanical) or ease-in alone (feels like something is wrong)',
     },
   },
+  // Gradient family (canonized 2026-08-09, D20 closing item, in the shape the
+  // 2026-07 audit recommended — AIF-25): the duet definitions, the Balanced
+  // Duet's #6FB884 bridge, and the gradient use rules previously lived only in
+  // component lerp code, page markup, the asset generator, and guide prose,
+  // with no canonical source. Values unchanged. Stop offsets are 0–1 fractions.
+  gradients: {
+    angleDeg: 135,
+    primary: {
+      name: 'Brand gradient',
+      stops: [
+        { hex: '#4271DF', at: 0 },
+        { hex: '#00B6A0', at: 0.5 },
+        { hex: '#E19000', at: 1 },
+      ],
+      css: 'linear-gradient(135deg in oklch, #4271DF, #00B6A0, #E19000)',
+      fallbackCss: 'linear-gradient(135deg, #4271DF, #00B6A0, #E19000)',
+      interpolation: 'OKLCH on modern browsers (Chrome 111+ / Safari 16.2+ / Firefox 117+) with the sRGB fallback on older ones — the OKLCH path keeps chroma high through the middle and avoids the muddy olive zone.',
+      use: 'The everyday brand gradient — hero sections, accent bars, marketing headers, dividers, progress indicators.',
+    },
+    adjacencyRule: 'Two-colour gradients (duets) use ADJACENT spectrum pairs only. Skip pairs (Cobalt→Amber direct, Teal→Rose, Cobalt→Rose) break the continuous-spectrum metaphor and are off-brand.',
+    duets: {
+      cool: {
+        name: 'Cool Duet',
+        stops: [
+          { hex: '#4271DF', at: 0 },
+          { hex: '#00B6A0', at: 1 },
+        ],
+        use: 'Intelligence + growth. The resting-state duet — data, technical contexts, and the static S mark. Also the lockup mark\'s gradient (LogotypeGradient, mark stroke only; the wordmark stays monotone) — never a general-purpose decorative gradient there.',
+      },
+      balanced: {
+        name: 'Balanced Duet',
+        stops: [
+          { hex: '#00B6A0', at: 0 },
+          { hex: '#6FB884', at: 0.65 },
+          { hex: '#E19000', at: 1 },
+        ],
+        bridgeRule: 'Must include the #6FB884 intermediate at 65% — without it, teal and amber desaturate into muddy olive.',
+        use: 'Product/ecosystem moments.',
+      },
+      warm: {
+        name: 'Warm Duet',
+        stops: [
+          { hex: '#E19000', at: 0 },
+          { hex: '#F24260', at: 1 },
+        ],
+        use: 'Energy + urgency. Marketing, launches, attention moments.',
+      },
+    },
+    fullSpectrumWithRose: {
+      name: 'Full spectrum with Rose',
+      stops: [
+        { hex: '#4271DF', at: 0 },
+        { hex: '#00B6A0', at: 0.33 },
+        { hex: '#E19000', at: 0.66 },
+        { hex: '#F24260', at: 1 },
+      ],
+      use: 'All four spectrum colours — peak brand expression only (landing-page heroes, launch moments). Use sparingly; reserving it keeps its impact.',
+    },
+    useFor: ['Logo mark background', 'Hero section accent bars', 'Marketing page headers', 'Loading progress bars', 'Slide deck title dividers', 'Social media profile accents'],
+    neverFor: ['Buttons (use solid Cobalt)', 'Text colour (unreadable)', 'Body backgrounds (overwhelming)', 'Borders or outlines (too busy)', 'Small icons or badges', 'Repeated elements (it stops being special)'],
+  },
   // Both modes canonical (dark resolved 2026-07-04). Dark keeps the deliberate
   // lighten-on-dark idiom; white text cannot survive lightening (all lightened
   // fills sit at 1.82–2.99:1 with white), so the transient-state rule flips
@@ -900,6 +981,7 @@ export const ratificationLedger = [
   { date: '2026-08-08', decision: 'D40/D35 accessibility cluster, wave 1: (1) Tooltip gains a full keyboard path — focusable button affordance at the 24px target size, opens on focus, Escape dismisses, aria-describedby announcement. (2) Palette-tool sliders carry accessible names. (3) Text floors enforced app-wide (~90 sites bumped to the 12px caption floor; the 10px canon carve-outs — uppercase overlines, numeric badges, metadata chips — and specimen mini-previews untouched; four legal 11px uppercase overlines also normalized to 12px for consistency with the app-wide overline idiom). (4) Pewter stepped to Slate wherever it carried meaning (~50 sites), including the Ghost button light-mode label (was Pewter 2.85:1, an interactive label) and the Iconography page, which taught Pewter as the secondary icon tier against pewterMatrix — the taught tier is now Slate, with Pewter reserved for disabled/decorative glyphs. (5) brandTokens.accentText ratified (Darren, Option A): accent-coloured text on light surfaces uses Teal text #007D6E (new; visually near-identical to the retired #008775, which measured 4.04–4.45:1 as text) and Rose text #BA3249 (existing tone, now named); ~30 text sites swept. Button state fills (hover/active) are unchanged — they are fills, not text. Remaining D40 item, deliberately open: the dark-mode Ink-on-lightened-Cobalt hover label (APCA Lc 40.5 despite WCAG 4.5:1+) awaits its own adjudication.' },
   { date: '2026-08-08', decision: 'Dark Cobalt hover re-lightened (D40 closing item, Darren-ratified Option A): the dark transient ladder for Cobalt was the only state below the APCA spot-text line (old hover #5C87E5: WCAG 5.10:1 but APCA Lc 40.5 vs the 45 minimum; every other accent ≥46.7) — the same 2.x formula artefact as the button-label grant, opposite direction (2.x over-credits dark-on-vivid-blue). New ladder lightens one further notch along the existing lift-toward-the-light direction: hover #6E93EC (5.94:1, Lc 46.3 — parity with Rose), active #8FACF0 (7.86:1, Lc 58.1). Base state and all other accents unchanged; the one-rule dark idiom (Ink label on lightened fill) holds; every dark transient state now clears both metrics. Registry entry measured range updated 5.10–9.72 → 5.92–9.72 (consequence of the canon change, not a re-grant). White-label-on-hover alternative rejected (APCA 67.5 but WCAG 3.47 — would need an exception and break the idiom). This closes D40.' },
   { date: '2026-08-09', decision: 'Logo signature animation canonized (D41 closing item, Darren-ratified): logo.animation carries the loop spec — 3 s loop; phase boundaries draw→0.57 (quadratic ease-out), hold→0.60, dissolve→0.97 (quadratic ease-in); 15% trailing fade; reduced-motion = hold the completed frame. Deliberately the logo\'s own spec OUTSIDE the UI motion tokens; AnimatedLogo and the Motion page read it (previously the spec lived only in component code — the markGeometry precedent applied to motion). Same wave, Motion page conformance (D41): the page renders all seven duration tiers and the three easings + never-rule from brandTokens.motion; easing plots computed from the canonical control points; demos animate on canonical curves only; prefers-reduced-motion implemented app-wide (CSS blanket block + rAF-loop media-query check); the focus-ring demo shows the canonical Amber ring.' },
+  { date: '2026-08-09', decision: 'Governance sweep (D20/D22/D25/D29, Darren-ratified; v2.6.0 — a new token family plus process doctrine): (1) Gradient family canonized as brandTokens.gradients in the audit-recommended shape (AIF-25): primary incl. the OKLCH recipe, the three duets with the Balanced Duet #6FB884@65% bridge, full-spectrum-with-Rose, the adjacency rule, and the use/never lists — previously the bridge had no canonical source (component lerps, page markup, asset generator, guide prose only). The Gradients page, SpectreaLogo duet ramps, asset generator, and guide §6 now all render canon; the page\'s mislabeled 5-stop "lockup gradient" swatch is corrected to the canonical 2-stop Cool Duet. (2) package.json version generator-synced to meta.version (was 0.1.0 since scaffold). (3) One canonical change process (meta.changeProcess): Propose → Review → Test → Ratify & version → Regenerate & communicate — the guide §13 and the Governance page previously taught divergent four- and five-step lists; both now render this field, cross-referenced. (4) OS-frame worked example (positioning.onRamp.osFrameExample): the sanctioned coined frame gains a right/wrong pair honoring "paired with plain language" / "must not carry the claim alone" — previously the frame appeared only as rule statements, never applied copy. Also mechanical (D20a): the 8 section-parent routes llms.txt links now redirect to each section\'s first page instead of Not-found.' },
 ] as const
 
 // --- Executive Voice ---
@@ -963,7 +1045,14 @@ export const selectedPalette: PaletteOption = {
     { name: 'Slate', hex: '#6D6D72', role: 'body-secondary' },
     { name: 'Pewter', hex: '#97979E', role: 'muted' },
   ],
-  gradient: { from: '#4271DF', via: '#00B6A0', to: '#E19000', angle: 135 },
+  // Derived view of brandTokens.gradients.primary (the single declaration) —
+  // the PaletteOption shape keeps from/via/to for palette-level consumers.
+  gradient: {
+    from: brandTokens.gradients.primary.stops[0].hex,
+    via: brandTokens.gradients.primary.stops[1].hex,
+    to: brandTokens.gradients.primary.stops[2].hex,
+    angle: brandTokens.gradients.angleDeg,
+  },
   darkMode: { bg: '#18181C', surface: '#212226', text: '#F4F4F1', muted: '#B0B0B6', border: '#2E2F35' },
 }
 
