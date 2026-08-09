@@ -1,3 +1,5 @@
+> **Superseded (historical record, 2026-04-18).** This spec is an implementation-era design document, not canon. Where it disagrees with `src/data/brand.ts` (the canonical brand data) or the published guide, canon wins — wordmark, lockup constants, and mark geometry were re-derived and ratified 2026-08-06 (decisions 3–5). Retained for traceability.
+
 # Lowercase wordmark + duotone mark in gradient lockup
 
 **Date:** 2026-04-18

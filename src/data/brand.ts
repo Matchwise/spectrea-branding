@@ -757,7 +757,9 @@ export const accessibility = {
 
 // --- Logo Constraints (numeric edge cases) ---
 // Canonical numerics for rules that previously lived only as prose. The
-// lockup FORM COUNT stays at two pending the open lockup-form decision (BA-10).
+// lockup FORM COUNT stays at two — ratified 2026-07-03 (BA-10, option b):
+// the proposed third form was re-scoped into the gradient family; the
+// two-forms rule is intact, not pending.
 // Mark geometry + lockup constants ratified 2026-08-06 (decisions 3-5,
 // docs/brand-review-2026-08): the spine is fitted to the Albert Sans 600 S
 // medial axis with a deliberate shallow storytelling tail (K3′); lockup

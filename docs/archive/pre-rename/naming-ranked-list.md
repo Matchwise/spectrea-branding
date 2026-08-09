@@ -1,3 +1,5 @@
+> **Historical record (pre-rename, superseded).** This document predates the MatchWise → Spectrea rename and is retained for traceability only. It is not canon and nothing references it. Canonical brand data: `src/data/brand.ts`. Note: Spectrea placed 35th in this scoring; the final decision weighed factors this ranking did not. See `README.md` in this directory.
+
 # Naming Candidates — Ranked List
 
 **Product:** GraphRAG Knowledge Management SaaS (rebranding from MatchWise)

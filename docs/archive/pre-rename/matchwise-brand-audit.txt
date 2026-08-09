@@ -1,3 +1,5 @@
+HISTORICAL RECORD (pre-rename, superseded). This audit recommended the MatchWise rename; the rename was executed (Spectrea). Retained for traceability only - not canon, nothing references it. Canonical brand data: src/data/brand.ts. See README.md in this directory.
+
 ﻿
 
 

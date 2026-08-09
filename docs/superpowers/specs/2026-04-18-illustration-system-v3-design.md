@@ -1,3 +1,5 @@
+> **Superseded (historical record, 2026-04-18).** This v3 illustration system was retired by the v4 illustration prompt (2026-04-19, published at /illustration-prompt.md), which retires the two-style split, the recurring subject cast, the four-layer vocabulary, the production matrix, and the decision rubric this spec defines. Not canon. Retained for traceability.
+
 # Spectrea illustration system — v3 design
 
 > Date: 2026-04-18

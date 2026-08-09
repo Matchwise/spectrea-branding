@@ -1,3 +1,5 @@
+> **Superseded (historical record, 2026-04-18).** This spec is an implementation-era design document, not canon. Where it disagrees with `src/data/brand.ts` (the canonical brand data) or the published guide, canon wins — notably, this spec treats the three archetypes as separate surface domains, which current canon inverts ("Spectrea is one character, not three"). Retained for traceability.
+
 # Spectrea Brand Iteration v2 — Design Spec
 
 > Consolidated brand decisions from the iteration interview held 2026-04-18,

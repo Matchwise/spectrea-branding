@@ -1,3 +1,5 @@
+> **Historical record (pre-rename, superseded).** This document predates the MatchWise → Spectrea rename and is retained for traceability only. It is not canon and nothing references it. Canonical brand data: `src/data/brand.ts`.  See `README.md` in this directory.
+
 # MatchWise Rebrand: Comprehensive Naming Proposal (Validated)
 
 
