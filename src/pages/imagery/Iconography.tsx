@@ -192,7 +192,7 @@ export default function Iconography() {
             <div className="px-5 py-3 bg-brand/5 border-b border-brand/10 flex items-center justify-between">
               <div>
                 <p className="text-sm font-semibold text-ink">Tier 1: Responsive <span className="text-xs font-normal text-slate">— user interacts</span></p>
-                <p className="text-xs text-slate mt-0.5">Hover, focus, press. Temporary — appears while interacting, settles when done.</p>
+                <p className="text-xs text-slate mt-0.5">Hover, press. Temporary — appears while interacting, settles when done. (Focus shows the canonical Amber ring.)</p>
               </div>
               <span className="text-xs font-mono text-brand">Cobalt #4271DF</span>
             </div>

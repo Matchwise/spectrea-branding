@@ -142,7 +142,7 @@ export default function PrimaryPalette() {
         </h2>
         <ColorCard
           name="Cobalt" hex="#4271DF" role={ROLE('Cobalt')}
-          usage="Primary buttons, links, focused inputs, hover accents. Reactive and temporary — appears when the user interacts, settles when done. Persistent selections use Ink instead."
+          usage="Primary buttons, links, hover accents. Reactive and temporary — appears when the user interacts, settles when done. Persistent selections use Ink; keyboard focus is the Amber ring."
         />
         <div className="mt-3 bg-brand/5 rounded-lg px-4 py-3 border border-brand/10">
           <p className="text-xs text-brand">

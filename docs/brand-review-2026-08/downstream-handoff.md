@@ -1,8 +1,8 @@
-# Hand-off: downstream repos (spectrea, spectrea-web) — updated for v2.9.0
+# Hand-off: downstream repos (spectrea, spectrea-web) — updated for v2.10.0
 
-> Written 2026-08-07 at v2.5.0; refreshed 2026-08-10 at v2.9.0. These steps are for
+> Written 2026-08-07 at v2.5.0; refreshed 2026-08-10 at v2.10.0. These steps are for
 > sessions working IN the consumer repos; nothing here is done yet — no re-pin has
-> happened since before v2.5.0. Precondition: spectrea-branding main pushed at v2.9.0
+> happened since before v2.5.0. Precondition: spectrea-branding main pushed at v2.10.0
 > (deploy republishes all artifacts at https://branding.spectrea.com/).
 
 ## 1. Re-pin the vendored brand snapshots
@@ -29,8 +29,18 @@ vendored copy). New generated artifacts consumers may also want to vendor or lin
 If your repo reads `brand-contract.json`, these top-level/nested sections are new since
 v2.5.0 (the version consumers were last told about):
 
+- `brandTokens.focusRing.rule` + `graphViz.nodeHover`/`nodeFocus` (v2.10.0) — ONE
+  focus ring for every focusable (buttons, links, inputs, selects, textareas, custom
+  controls): the 2 px Amber ring at 2 px offset, outside the border. The ring is
+  accessibility chrome outside the colour tiers — never a validation status; borders
+  never change on focus (validation borders stay beneath the ring). Focus is NOT a
+  Cobalt job anymore — if your repo styles input focus as a blue border/halo
+  (`focus:border-…` or a low-alpha blue ring), replace it with the canonical ring.
+  `graphViz.nodeHoverFocus` was split: hover stays Cobalt, keyboard focus is the ring
+  — drop any copy of the old combined key.
 - `components` (v2.8.0) — canonical component specs: 6 button types with state
   references, sizes, forms, cards, layout (breakpoints, responsive rules, elevation).
+  `components.forms.focus` rewritten at v2.10.0 to reference the canonical ring.
 - `color.system` (v2.7.0) — neutral ladder roles, accent meanings, text hierarchy,
   Tailwind mapping, usage ratio, dark roles (Mist/Fog), accents-on-dark rule. OKLCH
   lightness and WCAG ratios are COMPUTED from hexes, never stored — do the same.

@@ -187,7 +187,7 @@ export default function Cards() {
                   <p className="text-xs text-iron mt-1 leading-relaxed">{a.message}</p>
                 </div>
                 <button
-                  className="px-3.5 py-3.5 flex-shrink-0 opacity-40 hover:opacity-100 transition-opacity"
+                  className="px-3.5 py-3.5 flex-shrink-0 opacity-40 hover:opacity-100 transition-opacity btn-focus"
                   onClick={() => setDismissedAlerts(p => new Set(p).add(a.title))}
                   aria-label={`Dismiss ${a.title}`}
                 >
@@ -200,7 +200,7 @@ export default function Cards() {
           <div className="border border-dashed border-stone-300 rounded-xl p-6 text-center">
             <p className="text-sm text-slate">All alerts dismissed.</p>
             <button
-              className="mt-2 text-xs font-medium text-brand hover:underline"
+              className="mt-2 text-xs font-medium text-brand hover:underline btn-focus"
               onClick={() => setDismissedAlerts(new Set())}
             >
               Reset alerts
@@ -236,7 +236,7 @@ export default function Cards() {
                   <button
                     key={t.label}
                     onClick={() => setRemovedTags(p => new Set(p).add(t.label))}
-                    className="text-xs px-2.5 py-1 rounded-full inline-flex items-center gap-1 transition-all hover:opacity-80 active:opacity-60"
+                    className="text-xs px-2.5 py-1 rounded-full inline-flex items-center gap-1 transition-all hover:opacity-80 active:opacity-60 btn-focus"
                     style={{ backgroundColor: t.color + '12', color: t.color, border: `1px solid ${t.color}25` }}
                   >
                     {t.label}
@@ -246,7 +246,7 @@ export default function Cards() {
                 {removedTags.size > 0 && (
                   <button
                     onClick={() => setRemovedTags(new Set())}
-                    className="text-xs text-slate hover:text-iron transition-colors"
+                    className="text-xs text-slate hover:text-iron transition-colors btn-focus"
                   >
                     Reset
                   </button>

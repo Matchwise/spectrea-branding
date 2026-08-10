@@ -53,7 +53,7 @@ export default function Forms() {
             <input
               type="text"
               placeholder="e.g., Quarterly summary"
-              className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-ink placeholder:text-pewter outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all"
+              className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-ink placeholder:text-pewter btn-focus transition-all"
             />
             <p className="text-xs text-slate mt-1">Helper text provides context or constraints.</p>
           </div>
@@ -66,7 +66,7 @@ export default function Forms() {
               placeholder="name@example.com"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              className={`w-full px-3 py-2 text-sm rounded-lg bg-white text-ink placeholder:text-pewter outline-none focus:ring-2 focus:ring-brand/20 transition-all ${emailValid === null ? 'border border-stone-200 focus:border-brand' : ''}`}
+              className={`w-full px-3 py-2 text-sm rounded-lg bg-white text-ink placeholder:text-pewter btn-focus transition-all ${emailValid === null ? 'border border-stone-200' : ''}`}
               style={emailValid === null
                 ? undefined
                 : emailValid
@@ -85,7 +85,7 @@ export default function Forms() {
             <input
               type="text"
               placeholder="Search..."
-              className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-ink placeholder:text-pewter outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all"
+              className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-ink placeholder:text-pewter btn-focus transition-all"
             />
           </div>
 
@@ -103,7 +103,7 @@ export default function Forms() {
           {/* Select */}
           <div>
             <label className="block text-sm font-medium text-iron mb-2">Category</label>
-            <select className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all">
+            <select className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-ink btn-focus transition-all">
               <option>Select a category...</option>
               <option>Category A</option>
               <option>Category B</option>
@@ -117,7 +117,7 @@ export default function Forms() {
             <textarea
               placeholder="Describe this item..."
               rows={3}
-              className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-ink placeholder:text-pewter resize-none outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all"
+              className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg bg-white text-ink placeholder:text-pewter resize-none btn-focus transition-all"
             />
           </div>
         </div>
@@ -134,7 +134,7 @@ export default function Forms() {
             { prop: 'Padding', value: F.padding, note: 'Comfortable click target' },
             { prop: 'Font', value: F.font, note: 'Body SM size for input text' },
             { prop: 'Placeholder', value: `${F.placeholder} (${HEX(F.placeholder)})`, note: 'Clearly distinct from entered text' },
-            { prop: 'Focus border', value: F.focus, note: `Cobalt ${HEX('Cobalt')}` },
+            { prop: 'Focus', value: F.focus, note: `Ring ${brandTokens.focusRing.light} (light) / ${brandTokens.focusRing.dark} (dark)` },
             { prop: 'Error border', value: `${F.error} (${HEX('Rose')})`, note: 'Semantic error color' },
             { prop: 'Disabled bg', value: `${F.disabledBg} (${HEX(F.disabledBg)})`, note: 'Subtle visual demotion' },
           ].map((row, i) => (
@@ -164,9 +164,15 @@ export default function Forms() {
                 { key: 'optionB', label: 'Option B' },
                 { key: 'optionC', label: 'Option C' },
               ].map(c => (
-                <label key={c.key} className="flex items-center gap-2.5 cursor-pointer group" onClick={() => setChecks(p => ({ ...p, [c.key]: !p[c.key] }))}>
+                <label key={c.key} className="flex items-center gap-2.5 cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    className="sr-only sr-input"
+                    checked={!!checks[c.key]}
+                    onChange={() => setChecks(p => ({ ...p, [c.key]: !p[c.key] }))}
+                  />
                   <span
-                    className="w-4 h-4 rounded flex-shrink-0 flex items-center justify-center border text-white text-[10px] transition-colors"
+                    className="focus-proxy w-4 h-4 rounded flex-shrink-0 flex items-center justify-center border text-white text-[10px] transition-colors"
                     style={checks[c.key]
                       ? { backgroundColor: '#4271DF', borderColor: '#4271DF' }
                       : { borderColor: '#D6D3D1', backgroundColor: 'white' }
@@ -178,6 +184,7 @@ export default function Forms() {
                 </label>
               ))}
               <label className="flex items-center gap-2.5 opacity-40 cursor-not-allowed">
+                <input type="checkbox" className="sr-only sr-input" disabled />
                 <span className="w-4 h-4 rounded flex-shrink-0 flex items-center justify-center border text-[10px]" style={{ borderColor: '#D6D3D1', backgroundColor: 'white' }} />
                 <span className="text-sm text-iron">Archived items</span>
               </label>
@@ -194,9 +201,16 @@ export default function Forms() {
                 { key: 'connected', label: 'Connected only' },
                 { key: 'unconnected', label: 'Unconnected only' },
               ].map(r => (
-                <label key={r.key} className="flex items-center gap-2.5 cursor-pointer group" onClick={() => setRadio(r.key)}>
+                <label key={r.key} className="flex items-center gap-2.5 cursor-pointer group">
+                  <input
+                    type="radio"
+                    name="connection-filter"
+                    className="sr-only sr-input"
+                    checked={radio === r.key}
+                    onChange={() => setRadio(r.key)}
+                  />
                   <span
-                    className="w-4 h-4 rounded-full flex-shrink-0 flex items-center justify-center border-2 transition-colors"
+                    className="focus-proxy w-4 h-4 rounded-full flex-shrink-0 flex items-center justify-center border-2 transition-colors"
                     style={radio === r.key
                       ? { borderColor: '#4271DF' }
                       : { borderColor: '#D6D3D1' }
@@ -221,7 +235,9 @@ export default function Forms() {
               ].map(t => (
                 <button
                   key={t.key}
-                  className="flex items-center justify-between w-full text-left group"
+                  className="flex items-center justify-between w-full text-left group btn-focus"
+                  role="switch"
+                  aria-checked={!!toggles[t.key]}
                   onClick={() => setToggles(p => ({ ...p, [t.key]: !p[t.key] }))}
                 >
                   <span className="text-sm text-iron group-hover:text-ink transition-colors">{t.label}</span>

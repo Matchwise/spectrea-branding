@@ -175,7 +175,7 @@ function FadeInDemo() {
       <button
         onClick={replay}
         style={chromeTransition}
-        className="text-xs font-mono text-slate hover:text-brand cursor-pointer"
+        className="text-xs font-mono text-slate hover:text-brand cursor-pointer btn-focus"
       >
         replay · {M.comfortable}ms · ease-out
       </button>
@@ -193,7 +193,7 @@ function SlideDownDemo() {
         <button
           onClick={() => setOpen(o => !o)}
           style={chromeTransition}
-          className="w-full flex items-center justify-between px-3 py-2 rounded-lg border border-stone-200 text-sm text-iron bg-white hover:bg-cloud"
+          className="w-full flex items-center justify-between px-3 py-2 rounded-lg border border-stone-200 text-sm text-iron bg-white hover:bg-cloud btn-focus"
         >
           <span className="text-xs">Select type</span>
           <TbChevronDown
@@ -214,7 +214,7 @@ function SlideDownDemo() {
         >
           <div className="mt-1 border border-stone-200 rounded-lg bg-white shadow-md overflow-hidden">
             {['Category A', 'Category B', 'Category C'].map((item, i) => (
-              <button key={item} onClick={() => setOpen(false)} className="w-full text-left px-3 py-2 text-xs text-iron hover:bg-cloud" style={{ ...chromeTransition, borderBottom: i < 2 ? '1px solid #F5F5F4' : 'none' }}>
+              <button key={item} onClick={() => setOpen(false)} className="w-full text-left px-3 py-2 text-xs text-iron hover:bg-cloud btn-focus" style={{ ...chromeTransition, borderBottom: i < 2 ? '1px solid #F5F5F4' : 'none' }}>
                 {item}
               </button>
             ))}
@@ -370,7 +370,7 @@ function NodeArrivalDemo() {
       {/* The pulse starts 30% into the arrival — a choreography ratio; the timing itself comes from canon. */}
       <div key={`pulse-${key}`} className="absolute" style={{ width: 32, height: 32, borderRadius: '50%', background: color, animation: `spectrea-node-pulse ${M.arrival}ms ${E.easeOut.css} forwards`, animationDelay: `${Math.round(M.arrival * 0.3)}ms` }} />
       <div key={`node-${key}`} className="relative z-10" style={{ width: 32, height: 32, borderRadius: '50%', background: color, animation: `spectrea-node-arrival ${M.arrival}ms ${E.elasticSettle.css} forwards` }} />
-      <button onClick={play} style={chromeTransition} className="absolute bottom-2 right-2 text-xs px-2 py-1 rounded bg-cloud text-slate hover:bg-stone-200 font-mono">Play</button>
+      <button onClick={play} style={chromeTransition} className="absolute bottom-2 right-2 text-xs px-2 py-1 rounded bg-cloud text-slate hover:bg-stone-200 font-mono btn-focus">Play</button>
     </div>
   )
 }
@@ -409,7 +409,7 @@ function EdgeFormationDemo() {
           }}
         />
       </svg>
-      <button onClick={play} style={chromeTransition} className="absolute bottom-2 right-2 text-xs px-2 py-1 rounded bg-cloud text-slate hover:bg-stone-200 font-mono">Play</button>
+      <button onClick={play} style={chromeTransition} className="absolute bottom-2 right-2 text-xs px-2 py-1 rounded bg-cloud text-slate hover:bg-stone-200 font-mono btn-focus">Play</button>
     </div>
   )
 }
@@ -439,7 +439,7 @@ function SpectrumShiftDemo() {
           animation: `spectrea-spectrum-shift ${M.spectrumSweep}ms ${E.easeInOut.css} forwards`,
         }}
       />
-      <button onClick={play} style={chromeTransition} className="absolute bottom-2 right-2 text-xs px-2 py-1 rounded bg-cloud text-slate hover:bg-stone-200 font-mono">Play</button>
+      <button onClick={play} style={chromeTransition} className="absolute bottom-2 right-2 text-xs px-2 py-1 rounded bg-cloud text-slate hover:bg-stone-200 font-mono btn-focus">Play</button>
     </div>
   )
 }

@@ -386,7 +386,7 @@ function AssetGenerator() {
     ? `${style.label} logotype`
     : `${style.label}${useCircle ? ' circle' : ''} mark`
 
-  const selectClass = 'w-full text-sm border border-stone-300 rounded-lg px-2 py-1.5 bg-white text-ink'
+  const selectClass = 'w-full text-sm border border-stone-300 rounded-lg px-2 py-1.5 bg-white text-ink btn-focus'
 
   // Full-spectrum lockup wordmark: Ink on light surfaces, White on Ink.
   // On transparent (checker preview), default to Ink — that's the expected

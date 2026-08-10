@@ -34,7 +34,7 @@ const semanticColors = [
     light: '#EDF0F8',
     lightName: 'Cobalt Wash',
     dark: '#1E3A8A',
-    usage: 'Primary actions (buttons, links, focus states) and informational alerts (notable updates, system notices). Cobalt serves dual purpose — triggering actions in Tier 1 and communicating noteworthy information in Tier 3.',
+    usage: 'Primary actions (buttons, links) and informational alerts (notable updates, system notices). Cobalt serves dual purpose — triggering actions in Tier 1 and communicating noteworthy information in Tier 3. Keyboard focus is the canonical Amber ring, not a Cobalt state.',
     maps: 'Cobalt (hero)',
   },
   {
@@ -378,7 +378,7 @@ export default function SemanticColors() {
                   { element: 'Primary button', state: 'Default + hover + active', how: 'Cobalt background, darkens on hover/press' },
                   { element: 'Inline link', state: 'Default + hover', how: 'Cobalt text, underline on hover' },
                   { element: 'CTA card / entry point', state: 'Hovered', how: 'Label text → Cobalt. Invites action.' },
-                  { element: 'Input focus', state: 'Focused', how: 'Cobalt border + ring. Reverts on blur.' },
+                  { element: 'Input focus', state: 'Focused', how: 'Canonical Amber focus ring, outside the border. Border never changes; reverts on blur.' },
                   { element: 'Standalone icon', state: 'Hovered', how: 'Pewter → Cobalt outline. Reverts on leave.' },
                 ].map((row, i) => (
                   <div key={row.element} className="grid grid-cols-1 sm:grid-cols-3 gap-y-0.5 sm:gap-y-0 px-4 py-2" style={{ borderBottom: i < 4 ? '1px solid #F5F5F4' : 'none' }}>
@@ -470,7 +470,7 @@ export default function SemanticColors() {
           <p className="text-sm font-semibold mb-4" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Decision: "What color should this be?"</p>
           <div className="space-y-3 text-xs leading-relaxed">
             {[
-              { n: '1.', q: 'Is it an action trigger?', a: '→ Cobalt. Buttons, links, CTAs, input focus. Elements that DO something when clicked.' },
+              { n: '1.', q: 'Is it an action trigger?', a: '→ Cobalt. Buttons, links, CTAs. Elements that DO something when clicked. (Keyboard focus is the Amber ring — accessibility chrome, not a Cobalt job.)' },
               { n: '2.', q: 'Is it structural UI chrome?', a: '→ Ink. Sidebar nav, tabs, breadcrumbs, filled icons. Elements that show WHERE you are. Hover darkens to Ink, not Cobalt.' },
               { n: '3.', q: 'Is the system communicating status?', a: '→ Cobalt (info), Teal (success), Amber (warning), Rose (error). Never decorative.' },
               { n: '4.', q: 'None of the above?', a: '→ Ink (primary text) or Pewter (muted / disabled / passive). The canvas stays neutral.' },

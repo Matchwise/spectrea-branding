@@ -4,7 +4,7 @@
 
 // --- Meta / Governance ---
 export const meta = {
-  version: '2.9.0',
+  version: '2.10.0',
   lastUpdated: '2026-08-10',
   sourceOfTruth:
     'brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea\'s roadmap — check it before placing a capability claim on a buyer-facing surface.',
@@ -760,6 +760,8 @@ export const brandTokens = {
     note: 'Amber "attention" ring. Light surfaces: Amber active #A86E00 (4.21:1 on Canvas, 3.89:1 on Cloud). Dark surfaces: alpha-tinted Amber #E19000 (4.00:1 blended on Ink). Every pairing clears the 3:1 UI floor.',
     width: '2px solid',
     offset: '2px',
+    // Decision 34 (2026-08-10): the ring is the ONE focus system.
+    rule: 'One ring for every focusable — buttons, links, inputs, selects, textareas, and custom controls (.btn-focus / .btn-focus-dark, chosen by rendered surface). The ring is dedicated accessibility chrome — an ephemeral attention-is-here signal outside the colour tiers, never a validation status or decorative accent. Borders never change on focus; validation borders stay visible beneath the ring.',
   },
   washes: {
     // textOn hexes canonized 2026-08-06 (D36): the accent-tinted dark text
@@ -858,7 +860,10 @@ export const colorSystem = {
     darkRule: 'Same 60/20/10/10 discipline, inverted: 60% Ink · 20% Graphite · 10% Cloud + Mist · 10% spectrum (semantic only). The canvas still dominates; colour still earns its place.',
   },
   tiers: [
-    { tier: 1, name: 'Responsive', carrier: 'Cobalt', rule: 'Action-oriented elements — things that trigger an operation. Temporary and reactive: present during hover, focus, press, then settles. Primary buttons, links, CTAs, input focus, hovered icons.' },
+    // Tier-1 rule amended by decision 34: "input focus" removed from Cobalt's
+    // jobs — focus indication is the dedicated ring (brandTokens.focusRing),
+    // accessibility chrome outside the tiers.
+    { tier: 1, name: 'Responsive', carrier: 'Cobalt', rule: 'Action-oriented elements — things that trigger an operation. Temporary and reactive: present during hover, press, then settles. Primary buttons, links, CTAs, hovered icons. Focus indication is not a Cobalt job — the dedicated focus ring (brandTokens.focusRing) is accessibility chrome outside the tiers.' },
     { tier: 2, name: 'Structural', carrier: 'Ink', rule: 'Persistent state and navigation. Active nav item, selected tab, toggled-on icon, current breadcrumb. Ink keeps the canvas calm while Cobalt stays reserved for action.' },
     { tier: 3, name: 'Semantic', carrier: 'spectrum + Pewter', rule: 'The system communicating status. Info (Cobalt), success (Teal), warning (Amber), error (Rose). Never decorative — every appearance carries meaning.' },
   ],
@@ -936,7 +941,10 @@ export const components = {
     padding: 'px-3 py-2',
     font: 'Lexend Regular 400, 14 px',
     placeholder: 'Pewter',
-    focus: '2 px solid Cobalt border — thicker on focus, no separate shadow ring; one clear signal',
+    // Rewritten by decision 34: inputs join the canonical ring; the old Cobalt
+    // border-flip died with it (its halo measured 1.29:1, and a validation
+    // border blocked the flip entirely — focus was invisible during validation).
+    focus: 'Canonical focus ring (brandTokens.focusRing) — 2 px Amber ring at 2 px offset, outside the border. The border itself never changes on focus; validation borders stay visible beneath the ring.',
     error: 'Rose border',
     disabledBg: 'Cloud',
   },
@@ -1136,7 +1144,10 @@ export const logo = {
 export const graphViz = {
   semantics: {
     nodeDefault: 'Neutral — structure is quiet (Slate/Pewter strokes, Canvas/Cloud fills on light; inverted on dark). Colour is reserved for meaning.',
-    nodeHoverFocus: 'Cobalt — Tier 1 responsive: present during hover/focus, then settles.',
+    // Split by decision 34: hover stays Cobalt (Tier 1); keyboard focus is the
+    // canonical ring, never a second identity.
+    nodeHover: 'Cobalt — Tier 1 responsive: present during hover, then settles.',
+    nodeFocus: 'Canonical focus ring (brandTokens.focusRing) — the same ring every focusable carries; not a Cobalt state.',
     nodeSelected: 'Ink — Tier 2 structural: persistent selection state (Cloud on dark).',
     edgeDefault: 'Neutral (Pewter). A newly formed connection may animate with the Formation motion primitive — spectrum gradient along the stroke, settling to resting neutral.',
     confidence: 'Amber carries confidence/attention. Confidence values render in JetBrains Mono and are never conveyed by colour alone.',
@@ -1186,6 +1197,7 @@ export const ratificationLedger = [
   { date: '2026-08-09', decision: 'Colour-model canonization, guide wave 2 §5+§14 (Darren-ratified full scope; v2.7.0): new colorSystem export carries the colour doctrine that lived only in guide §5 prose and page code — the Warm Blend neutral ladder (role labels + ladder rationale; entries key into selectedPalette by NAME, no hex re-declaration), the four accent meanings, the text-hierarchy tiers, the Tailwind→Warm-Blend mapping, the 60/20/10/10 ratio (light rows + dark rule), the Responsive/Structural/Semantic tier framework, the light-default rule, the named dark roles — Mist and Fog existed as shipped hexes (selectedPalette.darkMode) and tokens-file vars but their NAMES and the why-two-tokens rationale had no canonical source — and the accents-on-dark rule. Two value classes are deliberately DERIVED by consumers, never stored: OKLCH lightness and WCAG contrast ratios are computed from the palette hexes (the D41 computed-plots precedent — numbers can never disagree with the hexes), and CSS custom-property names follow the tokens file\'s mechanical convention. Guide §5\'s hand tables became generated blocks and §14\'s abridged hand CSS block now inlines the real generated spectrea-tokens.css (one artifact shown, shipped, and downloaded); the colour pages render colorSystem instead of private copies. Critic-gate deltas folded in the same wave: the computed OKLCH ladder corrected two hand-rounded values (Slate 0.537→0.536, Iron 0.395→0.396); the stored contrast summaries accessibility.contrast.tokens/accentsOnInk were DELETED (their figures now compute at every render site — guide, agent rules, Primary Palette; the on-Ink statement is colorSystem.accentsOnDark, preserving the D10 Cobalt correction); and darkRoles.whyTwoTokens dropped its stored approximate ratios after the critic showed them wrong (stored ~6.3:1/~8.5:1 vs computed 6.10:1/8.20:1 — the doctrine\'s own proof). Guide wave 2 is now closed except §11 component specs (its own wave).' },
   { date: '2026-08-09', decision: 'Component doctrine canonized, guide wave 2 §11 (Darren-ratified full scope; v2.8.0): new components export carries the specs that lived only in guide §11 prose and the four component pages — the six-type button taxonomy (Primary/Secondary/Ghost/Destructive/Confirm/Caution with roles, tiers, semantic details + example labels, and stateKey references into brandTokens.buttonStates), the button rule, three sizes, font/disabled treatment, and the light-hover direction (the dark direction stays buttonStates.dark.rule); the form-field spec; the card spec; and the layout system (sidebar 256 px, top bar, content area, four breakpoints with column counts, content widths, the z-index convention, and six responsive rules incl. the 44 px touch-target floor). References name their tokens — radius/spacing/elevation px resolve from brandTokens, palette colours by name, state hexes from buttonStates — never re-declared. Guide §11 became generated blocks; the four component pages render components (their private copies deleted — Buttons.tsx duplicated the full buttonStates ladders, LayoutPage duplicated spacing/radii/elevation verbatim-with-drift). Drift corrected by canonization: two pages taught the border family as #E5E7EB, which is Tailwind gray-200 — the sanctioned family is stone-200 #E7E5E4. Guide wave 2 is now fully closed.' },
   { date: '2026-08-10', decision: 'Voice humanist correction (Darren-ratified option B of three; v2.9.0): the voice formula read as a composition rule — "showing its work" was being applied per-sentence, welding a mechanism clause onto every claim — producing the justification-chain bloat Darren flagged as un-humanist. Rewritten: "Plain words, real specifics, room to breathe. Tech earns its place by being checkable — shown once, where the reader looks for it." — the anti-black-box stance stays (checkable ≥ shown), the composition pressure goes. New voice.attentionRule canonizes the discipline: "earn the jargon" is an ADMISSION rule, not a composition rule; one claim, one proof per surface; the mechanism lives one step from the claim; the claim—dash—mechanism shape is a tool, not a rhythm. Three canonical examples retuned to comply (Feature Announcement proved compounding three sentences in a row — now once; Beginner Documentation dropped a tail restating its own sentence; Settings unstacked a nested clause chain). The hero exemplar (D27) already passes once-per-surface — a hero carries exactly one claim + one mechanism — and is unchanged. The archetype through-line note re-anchors the reveal→ground→equip triad to the heroOpen gesture; the formula states the texture. techApproach "Earn the jargon" unchanged as the admission rule\'s name.' },
+  { date: '2026-08-10', decision: 'One focus system (Darren-ratified conditionally on independent adjudication; v2.10.0): the system carried two focus identities — the ratified Amber ring on buttons (decision 16) and a Cobalt border-flip + soft halo on inputs — so a keyboard journey crossed two indicators, and the input idiom was independently shown broken: the Cobalt halo measures 1.29:1 (invisible) and a Teal/Rose validation border blocks the border-flip entirely, leaving focus invisible exactly when validation is active. A framing-blind Codex adjudication (candidates A Amber-everywhere / B Cobalt-everywhere / C canonized split / D neutral Ink ring / F double ring, all contrast-computed from canon) selected A — least semantic and governance churn; the Amber-warning adjacency is real but managed (a ring is transient and offset-outside, never an on-field border); Cobalt would self-camouflage on the Primary (1.00:1 ring-vs-fill) and overload the selected/checked channel; a neutral Ink ring reuses Ink\'s structural channel and is unnecessarily severe. Ratified: brandTokens.focusRing gains the scope rule (one ring for every focusable; dedicated accessibility chrome outside the colour tiers; borders never change on focus). components.forms.focus rewritten to reference the ring. The tier-1 Responsive rule drops "input focus" from Cobalt\'s jobs — resolving the canon\'s own contradiction (tiers said Cobalt, the token said Amber). Industry note recorded: unifying matches universal practice; the dedicated-focus-colour school (GOV.UK, USWDS) is the accessibility-first camp this lands in. Record: .runs/2026-08-06-brand-review/focus-system-review/ (framing-blind brief + verbatim adjudication).' },
 ] as const
 
 // --- Executive Voice ---

@@ -2,7 +2,7 @@
 # Spectrea brand pre-flight checklist
 
 Run this BEFORE generating any Spectrea-branded surface — copy, UI, slide, or image.
-Canonical data: src/data/brand.ts (v2.9.0, 2026-08-10). Hard values: /brand-contract.json.
+Canonical data: src/data/brand.ts (v2.10.0, 2026-08-10). Hard values: /brand-contract.json.
 
 ## Step 1 — classify the surface
 

@@ -51,7 +51,7 @@ function CopyValue({ value }: { value: string }) {
   return (
     <button
       onClick={() => { navigator.clipboard.writeText(value); setCopied(true); setTimeout(() => setCopied(false), 1200) }}
-      className="text-xs font-mono text-pewter hover:text-iron transition-colors"
+      className="text-xs font-mono text-pewter hover:text-iron transition-colors btn-focus"
       title={`Copy ${value}`}
     >
       {copied ? 'Copied!' : value}
@@ -433,11 +433,11 @@ export default function Buttons() {
                 <span className="text-xs font-mono text-slate">Interactive</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
-                <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand" style={{ outline: `2px solid ${brandTokens.focusRing.light}`, outlineOffset: '2px' }}>Focused</button>
+                <button tabIndex={-1} className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand" style={{ outline: `2px solid ${brandTokens.focusRing.light}`, outlineOffset: '2px' }}>Focused</button>
                 <span className="text-xs font-mono text-slate">Amber ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
-                <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate border-2 border-stone-300" style={{ outline: `2px solid ${brandTokens.focusRing.light}`, outlineOffset: '2px' }}>Focused</button>
+                <button tabIndex={-1} className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate border-2 border-stone-300" style={{ outline: `2px solid ${brandTokens.focusRing.light}`, outlineOffset: '2px' }}>Focused</button>
                 <span className="text-xs font-mono text-slate">Ghost + ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
@@ -461,11 +461,11 @@ export default function Buttons() {
                 <span className="text-xs font-mono" style={{ color: dm.muted }}>Interactive</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
-                <button className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand" style={{ outline: `2px solid ${brandTokens.focusRing.dark}`, outlineOffset: '2px' }}>Focused</button>
+                <button tabIndex={-1} className="px-3 py-1.5 rounded-lg text-xs font-medium text-white bg-brand" style={{ outline: `2px solid ${brandTokens.focusRing.dark}`, outlineOffset: '2px' }}>Focused</button>
                 <span className="text-xs font-mono" style={{ color: dm.muted }}>Amber ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
-                <button className="px-3 py-1.5 rounded-lg text-xs font-medium border-2" style={{ borderColor: '#97979E', color: '#D6D3D1', outline: `2px solid ${brandTokens.focusRing.dark}`, outlineOffset: '2px' }}>Focused</button>
+                <button tabIndex={-1} className="px-3 py-1.5 rounded-lg text-xs font-medium border-2" style={{ borderColor: '#97979E', color: '#D6D3D1', outline: `2px solid ${brandTokens.focusRing.dark}`, outlineOffset: '2px' }}>Focused</button>
                 <span className="text-xs font-mono" style={{ color: dm.muted }}>Ghost + ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
@@ -493,7 +493,7 @@ export default function Buttons() {
         </div>
         <div className="mt-3 bg-cloud rounded-lg px-4 py-3 border border-stone-200">
           <p className="text-xs text-iron">
-            <strong>Focus ring:</strong> {brandTokens.focusRing.width} outline with {brandTokens.focusRing.offset} offset. Focus is literally where attention should go. {brandTokens.focusRing.note} Only appears on keyboard navigation (<code className="font-mono bg-cloud px-1 rounded">focus-visible</code>), never on click.
+            <strong>Focus ring:</strong> {brandTokens.focusRing.width} outline with {brandTokens.focusRing.offset} offset. Focus is literally where attention should go. {brandTokens.focusRing.note} {brandTokens.focusRing.rule} Shown via <code className="font-mono bg-cloud px-1 rounded">focus-visible</code> — always on keyboard navigation; browsers may also show it after pointer activation on text inputs.
           </p>
         </div>
       </Section>

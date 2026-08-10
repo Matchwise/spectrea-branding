@@ -8,7 +8,7 @@
 **Category:** Composable intelligence platform.
 **Pronunciation:** /spek-TREE-uh/ (a coinage from *spectrum* — Latin, from *specere*, "to look"; the full range — with a second reading: *revealing*).
 <!-- generated:version-header -->
-**Version:** 2.9.0 (2026-08-10). Canonical data: `src/data/brand.ts` — this guide is a hybrid mirror: prose is hand-written; fenced data blocks are generated from canon (`npm run generate:guide`).
+**Version:** 2.10.0 (2026-08-10). Canonical data: `src/data/brand.ts` — this guide is a hybrid mirror: prose is hand-written; fenced data blocks are generated from canon (`npm run generate:guide`).
 <!-- /generated:version-header -->
 
 **Strategic claim:** Spectrea is the spectrum of clarity. Everything you know, in one living view — alive with possibility, yours to keep. See it whole. Trust what you see. Build on what you find.
@@ -438,7 +438,7 @@ The app uses Tailwind utility classes; the Warm Blend tokens are exported into t
 <!-- generated:colour-tiers -->
 Every colour in Spectrea lives in one of three tiers:
 
-1. **Tier 1 — Responsive (Cobalt).** Action-oriented elements — things that trigger an operation. Temporary and reactive: present during hover, focus, press, then settles. Primary buttons, links, CTAs, input focus, hovered icons.
+1. **Tier 1 — Responsive (Cobalt).** Action-oriented elements — things that trigger an operation. Temporary and reactive: present during hover, press, then settles. Primary buttons, links, CTAs, hovered icons. Focus indication is not a Cobalt job — the dedicated focus ring (brandTokens.focusRing) is accessibility chrome outside the tiers.
 2. **Tier 2 — Structural (Ink).** Persistent state and navigation. Active nav item, selected tab, toggled-on icon, current breadcrumb. Ink keeps the canvas calm while Cobalt stays reserved for action.
 3. **Tier 3 — Semantic (spectrum + Pewter).** The system communicating status. Info (Cobalt), success (Teal), warning (Amber), error (Rose). Never decorative — every appearance carries meaning.
 <!-- /generated:colour-tiers -->
@@ -512,15 +512,18 @@ Same 60/20/10/10 discipline, inverted: 60% Ink · 20% Graphite · 10% Cloud + Mi
 
 ### Graph visualization colour semantics (foundation)
 Graph surfaces follow the tiered framework — colour is reserved for meaning:
-- **Node default:** neutral (Slate/Pewter strokes, Canvas/Cloud fills; inverted on dark). Structure is quiet.
-- **Node hover/focus:** Cobalt (Tier 1 — responsive; present during hover/focus, then settles).
-- **Node selected:** Ink (Tier 2 — structural; Cloud on dark).
-- **Edges:** neutral (Pewter). A newly formed connection may animate with the Formation motion primitive — spectrum gradient along the stroke, settling to resting neutral.
-- **Confidence:** Amber, with the value in JetBrains Mono — never conveyed by colour alone.
-- **Status:** Teal success/connected · Amber warning/pending · Rose error/conflict · Cobalt info (Tier 3 — semantic).
-- **Stale/dormant:** Pewter whisper plus a non-colour cue (icon or label).
+<!-- generated:graph-viz -->
+- **Node default:** Neutral — structure is quiet (Slate/Pewter strokes, Canvas/Cloud fills on light; inverted on dark). Colour is reserved for meaning.
+- **Node hover:** Cobalt — Tier 1 responsive: present during hover, then settles.
+- **Node focus:** Canonical focus ring (brandTokens.focusRing) — the same ring every focusable carries; not a Cobalt state.
+- **Node selected:** Ink — Tier 2 structural: persistent selection state (Cloud on dark).
+- **Edges:** Neutral (Pewter). A newly formed connection may animate with the Formation motion primitive — spectrum gradient along the stroke, settling to resting neutral.
+- **Confidence:** Amber carries confidence/attention. Confidence values render in JetBrains Mono and are never conveyed by colour alone.
+- **Status:** Tier 3 semantic: success/connected = Teal · warning/pending = Amber · error/conflict = Rose · info = Cobalt.
+- **Stale/dormant:** Pewter whisper plus a non-colour cue (icon or label) — never colour alone.
 
-Foundation only: the operational graph-rendering spec (sizing, layout, density, interaction physics) is a product-design deliverable, not a brand-guide deliverable.
+Foundation only. The operational graph-rendering spec is a product design deliverable, not a brand-guide deliverable.
+<!-- /generated:graph-viz -->
 
 ---
 
@@ -817,6 +820,8 @@ Hover and active darken along the hand-picked ladder — buttons recede into the
 
 <!-- generated:focus-ring -->
 Focus ring: 2px solid, 2px offset (`.btn-focus:focus-visible`) — `#A86E00` light / `rgba(225, 144, 0, 0.7)` dark. Amber "attention" ring. Light surfaces: Amber active #A86E00 (4.21:1 on Canvas, 3.89:1 on Cloud). Dark surfaces: alpha-tinted Amber #E19000 (4.00:1 blended on Ink). Every pairing clears the 3:1 UI floor.
+
+One ring for every focusable — buttons, links, inputs, selects, textareas, and custom controls (.btn-focus / .btn-focus-dark, chosen by rendered surface). The ring is dedicated accessibility chrome — an ephemeral attention-is-here signal outside the colour tiers, never a validation status or decorative accent. Borders never change on focus; validation borders stay visible beneath the ring.
 <!-- /generated:focus-ring -->
 
 ### Forms
@@ -829,7 +834,7 @@ Focus ring: 2px solid, 2px offset (`.btn-focus:focus-visible`) — `#A86E00` lig
 | Padding | `px-3 py-2` |
 | Font | Lexend Regular 400, 14 px |
 | Placeholder | Pewter `#97979E` |
-| Focus | 2 px solid Cobalt border — thicker on focus, no separate shadow ring; one clear signal |
+| Focus | Canonical focus ring (brandTokens.focusRing) — 2 px Amber ring at 2 px offset, outside the border. The border itself never changes on focus; validation borders stay visible beneath the ring. |
 | Error | Rose border (`#F24260`) |
 | Disabled | Cloud background (`#F4F4F1`) |
 <!-- /generated:forms-spec -->
@@ -940,7 +945,7 @@ Brand decisions live in the **ratification ledger** (`ratificationLedger` in `br
 The complete generated token sheet — the same file served at [`/spectrea-tokens.css`](/spectrea-tokens.css) and on the Downloads page:
 
 ```css
-/* Spectrea design tokens — GENERATED from src/data/brand.ts v2.9.0 (2026-08-10) — do not hand-edit; regenerate with npm run generate:assets. */
+/* Spectrea design tokens — GENERATED from src/data/brand.ts v2.10.0 (2026-08-10) — do not hand-edit; regenerate with npm run generate:assets. */
 :root {
   /* Spectrum — first accent in canon order is the brand colour */
   --color-brand: #4271DF;
@@ -1124,5 +1129,5 @@ All via Google Fonts:
 ---
 
 <!-- generated:version-footer -->
-*`src/data/brand.ts` is the canonical brand data (v2.9.0, 2026-08-10). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
+*`src/data/brand.ts` is the canonical brand data (v2.10.0, 2026-08-10). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
 <!-- /generated:version-footer -->

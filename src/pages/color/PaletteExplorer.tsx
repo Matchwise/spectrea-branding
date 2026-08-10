@@ -98,7 +98,7 @@ function MiniPreview({ dark }: { dark?: boolean }) {
 // Page-specific application notes per colour (what each is used FOR in the
 // app); names, roles, hexes, and contrast figures come from canon/computation.
 const ACCENT_USAGE: Record<string, string> = {
-  Cobalt: 'Primary buttons, links, nav highlights, focused inputs, key CTAs',
+  Cobalt: 'Primary buttons, links, nav highlights, key CTAs',
   Teal: 'Positive states, connected status, growth indicators, completion',
   Amber: 'Warnings, pending states, confidence scores, highlights',
   Rose: 'Errors, destructive actions, critical alerts, notification badges',
@@ -214,7 +214,7 @@ export default function ColorOverview() {
             <Link
               key={link.path}
               to={link.path}
-              className="group flex flex-col p-4 rounded-xl border border-stone-200 hover:border-stone-300 hover:bg-cloud transition-all"
+              className="group flex flex-col p-4 rounded-xl border border-stone-200 hover:border-stone-300 hover:bg-cloud transition-all btn-focus"
             >
               <p className="text-sm font-medium text-ink group-hover:text-brand transition-colors">{link.label}</p>
               <p className="text-xs text-slate mt-0.5">{link.desc}</p>

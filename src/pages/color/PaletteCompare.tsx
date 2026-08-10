@@ -534,7 +534,7 @@ function SliderRow({ label, value, min, max, step, onChange, format, color, devi
         step={step}
         value={value}
         onChange={e => onChange(Number(e.target.value))}
-        className="w-full h-1.5 bg-stone-200 rounded-full appearance-none cursor-pointer accent-iron"
+        className="w-full h-1.5 bg-stone-200 rounded-full appearance-none cursor-pointer accent-iron btn-focus"
       />
     </div>
   )

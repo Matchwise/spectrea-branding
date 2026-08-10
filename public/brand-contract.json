@@ -1,6 +1,6 @@
 {
   "_generated": "DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-10)",
-  "version": "2.9.0",
+  "version": "2.10.0",
   "lastUpdated": "2026-08-10",
   "sourceOfTruth": "brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea's roadmap — check it before placing a capability claim on a buyer-facing surface.",
   "changeProcess": [
@@ -537,7 +537,7 @@
           "tier": 1,
           "name": "Responsive",
           "carrier": "Cobalt",
-          "rule": "Action-oriented elements — things that trigger an operation. Temporary and reactive: present during hover, focus, press, then settles. Primary buttons, links, CTAs, input focus, hovered icons."
+          "rule": "Action-oriented elements — things that trigger an operation. Temporary and reactive: present during hover, press, then settles. Primary buttons, links, CTAs, hovered icons. Focus indication is not a Cobalt job — the dedicated focus ring (brandTokens.focusRing) is accessibility chrome outside the tiers."
         },
         {
           "tier": 2,
@@ -1078,7 +1078,8 @@
       "dark": "rgba(225, 144, 0, 0.7)",
       "note": "Amber \"attention\" ring. Light surfaces: Amber active #A86E00 (4.21:1 on Canvas, 3.89:1 on Cloud). Dark surfaces: alpha-tinted Amber #E19000 (4.00:1 blended on Ink). Every pairing clears the 3:1 UI floor.",
       "width": "2px solid",
-      "offset": "2px"
+      "offset": "2px",
+      "rule": "One ring for every focusable — buttons, links, inputs, selects, textareas, and custom controls (.btn-focus / .btn-focus-dark, chosen by rendered surface). The ring is dedicated accessibility chrome — an ephemeral attention-is-here signal outside the colour tiers, never a validation status or decorative accent. Borders never change on focus; validation borders stay visible beneath the ring."
     }
   },
   "components": {
@@ -1185,7 +1186,7 @@
       "padding": "px-3 py-2",
       "font": "Lexend Regular 400, 14 px",
       "placeholder": "Pewter",
-      "focus": "2 px solid Cobalt border — thicker on focus, no separate shadow ring; one clear signal",
+      "focus": "Canonical focus ring (brandTokens.focusRing) — 2 px Amber ring at 2 px offset, outside the border. The border itself never changes on focus; validation borders stay visible beneath the ring.",
       "error": "Rose border",
       "disabledBg": "Cloud"
     },
@@ -1444,7 +1445,8 @@
   "graphViz": {
     "semantics": {
       "nodeDefault": "Neutral — structure is quiet (Slate/Pewter strokes, Canvas/Cloud fills on light; inverted on dark). Colour is reserved for meaning.",
-      "nodeHoverFocus": "Cobalt — Tier 1 responsive: present during hover/focus, then settles.",
+      "nodeHover": "Cobalt — Tier 1 responsive: present during hover, then settles.",
+      "nodeFocus": "Canonical focus ring (brandTokens.focusRing) — the same ring every focusable carries; not a Cobalt state.",
       "nodeSelected": "Ink — Tier 2 structural: persistent selection state (Cloud on dark).",
       "edgeDefault": "Neutral (Pewter). A newly formed connection may animate with the Formation motion primitive — spectrum gradient along the stroke, settling to resting neutral.",
       "confidence": "Amber carries confidence/attention. Confidence values render in JetBrains Mono and are never conveyed by colour alone.",
@@ -1564,6 +1566,10 @@
     {
       "date": "2026-08-10",
       "decision": "Voice humanist correction (Darren-ratified option B of three; v2.9.0): the voice formula read as a composition rule — \"showing its work\" was being applied per-sentence, welding a mechanism clause onto every claim — producing the justification-chain bloat Darren flagged as un-humanist. Rewritten: \"Plain words, real specifics, room to breathe. Tech earns its place by being checkable — shown once, where the reader looks for it.\" — the anti-black-box stance stays (checkable ≥ shown), the composition pressure goes. New voice.attentionRule canonizes the discipline: \"earn the jargon\" is an ADMISSION rule, not a composition rule; one claim, one proof per surface; the mechanism lives one step from the claim; the claim—dash—mechanism shape is a tool, not a rhythm. Three canonical examples retuned to comply (Feature Announcement proved compounding three sentences in a row — now once; Beginner Documentation dropped a tail restating its own sentence; Settings unstacked a nested clause chain). The hero exemplar (D27) already passes once-per-surface — a hero carries exactly one claim + one mechanism — and is unchanged. The archetype through-line note re-anchors the reveal→ground→equip triad to the heroOpen gesture; the formula states the texture. techApproach \"Earn the jargon\" unchanged as the admission rule's name."
+    },
+    {
+      "date": "2026-08-10",
+      "decision": "One focus system (Darren-ratified conditionally on independent adjudication; v2.10.0): the system carried two focus identities — the ratified Amber ring on buttons (decision 16) and a Cobalt border-flip + soft halo on inputs — so a keyboard journey crossed two indicators, and the input idiom was independently shown broken: the Cobalt halo measures 1.29:1 (invisible) and a Teal/Rose validation border blocks the border-flip entirely, leaving focus invisible exactly when validation is active. A framing-blind Codex adjudication (candidates A Amber-everywhere / B Cobalt-everywhere / C canonized split / D neutral Ink ring / F double ring, all contrast-computed from canon) selected A — least semantic and governance churn; the Amber-warning adjacency is real but managed (a ring is transient and offset-outside, never an on-field border); Cobalt would self-camouflage on the Primary (1.00:1 ring-vs-fill) and overload the selected/checked channel; a neutral Ink ring reuses Ink's structural channel and is unnecessarily severe. Ratified: brandTokens.focusRing gains the scope rule (one ring for every focusable; dedicated accessibility chrome outside the colour tiers; borders never change on focus). components.forms.focus rewritten to reference the ring. The tier-1 Responsive rule drops \"input focus\" from Cobalt's jobs — resolving the canon's own contradiction (tiers said Cobalt, the token said Amber). Industry note recorded: unifying matches universal practice; the dedicated-focus-colour school (GOV.UK, USWDS) is the accessibility-first camp this lands in. Record: .runs/2026-08-06-brand-review/focus-system-review/ (framing-blind brief + verbatim adjudication)."
     }
   ]
 }

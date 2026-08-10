@@ -49,7 +49,7 @@ export default function Downloads() {
           <a
             href="/brand-guide.md"
             download
-            className="group flex flex-col gap-2 p-5 rounded-xl border border-stone-200 hover:border-brand/40 hover:bg-brand/5 transition-all"
+            className="group flex flex-col gap-2 p-5 rounded-xl border border-stone-200 hover:border-brand/40 hover:bg-brand/5 transition-all btn-focus"
           >
             <div className="flex items-center justify-between">
               <TbFileText size={22} className="text-brand" />
@@ -63,7 +63,7 @@ export default function Downloads() {
           <a
             href="/brand-guide.pdf"
             download
-            className="group flex flex-col gap-2 p-5 rounded-xl border border-stone-200 hover:border-brand/40 hover:bg-brand/5 transition-all"
+            className="group flex flex-col gap-2 p-5 rounded-xl border border-stone-200 hover:border-brand/40 hover:bg-brand/5 transition-all btn-focus"
           >
             <div className="flex items-center justify-between">
               <TbFileTypePdf size={22} className="text-brand" />
@@ -77,7 +77,7 @@ export default function Downloads() {
           <a
             href="/llms.txt"
             download
-            className="group flex flex-col gap-2 p-5 rounded-xl border border-stone-200 hover:border-brand/40 hover:bg-brand/5 transition-all"
+            className="group flex flex-col gap-2 p-5 rounded-xl border border-stone-200 hover:border-brand/40 hover:bg-brand/5 transition-all btn-focus"
           >
             <div className="flex items-center justify-between">
               <TbRobot size={22} className="text-brand" />
@@ -138,7 +138,7 @@ export default function Downloads() {
                             href={item.path}
                             download
                             aria-label={`Download ${item.label} — ${isSvg ? 'SVG' : item.path.split('/').pop()}`}
-                            className="text-xs font-mono text-brand border border-brand/30 hover:bg-brand/5 px-2 py-0.5 rounded transition-colors"
+                            className="text-xs font-mono text-brand border border-brand/30 hover:bg-brand/5 px-2 py-0.5 rounded transition-colors btn-focus"
                           >
                             {isSvg ? 'SVG' : item.path.split('/').pop()}
                           </a>
@@ -148,7 +148,7 @@ export default function Downloads() {
                               href={png}
                               download
                               aria-label={`Download ${item.label} — PNG ${['1×', '2×', '4×'][i] ?? ''}`}
-                              className="text-xs font-mono text-slate border border-stone-200 hover:border-brand/40 hover:text-brand px-2 py-0.5 rounded transition-colors"
+                              className="text-xs font-mono text-slate border border-stone-200 hover:border-brand/40 hover:text-brand px-2 py-0.5 rounded transition-colors btn-focus"
                             >
                               PNG {['1×', '2×', '4×'][i] ?? ''}
                             </a>

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
-import Sidebar from './components/layout/Sidebar'
+import Sidebar, { useIsDesktop } from './components/layout/Sidebar'
 import TopBar from './components/layout/TopBar'
 import Home from './pages/Home'
 import BrandStory from './pages/foundation/BrandStory'
@@ -40,6 +40,7 @@ export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const mainRef = useRef<HTMLElement>(null)
   const { pathname } = useLocation()
+  const isDesktop = useIsDesktop()
 
   useEffect(() => {
     mainRef.current?.scrollTo(0, 0)
@@ -48,7 +49,9 @@ export default function App() {
   return (
     <div className="flex h-screen bg-canvas">
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+      {/* While the mobile drawer is open it obscures this content — inert
+          keeps Tab (and readers) contained in the drawer. */}
+      <div className="flex-1 flex flex-col min-w-0 overflow-hidden" inert={sidebarOpen && !isDesktop}>
         <TopBar onMenuToggle={() => setSidebarOpen(o => !o)} />
         <main ref={mainRef} className="flex-1 overflow-y-auto">
           <Routes>

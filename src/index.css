@@ -73,16 +73,27 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
 }
 
-/* Button focus ring — Amber "attention" ring with offset. The guide chrome
-   is a light surface, so .btn-focus is the light-mode ring (Amber active
-   #A86E00, ≥3:1 on Canvas and Cloud); interactive elements on dark demo
-   panels use .btn-focus-dark (soft alpha ring, 4.00:1 on Ink). */
+/* Canonical focus ring (brandTokens.focusRing, decision 34) — the ONE focus
+   system for every focusable: buttons, links, inputs, selects, textareas,
+   and custom controls. The class name is historical (the ring debuted on
+   buttons, decision 16); the scope is universal. The guide chrome is a light
+   surface, so .btn-focus is the light-mode ring (Amber active #A86E00,
+   ≥3:1 on Canvas and Cloud); interactive elements on dark demo panels use
+   .btn-focus-dark (soft alpha ring, 4.00:1 on Ink). Borders never change on
+   focus — validation borders stay visible beneath the ring. */
 .btn-focus:focus-visible {
   outline: 2px solid #A86E00;
   outline-offset: 2px;
 }
 .btn-focus-dark:focus-visible {
   outline: 2px solid rgba(225, 144, 0, 0.7);
+  outline-offset: 2px;
+}
+/* Ring proxy for custom controls built on visually-hidden native inputs
+   (checkbox/radio demos): the sr-only input holds real keyboard focus and
+   the adjacent styled box shows the canonical ring. */
+.sr-input:focus-visible + .focus-proxy {
+  outline: 2px solid #A86E00;
   outline-offset: 2px;
 }
 

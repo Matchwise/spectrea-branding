@@ -48,7 +48,7 @@ async function importTsModule(tsPath) {
 }
 
 const canon = await importTsModule(join(root, 'src', 'data', 'brand.ts'))
-const { meta, brand, voice, brandTokens, accessibility, logo, selectedPalette, colorSystem, components } = canon
+const { meta, brand, voice, brandTokens, accessibility, logo, selectedPalette, colorSystem, components, graphViz } = canon
 
 // Tailwind stone constants (the sanctioned border family per
 // colorSystem.tailwindMapping) — Tailwind values, not canon.
@@ -574,7 +574,27 @@ const blocks = {
 
   'focus-ring': () => {
     const f = brandTokens.focusRing
-    return `Focus ring: ${f.width}, ${f.offset} offset (\`.btn-focus:focus-visible\`) — \`${f.light}\` light / \`${f.dark}\` dark. ${f.note}`
+    return `Focus ring: ${f.width}, ${f.offset} offset (\`.btn-focus:focus-visible\`) — \`${f.light}\` light / \`${f.dark}\` dark. ${f.note}\n\n${f.rule}`
+  },
+
+  'graph-viz': () => {
+    const labels = {
+      nodeDefault: 'Node default',
+      nodeHover: 'Node hover',
+      nodeFocus: 'Node focus',
+      nodeSelected: 'Node selected',
+      edgeDefault: 'Edges',
+      confidence: 'Confidence',
+      status: 'Status',
+      stale: 'Stale/dormant',
+    }
+    const keys = Object.keys(graphViz.semantics)
+    const unlabelled = keys.filter(k => !(k in labels))
+    if (unlabelled.length) throw new Error(`graph-viz block: unlabelled semantics keys: ${unlabelled.join(', ')}`)
+    const orphaned = Object.keys(labels).filter(k => !keys.includes(k))
+    if (orphaned.length) throw new Error(`graph-viz block: labels without canon keys: ${orphaned.join(', ')}`)
+    const bullets = keys.map(k => `- **${labels[k]}:** ${graphViz.semantics[k]}`).join('\n')
+    return `${bullets}\n\n${graphViz.note}`
   },
 
   'forms-spec': () => {
