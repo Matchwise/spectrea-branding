@@ -44,6 +44,16 @@
             "/brand-assets/logo-mark-white@2x.png",
             "/brand-assets/logo-mark-white@4x.png"
           ]
+        },
+        {
+          "path": "/brand-assets/logo-mark-white-transparent.svg",
+          "label": "Mark — White (transparent)",
+          "desc": "White mark on a transparent background, for placement on your own dark surface.",
+          "pngs": [
+            "/brand-assets/logo-mark-white-transparent.png",
+            "/brand-assets/logo-mark-white-transparent@2x.png",
+            "/brand-assets/logo-mark-white-transparent@4x.png"
+          ]
         }
       ]
     },
@@ -88,6 +98,16 @@
             "/brand-assets/logo-lockup-white.png",
             "/brand-assets/logo-lockup-white@2x.png",
             "/brand-assets/logo-lockup-white@4x.png"
+          ]
+        },
+        {
+          "path": "/brand-assets/logo-lockup-white-transparent.svg",
+          "label": "Lockup — White (transparent)",
+          "desc": "Monotone White lockup on a transparent background, for placement on your own dark surface.",
+          "pngs": [
+            "/brand-assets/logo-lockup-white-transparent.png",
+            "/brand-assets/logo-lockup-white-transparent@2x.png",
+            "/brand-assets/logo-lockup-white-transparent@4x.png"
           ]
         }
       ]

@@ -305,6 +305,15 @@ await writeFile(resolve(outDir, 'logo-mark-white.svg'), renderMark({
   bg: INK,
 }))
 
+// Static logo — White, transparent (no plate). Ships ALONGSIDE the plated
+// mark (ratified 2026-08-10, decision 32): the plated file stays the
+// self-visible default; this one places on the consumer's own dark surface.
+await writeFile(resolve(outDir, 'logo-mark-white-transparent.svg'), renderMark({
+  size: 200,
+  strokeFill: CANVAS,
+  dotFill: CANVAS,
+}))
+
 // Static logo — full spectrum (animated mark's frame)
 await writeFile(resolve(outDir, 'logo-mark-spectrum.svg'), renderMark({
   size: 200,
@@ -416,6 +425,14 @@ await writeFile(resolve(outDir, 'logo-lockup-white.svg'), renderLockup({
   dotFill: CANVAS,
   wordmarkFill: CANVAS,
   bg: INK,
+}))
+
+// Mono white lockup, transparent (no plate) — the decision-32 companion to
+// the plated White lockup, mirroring logo-mark-white-transparent.svg.
+await writeFile(resolve(outDir, 'logo-lockup-white-transparent.svg'), renderLockup({
+  strokeFill: CANVAS,
+  dotFill: CANVAS,
+  wordmarkFill: CANVAS,
 }))
 
 // Gradient lockup, dark-surface rendering (lockup form 1 on dark) — Cool Duet
@@ -659,9 +676,10 @@ await writeFile(resolve(outDir, 'type-scale.svg'), xml(`
 // Rasterised at 1x/2x/4x from the SVGs just written, via the same headless
 // Chrome the PDF pipeline uses. The screenshot background is transparent,
 // so each PNG inherits exactly what its SVG draws: the Gradient/White
-// lockup and the colour/Ink variants are transparent-backed, while the
-// plain White mark and White lockup SVGs carry their own Ink plates (the
-// PNGs keep them — the manifest descriptions say so).
+// lockup, the -transparent White pair, and the colour/Ink variants are
+// transparent-backed, while the plain White mark and White lockup SVGs
+// carry their own Ink plates (the PNGs keep them — the manifest
+// descriptions say so; both dispositions ratified, decision 32).
 function findChrome() {
   if (process.env.CHROME_PATH && existsSync(process.env.CHROME_PATH)) return process.env.CHROME_PATH
   if (process.platform === 'win32') {
@@ -682,8 +700,8 @@ function findChrome() {
   throw new Error('No Chrome/Chromium binary found on PATH.')
 }
 const RASTER_ASSETS = [
-  'logo-mark-cool.svg', 'logo-mark-ink.svg', 'logo-mark-white.svg', 'logo-mark-spectrum.svg',
-  'logo-lockup-gradient.svg', 'logo-lockup-gradient-white.svg', 'logo-lockup-ink.svg', 'logo-lockup-white.svg',
+  'logo-mark-cool.svg', 'logo-mark-ink.svg', 'logo-mark-white.svg', 'logo-mark-white-transparent.svg', 'logo-mark-spectrum.svg',
+  'logo-lockup-gradient.svg', 'logo-lockup-gradient-white.svg', 'logo-lockup-ink.svg', 'logo-lockup-white.svg', 'logo-lockup-white-transparent.svg',
 ]
 const chrome = findChrome()
 const pngsFor = {}
@@ -879,6 +897,7 @@ const manifest = {
         item('logo-mark-spectrum.svg', 'Mark — Full Spectrum', 'Full-spectrum stroke variant. Marketing moments only.'),
         item('logo-mark-ink.svg', 'Mark — Ink', 'Monotone Ink mark for single-colour contexts.'),
         item('logo-mark-white.svg', 'Mark — White', 'White mark on its Ink plate for dark-surface use (the plate ships in the SVG and its PNGs).'),
+        item('logo-mark-white-transparent.svg', 'Mark — White (transparent)', 'White mark on a transparent background, for placement on your own dark surface.'),
       ],
     },
     {
@@ -888,6 +907,7 @@ const manifest = {
         item('logo-lockup-gradient-white.svg', 'Lockup — Gradient / White', 'Gradient mark with White wordmark for dark surfaces (white-on-transparent).'),
         item('logo-lockup-ink.svg', 'Lockup — Ink', 'Monotone Ink lockup for single-colour contexts.'),
         item('logo-lockup-white.svg', 'Lockup — White', 'Monotone White lockup on its Ink plate (the plate ships in the SVG and its PNGs).'),
+        item('logo-lockup-white-transparent.svg', 'Lockup — White (transparent)', 'Monotone White lockup on a transparent background, for placement on your own dark surface.'),
       ],
     },
     {
