@@ -95,7 +95,7 @@ export default function Iconography() {
             { prop: 'Corner radius', value: '2px where applicable', note: 'Slightly rounded for warmth' },
             { prop: 'Source', value: 'react-icons/tb', note: 'Tabler Icons — outline + filled from one library' },
           ].map((row, i) => (
-            <div key={row.prop} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < 7 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={row.prop} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < 7 ? '1px solid #F5F5F4' : 'none' }}>
               <span className="text-sm font-medium text-iron">{row.prop}</span>
               <span className="text-xs font-mono text-iron">{row.value}</span>
               <span className="text-xs text-slate">{row.note}</span>

@@ -4,8 +4,8 @@
 
 // --- Meta / Governance ---
 export const meta = {
-  version: '2.8.0',
-  lastUpdated: '2026-08-09',
+  version: '2.9.0',
+  lastUpdated: '2026-08-10',
   sourceOfTruth:
     'brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea\'s roadmap — check it before placing a capability claim on a buyer-facing surface.',
   renderDoctrine:
@@ -152,9 +152,12 @@ export const brand = {
   //
   // The through-line is already encoded in the tagline ("We connect the dots"
   // = see → trust → build), the strategic claim ("See it whole. Trust what you
-  // see. Build on what you find."), and the voice formula
-  // ("Clarity of explanation + experiential momentum. Tech earns its place by
-  // showing its work.").
+  // see. Build on what you find."), and the hero-open gesture (outcome as
+  // reveal → ground with a specific → equip the next step). The voice formula
+  // states the TEXTURE those movements are written in ("Plain words, real
+  // specifics, room to breathe…" — decision 33): ground lives in "real
+  // specifics", equip in "checkable", and "room to breathe" is the attention
+  // discipline that keeps the reveal legible.
   archetypes: [
     {
       name: 'Reveal',
@@ -416,10 +419,19 @@ export const brand = {
 
 // --- Voice & Tone ---
 export const voice = {
-  formula: 'Clarity of explanation + experiential momentum. Tech earns its place by showing its work.',
+  // Rewritten 2026-08-10 (decision 33, humanist correction). The old formula
+  // ("Clarity of explanation + experiential momentum. Tech earns its place by
+  // showing its work.") read as a composition rule — every sentence carried
+  // its mechanism — and produced justification-chain bloat. "Checkable" keeps
+  // the anti-black-box stance; attentionRule governs where the work is shown.
+  formula: 'Plain words, real specifics, room to breathe. Tech earns its place by being checkable — shown once, where the reader looks for it.',
   techApproach: 'Earn the jargon',
   techDescription:
-    'Start with the human benefit, then introduce the technical concept. Tech earns its place by showing its work — pointing to the source, the trace, the evidence — not by impressing.',
+    'Start with the human benefit, then introduce the technical concept. Tech earns its place by being checkable — pointing to the source, the trace, the evidence — not by impressing.',
+  // The attention discipline (decision 33): "earn the jargon" is an ADMISSION
+  // rule, not a composition rule. Proof by placement, not repetition.
+  attentionRule:
+    'Show the work once, where the reader looks for it. "Earn the jargon" governs what may enter the copy — not how often it repeats. One claim, one proof per surface: the mechanism lives one step from the claim (the next sentence, a subhead, an expandable) — never welded to every sentence. If two sentences in a row prove the same claim, cut one. The claim—dash—mechanism shape is a tool, not a rhythm.',
 
   // The 12 brand-evocative privileged words.
   // These read brand-pure (no product knowledge required) and shape the Spectrea voice.
@@ -497,9 +509,11 @@ export const voice = {
     {
       context: 'Feature Announcement',
       tone: 'Concrete + Confident',
-      correct: 'Every document you add now strengthens what the system already knows. Connections you never noticed start surfacing. The whole gets sharper — your second month is better than your first.',
+      // Retuned 2026-08-10 (decision 33): the old version proved compounding
+      // three sentences in a row — attentionRule allows it once.
+      correct: 'Connections you never noticed start surfacing. Your second month is better than your first.',
       incorrect: 'We\'re excited to share our latest update — it includes improvements that will help you be more productive.',
-      why: 'Shows what the user experiences, not what we built. The wrong version is the bland-SaaS failure mode: agentless, vague, no specifics. The right version names the shift the user will actually notice.',
+      why: 'Shows what the user experiences, not what we built. The wrong version is the bland-SaaS failure mode: agentless, vague, no specifics. The right version names the shift the user will actually notice — once, and trusts the reader.',
     },
     {
       context: 'Documentation',
@@ -518,7 +532,9 @@ export const voice = {
     {
       context: 'Beginner Documentation',
       tone: 'Plain + Welcoming',
-      correct: 'Think of Spectrea as a web of everything your team knows. When you add a document, Spectrea reads it and weaves what it learns into the web — connecting it to things you\'ve already captured.',
+      // Retuned 2026-08-10 (decision 33): dropped the em-dash tail that
+      // restated "weaves into the web" in different words.
+      correct: 'Think of Spectrea as a web of everything your team knows. Add a document and Spectrea weaves what it learns into the web.',
       incorrect: 'Documents are processed through a 6-phase pipeline: parse, chunk, embed, score, review, and integrate.',
       why: 'Demonstrates the Adaptive personality: meets beginners where they are, using familiar metaphors instead of technical architecture.',
     },
@@ -556,7 +572,9 @@ export const voice = {
     {
       surface: 'Settings & security',
       rule: 'Ground leads. Say exactly what a setting does and what changes when it\'s toggled — especially for privacy and access. Plain sentences, no marketing.',
-      correct: 'Workspace visibility: private. Only people you invite can see anything in this workspace — including the assistant, which sees only what each viewer can see.',
+      // Retuned 2026-08-10 (decision 33): the nested clause chain unstacked
+      // into plain sentences.
+      correct: 'Workspace visibility: private. Only people you invite can see this workspace. The assistant sees only what each viewer can see.',
       incorrect: 'Take control of your data with our industry-leading privacy options!',
     },
     {
@@ -1167,6 +1185,7 @@ export const ratificationLedger = [
   { date: '2026-08-09', decision: 'Governance sweep (D20/D22/D25/D29, Darren-ratified; v2.6.0 — a new token family plus process doctrine): (1) Gradient family canonized as brandTokens.gradients in the audit-recommended shape (AIF-25): primary incl. the OKLCH recipe, the three duets with the Balanced Duet #6FB884@65% bridge, full-spectrum-with-Rose, the adjacency rule, and the use/never lists — previously the bridge had no canonical source (component lerps, page markup, asset generator, guide prose only). The Gradients page, SpectreaLogo duet ramps, asset generator, and guide §6 now all render canon; the page\'s mislabeled 5-stop "lockup gradient" swatch is corrected to the canonical 2-stop Cool Duet. (2) package.json version generator-synced to meta.version (was 0.1.0 since scaffold). (3) One canonical change process (meta.changeProcess): Propose → Review → Test → Ratify & version → Regenerate & communicate — the guide §13 and the Governance page previously taught divergent four- and five-step lists; both now render this field, cross-referenced. (4) OS-frame worked example (positioning.onRamp.osFrameExample): the sanctioned coined frame gains a right/wrong pair honoring "paired with plain language" / "must not carry the claim alone" — previously the frame appeared only as rule statements, never applied copy. Also mechanical (D20a): the 8 section-parent routes llms.txt links now redirect to each section\'s first page instead of Not-found.' },
   { date: '2026-08-09', decision: 'Colour-model canonization, guide wave 2 §5+§14 (Darren-ratified full scope; v2.7.0): new colorSystem export carries the colour doctrine that lived only in guide §5 prose and page code — the Warm Blend neutral ladder (role labels + ladder rationale; entries key into selectedPalette by NAME, no hex re-declaration), the four accent meanings, the text-hierarchy tiers, the Tailwind→Warm-Blend mapping, the 60/20/10/10 ratio (light rows + dark rule), the Responsive/Structural/Semantic tier framework, the light-default rule, the named dark roles — Mist and Fog existed as shipped hexes (selectedPalette.darkMode) and tokens-file vars but their NAMES and the why-two-tokens rationale had no canonical source — and the accents-on-dark rule. Two value classes are deliberately DERIVED by consumers, never stored: OKLCH lightness and WCAG contrast ratios are computed from the palette hexes (the D41 computed-plots precedent — numbers can never disagree with the hexes), and CSS custom-property names follow the tokens file\'s mechanical convention. Guide §5\'s hand tables became generated blocks and §14\'s abridged hand CSS block now inlines the real generated spectrea-tokens.css (one artifact shown, shipped, and downloaded); the colour pages render colorSystem instead of private copies. Critic-gate deltas folded in the same wave: the computed OKLCH ladder corrected two hand-rounded values (Slate 0.537→0.536, Iron 0.395→0.396); the stored contrast summaries accessibility.contrast.tokens/accentsOnInk were DELETED (their figures now compute at every render site — guide, agent rules, Primary Palette; the on-Ink statement is colorSystem.accentsOnDark, preserving the D10 Cobalt correction); and darkRoles.whyTwoTokens dropped its stored approximate ratios after the critic showed them wrong (stored ~6.3:1/~8.5:1 vs computed 6.10:1/8.20:1 — the doctrine\'s own proof). Guide wave 2 is now closed except §11 component specs (its own wave).' },
   { date: '2026-08-09', decision: 'Component doctrine canonized, guide wave 2 §11 (Darren-ratified full scope; v2.8.0): new components export carries the specs that lived only in guide §11 prose and the four component pages — the six-type button taxonomy (Primary/Secondary/Ghost/Destructive/Confirm/Caution with roles, tiers, semantic details + example labels, and stateKey references into brandTokens.buttonStates), the button rule, three sizes, font/disabled treatment, and the light-hover direction (the dark direction stays buttonStates.dark.rule); the form-field spec; the card spec; and the layout system (sidebar 256 px, top bar, content area, four breakpoints with column counts, content widths, the z-index convention, and six responsive rules incl. the 44 px touch-target floor). References name their tokens — radius/spacing/elevation px resolve from brandTokens, palette colours by name, state hexes from buttonStates — never re-declared. Guide §11 became generated blocks; the four component pages render components (their private copies deleted — Buttons.tsx duplicated the full buttonStates ladders, LayoutPage duplicated spacing/radii/elevation verbatim-with-drift). Drift corrected by canonization: two pages taught the border family as #E5E7EB, which is Tailwind gray-200 — the sanctioned family is stone-200 #E7E5E4. Guide wave 2 is now fully closed.' },
+  { date: '2026-08-10', decision: 'Voice humanist correction (Darren-ratified option B of three; v2.9.0): the voice formula read as a composition rule — "showing its work" was being applied per-sentence, welding a mechanism clause onto every claim — producing the justification-chain bloat Darren flagged as un-humanist. Rewritten: "Plain words, real specifics, room to breathe. Tech earns its place by being checkable — shown once, where the reader looks for it." — the anti-black-box stance stays (checkable ≥ shown), the composition pressure goes. New voice.attentionRule canonizes the discipline: "earn the jargon" is an ADMISSION rule, not a composition rule; one claim, one proof per surface; the mechanism lives one step from the claim; the claim—dash—mechanism shape is a tool, not a rhythm. Three canonical examples retuned to comply (Feature Announcement proved compounding three sentences in a row — now once; Beginner Documentation dropped a tail restating its own sentence; Settings unstacked a nested clause chain). The hero exemplar (D27) already passes once-per-surface — a hero carries exactly one claim + one mechanism — and is unchanged. The archetype through-line note re-anchors the reveal→ground→equip triad to the heroOpen gesture; the formula states the texture. techApproach "Earn the jargon" unchanged as the admission rule\'s name.' },
 ] as const
 
 // --- Executive Voice ---

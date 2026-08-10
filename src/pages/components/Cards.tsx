@@ -115,7 +115,7 @@ export default function Cards() {
             { prop: 'Card gap', value: `${CGAP.px}px (gap-4)`, note: 'Space between cards in a grid' },
             { prop: 'Title font', value: C.titleFont, note: 'Card titles use the heading font' },
           ].map((row, i) => (
-            <div key={row.prop} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < 7 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={row.prop} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < 7 ? '1px solid #F5F5F4' : 'none' }}>
               <span className="text-sm font-medium text-iron">{row.prop}</span>
               <span className="text-xs font-mono text-iron">{row.value}</span>
               <span className="text-xs text-slate">{row.note}</span>

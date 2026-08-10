@@ -1,8 +1,8 @@
-# Hand-off: downstream repos (spectrea, spectrea-web) — updated for v2.8.0
+# Hand-off: downstream repos (spectrea, spectrea-web) — updated for v2.9.0
 
-> Written 2026-08-07 at v2.5.0; refreshed 2026-08-10 at v2.8.0. These steps are for
+> Written 2026-08-07 at v2.5.0; refreshed 2026-08-10 at v2.9.0. These steps are for
 > sessions working IN the consumer repos; nothing here is done yet — no re-pin has
-> happened since before v2.5.0. Precondition: spectrea-branding main pushed at v2.8.0
+> happened since before v2.5.0. Precondition: spectrea-branding main pushed at v2.9.0
 > (deploy republishes all artifacts at https://branding.spectrea.com/).
 
 ## 1. Re-pin the vendored brand snapshots
@@ -47,6 +47,12 @@ v2.5.0 (the version consumers were last told about):
 
 ## 3. Copy-affecting rules ratified since the last pin
 
+- Voice formula rewritten + `voice.attentionRule` added (v2.9.0, humanist correction):
+  "Plain words, real specifics, room to breathe. Tech earns its place by being
+  checkable — shown once, where the reader looks for it." Show the work ONCE per
+  surface, one step from the claim — never welded to every sentence. Downstream copy
+  built on the old "showing its work" per-sentence habit should be re-read against the
+  attention rule.
 - `voice.heroOpen` (v2.5.3) supersedes `outcomeFirst`: open on the outcome written as a
   reveal; the canonical marketing exemplar is now outcome-first ("See everything your
   organization knows in one connected view…").

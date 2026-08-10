@@ -52,7 +52,7 @@ export default function TypeScale() {
           {scale.map((s, i) => {
             const fontStyle = s.font === 'heading' ? t.heading.css : s.font === 'mono' ? t.mono.css : t.body.css
             return (
-              <div key={s.name} className="flex items-center gap-3 sm:gap-4 px-4 py-3" style={{ borderBottom: i < scale.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
+              <div key={s.name} className="flex items-center gap-3 sm:gap-4 px-4 py-3" style={{ borderBottom: i < scale.length - 1 ? '1px solid #F5F5F4' : 'none' }}>
                 <div className="w-16 sm:w-20 flex-shrink-0">
                   <p className="text-xs font-semibold text-slate">{s.name}</p>
                   <CopyButton value={`${s.size} / ${s.lineHeight}`} />
@@ -104,7 +104,7 @@ export default function TypeScale() {
             { name: 'Body', desktop: '16px', tablet: '16px', mobile: '16px' },
             { name: 'Body SM', desktop: '14px', tablet: '14px', mobile: '14px' },
           ].map((r, i) => (
-            <div key={r.name} className="grid grid-cols-4 px-4 py-2" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={r.name} className="grid grid-cols-4 px-4 py-2" style={{ borderBottom: i < 5 ? '1px solid #F5F5F4' : 'none' }}>
               <span className="text-xs font-medium text-iron">{r.name}</span>
               <span className="text-xs text-iron font-mono">{r.desktop}</span>
               <span className="text-xs text-iron font-mono">{r.tablet}</span>

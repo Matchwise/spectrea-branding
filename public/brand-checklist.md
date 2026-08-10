@@ -1,8 +1,8 @@
-<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-09) -->
+<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-10) -->
 # Spectrea brand pre-flight checklist
 
 Run this BEFORE generating any Spectrea-branded surface — copy, UI, slide, or image.
-Canonical data: src/data/brand.ts (v2.8.0, 2026-08-09). Hard values: /brand-contract.json.
+Canonical data: src/data/brand.ts (v2.9.0, 2026-08-10). Hard values: /brand-contract.json.
 
 ## Step 1 — classify the surface
 
@@ -28,7 +28,9 @@ Pick the closest context; it selects the tone and pattern you must match (exampl
 - [ ] Category: The category noun is exactly "Composable intelligence platform" (lowercase in running prose) — never a substitute: "composable knowledge platform", "knowledge platform", "knowledge management", "AI assistant", "automation tool".
 - [ ] The name is "Spectrea" and never appears as: "SpectreAI" (not the name) · "Spectre" / "Spectra" (different words — not the name) · "spectra" (missing the e — typo) · "Spectrea AI" as the lead name (AI is not the brand) · "SPECTREA" (all-caps styling) · "spectrea" lowercase in headings or prose (lowercase belongs to the logo wordmark treatment only) · "The Spectrea" (no article) · Random internal caps ("SpecTrea").
 - [ ] None of the never-use words appear: AI-powered (overused), next-gen, state-of-the-art, world-class, breakthrough, unprecedented, game-changer, revolutionary, seamless, cutting-edge, synergy, leverage (as verb), agentic, AI-first, copilot (as generic noun), 10x, supercharge, effortless, magical.
+- [ ] Voice formula: Plain words, real specifics, room to breathe. Tech earns its place by being checkable — shown once, where the reader looks for it.
 - [ ] Privileged-word density: Max two privileged words per paragraph, one "living" / "alive" per page. If a paragraph survives losing every privileged word, the prose is doing its job — if it collapses without them, rewrite.
+- [ ] Attention rule: Show the work once, where the reader looks for it. "Earn the jargon" governs what may enter the copy — not how often it repeats. One claim, one proof per surface: the mechanism lives one step from the claim (the next sentence, a subhead, an expandable) — never welded to every sentence. If two sentences in a row prove the same claim, cut one. The claim—dash—mechanism shape is a tool, not a rhythm.
 - [ ] Hero open: Open on the outcome, written as a reveal — the moment of new sight. Never open with the mechanism, the pain alone, or a platitude. Ground it next with a specific the reader can check; close by equipping the next step. The gesture adapts to any surface — a problem may set up the reveal, proof may carry the grounding — but the open always lands on the outcome. Exception: graph-native jobs (exploration, visualisation), where the graph is the star and may lead.
 - [ ] No totalizing claims — no "incomparably", no "infinite", no unbounded every/always sweeps. Claims stay bounded and mechanism-tied.
 - [ ] Compounding claim: Use "compounding intelligence" only with its defensible mechanism named — provenance, per-viewer access, and the closed loop that feeds outcomes back in. The phrase is contested in-market (noted 2026-07-03); the mechanism, not the slogan, carries the claim.

@@ -108,7 +108,7 @@ export default function Governance() {
             { level: 'Moderate', color: '#E19000', examples: 'Add a new component, change a secondary color variant, add an icon', approval: 'Design Lead + Brand Lead', turnaround: '1–3 days' },
             { level: 'Major', color: '#F24260', examples: 'Change a primary color, modify the logo, redefine voice guidelines', approval: 'Full brand review', turnaround: '1–2 weeks' },
           ].map((row, i) => (
-            <div key={row.level} className="px-4 py-4" style={{ borderBottom: i < 2 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={row.level} className="px-4 py-4" style={{ borderBottom: i < 2 ? '1px solid #F5F5F4' : 'none' }}>
               <div className="flex items-center gap-2 mb-1">
                 <div className="w-2 h-2 rounded-full" style={{ backgroundColor: row.color }} />
                 <p className="text-sm font-semibold text-ink">{row.level}</p>

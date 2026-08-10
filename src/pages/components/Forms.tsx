@@ -66,9 +66,9 @@ export default function Forms() {
               placeholder="name@example.com"
               value={email}
               onChange={e => setEmail(e.target.value)}
-              className="w-full px-3 py-2 text-sm rounded-lg bg-white text-ink placeholder:text-pewter outline-none focus:ring-2 focus:ring-brand/20 transition-all"
+              className={`w-full px-3 py-2 text-sm rounded-lg bg-white text-ink placeholder:text-pewter outline-none focus:ring-2 focus:ring-brand/20 transition-all ${emailValid === null ? 'border border-stone-200 focus:border-brand' : ''}`}
               style={emailValid === null
-                ? { border: '1px solid #E5E7EB' }
+                ? undefined
                 : emailValid
                   ? { border: '2px solid #00B6A0' }
                   : { border: '2px solid #F24260' }
@@ -138,7 +138,7 @@ export default function Forms() {
             { prop: 'Error border', value: `${F.error} (${HEX('Rose')})`, note: 'Semantic error color' },
             { prop: 'Disabled bg', value: `${F.disabledBg} (${HEX(F.disabledBg)})`, note: 'Subtle visual demotion' },
           ].map((row, i) => (
-            <div key={row.prop} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < 9 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={row.prop} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < 9 ? '1px solid #F5F5F4' : 'none' }}>
               <span className="text-sm font-medium text-iron">{row.prop}</span>
               <span className="text-xs font-mono text-iron">{row.value}</span>
               <span className="text-xs text-slate">{row.note}</span>
@@ -169,7 +169,7 @@ export default function Forms() {
                     className="w-4 h-4 rounded flex-shrink-0 flex items-center justify-center border text-white text-[10px] transition-colors"
                     style={checks[c.key]
                       ? { backgroundColor: '#4271DF', borderColor: '#4271DF' }
-                      : { borderColor: '#D1D5DB', backgroundColor: 'white' }
+                      : { borderColor: '#D6D3D1', backgroundColor: 'white' }
                     }
                   >
                     {checks[c.key] && <TbCheck size={10} />}
@@ -178,7 +178,7 @@ export default function Forms() {
                 </label>
               ))}
               <label className="flex items-center gap-2.5 opacity-40 cursor-not-allowed">
-                <span className="w-4 h-4 rounded flex-shrink-0 flex items-center justify-center border text-[10px]" style={{ borderColor: '#D1D5DB', backgroundColor: 'white' }} />
+                <span className="w-4 h-4 rounded flex-shrink-0 flex items-center justify-center border text-[10px]" style={{ borderColor: '#D6D3D1', backgroundColor: 'white' }} />
                 <span className="text-sm text-iron">Archived items</span>
               </label>
             </div>
@@ -199,7 +199,7 @@ export default function Forms() {
                     className="w-4 h-4 rounded-full flex-shrink-0 flex items-center justify-center border-2 transition-colors"
                     style={radio === r.key
                       ? { borderColor: '#4271DF' }
-                      : { borderColor: '#D1D5DB' }
+                      : { borderColor: '#D6D3D1' }
                     }
                   >
                     {radio === r.key && <span className="w-2 h-2 rounded-full" style={{ backgroundColor: '#4271DF' }} />}
@@ -227,7 +227,7 @@ export default function Forms() {
                   <span className="text-sm text-iron group-hover:text-ink transition-colors">{t.label}</span>
                   <span
                     className="relative w-9 h-5 rounded-full flex-shrink-0 transition-colors"
-                    style={{ backgroundColor: toggles[t.key] ? '#4271DF' : '#D1D5DB' }}
+                    style={{ backgroundColor: toggles[t.key] ? '#4271DF' : '#D6D3D1' }}
                   >
                     <span
                       className="absolute top-0.5 w-4 h-4 rounded-full bg-white shadow-sm transition-all"
@@ -238,7 +238,7 @@ export default function Forms() {
               ))}
               <div className="flex items-center justify-between opacity-40 cursor-not-allowed">
                 <span className="text-sm text-iron">Dark mode</span>
-                <span className="relative w-9 h-5 rounded-full flex-shrink-0" style={{ backgroundColor: '#D1D5DB' }}>
+                <span className="relative w-9 h-5 rounded-full flex-shrink-0" style={{ backgroundColor: '#D6D3D1' }}>
                   <span className="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white shadow-sm" />
                 </span>
               </div>
@@ -279,7 +279,7 @@ export default function Forms() {
             { rule: 'Explain and fix', detail: 'Always tell users what went wrong and how to resolve it.' },
             { rule: 'Preserve input', detail: 'Never clear a field on error. Let users fix, not re-type.' },
           ].map((row, i) => (
-            <div key={row.rule} className="flex items-start gap-3 px-4 py-3" style={{ borderBottom: i < 3 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={row.rule} className="flex items-start gap-3 px-4 py-3" style={{ borderBottom: i < 3 ? '1px solid #F5F5F4' : 'none' }}>
               <span className="text-xs font-semibold text-pewter mt-px">{String(i + 1).padStart(2, '0')}</span>
               <div>
                 <p className="text-sm font-medium text-iron">{row.rule}</p>

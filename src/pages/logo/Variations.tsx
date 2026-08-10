@@ -17,16 +17,16 @@ interface Variant {
 }
 
 const variants: Variant[] = [
-  { id: '1', name: 'Primary mark', colorMode: 'cool', dotColorMode: 'grey', wordmark: false, bgColor: '#FDFDFB', borderColor: '#E5E7EB' },
-  { id: '2', name: 'Primary lockup', colorMode: 'cool', dotColorMode: 'grey', wordmark: true, bgColor: '#FDFDFB', borderColor: '#E5E7EB' },
-  { id: '3', name: 'Ink mark', colorMode: 'ink', wordmark: false, bgColor: '#FDFDFB', borderColor: '#E5E7EB' },
-  { id: '4', name: 'Ink lockup', colorMode: 'ink', wordmark: true, monoColor: '#18181C', bgColor: '#FDFDFB', borderColor: '#E5E7EB' },
-  { id: '5', name: 'Grey mark', colorMode: 'grey', wordmark: false, bgColor: '#FDFDFB', borderColor: '#E5E7EB', note: 'Watermark only' },
+  { id: '1', name: 'Primary mark', colorMode: 'cool', dotColorMode: 'grey', wordmark: false, bgColor: '#FDFDFB', borderColor: '#E7E5E4' },
+  { id: '2', name: 'Primary lockup', colorMode: 'cool', dotColorMode: 'grey', wordmark: true, bgColor: '#FDFDFB', borderColor: '#E7E5E4' },
+  { id: '3', name: 'Ink mark', colorMode: 'ink', wordmark: false, bgColor: '#FDFDFB', borderColor: '#E7E5E4' },
+  { id: '4', name: 'Ink lockup', colorMode: 'ink', wordmark: true, monoColor: '#18181C', bgColor: '#FDFDFB', borderColor: '#E7E5E4' },
+  { id: '5', name: 'Grey mark', colorMode: 'grey', wordmark: false, bgColor: '#FDFDFB', borderColor: '#E7E5E4', note: 'Watermark only' },
   { id: '6', name: 'Primary on dark', colorMode: 'cool', dotColorMode: 'grey', wordmark: false, bgColor: '#18181C', borderColor: '#2E2F35' },
   { id: '7', name: 'Primary lockup on dark', colorMode: 'cool', dotColorMode: 'grey', wordmark: true, bgColor: '#18181C', borderColor: '#2E2F35' },
   { id: '8', name: 'White mark', colorMode: 'white', wordmark: false, bgColor: '#18181C', borderColor: '#2E2F35' },
   { id: '9', name: 'White lockup', colorMode: 'white', wordmark: true, monoColor: '#FDFDFB', bgColor: '#18181C', borderColor: '#2E2F35' },
-  { id: '10', name: 'Ink circle', colorMode: 'white', wordmark: false, bgColor: '#F4F4F1', borderColor: '#E5E7EB', circle: { fill: '#18181C' } },
+  { id: '10', name: 'Ink circle', colorMode: 'white', wordmark: false, bgColor: '#F4F4F1', borderColor: '#E7E5E4', circle: { fill: '#18181C' } },
   { id: '11', name: 'White circle', colorMode: 'ink', wordmark: false, bgColor: '#18181C', borderColor: '#2E2F35', circle: { fill: '#FDFDFB' } },
 ]
 
@@ -35,7 +35,7 @@ function VariantCard({ v, highlight }: { v: Variant; highlight?: boolean }) {
   const renderMark = () => {
     if (v.circle) {
       return (
-        <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: v.circle.fill, border: v.circle.fill === '#FDFDFB' ? '1px solid #E5E7EB' : 'none' }}>
+        <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: v.circle.fill, border: v.circle.fill === '#FDFDFB' ? '1px solid #E7E5E4' : 'none' }}>
           <StaticLogo size={36} colorMode={v.colorMode} dotColorMode={v.dotColorMode} />
         </div>
       )
@@ -398,7 +398,7 @@ export default function Variations() {
             { context: 'Emboss / foil stamp', variant: '#3', why: 'Single-tone production.' },
             { context: 'Fax / newspaper', variant: '#4', why: 'Ink lockup for poor reproduction.' },
           ] as const).map((row, i) => (
-            <div key={row.context} className="grid grid-cols-12 px-4 py-2.5" style={{ borderBottom: i < 17 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={row.context} className="grid grid-cols-12 px-4 py-2.5" style={{ borderBottom: i < 17 ? '1px solid #F5F5F4' : 'none' }}>
               <span className="col-span-4 text-sm text-iron">{row.context}</span>
               <span className="col-span-2 text-xs font-mono font-semibold text-brand">{row.variant}</span>
               <span className="col-span-6 text-xs text-slate">{row.why}</span>

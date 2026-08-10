@@ -28,7 +28,7 @@ export default function Social() {
             { platform: 'GitHub', avatar: 'Gradient mark (square)', cover: 'N/A', bio: 'Composable intelligence platform. Open interfaces and developer tools.' },
             { platform: 'Product Hunt', avatar: 'Gradient mark', cover: 'Product screenshot with gradient accent', bio: 'Answers that show their sources, from a system that gets sharper every week.' },
           ].map((row, i) => (
-            <div key={row.platform} className="grid grid-cols-4 px-4 py-3" style={{ borderBottom: i < 3 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={row.platform} className="grid grid-cols-4 px-4 py-3" style={{ borderBottom: i < 3 ? '1px solid #F5F5F4' : 'none' }}>
               <span className="text-sm font-medium text-ink">{row.platform}</span>
               <span className="text-xs text-iron">{row.avatar}</span>
               <span className="text-xs text-iron">{row.cover}</span>

@@ -130,7 +130,7 @@ export default function TypographyGuidelines() {
             { rule: 'Line height for headings', value: '1.1–1.3', note: 'Tighter — large text needs less leading' },
             { rule: 'Letter spacing for overlines', value: '0.05em', note: 'Uppercase small text needs tracking to breathe' },
           ].map((row, i) => (
-            <div key={row.rule} className="grid grid-cols-3 px-4 py-3" style={{ borderBottom: i < 6 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={row.rule} className="grid grid-cols-3 px-4 py-3" style={{ borderBottom: i < 6 ? '1px solid #F5F5F4' : 'none' }}>
               <span className="text-sm text-iron">{row.rule}</span>
               <span className="text-sm font-mono text-brand">{row.value}</span>
               <span className="text-xs text-slate">{row.note}</span>

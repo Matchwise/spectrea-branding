@@ -271,7 +271,7 @@ export default function PrimaryPalette() {
             light: { name: r.light, hex: r.light === 'stone-200' ? STONE_200 : HEX(r.light) },
             dark: { name: 'isNew' in r && r.isNew ? `${r.dark} (new)` : r.dark, hex: DARK[r.darkModeKey] },
           })).map((row, i, arr) => (
-            <div key={row.role} className="grid grid-cols-12 items-center px-4 py-2.5" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={row.role} className="grid grid-cols-12 items-center px-4 py-2.5" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F5F5F4' : 'none' }}>
               <span className="col-span-3 text-xs font-medium text-iron">{row.role}</span>
               <div className="col-span-4 flex items-center gap-2">
                 <span className="inline-block w-5 h-5 rounded border border-stone-200" style={{ backgroundColor: row.light.hex }} />

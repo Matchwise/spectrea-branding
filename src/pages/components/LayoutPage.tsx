@@ -97,7 +97,7 @@ export default function LayoutPage() {
         </h2>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
           {brandTokens.spacing.scale.map(s => ({ name: s.token, value: `${s.px}px`, tw: s.tailwind, use: s.use })).map((row, i) => (
-            <div key={row.name} className="flex items-center gap-4 px-4 py-2.5" style={{ borderBottom: i < 7 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={row.name} className="flex items-center gap-4 px-4 py-2.5" style={{ borderBottom: i < 7 ? '1px solid #F5F5F4' : 'none' }}>
               <div className="w-12 flex-shrink-0">
                 <span className="text-xs font-semibold text-slate">{row.name}</span>
               </div>
@@ -136,7 +136,7 @@ export default function LayoutPage() {
             ))}
           </div>
           {L.breakpoints.map(b => ({ bp: b.name, width: b.range, cols: `${b.cols} ${b.cols === 1 ? 'column' : 'columns'}`, usage: b.use })).map((row, i) => (
-            <div key={row.bp} className="grid grid-cols-4 px-4 py-2.5" style={{ borderBottom: i < 3 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={row.bp} className="grid grid-cols-4 px-4 py-2.5" style={{ borderBottom: i < 3 ? '1px solid #F5F5F4' : 'none' }}>
               <span className="text-sm font-medium text-iron">{row.bp}</span>
               <span className="text-xs font-mono text-iron">{row.width}</span>
               <span className="text-xs font-mono text-brand">{row.cols}</span>
@@ -184,7 +184,7 @@ export default function LayoutPage() {
         <div className="border border-stone-200 rounded-xl overflow-x-auto">
           <div className="min-w-[600px]">
           {brandTokens.elevation.map(e => ({ level: e.level, z: String(e.zIndex), shadow: e.shadow, use: e.use, example: e.shadow === 'none' ? 'bg-white border' : e.shadow })).map((row, i) => (
-            <div key={row.level} className="grid grid-cols-5 px-4 py-3 items-center" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={row.level} className="grid grid-cols-5 px-4 py-3 items-center" style={{ borderBottom: i < 5 ? '1px solid #F5F5F4' : 'none' }}>
               <span className="text-sm font-medium text-iron">{row.level}</span>
               <span className="text-xs font-mono text-brand">z-{row.z}</span>
               <span className="text-xs font-mono text-iron">{row.shadow}</span>
@@ -212,7 +212,7 @@ export default function LayoutPage() {
         </h2>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
           {brandTokens.radii.map(r => ({ name: r.token, value: `${r.px}px`, tw: r.tailwind, use: r.use })).map((row, i) => (
-            <div key={row.name} className="flex items-center gap-4 px-4 py-2.5" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={row.name} className="flex items-center gap-4 px-4 py-2.5" style={{ borderBottom: i < 5 ? '1px solid #F5F5F4' : 'none' }}>
               <div className="w-12 flex-shrink-0">
                 <span className="text-xs font-semibold text-slate">{row.name}</span>
               </div>

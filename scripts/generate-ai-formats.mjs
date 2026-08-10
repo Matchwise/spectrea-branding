@@ -115,6 +115,8 @@ const contract = {
     companyProduct: naming.companyProduct,
   },
   vocabulary: {
+    formula: voice.formula,
+    attentionRule: voice.attentionRule,
     alwaysUse: voice.alwaysUse,
     neverUse: voice.neverUse,
     density: voice.vocabularyDensity,
@@ -192,7 +194,9 @@ ${surfaceLines}
 - [ ] Category: ${categoryRule}
 - [ ] The name is "${brand.name}" and never appears as: ${listNever}.
 - [ ] None of the never-use words appear: ${listNeverUse}.
+- [ ] Voice formula: ${voice.formula}
 - [ ] Privileged-word density: ${voice.vocabularyDensity}
+- [ ] Attention rule: ${voice.attentionRule}
 - [ ] Hero open: ${voice.heroOpen}
 - [ ] No totalizing claims — no "incomparably", no "infinite", no unbounded every/always sweeps. Claims stay bounded and mechanism-tied.
 - [ ] Compounding claim: ${compoundingValue?.usageGuardrail ?? ''}
@@ -284,6 +288,7 @@ it is regenerated from src/data/brand.ts.
 - Company vs product: ${naming.companyProduct.rule}
 - Never write the name as: ${listNever}.
 - Voice formula: ${voice.formula} ${voice.techDescription}
+- Attention rule: ${voice.attentionRule}
 - Hero open: ${voice.heroOpen}
 - On-ramp: ${brand.positioning.onRamp.posture} Hero example: "${brand.positioning.onRamp.heroExample}" ${brand.positioning.onRamp.coinRule} Adopt: ${brand.positioning.onRamp.adopt.join(' · ')}. Avoid: ${brand.positioning.onRamp.avoid.join(' · ')}.
 - Coined-frame worked example — RIGHT: "${brand.positioning.onRamp.osFrameExample.right}" WRONG: "${brand.positioning.onRamp.osFrameExample.wrong}" Why: ${brand.positioning.onRamp.osFrameExample.why}
@@ -340,6 +345,7 @@ const llms = `${MD_HEADER}
 - **Promise:** ${brand.positioning.promise}.
 - **Full-shape claim (internal north-star, not hero copy):** ${brand.positioning.fullShapeClaim.statement}.
 - **Voice formula:** ${voice.formula}
+- **Attention rule:** ${voice.attentionRule}
 - **Never-use words:** ${listNeverUse}.
 - **Density:** ${voice.vocabularyDensity}
 - **Hero open:** ${voice.heroOpen}

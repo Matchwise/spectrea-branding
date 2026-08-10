@@ -144,7 +144,7 @@ export default function Buttons() {
           className="border rounded-xl p-6 transition-colors"
           style={dark
             ? { backgroundColor: dm.bg, borderColor: dm.border }
-            : { backgroundColor: '#FDFDFB', borderColor: '#E5E7EB' }
+            : { backgroundColor: '#FDFDFB', borderColor: '#E7E5E4' }
           }
         >
           <p className="text-[10px] font-semibold uppercase tracking-wider text-center mb-5" style={{ color: dark ? dm.muted : '#97979E' }}>
@@ -184,10 +184,10 @@ export default function Buttons() {
                 className={`px-4 py-2 rounded-lg text-sm font-medium border-2 transition-all ${dark ? 'btn-focus-dark' : 'btn-focus'}`}
                 style={dark
                   ? { borderColor: '#B0B0B6', color: '#F4F4F1' }
-                  : { borderColor: '#D1D5DB', color: '#6D6D72' }
+                  : { borderColor: '#D6D3D1', color: '#6D6D72' }
                 }
                 onMouseEnter={e => { e.currentTarget.style.backgroundColor = dark ? dm.secondaryBg : '#F4F4F1'; e.currentTarget.style.borderColor = dark ? '#F4F4F1' : '#97979E' }}
-                onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.borderColor = dark ? '#B0B0B6' : '#D1D5DB' }}
+                onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.borderColor = dark ? '#B0B0B6' : '#D6D3D1' }}
               >
                 Cancel
               </button>
@@ -274,7 +274,7 @@ export default function Buttons() {
               usage: `${t.role}${'treatment' in t ? ` ${t.treatment}` : ''}`,
             }
           }).map((row, i) => (
-            <div key={row.variant} className="grid grid-cols-6 px-4 py-2.5 items-center" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={row.variant} className="grid grid-cols-6 px-4 py-2.5 items-center" style={{ borderBottom: i < 5 ? '1px solid #F5F5F4' : 'none' }}>
               <span className="text-sm font-medium text-ink">{row.variant}</span>
               <span className="text-xs font-mono text-iron">{row.lightBg}</span>
               <span className="text-xs font-mono text-iron">{row.darkBg}</span>
@@ -465,7 +465,7 @@ export default function Buttons() {
                 <span className="text-xs font-mono" style={{ color: dm.muted }}>Amber ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
-                <button className="px-3 py-1.5 rounded-lg text-xs font-medium border-2" style={{ borderColor: '#97979E', color: '#D1D5DB', outline: `2px solid ${brandTokens.focusRing.dark}`, outlineOffset: '2px' }}>Focused</button>
+                <button className="px-3 py-1.5 rounded-lg text-xs font-medium border-2" style={{ borderColor: '#97979E', color: '#D6D3D1', outline: `2px solid ${brandTokens.focusRing.dark}`, outlineOffset: '2px' }}>Focused</button>
                 <span className="text-xs font-mono" style={{ color: dm.muted }}>Ghost + ring</span>
               </div>
               <div className="flex flex-col items-center gap-1.5">
@@ -484,7 +484,7 @@ export default function Buttons() {
             { state: 'Focus', light: `${brandTokens.focusRing.width} Amber outline, ${brandTokens.focusRing.offset} offset`, dark: `${brandTokens.focusRing.width} Amber outline, ${brandTokens.focusRing.offset} offset` },
             { state: 'Disabled', light: BTN.disabled, dark: BTN.disabled },
           ].map((row, i) => (
-            <div key={row.state} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < 4 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={row.state} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < 4 ? '1px solid #F5F5F4' : 'none' }}>
               <span className="text-sm font-medium text-iron">{row.state}</span>
               <span className="text-xs font-mono text-iron">{row.light}</span>
               <span className="text-xs font-mono text-iron">{row.dark}</span>
@@ -574,7 +574,7 @@ export default function Buttons() {
                       ? 'bg-ink text-white'
                       : 'text-slate hover:bg-cloud hover:text-ink active:bg-cloud'
                   }`}
-                  style={i > 0 && i !== toolbarActive && i - 1 !== toolbarActive ? { borderLeft: '1px solid #E5E7EB' } : undefined}
+                  style={i > 0 && i !== toolbarActive && i - 1 !== toolbarActive ? { borderLeft: '1px solid #E7E5E4' } : undefined}
                 >
                   {label}
                 </button>

@@ -8,7 +8,7 @@
 **Category:** Composable intelligence platform.
 **Pronunciation:** /spek-TREE-uh/ (a coinage from *spectrum* — Latin, from *specere*, "to look"; the full range — with a second reading: *revealing*).
 <!-- generated:version-header -->
-**Version:** 2.8.0 (2026-08-09). Canonical data: `src/data/brand.ts` — this guide is a hybrid mirror: prose is hand-written; fenced data blocks are generated from canon (`npm run generate:guide`).
+**Version:** 2.9.0 (2026-08-10). Canonical data: `src/data/brand.ts` — this guide is a hybrid mirror: prose is hand-written; fenced data blocks are generated from canon (`npm run generate:guide`).
 <!-- /generated:version-header -->
 
 **Strategic claim:** Spectrea is the spectrum of clarity. Everything you know, in one living view — alive with possibility, yours to keep. See it whole. Trust what you see. Build on what you find.
@@ -53,7 +53,7 @@ Spectrea is **one character**, not three. The traditional archetypes — Magicia
 The through-line is already encoded in the brand:
 - **Tagline** — *We connect the dots* = see them (reveal) · trust them (ground) · build on them (equip).
 - **Strategic claim** — *"See it whole. Trust what you see. Build on what you find."* (literally reveal → ground → equip).
-- **Voice formula** — *"Clarity of explanation [ground] + experiential momentum [reveal]. Tech earns its place by showing its work [equip]."*
+- **Voice formula** (§2) — its texture carries the triad: *plain words, real specifics* = ground; *checkable* = equip; *room to breathe* is the attention discipline that keeps the reveal legible. The reveal movement itself lives in the hero-open gesture (§2).
 
 ### Personality (four traits with guardrails)
 - **Warm** — respects the person behind every interaction. *Guardrail: not soft — trust users to be capable.*
@@ -118,12 +118,14 @@ Anchored to the moat: per-viewer truth, graph-resident decisions with provenance
 ## 2. Voice & Tone
 
 ### Voice formula
-**Clarity of explanation + experiential momentum. Tech earns its place by showing its work.**
+<!-- generated:voice-formula -->
+**Plain words, real specifics, room to breathe. Tech earns its place by being checkable — shown once, where the reader looks for it.**
 
-The formula applies on every surface. Spectrea earns trust by *showing its work* — the reasoning, the evidence, the source — not by claiming magic.
+**Attention rule.** Show the work once, where the reader looks for it. "Earn the jargon" governs what may enter the copy — not how often it repeats. One claim, one proof per surface: the mechanism lives one step from the claim (the next sentence, a subhead, an expandable) — never welded to every sentence. If two sentences in a row prove the same claim, cut one. The claim—dash—mechanism shape is a tool, not a rhythm.
+<!-- /generated:voice-formula -->
 
 ### One voice — three facets in every moment
-The voice formula is triadic by construction. Every piece of Spectrea copy — regardless of surface — should carry all three facets together. What shifts with context is which facet leads:
+The character's gesture is triadic — reveal → ground → equip (§1) — and every piece of Spectrea copy, regardless of surface, carries all three facets together; the formula above states the texture the movements are written in. What shifts with context is which facet leads:
 
 - On marketing, **reveal** leads — it is the register of the canonical hero-open rule (§2, Voice & Tone): the open lands on the outcome, written as the moment of new sight, *then* grounds it with specifics, *then* invites the reader to try it.
 - On trust surfaces (errors, docs, settings, security), **ground** leads. The message starts with what is true, *reveals* the underlying cause, and *equips* the reader with the next step.
@@ -139,13 +141,13 @@ Six content classes, each with a tone label and the right (left) and wrong (righ
 |---|---|---|
 | **Marketing / Landing Page** · Bold + Direct | *"See everything your organization knows in one connected view. Spectrea builds a living graph from your documents — the more you use it, the sharper it gets."* | *"Transform how your team works. Unlock the power of connected knowledge — insights, intelligence, impact."* |
 | **Error Message** · Direct + Informative | *"Save failed: connection timeout. Your draft is cached locally. Retrying…"* | *"Oops! Something went wrong. Please try again later or contact support if the problem persists."* |
-| **Feature Announcement** · Concrete + Confident | *"Every document you add now strengthens what the system already knows. Connections you never noticed start surfacing. The whole gets sharper — your second month is better than your first."* | *"We're excited to share our latest update — it includes improvements that will help you be more productive."* |
+| **Feature Announcement** · Concrete + Confident | *"Connections you never noticed start surfacing. Your second month is better than your first."* | *"We're excited to share our latest update — it includes improvements that will help you be more productive."* |
 | **Documentation** · Precise + Helpful | *"To add a new item, open the relevant view and choose 'Add'. Pick a type from the list, or create one if you need it. The item appears in place immediately."* | *"Ready to add something? Just head over to the right view and hit that '+ Add' button! Pick a type that fits — or make a new one if nothing works. Easy!"* |
 | **Social Media** · Thoughtful + Engaging | *"What if every document you uploaded made your whole system smarter? That's not a hypothetical — it's how Spectrea works."* | *"Team productivity has never been easier. Learn how Spectrea can transform your workflow."* |
-| **Beginner Documentation** · Plain + Welcoming | *"Think of Spectrea as a web of everything your team knows. When you add a document, Spectrea reads it and weaves what it learns into the web — connecting it to things you've already captured."* | *"Documents are processed through a 6-phase pipeline: parse, chunk, embed, score, review, and integrate."* |
+| **Beginner Documentation** · Plain + Welcoming | *"Think of Spectrea as a web of everything your team knows. Add a document and Spectrea weaves what it learns into the web."* | *"Documents are processed through a 6-phase pipeline: parse, chunk, embed, score, review, and integrate."* |
 <!-- /generated:tone-registers -->
 
-The right-hand versions are bold, direct, concrete — they show what the user experiences. The wrong-hand versions fail in different ways: platitude-marketing (*transform, unlock, impact*), bland agentless announcement (*we're excited to share*), vague apology, forced chirp, clickbait, or engineer-internal jargon in a beginner context. In every case, the brand shows its work rather than claiming magic or reaching for the nearest SaaS cliché.
+The right-hand versions are bold, direct, concrete — they show what the user experiences. The wrong-hand versions fail in different ways: platitude-marketing (*transform, unlock, impact*), bland agentless announcement (*we're excited to share*), vague apology, forced chirp, clickbait, or engineer-internal jargon in a beginner context. In every case, the brand stays plain, specific, and checkable rather than claiming magic or reaching for the nearest SaaS cliché.
 
 Two context shifts live within this same voice. **On buyer surfaces** (hero, case studies, pricing), the open lands on the outcome (hero-open rule below); proof carries the grounding — a named customer, a concrete outcome, or a peer-testable claim. Brand vocabulary decorates; it doesn't carry the opening. **Inside the product**, warm up one notch. Warmth comes from specificity, not exclamation points — *"Read. 12 entities, 18 connections added."* beats *"Upload complete! 🎉"* because the first shows the system paid attention.
 
@@ -166,15 +168,17 @@ The right version opens on the outcome and pairs the frame with plain language t
 ### Surface patterns
 Voice patterns for product and operational surfaces the register taxonomy doesn't cover — what each surface *says*, inheriting its register from the nearest content class above. Release notes follow the Feature Announcement register.
 
+<!-- generated:surface-patterns -->
 | Surface | Rule | Right | Wrong |
 |---|---|---|---|
 | **Onboarding** | Orient by doing, not touring. First screens name the one action that creates value and get out of the way. No feature carousels, no "welcome to the future". | *"Add your first document. Spectrea reads it and starts connecting it to what you add next."* | *"Welcome to Spectrea! 🎉 Let's take a quick tour of all the powerful features that will transform how you work."* |
 | **Empty states** | An empty state is an invitation with a promise, not an apology. Name what will appear here and the single step that starts it. | *"No connections yet. Add a second document and related ideas start linking up here."* | *"Nothing to see here yet!"* |
 | **Confirmation dialogs** | State the consequence plainly, in the user's terms — what happens, what's reversible, what isn't. The confirm button names the action, never "OK". | *"Delete this source? Its 14 extracted claims stay in the graph but lose their citation. This can't be undone."* | *"Are you sure you want to proceed? This action may have consequences. [OK] [Cancel]"* |
 | **System notifications** | Specificity is the warmth. Report what the system actually did, with numbers where they exist. No celebration, no vagueness. | *"Read. 12 entities, 18 connections added."* | *"Upload complete! 🎉 Your document has been processed successfully."* |
-| **Settings & security** | Ground leads. Say exactly what a setting does and what changes when it's toggled — especially for privacy and access. Plain sentences, no marketing. | *"Workspace visibility: private. Only people you invite can see anything in this workspace — including the assistant, which sees only what each viewer can see."* | *"Take control of your data with our industry-leading privacy options!"* |
+| **Settings & security** | Ground leads. Say exactly what a setting does and what changes when it's toggled — especially for privacy and access. Plain sentences, no marketing. | *"Workspace visibility: private. Only people you invite can see this workspace. The assistant sees only what each viewer can see."* | *"Take control of your data with our industry-leading privacy options!"* |
 | **Legal & compliance** | Same voice, zero warmth-decoration: precise, complete sentences that a lawyer and a reader both accept. State facts and obligations; never soften a limitation into a benefit. | *"You can export your full workspace — structure, data, and provenance — at any time. Deleting your account removes your data from live systems within 30 days."* | *"Don't worry — your data is always safe with us, and leaving is a breeze!"* |
 | **Support replies** | Ground, then equip: confirm what happened (own it plainly if it's our fault), state what's true now, give the exact next step. Never open with an apology template. | *"You're right — sync failed for files added between 09:10 and 09:40 UTC. They're queued and will finish within the hour; nothing was lost. I'll reply here when they're through."* | *"We sincerely apologize for any inconvenience this may have caused. Your satisfaction is our top priority."* |
+<!-- /generated:surface-patterns -->
 
 ### Vocabulary — twelve privileged words
 The twelve brand-evocative words that should appear disproportionately often in copy. Each builds the *feeling* of Spectrea — clarity, aliveness, ownership, the act of seeing — without requiring the reader to know what the product does.
@@ -936,7 +940,7 @@ Brand decisions live in the **ratification ledger** (`ratificationLedger` in `br
 The complete generated token sheet — the same file served at [`/spectrea-tokens.css`](/spectrea-tokens.css) and on the Downloads page:
 
 ```css
-/* Spectrea design tokens — GENERATED from src/data/brand.ts v2.8.0 (2026-08-09) — do not hand-edit; regenerate with npm run generate:assets. */
+/* Spectrea design tokens — GENERATED from src/data/brand.ts v2.9.0 (2026-08-10) — do not hand-edit; regenerate with npm run generate:assets. */
 :root {
   /* Spectrum — first accent in canon order is the brand colour */
   --color-brand: #4271DF;
@@ -1120,5 +1124,5 @@ All via Google Fonts:
 ---
 
 <!-- generated:version-footer -->
-*`src/data/brand.ts` is the canonical brand data (v2.8.0, 2026-08-09). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
+*`src/data/brand.ts` is the canonical brand data (v2.9.0, 2026-08-10). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
 <!-- /generated:version-footer -->

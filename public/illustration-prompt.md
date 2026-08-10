@@ -1,4 +1,4 @@
-<!-- DO NOT EDIT — published copy of docs/illustration-prompt.md (the source); edit that file and run npm run generate:ai. DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-09) -->
+<!-- DO NOT EDIT — published copy of docs/illustration-prompt.md (the source); edit that file and run npm run generate:ai. DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-10) -->
 
 # Spectrea Illustration Prompt — v4
 

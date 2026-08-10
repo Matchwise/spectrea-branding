@@ -405,7 +405,7 @@ export default function PaletteCompare() {
                 const whiteOk = vsWhite >= 3
                 const inkOk = vsInk >= 3
                 return (
-                  <div key={c.name} className="grid grid-cols-4 px-3 py-1.5 items-center" style={{ borderBottom: i < 3 ? '1px solid #F3F4F6' : 'none' }}>
+                  <div key={c.name} className="grid grid-cols-4 px-3 py-1.5 items-center" style={{ borderBottom: i < 3 ? '1px solid #F5F5F4' : 'none' }}>
                     <div className="flex items-center gap-1.5">
                       <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: c.hex }} />
                       <span className="text-xs font-medium text-iron">{c.name}</span>
@@ -485,7 +485,7 @@ export default function PaletteCompare() {
             { metric: 'Perfect match', threshold: 'dL < 0.02, dC < 0.015', note: 'Imperceptible difference' },
             { metric: 'Gamut limit', threshold: 'Teal hue (~180) has the tightest sRGB gamut', note: 'Teal constrains how vivid all four can be at matched lightness' },
           ].map((row, i) => (
-            <div key={row.metric} className="flex gap-4 px-4 py-2.5" style={{ borderBottom: i < 3 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={row.metric} className="flex gap-4 px-4 py-2.5" style={{ borderBottom: i < 3 ? '1px solid #F5F5F4' : 'none' }}>
               <span className="text-xs font-medium text-iron w-32 flex-shrink-0">{row.metric}</span>
               <span className="text-xs font-mono text-brand w-40 flex-shrink-0">{row.threshold}</span>
               <span className="text-xs text-slate">{row.note}</span>

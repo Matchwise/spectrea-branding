@@ -211,7 +211,7 @@ export default function Presentations() {
             { rule: 'Bullet dots in spectrum order', detail: 'Cobalt, Teal, Amber in that sequence for three-point lists. Rose only when something is actually critical.' },
             { rule: 'Screenshots, data, or empty space', detail: 'A product shot or a chart earns its place. Clip art, stock icons, and decoration rarely do — leave them off.' },
           ].map((row, i, arr) => (
-            <div key={row.rule} className="px-4 py-3" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={row.rule} className="px-4 py-3" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F5F5F4' : 'none' }}>
               <p className="text-sm font-medium text-iron">{row.rule}</p>
               <p className="text-xs text-slate mt-0.5 leading-relaxed">{row.detail}</p>
             </div>
@@ -238,7 +238,7 @@ export default function Presentations() {
             { color: '#E19000', name: 'Amber', use: 'Third bullet dot, attention highlights', textColor: '#18181C', border: false },
             { color: '#F24260', name: 'Rose', use: 'Critical items only — use sparingly', textColor: '#FDFDFB', border: false },
           ].map(c => (
-            <div key={c.name} className="rounded-xl overflow-hidden" style={{ border: c.border ? '1px solid #E5E7EB' : 'none' }}>
+            <div key={c.name} className="rounded-xl overflow-hidden" style={{ border: c.border ? '1px solid #E7E5E4' : 'none' }}>
               <div className="h-16 flex items-end p-2" style={{ backgroundColor: c.color }}>
                 <span className="text-xs font-mono" style={{ color: c.textColor, opacity: 0.7 }}>{c.color}</span>
               </div>

@@ -182,7 +182,7 @@ export default function Downloads() {
             { resource: 'Border radius (cards)', value: '12px (rounded-xl)' },
             { resource: 'Border radius (buttons)', value: '8px (rounded-lg)' },
           ].map((row, i) => (
-            <div key={row.resource} className="grid grid-cols-2 px-4 py-2.5" style={{ borderBottom: i < 7 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={row.resource} className="grid grid-cols-2 px-4 py-2.5" style={{ borderBottom: i < 7 ? '1px solid #F5F5F4' : 'none' }}>
               <span className="text-sm text-iron">{row.resource}</span>
               <span className="text-xs font-mono text-iron">{row.value}</span>
             </div>

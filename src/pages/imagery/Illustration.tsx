@@ -70,7 +70,7 @@ function AntiStock() {
   return (
     <svg viewBox="0 0 120 120" className="w-full h-auto">
       <rect width="120" height="120" rx="6" fill={CLOUD} />
-      <rect x="15" y="25" width="90" height="60" rx="4" fill="#d1d5db" />
+      <rect x="15" y="25" width="90" height="60" rx="4" fill="#D6D3D1" />
       <circle cx="35" cy="50" r="8" fill="#9ca3af" />
       <path d="M20,80 L45,60 L65,75 L100,50 L100,80 Z" fill="#9ca3af" />
       <text x="60" y="105" textAnchor="middle" fontSize="9" fill={PEWTER}>stock-vibes</text>

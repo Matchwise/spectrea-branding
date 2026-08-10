@@ -156,8 +156,8 @@ export default function ColorOverview() {
               return { color: HEX(n.name), name: n.name, role: n.roleLabel, usage: `${NEUTRAL_USAGE[n.name] ?? ''}${isText ? textContrastNote(n.name) : ''}` }
             }),
           ].map((c, i, arr) => (
-            <div key={c.name} className="flex items-center gap-3 px-4 py-2.5" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
-              <div className="w-5 h-5 rounded flex-shrink-0" style={{ backgroundColor: c.color, border: luminance(c.color) > 0.85 ? '1px solid #E5E7EB' : 'none' }} />
+            <div key={c.name} className="flex items-center gap-3 px-4 py-2.5" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F5F5F4' : 'none' }}>
+              <div className="w-5 h-5 rounded flex-shrink-0" style={{ backgroundColor: c.color, border: luminance(c.color) > 0.85 ? '1px solid #E7E5E4' : 'none' }} />
               <div className="w-16 flex-shrink-0">
                 <p className="text-xs font-medium text-ink">{c.name}</p>
               </div>

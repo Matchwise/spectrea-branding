@@ -98,7 +98,7 @@ export default function Email() {
             { rule: 'Dark headers for marketing, white for transactional', detail: 'Sets the tone: marketing is bold, transactional is clear.' },
             { rule: 'Always include unsubscribe and plain-text version', detail: 'Legal requirement + accessibility best practice.' },
           ].map((row, i) => (
-            <div key={row.rule} className="px-4 py-3" style={{ borderBottom: i < 6 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={row.rule} className="px-4 py-3" style={{ borderBottom: i < 6 ? '1px solid #F5F5F4' : 'none' }}>
               <p className="text-sm font-medium text-iron">{row.rule}</p>
               <p className="text-xs text-slate mt-0.5">{row.detail}</p>
             </div>

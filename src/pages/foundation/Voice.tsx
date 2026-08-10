@@ -12,10 +12,10 @@ export default function Voice() {
         <div className="bg-ink text-white rounded-xl p-6">
           <p className="text-base font-medium leading-relaxed">{voice.formula}</p>
         </div>
-        <p className="text-xs text-slate mt-3 leading-relaxed">
-          The formula applies on every surface. Spectrea earns trust by <em>showing its work</em> —
-          the reasoning, the evidence, the source — not by claiming magic.
-        </p>
+        <div className="mt-3 bg-cloud rounded-lg px-4 py-3 border border-stone-200">
+          <p className="text-[10px] font-semibold text-pewter uppercase tracking-wider mb-1">Attention rule</p>
+          <p className="text-xs text-slate leading-relaxed">{voice.attentionRule}</p>
+        </div>
       </Section>
 
       {/* Three facets, one motion */}

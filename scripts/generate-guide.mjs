@@ -116,6 +116,16 @@ const blocks = {
     return `| Context · Tone | Right | Wrong |\n|---|---|---|\n${rows}`
   },
 
+  'voice-formula': () =>
+    `**${voice.formula}**\n\n**Attention rule.** ${voice.attentionRule}`,
+
+  'surface-patterns': () => {
+    const rows = voice.surfacePatterns
+      .map(p => `| **${p.surface}** | ${p.rule} | *"${mdExample(p.correct)}"* | *"${mdExample(p.incorrect)}"* |`)
+      .join('\n')
+    return `| Surface | Rule | Right | Wrong |\n|---|---|---|---|\n${rows}`
+  },
+
   'logo-construction': () => {
     const g = logo.markGeometry
     const l = logo.lockup

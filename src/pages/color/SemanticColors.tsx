@@ -381,7 +381,7 @@ export default function SemanticColors() {
                   { element: 'Input focus', state: 'Focused', how: 'Cobalt border + ring. Reverts on blur.' },
                   { element: 'Standalone icon', state: 'Hovered', how: 'Pewter → Cobalt outline. Reverts on leave.' },
                 ].map((row, i) => (
-                  <div key={row.element} className="grid grid-cols-1 sm:grid-cols-3 gap-y-0.5 sm:gap-y-0 px-4 py-2" style={{ borderBottom: i < 4 ? '1px solid #F3F4F6' : 'none' }}>
+                  <div key={row.element} className="grid grid-cols-1 sm:grid-cols-3 gap-y-0.5 sm:gap-y-0 px-4 py-2" style={{ borderBottom: i < 4 ? '1px solid #F5F5F4' : 'none' }}>
                     <span className="text-xs font-medium text-iron">{row.element}</span>
                     <span className="text-xs text-slate">{row.state}</span>
                     <span className="text-xs text-slate">{row.how}</span>
@@ -414,7 +414,7 @@ export default function SemanticColors() {
                   { element: 'Active breadcrumb', state: 'Current segment', how: 'Pewter → Ink text, semibold' },
                   { element: 'Selected row', state: 'Selected item', how: 'Subtle Ink/5 background, Ink text' },
                 ].map((row, i) => (
-                  <div key={row.element} className="grid grid-cols-1 sm:grid-cols-3 gap-y-0.5 sm:gap-y-0 px-4 py-2" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
+                  <div key={row.element} className="grid grid-cols-1 sm:grid-cols-3 gap-y-0.5 sm:gap-y-0 px-4 py-2" style={{ borderBottom: i < 5 ? '1px solid #F5F5F4' : 'none' }}>
                     <span className="text-xs font-medium text-iron">{row.element}</span>
                     <span className="text-xs text-slate">{row.state}</span>
                     <span className="text-xs text-slate">{row.how}</span>
@@ -454,7 +454,7 @@ export default function SemanticColors() {
                   { element: 'Trend indicator', state: 'Positive/negative change', how: 'Teal for +, Rose for -, Amber for flat' },
                   { element: 'Neutral / disabled', state: 'Passive context', how: 'Pewter text, borders, placeholders. Present if needed.' },
                 ].map((row, i) => (
-                  <div key={row.element} className="grid grid-cols-1 sm:grid-cols-3 gap-y-0.5 sm:gap-y-0 px-4 py-2" style={{ borderBottom: i < 6 ? '1px solid #F3F4F6' : 'none' }}>
+                  <div key={row.element} className="grid grid-cols-1 sm:grid-cols-3 gap-y-0.5 sm:gap-y-0 px-4 py-2" style={{ borderBottom: i < 6 ? '1px solid #F5F5F4' : 'none' }}>
                     <span className="text-xs font-medium text-iron">{row.element}</span>
                     <span className="text-xs text-slate">{row.state}</span>
                     <span className="text-xs text-slate">{row.how}</span>

@@ -147,7 +147,7 @@ export default function TypeExplorer() {
             { font: 'Lexend', weight: 300, label: 'Light', use: 'Large display text, oversized numbers, decorative use only', style: t.body.css },
             { font: 'JetBrains Mono', weight: 400, label: 'Regular', use: 'Code, data values, type labels, technical metadata', style: t.mono.css },
           ].map((w, i) => (
-            <div key={`${w.font}-${w.weight}`} className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 px-4 py-3" style={{ borderBottom: i < 6 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={`${w.font}-${w.weight}`} className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 px-4 py-3" style={{ borderBottom: i < 6 ? '1px solid #F5F5F4' : 'none' }}>
               <p className="text-base sm:text-lg sm:w-48 sm:flex-shrink-0" style={{ fontFamily: w.style, fontWeight: w.weight }}>
                 {w.font}
               </p>

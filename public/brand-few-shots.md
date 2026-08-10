@@ -1,10 +1,10 @@
-<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-09) -->
+<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-10) -->
 # Spectrea few-shots — on-brand vs off-brand
 
 Contrastive pairs derived from the canonical voice data (voice.toneExamples and
-voice.surfacePatterns in src/data/brand.ts, v2.8.0). Use these as few-shot
+voice.surfacePatterns in src/data/brand.ts, v2.9.0). Use these as few-shot
 examples when generating Spectrea copy: match the register of the ✅ versions.
-Voice formula: Clarity of explanation + experiential momentum. Tech earns its place by showing its work.
+Voice formula: Plain words, real specifics, room to breathe. Tech earns its place by being checkable — shown once, where the reader looks for it.
 
 ## Tone spectrum
 
@@ -26,11 +26,11 @@ Voice formula: Clarity of explanation + experiential momentum. Tech earns its pl
 
 ### Feature Announcement
 
-✅ **On-brand:** Every document you add now strengthens what the system already knows. Connections you never noticed start surfacing. The whole gets sharper — your second month is better than your first.
+✅ **On-brand:** Connections you never noticed start surfacing. Your second month is better than your first.
 
 ❌ **Off-brand:** We're excited to share our latest update — it includes improvements that will help you be more productive.
 
-*Why:* Shows what the user experiences, not what we built. The wrong version is the bland-SaaS failure mode: agentless, vague, no specifics. The right version names the shift the user will actually notice.
+*Why:* Shows what the user experiences, not what we built. The wrong version is the bland-SaaS failure mode: agentless, vague, no specifics. The right version names the shift the user will actually notice — once, and trusts the reader.
 
 ### Documentation
 
@@ -50,7 +50,7 @@ Voice formula: Clarity of explanation + experiential momentum. Tech earns its pl
 
 ### Beginner Documentation
 
-✅ **On-brand:** Think of Spectrea as a web of everything your team knows. When you add a document, Spectrea reads it and weaves what it learns into the web — connecting it to things you've already captured.
+✅ **On-brand:** Think of Spectrea as a web of everything your team knows. Add a document and Spectrea weaves what it learns into the web.
 
 ❌ **Off-brand:** Documents are processed through a 6-phase pipeline: parse, chunk, embed, score, review, and integrate.
 
@@ -94,7 +94,7 @@ Voice formula: Clarity of explanation + experiential momentum. Tech earns its pl
 
 *Rule:* Ground leads. Say exactly what a setting does and what changes when it's toggled — especially for privacy and access. Plain sentences, no marketing.
 
-✅ **On-brand:** Workspace visibility: private. Only people you invite can see anything in this workspace — including the assistant, which sees only what each viewer can see.
+✅ **On-brand:** Workspace visibility: private. Only people you invite can see this workspace. The assistant sees only what each viewer can see.
 
 ❌ **Off-brand:** Take control of your data with our industry-leading privacy options!
 

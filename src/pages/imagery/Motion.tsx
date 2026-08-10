@@ -46,13 +46,13 @@ function EasingCurve({ name, css, color = '#4271DF' }: { name: string; css: stri
   return (
     <div className="flex flex-col items-center gap-2">
       <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
-        <rect x="0" y="0" width="80" height="80" rx="8" fill="#F4F4F1" stroke="#E5E7EB" strokeWidth="1" />
+        <rect x="0" y="0" width="80" height="80" rx="8" fill="#F4F4F1" stroke="#E7E5E4" strokeWidth="1" />
         {/* Axes + progress-1 line */}
-        <line x1="12" y1="68" x2="68" y2="68" stroke="#E5E7EB" strokeWidth="1" />
-        <line x1="12" y1="12" x2="12" y2="68" stroke="#E5E7EB" strokeWidth="1" />
-        <line x1="12" y1="26" x2="68" y2="26" stroke="#E5E7EB" strokeWidth="1" />
+        <line x1="12" y1="68" x2="68" y2="68" stroke="#E7E5E4" strokeWidth="1" />
+        <line x1="12" y1="12" x2="12" y2="68" stroke="#E7E5E4" strokeWidth="1" />
+        <line x1="12" y1="26" x2="68" y2="26" stroke="#E7E5E4" strokeWidth="1" />
         {/* Linear reference */}
-        <line x1="12" y1="68" x2="68" y2="26" stroke="#E5E7EB" strokeWidth="1" strokeDasharray="2 2" />
+        <line x1="12" y1="68" x2="68" y2="26" stroke="#E7E5E4" strokeWidth="1" strokeDasharray="2 2" />
         {/* The canonical curve, computed from its control points */}
         <path d={bezierPath(css)} stroke={color} strokeWidth="2" fill="none" strokeLinecap="round" />
       </svg>
@@ -214,7 +214,7 @@ function SlideDownDemo() {
         >
           <div className="mt-1 border border-stone-200 rounded-lg bg-white shadow-md overflow-hidden">
             {['Category A', 'Category B', 'Category C'].map((item, i) => (
-              <button key={item} onClick={() => setOpen(false)} className="w-full text-left px-3 py-2 text-xs text-iron hover:bg-cloud" style={{ ...chromeTransition, borderBottom: i < 2 ? '1px solid #F3F4F6' : 'none' }}>
+              <button key={item} onClick={() => setOpen(false)} className="w-full text-left px-3 py-2 text-xs text-iron hover:bg-cloud" style={{ ...chromeTransition, borderBottom: i < 2 ? '1px solid #F5F5F4' : 'none' }}>
                 {item}
               </button>
             ))}
@@ -574,7 +574,7 @@ export default function Motion() {
         </div>
         <div className="border border-stone-200 rounded-xl overflow-hidden">
           {easingRows.map(row => (
-            <div key={row.name} className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 px-4 py-3" style={{ borderBottom: '1px solid #F3F4F6' }}>
+            <div key={row.name} className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 px-4 py-3" style={{ borderBottom: '1px solid #F5F5F4' }}>
               <span className="text-xs font-mono text-ink w-28 flex-shrink-0">{row.name}</span>
               <span className="text-xs font-mono text-slate w-56 flex-shrink-0">{row.css}</span>
               <span className="text-xs text-iron flex-1">{row.use}</span>
@@ -597,7 +597,7 @@ export default function Motion() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="border border-stone-200 rounded-xl overflow-hidden">
             {Object.entries(M).map(([name, ms], i, arr) => (
-              <div key={name} className="flex items-center gap-4 px-4 py-3" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
+              <div key={name} className="flex items-center gap-4 px-4 py-3" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F5F5F4' : 'none' }}>
                 <div className="w-28 flex-shrink-0">
                   <span className="text-sm font-semibold text-iron">{name}</span>
                 </div>
@@ -662,7 +662,7 @@ export default function Motion() {
             { prop: 'Reduced motion', value: 'Static mark', note: ANIM.reducedMotion },
             { prop: 'Use cases', value: '—', note: ANIM.use },
           ].map((row, i, arr) => (
-            <div key={row.prop} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={row.prop} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F5F5F4' : 'none' }}>
               <span className="text-sm font-medium text-iron">{row.prop}</span>
               <span className="text-xs font-mono text-iron">{row.value}</span>
               <span className="text-xs text-slate">{row.note}</span>

@@ -1,9 +1,9 @@
-<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-09) -->
+<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-10) -->
 # Spectrea Brand Guide
 
 > Composable intelligence platform — turns scattered information into compounding intelligence. This file is a generated ROUTER: it tells an AI tool which brand document to load, and in which order. Every document below derives from the same canonical data.
 
-**Source of truth:** brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea's roadmap — check it before placing a capability claim on a buyer-facing surface. (v2.8.0, 2026-08-09)
+**Source of truth:** brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea's roadmap — check it before placing a capability claim on a buyer-facing surface. (v2.9.0, 2026-08-10)
 
 ## Load order (for AI tools)
 
@@ -21,7 +21,8 @@
 - **Tagline:** "We connect the dots."
 - **Promise:** Turns scattered information into compounding intelligence.
 - **Full-shape claim (internal north-star, not hero copy):** Compounding collective intelligence.
-- **Voice formula:** Clarity of explanation + experiential momentum. Tech earns its place by showing its work.
+- **Voice formula:** Plain words, real specifics, room to breathe. Tech earns its place by being checkable — shown once, where the reader looks for it.
+- **Attention rule:** Show the work once, where the reader looks for it. "Earn the jargon" governs what may enter the copy — not how often it repeats. One claim, one proof per surface: the mechanism lives one step from the claim (the next sentence, a subhead, an expandable) — never welded to every sentence. If two sentences in a row prove the same claim, cut one. The claim—dash—mechanism shape is a tool, not a rhythm.
 - **Never-use words:** AI-powered (overused), next-gen, state-of-the-art, world-class, breakthrough, unprecedented, game-changer, revolutionary, seamless, cutting-edge, synergy, leverage (as verb), agentic, AI-first, copilot (as generic noun), 10x, supercharge, effortless, magical.
 - **Density:** Max two privileged words per paragraph, one "living" / "alive" per page. If a paragraph survives losing every privileged word, the prose is doing its job — if it collapses without them, rewrite.
 - **Hero open:** Open on the outcome, written as a reveal — the moment of new sight. Never open with the mechanism, the pain alone, or a platitude. Ground it next with a specific the reader can check; close by equipping the next step. The gesture adapts to any surface — a problem may set up the reveal, proof may carry the grounding — but the open always lands on the outcome. Exception: graph-native jobs (exploration, visualisation), where the graph is the star and may lead.

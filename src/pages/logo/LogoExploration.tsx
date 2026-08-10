@@ -517,7 +517,7 @@ function AssetGenerator() {
         className="p-8 flex flex-col items-center gap-4"
         style={{
           backgroundColor: effectiveBg === 'transparent' ? undefined : effectiveBg,
-          backgroundImage: effectiveBg === 'transparent' ? 'repeating-conic-gradient(#E5E7EB 0% 25%, transparent 0% 50%)' : undefined,
+          backgroundImage: effectiveBg === 'transparent' ? 'repeating-conic-gradient(#E7E5E4 0% 25%, transparent 0% 50%)' : undefined,
           backgroundSize: effectiveBg === 'transparent' ? '16px 16px' : undefined,
         }}
       >
@@ -579,7 +579,7 @@ export default function LogoExploration() {
               { label: 'Stroke segments', value: '48 (individually coloured for path-following gradient)' },
               { label: 'Segment overlap', value: '+1.5 units with round caps for continuous joins' },
             ].map((row, i, arr) => (
-              <div key={row.label} className="flex gap-3 px-4 py-2" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
+              <div key={row.label} className="flex gap-3 px-4 py-2" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F5F5F4' : 'none' }}>
                 <span className="text-xs font-medium text-slate w-36 flex-shrink-0">{row.label}</span>
                 <span className="text-xs font-mono text-iron break-all">{row.value}</span>
               </div>
@@ -599,7 +599,7 @@ export default function LogoExploration() {
               { label: 'Ink', value: '#18181C' },
               { label: 'Canvas / White', value: '#FDFDFB' },
             ].map((row, i, arr) => (
-              <div key={row.label} className="flex gap-3 px-4 py-2" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
+              <div key={row.label} className="flex gap-3 px-4 py-2" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F5F5F4' : 'none' }}>
                 <span className="text-xs font-medium text-slate w-40 flex-shrink-0">{row.label}</span>
                 <span className="text-xs font-mono text-iron">{row.value}</span>
               </div>
@@ -628,7 +628,7 @@ export default function LogoExploration() {
               { label: 'Lockup composition', value: 'Mark replaces "S", cropped to visual bounds, cap-height aligned' },
               { label: 'Logotype min size', value: '32px font-size' },
             ].map((row, i, arr) => (
-              <div key={row.label} className="flex gap-3 px-4 py-2" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
+              <div key={row.label} className="flex gap-3 px-4 py-2" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F5F5F4' : 'none' }}>
                 <span className="text-xs font-medium text-slate w-36 flex-shrink-0">{row.label}</span>
                 <span className="text-xs font-mono text-iron">{row.value}</span>
               </div>
@@ -646,7 +646,7 @@ export default function LogoExploration() {
               { label: 'Pause (erased)', value: '97-100%' },
               { label: 'Dots', value: 'Always grey, visible beneath the stroke' },
             ].map((row, i, arr) => (
-              <div key={row.label} className="flex gap-3 px-4 py-2" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F3F4F6' : 'none' }}>
+              <div key={row.label} className="flex gap-3 px-4 py-2" style={{ borderBottom: i < arr.length - 1 ? '1px solid #F5F5F4' : 'none' }}>
                 <span className="text-xs font-medium text-slate w-36 flex-shrink-0">{row.label}</span>
                 <span className="text-xs font-mono text-iron">{row.value}</span>
               </div>

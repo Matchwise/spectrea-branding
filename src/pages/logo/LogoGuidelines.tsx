@@ -74,7 +74,7 @@ export default function LogoGuidelines() {
             { context: 'In ink circle (digital)', min: '32px container', note: 'Circle gives weight at small sizes' },
             { context: 'Logotype', min: '36px font-size', note: 'Below this, mark detail is lost — use horizontal lockup' },
           ].map((row, i) => (
-            <div key={row.context} className="flex items-center gap-4 px-4 py-3" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={row.context} className="flex items-center gap-4 px-4 py-3" style={{ borderBottom: i < 5 ? '1px solid #F5F5F4' : 'none' }}>
               <div className="w-44 flex-shrink-0">
                 <p className="text-sm font-medium text-iron">{row.context}</p>
               </div>
@@ -218,7 +218,7 @@ export default function LogoGuidelines() {
             { element: 'Ink mark on white', ratio: '17.7:1', status: 'Exceeds WCAG AAA' },
             { element: 'White mark on Ink', ratio: '17.7:1', status: 'Exceeds WCAG AAA' },
           ].map((row, i) => (
-            <div key={row.element} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < 5 ? '1px solid #F3F4F6' : 'none' }}>
+            <div key={row.element} className="grid grid-cols-3 px-4 py-2.5" style={{ borderBottom: i < 5 ? '1px solid #F5F5F4' : 'none' }}>
               <span className="text-sm text-iron">{row.element}</span>
               <span className="text-xs font-mono text-iron">{row.ratio}</span>
               <span className="text-xs font-medium" style={{ color: '#00B6A0' }}>{row.status}</span>
