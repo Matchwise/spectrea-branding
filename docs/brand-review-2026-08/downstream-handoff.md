@@ -1,9 +1,17 @@
 # Hand-off: downstream repos (spectrea, spectrea-web) — updated for v2.10.0
 
-> Written 2026-08-07 at v2.5.0; refreshed 2026-08-10 at v2.10.0. These steps are for
-> sessions working IN the consumer repos; nothing here is done yet — no re-pin has
-> happened since before v2.5.0. Precondition: spectrea-branding main pushed at v2.10.0
-> (deploy republishes all artifacts at https://branding.spectrea.com/).
+> Written 2026-08-07 at v2.5.0; refreshed 2026-08-10 at v2.10.0. Precondition met:
+> spectrea-branding main pushed at v2.10.0 (`11c2326`, deploy live).
+>
+> **Status 2026-08-11:** step 1's file refresh is DONE — both repos' vendored
+> snapshots were byte-copied from `11c2326` (17 files, cmp-verified) and spectrea's
+> snapshot README was rewritten to v2.10.0 provenance + facts (Codex critic gate:
+> revise 8 → accepted; evidence in `.runs/2026-08-06-brand-review/downstream-repin/`).
+> The copies are UNCOMMITTED in the consumer working trees by design — each repo's
+> own session commits them and runs the remaining steps below (spectrea's sync-policy
+> follow-ups: `/deep-review` of derived docs + a Define-level change for this
+> material jump; both repos: the section-2/3 migration checks, e.g. blue input-focus
+> styling → the canonical ring).
 
 ## 1. Re-pin the vendored brand snapshots
 
