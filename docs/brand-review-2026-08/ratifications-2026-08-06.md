@@ -85,23 +85,15 @@ Decisions captured one at a time via /interview; evidence artifact: https://clau
 
 ## Still open
 
-_Reconciled 2026-08-11._ This section had been carrying items that later decisions
-closed, and it reported Pages HTTPS as unenforced when it is enforced. Every closure
-below was re-verified against the decision it names and against canon or a live API
-read — not against the earlier text of this section. The ledger of what closed is
-kept beneath the open list so the D-number cross-references still resolve.
+_Reconciled 2026-08-11; re-reconciled 2026-08-12 after decisions 35b and 36 closed._
+This section had been carrying items that later decisions closed, and it reported
+Pages HTTPS as unenforced when it is enforced. Every closure below was re-verified
+against the decision it names and against canon or a live API read — not against the
+earlier text of this section. The ledger of what closed is kept beneath the open list
+so the D-number cross-references still resolve.
 
 ### Genuinely open
 
-- **The retired-values register (decision 35b)** — ratified 2026-08-11, not yet
-  implemented. Canon gains a register of retired values so migrations become
-  machine-checkable downstream the way the category noun already is; the
-  conformance checker then reads it. Blocked only on the checker's critic gate
-  clearing, since implementing it regenerates the file under review.
-- **The art session** (Darren schedules; it is one session, not five items) —
-  illustration under canon (D4/D6/D7/D33/D32; P2), hero-anchor **regeneration** (P4:
-  decision 9 shipped the honest caption as the interim; the anchor itself is still the
-  pre-canon render), and F6 style-family opinion.
 - **R7, graph-viz operational spec** — open **by design**, not by neglect: canon states
   at `brand.ts:1157` that the operational graph-rendering spec is a product design
   deliverable, not a brand-guide one. It closes in the product repo or not at all.
@@ -139,3 +131,5 @@ kept beneath the open list so the D-number cross-references still resolve.
 | Motion page (D41) | decision 27 | decision text |
 | Docs cleanup (D23) | decision 28 | decision text |
 | Guide wave 2 | §5+§14 decision 30, §11 decision 31 — fully closed | decision text |
+| Retired-values register (decision 35b) | implemented v2.11.0 (`353e644`), pushed and live; the generated checker reads it (scope absolute→error, contextual→review) | contract `retired` section, Governance page, `test:conformance` 32 cases |
+| The art session (D4/D6/D7/D33/D32, P2, P4, F6) | decision 36 — illustration doctrine canonized v2.12.0 (`a0f7965`), settled empirically in `.runs/2026-08-11-art-session/`. P4 closed by **retirement, not regeneration**: the pre-canon anchor broke four of its own rules and no longer renders (file kept on disk for an archived decision sheet). F6 resolved into the DNA block's reference line after an n=10 A/B showed style wording is not the lever. | live contract v2.12.0 (2026-08-12), six exemplars + generated `illustration-prompt.md` serving 200 |

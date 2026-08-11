@@ -1,9 +1,14 @@
 # Remaining branding work — plan (2026-08-11)
 
-The 2026-08 review is 34 decisions deep and every one of them is implemented,
-pushed and live. What follows is what is genuinely left, in the order it should
-happen and with the reason for that order. The authoritative status of individual
-audit items is the reconciled "Still open" section of
+> **Reconciled 2026-08-12: every scheduled item below is done.** The review closed
+> at 36 decisions, all implemented, pushed and live through v2.12.0 (`1ce3db2`).
+> The plan text is kept as written, with status annotated in place; what genuinely
+> remains is listed at the end and none of it lives in this repository.
+
+The 2026-08 review is 36 decisions deep and every one of them is implemented,
+pushed and live. What follows was the plan for what was left, in the order it
+should happen and with the reason for that order. The authoritative status of
+individual audit items is the reconciled "Still open" section of
 `ratifications-2026-08-06.md`; this file is the plan, not the ledger.
 
 ## Sequencing
@@ -18,17 +23,25 @@ decision so the cross-references still resolve. Two generator to-dos in the
 "Discovered during this session" section were also verified as landed and
 annotated.
 
-**2. The conformance checker — DONE 2026-08-11, gate in flight.**
+**2. The conformance checker — DONE 2026-08-11; gate accepted at round seven,
+pushed `30135c9`, live.**
 Second because it is the one thing that changes what can go wrong next. See
 below.
 
-**3. The art session — blocked on Darren's calendar.**
-Everything else genuinely open funnels into one working session: illustration
-under canon (D4/D6/D7/D33/D32, P2), regeneration of the hero anchor (P4 — the
-honest caption shipped as the interim, the anchor itself is still a pre-canon
-render), and the F6 style-family opinion. It is one session, not five tasks, and
-it needs Darren in the room because every item in it is a taste judgement that
-canon deliberately does not make.
+**3. The art session — DONE 2026-08-11/12 (decision 36, v2.12.0).**
+Everything else genuinely open funnelled into one working session: illustration
+under canon (D4/D6/D7/D33/D32, P2), the hero anchor (P4), and the F6
+style-family opinion. It ran as predicted — one session, Darren steering every
+call — and closed as the `illustration` canon export: an invariant DNA block
+plus one register sentence per job, settled empirically across ~30 single-render
+lanes (evidence in `.runs/2026-08-11-art-session/`). Two dispositions differ
+from this plan's wording. The pre-canon hero anchor was **retired, not
+regenerated** — it broke four of its own rules, so it no longer renders anywhere
+(the file stays on disk because an archived decision sheet references it). And
+F6 resolved into the DNA block's reference line after a pre-registered n=10 A/B
+showed style wording is not the lever — within-prompt variance exceeds
+between-prompt difference, so the style family lives in one sentence of the DNA,
+not in a wording choice.
 
 **4. Standing, not scheduled.**
 The counsel trigger (decisions 13 and 14c) fires before any public launch that
@@ -67,6 +80,12 @@ Two design decisions carry the whole thing:
 
 ## The known gap, stated plainly
 
+> **Decided and implemented since this was written:** decision 35b (ratified
+> 2026-08-11) answered yes — canon gained the `retired` export at v2.11.0
+> (`353e644`, pushed and live): five entries with scope `absolute` → error /
+> `contextual` → review, which the generated checker now reads. The paragraphs
+> below are the argument as it stood when the question was open.
+
 The checker cannot enforce a migration rule unless canon holds the retired value.
 Canon carries the *current* focus ring, so a checker generated from canon cannot
 recognise the *old* ring it would need to flag. The category noun is only
@@ -83,3 +102,24 @@ kept. Worth a decision; not worth assuming.
 A second, smaller finding for whoever owns spectrea: it hard-codes the never-use
 vocabulary across seven test files. That hand-copied list is its own drift risk —
 it goes stale silently — and it is what the generated checker is meant to replace.
+
+## What is actually left (2026-08-12)
+
+No scheduled work remains in this repository. The open items are downstream and
+standing:
+
+- **Consumer repos commit and re-pin.** Both have their own sessions with
+  unpushed branches (counts go stale — check the branch, not this doc): spectrea
+  carries its 2026-08-11 drift-fix commits on `darren` amid other unpushed
+  feature work, plus its sync-policy follow-ups; spectrea-web carries its
+  drift-fix commits on `dev` and in-flight illustration components (the vector
+  medium — solid-hex tints, register model). Both then re-pin their snapshots to
+  the head carrying v2.12.0 — spectrea's vendored `illustration-prompt.md` is
+  the retired v4 prompt and must be re-copied from generated `public/`, never
+  hand-reconciled. Section 0 of `downstream-handoff.md` is the working brief.
+- **The spectrea deep pass** Darren deferred on 2026-08-11 ("best effort for
+  now"). The largest single piece of outstanding work; it happens in that repo's
+  own session.
+- **Standing controls, unchanged from §4 above:** the counsel trigger before any
+  public trust/security/compliance claims, and R7, the graph-viz operational
+  spec, which closes in the product repo or not at all.
