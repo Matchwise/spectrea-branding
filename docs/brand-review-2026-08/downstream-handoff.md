@@ -1,6 +1,7 @@
-# Hand-off: downstream repos (spectrea, spectrea-web) — updated for v2.10.0
+# Hand-off: downstream repos (spectrea, spectrea-web) — updated for v2.12.0
 
-> Written 2026-08-07 at v2.5.0; refreshed 2026-08-10 at v2.10.0. Precondition met:
+> Written 2026-08-07 at v2.5.0; refreshed 2026-08-10 at v2.10.0; illustration doctrine
+> added 2026-08-12 at v2.12.0. Precondition for sections 1–4:
 > spectrea-branding main pushed at v2.10.0 (`11c2326`, deploy live).
 >
 > **Status 2026-08-11:** step 1's file refresh is DONE — both repos' vendored
@@ -12,6 +13,57 @@
 > follow-ups: `/deep-review` of derived docs + a Define-level change for this
 > material jump; both repos: the section-2/3 migration checks, e.g. blue input-focus
 > styling → the canonical ring).
+
+## 0. New at v2.12.0 — the illustration doctrine replaces the v4 prompt (decision 36)
+
+This is the one item in this hand-off that **retires a file a consumer already vendors**,
+so read it before re-pinning anything else.
+
+`brand-contract.json` gains a top-level `illustration` section, and the way brand imagery
+is generated changed shape. The old model was one universal prompt plus an eight-item
+pass/fail checklist. The new model is an invariant **DNA block** (~750 characters, four
+fill-in slots) plus **one register sentence per job** — hero, spot, docs, product, social,
+with a derivation rule for contexts not on that list. The DNA carries the identity and
+never varies; the register is the context dial and is never enforced across jobs.
+
+Three consequences that change downstream practice, not just downstream files:
+
+- **Measurements report; they never gate.** A conformance-style scorer rewards a crude
+  flat image, so no render is claimed or shipped without a person opening it. If you wire
+  image checks into CI, wire them as reports.
+- **The media split is a capability split.** Raster owns warmth, light and human presence
+  but cannot hit an exact hex. Vector owns exact palette, strict flatness and product
+  accuracy. In vector, **tints are lighter solid hexes, never `fill-opacity`** — a
+  translucent fill over a coloured ground composites to a colour in no palette (Amber at
+  60% over Teal reads olive, and a hue-family checker passes it).
+- **A reference image is a content channel, not a style channel.** Same-subject reference
+  reproduces the subject rather than restyling it; that is the documented behaviour, not a
+  misuse. Three modes are specified in `illustration.reference`.
+
+### What each repo owes
+
+**spectrea** vendors `docs/05-reference/brand/illustration-prompt.md`, and that copy is the
+retired **v4** universal prompt. Replace it with `public/illustration-prompt.md` from the
+pushed head — that path is now **generated from `src/data/brand.ts`**, so never hand-edit
+the vendored copy and never reconcile it by editing prose. `docs/illustration-prompt.md` in
+the brand repo (the file the v4 copy came from) has been deleted: it was a second source of
+truth for the artefact most likely to drift. Non-canonical per-generator guidance —
+Midjourney/SD/Firefly translations, tool commercial-safety, working practice — now lives in
+`docs/illustration-production.md`, which is explicitly not canon and is not for vendoring.
+
+**spectrea-web** does not vendor the prompt file, so it needs only the standard re-pin of
+its five snapshot files. But it has live hand-authored illustration components
+(`src/components/illustrations/`, `src/app/lab/hero-art/`) — those are the **vector** medium
+above, and the solid-hex tint rule and the register model both apply to them directly.
+Read them against `illustration.registers` and `illustration.media.vector` before the next
+commit that touches them.
+
+Both: re-pin to the pushed head carrying v2.12.0 and record that sha. Confirm the sha on
+`origin/main` rather than copying one from this document.
+
+Evidence for the doctrine, if a reviewer wants it: `.runs/2026-08-11-art-session/`
+(`spec-v7-dna.md`, per-asset `exemplar-provenance.md`, `metrics-shipped.json`,
+`verdict-36.md`). Six exemplars ship under `public/illustrations/`.
 
 ## 1. Re-pin the vendored brand snapshots
 
