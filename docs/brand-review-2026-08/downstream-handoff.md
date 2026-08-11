@@ -31,6 +31,115 @@ vendored copy). New generated artifacts consumers may also want to vendor or lin
   beside every logo SVG, plus transparent-background White mark/lockup companions
   (`logo-mark-white-transparent.*`, `logo-lockup-white-transparent.*`) alongside the
   plated originals.
+- **`public/brand-conformance.mjs` (new 2026-08-11) — vendor this one and run it in CI.**
+  See the section below.
+
+## 1a. The conformance checker — new, and the reason it exists
+
+The 2026-08-11 drift scan was hand-written, and it looked for logo geometry, focus
+styling and stale pins. It never looked at copy at all. The category noun retired on
+2026-07-03 was sitting in spectrea's site-wide metadata, its `(app)` layout, and its
+OG image for five weeks, and nothing in either repo could have noticed.
+
+`public/brand-conformance.mjs` is a zero-dependency Node script generated from
+`src/data/brand.ts` by `npm run generate:conformance`. Vendor it next to the snapshot
+and run it **scoped to the directories you actually ship**:
+
+```
+node docs/brand/brand-conformance.mjs src public
+```
+
+That is the CI command. Both consumer repos pass it today with zero errors, and over
+the three pre-fix files (`git show 081052028^:src/app/layout.tsx` and siblings) it
+reports all three retired-noun escapes as errors. It exits 1 on any error, 2 on a
+checker error such as an unreadable file — an unreadable file is a hole in coverage,
+not a pass.
+
+**Do not start with `--strict`.** It promotes warnings to failures, and both repos
+have warnings today that are not brand defects: spectrea has 59, almost all from its
+own brand tests enumerating the never-use list, and spectrea-web has 6. Graduate to
+`--strict` after annotating those files — the file-level suppression below exists
+precisely for that, and it is one line per file rather than one per word.
+
+A whole-repo scan (`node … .`) is an audit, not a CI gate. It completes in about 14
+seconds over spectrea's 10,786 scanned files, but it reaches historical documents — sweep
+reports, superseded specs, archived audits — which legitimately quote the retired
+noun because they are recording its retirement. Worktrees, caches and build output are
+skipped automatically.
+
+The brand repo's own root scan is the same story and is expected to report: this repo's
+archived audits, review records and the generator's rule tables all name the retired
+forms on purpose. `npm run test:conformance` is the check that must stay green there —
+25 cases pinning every rule, every suppression form, and every scanner bypass a gate
+found while the checker was being built.
+
+What it enforces, by severity:
+
+| Severity | Rules | Fails the build |
+|---|---|---|
+| error | retired category noun, brand-name misspellings, the specific forbidden assistant phrasing, unjustified suppressions | yes |
+| warn | never-use vocabulary, name confusion (Spectre/Spectra), all-caps styling, **compounding claims with no mechanism named in the same block** | only with `--strict` |
+| review | category words and verbs that are ordinary English outside brand copy, conditional never-use senses | no — a human reads these |
+
+The severity split is the whole design. Canon's `badSubstitutions` mixes the specific
+noun it retired with generic words like "AI assistant" — and Spectrea genuinely has an
+AI assistant feature, so a checker that bans the string outright reports 82 findings in
+the product repo, 80 of them noise. Generic entries are therefore `review`, not `error`.
+
+Two things to know before you trust a PASS:
+
+- **It checks strings, not brand quality.** Asset geometry, colour, type and focus
+  implementation are all out of scope, and the generated file lists these exclusions in
+  its own header. **A PASS does not mean clean** — it means nothing was found at a
+  failing severity, which by default is errors only. A PASS routinely sits
+  alongside warnings and reviews that still need reading.
+- **It cannot catch a retired value that canon no longer holds.** Canon carries the
+  current focus ring, not the old one, so a checker built from canon cannot recognise
+  the retired ring it would need to flag. The category noun is only checkable because
+  canon deliberately keeps its retired forms in `categoryGuard.badSubstitutions`. Any
+  other migration rule we want enforced has to be canonized the same way first.
+
+Suppression is available and requires a reason — `brand-conformance-ignore-next-line
+<rule> — why` for a line, `brand-conformance-ignore-file <rule> — why` anywhere in a
+file. A bare suppression is itself reported as an error, and a directive only counts
+inside a comment.
+
+Deciding *that* means reading source, and the checker is a scanner, not a lexer — in
+every file type, including the ones it knows. For JavaScript/TypeScript/CSS and markup
+it tracks strings, template literals, regex literals, triple-quoted blocks,
+`<script>`/`<style>` bodies, `<textarea>` content and Markdown fences, so a directive
+in any of those is correctly ignored. That is best-effort, not grammar-correct: raw
+string literals (`R"(…)"`, `r#"…"#`) and markup attribute values still fool it. In file
+types it does not know it applies a line-shape rule instead — the directive's own line
+must open with a comment marker — which by construction cannot see a YAML block scalar,
+a heredoc or a Python docstring.
+
+None of this was ever a security boundary: anyone who can edit a file can write a
+genuine comment with any reason text, and no checker can judge whether a reason is
+good. **So the guarantee is visibility, not prevention — every suppression the run
+honoured is printed under `Suppressed` and carried in `--json` as
+`suppressedDetails`.** Read that section in CI output; it is where an accidental or
+unwarranted waiver shows up. (`--quiet` prints the count only.)
+
+You will want the file-level form in two places:
+
+- **Your own brand tests.** spectrea hard-codes the never-use list across seven test
+  files, which is where most of its 59 warnings come from — and that hand-copied list
+  is a standing drift risk of its own, since it goes stale silently. Replacing it with
+  this checker is the point.
+- **Historical documents that quote a retired value.** `docs/05-reference/brand/README.md:20`
+  in spectrea cites the commit subject *"Category noun: composable knowledge platform
+  -> composable intelligence platform"* — a true string match and a legitimate
+  citation, because the document is recording the retirement.
+
+## Real findings the checker surfaced (owner: the consumer repos)
+
+These are live, not historical, and were not caught by the hand-written drift scan:
+
+| Where | Finding |
+|---|---|
+| `spectrea-web/README.md:3` | Still describes the product with the retired category noun. A live file, outside the `src public` scope the CI command covers. |
+| spectrea-web, 4 sites (`src/app/about/page.tsx:28`, `src/app/layout.tsx:42/:48/:55`) | "compounding intelligence" with no mechanism named in the same block — canon's `guardrails.compoundingClaim`. This is the downstream twin of D31, tracked as R11. |
 
 ## 2. Contract sections added since the last pin
 

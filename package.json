@@ -9,9 +9,11 @@
     "preview": "vite preview",
     "generate:assets": "node scripts/generate-brand-assets.mjs",
     "generate:ai": "node scripts/generate-ai-formats.mjs",
+    "generate:conformance": "node scripts/generate-conformance.mjs",
+    "test:conformance": "node scripts/conformance-selftest.mjs",
     "generate:guide": "node scripts/generate-guide.mjs",
     "generate:pdf": "node scripts/generate-pdf.mjs",
-    "generate:all": "node scripts/generate-brand-assets.mjs && node scripts/generate-ai-formats.mjs && node scripts/generate-guide.mjs && node scripts/generate-pdf.mjs"
+    "generate:all": "node scripts/generate-brand-assets.mjs && node scripts/generate-ai-formats.mjs && node scripts/generate-conformance.mjs && node scripts/generate-guide.mjs && node scripts/generate-pdf.mjs"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.10",
