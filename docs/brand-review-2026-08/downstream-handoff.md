@@ -70,7 +70,7 @@ skipped automatically.
 The brand repo's own root scan is the same story and is expected to report: this repo's
 archived audits, review records and the generator's rule tables all name the retired
 forms on purpose. `npm run test:conformance` is the check that must stay green there —
-25 cases pinning every rule, every suppression form, and every scanner bypass a gate
+32 cases pinning every rule, every suppression form, and every scanner bypass a gate
 found while the checker was being built.
 
 What it enforces, by severity:

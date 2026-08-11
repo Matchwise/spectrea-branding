@@ -4,7 +4,7 @@
 
 // --- Meta / Governance ---
 export const meta = {
-  version: '2.11.0',
+  version: '2.12.0',
   lastUpdated: '2026-08-11',
   sourceOfTruth:
     'brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea\'s roadmap — check it before placing a capability claim on a buyer-facing surface.',
@@ -1157,6 +1157,182 @@ export const graphViz = {
   note: 'Foundation only. The operational graph-rendering spec is a product design deliverable, not a brand-guide deliverable.',
 } as const
 
+// --- Illustration (decision 36, v2.12.0) ---
+// Replaces the v4 system (one universal prompt + an 8-item pass/fail
+// checklist). Settled empirically in the 2026-08-11 art session: 30+ single-
+// render lanes, each a fresh session so no render saw another. Two findings
+// drove the shape. Prompt LENGTH is load-bearing — the ~2,900-character v4/v6
+// block measurably lost generator attention, and compacting it was the single
+// change that moved every metric. And the checklist cannot gate: a crude flat
+// image scores perfectly while being incoherent, so numbers report and an eye
+// decides.
+export const illustration = {
+  doctrine:
+    'One invariant DNA block plus one register sentence per job. The DNA is the identity and never varies; the register is the context dial, chosen per job and never enforced across jobs. Measurements report, they never gate — a scorer rewards crude flat images, so a person looks at every render before it is claimed or shipped.',
+
+  // The invariant block. [SUBJECT], [REGISTER], [TEXT] and [ASPECT] are filled
+  // per job; nothing else varies. ~750 characters with a register line.
+  dnaPrompt: `Generate this image directly.
+
+[SUBJECT]
+[REGISTER]
+
+Flat editorial illustration in the style of Linear.app and Stripe brand art, slightly warmed.
+Filled shapes only. No outlines, no strokes, no line art.
+
+Colours: cobalt blue #4271DF, teal #00B6A0, amber #E19000, rose #F24260, warm off-white background #FAF8F2. One colour dominates; the others support as pale tints. Never all four at full strength.
+
+Warmth comes from palette and light, not from crowding. No grey filler shapes.
+Mix soft rounded forms with clean geometric ones.
+If people appear, their faces are blank or one dot per eye.
+
+[TEXT]
+No isometric view, no 3D, no photorealism, no houseplants.
+
+[ASPECT].`,
+
+  promptSlots: {
+    SUBJECT: 'One sentence naming the scene. A subject that must contain no people says so — figures are not part of the DNA.',
+    REGISTER: 'One sentence from registers below, or one derived per registerDerivation.',
+    TEXT: 'Marketing and editorial subjects: "No text." Product subjects: "Render the interface accurately, with the text it genuinely needs. Never lorem, never gibberish."',
+    ASPECT: 'The aspect ratio, e.g. "16:9", "1:1", "1200x630".',
+  },
+
+  promptNote:
+    'Length is load-bearing. The ~2,900-character predecessor lost generator attention; compacting to ~750 characters was the single change that moved every measured metric. Adding rules to this block costs attention on the rules already in it — a new constraint belongs in a register sentence, not here.',
+
+  registers: [
+    {
+      id: 'hero',
+      job: 'Draws attention; rewards a look',
+      sentence: 'A detailed, balanced scene with warm light — rich enough to reward a second look, composed enough to breathe.',
+    },
+    {
+      id: 'spot',
+      job: 'Sits beside content; must not compete with it',
+      sentence: 'Simple and direct: a few large deliberate shapes and one large calm empty area.',
+    },
+    {
+      id: 'docs',
+      job: 'Explains; carries order and motion',
+      sentence: 'A clear single idea in motion — order emerging, mid density, nothing decorative.',
+    },
+    {
+      id: 'product',
+      job: 'Shows the actual software',
+      sentence: 'Render the product accurately; named source documents sit beside the answer.',
+    },
+    {
+      id: 'social',
+      job: 'Reads at thumbnail size',
+      sentence: 'Bold and immediate at small size; two equal subjects may share the lead colour.',
+    },
+  ],
+
+  registerDerivation:
+    'These five are named presets, not a closed list. A register is one sentence positioning a job on five axes: density, composition, light, text, and subjects. A context with no register gets a sentence composed on those axes; if the context recurs, name the sentence, make its best render the exemplar, and add it here. The DNA never moves — only the sentence does.',
+
+  // Every bound is anchored to a render that demonstrates it. "Default" is what
+  // an unregistered job gets and the centre the system returns to.
+  ranges: [
+    {
+      axis: 'Temperature',
+      range: 'Cool-leaning (Cobalt-led and spare on the warm ground) to golden-hour (warm light over a dense warm scene). The ground is ALWAYS warm off-white — temperature varies in the shapes and the light, never the ground.',
+      default: 'Gentle warmth: warm light present, not golden.',
+      outOfRange: 'A cool white or grey ground; blue-grey washes; heat with no cool counterweight.',
+      judgedBy: 'eye',
+      note: 'No ratio scores this axis: warm-share-of-colour is blind to quantity and ranked a spare image above a dense golden one. Perceived warmth is warm coverage combined with light and density.',
+    },
+    {
+      axis: 'Density',
+      range: 'Largest open area from ~12% (richest) to ~76% (sparest).',
+      default: 'Set by register — a hero carries detail, a spot carries few large shapes. An unregistered job sits mid.',
+      outOfRange: 'Below ~12%: nothing breathes. The retired anchor sat at 5%.',
+      judgedBy: 'eye',
+      note: 'Density is FELT in shape count and detail, and open-ground percentage tracks it only loosely. In the shipped exemplars the hero measures MORE open ground than the spot (34.7% against 25.1%) while looking plainly denser — a detailed desk with a lamp, books and a poster against a few large shapes and a quiet half-frame. Two samples are not a range; they are enough to show the number cannot define the register. Read it as a drift signal.',
+    },
+    {
+      axis: 'Abstraction',
+      range: 'Accurate product scenes to pure geometric abstraction.',
+      default: 'Simplified representational — a real scene built from flat shapes.',
+      outOfRange: 'Photorealism at one end; literal banned metaphors (networks, nodes, prisms) and decoration with no job at the other.',
+      judgedBy: 'eye',
+    },
+    {
+      axis: 'Depth',
+      range: 'Vector has no range: strictly flat. Raster runs from pure flat through layered flat (overlap occlusion) to believable perspective where the subject itself needs it.',
+      default: 'Layered flat, at most one darker tonal step.',
+      outOfRange: 'Isometric projection as a style; slab-edge stacks; gloss; rendered 3D.',
+      judgedBy: 'eye',
+    },
+    {
+      axis: 'Saturation',
+      range: 'One primary at full strength leads; a second may reach full strength in small accents; three only where shapes themselves are the subject.',
+      default: 'Exactly one primary at full strength.',
+      outOfRange: 'Four primaries at full strength — the retired anchor.',
+      judgedBy: 'report',
+    },
+    {
+      axis: 'Figures',
+      range: 'None, one, or two equals (social register only).',
+      default: 'Zero or one. Faces are always blank or one dot per eye.',
+      outOfRange: 'Crowds, detailed facial features, mascots.',
+      judgedBy: 'eye',
+    },
+  ],
+
+  media: {
+    raster:
+      'Owns warmth, light and human presence. It cannot hit an exact brand hex — across every raster measured, the closest Cobalt landed at colour distance 33 — so its palette rule is a stated tolerance, never an exactness claim. Depth is permitted while it stays illustration.',
+    vector:
+      'Owns exact palette, strict flatness and product accuracy: the author types the hex. Tints are lighter SOLID hexes, never fill-opacity — a translucent fill over a coloured ground composites to a colour in no palette (Amber at 60% over Teal reads olive, and a hue-family checker passes it).',
+    choosing:
+      'Warmth, mood, human presence, marketing scenes → raster. Exact brand colour, schematic product, in-guide primitives, anything that must be edited later → vector.',
+  },
+
+  reference: {
+    doctrine:
+      'A reference image is a CONTENT channel, not a style channel: its pull scales with how compatible its content is with the prompt. The prompt sets the level; the reference narrows variance toward itself.',
+    modes: [
+      {
+        id: 'none',
+        when: 'A new composition — the default',
+        effect: 'The register sentence alone sets the level, and nothing bleeds in.',
+      },
+      {
+        id: 'cross-subject',
+        when: 'A batch that must feel like one campaign',
+        effect: 'Style steadies and variance narrows; expect motifs from the reference to echo, which inside one campaign reads as cohesion.',
+      },
+      {
+        id: 'same-subject',
+        when: 'A variant of an image that already exists',
+        effect: 'The render collapses onto the reference — three of three draws reproduced it object-for-object. Cloning is the feature here and a defect everywhere else.',
+      },
+    ],
+  },
+
+  checklist: {
+    stance: 'Report, never gate.',
+    reports: [
+      'largest open ground area',
+      'neutral grey filler share',
+      'primaries at full saturation',
+      'hero lead ratio',
+      'top colours by area, named',
+    ],
+    why: 'A crude flat image scores perfectly while being incoherent, and a render that broke the warm-ground rule scored best of its round. Numbers describe an image so drift is visible over time; they never decide whether it ships. Every render is opened and looked at before any claim is made about it.',
+  },
+
+  antiPatterns: [
+    { never: 'Mascots or character cartoons', because: 'Spectrea is a mentor, not a pet.' },
+    { never: 'Stock photography', because: 'Warmth comes from the palette and the light in generated scenes, not from stock imagery.' },
+    { never: 'Outlines or line art', because: 'Every shape is filled. A stroke that survives a trace is a defect, not a style.' },
+    { never: 'Off-palette gradients and neon', because: 'The palette is the identity; a colour outside it is a different brand.' },
+    { never: 'Bauhaus limb-figures', because: 'The retired SpectreaFigure illustrated the opposite of the product\'s composability promise.' },
+  ],
+} as const
+
 // --- Trust & Disclosure Copy ---
 // Brand-voiced masters for trust surfaces, derived from the ratified vision
 // (sovereign data, per-viewer access, provenance, managed-path no-train
@@ -1199,6 +1375,7 @@ export const ratificationLedger = [
   { date: '2026-08-10', decision: 'Voice humanist correction (Darren-ratified option B of three; v2.9.0): the voice formula read as a composition rule — "showing its work" was being applied per-sentence, welding a mechanism clause onto every claim — producing the justification-chain bloat Darren flagged as un-humanist. Rewritten: "Plain words, real specifics, room to breathe. Tech earns its place by being checkable — shown once, where the reader looks for it." — the anti-black-box stance stays (checkable ≥ shown), the composition pressure goes. New voice.attentionRule canonizes the discipline: "earn the jargon" is an ADMISSION rule, not a composition rule; one claim, one proof per surface; the mechanism lives one step from the claim; the claim—dash—mechanism shape is a tool, not a rhythm. Three canonical examples retuned to comply (Feature Announcement proved compounding three sentences in a row — now once; Beginner Documentation dropped a tail restating its own sentence; Settings unstacked a nested clause chain). The hero exemplar (D27) already passes once-per-surface — a hero carries exactly one claim + one mechanism — and is unchanged. The archetype through-line note re-anchors the reveal→ground→equip triad to the heroOpen gesture; the formula states the texture. techApproach "Earn the jargon" unchanged as the admission rule\'s name.' },
   { date: '2026-08-10', decision: 'One focus system (Darren-ratified conditionally on independent adjudication; v2.10.0): the system carried two focus identities — the ratified Amber ring on buttons (decision 16) and a Cobalt border-flip + soft halo on inputs — so a keyboard journey crossed two indicators, and the input idiom was independently shown broken: the Cobalt halo measures 1.29:1 (invisible) and a Teal/Rose validation border blocks the border-flip entirely, leaving focus invisible exactly when validation is active. A framing-blind Codex adjudication (candidates A Amber-everywhere / B Cobalt-everywhere / C canonized split / D neutral Ink ring / F double ring, all contrast-computed from canon) selected A — least semantic and governance churn; the Amber-warning adjacency is real but managed (a ring is transient and offset-outside, never an on-field border); Cobalt would self-camouflage on the Primary (1.00:1 ring-vs-fill) and overload the selected/checked channel; a neutral Ink ring reuses Ink\'s structural channel and is unnecessarily severe. Ratified: brandTokens.focusRing gains the scope rule (one ring for every focusable; dedicated accessibility chrome outside the colour tiers; borders never change on focus). components.forms.focus rewritten to reference the ring. The tier-1 Responsive rule drops "input focus" from Cobalt\'s jobs — resolving the canon\'s own contradiction (tiers said Cobalt, the token said Amber). Industry note recorded: unifying matches universal practice; the dedicated-focus-colour school (GOV.UK, USWDS) is the accessibility-first camp this lands in. Record: .runs/2026-08-06-brand-review/focus-system-review/ (framing-blind brief + verbatim adjudication).' },
   { date: '2026-08-11', decision: 'Consumer conformance checking + retired-values register (Darren-ratified; v2.11.0): public/brand-conformance.mjs is a zero-dependency checker generated from brand.ts (scripts/generate-conformance.mjs) that consumer repos vendor beside the snapshot and run in CI — fifteen rules plus a compounding-proximity rule at v2.11.0 (ten before the register landed), severity split so only retired forms error while generic category words stay review (an undifferentiated checker produced 82 findings in the product repo, 80 noise). Canon growth fails the generator build rather than silently escaping the checker; suppression requires a stated reason and every honoured suppression is printed (visibility, not prevention — the comment scanner is best-effort in every file type and says so). Origin: the 2026-08-11 drift scan was hand-written and never looked at copy, so the category noun retired 2026-07-03 sat live in spectrea metadata five weeks. New retired export: canon\'s one history-keeping structure, scope absolute→error / contextual→review with stillValidAs, seeded with five real retirements — a sixth candidate (Pewter as meaning-carrying text) was evaluated and excluded because its hex is a live palette colour and produced 57 legitimate-use findings in one consumer; a register entry must be rarer than its noise. Naive flat lists are wrong regardless — the rgba ring is retired ONLY as the light ring and still canonical in dark. Gate: critic-conformance accepted at round 7 after 25 findings; trail in .runs/2026-08-11-conformance-checker/verdict.md.' },
+  { date: '2026-08-11', decision: 'Illustration doctrine v7 (Darren-ratified; v2.12.0): new illustration export replaces the v4 system (one universal prompt + an 8-item pass/fail checklist) with an invariant DNA block plus one register sentence per job — hero/spot/docs/product/social named as presets, not a closed list, with a stated derivation rule (one sentence positioning a job on density, composition, light, text, subjects) so unseen contexts are covered without touching the DNA. Settled empirically in the 2026-08-11 art session: 30+ single-render lanes, each a fresh session so no render saw another, with pre-registered comparison scripts. Four findings drove the shape. (1) Prompt LENGTH is a lever and wording is not: STYLE-line rewording moved nothing at n=5+5 (all ranges overlapped), while compacting ~2,900 characters to ~750 moved every metric — so adding a rule to the DNA now costs attention on the rules already there, and new constraints go in register sentences. (2) A reference image is a CONTENT channel, not a style channel: with a same-subject reference three of three draws reproduced it object-for-object, so the default mode is NO reference and cloning is scoped to deliberate variants. (3) The checklist cannot gate — a crude flat image scores perfectly while incoherent, and the docs candidate that scored best-of-round broke the warm-ground rule — so measurements report and a person looks at every render. (4) Media split by capability: no raster ever landed closer than colour distance 33 from Cobalt while a vector hits it exactly, so exact palette is a vector rule and raster carries a stated tolerance; vector tints must be solid hexes because a translucent fill over colour composites off-palette (Amber 60% over Teal reads olive) and a hue-family checker passes it. Ranges canonized per axis with defaults and out-of-range bounds; temperature is explicitly eye-judged after warm-share-of-colour, a ratio blind to quantity, ranked a spare image above a dense golden one. Two prompt-level defects fixed on Darren\'s eye: the unconditional face line was inviting figures into object-only scenes (now conditional), and density lines that belonged to one context had been written as universals (now the spot register). Record: .runs/2026-08-11-art-session/spec-v7-dna.md, with per-asset prompt/run provenance in exemplar-provenance.md — the gate caught the first attempt shipping hero and docs exemplars rendered BEFORE the conditional-face amendment, so every shipped example was regenerated under the final block and the claim is now checkable rather than asserted.' },
 ] as const
 
 // --- Retired Values Register ---

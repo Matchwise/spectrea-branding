@@ -1,4 +1,6 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
+import Tooltip from '../../components/brand/Tooltip'
+import { illustration } from '../../data/brand'
 
 /* ------------------------------------------------------------------ */
 /*  Tokens                                                             */
@@ -13,6 +15,16 @@ const PEWTER = '#97979E'
 const CLOUD = '#F4F4F1'
 const CANVAS = '#FDFDFB'
 const PAPER = '#FAF8F2'
+
+/* Exemplars. Each is the render the register named, produced by the DNA block
+   in this page — the provenance rule is part of the doctrine: no shipped
+   example predates the system it demonstrates. */
+const EXEMPLARS: Record<string, { src: string; caption: string }> = {
+  hero: { src: './illustrations/example-hero.jpg', caption: 'Detailed and balanced, warm light, Cobalt leading.' },
+  spot: { src: './illustrations/example-spot.jpg', caption: 'A few large shapes and one large calm area.' },
+  docs: { src: './illustrations/example-docs.jpg', caption: 'One idea in motion — order emerging from scatter.' },
+  product: { src: './illustrations/example-product.jpg', caption: 'Named sources beside the answer, with the text the interface needs.' },
+}
 
 /* ================================================================== */
 /*  Display primitives                                                  */
@@ -114,94 +126,168 @@ export default function Illustration() {
   return (
     <PageShell
       title="Illustration"
-      subtitle="One universal prompt for every hero scene, a tight set of hand-coded primitives for the schematic work in between. No outlines. Warmth through tints of primaries, never neutrals."
+      subtitle="One invariant prompt block carries the identity; one sentence per job sets the context. Two media split by what each is actually good at. Measurements report — a person looks at every render."
     >
-      {/* ─── v4 Manifesto ─── */}
+      {/* ─── Doctrine ─── */}
       <Section>
         <div className="rounded-xl bg-ink text-white p-6 sm:p-8">
-          <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: COBALT }}>The illustration system · v4</p>
-          <h2 className="text-2xl font-semibold mt-1" style={{ fontFamily: "'Albert Sans', sans-serif" }}>One prompt, one substrate, one checklist.</h2>
+          <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: COBALT }}>The illustration system</p>
+          <h2 className="text-2xl font-semibold mt-1" style={{ fontFamily: "'Albert Sans', sans-serif" }}>One DNA, one register sentence.</h2>
           <p className="text-sm mt-3 max-w-2xl leading-relaxed" style={{ color: '#B0B0B6' }}>
-            v4 is a universal, subject-agnostic prompt — one template renders any scene (person at a desk, city skyline, abstract concept, dashboard) in the brand voice. Warmth comes from palette discipline: supporting elements use 20–60% tints of the primaries, never default to neutrals. Subtle depth from a single darker tonal step per rounded object. No outlines anywhere.
-          </p>
-          <p className="text-sm mt-3 max-w-2xl leading-relaxed" style={{ color: '#B0B0B6' }}>
-            For mid- and higher-complexity illustration, use the prompt in <code className="bg-graphite px-1.5 py-0.5 rounded text-xs">/illustration-prompt.md</code> (published from docs/illustration-prompt.md) with your image generator. For basic primitives — graph vocabulary, section dividers, in-product state dots — use the hand-coded substrate below.
+            {illustration.doctrine}
           </p>
         </div>
       </Section>
 
-      {/* ─── Division of labour ─── */}
-      <Section title="Two tracks · where to reach for what">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="rounded-xl border border-amber-200 p-5" style={{ backgroundColor: '#E1900010' }}>
-            <p className="text-[10px] font-semibold uppercase tracking-wider mb-2" style={{ color: '#7C4D04' }}>Image-gen via v4 prompt</p>
-            <p className="text-sm font-semibold text-ink mb-2" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Mid- and higher-complexity scenes</p>
-            <p className="text-xs text-iron leading-relaxed">
-              Marketing heroes, feature-page illustrations, blog headers, About imagery, onboarding scenes, social posts. Any 16:9 composition with a recognisable scene.
-            </p>
-            <p className="text-xs text-slate leading-relaxed mt-2">
-              Paste the prompt from <code className="bg-amber-50 px-1 py-0.5 rounded font-mono text-xs">/illustration-prompt.md</code> into Gemini / Firefly / Imagen, fill the <code className="bg-amber-50 px-1 py-0.5 rounded font-mono text-xs">SUBJECT:</code> line, evaluate against the checklist, iterate.
-            </p>
-          </div>
-          <div className="rounded-xl border border-teal-200 p-5" style={{ backgroundColor: '#00B6A010' }}>
-            <p className="text-[10px] font-semibold uppercase tracking-wider mb-2" style={{ color: '#007362' }}>Hand-coded SVG</p>
-            <p className="text-sm font-semibold text-ink mb-2" style={{ fontFamily: "'Albert Sans', sans-serif" }}>Basic, simple, direct primitives</p>
-            <p className="text-xs text-iron leading-relaxed">
-              Graph primitives (node, edge, cluster, trail, confidence, highlight), section dividers, in-product state dots, painterly-field backdrop, small threads and constellations.
-            </p>
-            <p className="text-xs text-slate leading-relaxed mt-2">
-              <strong>Rule of thumb:</strong> if the piece fits in a 120×90 brand-guide vocabulary card, hand-SVG. If it wants to be a 16:9 scene, image-gen.
-            </p>
-          </div>
-        </div>
-      </Section>
-
-      {/* ─── Palette ratio + tint discipline ─── */}
-      <Section title="Palette & tint discipline">
-        <p className="text-sm text-slate mb-5 leading-relaxed">
-          60 / 20 / 10 / 10 by visual weight — Canvas &amp; Paper / Cloud surface / Warm Blend structure (Ink / Iron / Slate / Pewter) / Spectrum. One hero primary per composition dominates; the other primaries appear as supporting tints or accents. <strong>Supporting elements use 20–60% tints of the primaries, never default to neutrals</strong> — that's the whole fix for "cold / drab."
-        </p>
-        <div className="border border-stone-200 rounded-xl overflow-hidden bg-white">
-          <div className="h-10 flex">
-            <div className="flex-[60]" style={{ backgroundColor: CANVAS, borderRight: '1px solid #ECECE7' }} />
-            <div className="flex-[20]" style={{ backgroundColor: CLOUD }} />
-            <div className="flex-[10]" style={{ backgroundColor: INK }} />
-            <div className="flex-[3]" style={{ backgroundColor: COBALT }} />
-            <div className="flex-[3]" style={{ backgroundColor: TEAL }} />
-            <div className="flex-[2]" style={{ backgroundColor: AMBER }} />
-            <div className="flex-[2]" style={{ backgroundColor: ROSE }} />
-          </div>
-          <div className="grid grid-cols-4 px-4 py-3 text-center">
-            <div><p className="text-sm font-semibold text-ink">60%</p><p className="text-xs text-slate">Canvas / Paper</p></div>
-            <div><p className="text-sm font-semibold text-ink">20%</p><p className="text-xs text-slate">Cloud surface</p></div>
-            <div><p className="text-sm font-semibold text-ink">10%</p><p className="text-xs text-slate">Warm Blend structure</p></div>
-            <div><p className="text-sm font-semibold text-ink">10%</p><p className="text-xs text-slate">Spectrum accents</p></div>
-          </div>
-        </div>
-      </Section>
-
-      {/* ─── Warmth checklist ─── */}
-      <Section title="Warmth + palette checklist">
+      {/* ─── The DNA block ─── */}
+      <Section title="The DNA block">
         <p className="text-sm text-slate mb-4 leading-relaxed">
-          Evaluate every image-gen output against these. Ship only if all pass.
+          Every image starts here. Fill the four slots; change nothing else. {illustration.promptNote}
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {[
-            ['01', 'Zero outlines', 'Not a single stroke anywhere — figures, objects, edges, or type.'],
-            ['02', 'Every element carries colour', 'No element defaults to pure neutral. Background and mid-ground forms use tints of primaries.'],
-            ['03', 'One hero primary', 'A single spectrum colour dominates; others as supporting tints or accents.'],
-            ['04', 'Subtle depth', 'At least one rounded object has a single darker tonal step on the shadow side. No soft gradients, no drop shadows.'],
-            ['05', 'Both modes present', 'Geometric shapes never drop below ~15% of the composition. Organic shapes always present.'],
-            ['06', 'Coloured ground', 'Background is a palette neutral or palette gradient — not pure white, not pure grey.'],
-            ['07', 'No face detail', 'A face is a suggestion — one dot per eye max, or blank.'],
-            ['08', 'Asymmetric balance', 'Rule-of-thirds or diagonal flow. Not centred.'],
-          ].map(([n, title, desc]) => (
-            <div key={n} className="rounded-xl border border-stone-200 p-4">
-              <p className="text-[10px] font-semibold uppercase tracking-wider mb-1" style={{ color: COBALT }}>{n}</p>
-              <p className="text-sm font-semibold text-ink mb-1" style={{ fontFamily: "'Albert Sans', sans-serif" }}>{title}</p>
-              <p className="text-xs text-slate leading-relaxed">{desc}</p>
+        <div className="rounded-xl border border-stone-200 overflow-hidden">
+          <pre className="p-5 text-xs leading-relaxed overflow-x-auto font-mono whitespace-pre-wrap" style={{ backgroundColor: PAPER, color: INK }}>
+            {illustration.dnaPrompt}
+          </pre>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+          {Object.entries(illustration.promptSlots).map(([slot, rule]) => (
+            <div key={slot} className="rounded-xl border border-stone-200 p-4">
+              <p className="text-xs font-mono font-semibold mb-1" style={{ color: COBALT }}>[{slot}]</p>
+              <p className="text-xs text-iron leading-relaxed">{rule}</p>
             </div>
           ))}
+        </div>
+      </Section>
+
+      {/* ─── Registers ─── */}
+      <Section>
+        <h2 className="text-xl font-semibold text-ink mb-4">
+          <Tooltip content="The register is the only thing that varies between jobs. It is chosen for the job at hand and never enforced across jobs — a hero and a spot illustration are supposed to look different.">
+            <span>Registers</span>
+          </Tooltip>
+        </h2>
+        <div className="space-y-4">
+          {illustration.registers.map(reg => {
+            const ex = EXEMPLARS[reg.id]
+            return (
+              <div key={reg.id} className="rounded-xl border border-stone-200 overflow-hidden">
+                <div className="grid grid-cols-1 md:grid-cols-2">
+                  <div className="p-5">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-xs font-mono px-2 py-0.5 rounded" style={{ backgroundColor: '#4271DF15', color: '#2F58B8' }}>{reg.id}</span>
+                      <p className="text-xs text-slate">{reg.job}</p>
+                    </div>
+                    <p className="text-sm text-ink leading-relaxed italic">“{reg.sentence}”</p>
+                    {ex && <p className="text-xs text-slate mt-3 leading-relaxed">{ex.caption}</p>}
+                    {!ex && <p className="text-xs text-slate mt-3 leading-relaxed">No exemplar rendered yet — the sentence is canonical, the example follows the first real use.</p>}
+                  </div>
+                  {ex && (
+                    <div className="border-t md:border-t-0 md:border-l border-stone-200" style={{ backgroundColor: PAPER }}>
+                      <img src={ex.src} alt={`${reg.id} register example`} className="w-full h-full object-cover block" />
+                    </div>
+                  )}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+        <div className="mt-4 rounded-xl p-5 border" style={{ backgroundColor: '#E1900010', borderColor: '#E1900030' }}>
+          <p className="text-[10px] font-semibold uppercase tracking-wider mb-2" style={{ color: '#7C4D04' }}>A context that is not listed</p>
+          <p className="text-xs text-iron leading-relaxed">{illustration.registerDerivation}</p>
+        </div>
+      </Section>
+
+      {/* ─── Ranges ─── */}
+      <Section title="The allowed range">
+        <p className="text-sm text-slate mb-4 leading-relaxed">
+          What may vary, how far, and where the default sits. Outside the stated bound is a defect, not a variation.
+        </p>
+        <div className="border border-stone-200 rounded-xl overflow-hidden">
+          {illustration.ranges.map((r, i) => (
+            <div key={r.axis} className="px-5 py-4" style={{ borderBottom: i < illustration.ranges.length - 1 ? '1px solid #F5F5F4' : 'none' }}>
+              <div className="flex items-center gap-2 mb-1.5">
+                <p className="text-sm font-semibold text-ink">{r.axis}</p>
+                <span
+                  className="text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded"
+                  style={r.judgedBy === 'eye'
+                    ? { backgroundColor: '#E1900015', color: '#9A6300' }
+                    : { backgroundColor: '#00B6A015', color: '#007362' }}
+                >
+                  judged by {r.judgedBy}
+                </span>
+              </div>
+              <p className="text-xs text-iron leading-relaxed">{r.range}</p>
+              <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-2">
+                <p className="text-xs text-slate leading-relaxed"><strong className="text-iron">Default:</strong> {r.default}</p>
+                <p className="text-xs text-slate leading-relaxed"><strong style={{ color: '#BA3249' }}>Out of range:</strong> {r.outOfRange}</p>
+              </div>
+              {'note' in r && r.note && <p className="text-xs text-slate mt-2 leading-relaxed italic">{r.note}</p>}
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* ─── Media split ─── */}
+      <Section title="Two media, split by capability">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="rounded-xl border border-amber-200 overflow-hidden" style={{ backgroundColor: '#E1900010' }}>
+            <img src={EXEMPLARS.product.src} alt="Product illustration, generated raster" className="w-full h-auto block" />
+            <div className="p-5">
+              <p className="text-[10px] font-semibold uppercase tracking-wider mb-2" style={{ color: '#7C4D04' }}>Generated raster</p>
+              <p className="text-xs text-iron leading-relaxed">{illustration.media.raster}</p>
+            </div>
+          </div>
+          <div className="rounded-xl border border-teal-200 overflow-hidden" style={{ backgroundColor: '#00B6A010' }}>
+            <img src="./illustrations/example-product-vector.svg" alt="The same product brief, hand-authored SVG" className="w-full h-auto block" style={{ background: PAPER }} />
+            <div className="p-5">
+              <p className="text-[10px] font-semibold uppercase tracking-wider mb-2" style={{ color: '#007362' }}>Hand-authored SVG</p>
+              <p className="text-xs text-iron leading-relaxed">{illustration.media.vector}</p>
+            </div>
+          </div>
+        </div>
+        <p className="text-sm text-slate mt-4 leading-relaxed">
+          <strong className="text-ink">Choosing:</strong> {illustration.media.choosing}
+        </p>
+      </Section>
+
+      {/* ─── Reference images ─── */}
+      <Section title="Reference images">
+        <p className="text-sm text-slate mb-4 leading-relaxed">{illustration.reference.doctrine}</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          {illustration.reference.modes.map(mode => (
+            <div key={mode.id} className="rounded-xl border border-stone-200 p-5">
+              <p className="text-xs font-mono font-semibold mb-1" style={{ color: COBALT }}>{mode.id}</p>
+              <p className="text-sm font-semibold text-ink mb-2" style={{ fontFamily: "'Albert Sans', sans-serif" }}>{mode.when}</p>
+              <p className="text-xs text-slate leading-relaxed">{mode.effect}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* ─── Checklist: reports, not gates ─── */}
+      <Section title="What gets measured">
+        <div className="rounded-xl border border-stone-200 p-5">
+          <div className="flex flex-wrap items-center gap-2 mb-3">
+            <span className="text-xs font-semibold uppercase tracking-wider px-2 py-0.5 rounded" style={{ backgroundColor: '#00B6A015', color: '#007362' }}>
+              {illustration.checklist.stance}
+            </span>
+            {illustration.checklist.reports.map(rep => (
+              <span key={rep} className="text-xs font-mono px-2 py-0.5 rounded bg-cloud text-iron border border-stone-200">{rep}</span>
+            ))}
+          </div>
+          <p className="text-xs text-iron leading-relaxed">{illustration.checklist.why}</p>
+        </div>
+      </Section>
+
+      {/* ─── Abstract end of the range ─── */}
+      <Section title="The abstract end">
+        <p className="text-sm text-slate mb-4 leading-relaxed">
+          People are not part of the DNA and neither are objects: the two shape families can be the
+          subject themselves. This is the far end of the abstraction axis, and the one place a third
+          primary at full strength is defensible — the shapes are what the image is about.
+        </p>
+        <div className="rounded-xl overflow-hidden border border-stone-200">
+          <img src="./illustrations/example-abstract.jpg" alt="Abstract composition — geometric facets meeting organic curves" className="w-full h-auto block" style={{ background: PAPER }} />
         </div>
       </Section>
 
@@ -295,14 +381,14 @@ export default function Illustration() {
           <Card label="AI just acted">
             <svg viewBox="0 0 120 90" className="w-full h-24">
               <defs>
-                <linearGradient id="ai-v4" x1="0%" y1="0%" x2="100%" y2="0%">
+                <linearGradient id="ai-v7" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor={COBALT} />
                   <stop offset="33%" stopColor={TEAL} />
                   <stop offset="66%" stopColor={AMBER} />
                   <stop offset="100%" stopColor={ROSE} />
                 </linearGradient>
               </defs>
-              <rect x="14" y="44" width="92" height="3" rx="1.5" fill="url(#ai-v4)" />
+              <rect x="14" y="44" width="92" height="3" rx="1.5" fill="url(#ai-v7)" />
             </svg>
           </Card>
           <Card label="Notification badge">
@@ -349,14 +435,14 @@ export default function Illustration() {
           <Card label="Spectrum band">
             <svg viewBox="0 0 200 40" className="w-full h-16">
               <defs>
-                <linearGradient id="dv-v4" x1="0%" y1="0%" x2="100%" y2="0%">
+                <linearGradient id="dv-v7" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor={COBALT} />
                   <stop offset="33%" stopColor={TEAL} />
                   <stop offset="66%" stopColor={AMBER} />
                   <stop offset="100%" stopColor={ROSE} />
                 </linearGradient>
               </defs>
-              <rect x="0" y="18" width="200" height="4" fill="url(#dv-v4)" />
+              <rect x="0" y="18" width="200" height="4" fill="url(#dv-v7)" />
             </svg>
           </Card>
           <Card label="Dot rule">
@@ -402,37 +488,6 @@ export default function Illustration() {
         </Tile>
       </Section>
 
-      {/* ─── Hero example ─── */}
-      <Section title="Hero example">
-        <p className="text-sm text-slate mb-4 leading-relaxed">
-          Generated from the v4 prompt below via Gemini. Subject: a figure working with a flow of brand shapes. Passes 6 of the 8 checklist items — zero outlines, no facial detail, subtle tonal step on the organic shapes, palette ground, both geometric and organic present, asymmetric — with two audited breaches (2026-08-06): all four primaries appear at 96–100% canonical saturation (the prompt's own reject condition; supporting shapes should be tints) and neutral-grey supporting forms cover ~5.7% of the frame against the neutral-fill rule. It remains the style anchor for warmth, craft and hue fidelity; a compliant regeneration is scheduled in a dedicated art session.
-        </p>
-        <div className="rounded-xl overflow-hidden border border-stone-200">
-          <img
-            src="./illustrations/hero-example-composition.png"
-            alt="Hero example generated from the v4 prompt — a figure composing with brand shapes"
-            className="w-full h-auto block"
-            style={{ background: PAPER }}
-          />
-        </div>
-      </Section>
-
-      {/* ─── Using the v4 prompt ─── */}
-      <Section title="Using the v4 prompt for hero illustrations">
-        <div className="rounded-xl bg-ink text-white p-6 sm:p-8">
-          <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: AMBER }}>Workflow</p>
-          <ol className="mt-3 space-y-3 text-sm leading-relaxed" style={{ color: '#B0B0B6' }}>
-            <li><strong style={{ color: '#F4F4F1' }}>1.</strong> Write your subject — one sentence. It can be literally anything; the prompt doesn't constrain it.</li>
-            <li><strong style={{ color: '#F4F4F1' }}>2.</strong> Copy the prompt block from <code className="bg-graphite px-1.5 py-0.5 rounded text-xs">/illustration-prompt.md</code>. Paste into Gemini / Firefly / Bing / Imagen / Stable Diffusion.</li>
-            <li><strong style={{ color: '#F4F4F1' }}>3.</strong> Generate four variants.</li>
-            <li><strong style={{ color: '#F4F4F1' }}>4.</strong> Score each against the 8-item checklist above. If 0 of 4 pass, find the rule the model ignored and tighten that section.</li>
-            <li><strong style={{ color: '#F4F4F1' }}>5.</strong> When one lands, save it as the <em>reference image</em> and attach it as a style anchor for every subsequent generation.</li>
-            <li><strong style={{ color: '#F4F4F1' }}>6.</strong> Vectorise the raster (Inkscape → Path → Trace Bitmap). Drop the SVG into <code className="bg-graphite px-1.5 py-0.5 rounded text-xs">/public/illustrations/</code>. Any stroke that sneaks in during trace — delete.</li>
-          </ol>
-          <p className="text-xs mt-5" style={{ color: '#B0B0B6' }}>The prompt is deliberately subject-agnostic. Editorial decisions about <em>what</em> to illustrate belong in content briefs, not in the render prompt.</p>
-        </div>
-      </Section>
-
       {/* ─── Anti-patterns ─── */}
       <Section title="Anti-patterns">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -443,11 +498,9 @@ export default function Illustration() {
         </div>
         <div className="mt-5 rounded-lg bg-rose-50 border border-rose-100 p-4">
           <ul className="text-sm text-iron space-y-1 list-disc list-inside">
-            <li><strong>No mascots.</strong> Spectrea is a mentor, not a pet.</li>
-            <li><strong>No stock photography.</strong> For warmth in marketing, use image-gen via the v4 prompt.</li>
-            <li><strong>No outlines or line art.</strong> All shapes are filled. Any stroke that sneaks in — delete.</li>
-            <li><strong>No off-palette gradients.</strong> Brand palette only; tints of primaries for supporting elements.</li>
-            <li><strong>No Bauhaus limb-figures.</strong> The retired SpectreaFigure component illustrated the opposite of the product's composability promise — image-gen figures replace it.</li>
+            {illustration.antiPatterns.map(ap => (
+              <li key={ap.never}><strong>{ap.never}.</strong> {ap.because}</li>
+            ))}
           </ul>
         </div>
       </Section>

@@ -12,7 +12,7 @@
 // brand tests enumerating the never-use list, technical comments). Annotate
 // those with a file-level suppression first, then turn --strict on.
 //
-// Enforcing canon v2.11.0. Re-vendor when you re-pin the snapshot:
+// Enforcing canon v2.12.0. Re-vendor when you re-pin the snapshot:
 // the rules are baked in at generation time, so an old copy enforces old canon.
 //
 // WHAT THIS CHECKER DOES NOT COVER — read this before trusting a PASS:
@@ -73,7 +73,7 @@
 // ============================================================
 
 const RULES_META = {
-  "version": "2.11.0",
+  "version": "2.12.0",
   "generatedFrom": "src/data/brand.ts",
   "generated": "2026-08-11",
   "canonEntries": 39

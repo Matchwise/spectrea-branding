@@ -1,229 +1,84 @@
-<!-- DO NOT EDIT — published copy of docs/illustration-prompt.md (the source); edit that file and run npm run generate:ai. DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-11) -->
+<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-11) -->
 
-# Spectrea Illustration Prompt — v4
+# Spectrea illustration prompt
 
-> Universal, subject-agnostic prompt template for generating on-brand
-> illustrations with AI image-generation tools (Gemini, DALL-E / Bing
-> Image Creator, Adobe Firefly, Stable Diffusion, Imagen).
->
-> **Intent.** A pure visual-identity spec. The prompt controls **how**
-> anything is rendered — palette, composition, depth, shape vocabulary,
-> figure treatment. It does **not** dictate **what** appears in the scene.
-> Subject comes entirely from the `SUBJECT:` line. Same prompt works for a
-> person at a desk, a city skyline, a data dashboard, a kitchen scene, or
-> an abstract concept.
->
-> **Usage loop.** Paste the prompt into your image generator. Replace
-> the `SUBJECT` line with a single sentence describing the scene — that
-> line sits at the top of the prompt so every downstream rule attaches
-> to something concrete. Evaluate against the checklist. Once one output
-> lands, save it as the reference image and attach it as a style anchor
-> for every subsequent generation.
->
-> **What this prompt is not.** It is not a subject guide. Choosing which
-> scenarios to illustrate is an editorial decision separate from the style.
-> Keep those lists in briefs and content plans, not in the render prompt.
+One invariant DNA block plus one register sentence per job. The DNA is the identity and never varies; the register is the context dial, chosen per job and never enforced across jobs. Measurements report, they never gate — a scorer rewards crude flat images, so a person looks at every render before it is claimed or shipped.
 
----
+## The DNA block
 
-## The universal prompt
-
-Paste the block below into your image generator. Replace the `SUBJECT` line with one sentence describing what you want rendered. Leave everything else verbatim.
+Fill the four slots; change nothing else.
 
 ```
-Generate the following image. Render it directly — do not describe or summarise it in text.
+Generate this image directly.
 
-SUBJECT
-[One sentence describing the scene. Example: "A person at a desk reviewing notes by a window at dawn."]
+[SUBJECT]
+[REGISTER]
 
-STYLE
-Modern editorial illustration, flat with subtle depth. Filled shapes only — zero outlines, strokes, or line art. Composed, warm, clean. Reference aesthetic: Linear.app + Stripe brand illustration, slightly warmed.
+Flat editorial illustration in the style of Linear.app and Stripe brand art, slightly warmed.
+Filled shapes only. No outlines, no strokes, no line art.
 
-PALETTE (use ONLY these hex and their tints)
-• Primary   Cobalt #4271DF · Teal #00B6A0 · Amber #E19000 · Rose #F24260
-• Neutral   Ink #18181C · Pewter #97979E · Cloud #F4F4F1 · Canvas #FDFDFB · Paper #FAF8F2
-• Skin      #E8C7A0 (light) · #B8835A (mid) · #6B4423 (deep)
+Colours: cobalt blue #4271DF, teal #00B6A0, amber #E19000, rose #F24260, warm off-white background #FAF8F2. One colour dominates; the others support as pale tints. Never all four at full strength.
 
-COLOUR RULES
-• One hero primary dominates — full-saturation on focal elements. Other primaries appear as supporting tints or small accents. Never four primaries at full saturation.
-• Every element carries colour. Supporting elements use 20–60% opacity tints of the primaries — never default to pure neutrals or pure tints.
-• Pewter and Cloud are structural only (dividers, thin edges); they are not default fills.
-• Background: Canvas #FDFDFB (preferred), Paper #FAF8F2 for a warmer ground, or a soft gradient between two palette values.
+Warmth comes from palette and light, not from crowding. No grey filler shapes.
+Mix soft rounded forms with clean geometric ones.
+If people appear, their faces are blank or one dot per eye.
 
-COMPOSITION
-• Balanced in BOTH visual weight AND colour. Asymmetric balance — rule-of-thirds or diagonal flow. Not centred, not symmetrical.
-• Element density fits the subject — rich enough to feel composed, uncluttered enough to read clearly.
-• No large empty neutral areas.
+[TEXT]
+No isometric view, no 3D, no photorealism, no houseplants.
 
-SHAPE VOCABULARY (both modes always present)
-• Geometric: circles, rectangles, triangles, arcs, half-circles.
-• Organic: soft contours, flowing curves, rounded blobs.
-• Geometric content ≥ ~15% of the coloured area, even for nature / soft subjects — achieved through framing edges, ground planes, horizon lines, or atmospheric fields. Do not invent unrelated objects to hit this floor.
-
-RENDERING
-• Filled shapes only. Zero strokes, outlines, or line art.
-• Soft gradient permitted on background fields only.
-• Rounded organic objects get one darker tonal step on the shadow side (one deeper value of the same fill colour). No object-level gradients, drop shadows, or glows.
-• Figures: clean silhouette, flat-block clothing in palette colours, simple hair, face suggested only (≤ one dot per eye, or blank). Never detailed facial features.
-
-AVOID
-Outlines · strokes · borders · line art · photorealism · 3D · isometric projection · drop shadows · glows · lens flares · textures · noise · grain · hatching · neon · magenta · cyan · bright yellow · pastel pink · detailed facial features · overcrowded scenes · large empty neutral areas · watermarks · text overlays · mascot characters · anthropomorphic objects.
-
-OUTPUT
-16:9 aspect ratio, approachable mood, cohesive palette, every element carrying colour.
+[ASPECT].
 ```
 
-### Why this structure
+- **[SUBJECT]** — One sentence naming the scene. A subject that must contain no people says so — figures are not part of the DNA.
+- **[REGISTER]** — One sentence from registers below, or one derived per registerDerivation.
+- **[TEXT]** — Marketing and editorial subjects: "No text." Product subjects: "Render the interface accurately, with the text it genuinely needs. Never lorem, never gibberish."
+- **[ASPECT]** — The aspect ratio, e.g. "16:9", "1:1", "1200x630".
 
-- **Intent line first.** General chat models (Gemini, ChatGPT, Claude) can otherwise interpret a structured block as *analyse this* rather than *render this*. The opening line names the action and tells the model to output the image, not a description of it. Dedicated image-gen UIs (Firefly, Midjourney, DALL-E direct) treat it as harmless framing.
-- **Subject second.** Image-generation models weight early tokens more heavily; leading with the subject (right after the intent) lets every downstream rule attach to something concrete.
-- **Sections as stable contracts.** `STYLE` / `PALETTE` / `COLOUR RULES` / `COMPOSITION` / `SHAPE VOCABULARY` / `RENDERING` / `AVOID` / `OUTPUT` are fixed; swap `SUBJECT` between generations and the rest of the prompt stays byte-identical — that's what makes outputs read as one family.
-- **Positive rules before negative.** Constraints that *shape* the output come first; things to avoid are consolidated at the end.
-- **Hex codes, exact percentages, concrete references.** No "nice colours" or "some depth" — every constraint is machine-unambiguous.
-- **One idea per bullet.** Scannable for the human editing the prompt, tokenisable for the model.
+Length is load-bearing. The ~2,900-character predecessor lost generator attention; compacting to ~750 characters was the single change that moved every measured metric. Adding rules to this block costs attention on the rules already in it — a new constraint belongs in a register sentence, not here.
 
----
+## Registers — pick one sentence for [REGISTER]
 
-## Warmth + palette checklist
+- **hero** (Draws attention; rewards a look) — "A detailed, balanced scene with warm light — rich enough to reward a second look, composed enough to breathe."
+- **spot** (Sits beside content; must not compete with it) — "Simple and direct: a few large deliberate shapes and one large calm empty area."
+- **docs** (Explains; carries order and motion) — "A clear single idea in motion — order emerging, mid density, nothing decorative."
+- **product** (Shows the actual software) — "Render the product accurately; named source documents sit beside the answer."
+- **social** (Reads at thumbnail size) — "Bold and immediate at small size; two equal subjects may share the lead colour."
 
-An output ships only if it hits **all** of these:
+These five are named presets, not a closed list. A register is one sentence positioning a job on five axes: density, composition, light, text, and subjects. A context with no register gets a sentence composed on those axes; if the context recurs, name the sentence, make its best render the exemplar, and add it here. The DNA never moves — only the sentence does.
 
-1. **Zero outlines.** Not a single stroke anywhere.
-2. **Every element carries colour.** No element defaults to pure neutral fill.
-   Background and mid-ground forms use tints of primaries.
-3. **One hero primary.** A single spectrum colour dominates; the others appear
-   as supporting tints or accents.
-4. **Subtle depth.** At least one rounded object has a single darker tonal step
-   on its shadow side. Not soft gradients. Not drop shadows.
-5. **Both modes present.** Geometric shapes never drop below ~15% of the
-   composition. Organic shapes always present too. Proportion above the floor
-   follows the subject.
-6. **Coloured ground.** Background is a palette neutral or palette gradient —
-   not pure white, not pure grey.
-7. **No face detail.** A face is a suggestion (one dot per eye max, or blank).
-8. **Asymmetric balance.** Not centred, not symmetrical.
+## What may vary, and how far
 
-**Reject conditions** (regenerate if any is true):
+- **Temperature** — Cool-leaning (Cobalt-led and spare on the warm ground) to golden-hour (warm light over a dense warm scene). The ground is ALWAYS warm off-white — temperature varies in the shapes and the light, never the ground. Default: Gentle warmth: warm light present, not golden. Out of range: A cool white or grey ground; blue-grey washes; heat with no cool counterweight. (judged by eye; No ratio scores this axis: warm-share-of-colour is blind to quantity and ranked a spare image above a dense golden one. Perceived warmth is warm coverage combined with light and density.)
+- **Density** — Largest open area from ~12% (richest) to ~76% (sparest). Default: Set by register — a hero carries detail, a spot carries few large shapes. An unregistered job sits mid. Out of range: Below ~12%: nothing breathes. The retired anchor sat at 5%. (judged by eye; Density is FELT in shape count and detail, and only loosely tracked by open-ground percentage: measured under this prompt, hero and spot renders overlap (roughly 23–35% either way) while looking clearly different — a detailed desk with a lamp, books and a poster against a few large shapes and a quiet half-frame. Read the number as a drift signal, never as the register boundary.)
+- **Abstraction** — Accurate product scenes to pure geometric abstraction. Default: Simplified representational — a real scene built from flat shapes. Out of range: Photorealism at one end; literal banned metaphors (networks, nodes, prisms) and decoration with no job at the other. (judged by eye)
+- **Depth** — Vector has no range: strictly flat. Raster runs from pure flat through layered flat (overlap occlusion) to believable perspective where the subject itself needs it. Default: Layered flat, at most one darker tonal step. Out of range: Isometric projection as a style; slab-edge stacks; gloss; rendered 3D. (judged by eye)
+- **Saturation** — One primary at full strength leads; a second may reach full strength in small accents; three only where shapes themselves are the subject. Default: Exactly one primary at full strength. Out of range: Four primaries at full strength — the retired anchor. (judged by report)
+- **Figures** — None, one, or two equals (social register only). Default: Zero or one. Faces are always blank or one dot per eye. Out of range: Crowds, detailed facial features, mascots. (judged by eye)
 
-- Any outline, stroke, or line-art edge
-- Neutral grey backdrop or supporting forms
-- Pure white or cool grey background
-- Four-colour confetti (all primaries shouting at once)
-- Faces with irises, noses, mouths, or expressions
+## Media
 
----
+- **Generated raster** — Owns warmth, light and human presence. It cannot hit an exact brand hex — across every raster measured, the closest Cobalt landed at colour distance 33 — so its palette rule is a stated tolerance, never an exactness claim. Depth is permitted while it stays illustration.
+- **Hand-authored SVG** — Owns exact palette, strict flatness and product accuracy: the author types the hex. Tints are lighter SOLID hexes, never fill-opacity — a translucent fill over a coloured ground composites to a colour in no palette (Amber at 60% over Teal reads olive, and a hue-family checker passes it).
+- **Choosing** — Warmth, mood, human presence, marketing scenes → raster. Exact brand colour, schematic product, in-guide primitives, anything that must be edited later → vector.
 
-## Iteration protocol
+## Reference images
 
-1. Write the subject — one sentence describing the scene. The subject can be
-   literally anything. The prompt does not constrain it.
-2. Paste the prompt into your image generator.
-3. Generate 4 variants.
-4. Score against the checklist. If 0 of 4 pass, identify which rule the model
-   ignored, add emphasis or a concrete example in that section, regenerate.
-5. Once one output lands, save it as the **reference image** and attach it as
-   a style anchor for every subsequent generation (Firefly reference upload,
-   Gemini "use this style", Midjourney `--cref`, etc.).
-6. Vectorise the raster (Inkscape → Path → Trace Bitmap) and drop into
-   `/public/illustrations/`. Any stroke that sneaks in during trace — delete.
+A reference image is a CONTENT channel, not a style channel: its pull scales with how compatible its content is with the prompt. The prompt sets the level; the reference narrows variance toward itself.
 
----
+- **none** — A new composition — the default: The register sentence alone sets the level, and nothing bleeds in.
+- **cross-subject** — A batch that must feel like one campaign: Style steadies and variance narrows; expect motifs from the reference to echo, which inside one campaign reads as cohesion.
+- **same-subject** — A variant of an image that already exists: The render collapses onto the reference — three of three draws reproduced it object-for-object. Cloning is the feature here and a defect everywhere else.
 
-## Division of labour — image-gen vs. hand-SVG
+## Measurement
 
-The v4 prompt owns **mid- and higher-complexity illustration**: marketing
-heroes, feature-page illustrations, blog headers, About imagery, onboarding
-scenes, social posts.
+Report, never gate. Reported: largest open ground area · neutral grey filler share · primaries at full saturation · hero lead ratio · top colours by area, named.
 
-Hand-coded SVG is reserved for **very basic, simple, direct primitives**:
+A crude flat image scores perfectly while being incoherent, and a render that broke the warm-ground rule scored best of its round. Numbers describe an image so drift is visible over time; they never decide whether it ships. Every render is opened and looked at before any claim is made about it.
 
-- **Graph primitives** — node types, edge styles, cluster, trail, confidence,
-  highlight. Pure data-viz vocabulary.
-- **Section dividers** — spectrum band, dot rule, arc divider.
-- **In-product state dots** — connection-formed, item-arrived, notification
-  badge, AI-just-acted, loading skeleton, empty-state dots.
-- **Painterly-field backdrop** — reusable SVG atmosphere.
-- **Thread / constellation** — lightweight two-dot / anchor-plus-orbit
-  primitives.
+## Never
 
-Rule of thumb: if the piece would fit in a 120×90px brand-guide vocabulary
-card, hand-SVG. If it wants to be a 16:9 scene, image-gen.
-
----
-
-## Companion: editorial subject guidance (separate from the prompt)
-
-Not every prospective illustration subject is equally on-brand. That editorial
-judgement happens **before** the prompt, not inside it. A short suggested set
-of subjects worth revisiting across the brand — useful for content planning,
-**not** for injecting into every render:
-
-- People working, collaborating, thinking, discovering
-- Hands, desks, home, office, outdoor moments
-- Knowledge objects: books, documents, cards, notes, threads
-- Light, warmth, growth, atmosphere — lanterns, plants, windows, sunrise
-- Abstract compositions — constellations, trails, paths, doorways
-
-Treat this as a content brief for humans picking subjects. The render prompt
-itself stays subject-agnostic.
-
----
-
-## Per-generator tweaks
-
-- **Gemini / DALL-E / Bing Image Creator**: prompt above works as-written. Lead with the SUBJECT line, keep the rest verbatim.
-- **Stable Diffusion**: convert to comma-separated weighted tokens, subject first:
-  `[subject sentence], (Spectrea brand flat editorial:1.4), (filled shapes no outlines:1.3), (palette #4271DF #00B6A0 #E19000 #F24260 on Canvas #FDFDFB:1.3), (one hero primary tints supporting:1.2), (Linear Stripe aesthetic warmed:1.1)…` — use a negative prompt for the AVOID list.
-- **Adobe Firefly**: pair the prompt with a reference-image upload once you have one on-brand output to anchor the style. Place the subject sentence in the main prompt; leave the rules in a secondary "style" field if the generator separates them.
-- **Midjourney**: put the SUBJECT in plain prose, then append the rules as `--style` parameters where supported, and use `--cref` to anchor an approved reference image.
-
----
-
-## Tools that are free + commercial-safe
-
-| Tool                          | Free tier commercial? | Notes                                            |
-| ----------------------------- | --------------------- | ------------------------------------------------ |
-| Gemini (consumer + API)       | ✅ Yes                | Google doesn't claim ownership; SynthID watermark |
-| Bing Image Creator (DALL-E 3) | ✅ Yes                | No indemnification                               |
-| Adobe Firefly free            | ✅ Yes                | No indemnification; cleaner training data        |
-| Stable Diffusion (local)      | ✅ Yes                | Legally cleanest; needs a GPU                    |
-| Recraft free                  | ❌ No                 | Paid plan required for commercial use            |
-| Midjourney                    | ❌ No                 | No free tier                                     |
-
----
-
-## Versioning
-
-**v4.1 (2026-04-20)** — Same rules, re-ordered for prompt-engineering
-discipline. Explicit intent line at the very top (*"Generate the
-following image. Render it directly…"*) so general chat models like
-Gemini / ChatGPT / Claude don't interpret the structured block as a
-request to analyse rather than render. SUBJECT moves directly after
-(early tokens carry the most weight); sections become fixed, parallel,
-scannable contracts; positive rules precede negative; AVOID consolidates
-as a single pipe-separated list; OUTPUT anchors the tail. No rule
-changes — outputs should match v4.0 exactly, but the prompt is now
-easier to edit, reason about, and port between generators. (One
-iteration inside v4.1 restored three clauses accidentally dropped
-during condensation: "full-saturation on focal elements" on the hero-
-primary rule, "or pure tints" on the supporting-element guard, and
-"balanced in BOTH visual weight AND colour" on composition. Kept as a
-note so future re-orders don't lose them again.)
-
-**v4 (2026-04-18 → 2026-04-19)** — Universal, subject-agnostic prompt. One
-template for every surface. Key moves: tint discipline (supporting elements
-use 20–60% tints of primaries, never default to neutrals), single darker
-tonal step for subtle depth, geometric floor ~15% to keep organic scenes
-anchored, no facial detail, Linear/Stripe warmed reference. Retires v3's
-two-style split (Editorial Geometry + Living Graph) and the ten-noun
-"recurring subject cast" that was biasing every render toward the same
-metaphor set.
-
-**v3 (2026-04-18, late)** — Added the Form layer, Treatments, seven craft
-moves, and paired two production styles (Editorial Geometry + Living Graph).
-Retired in v4 because the two-style split added rules without adding voice,
-and the "recurring subject cast" was prescribing content not style.
-
-**v2 (2026-04-18, early)** — Dot System with five atoms. Superseded by v3.
-
-**v1** — Linear/Stripe-reference prompt. Retired in v2.
+- **Mascots or character cartoons** — Spectrea is a mentor, not a pet.
+- **Stock photography** — Warmth comes from the palette and the light in generated scenes, not from stock imagery.
+- **Outlines or line art** — Every shape is filled. A stroke that survives a trace is a defect, not a style.
+- **Off-palette gradients and neon** — The palette is the identity; a colour outside it is a different brand.
+- **Bauhaus limb-figures** — The retired SpectreaFigure illustrated the opposite of the product's composability promise.
