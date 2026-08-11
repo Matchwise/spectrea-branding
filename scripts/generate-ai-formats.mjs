@@ -46,7 +46,7 @@ async function importTsModule(tsPath) {
 const {
   brand, voice, naming, brandTokens, accessibility, logo, graphViz,
   trustCopy, executiveVoice, originStance, meta, selectedPalette,
-  colorSystem, components, ratificationLedger,
+  colorSystem, components, ratificationLedger, retired,
 } = await importTsModule(join(root, 'src', 'data', 'brand.ts'))
 const { navigation } = await importTsModule(join(root, 'src', 'data', 'navigation.ts'))
 
@@ -159,6 +159,9 @@ const contract = {
   executiveVoice,
   originStance,
   ratificationLedger,
+  // Decision 35b: canon's one history-keeping structure. Consumers' agents read
+  // the contract, and a migration they cannot see is a migration they re-introduce.
+  retired,
 }
 
 /* ------------------------------------------------------------------ */

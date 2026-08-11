@@ -4,8 +4,8 @@
 
 // --- Meta / Governance ---
 export const meta = {
-  version: '2.10.0',
-  lastUpdated: '2026-08-10',
+  version: '2.11.0',
+  lastUpdated: '2026-08-11',
   sourceOfTruth:
     'brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea\'s roadmap — check it before placing a capability claim on a buyer-facing surface.',
   renderDoctrine:
@@ -1198,7 +1198,82 @@ export const ratificationLedger = [
   { date: '2026-08-09', decision: 'Component doctrine canonized, guide wave 2 §11 (Darren-ratified full scope; v2.8.0): new components export carries the specs that lived only in guide §11 prose and the four component pages — the six-type button taxonomy (Primary/Secondary/Ghost/Destructive/Confirm/Caution with roles, tiers, semantic details + example labels, and stateKey references into brandTokens.buttonStates), the button rule, three sizes, font/disabled treatment, and the light-hover direction (the dark direction stays buttonStates.dark.rule); the form-field spec; the card spec; and the layout system (sidebar 256 px, top bar, content area, four breakpoints with column counts, content widths, the z-index convention, and six responsive rules incl. the 44 px touch-target floor). References name their tokens — radius/spacing/elevation px resolve from brandTokens, palette colours by name, state hexes from buttonStates — never re-declared. Guide §11 became generated blocks; the four component pages render components (their private copies deleted — Buttons.tsx duplicated the full buttonStates ladders, LayoutPage duplicated spacing/radii/elevation verbatim-with-drift). Drift corrected by canonization: two pages taught the border family as #E5E7EB, which is Tailwind gray-200 — the sanctioned family is stone-200 #E7E5E4. Guide wave 2 is now fully closed.' },
   { date: '2026-08-10', decision: 'Voice humanist correction (Darren-ratified option B of three; v2.9.0): the voice formula read as a composition rule — "showing its work" was being applied per-sentence, welding a mechanism clause onto every claim — producing the justification-chain bloat Darren flagged as un-humanist. Rewritten: "Plain words, real specifics, room to breathe. Tech earns its place by being checkable — shown once, where the reader looks for it." — the anti-black-box stance stays (checkable ≥ shown), the composition pressure goes. New voice.attentionRule canonizes the discipline: "earn the jargon" is an ADMISSION rule, not a composition rule; one claim, one proof per surface; the mechanism lives one step from the claim; the claim—dash—mechanism shape is a tool, not a rhythm. Three canonical examples retuned to comply (Feature Announcement proved compounding three sentences in a row — now once; Beginner Documentation dropped a tail restating its own sentence; Settings unstacked a nested clause chain). The hero exemplar (D27) already passes once-per-surface — a hero carries exactly one claim + one mechanism — and is unchanged. The archetype through-line note re-anchors the reveal→ground→equip triad to the heroOpen gesture; the formula states the texture. techApproach "Earn the jargon" unchanged as the admission rule\'s name.' },
   { date: '2026-08-10', decision: 'One focus system (Darren-ratified conditionally on independent adjudication; v2.10.0): the system carried two focus identities — the ratified Amber ring on buttons (decision 16) and a Cobalt border-flip + soft halo on inputs — so a keyboard journey crossed two indicators, and the input idiom was independently shown broken: the Cobalt halo measures 1.29:1 (invisible) and a Teal/Rose validation border blocks the border-flip entirely, leaving focus invisible exactly when validation is active. A framing-blind Codex adjudication (candidates A Amber-everywhere / B Cobalt-everywhere / C canonized split / D neutral Ink ring / F double ring, all contrast-computed from canon) selected A — least semantic and governance churn; the Amber-warning adjacency is real but managed (a ring is transient and offset-outside, never an on-field border); Cobalt would self-camouflage on the Primary (1.00:1 ring-vs-fill) and overload the selected/checked channel; a neutral Ink ring reuses Ink\'s structural channel and is unnecessarily severe. Ratified: brandTokens.focusRing gains the scope rule (one ring for every focusable; dedicated accessibility chrome outside the colour tiers; borders never change on focus). components.forms.focus rewritten to reference the ring. The tier-1 Responsive rule drops "input focus" from Cobalt\'s jobs — resolving the canon\'s own contradiction (tiers said Cobalt, the token said Amber). Industry note recorded: unifying matches universal practice; the dedicated-focus-colour school (GOV.UK, USWDS) is the accessibility-first camp this lands in. Record: .runs/2026-08-06-brand-review/focus-system-review/ (framing-blind brief + verbatim adjudication).' },
+  { date: '2026-08-11', decision: 'Consumer conformance checking + retired-values register (Darren-ratified; v2.11.0): public/brand-conformance.mjs is a zero-dependency checker generated from brand.ts (scripts/generate-conformance.mjs) that consumer repos vendor beside the snapshot and run in CI — fifteen rules plus a compounding-proximity rule at v2.11.0 (ten before the register landed), severity split so only retired forms error while generic category words stay review (an undifferentiated checker produced 82 findings in the product repo, 80 noise). Canon growth fails the generator build rather than silently escaping the checker; suppression requires a stated reason and every honoured suppression is printed (visibility, not prevention — the comment scanner is best-effort in every file type and says so). Origin: the 2026-08-11 drift scan was hand-written and never looked at copy, so the category noun retired 2026-07-03 sat live in spectrea metadata five weeks. New retired export: canon\'s one history-keeping structure, scope absolute→error / contextual→review with stillValidAs, seeded with five real retirements — a sixth candidate (Pewter as meaning-carrying text) was evaluated and excluded because its hex is a live palette colour and produced 57 legitimate-use findings in one consumer; a register entry must be rarer than its noise. Naive flat lists are wrong regardless — the rgba ring is retired ONLY as the light ring and still canonical in dark. Gate: critic-conformance accepted at round 7 after 25 findings; trail in .runs/2026-08-11-conformance-checker/verdict.md.' },
 ] as const
+
+// --- Retired Values Register ---
+// Decision 35b (Darren-ratified 2026-08-11). Canon is otherwise present-tense;
+// this is the one place it keeps history, and it exists to serve the
+// conformance checker: a checker generated from current values alone cannot
+// recognise the retired value it is meant to catch. The category noun is NOT
+// duplicated here — positioning.categoryGuard.badSubstitutions already carries
+// it and consumers read that field directly; this register covers everything
+// else that has escaped downstream or plausibly could.
+//
+// `scope` is load-bearing and maps onto checker severities:
+//   absolute   — any occurrence is a violation (an error rule).
+//   contextual — the string is still canonical in another role; only one use
+//                of it was retired, and no string match can tell the two
+//                apart. `stillValidAs` states the surviving role, and the
+//                checker reports at review severity for a human to judge.
+// The generator fails the build on a scope it does not recognise or a
+// contextual entry with no stillValidAs — growth is taught, never guessed.
+export const retired = {
+  note:
+    'Values canon no longer holds, recorded so downstream drift is machine-detectable. Seeded only with retirements that escaped downstream or plausibly could; grows when a real migration happens, not by back-filling history.',
+  values: [
+    {
+      id: 'guide-url-github-pages',
+      retired: 'matchwise.github.io/spectrea-branding',
+      replacedBy: 'branding.spectrea.com',
+      since: '2026-08-07',
+      decision: 'v2.5.0 hand-off (custom domain)',
+      scope: 'absolute',
+    },
+    {
+      id: 'tone-spectrum-citation',
+      retired: 'toneSpectrum',
+      replacedBy: 'toneExamples (tone field)',
+      since: '2026-08-08',
+      decision: '20 (v2.5.4)',
+      scope: 'absolute',
+    },
+    {
+      id: 'mark-path-pre-k3',
+      retired: 'M 44 12',
+      replacedBy: 'K3′ markGeometry (logo.markGeometry)',
+      since: '2026-08-07',
+      decision: '6 (v2.5.0)',
+      scope: 'absolute',
+    },
+    {
+      id: 'focus-ring-universal-rgba',
+      retired: 'rgba(225, 144, 0, 0.7)',
+      replacedBy: '#A86E00 (light) / rgba(225, 144, 0, 0.7) (dark)',
+      since: '2026-08-07',
+      decision: '16 (v2.5.1), scope rule decision 34 (v2.10.0)',
+      scope: 'contextual',
+      stillValidAs:
+        'The dark-theme focus ring. Only its use as the LIGHT-theme ring was retired, and no string match can tell the two apart.',
+    },
+    {
+      id: 'teal-active-as-text',
+      retired: '#008775',
+      replacedBy: '#007D6E (brandTokens.accentText.teal)',
+      since: '2026-08-08',
+      decision: 'accessibility cluster (v2.5.7, accentText Option A)',
+      scope: 'contextual',
+      stillValidAs:
+        'teal.active — a button-state FILL. Only its use as text colour was retired.',
+    },
+  ],
+  // Evaluated and deliberately NOT registered: Pewter #97979E on meaning-carrying
+  // text (retired v2.5.7 in favour of Slate). Pewter remains a core palette
+  // colour in its muted role, so a contextual entry on its hex reported 57
+  // legitimate uses in one consumer — noise that teaches people to stop reading
+  // the review tier. A register entry must be rarer than its noise; that
+  // migration stays human-reviewed.
+} as const
 
 // --- Executive Voice ---
 // Founder/exec surfaces speak as practitioners — same voice formula, first

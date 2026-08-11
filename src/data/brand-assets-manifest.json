@@ -1,6 +1,6 @@
 {
-  "//": "Asset manifest — GENERATED from src/data/brand.ts v2.10.0 (2026-08-10) — do not hand-edit; regenerate with npm run generate:assets",
-  "version": "2.10.0",
+  "//": "Asset manifest — GENERATED from src/data/brand.ts v2.11.0 (2026-08-11) — do not hand-edit; regenerate with npm run generate:assets",
+  "version": "2.11.0",
   "groups": [
     {
       "title": "Logo marks",

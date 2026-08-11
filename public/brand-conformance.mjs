@@ -12,17 +12,21 @@
 // brand tests enumerating the never-use list, technical comments). Annotate
 // those with a file-level suppression first, then turn --strict on.
 //
-// Enforcing canon v2.10.0. Re-vendor when you re-pin the snapshot:
+// Enforcing canon v2.11.0. Re-vendor when you re-pin the snapshot:
 // the rules are baked in at generation time, so an old copy enforces old canon.
 //
 // WHAT THIS CHECKER DOES NOT COVER — read this before trusting a PASS:
 //   • Asset geometry (logo paths, mark construction). The vendored snapshot
 //     carries no binary assets, so compare those by hash against upstream.
 //   • Colour, type-scale and spacing conformance — token-level, not text.
-//   • Focus-ring implementation. Canon holds the current values, not the
-//     retired ones, so a checker built from canon cannot recognise the old
-//     ring it is meant to catch. Migration rules would have to be canonized
-//     first (as categoryGuard.badSubstitutions already is for the category noun).
+//   • Migration COMPLETENESS. The retired-values register (canon's `retired`
+//     export, decision 35b) makes canonized retirements detectable — including
+//     the old focus ring — but a contextual retirement (a string still
+//     canonical in another role, like the rgba ring that survives as the DARK
+//     ring) reports at review severity for a human to judge: no string match
+//     can tell the surviving role from the retired one. And a retirement
+//     nobody has registered is still invisible — the register is seeded, not
+//     exhaustive.
 //   • Anything requiring judgement about tone, rhythm or register.
 //   • The compounding-claim rule is PROXIMITY, not comprehension: it asks
 //     whether a mechanism word appears in the same block as the claim. A
@@ -69,10 +73,10 @@
 // ============================================================
 
 const RULES_META = {
-  "version": "2.10.0",
+  "version": "2.11.0",
   "generatedFrom": "src/data/brand.ts",
   "generated": "2026-08-11",
-  "canonEntries": 34
+  "canonEntries": 39
 }
 
 const RULES = [
@@ -218,6 +222,68 @@ const RULES = [
       "leverage": "Canon bans \"leverage\" as verb — other senses are fine.",
       "copilot": "Canon bans \"copilot\" as generic noun — other senses are fine."
     }
+  },
+  {
+    "id": "retired-guide-url-github-pages",
+    "severity": "error",
+    "patterns": [
+      {
+        "source": "(?:\\bmatchwise\\.github\\.io/spectrea-branding\\b)",
+        "flags": "gi"
+      }
+    ],
+    "canon": "retired.values[guide-url-github-pages]",
+    "note": "Retired 2026-08-07 (decision v2.5.0 hand-off (custom domain)). Replaced by: branding.spectrea.com."
+  },
+  {
+    "id": "retired-tone-spectrum-citation",
+    "severity": "error",
+    "patterns": [
+      {
+        "source": "(?:\\btoneSpectrum\\b)",
+        "flags": "g"
+      }
+    ],
+    "canon": "retired.values[tone-spectrum-citation]",
+    "note": "Retired 2026-08-08 (decision 20 (v2.5.4)). Replaced by: toneExamples (tone field)."
+  },
+  {
+    "id": "retired-mark-path-pre-k3",
+    "severity": "error",
+    "patterns": [
+      {
+        "source": "(?:\\bM\\s+44\\s+12\\b)",
+        "flags": "g"
+      }
+    ],
+    "canon": "retired.values[mark-path-pre-k3]",
+    "note": "Retired 2026-08-07 (decision 6 (v2.5.0)). Replaced by: K3′ markGeometry (logo.markGeometry)."
+  },
+  {
+    "id": "retired-focus-ring-universal-rgba",
+    "severity": "review",
+    "patterns": [
+      {
+        "source": "(?:\\brgba\\(225,\\s*144,\\s*0,\\s*0\\.7\\))",
+        "flags": "gi"
+      }
+    ],
+    "canon": "retired.values[focus-ring-universal-rgba]",
+    "note": "Retired 2026-08-07 (decision 16 (v2.5.1), scope rule decision 34 (v2.10.0)). Replaced by: #A86E00 (light) / rgba(225, 144, 0, 0.7) (dark).",
+    "condition": "Still valid as: The dark-theme focus ring. Only its use as the LIGHT-theme ring was retired, and no string match can tell the two apart."
+  },
+  {
+    "id": "retired-teal-active-as-text",
+    "severity": "review",
+    "patterns": [
+      {
+        "source": "(?:#008775\\b)",
+        "flags": "gi"
+      }
+    ],
+    "canon": "retired.values[teal-active-as-text]",
+    "note": "Retired 2026-08-08 (decision accessibility cluster (v2.5.7, accentText Option A)). Replaced by: #007D6E (brandTokens.accentText.teal).",
+    "condition": "Still valid as: teal.active — a button-state FILL. Only its use as text colour was retired."
   }
 ]
 

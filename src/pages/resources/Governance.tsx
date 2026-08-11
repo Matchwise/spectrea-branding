@@ -1,6 +1,6 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
-import { meta, ratificationLedger } from '../../data/brand'
+import { meta, ratificationLedger, retired } from '../../data/brand'
 
 export default function Governance() {
   return (
@@ -152,6 +152,34 @@ export default function Governance() {
             <div key={i} className="px-5 py-4 border-b last:border-b-0 border-stone-100 flex gap-4">
               <span className="text-xs font-mono text-pewter flex-shrink-0 mt-0.5 w-20">{entry.date}</span>
               <p className="text-sm text-iron leading-relaxed">{entry.decision}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Retired values — canon's one history-keeping structure (decision 35b) */}
+      <Section title="Retired Values">
+        <p className="text-sm text-slate mb-4 leading-relaxed">{retired.note}</p>
+        <div className="border border-stone-200 rounded-xl overflow-hidden">
+          {retired.values.map((entry) => (
+            <div key={entry.id} className="px-5 py-4 border-b last:border-b-0 border-stone-100">
+              <div className="flex flex-wrap items-center gap-3 mb-1.5">
+                <code className="text-xs font-mono px-2 py-0.5 rounded bg-cloud text-iron border border-stone-200">{entry.retired}</code>
+                <span className="text-xs text-pewter">→</span>
+                <code className="text-xs font-mono px-2 py-0.5 rounded bg-cloud text-iron border border-stone-200">{entry.replacedBy}</code>
+                <span
+                  className="text-xs font-semibold uppercase tracking-wider px-2 py-0.5 rounded"
+                  style={entry.scope === 'absolute'
+                    ? { backgroundColor: '#F2426015', color: '#BA3249' }
+                    : { backgroundColor: '#E1900015', color: '#9A6300' }}
+                >
+                  {entry.scope}
+                </span>
+              </div>
+              <p className="text-xs text-slate leading-relaxed">
+                Retired {entry.since} — decision {entry.decision}.
+                {'stillValidAs' in entry ? ` Still valid as: ${entry.stillValidAs}` : ''}
+              </p>
             </div>
           ))}
         </div>

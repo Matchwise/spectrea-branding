@@ -193,6 +193,24 @@ const CASES = [
     only: 'compounding-mechanism', exit: 1, strict: true, rules: ['compounding-mechanism'],
   },
 
+  // ---- the retired-values register (decision 35b)
+  {
+    name: 'retired/absolute-url-is-an-error',
+    files: { 'a.md': 'The guide lives at matchwise.github.io/spectrea-branding for now.\n' },
+    only: 'retired-guide-url-github-pages', exit: 1, rules: ['retired-guide-url-github-pages'],
+  },
+  {
+    name: 'retired/contextual-rgba-is-review-not-error',
+    files: { 'a.css': '.ring { box-shadow: 0 0 0 3px rgba(225,144,0,0.7); }\n' },
+    only: 'retired-focus-ring-universal-rgba', exit: 0,
+    rules: ['retired-focus-ring-universal-rgba'],
+  },
+  {
+    name: 'retired/tone-spectrum-is-case-sensitive',
+    files: { 'a.ts': 'const x = tonespectrum // lower-case: a different identifier, not the retired one\n' },
+    only: 'retired-tone-spectrum-citation', exit: 0, rules: [],
+  },
+
   // ---- operational failures must exit 2, never a silent pass
   {
     name: 'operational/bare-only-flag-is-an-error',

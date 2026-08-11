@@ -1,7 +1,7 @@
 {
-  "_generated": "DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-10)",
-  "version": "2.10.0",
-  "lastUpdated": "2026-08-10",
+  "_generated": "DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-11)",
+  "version": "2.11.0",
+  "lastUpdated": "2026-08-11",
   "sourceOfTruth": "brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea's roadmap — check it before placing a capability claim on a buyer-facing surface.",
   "changeProcess": [
     {
@@ -1570,6 +1570,57 @@
     {
       "date": "2026-08-10",
       "decision": "One focus system (Darren-ratified conditionally on independent adjudication; v2.10.0): the system carried two focus identities — the ratified Amber ring on buttons (decision 16) and a Cobalt border-flip + soft halo on inputs — so a keyboard journey crossed two indicators, and the input idiom was independently shown broken: the Cobalt halo measures 1.29:1 (invisible) and a Teal/Rose validation border blocks the border-flip entirely, leaving focus invisible exactly when validation is active. A framing-blind Codex adjudication (candidates A Amber-everywhere / B Cobalt-everywhere / C canonized split / D neutral Ink ring / F double ring, all contrast-computed from canon) selected A — least semantic and governance churn; the Amber-warning adjacency is real but managed (a ring is transient and offset-outside, never an on-field border); Cobalt would self-camouflage on the Primary (1.00:1 ring-vs-fill) and overload the selected/checked channel; a neutral Ink ring reuses Ink's structural channel and is unnecessarily severe. Ratified: brandTokens.focusRing gains the scope rule (one ring for every focusable; dedicated accessibility chrome outside the colour tiers; borders never change on focus). components.forms.focus rewritten to reference the ring. The tier-1 Responsive rule drops \"input focus\" from Cobalt's jobs — resolving the canon's own contradiction (tiers said Cobalt, the token said Amber). Industry note recorded: unifying matches universal practice; the dedicated-focus-colour school (GOV.UK, USWDS) is the accessibility-first camp this lands in. Record: .runs/2026-08-06-brand-review/focus-system-review/ (framing-blind brief + verbatim adjudication)."
+    },
+    {
+      "date": "2026-08-11",
+      "decision": "Consumer conformance checking + retired-values register (Darren-ratified; v2.11.0): public/brand-conformance.mjs is a zero-dependency checker generated from brand.ts (scripts/generate-conformance.mjs) that consumer repos vendor beside the snapshot and run in CI — fifteen rules plus a compounding-proximity rule at v2.11.0 (ten before the register landed), severity split so only retired forms error while generic category words stay review (an undifferentiated checker produced 82 findings in the product repo, 80 noise). Canon growth fails the generator build rather than silently escaping the checker; suppression requires a stated reason and every honoured suppression is printed (visibility, not prevention — the comment scanner is best-effort in every file type and says so). Origin: the 2026-08-11 drift scan was hand-written and never looked at copy, so the category noun retired 2026-07-03 sat live in spectrea metadata five weeks. New retired export: canon's one history-keeping structure, scope absolute→error / contextual→review with stillValidAs, seeded with five real retirements — a sixth candidate (Pewter as meaning-carrying text) was evaluated and excluded because its hex is a live palette colour and produced 57 legitimate-use findings in one consumer; a register entry must be rarer than its noise. Naive flat lists are wrong regardless — the rgba ring is retired ONLY as the light ring and still canonical in dark. Gate: critic-conformance accepted at round 7 after 25 findings; trail in .runs/2026-08-11-conformance-checker/verdict.md."
     }
-  ]
+  ],
+  "retired": {
+    "note": "Values canon no longer holds, recorded so downstream drift is machine-detectable. Seeded only with retirements that escaped downstream or plausibly could; grows when a real migration happens, not by back-filling history.",
+    "values": [
+      {
+        "id": "guide-url-github-pages",
+        "retired": "matchwise.github.io/spectrea-branding",
+        "replacedBy": "branding.spectrea.com",
+        "since": "2026-08-07",
+        "decision": "v2.5.0 hand-off (custom domain)",
+        "scope": "absolute"
+      },
+      {
+        "id": "tone-spectrum-citation",
+        "retired": "toneSpectrum",
+        "replacedBy": "toneExamples (tone field)",
+        "since": "2026-08-08",
+        "decision": "20 (v2.5.4)",
+        "scope": "absolute"
+      },
+      {
+        "id": "mark-path-pre-k3",
+        "retired": "M 44 12",
+        "replacedBy": "K3′ markGeometry (logo.markGeometry)",
+        "since": "2026-08-07",
+        "decision": "6 (v2.5.0)",
+        "scope": "absolute"
+      },
+      {
+        "id": "focus-ring-universal-rgba",
+        "retired": "rgba(225, 144, 0, 0.7)",
+        "replacedBy": "#A86E00 (light) / rgba(225, 144, 0, 0.7) (dark)",
+        "since": "2026-08-07",
+        "decision": "16 (v2.5.1), scope rule decision 34 (v2.10.0)",
+        "scope": "contextual",
+        "stillValidAs": "The dark-theme focus ring. Only its use as the LIGHT-theme ring was retired, and no string match can tell the two apart."
+      },
+      {
+        "id": "teal-active-as-text",
+        "retired": "#008775",
+        "replacedBy": "#007D6E (brandTokens.accentText.teal)",
+        "since": "2026-08-08",
+        "decision": "accessibility cluster (v2.5.7, accentText Option A)",
+        "scope": "contextual",
+        "stillValidAs": "teal.active — a button-state FILL. Only its use as text colour was retired."
+      }
+    ]
+  }
 }

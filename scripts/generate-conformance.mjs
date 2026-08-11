@@ -45,7 +45,7 @@ async function importTsModule(tsPath) {
   }
 }
 
-const { brand, voice, naming, meta } = await importTsModule(join(root, 'src', 'data', 'brand.ts'))
+const { brand, voice, naming, meta, retired } = await importTsModule(join(root, 'src', 'data', 'brand.ts'))
 const cg = brand.positioning.categoryGuard
 const compoundingValue = brand.values.find((v) => 'usageGuardrail' in v)
 
@@ -164,6 +164,25 @@ const EXPECTED_GUARDRAIL =
 // The claim phrase itself is derived from canon rather than typed here: it is
 // the quoted subject of the guardrail.
 const CLAIM_FROM_GUARDRAIL = /^Use "([^"]+)"/
+
+// How each retired-register entry is MATCHED. Canon carries the fact (what was
+// retired, what replaced it, whether context matters); matching mechanics are
+// checker knowledge and live here — same discipline as every other table in
+// this file, so an entry this table has not been taught fails the build.
+//   caseSensitive — identifiers and path data are case-sensitive; hexes and
+//                   URLs are not.
+//   spacing       — 'exact' uses the standard fragment (interior whitespace
+//                   matches any run of whitespace); 'css' additionally makes
+//                   the whitespace after commas OPTIONAL, because
+//                   rgba(225, 144, 0, 0.7) and rgba(225,144,0,0.7) are the
+//                   same value in every consumer.
+const RETIRED_MATCHING = {
+  'guide-url-github-pages': { caseSensitive: false, spacing: 'exact' },
+  'tone-spectrum-citation': { caseSensitive: true, spacing: 'exact' },
+  'mark-path-pre-k3': { caseSensitive: true, spacing: 'exact' },
+  'focus-ring-universal-rgba': { caseSensitive: false, spacing: 'css' },
+  'teal-active-as-text': { caseSensitive: false, spacing: 'exact' },
+}
 
 /* ------------------------------------------------------------------ */
 /* Pattern construction                                                */
@@ -351,7 +370,47 @@ if (neverUseConditional.length) {
   })
 }
 
-// ── 5. Compounding-claim mechanism guardrail ─────────────────────────
+// ── 5. Retired-values register ───────────────────────────────────────
+// Decision 35b. Canon's one history-keeping structure exists precisely for
+// this generator: a checker built from current values alone cannot recognise
+// the retired value it is meant to catch. One rule per entry, so the note can
+// name the specific replacement and --only can target one migration.
+if (!retired || !Array.isArray(retired.values) || !retired.values.length) {
+  fail('retired.values is missing or empty — the register decision 35b canonized would silently check nothing.')
+}
+for (const entry of retired.values) {
+  const match = RETIRED_MATCHING[entry.id]
+  if (!match) {
+    fail('retired.values entry is not taught to the checker:\n  ' + JSON.stringify(entry.id) +
+      '\nAdd it to RETIRED_MATCHING with { caseSensitive, spacing } so matching is a ' +
+      'decision, not a guess.')
+  }
+  if (entry.scope !== 'absolute' && entry.scope !== 'contextual') {
+    fail('retired.values entry "' + entry.id + '" has unknown scope "' + entry.scope +
+      '" — the register maps absolute→error and contextual→review, nothing else.')
+  }
+  if (entry.scope === 'contextual' && !entry.stillValidAs) {
+    fail('retired.values entry "' + entry.id + '" is contextual but states no stillValidAs — ' +
+      'a reviewer cannot judge an occurrence without knowing the surviving role.')
+  }
+  let source = fragment(entry.retired)
+  if (match.spacing === 'css') {
+    // rgba(225, 144, 0, 0.7) and rgba(225,144,0,0.7) are the same value.
+    source = source.replace(/,\\s\+/g, ',\\s*')
+  } else if (match.spacing !== 'exact') {
+    fail('RETIRED_MATCHING["' + entry.id + '"].spacing is "' + match.spacing + '" — teach this generator what that means.')
+  }
+  add({
+    id: 'retired-' + entry.id,
+    severity: entry.scope === 'absolute' ? 'error' : 'review',
+    patterns: [{ source: '(?:' + source + ')', flags: match.caseSensitive ? 'g' : 'gi' }],
+    canon: 'retired.values[' + entry.id + ']',
+    note: 'Retired ' + entry.since + ' (decision ' + entry.decision + '). Replaced by: ' + entry.replacedBy + '.',
+    ...(entry.scope === 'contextual' ? { condition: 'Still valid as: ' + entry.stillValidAs } : {}),
+  })
+}
+
+// ── 6. Compounding-claim mechanism guardrail ─────────────────────────
 const guardrail = compoundingValue?.usageGuardrail
 if (!guardrail) fail('no brand value carries a usageGuardrail — the compounding rule cannot be derived.')
 if (guardrail !== EXPECTED_GUARDRAIL) {
@@ -383,7 +442,7 @@ const compounding = {
 
 const accounted =
   cg.badSubstitutions.length + forbiddenVerbs.length +
-  naming.neverNames.length + voice.neverUse.length
+  naming.neverNames.length + voice.neverUse.length + retired.values.length
 const namesHandled = naming.neverNames.filter((e) => NEVER_NAMES[e]).length
 if (namesHandled !== naming.neverNames.length) fail('neverNames coverage gap (unreachable — guarded above).')
 
@@ -425,10 +484,14 @@ const header = `// ============================================================
 //   • Asset geometry (logo paths, mark construction). The vendored snapshot
 //     carries no binary assets, so compare those by hash against upstream.
 //   • Colour, type-scale and spacing conformance — token-level, not text.
-//   • Focus-ring implementation. Canon holds the current values, not the
-//     retired ones, so a checker built from canon cannot recognise the old
-//     ring it is meant to catch. Migration rules would have to be canonized
-//     first (as categoryGuard.badSubstitutions already is for the category noun).
+//   • Migration COMPLETENESS. The retired-values register (canon's \`retired\`
+//     export, decision 35b) makes canonized retirements detectable — including
+//     the old focus ring — but a contextual retirement (a string still
+//     canonical in another role, like the rgba ring that survives as the DARK
+//     ring) reports at review severity for a human to judge: no string match
+//     can tell the surviving role from the retired one. And a retirement
+//     nobody has registered is still invisible — the register is seeded, not
+//     exhaustive.
 //   • Anything requiring judgement about tone, rhythm or register.
 //   • The compounding-claim rule is PROXIMITY, not comprehension: it asks
 //     whether a mechanism word appears in the same block as the claim. A

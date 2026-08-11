@@ -1,8 +1,8 @@
-<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-10) -->
+<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-11) -->
 # Spectrea few-shots — on-brand vs off-brand
 
 Contrastive pairs derived from the canonical voice data (voice.toneExamples and
-voice.surfacePatterns in src/data/brand.ts, v2.10.0). Use these as few-shot
+voice.surfacePatterns in src/data/brand.ts, v2.11.0). Use these as few-shot
 examples when generating Spectrea copy: match the register of the ✅ versions.
 Voice formula: Plain words, real specifics, room to breathe. Tech earns its place by being checkable — shown once, where the reader looks for it.
 
