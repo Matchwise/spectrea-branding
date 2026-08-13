@@ -50,12 +50,13 @@ jobs:
             git diff --stat -- "${PATHS[@]}"
             exit 1
           fi
-      # generate:all ends with this gate, but run it standalone too: it is the
-      # check that must not be skippable by a partial regeneration. The
-      # selftest proves the gate still catches the shapes it exists for.
+      # The selftest proves the gate still catches the shapes it exists for.
       - run: npm run test:internal-tier
-      - run: npm run check:internal-tier
       - run: npm run build
+      # After the build, not before: a component can reference a canon value
+      # that the source scan exempts and carry it into the bundle, which every
+      # earlier gate would miss. generate:all runs the pre-build pass already.
+      - run: npm run check:internal-tier -- --include-dist
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

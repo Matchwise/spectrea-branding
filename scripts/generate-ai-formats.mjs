@@ -17,6 +17,7 @@
 // ============================================================
 
 import { readFileSync, writeFileSync, mkdtempSync, rmSync, mkdirSync } from 'node:fs'
+import { buildInternalProbes, norm } from './internal-tier-probes.mjs'
 import { join, dirname, basename, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { tmpdir } from 'node:os'
@@ -464,25 +465,19 @@ for (const [name, content] of outputs) {
   if (!content.includes(HEADER)) failures.push(`${name} missing DO-NOT-EDIT header`)
 }
 // Internal-tier enforcement (internalCanon, 2026-08-13): a public artefact
-// carrying an internal field's text is a build defect, not a style. Each
-// probe is a distinctive substring of one internal field. This is the early
-// gate on THIS script's outputs; scripts/check-internal-tier.mjs is the
-// whole-repo gate that runs last (it catches paths no single generator owns —
-// a claim quoted inside a ledger entry, for one).
-const normalize = s => s.toLowerCase().replace(/\s+/g, ' ')
-const internalProbes = [
-  ['trustCopy.privacy', trustCopy.privacy.slice(0, 60)],
-  ['trustCopy.retention', trustCopy.retention.slice(0, 60)],
-  ['trustCopy.enterpriseReadiness', trustCopy.enterpriseReadiness.slice(0, 60)],
-  ['fullShapeClaim', brand.positioning.fullShapeClaim.statement],
-  ['differentiatorGuardrail', brand.differentiatorGuardrail.slice(0, 60)],
-  ['audienceMechanics', 'bounded invites stay free'],
-  ...brand.antiBrands.map(b => [`antiBrands (${b})`, b]),
-]
+// carrying an internal field's text is a build defect, not a style. This is
+// the early gate on THIS script's outputs; scripts/check-internal-tier.mjs is
+// the whole-repo gate that runs last (it catches paths no single generator
+// owns — a claim quoted inside a ledger entry, for one). Both derive their
+// probes from the registry, so registering a field is enough to enforce it:
+// the hand-listed version of this check silently left two of trustCopy's five
+// strings unprobed.
+const { probes: internalProbes, unprobed } = buildInternalProbes({ brand, trustCopy, internalCanon })
+if (unprobed.length) failures.push(`internalCanon registers unprobed fields: ${unprobed.join(', ')}`)
 for (const [name, content] of outputs) {
-  const haystack = normalize(content)
-  for (const [field, probe] of internalProbes) {
-    if (haystack.includes(normalize(probe))) failures.push(`${name} leaks internal-tier field ${field}`)
+  const haystack = norm(content)
+  for (const { path: fieldPath, probe } of internalProbes) {
+    if (haystack.includes(probe)) failures.push(`${name} leaks internal-tier field ${fieldPath}`)
   }
 }
 if (failures.length) {

@@ -10,24 +10,35 @@
 // (caught by the fix-wave gate, 2026-08-13). So this gate runs LAST, over the
 // artefacts as they will actually ship, and normalizes before comparing.
 //
-//   node scripts/check-internal-tier.mjs [--verbose]
+//   node scripts/check-internal-tier.mjs [--include-dist] [--selftest] [--verbose]
 //
-// Scope: every text artefact under public/ and src/ plus index.html and
-// README.md. src/data/brand.ts is EXEMPT — canon is the sanctioned home for
-// these fields, and the tier removes rendered surfaces, not the source text.
-// public/brand-guide.pdf is derived from public/brand-guide.md, which is
-// scanned; the PDF carries no text the markdown lacks.
+// Scope: every text-bearing artefact under public/ (SVG included — an SVG is
+// text and brand-assets/ is full of them), src/, docs/, plus index.html and
+// README.md. With --include-dist, the built bundle too: CI runs that pass
+// AFTER the build, because a component can reference a canon value that this
+// scan exempts at source and put it in the bundle after every earlier gate.
+//
+// Exempt: src/data/brand.ts — canon is the sanctioned home for these fields,
+// and the tier removes rendered surfaces, not the source text.
+//
+// KNOWN LIMIT, stated rather than papered over: public/brand-guide.pdf is not
+// text-extracted here (no Node-native extractor without adding a dependency).
+// It is covered by construction — generate-pdf.mjs prints exactly one markdown
+// file, public/brand-guide.md, plus SVGs it inlines from public/, and all of
+// those are scanned. The assertion below fails if that stops being true.
 // ============================================================
 
-import { readFileSync, readdirSync, statSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs'
+import { readFileSync, readdirSync, statSync, existsSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs'
 import { join, resolve, relative, extname, basename } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { tmpdir } from 'node:os'
 import ts from 'typescript'
+import { buildInternalProbes, norm } from './internal-tier-probes.mjs'
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
 const root = resolve(__dirname, '..')
 const verbose = process.argv.includes('--verbose')
+const includeDist = process.argv.includes('--include-dist')
 
 /** Transpile a dependency-free .ts data module in-memory and import it. */
 async function importTsModule(tsPath) {
@@ -46,131 +57,120 @@ async function importTsModule(tsPath) {
   }
 }
 
-const { brand, trustCopy, internalCanon } = await importTsModule(join(root, 'src', 'data', 'brand.ts'))
+const canon = await importTsModule(join(root, 'src', 'data', 'brand.ts'))
+const { probes, unprobed } = buildInternalProbes(canon)
 
-// Case, whitespace, and quote-shape all vary between a canon string and its
-// quotation elsewhere; none of them make a leak less of a leak.
-const norm = s =>
-  s
-    .toLowerCase()
-    .replace(/[‘’“”]/g, "'")
-    .replace(/[–—]/g, '-')
-    .replace(/\s+/g, ' ')
-    .trim()
-
-// One probe per registered field: a distinctive span of it, long enough that a
-// match is the field and not an ordinary phrase. Keeping the registry and the
-// probe list adjacent means adding a field to internalCanon without a probe
-// fails loudly below rather than silently widening what may ship.
-const probesByField = {
-  trustCopy: [
-    trustCopy.privacy.slice(0, 70),
-    trustCopy.aiUse.slice(0, 70),
-    trustCopy.retention.slice(0, 70),
-    trustCopy.enterpriseReadiness.slice(0, 70),
-    trustCopy.counselNote.slice(0, 70),
-  ],
-  'brand.positioning.fullShapeClaim': [
-    brand.positioning.fullShapeClaim.statement,
-    brand.positioning.fullShapeClaim.usage.slice(0, 70),
-  ],
-  'brand.differentiatorGuardrail': [brand.differentiatorGuardrail.slice(0, 70)],
-  'brand.antiBrands': brand.antiBrands.map(String),
-  'brand.audienceMechanics': [brand.audienceMechanics.slice(0, 70)],
-}
-
-const missing = internalCanon.fields.filter(f => !probesByField[f])
-if (missing.length) {
-  console.error(
-    `check-internal-tier: internalCanon registers ${missing.join(', ')} with no probe. ` +
-      'Add one here — an unprobed field is unenforced.'
-  )
+if (unprobed.length) {
+  console.error('check-internal-tier: registered field with nothing to probe:\n  ' + unprobed.join('\n  '))
+  console.error('An unprobed field is an unenforced field.')
   process.exit(1)
 }
 
-// antiBrands probes are bare company names, so they only mean "leak" on a
-// surface that speaks as the brand. Everywhere else — the pre-rename naming
-// analysis, for one — naming a company is just naming a company.
-const probes = internalCanon.fields.flatMap(field =>
-  probesByField[field].map(text => ({
-    field,
-    probe: norm(text),
-    brandSurfacesOnly: field === 'brand.antiBrands',
-  }))
-)
-
-// --selftest: prove the gate catches the shape that got past the first
-// version of it — the claim quoted mid-sentence, lowercased, inside a ledger
-// entry — plus the plain and re-wrapped shapes. A gate nobody has watched fail
-// is a gate nobody knows works.
+// --selftest: prove the gate catches the shapes it exists for — the claim
+// quoted mid-sentence in lowercase inside a ledger entry (how it got past the
+// first version), a trust master's opening, a re-wrapped string, and text
+// carried in an SVG or a built bundle. A gate nobody has watched fail is a
+// gate nobody knows works.
 if (process.argv.includes('--selftest')) {
+  const { brand, trustCopy } = canon
   const claim = brand.positioning.fullShapeClaim.statement
+  const hit = sample => {
+    const haystack = norm(sample)
+    return probes.some(p => haystack.includes(p.probe))
+  }
   const cases = [
     ['lowercased mid-sentence in a ledger entry', `Full-shape claim "${claim.toLowerCase()}" adopted from vision.`, true],
-    ['verbatim', claim, true],
-    ['re-wrapped across lines', claim.replace(' ', '\n    '), true],
-    ['trust master, first sentence', trustCopy.retention.slice(0, 70), true],
+    ['claim verbatim', claim, true],
+    ['claim re-wrapped across lines', claim.replace(' ', '\n    '), true],
+    ['trustCopy.retention opening', trustCopy.retention.slice(0, 70), true],
+    ['trustCopy.aiUse opening', trustCopy.aiUse.slice(0, 70), true],
+    ['trustCopy.counselNote opening', trustCopy.counselNote.slice(0, 70), true],
+    ['guardrail inside an SVG text node', `<text x="0">${brand.differentiatorGuardrail.slice(0, 80)}</text>`, true],
+    ['master inside a minified bundle string', `const a="${trustCopy.privacy.slice(0, 90)}";`, true],
     ['a sentence that merely shares words', 'Compounding intelligence is collective work.', false],
+    ['the public promise that replaced the mechanics', canon.brand.audienceBreadth, false],
   ]
   let failed = 0
   for (const [name, sample, shouldCatch] of cases) {
-    const haystack = norm(sample)
-    const caught = probes.some(p => haystack.includes(p.probe))
+    const caught = hit(sample)
     const ok = caught === shouldCatch
     if (!ok) failed++
     console.log(`${ok ? 'ok   ' : 'FAIL '} ${name} — ${caught ? 'caught' : 'not caught'}`)
   }
-  console.log(`\n${cases.length} cases · ${failed} failed`)
+  console.log(`\n${cases.length} cases · ${failed} failed · ${probes.length} probes`)
   process.exit(failed ? 1 : 0)
 }
 
-const TEXT_EXT = new Set(['.md', '.txt', '.json', '.mjs', '.js', '.ts', '.tsx', '.css', '.html'])
+// SVG and XML are text: an asset with a <text> node is a public surface.
+const TEXT_EXT = new Set([
+  '.md', '.txt', '.json', '.mjs', '.js', '.ts', '.tsx', '.css', '.html', '.svg', '.xml',
+])
 const EXEMPT = new Set([join(root, 'src', 'data', 'brand.ts')])
-const SKIP_DIRS = new Set(['brand-assets', 'fonts', 'illustrations', 'node_modules'])
+const SKIP_DIRS = new Set(['node_modules'])
 
 function collect(dir, out = []) {
+  if (!existsSync(dir)) return out
   for (const name of readdirSync(dir)) {
     const path = join(dir, name)
     if (statSync(path).isDirectory()) {
       if (!SKIP_DIRS.has(name)) collect(path, out)
-    } else if (TEXT_EXT.has(extname(name)) && !EXEMPT.has(path)) {
+    } else if (TEXT_EXT.has(extname(name).toLowerCase()) && !EXEMPT.has(path)) {
       out.push(path)
     }
   }
   return out
 }
 
+// The PDF's coverage is by construction; assert the construction still holds.
+const pdfGenerator = readFileSync(join(root, 'scripts', 'generate-pdf.mjs'), 'utf8')
+if (!/mdPath\s*=\s*join\(root,\s*'public',\s*'brand-guide\.md'\)/.test(pdfGenerator)) {
+  console.error(
+    'check-internal-tier: generate-pdf.mjs no longer prints public/brand-guide.md alone.\n' +
+      'The PDF was covered because its only text input was a file this gate scans. Re-establish that, ' +
+      'or add real PDF text extraction here.'
+  )
+  process.exit(1)
+}
+
 // Brand surfaces: what ships as Spectrea speaking. docs/ is the historical
 // record — scanned too, because a public file quoting a trust master is a leak
-// wherever it sits, but exempt from the bare-name probes above.
+// wherever it sits, but exempt from the bare-name probes.
 const brandSurfaces = [
   ...collect(join(root, 'public')),
   ...collect(join(root, 'src')),
   join(root, 'index.html'),
   join(root, 'README.md'),
+  ...(includeDist ? collect(join(root, 'dist')) : []),
 ]
 const recordSurfaces = collect(join(root, 'docs'))
 const files = [...brandSurfaces, ...recordSurfaces]
 const brandSurfaceSet = new Set(brandSurfaces)
 
+if (includeDist && !existsSync(join(root, 'dist'))) {
+  console.error('check-internal-tier: --include-dist was passed but dist/ does not exist. Run npm run build first.')
+  process.exit(1)
+}
+
 const leaks = []
 for (const path of files) {
   const text = norm(readFileSync(path, 'utf8'))
   const isBrandSurface = brandSurfaceSet.has(path)
-  for (const { field, probe, brandSurfacesOnly } of probes) {
+  for (const { field, path: fieldPath, probe, brandSurfacesOnly } of probes) {
     if (brandSurfacesOnly && !isBrandSurface) continue
-    if (text.includes(probe)) leaks.push({ path: relative(root, path), field })
+    if (text.includes(probe)) leaks.push({ path: relative(root, path), field, fieldPath })
   }
 }
 
 if (leaks.length) {
   console.error('INTERNAL-TIER LEAK — these public artefacts carry a field registered in internalCanon:')
-  for (const { path, field } of leaks) console.error(`  ${path} — ${field}`)
+  for (const { path, fieldPath } of leaks) console.error(`  ${path} — ${fieldPath}`)
   console.error('\nFix the source the artefact is generated from (canon, hand prose, or a component), then regenerate.')
   process.exit(1)
 }
 
 console.log(
-  `Internal-tier gate passed: ${probes.length} probes over ${internalCanon.fields.length} registered fields, ` +
-    `${files.length} public text artefacts clean.${verbose ? '\n  ' + internalCanon.fields.join('\n  ') : ''}`
+  `Internal-tier gate passed: ${probes.length} probes over ${canon.internalCanon.fields.length} registered fields, ` +
+    `${files.length} text artefacts clean${includeDist ? ' (dist/ included)' : ''}; ` +
+    'PDF covered by construction via public/brand-guide.md.' +
+    (verbose ? '\n  ' + probes.map(p => p.path).join('\n  ') : '')
 )
