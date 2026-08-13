@@ -1,4 +1,4 @@
-<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-11) -->
+<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-13) -->
 # Spectrea brand rules — agent drop-in
 
 Copy the block below into a repo's CLAUDE.md / AGENTS.md (or a system prompt)
@@ -7,7 +7,7 @@ it is regenerated from src/data/brand.ts.
 
 ---
 
-## Spectrea brand rules (generated 2026-08-11, brand.ts v2.12.0)
+## Spectrea brand rules (generated 2026-08-13, brand.ts v2.13.0)
 
 - Product: **Spectrea** (/spek-TREE-uh/). Tagline: "We connect the dots.". Category: **Composable intelligence platform**. The category noun is exactly "Composable intelligence platform" (lowercase in running prose) — never a substitute: "composable knowledge platform", "knowledge platform", "knowledge management", "AI assistant", "automation tool".
 - Company vs product: Matchwise Pte. Ltd. is the legal entity — it appears only where a legal entity is required: contracts, invoices, terms, privacy notices ("Spectrea is a product of Matchwise Pte. Ltd."). Spectrea is the product and brand name on every public surface. Never brand a surface "Matchwise"; never combine the two into one name.
@@ -21,7 +21,6 @@ it is regenerated from src/data/brand.ts.
 - NEVER use these words: AI-powered (overused), next-gen, state-of-the-art, world-class, breakthrough, unprecedented, game-changer, revolutionary, seamless, cutting-edge, synergy, leverage (as verb), agentic, AI-first, copilot (as generic noun), 10x, supercharge, effortless, magical.
 - AI naming: Three registers. (1) Homepage/hero narrative: "your AI" is sanctioned to match the hero register. (2) Product and trust surfaces: the AI is "the assistant" — lowercase, generic; as a first-class feature name it is "Assistant" (Title-Case). (3) Technical and architecture writing: "agent" is the umbrella term for an accountable AI actor (delegate or standing agent), per the vision taxonomy — the assistant is the delegate shape's product realization. Never "copilot" (generic or name), never "Spectrea AI" as a name. The assistant suggests, surfaces, and drafts — it never silently "handles it for you" or "takes over". Automations act within guardrails the user sets: the user decides what runs on its own and what checks with you first (ratified 2026-07-19, per the vision's governed-autonomy model). Never describe autonomy without naming its guardrail; never use approval-begging framings ("waiting for your yes"). Allowed verbs: suggests, surfaces, drafts. Forbidden verbs: handles it for you, takes over.
 - Compounding claim: Use "compounding intelligence" only with its defensible mechanism named — provenance, per-viewer access, and the closed loop that feeds outcomes back in. The phrase is contested in-market (noted 2026-07-03); the mechanism, not the slogan, carries the claim.
-- Differentiation: Never position on retrieval or search quality — it is commoditized across the field. The graph earns its keep through governance, provenance, shared state, and the loop; differentiate on what the substrate makes structural.
 - Anti-values: Never replaces human judgment · Never leaves anyone behind · Never complex or bloated · Never a black box.
 - Buyer surfaces: Hero, case studies, pricing — the open lands on the outcome (heroOpen rule); proof carries the grounding: a named customer, a concrete outcome, or a peer-testable claim. Brand vocabulary decorates; it doesn't carry the opening.
 - Product surfaces: Warm up one notch. Warmth comes from specificity, not exclamation points — "Read. 12 entities, 18 connections added." beats "Upload complete! 🎉" because the first shows the system paid attention.

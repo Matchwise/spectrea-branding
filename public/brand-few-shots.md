@@ -1,8 +1,8 @@
-<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-11) -->
+<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-13) -->
 # Spectrea few-shots — on-brand vs off-brand
 
 Contrastive pairs derived from the canonical voice data (voice.toneExamples and
-voice.surfacePatterns in src/data/brand.ts, v2.12.0). Use these as few-shot
+voice.surfacePatterns in src/data/brand.ts, v2.13.0). Use these as few-shot
 examples when generating Spectrea copy: match the register of the ✅ versions.
 Voice formula: Plain words, real specifics, room to breathe. Tech earns its place by being checkable — shown once, where the reader looks for it.
 
@@ -102,7 +102,7 @@ Voice formula: Plain words, real specifics, room to breathe. Tech earns its plac
 
 *Rule:* Same voice, zero warmth-decoration: precise, complete sentences that a lawyer and a reader both accept. State facts and obligations; never soften a limitation into a benefit.
 
-✅ **On-brand:** You can export your full workspace — structure, data, and provenance — at any time. Deleting your account removes your data from live systems within 30 days.
+✅ **On-brand:** You can export your full workspace — structure, data, and provenance — at any time. Deleting your account removes your data from live systems within the period stated in our retention policy.
 
 ❌ **Off-brand:** Don't worry — your data is always safe with us, and leaving is a breeze!
 

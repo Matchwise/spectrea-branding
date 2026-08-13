@@ -25,7 +25,6 @@ import Forms from './pages/components/Forms'
 import Cards from './pages/components/Cards'
 import LayoutPage from './pages/components/LayoutPage'
 import Copy from './pages/communications/Copy'
-import Trust from './pages/communications/Trust'
 import Social from './pages/communications/Social'
 import Email from './pages/communications/Email'
 import Presentations from './pages/communications/Presentations'
@@ -90,7 +89,6 @@ export default function App() {
             <Route path="/components/cards" element={<Cards />} />
             <Route path="/components/layout" element={<LayoutPage />} />
             <Route path="/communications/copy" element={<Copy />} />
-            <Route path="/communications/trust" element={<Trust />} />
             <Route path="/communications/social" element={<Social />} />
             <Route path="/communications/email" element={<Email />} />
             <Route path="/communications/presentations" element={<Presentations />} />

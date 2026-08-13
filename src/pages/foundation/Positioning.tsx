@@ -54,15 +54,8 @@ export default function Positioning() {
         </div>
       </Section>
 
-      {/* Full-shape claim — internal north star (vision §1, adopted 2026-07-19) */}
-      <Section title="Full-Shape Claim — Internal North Star">
-        <div className="border-2 border-stone-800 rounded-xl p-6">
-          <p className="text-2xl font-semibold text-ink" style={{ fontFamily: "'Albert Sans', sans-serif" }}>
-            {brand.positioning.fullShapeClaim.statement}
-          </p>
-          <p className="text-sm text-iron mt-3 leading-relaxed">{brand.positioning.fullShapeClaim.usage}</p>
-        </div>
-      </Section>
+      {/* Full-shape claim: internal-tier since 2026-08-13 (internalCanon) —
+          rendered only in the internal/ artefacts, not on the public guide. */}
 
       {/* Category */}
       <Section title="Category Definition">
@@ -153,9 +146,8 @@ export default function Positioning() {
             </div>
           ))}
         </div>
-        <div className="mt-4 rounded-lg px-4 py-3" style={{ backgroundColor: '#E1900010', border: '1px solid #E1900025' }}>
-          <p className="text-xs leading-relaxed" style={{ color: '#A86E00' }}><strong>Guardrail:</strong> {brand.differentiatorGuardrail}</p>
-        </div>
+        {/* differentiatorGuardrail: internal-tier since 2026-08-13
+            (internalCanon) — competitive instruction, not public copy. */}
       </Section>
     </PageShell>
   )

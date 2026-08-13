@@ -8,7 +8,7 @@
 **Category:** Composable intelligence platform.
 **Pronunciation:** /spek-TREE-uh/ (a coinage from *spectrum* — Latin, from *specere*, "to look"; the full range — with a second reading: *revealing*).
 <!-- generated:version-header -->
-**Version:** 2.12.0 (2026-08-11). Canonical data: `src/data/brand.ts` — this guide is a hybrid mirror: prose is hand-written; fenced data blocks are generated from canon (`npm run generate:guide`).
+**Version:** 2.13.0 (2026-08-13). Canonical data: `src/data/brand.ts` — this guide is a hybrid mirror: prose is hand-written; fenced data blocks are generated from canon (`npm run generate:guide`).
 <!-- /generated:version-header -->
 
 **Strategic claim:** Spectrea is the spectrum of clarity. Everything you know, in one living view — alive with possibility, yours to keep. See it whole. Trust what you see. Build on what you find.
@@ -30,13 +30,12 @@ A world where anyone can see the full spectrum of what's known, trust what they 
 - **For:** Anyone who works with knowledge.
 - **Category:** Composable intelligence platform.
 - **Promise:** Turns scattered information into compounding intelligence.
-- **Full-shape claim (vision §1, adopted 2026-07-19):** Compounding collective intelligence — compounding intelligence is the temporal property (each cycle sharpens the next), collective intelligence the cardinality property (the org acts as one); Spectrea's target is both together. Internal north-star and depth-surface language (docs, vision, architecture narratives) — the on-ramp stays outcome-first.
 - **Tactical:** For anyone who works with knowledge, Spectrea is the composable intelligence platform that turns scattered information into compounding intelligence — unlike fragmented point solutions that silo your knowledge and hide their reasoning.
 
 ### Messaging hierarchy
 Primary theme is **Connection** — the headline "We connect the dots" and the idea that scattered knowledge becomes one living view. Three supporting themes:
 1. **Trustworthy Intelligence** — "Intelligence you can trust." Everything you see is transparent; every action is reviewable.
-2. **Compounding Intelligence** — "It gets smarter with every interaction." Your second year is measurably sharper than your first — more context retained, more decisions traceable, more outcomes feeding the next cycle. *Guardrail:* use "compounding intelligence" only with its defensible mechanism named — provenance, per-viewer access, and the closed loop that feeds outcomes back in. The phrase is contested in-market (noted 2026-07-03); the mechanism, not the slogan, carries the claim.
+2. **Compounding Intelligence** — "It gets smarter with every interaction." Your second year is sharper than your first — more context retained, more decisions traceable, more outcomes feeding the next cycle. *Guardrail:* use "compounding intelligence" only with its defensible mechanism named — provenance, per-viewer access, and the closed loop that feeds outcomes back in. The phrase is contested in-market (noted 2026-07-03); the mechanism, not the slogan, carries the claim.
 3. **Composability** — "Build exactly what you need." Simple, combinable parts assembled into any solution.
 
 ### Archetypes — three facets, one motion
@@ -73,7 +72,7 @@ The brand's *consistency and discipline* — fixed primitives, fixed palette, fi
 **Warm + Intelligent.** Like a brilliant mentor — approachable yet deep. Rich colours, inviting spacing, feels human. References: Stripe, Linear (clarity through restraint). Tradeoff: **power over polish** — capability is sacred; elegance is valued but never at the cost of depth.
 
 ### Values
-1. **Human-First** — Spectrea serves people, not the other way around. AI assists understanding; it never replaces judgment. Your data is sovereign: full-fidelity export — structure, data, and provenance — is a first-class guarantee. You can always leave with everything.
+1. **Human-First** — Spectrea serves people, not the other way around. AI assists understanding; it never replaces judgment. Your data is sovereign: full-fidelity export — structure, data, and provenance — with no lock-in. You can always leave with everything.
 2. **Trustworthy Intelligence** — everything you see is transparent; every action is reviewable; every connection can be followed back. Truth is per-viewer: what you see is synthesized from exactly the claims you can access — coexisting perspectives stay attributed, and nothing leaks from views you can't see.
 3. **Compounding Intelligence** — the more you use it, the more it gives back.
 4. **Composable by Nature** — build solutions that fit your world; don't reshape your world to fit a tool.
@@ -96,7 +95,7 @@ Five personas — the solo tier is first-class, not a trial. Mirrored from `bran
 | **Technology Leaders** | CTOs, IT Directors, architects | A composable, inspectable, extensible knowledge substrate. | *"Composable. Transparent. Built on primitives, not opinions. A platform that earns the trust of an engineering culture that asks 'why' before adopting anything."* |
 | **Growing Teams** | Startup founders, team leads | Preserve institutional knowledge. Turn tribal knowledge into collective intelligence. | *"Every conversation, every document, every decision — captured in a graph that compounds. When someone leaves, their insights stay."* |
 
-**Breadth path:** The designed path: start free alone (full-featured) → invite a few collaborators (bounded invites stay free) → pay when capacity or admin scale demands it. The paid line is capacity and governance administration, never a crippled core — value arrives before payment.
+**Breadth:** The individual tier is first-class, not a trial — free is full-featured, and value arrives before payment. Paying is about scale, never a crippled core. (The packaging mechanics behind that promise are internal-tier; see `internalCanon`.)
 
 ### Differentiators
 Anchored to the moat: per-viewer truth, graph-resident decisions with provenance, outcomes feeding the next cycle, one substrate from solo to institution.
@@ -111,7 +110,7 @@ Anchored to the moat: per-viewer truth, graph-resident decisions with provenance
 | Composable — build exactly what you need from simple parts | Fixed — use what you're given |
 | Sovereign by default — private, and fully exportable with structure and provenance | Open by default, hard to leave — data leaks in, value locks in |
 
-**Guardrail:** never position on retrieval or search quality — it is commoditized across the field. The graph earns its keep through governance, provenance, shared state, and the loop; differentiate on what the substrate makes structural.
+**Guardrail:** the competitive-positioning guardrail for this table is internal-tier (`internalCanon`) — request it through the internal brand hand-off.
 
 ---
 
@@ -176,7 +175,7 @@ Voice patterns for product and operational surfaces the register taxonomy doesn'
 | **Confirmation dialogs** | State the consequence plainly, in the user's terms — what happens, what's reversible, what isn't. The confirm button names the action, never "OK". | *"Delete this source? Its 14 extracted claims stay in the graph but lose their citation. This can't be undone."* | *"Are you sure you want to proceed? This action may have consequences. [OK] [Cancel]"* |
 | **System notifications** | Specificity is the warmth. Report what the system actually did, with numbers where they exist. No celebration, no vagueness. | *"Read. 12 entities, 18 connections added."* | *"Upload complete! 🎉 Your document has been processed successfully."* |
 | **Settings & security** | Ground leads. Say exactly what a setting does and what changes when it's toggled — especially for privacy and access. Plain sentences, no marketing. | *"Workspace visibility: private. Only people you invite can see this workspace. The assistant sees only what each viewer can see."* | *"Take control of your data with our industry-leading privacy options!"* |
-| **Legal & compliance** | Same voice, zero warmth-decoration: precise, complete sentences that a lawyer and a reader both accept. State facts and obligations; never soften a limitation into a benefit. | *"You can export your full workspace — structure, data, and provenance — at any time. Deleting your account removes your data from live systems within 30 days."* | *"Don't worry — your data is always safe with us, and leaving is a breeze!"* |
+| **Legal & compliance** | Same voice, zero warmth-decoration: precise, complete sentences that a lawyer and a reader both accept. State facts and obligations; never soften a limitation into a benefit. | *"You can export your full workspace — structure, data, and provenance — at any time. Deleting your account removes your data from live systems within the period stated in our retention policy."* | *"Don't worry — your data is always safe with us, and leaving is a breeze!"* |
 | **Support replies** | Ground, then equip: confirm what happened (own it plainly if it's our fault), state what's true now, give the exact next step. Never open with an apology template. | *"You're right — sync failed for files added between 09:10 and 09:40 UTC. They're queued and will finish within the hour; nothing was lost. I'll reply here when they're through."* | *"We sincerely apologize for any inconvenience this may have caused. Your satisfaction is our top priority."* |
 <!-- /generated:surface-patterns -->
 
@@ -656,7 +655,7 @@ Desktop (1024+) / Tablet (640–1023) / Mobile (<640):
 
 ### Accessibility
 <!-- generated:accessibility -->
-The floor is **WCAG 2.2 AA** on every shipped surface.
+The floor is **WCAG 2.2 AA** on every shipped surface, except the deliberate, ratified departures in the exception registry below.
 - Body text minimum 16 px; never lower for primary content.
 - Contrast ratio minimum: 4.5:1 for normal text, 3:1 for large/UI. On Canvas (computed): Ink 17.4:1 (AAA) · Iron 9.21:1 (AAA) · Slate 5.05:1 (AA) · Pewter 2.85:1 (supplementary only) — see the Pewter allow/deny matrix in §5.
 - WCAG 2.2 specifics: Focus appearance: a visible focus indicator on every interactive element — the Amber focus ring (2 px solid, 2 px offset; Amber active #A86E00 on light surfaces, alpha-tinted Amber on dark) is the standard treatment · Target size: interactive targets at least 24×24 px, or the equivalent spacing exception · Dragging alternatives: any drag interaction (graph manipulation included) has a single-pointer, non-dragging alternative.
@@ -896,13 +895,8 @@ Your deck lives on Canvas. The warmth is deliberate — it's what keeps a Spectr
 - **Accent strip:** brand gradient, 2–4 px tall, at the bottom of title, stat, and divider slides (Canvas or Ink). Leave it off content slides so it keeps its meaning.
 - **Logotype, not just the mark, wherever the slide has room.** Centered `LogotypeGradient` on title and closing-CTA slides (the brand's signature hero treatment). Small `Logotype` footer at `fontSize=9`, bottom-left, on content, stat, and divider slides (`colorMode="ink"` on Canvas with `color="#97979E"`; `colorMode="white"` on Ink with `color="#B0B0B6"`). The bare mark is for favicons and tight spaces — not deck hero moments.
 
-### Trust & disclosures (approved masters)
-Brand-voice masters, not legal instruments — **review with counsel before external legal use**.
-
-- **Privacy:** "Your knowledge belongs to you. Spectrea is private by default: what you add is visible only to you and the people you explicitly share it with, and the system enforces that per viewer on every surface — including the assistant, which sees only what you can see."
-- **AI use:** "Spectrea uses AI to suggest, surface, and draft — and to run only the automations you set guardrails for: you decide what runs on its own and what checks with you first. Every AI action is recorded, attributed to its sources, and reviewable. On the managed path, your data is not used to train foundation models — a contract we are formalizing, with independent ISO 42001-class attestation as a stated target."
-- **Retention:** "You stay in control of what Spectrea keeps. Your workspace persists until you delete it; deletion removes your data from live systems on a published schedule. And you can always leave with everything: full-fidelity export — structure, data, and provenance — is a first-class guarantee."
-- **Enterprise readiness:** "Trust in Spectrea is architectural first: per-viewer access control, provenance, and privacy are properties of the substrate, not compliance features added afterwards. Data is sovereign — full-fidelity export is guaranteed, and the deployment perimeter widens by tier from managed cloud to single-tenant/VPC to air-gapped. Formal attestations (SOC 2, ISO 27001, ISO 42001-class AI governance) and uptime/incident commitments are staged targets, stated as such: the architecture is the foundation; the program is what makes it independently verifiable."
+### Trust & disclosures
+Trust, security, and compliance masters are **internal-tier** (canon `internalCanon`, ratified 2026-08-13): they are brand-voice drafts pending a counsel read, not approved external copy, so they are not published here. Request them through the internal brand hand-off; never author them freehand.
 
 ### Executive voice
 Founder and executive surfaces — bylines, talks, investor letters, interviews, personal social — use the same voice formula in the first person. Speak as a practitioner who builds and uses the product: concrete observations, shown work, named trade-offs. No corporate we-speak, no vision without evidence.
@@ -945,7 +939,7 @@ Brand decisions live in the **ratification ledger** (`ratificationLedger` in `br
 The complete generated token sheet — the same file served at [`/spectrea-tokens.css`](/spectrea-tokens.css) and on the Downloads page:
 
 ```css
-/* Spectrea design tokens — GENERATED from src/data/brand.ts v2.12.0 (2026-08-11) — do not hand-edit; regenerate with npm run generate:assets. */
+/* Spectrea design tokens — GENERATED from src/data/brand.ts v2.13.0 (2026-08-13) — do not hand-edit; regenerate with npm run generate:assets. */
 :root {
   /* Spectrum — first accent in canon order is the brand colour */
   --color-brand: #4271DF;
@@ -1129,5 +1123,5 @@ All via Google Fonts:
 ---
 
 <!-- generated:version-footer -->
-*`src/data/brand.ts` is the canonical brand data (v2.12.0, 2026-08-11). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
+*`src/data/brand.ts` is the canonical brand data (v2.13.0, 2026-08-13). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
 <!-- /generated:version-footer -->

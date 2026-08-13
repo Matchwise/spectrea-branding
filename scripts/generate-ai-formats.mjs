@@ -16,7 +16,7 @@
 //                           SPA-route labeling)
 // ============================================================
 
-import { readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs'
+import { readFileSync, writeFileSync, mkdtempSync, rmSync, mkdirSync } from 'node:fs'
 import { join, dirname, basename, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { tmpdir } from 'node:os'
@@ -47,6 +47,7 @@ const {
   brand, voice, naming, brandTokens, accessibility, logo, graphViz,
   trustCopy, executiveVoice, originStance, meta, selectedPalette,
   colorSystem, components, ratificationLedger, retired, illustration,
+  internalCanon,
 } = await importTsModule(join(root, 'src', 'data', 'brand.ts'))
 const { navigation } = await importTsModule(join(root, 'src', 'data', 'navigation.ts'))
 
@@ -106,7 +107,8 @@ const contract = {
     categoryGuard: brand.positioning.categoryGuard,
     categoryRule,
     promise: brand.positioning.promise,
-    fullShapeClaim: brand.positioning.fullShapeClaim,
+    // fullShapeClaim is internal-tier (internalCanon, 2026-08-13) — see
+    // contract.internalCanon for the registry of withheld fields.
     visualMetaphor: brand.visualMetaphor,
   },
   naming: {
@@ -126,7 +128,7 @@ const contract = {
   },
   guardrails: {
     compoundingClaim: compoundingValue?.usageGuardrail ?? null,
-    differentiators: brand.differentiatorGuardrail,
+    // differentiatorGuardrail is internal-tier (internalCanon, 2026-08-13).
     antiValues: brand.antiValues,
   },
   color: {
@@ -159,7 +161,10 @@ const contract = {
   // sentences are the whole instruction set — an agent with the contract can
   // render on-brand without reading the guide.
   illustration,
-  trustCopy,
+  // trustCopy is internal-tier (internalCanon, 2026-08-13): the masters are
+  // counsel-gated and reach consumers via the internal hand-off, never via
+  // this crawler-facing contract. The registry below states what is withheld.
+  internalCanon,
   executiveVoice,
   originStance,
   ratificationLedger,
@@ -207,7 +212,6 @@ ${surfaceLines}
 - [ ] Hero open: ${voice.heroOpen}
 - [ ] No totalizing claims — no "incomparably", no "infinite", no unbounded every/always sweeps. Claims stay bounded and mechanism-tied.
 - [ ] Compounding claim: ${compoundingValue?.usageGuardrail ?? ''}
-- [ ] Differentiation: ${brand.differentiatorGuardrail}
 - [ ] Buyer surfaces: ${voice.contextShifts.buyer.detail}
 - [ ] Product surfaces: ${voice.contextShifts.product.detail}
 - [ ] AI naming: ${aiNamingLine}
@@ -218,7 +222,7 @@ ${antiValueLines}
 
 ## Step 4 — trust and legal surfaces
 
-Use the approved masters verbatim (they are in /brand-contract.json under "trustCopy"): privacy, AI use, retention, enterprise readiness. ${trustCopy.counselNote}
+STOP: never author trust, security, or compliance claims freehand, and never place them on a public page without the counsel read. The approved masters (privacy, AI use, retention, enterprise readiness) are internal-tier and counsel-gated — request them through the internal brand hand-off (internal/ artefacts); they are deliberately absent from this site and its machine formats.
 
 ## Executive voice
 
@@ -303,7 +307,6 @@ it is regenerated from src/data/brand.ts.
 - NEVER use these words: ${listNeverUse}.
 - AI naming: ${aiNamingLine}
 - Compounding claim: ${compoundingValue?.usageGuardrail ?? ''}
-- Differentiation: ${brand.differentiatorGuardrail}
 - Anti-values: ${brand.antiValues.map(a => a.never).join(' · ')}.
 - Buyer surfaces: ${voice.contextShifts.buyer.detail}
 - Product surfaces: ${voice.contextShifts.product.detail}
@@ -350,7 +353,6 @@ const llms = `${MD_HEADER}
 - **Category:** ${categoryRule}
 - **Tagline:** "${brand.tagline.statement}"
 - **Promise:** ${brand.positioning.promise}.
-- **Full-shape claim (internal north-star, not hero copy):** ${brand.positioning.fullShapeClaim.statement}.
 - **Voice formula:** ${voice.formula}
 - **Attention rule:** ${voice.attentionRule}
 - **Never-use words:** ${listNeverUse}.
@@ -456,6 +458,23 @@ if (!compoundingValue) failures.push('compounding usageGuardrail not found in br
 for (const [name, content] of outputs) {
   if (!content.includes(HEADER)) failures.push(`${name} missing DO-NOT-EDIT header`)
 }
+// Internal-tier enforcement (internalCanon, 2026-08-13): a public artefact
+// carrying an internal field's text is a build defect, not a style. Each
+// probe is a distinctive substring of one internal field.
+const internalProbes = [
+  ['trustCopy.privacy', trustCopy.privacy.slice(0, 60)],
+  ['trustCopy.retention', trustCopy.retention.slice(0, 60)],
+  ['trustCopy.enterpriseReadiness', trustCopy.enterpriseReadiness.slice(0, 60)],
+  ['fullShapeClaim', brand.positioning.fullShapeClaim.statement],
+  ['differentiatorGuardrail', brand.differentiatorGuardrail.slice(0, 60)],
+  ['audienceMechanics', 'bounded invites stay free'],
+  ...brand.antiBrands.map(b => [`antiBrands (${b})`, b]),
+]
+for (const [name, content] of outputs) {
+  for (const [field, probe] of internalProbes) {
+    if (content.includes(probe)) failures.push(`${name} leaks internal-tier field ${field}`)
+  }
+}
 if (failures.length) {
   console.error('generate-ai-formats FAILED:\n- ' + failures.join('\n- '))
   process.exit(1)
@@ -464,6 +483,91 @@ if (failures.length) {
 for (const [name, content] of outputs) {
   writeFileSync(join(outDir, name), content)
   console.log(`✓ public/${name} (${content.length.toLocaleString()} chars)`)
+}
+
+/* ------------------------------------------------------------------ */
+/* Internal tier (internalCanon, ratified 2026-08-13): the registered  */
+/* fields render here and nowhere else. internal/ is git-ignored —     */
+/* consumers vendor generated files, not brand.ts, so this is how the  */
+/* private repos receive the fields, by local hand-off.                */
+/* ------------------------------------------------------------------ */
+
+const INTERNAL_HEADER = `DO NOT PUBLISH — internal-tier brand canon (internalCanon, ${meta.version}). Generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (${TODAY}). Hand off locally to consumer repos; never commit to a public tree or paste on a public surface.`
+
+const internalPayload = {
+  $header: INTERNAL_HEADER,
+  version: meta.version,
+  lastUpdated: meta.lastUpdated,
+  generated: TODAY,
+  registry: { rule: internalCanon.rule, fields: internalCanon.fields },
+  trustCopy,
+  positioning: { fullShapeClaim: brand.positioning.fullShapeClaim },
+  differentiatorGuardrail: brand.differentiatorGuardrail,
+  antiBrands: brand.antiBrands,
+  audienceMechanics: brand.audienceMechanics,
+}
+
+const internalMd = `<!-- ${INTERNAL_HEADER} -->
+
+# Spectrea — internal-tier brand canon
+
+Canon v${meta.version} (${meta.lastUpdated}) · generated ${TODAY}
+
+${internalCanon.rule}
+
+Public surfaces carry the identity system; these fields carry claims, competitive instruction, and packaging mechanics. They are internal-tier because they either need a counsel read before they are said in public, or they are instructions to us rather than statements to a reader.
+
+## Trust & disclosure masters
+
+**Counsel note.** ${trustCopy.counselNote}
+
+### Privacy
+
+${trustCopy.privacy}
+
+### AI use
+
+${trustCopy.aiUse}
+
+### Retention & export
+
+${trustCopy.retention}
+
+### Enterprise readiness
+
+${trustCopy.enterpriseReadiness}
+
+## Full-shape claim
+
+**${brand.positioning.fullShapeClaim.statement}**
+
+${brand.positioning.fullShapeClaim.usage}
+
+## Differentiator guardrail
+
+${brand.differentiatorGuardrail}
+
+## Anti-brands
+
+${brand.antiBrands.map(b => `- ${b}`).join('\n')}
+
+A design device — don't look or sound like this — never a public statement about the named companies. The public surfaces say it as a pattern instead: "${brand.antiPatternsPublic}"
+
+## Audience mechanics
+
+${brand.audienceMechanics}
+
+The public promise is the half that ships: "${brand.audienceBreadth}"
+`
+
+const internalDir = join(root, 'internal')
+mkdirSync(internalDir, { recursive: true })
+for (const [name, content] of [
+  ['brand-internal.json', JSON.stringify(internalPayload, null, 2) + '\n'],
+  ['brand-internal.md', internalMd],
+]) {
+  writeFileSync(join(internalDir, name), content)
+  console.log(`✓ internal/${name} (${content.length.toLocaleString()} chars) — git-ignored, hand-off only`)
 }
 
 /* ------------------------------------------------------------------ */

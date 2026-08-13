@@ -127,7 +127,7 @@ export default function TypeScale() {
           <div className="rounded-xl p-5" style={{ border: '1px solid #F2426025', backgroundColor: '#F2426008' }}>
             <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: '#F24260' }}>Too wide (90+ chars)</p>
             <p className="text-sm text-iron leading-relaxed" style={{ fontFamily: t.body.css, maxWidth: '800px' }}>
-              Every document you add strengthens what the system already knows. Connections you might have missed start surfacing on their own. The whole gets sharper — your second month is better than your first. Your second year is measurably sharper still.
+              Every document you add strengthens what the system already knows. Connections you might have missed start surfacing on their own. The whole gets sharper — your second month is better than your first. Your second year is sharper still.
             </p>
           </div>
           <div className="rounded-xl p-5" style={{ border: '1px solid #00B6A025', backgroundColor: '#00B6A008' }}>

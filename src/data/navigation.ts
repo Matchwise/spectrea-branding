@@ -73,7 +73,8 @@ export const navigation: NavItem[] = [
     path: '/communications',
     children: [
       { label: 'Copy & Taglines', path: '/communications/copy' },
-      { label: 'Trust & Disclosures', path: '/communications/trust' },
+      // Trust & Disclosures removed 2026-08-13: trustCopy is internal-tier
+      // (internalCanon) — the masters render only in internal/ artefacts.
       { label: 'Social Media', path: '/communications/social' },
       { label: 'Email', path: '/communications/email' },
       { label: 'Presentations', path: '/communications/presentations' },

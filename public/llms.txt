@@ -1,9 +1,9 @@
-<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-11) -->
+<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-13) -->
 # Spectrea Brand Guide
 
 > Composable intelligence platform — turns scattered information into compounding intelligence. This file is a generated ROUTER: it tells an AI tool which brand document to load, and in which order. Every document below derives from the same canonical data.
 
-**Source of truth:** brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea's roadmap — check it before placing a capability claim on a buyer-facing surface. (v2.12.0, 2026-08-11)
+**Source of truth:** brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea's roadmap — check it before placing a capability claim on a buyer-facing surface. (v2.13.0, 2026-08-13)
 
 ## Load order (for AI tools)
 
@@ -20,7 +20,6 @@
 - **Category:** The category noun is exactly "Composable intelligence platform" (lowercase in running prose) — never a substitute: "composable knowledge platform", "knowledge platform", "knowledge management", "AI assistant", "automation tool".
 - **Tagline:** "We connect the dots."
 - **Promise:** Turns scattered information into compounding intelligence.
-- **Full-shape claim (internal north-star, not hero copy):** Compounding collective intelligence.
 - **Voice formula:** Plain words, real specifics, room to breathe. Tech earns its place by being checkable — shown once, where the reader looks for it.
 - **Attention rule:** Show the work once, where the reader looks for it. "Earn the jargon" governs what may enter the copy — not how often it repeats. One claim, one proof per surface: the mechanism lives one step from the claim (the next sentence, a subhead, an expandable) — never welded to every sentence. If two sentences in a row prove the same claim, cut one. The claim—dash—mechanism shape is a tool, not a rhythm.
 - **Never-use words:** AI-powered (overused), next-gen, state-of-the-art, world-class, breakthrough, unprecedented, game-changer, revolutionary, seamless, cutting-edge, synergy, leverage (as verb), agentic, AI-first, copilot (as generic noun), 10x, supercharge, effortless, magical.
@@ -81,7 +80,6 @@ NOTE: the routes below are client-rendered React routes; most AI crawlers cannot
   - [Layout](/components/layout)
 - [Communications](/communications)
   - [Copy & Taglines](/communications/copy)
-  - [Trust & Disclosures](/communications/trust)
   - [Social Media](/communications/social)
   - [Email](/communications/email)
   - [Presentations](/communications/presentations)

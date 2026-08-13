@@ -1,8 +1,8 @@
-<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-11) -->
+<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-13) -->
 # Spectrea brand pre-flight checklist
 
 Run this BEFORE generating any Spectrea-branded surface — copy, UI, slide, or image.
-Canonical data: src/data/brand.ts (v2.12.0, 2026-08-11). Hard values: /brand-contract.json.
+Canonical data: src/data/brand.ts (v2.13.0, 2026-08-13). Hard values: /brand-contract.json.
 
 ## Step 1 — classify the surface
 
@@ -34,7 +34,6 @@ Pick the closest context; it selects the tone and pattern you must match (exampl
 - [ ] Hero open: Open on the outcome, written as a reveal — the moment of new sight. Never open with the mechanism, the pain alone, or a platitude. Ground it next with a specific the reader can check; close by equipping the next step. The gesture adapts to any surface — a problem may set up the reveal, proof may carry the grounding — but the open always lands on the outcome. Exception: graph-native jobs (exploration, visualisation), where the graph is the star and may lead.
 - [ ] No totalizing claims — no "incomparably", no "infinite", no unbounded every/always sweeps. Claims stay bounded and mechanism-tied.
 - [ ] Compounding claim: Use "compounding intelligence" only with its defensible mechanism named — provenance, per-viewer access, and the closed loop that feeds outcomes back in. The phrase is contested in-market (noted 2026-07-03); the mechanism, not the slogan, carries the claim.
-- [ ] Differentiation: Never position on retrieval or search quality — it is commoditized across the field. The graph earns its keep through governance, provenance, shared state, and the loop; differentiate on what the substrate makes structural.
 - [ ] Buyer surfaces: Hero, case studies, pricing — the open lands on the outcome (heroOpen rule); proof carries the grounding: a named customer, a concrete outcome, or a peer-testable claim. Brand vocabulary decorates; it doesn't carry the opening.
 - [ ] Product surfaces: Warm up one notch. Warmth comes from specificity, not exclamation points — "Read. 12 entities, 18 connections added." beats "Upload complete! 🎉" because the first shows the system paid attention.
 - [ ] AI naming: Three registers. (1) Homepage/hero narrative: "your AI" is sanctioned to match the hero register. (2) Product and trust surfaces: the AI is "the assistant" — lowercase, generic; as a first-class feature name it is "Assistant" (Title-Case). (3) Technical and architecture writing: "agent" is the umbrella term for an accountable AI actor (delegate or standing agent), per the vision taxonomy — the assistant is the delegate shape's product realization. Never "copilot" (generic or name), never "Spectrea AI" as a name. The assistant suggests, surfaces, and drafts — it never silently "handles it for you" or "takes over". Automations act within guardrails the user sets: the user decides what runs on its own and what checks with you first (ratified 2026-07-19, per the vision's governed-autonomy model). Never describe autonomy without naming its guardrail; never use approval-begging framings ("waiting for your yes"). Allowed verbs: suggests, surfaces, drafts. Forbidden verbs: handles it for you, takes over.
@@ -48,13 +47,13 @@ Pick the closest context; it selects the tone and pattern you must match (exampl
 
 ## Step 4 — trust and legal surfaces
 
-Use the approved masters verbatim (they are in /brand-contract.json under "trustCopy"): privacy, AI use, retention, enterprise readiness. These are brand-voice masters, not legal instruments. Review with counsel before external legal use. Trigger (ratified 2026-08-07): before any launch that puts trust, security, or compliance claims on a public page, counsel reads these masters first — the same engagement covers formal trademark clearance of the name.
+STOP: never author trust, security, or compliance claims freehand, and never place them on a public page without the counsel read. The approved masters (privacy, AI use, retention, enterprise readiness) are internal-tier and counsel-gated — request them through the internal brand hand-off (internal/ artefacts); they are deliberately absent from this site and its machine formats.
 
 ## Executive voice
 
 Founder and executive surfaces — bylines, talks, investor letters, interviews, personal social — use the same voice formula in the first person. Speak as a practitioner who builds and uses the product: concrete observations, shown work, named trade-offs. No corporate we-speak, no vision without evidence.
 
-Origin stance: The brand stays silent on origin — no origin claims, no locality framing ("engineered in Singapore" or similar), on any surface. Do not originate origin copy. Decided by Darren 2026-07-03; revisit only if a GTM cycle produces buyer evidence that the signal earns something.
+Origin stance: The brand stays silent on origin — no origin claims, no locality framing ("engineered in Singapore" or similar), on any brand or marketing surface. Do not originate origin copy. Scope (clarified 2026-08-13): this governs brand and marketing surfaces; the historical archive in docs/ and legal instruments are out of scope — the legal entity is public record regardless, and silence was never secrecy. Decided by Darren 2026-07-03; revisit only if a GTM cycle produces buyer evidence that the signal earns something.
 
 ## Design-surface quick gates
 

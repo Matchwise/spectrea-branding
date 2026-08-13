@@ -174,8 +174,10 @@ export default function BrandStory() {
           <p className="text-xs text-slate">
             Reference brands: {brand.aspirationalBrands.join(', ')}
           </p>
+          {/* antiBrands names are internal-tier (2026-08-13, internalCanon) —
+              a design device, not a public statement about the companies. */}
           <p className="text-xs text-slate mt-1">
-            Anti-patterns: {brand.antiBrands.join(', ')}
+            Anti-patterns: {brand.antiPatternsPublic}
           </p>
         </div>
       </Section>

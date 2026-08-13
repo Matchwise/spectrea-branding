@@ -1,6 +1,6 @@
 /**
  * Spectrea brand — Tailwind theme extension.
- * GENERATED from src/data/brand.ts v2.12.0 (2026-08-11) — do not hand-edit; regenerate with npm run generate:assets.
+ * GENERATED from src/data/brand.ts v2.13.0 (2026-08-13) — do not hand-edit; regenerate with npm run generate:assets.
  * Merge into your tailwind.config.js theme.extend.
  */
 module.exports = {

@@ -219,7 +219,10 @@ const blocks = {
       )
       .join('\n')
     return [
-      `The floor is **${a.floor}** on every shipped surface.`,
+      // The blanket "every shipped surface" reading is false whenever the
+      // registry carries an entry (audit D-correctness, 2026-08-13) — the
+      // sentence states its own exception when there is one to state.
+      `The floor is **${a.floor}** on every shipped surface${entry ? ', except the deliberate, ratified departures in the exception registry below' : ''}.`,
       `- ${a.rules[0]}`,
       `- Contrast ratio minimum: ${a.contrast.normalText} for normal text, ${a.contrast.largeTextAndUI} for large/UI. On Canvas (computed): ${colorSystem.textHierarchy
         .map(t => {
