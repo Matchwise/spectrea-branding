@@ -13,12 +13,31 @@
  */
 
 import { readFile, writeFile, mkdtemp, rm } from 'node:fs/promises'
-import { readFileSync, writeFileSync, existsSync } from 'node:fs'
+import { readFileSync, writeFileSync, existsSync, mkdtempSync, rmSync } from 'node:fs'
 import { inflateSync } from 'node:zlib'
 import { tmpdir } from 'node:os'
-import { join, resolve } from 'node:path'
+import { join, resolve, basename } from 'node:path'
 import { spawnSync } from 'node:child_process'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
+import ts from 'typescript'
+import { buildInternalProbes, norm } from './internal-tier-probes.mjs'
+
+/** Transpile a dependency-free .ts data module in-memory and import it. */
+async function importTsModule(tsPath) {
+  const source = readFileSync(tsPath, 'utf8')
+  const { outputText } = ts.transpileModule(source, {
+    compilerOptions: { module: ts.ModuleKind.ES2022, target: ts.ScriptTarget.ES2022 },
+    fileName: basename(tsPath),
+  })
+  const dir = mkdtempSync(join(tmpdir(), 'spectrea-pdf-canon-'))
+  const file = join(dir, basename(tsPath).replace(/\.ts$/, '.mjs'))
+  writeFileSync(file, outputText)
+  try {
+    return await import(pathToFileURL(file).href)
+  } finally {
+    rmSync(dir, { recursive: true, force: true })
+  }
+}
 
 function escapeHtml(s) {
   return String(s)
@@ -393,6 +412,30 @@ ${css}</style>
   <div class="footer">Spectrea Brand Guide · Generated from /public/brand-guide.md · canon v${canonVersion} (${canonDate})</div>
 </body>
 </html>`
+
+  // Internal-tier gate on the PRINTED document (internalCanon, round 3,
+  // 2026-08-13). The repo-wide scan cannot read a PDF, and asserting that this
+  // script's inputs are files that scan does covers only the inputs someone
+  // remembered to check — an added text source would have sailed past it. This
+  // reads the exact string Chrome is about to print: markdown, inlined SVGs,
+  // footer, and anything a future edit adds.
+  {
+    const canon = await importTsModule(join(root, 'src', 'data', 'brand.ts'))
+    const { probes, unprobed } = buildInternalProbes(canon)
+    if (unprobed.length) {
+      console.error('PDF internal-tier gate: registered field with nothing to probe:\n  ' + unprobed.join('\n  '))
+      process.exit(1)
+    }
+    const haystack = norm(html)
+    const hits = probes.filter(p => haystack.includes(p.probe))
+    if (hits.length) {
+      console.error('INTERNAL-TIER LEAK — the printed guide would carry:')
+      for (const h of hits) console.error(`  ${h.path}`)
+      console.error('\nFix public/brand-guide.md (or the canon it is generated from) and regenerate.')
+      process.exit(1)
+    }
+    console.log(`Internal-tier gate passed on the printed HTML: ${probes.length} probes.`)
+  }
 
   const dir = await mkdtemp(join(tmpdir(), 'spectrea-pdf-'))
   const htmlPath = join(dir, 'brand-guide.html')

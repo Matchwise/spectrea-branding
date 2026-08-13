@@ -21,11 +21,11 @@
 // Exempt: src/data/brand.ts — canon is the sanctioned home for these fields,
 // and the tier removes rendered surfaces, not the source text.
 //
-// KNOWN LIMIT, stated rather than papered over: public/brand-guide.pdf is not
-// text-extracted here (no Node-native extractor without adding a dependency).
-// It is covered by construction — generate-pdf.mjs prints exactly one markdown
-// file, public/brand-guide.md, plus SVGs it inlines from public/, and all of
-// those are scanned. The assertion below fails if that stops being true.
+// The PDF is not text-extracted here (no Node-native extractor without a new
+// dependency). It does not need to be: generate-pdf.mjs runs these same probes
+// over the exact HTML string it hands the renderer, so every printable source
+// is checked — including ones a later edit adds. The check below fails if that
+// print-time gate is ever unwired.
 // ============================================================
 
 import { readFileSync, readdirSync, statSync, existsSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs'
@@ -87,6 +87,10 @@ if (process.argv.includes('--selftest')) {
     ['trustCopy.counselNote opening', trustCopy.counselNote.slice(0, 70), true],
     ['guardrail inside an SVG text node', `<text x="0">${brand.differentiatorGuardrail.slice(0, 80)}</text>`, true],
     ['master inside a minified bundle string', `const a="${trustCopy.privacy.slice(0, 90)}";`, true],
+    // The print-time gate reads the assembled HTML, so a text source added to
+    // the printed document — a footer, an inlined fragment, an appendix — is
+    // checked whether or not anyone remembered to tell this scan about it.
+    ['text added to the printed HTML', `<body><div class="footer">${trustCopy.enterpriseReadiness.slice(0, 80)}</div></body>`, true],
     ['a sentence that merely shares words', 'Compounding intelligence is collective work.', false],
     ['the public promise that replaced the mechanics', canon.brand.audienceBreadth, false],
   ]
@@ -97,7 +101,31 @@ if (process.argv.includes('--selftest')) {
     if (!ok) failed++
     console.log(`${ok ? 'ok   ' : 'FAIL '} ${name} — ${caught ? 'caught' : 'not caught'}`)
   }
-  console.log(`\n${cases.length} cases · ${failed} failed · ${probes.length} probes`)
+
+  // Scoping regression: the historical-doc exemption belongs to antiBrands and
+  // to nothing else. Keying it off probe length let "Jira" through and held
+  // "Microsoft 365" back, from the same field (gate round 3).
+  const exempt = probes.filter(p => p.brandSurfacesOnly)
+  const antiBrandProbes = probes.filter(p => p.field === 'brand.antiBrands')
+  const scopeOk =
+    exempt.length === antiBrandProbes.length &&
+    antiBrandProbes.every(p => p.brandSurfacesOnly) &&
+    antiBrandProbes.length === brand.antiBrands.length
+  if (!scopeOk) failed++
+  console.log(
+    `${scopeOk ? 'ok   ' : 'FAIL '} docs exemption covers every antiBrand and nothing else — ` +
+      `${exempt.length} exempt, ${antiBrandProbes.length} antiBrand probes, ${brand.antiBrands.length} names`
+  )
+
+  // The print-time gate must actually be wired into generate-pdf.mjs; without
+  // it, the "text added to the printed HTML" case above proves only that the
+  // probes work, not that anything runs them on the printed document.
+  const pdfSrc = readFileSync(join(root, 'scripts', 'generate-pdf.mjs'), 'utf8')
+  const wired = /buildInternalProbes\(/.test(pdfSrc) && /norm\(html\)/.test(pdfSrc)
+  if (!wired) failed++
+  console.log(`${wired ? 'ok   ' : 'FAIL '} generate-pdf.mjs runs the probes over the HTML it prints`)
+
+  console.log(`\n${cases.length + 2} cases · ${failed} failed · ${probes.length} probes`)
   process.exit(failed ? 1 : 0)
 }
 
@@ -121,13 +149,21 @@ function collect(dir, out = []) {
   return out
 }
 
-// The PDF's coverage is by construction; assert the construction still holds.
+// The PDF is gated where it is built, not here: generate-pdf.mjs runs these
+// same probes over the exact HTML string it hands Chrome. The previous version
+// of this check asserted instead that the generator's markdown input was still
+// a file this scan reads — which proved nothing about a SECOND printable
+// source being added (gate round 3, 2026-08-13). What remains is a structural
+// check that the print-time gate is still wired up.
 const pdfGenerator = readFileSync(join(root, 'scripts', 'generate-pdf.mjs'), 'utf8')
-if (!/mdPath\s*=\s*join\(root,\s*'public',\s*'brand-guide\.md'\)/.test(pdfGenerator)) {
+const pdfGateWired =
+  /from '\.\/internal-tier-probes\.mjs'/.test(pdfGenerator) &&
+  /buildInternalProbes\(/.test(pdfGenerator) &&
+  /norm\(html\)/.test(pdfGenerator)
+if (!pdfGateWired) {
   console.error(
-    'check-internal-tier: generate-pdf.mjs no longer prints public/brand-guide.md alone.\n' +
-      'The PDF was covered because its only text input was a file this gate scans. Re-establish that, ' +
-      'or add real PDF text extraction here.'
+    'check-internal-tier: generate-pdf.mjs no longer runs the internal-tier probes over the HTML it prints.\n' +
+      'This scan cannot read a PDF; the printed document is gated at print time. Re-wire it there.'
   )
   process.exit(1)
 }
@@ -171,6 +207,6 @@ if (leaks.length) {
 console.log(
   `Internal-tier gate passed: ${probes.length} probes over ${canon.internalCanon.fields.length} registered fields, ` +
     `${files.length} text artefacts clean${includeDist ? ' (dist/ included)' : ''}; ` +
-    'PDF covered by construction via public/brand-guide.md.' +
+    'the printed guide is gated in generate-pdf.mjs, over the HTML it prints.' +
     (verbose ? '\n  ' + probes.map(p => p.path).join('\n  ') : '')
 )

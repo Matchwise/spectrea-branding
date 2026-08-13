@@ -37,10 +37,18 @@ function resolvePath(canon, dotted) {
 
 // Long values are probed by a distinctive opening span — enough to identify the
 // field, short enough to survive light re-wording of the tail. Short values are
-// probed whole. Anything shorter than this is a word, not a field: a probe that
-// short would fire on ordinary prose, so it is skipped and reported.
+// probed whole.
 const SPAN = 70
 const MIN_PROBE = 12
+
+// The one field whose values are bare proper nouns. Naming a company only
+// means "leak" where the file speaks as the brand; in the pre-rename naming
+// analysis, naming a company is just naming a company. Scoped by FIELD
+// IDENTITY, not by probe length: keying off length made "Microsoft 365"
+// (13 chars) unexempt while "Jira" was, and would have handed the same
+// exemption to any future short string from an unrelated field
+// (gate round 3, 2026-08-13).
+const HISTORICAL_DOC_EXEMPT = new Set(['brand.antiBrands'])
 
 export function buildInternalProbes(canon) {
   const { internalCanon } = canon
@@ -58,16 +66,20 @@ export function buildInternalProbes(canon) {
       unprobed.push(`${field} (no string content)`)
       continue
     }
+    const exempt = HISTORICAL_DOC_EXEMPT.has(field)
     for (const { path, text } of leaves) {
       const probe = norm(text.length > SPAN ? text.slice(0, SPAN) : text)
-      if (probe.length < MIN_PROBE) {
-        // A bare proper noun — an antiBrand name. It only means "leak" where
-        // the file speaks as the brand; elsewhere, naming a company is just
-        // naming a company.
-        probes.push({ field, path, probe, brandSurfacesOnly: true })
-      } else {
-        probes.push({ field, path, probe, brandSurfacesOnly: false })
+      if (probe.length < MIN_PROBE && !exempt) {
+        // Too short to match without firing on ordinary prose, and not from
+        // the one field where short strings are expected. Silently skipping it
+        // would leave a registered field unenforced; silently probing it would
+        // flood every scan. Someone decides.
+        unprobed.push(
+          `${path} ("${text}") is shorter than ${MIN_PROBE} characters — decide explicitly whether it belongs in HISTORICAL_DOC_EXEMPT or needs a longer probe`
+        )
+        continue
       }
+      probes.push({ field, path, probe, brandSurfacesOnly: exempt })
     }
   }
 
