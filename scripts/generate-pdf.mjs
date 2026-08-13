@@ -13,7 +13,7 @@
  */
 
 import { readFile, writeFile, mkdtemp, rm } from 'node:fs/promises'
-import { readFileSync, existsSync } from 'node:fs'
+import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { inflateSync } from 'node:zlib'
 import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
@@ -32,6 +32,9 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url))
 const root = resolve(__dirname, '..')
 const mdPath = join(root, 'public', 'brand-guide.md')
 const pdfPath = join(root, 'public', 'brand-guide.pdf')
+
+// Where a root-relative link in the guide actually resolves once printed.
+const SITE_ORIGIN = 'https://branding.spectrea.com'
 
 // Find a working Chrome/Chromium binary (CHROME_PATH env overrides discovery)
 function findChrome() {
@@ -115,7 +118,11 @@ const css = `
     color: #F4F4F1;
     padding: 10pt 12pt;
     border-radius: 4pt;
-    overflow-x: auto;
+    /* Paper cannot scroll: overflow-x clipped the long lines in the token
+       sheet instead of showing them (audit D-correctness, 2026-08-13). Wrap
+       them — a wrapped CSS declaration still reads; a truncated one does not. */
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
     font-size: 9pt;
     line-height: 1.5;
     margin: 0 0 12pt;
@@ -265,6 +272,16 @@ async function main() {
   const publicDir = resolve(root, 'public')
   const fontFaceCss = buildFontFaceCss()
 
+  // Canon stamp, read from the guide's generated version header. Used instead
+  // of the wall clock so the same inputs print the same bytes — a PDF that
+  // differs on every run cannot be checked for freshness (D-correctness).
+  const stamp = md.match(/\*\*Version:\*\*\s*([\d.]+)\s*\((\d{4}-\d{2}-\d{2})\)/)
+  if (!stamp) {
+    console.error('Could not read the canon version header from public/brand-guide.md — run npm run generate:guide first.')
+    process.exit(1)
+  }
+  const [, canonVersion, canonDate] = stamp
+
   // Dynamic import so this script works without a hard dependency
   let marked
   try {
@@ -356,6 +373,13 @@ async function main() {
   // </p> and fragile layout. Unwrap any <p><figure>…</figure></p> pattern.
   body = body.replace(/<p>(\s*<figure class="inline-svg"[\s\S]*?<\/figure>\s*)<\/p>/g, '$1')
 
+  // Site-root links resolve against the temp file:// URL Chrome prints from,
+  // so /spectrea-tokens.css was landing in the PDF as file:///C:/… — a dead
+  // link that also reports the build host's filesystem (audit A1/D-correctness,
+  // 2026-08-13). Point them at the published site instead. Anchors (#…) and
+  // protocol-relative or absolute URLs are left alone.
+  body = body.replace(/href="\/(?!\/)([^"]*)"/g, (_m, rest) => `href="${SITE_ORIGIN}/${rest}"`)
+
   const html = `<!doctype html>
 <html lang="en">
 <head>
@@ -366,7 +390,7 @@ ${css}</style>
 </head>
 <body>
   ${body}
-  <div class="footer">Spectrea Brand Guide · Generated from /public/brand-guide.md · ${new Date().toISOString().slice(0, 10)}</div>
+  <div class="footer">Spectrea Brand Guide · Generated from /public/brand-guide.md · canon v${canonVersion} (${canonDate})</div>
 </body>
 </html>`
 
@@ -405,6 +429,48 @@ ${css}</style>
   if (result.status !== 0) {
     console.error(`Chrome exited with status ${result.status}`)
     process.exit(result.status ?? 1)
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* Document metadata (audit A1/D-correctness, 2026-08-13)            */
+  /*                                                                   */
+  /* Chrome stamps /Creator with its full user-agent string — headless */
+  /* build, Windows NT version, architecture — which describes the     */
+  /* build host, not the document, and /CreationDate with the wall     */
+  /* clock, which makes every rebuild a binary diff. Both are rewritten */
+  /* IN PLACE, padded to the original byte length, so every xref       */
+  /* offset in the file stays valid. A replacement that does not fit   */
+  /* is skipped with a warning rather than corrupting the PDF.         */
+  /* ---------------------------------------------------------------- */
+  {
+    let bytes = readFileSync(pdfPath).toString('latin1')
+    const stampDate = `D:${canonDate.replace(/-/g, '')}000000+00'00'`
+    const replacements = [
+      // ASCII only, and no parentheses: the value is written straight into a
+      // PDF literal string, where a paren would have to be escaped and a
+      // non-latin1 character would not survive the byte round-trip.
+      ['/Creator', `Spectrea brand pipeline - scripts/generate-pdf.mjs, canon v${canonVersion}`],
+      ['/CreationDate', stampDate],
+      ['/ModDate', stampDate],
+    ]
+    let rewrote = 0
+    for (const [key, value] of replacements) {
+      // PDF literal string: parentheses inside it are backslash-escaped, so
+      // the content is "escaped pair or plain char", never a naive [^)]*.
+      const re = new RegExp(`\\${key} \\(((?:\\\\.|[^()\\\\])*)\\)`)
+      const found = bytes.match(re)
+      if (!found) continue
+      if (value.length > found[1].length) {
+        console.warn(`! ${key} left as-is: replacement is longer than the value Chrome wrote.`)
+        continue
+      }
+      bytes = bytes.replace(re, `${key} (${value.padEnd(found[1].length, ' ')})`)
+      rewrote++
+    }
+    if (rewrote) {
+      writeFileSync(pdfPath, Buffer.from(bytes, 'latin1'))
+      console.log(`Metadata normalized: ${rewrote} Info fields rewritten (no host or wall-clock details).`)
+    }
   }
 
   // Output gate: the printed PDF must contain no host-supplied text fonts.

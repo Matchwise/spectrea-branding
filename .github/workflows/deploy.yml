@@ -25,9 +25,31 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # The internal render tier is only real if it is enforced: internal/ is
+      # git-ignored and handed off locally, never committed (internalCanon,
+      # ratified 2026-08-13).
+      - name: internal/ is not tracked
+        run: |
+          if [ -n "$(git ls-files internal/)" ]; then
+            echo "::error::internal/ artifacts are tracked — they are internal-tier and must stay out of the public tree."
+            git ls-files internal/
+            exit 1
+          fi
       # Freshness guard: regenerate all derived artifacts (assets, AI formats,
       # PDF) from their sources so shipped output can never lag the canon.
       - run: npm run generate:all
+      # Staleness check: the generators are deterministic, so a diff here means
+      # a derived file was hand-edited or a brand.ts change shipped without a
+      # regeneration. brand-guide.pdf and the PNG exports are excluded — their
+      # bytes depend on the renderer build on this machine, not only on canon.
+      - name: Derived artifacts match canon
+        run: |
+          PATHS=(. ':(exclude)public/brand-guide.pdf' ':(exclude)public/brand-assets')
+          if ! git diff --quiet -- "${PATHS[@]}"; then
+            echo "::error::Derived files are stale. Run npm run generate:all and commit the result."
+            git diff --stat -- "${PATHS[@]}"
+            exit 1
+          fi
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:

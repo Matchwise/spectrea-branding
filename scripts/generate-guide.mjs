@@ -48,7 +48,7 @@ async function importTsModule(tsPath) {
 }
 
 const canon = await importTsModule(join(root, 'src', 'data', 'brand.ts'))
-const { meta, brand, voice, brandTokens, accessibility, logo, selectedPalette, colorSystem, components, graphViz } = canon
+const { meta, brand, voice, brandTokens, accessibility, logo, selectedPalette, colorSystem, components, graphViz, illustration } = canon
 
 // Tailwind stone constants (the sanctioned border family per
 // colorSystem.tailwindMapping) — Tailwind values, not canon.
@@ -631,6 +631,84 @@ const blocks = {
       '',
       C.surfaceNote,
     ].join('\n')
+  },
+
+  // §9 was hand prose and drifted three doctrine versions behind canon
+  // (it still described the retired v4 system and pointed at a file that no
+  // longer exists). Generated from brand.ts.illustration since 2026-08-13 so
+  // it cannot drift again.
+  'illustration-system': () => {
+    const i = illustration
+    const slots = Object.entries(i.promptSlots)
+      .map(([slot, note]) => `- \`[${slot}]\` — ${note}`)
+      .join('\n')
+    const registers = i.registers
+      .map(r => `| **${r.id}** | ${r.job} | *"${r.sentence}"* |`)
+      .join('\n')
+    const ranges = i.ranges
+      .map(
+        r =>
+          `| **${r.axis}** | ${r.range} | ${r.default} | ${r.outOfRange} | ${r.judgedBy === 'eye' ? 'eye' : 'reported'} |`
+      )
+      .join('\n')
+    const refModes = i.reference.modes
+      .map(m => `- **${m.id}** — ${m.when}. ${m.effect}`)
+      .join('\n')
+    const never = i.antiPatterns.map(a => `- **${a.never}** — ${a.because}`).join('\n')
+    return `${i.doctrine}
+
+The full generation reference — DNA block, registers, and the reporting checklist — is published at [/illustration-prompt.md](/illustration-prompt.md), generated from the same canon.
+
+### The DNA block
+
+\`\`\`text
+${i.dnaPrompt}
+\`\`\`
+
+${slots}
+
+**Why it is short.** ${i.promptNote}
+
+### Registers
+
+| Register | Job | Sentence |
+|---|---|---|
+${registers}
+
+${i.registerDerivation}
+
+### Ranges — what varies, and how far
+
+| Axis | Range | Default | Out of range | Judged by |
+|---|---|---|---|---|
+${ranges}
+
+${i.ranges
+  .filter(r => r.note)
+  .map(r => `**${r.axis}.** ${r.note}`)
+  .join('\n\n')}
+
+### Raster or vector
+
+- **Raster.** ${i.media.raster}
+- **Vector.** ${i.media.vector}
+- **Choosing.** ${i.media.choosing}
+
+### Reference images
+
+${i.reference.doctrine}
+
+${refModes}
+
+### Checklist — ${i.checklist.stance}
+
+Reported for every render: ${i.checklist.reports.join(' · ')}.
+
+${i.checklist.why}
+
+### Never
+
+${never}`
   },
 
   'layout-spec': () => {

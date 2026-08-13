@@ -30,4 +30,6 @@ Allow: /
 User-agent: Bytespider
 Allow: /
 
-Sitemap: /sitemap.xml
+# No Sitemap directive: this is a hash-routed SPA with a single served page,
+# and the machine-readable surfaces are /llms.txt and /brand-guide.md. The
+# previous line advertised /sitemap.xml, which has never existed.

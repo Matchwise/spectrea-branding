@@ -1,5 +1,87 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------ */
+/* Self-hosted brand faces (2026-08-13, public-exposure audit)         */
+/*                                                                     */
+/* The guide used to pull these from fonts.googleapis.com, which told  */
+/* Google the IP and user-agent of every visitor to a brand that says  */
+/* "private by default" on its own pages. The same variable woff2      */
+/* files the PDF pipeline already embeds are served from /fonts.       */
+/*                                                                     */
+/* Coverage is split the way the PDF splits it: the latin variable     */
+/* files carry text; Δ ≈ ≤ ≥ come from each family's own tiny symbol   */
+/* subset; ′ → ↔ come from an Inter subset registered UNDER THE BRAND  */
+/* FAMILY NAMES with a disjoint unicode-range, because neither Albert  */
+/* Sans nor Lexend contains them (Inter is the body stack's first      */
+/* fallback, so it is the sanctioned substitute). Every face of one    */
+/* family declares the SAME weight range — mixing ranges makes the     */
+/* base face lose to the subset at shared weights.                     */
+/* Licensing: all four faces are SIL Open Font License 1.1; see        */
+/* public/fonts/OFL.txt.                                               */
+/* ------------------------------------------------------------------ */
+
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/albert-sans-latin-var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/albert-sans-symbols.woff2') format('woff2');
+  unicode-range: U+0394, U+2248, U+2264-2265;
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/inter-arrows.woff2') format('woff2');
+  unicode-range: U+2032, U+2192, U+2194;
+}
+@font-face {
+  font-family: 'Lexend';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/lexend-latin-var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Lexend';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/lexend-symbols.woff2') format('woff2');
+  unicode-range: U+0394, U+2248, U+2264-2265;
+}
+@font-face {
+  font-family: 'Lexend';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/inter-arrows.woff2') format('woff2');
+  unicode-range: U+2032, U+2192, U+2194;
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-latin-var.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-symbols.woff2') format('woff2');
+  unicode-range: U+0394, U+2032, U+2192, U+2194, U+2248, U+2264-2265;
+}
+
 @theme {
   --font-sans: 'Lexend', 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-heading: 'Albert Sans', ui-sans-serif, sans-serif;

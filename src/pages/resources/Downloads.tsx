@@ -174,9 +174,9 @@ export default function Downloads() {
           </div>
           {[
             { resource: 'Primary brand color', value: '#4271DF (Cobalt)' },
-            { resource: 'Heading font', value: 'Albert Sans — Google Fonts' },
-            { resource: 'Body font', value: 'Lexend — Google Fonts' },
-            { resource: 'Mono font', value: 'JetBrains Mono — Google Fonts' },
+            { resource: 'Heading font', value: 'Albert Sans — OFL 1.1, self-hosted from /fonts' },
+            { resource: 'Body font', value: 'Lexend — OFL 1.1, self-hosted from /fonts' },
+            { resource: 'Mono font', value: 'JetBrains Mono — OFL 1.1, self-hosted from /fonts' },
             { resource: 'Brand gradient', value: `${brandTokens.gradients.primary.css}  —  sRGB fallback for <Chrome 111 / <Safari 16.2 / <Firefox 117` },
             { resource: 'Icon library', value: 'Tabler Icons via react-icons/tb (outline, 2px stroke)' },
             { resource: 'Border radius (cards)', value: '12px (rounded-xl)' },

@@ -322,12 +322,17 @@ it is regenerated from src/data/brand.ts.
 /* 5. llms.txt — generated router                                      */
 /* ------------------------------------------------------------------ */
 
+// The app is a HashRouter: /foundation/story is not a served URL, /#/foundation/story
+// is (audit D-correctness, 2026-08-13). navigation.ts holds router paths; the
+// router path becomes a link only through here.
+const hashHref = path => (path === '/' ? '/#/' : `/#${path}`)
+
 const routeLines = navigation
   .map(item => {
     const children = (item.children ?? [])
-      .map(c => `  - [${c.label}](${c.path})`)
+      .map(c => `  - [${c.label}](${hashHref(c.path)})`)
       .join('\n')
-    return `- [${item.label}](${item.path})${children ? '\n' + children : ''}`
+    return `- [${item.label}](${hashHref(item.path)})${children ? '\n' + children : ''}`
   })
   .join('\n')
 
