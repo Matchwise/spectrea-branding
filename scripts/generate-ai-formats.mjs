@@ -465,7 +465,11 @@ for (const [name, content] of outputs) {
 }
 // Internal-tier enforcement (internalCanon, 2026-08-13): a public artefact
 // carrying an internal field's text is a build defect, not a style. Each
-// probe is a distinctive substring of one internal field.
+// probe is a distinctive substring of one internal field. This is the early
+// gate on THIS script's outputs; scripts/check-internal-tier.mjs is the
+// whole-repo gate that runs last (it catches paths no single generator owns —
+// a claim quoted inside a ledger entry, for one).
+const normalize = s => s.toLowerCase().replace(/\s+/g, ' ')
 const internalProbes = [
   ['trustCopy.privacy', trustCopy.privacy.slice(0, 60)],
   ['trustCopy.retention', trustCopy.retention.slice(0, 60)],
@@ -476,8 +480,9 @@ const internalProbes = [
   ...brand.antiBrands.map(b => [`antiBrands (${b})`, b]),
 ]
 for (const [name, content] of outputs) {
+  const haystack = normalize(content)
   for (const [field, probe] of internalProbes) {
-    if (content.includes(probe)) failures.push(`${name} leaks internal-tier field ${field}`)
+    if (haystack.includes(normalize(probe))) failures.push(`${name} leaks internal-tier field ${field}`)
   }
 }
 if (failures.length) {

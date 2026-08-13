@@ -50,6 +50,11 @@ jobs:
             git diff --stat -- "${PATHS[@]}"
             exit 1
           fi
+      # generate:all ends with this gate, but run it standalone too: it is the
+      # check that must not be skippable by a partial regeneration. The
+      # selftest proves the gate still catches the shapes it exists for.
+      - run: npm run test:internal-tier
+      - run: npm run check:internal-tier
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:

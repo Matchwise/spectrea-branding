@@ -36,12 +36,19 @@ the right document in the right order. On any conflict between surfaces,
 
 ## What this repository is not
 
-It carries **brand identity, not product claims**. Trust, security, and
-compliance copy is internal-tier (`internalCanon` in `brand.ts`): those masters
-are brand-voice drafts pending a legal read, they are not published here, and
-nothing in this repository is a legal instrument, a specification of shipped
-behaviour, or a commitment on Spectrea's behalf. Capability claims here are
-anchored to the ratified product vision, not to shipped code.
+It is an **identity system**, and nothing in it is a legal instrument, a
+specification of shipped behaviour, or a commitment on Spectrea's behalf. The
+guide does carry capability language — it has to, to show the brand's voice —
+but that language is anchored to the ratified product vision rather than to
+shipped code, and it is written to be read as brand copy, not as a promise.
+
+Trust, security, and compliance masters are **internal-tier**
+(`internalCanon` in `brand.ts`): brand-voice drafts pending a legal read. The
+tier means those fields render to no public artefact — not the site, the
+guide, the PDF, `brand-contract.json`, or `llms.txt` — and a build fails if one
+does. It does not mean they are secret: canon is this repository's public
+source, so the text stays readable here. The tier removes the rendered
+surfaces and the first-party-statement reading, not the words.
 
 There is no product code and no credential material here — by design, and
 checked across the full history in the 2026-08 public-exposure audit. The only
