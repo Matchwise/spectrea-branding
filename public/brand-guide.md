@@ -964,7 +964,9 @@ One canonical process (`meta.changeProcess`, merged 2026-08-09) — the Governan
 <!-- /generated:change-process -->
 
 ### Owner
-Brand lead owns the brand system. "brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea's roadmap — check it before placing a capability claim on a buyer-facing surface." (`meta.sourceOfTruth`, quoted verbatim.)
+<!-- generated:source-of-truth -->
+Brand lead owns the brand system. "brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Capability claims are anchored to the ratified product vision; every buyer-facing capability claim is checked against the product roadmap before it ships. Execution status is tracked there, never here — this file is the brand, not the release note." (`meta.sourceOfTruth`, quoted verbatim.)
+<!-- /generated:source-of-truth -->
 
 Brand decisions live in the **ratification ledger** (`ratificationLedger` in `brand.ts`): a decision recorded only in a consumer repo's AGENTS.md is not canon until it lands in the ledger.
 

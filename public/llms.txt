@@ -3,7 +3,7 @@
 
 > Composable intelligence platform — turns scattered information into compounding intelligence. This file is a generated ROUTER: it tells an AI tool which brand document to load, and in which order. Every document below derives from the same canonical data.
 
-**Source of truth:** brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Claims are anchored to the ratified product vision (spectrea/docs/00-overview), not to shipped code; execution status lives in spectrea's roadmap — check it before placing a capability claim on a buyer-facing surface. (v2.13.0, 2026-08-13)
+**Source of truth:** brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Capability claims are anchored to the ratified product vision; every buyer-facing capability claim is checked against the product roadmap before it ships. Execution status is tracked there, never here — this file is the brand, not the release note. (v2.13.0, 2026-08-13)
 
 ## Load order (for AI tools)
 

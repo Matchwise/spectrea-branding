@@ -106,6 +106,12 @@ const blocks = {
   'version-header': () =>
     `**Version:** ${meta.version} (${meta.lastUpdated}). Canonical data: \`src/data/brand.ts\` — this guide is a hybrid mirror: prose is hand-written; fenced data blocks are generated from canon (\`npm run generate:guide\`).`,
 
+  // Was hand prose quoting meta.sourceOfTruth verbatim, which drifted the
+  // moment canon was reworded (2026-08-13). A quotation of canon belongs to
+  // the generator.
+  'source-of-truth': () =>
+    `Brand lead owns the brand system. "${meta.sourceOfTruth}" (\`meta.sourceOfTruth\`, quoted verbatim.)`,
+
   'version-footer': () =>
     `*\`src/data/brand.ts\` is the canonical brand data (v${meta.version}, ${meta.lastUpdated}). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*`,
 

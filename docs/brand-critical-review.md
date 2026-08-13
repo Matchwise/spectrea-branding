@@ -11,6 +11,19 @@
 > actual first principles, target personas, and positioning.
 > Dated 2026-04-18. Pre-launch.
 >
+> **Where each tension ended up (added 2026-08-13).** This review's headline is
+> that the brand carried four structural tensions. All four were adjudicated in
+> the reviews that followed; a reader quoting a criticism from this document
+> should quote its resolution too. The current position is always
+> `src/data/brand.ts` and its ratification ledger, never this file.
+>
+> | Tension (§) | Resolved as | Ratified |
+> |---|---|---|
+> | The name's metaphor points at the wrong product (§1.1) | The name stands. The two visual metaphors became explicitly **co-primary with roles** — Prism carries identity/reveal, Living Network carries product/growth — so the metaphor stops having to describe the product single-handedly. Etymology restated as a sourced coinage from *spectrum*. | 2026-08-06 (decision 6) · 2026-08-07 |
+> | The archetype (§3) | Not three personas for three surfaces: **one character, three facets, one motion** — reveal → ground → equip, all three present in every brand moment, emphasis shifting with context. | Canon `brand.archetypes`; guide §1 |
+> | The mark (§4) | Refitted, not replaced: **K3′ geometry** — three G1-continuous cubics fitted to the Albert Sans 600 *S* medial axis, with a deliberate shallow storytelling tail and the 7:8 dot rule. | 2026-08-06 (decisions 4–5) |
+> | The illustration system (§8, "the biggest visual problem") | The system this review criticised is **retired**. Replaced by an invariant DNA block plus one register sentence per job, settled empirically rather than by argument; the Bauhaus limb-figures the review objected to are gone. | 2026-08-12 (decision 36, canon v2.12.0) |
+>
 > **Sources verified.** All factual claims below were cross-checked against
 > `src/data/brand.ts`, `public/brand-guide.md`,
 > `src/components/illustrations/SpectreaFigure.tsx`,
