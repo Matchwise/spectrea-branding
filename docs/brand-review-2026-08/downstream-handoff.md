@@ -1,7 +1,7 @@
-# Hand-off: downstream repos (spectrea, spectrea-web) — updated for v2.12.0
+# Hand-off: downstream repos (spectrea, spectrea-web) — updated for v2.13.0
 
 > Written 2026-08-07 at v2.5.0; refreshed 2026-08-10 at v2.10.0; illustration doctrine
-> added 2026-08-12 at v2.12.0. Precondition for sections 1–4:
+> added 2026-08-12 at v2.12.0; internal render tier added 2026-08-13 at v2.13.0. Precondition for sections 1–4:
 > spectrea-branding main pushed at v2.10.0 (`11c2326`, deploy live).
 >
 > **Status 2026-08-11:** step 1's file refresh is DONE — both repos' vendored
@@ -13,6 +13,73 @@
 > follow-ups: `/deep-review` of derived docs + a Define-level change for this
 > material jump; both repos: the section-2/3 migration checks, e.g. blue input-focus
 > styling → the canonical ring).
+
+## 0. New at v2.13.0 — the internal render tier removes fields from the contract
+
+Read this before re-pinning: **v2.13.0 removes keys from `brand-contract.json`.** A
+consumer that reads one of them gets `undefined`, not an error.
+
+A public-exposure audit of this repo and the published guide found no credential-class
+exposure, but it did find categories of canon that should not sit on a crawler-readable
+page: trust/security/compliance masters that have not had a legal read, a competitive
+positioning instruction, packaging mechanics, and named anti-brands that are also
+integration targets. Rather than reword each sentence, canon gained a render tier.
+
+`internalCanon` in `brand.ts` registers the internal-tier fields. They stay in canon —
+one source of truth — but render only to `internal/brand-internal.json` and
+`internal/brand-internal.md`, which are **git-ignored and handed off locally**. The
+AI-format generator fails the build if an internal field reaches a public artefact, and
+CI fails if anything under `internal/` is ever tracked.
+
+### What changed in the files you vendor
+
+| Was | Now |
+|---|---|
+| `brand-contract.json` → `identity.fullShapeClaim` | gone — internal tier |
+| `brand-contract.json` → `guardrails.differentiators` | gone — internal tier |
+| `brand-contract.json` → `trustCopy` | replaced by `internalCanon` (the registry: rule + field list) |
+| `brand-checklist.md` step 4 quoted the four trust masters | now a STOP that routes to the internal hand-off |
+| `brand-agent-rules.md` / `llms.txt` carried the differentiation guardrail and full-shape claim | dropped |
+| guide §12 published the four trust masters | replaced by a pointer |
+| `/communications/trust` route | retired; `antiBrands` names no longer render (the guide says the pattern instead) |
+
+### How to get the internal fields
+
+Ask for `internal/brand-internal.md` (or `.json`) and copy it in locally. It never
+travels through a commit in this repo. **A private consumer repo may hold it; nothing
+that compiles into a public build may.** That bites `spectrea-web` specifically: its
+build output is a public site, so internal-tier text must not reach a page, a metadata
+field, or a client bundle there. Trust and compliance copy on any public page waits for
+the counsel read regardless of which repo it lives in.
+
+### Copy sweeps this forces
+
+Canon softened four claims. Sweep your own copy for the old wording, not just the
+vendored files:
+
+- **Retention.** "on a published schedule" → "on a stated schedule, published before
+  launch" (there is no published schedule yet). A legal-register example that said
+  "within 30 days" now says "within the period stated in our retention policy".
+- **Export.** The Human-First value proof no longer calls full-fidelity export "a
+  first-class guarantee" — it says "with no lock-in". The guarantee wording survives only
+  in the internal trust masters, pending counsel.
+- **Deployment tiers.** The perimeter "widens by tier" → "is designed to widen by tier",
+  and tiers beyond managed cloud are staged targets alongside the attestations.
+- **Compounding.** "your second year is measurably sharper" → "sharper". No measurement
+  stands behind the adverb.
+
+### Also at v2.13.0
+
+- **Re-vendor `brand-conformance.mjs`** — the rules are baked in at generation time, so
+  an old copy enforces old canon (now v2.13.0).
+- **Guide links use the hash form.** The app is a HashRouter: link
+  `https://branding.spectrea.com/#/foundation/story`, not `/foundation/story`.
+- **`public/illustrations/hero-example-composition.png` is deleted** (a retired-era render).
+  If you vendored it, drop it.
+- **Fonts are self-hosted.** Albert Sans, Lexend, and JetBrains Mono now ship from
+  `/fonts` with their OFL 1.1 text, instead of a `fonts.googleapis.com` link. Worth
+  copying on any surface that claims privacy as a value — a font CDN link hands every
+  visitor's IP to a third party.
 
 ## 0. New at v2.12.0 — the illustration doctrine replaces the v4 prompt (decision 36)
 
