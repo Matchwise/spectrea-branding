@@ -31,3 +31,13 @@ tsconfig.tsbuildinfo
 
 .superpowers/
 .illustration-lab/
+
+# Agent-run blackboards (audit charters, briefs, findings). Must never be
+# committed: they catalogue exactly what a public repo should not carry, and
+# the machine-global ignore that used to cover this does not travel with a
+# clone (public-exposure audit 2026-08-13, findings A1-F3/A4-F5).
+.runs/
+
+# Generated internal-tier canon artefacts (trust masters, strategy fields).
+# Handed off locally to the private consumer repos; never published.
+internal/
