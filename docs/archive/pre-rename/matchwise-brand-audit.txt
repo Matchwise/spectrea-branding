@@ -1,5 +1,19 @@
 HISTORICAL RECORD (pre-rename, superseded). This audit recommended the MatchWise rename; the rename was executed (Spectrea). Retained for traceability only - not canon, nothing references it. Canonical brand data: src/data/brand.ts. See README.md in this directory.
 
+PUBLISHED, AND NOT CONFIDENTIAL (noted 2026-08-13). This file lives in a
+public repository. The cover page's "CONFIDENTIAL / For Internal Review"
+marking was a March 2026 working-document marking and is not operative; the
+two marking lines are removed from this text extract so the file cannot read
+as a live confidentiality claim. The .docx beside it is the unaltered
+original and still shows them.
+
+THE TRADEMARK AND COMPETITOR SECTIONS ARE MARCH 2026 WEB RECONNAISSANCE about
+a name Spectrea no longer uses. They were never verified by counsel, they name
+third parties on the basis of public listings read at that time, and nothing
+in them is a present-day statement about any company, a legal opinion, or a
+clearance result. Read section 2 in particular as a record of what an
+early-stage founder found on the web that month, and nothing more.
+
 ﻿
 
 
@@ -9,9 +23,7 @@ HISTORICAL RECORD (pre-rename, superseded). This audit recommended the MatchWise
 BRAND AUDIT & STRATEGIC PROPOSAL
 MatchWise Pte. Ltd.
 
-CONFIDENTIAL
 Prepared: March 2026
-Version 1.0 — For Internal Review
 
 
 

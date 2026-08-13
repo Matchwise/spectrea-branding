@@ -1,4 +1,5 @@
 {
+  "_note": "HISTORICAL SNAPSHOT (2026-07). Agent permission settings from the July 2026 brand-audit run, kept as a record of how that run was bounded. Not a current control: it was never the repo's security posture, it governs no session today, and several paths in it no longer exist. Current per-run settings are generated into the git-ignored run directory. Banner added 2026-08-13 (public-exposure audit).",
   "permissions": {
     "deny": [
       "Bash",
