@@ -480,6 +480,10 @@ const header = `// ============================================================
 // Enforcing canon v${meta.version}. Re-vendor when you re-pin the snapshot:
 // the rules are baked in at generation time, so an old copy enforces old canon.
 //
+// Canonical copy: ${meta.publishedAt}/brand-conformance.mjs
+// Stale when ${meta.publishedAt}/brand-contract.json reports a version higher
+// than ${meta.version}; re-vendor it together with the brand snapshot it checks.
+//
 // WHAT THIS CHECKER DOES NOT COVER — read this before trusting a PASS:
 //   • Asset geometry (logo paths, mark construction). The vendored snapshot
 //     carries no binary assets, so compare those by hash against upstream.

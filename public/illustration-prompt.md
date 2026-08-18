@@ -1,6 +1,9 @@
-<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-13) -->
+<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-18)
+     Canonical copy: https://branding.spectrea.com/illustration-prompt.md — canon v2.14.0 (2026-08-18). If you are reading a vendored snapshot, it is stale when https://branding.spectrea.com/brand-contract.json reports a higher "version"; re-vendor the whole set (brand-contract.json, brand-checklist.md, brand-few-shots.md, brand-agent-rules.md, llms.txt, brand-guide.md) rather than editing this file. -->
 
 # Spectrea illustration prompt
+
+Generated from src/data/brand.ts (illustration) — canon v2.14.0, 2026-08-18.
 
 One invariant DNA block plus one register sentence per job. The DNA is the identity and never varies; the register is the context dial, chosen per job and never enforced across jobs. Measurements report, they never gate — a scorer rewards crude flat images, so a person looks at every render before it is claimed or shipped.
 

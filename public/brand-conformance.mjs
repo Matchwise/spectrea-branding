@@ -1,7 +1,7 @@
 // ============================================================
 // Spectrea brand conformance checker
 // DO NOT EDIT — generated from src/data/brand.ts by
-// scripts/generate-conformance.mjs (2026-08-13)
+// scripts/generate-conformance.mjs (2026-08-18)
 //
 // Vendor this file next to the brand snapshot and run it in CI, scoped to the
 // directories you actually ship:
@@ -12,8 +12,12 @@
 // brand tests enumerating the never-use list, technical comments). Annotate
 // those with a file-level suppression first, then turn --strict on.
 //
-// Enforcing canon v2.13.0. Re-vendor when you re-pin the snapshot:
+// Enforcing canon v2.14.0. Re-vendor when you re-pin the snapshot:
 // the rules are baked in at generation time, so an old copy enforces old canon.
+//
+// Canonical copy: https://branding.spectrea.com/brand-conformance.mjs
+// Stale when https://branding.spectrea.com/brand-contract.json reports a version higher
+// than 2.14.0; re-vendor it together with the brand snapshot it checks.
 //
 // WHAT THIS CHECKER DOES NOT COVER — read this before trusting a PASS:
 //   • Asset geometry (logo paths, mark construction). The vendored snapshot
@@ -73,9 +77,9 @@
 // ============================================================
 
 const RULES_META = {
-  "version": "2.13.0",
+  "version": "2.14.0",
   "generatedFrom": "src/data/brand.ts",
-  "generated": "2026-08-13",
+  "generated": "2026-08-18",
   "canonEntries": 39
 }
 

@@ -1,4 +1,4 @@
-# Hand-off: downstream repos (spectrea, spectrea-web) — updated for v2.13.0
+# Hand-off: downstream repos (spectrea, spectrea-web) — updated for v2.14.0
 
 > Written 2026-08-07 at v2.5.0; refreshed 2026-08-10 at v2.10.0; illustration doctrine
 > added 2026-08-12 at v2.12.0; internal render tier added 2026-08-13 at v2.13.0. Precondition for sections 1–4:
@@ -13,6 +13,38 @@
 > follow-ups: `/deep-review` of derived docs + a Define-level change for this
 > material jump; both repos: the section-2/3 migration checks, e.g. blue input-focus
 > styling → the canonical ring).
+
+## 0a. New at v2.14.0 — every vendored file now states its origin and its expiry
+
+Nothing was removed and no rule changed: v2.14.0 makes the snapshot self-describing, for
+the reader it actually has. Most consumers of this canon are agents working from a
+vendored copy with no path back here, so each generated file now carries:
+
+- **Its canonical URL** — `https://branding.spectrea.com/<file>` — and the staleness
+  test: `curl -s https://branding.spectrea.com/brand-contract.json` and compare
+  `version` with the vendored copy's. Higher upstream means re-vendor.
+- **The internal tier, explained from the outside** (`internalCanon.consumerRule`): the
+  registered fields are absent *by design*, so do not reconstruct them from an older
+  snapshot or from memory, and never author trust/security/compliance wording freehand.
+  This is the failure mode §0 below creates and did not close: an agent that re-pins and
+  finds `identity.fullShapeClaim` gone will otherwise repair it from the copy it has.
+- **The vendoring set, named in one place** — `llms.txt` § "Vendoring this into another
+  repo" now lists exactly what travels together: `brand-contract.json`,
+  `brand-checklist.md`, `brand-few-shots.md`, `brand-agent-rules.md`, `llms.txt`,
+  `brand-guide.md`, plus `brand-conformance.mjs`. Partial re-vendoring mixes canon
+  versions; the checker in particular bakes its rules in at generation time.
+
+The rule text lands in the three files an agent is most likely to be handed:
+`brand-agent-rules.md` (the CLAUDE.md/AGENTS.md drop-in block), `brand-checklist.md`
+(new step 5), and `llms.txt`. It is also rendered for people, in the guide's Governance
+section and on the Governance page. `illustration-prompt.md` gained the canon stamp the
+other artefacts already had, and the published site's `index.html` now advertises the
+machine formats in `<link rel="alternate">` tags and a `<noscript>` block — an agent that
+cannot run JavaScript previously got an empty shell with no pointer to any of them.
+
+**Action for consumers:** re-vendor at v2.14.0 (same file set, plus
+`brand-conformance.mjs` if you have not vendored it yet). No code reads any key that
+changed.
 
 ## 0. New at v2.13.0 — the internal render tier removes fields from the contract
 

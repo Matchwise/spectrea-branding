@@ -56,6 +56,18 @@ const TODAY = new Date().toISOString().slice(0, 10)
 const HEADER = `DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (${TODAY})`
 const MD_HEADER = `<!-- ${HEADER} -->`
 
+// Provenance + freshness (2026-08-18). Most readers of these files are agents in
+// a consumer repo holding a VENDORED copy, with no path back to this repo and no
+// way to tell an old copy from a current one. Each file therefore names its own
+// canonical URL and the one-command staleness test. Composed as a second line so
+// the emit check's `includes(HEADER)` still holds.
+const provenance = name =>
+  `Canonical copy: ${meta.publishedAt}/${name} — canon v${meta.version} (${meta.lastUpdated}). ` +
+  `If you are reading a vendored snapshot, it is stale when ${meta.publishedAt}/brand-contract.json reports a higher "version"; ` +
+  `re-vendor the whole set (brand-contract.json, brand-checklist.md, brand-few-shots.md, brand-agent-rules.md, llms.txt, brand-guide.md) rather than editing this file.`
+const mdHeader = name => `<!-- ${HEADER}
+     ${provenance(name)} -->`
+
 // Derived lookups (no string keys beyond structural discovery)
 const compoundingValue = brand.values.find(v => 'usageGuardrail' in v)
 const listNever = naming.neverNames.join(' · ')
@@ -96,6 +108,7 @@ const aiNamingLine = `${naming.aiNaming.rule} ${naming.aiNaming.verbRule} Allowe
 
 const contract = {
   _generated: HEADER,
+  _provenance: provenance('brand-contract.json'),
   version: meta.version,
   lastUpdated: meta.lastUpdated,
   sourceOfTruth: meta.sourceOfTruth,
@@ -188,7 +201,7 @@ const antiValueLines = brand.antiValues
   .map(a => `- [ ] ${a.never} — ${a.because}`)
   .join('\n')
 
-const checklist = `${MD_HEADER}
+const checklist = `${mdHeader('brand-checklist.md')}
 # ${brand.name} brand pre-flight checklist
 
 Run this BEFORE generating any ${brand.name}-branded surface — copy, UI, slide, or image.
@@ -224,6 +237,11 @@ ${antiValueLines}
 ## Step 4 — trust and legal surfaces
 
 STOP: never author trust, security, or compliance claims freehand, and never place them on a public page without the counsel read. The approved masters (privacy, AI use, retention, enterprise readiness) are internal-tier and counsel-gated — request them through the internal brand hand-off (internal/ artefacts); they are deliberately absent from this site and its machine formats.
+
+## Step 5 — if you are working from a vendored snapshot
+
+- [ ] Freshness: this checklist was generated from canon v${meta.version} (${meta.lastUpdated}). Compare it against \`${meta.publishedAt}/brand-contract.json\` → \`version\`; if that is higher, re-vendor the whole set before generating anything.
+- [ ] Missing canon: ${internalCanon.fields.join(', ')} render only to the internal artefacts. ${internalCanon.consumerRule}
 
 ## Executive voice
 
@@ -264,7 +282,7 @@ const surfaceShots = voice.surfacePatterns
 ❌ **Off-brand:** ${s.incorrect}`)
   .join('\n\n')
 
-const fewShots = `${MD_HEADER}
+const fewShots = `${mdHeader('brand-few-shots.md')}
 # ${brand.name} few-shots — on-brand vs off-brand
 
 Contrastive pairs derived from the canonical voice data (voice.toneExamples and
@@ -285,7 +303,7 @@ ${surfaceShots}
 /* 4. brand-agent-rules.md — drop-in CLAUDE.md/AGENTS.md block         */
 /* ------------------------------------------------------------------ */
 
-const agentRules = `${MD_HEADER}
+const agentRules = `${mdHeader('brand-agent-rules.md')}
 # ${brand.name} brand rules — agent drop-in
 
 Copy the block below into a repo's CLAUDE.md / AGENTS.md (or a system prompt)
@@ -317,6 +335,10 @@ it is regenerated from src/data/brand.ts.
 - Logo: exactly ${lc.dotCount} dots; ${lc.lockupForms} lockup forms; primary dots ${lc.primaryDotColor}; ${lc.container} Clear space: ${lc.clearSpace} Watermark ≤ ${watermarkPct} opacity.
 - Governance: brand decisions live in the ratification ledger (ratificationLedger in brand.ts; mirrored in /brand-contract.json). A decision recorded only in a consumer repo's AGENTS.md is not canon until it lands in the ledger.
 - Full machine data: /brand-contract.json · full guide: /brand-guide.md. Both are derived mirrors of src/data/brand.ts — on any conflict, brand.ts wins.
+- **Internal tier — read before filling a gap.** Some canon renders only to the internal artefacts and is deliberately missing from every file above: ${internalCanon.fields.join(', ')}. ${internalCanon.consumerRule}
+- **Trust, security, compliance copy:** never freehand, never on a public page without the counsel read. Approved masters arrive through the internal hand-off.
+- **Freshness:** this block was generated from canon v${meta.version} (${meta.lastUpdated}) and published at ${meta.publishedAt}/brand-agent-rules.md. It is stale when \`curl -s ${meta.publishedAt}/brand-contract.json\` reports a higher \`version\`; re-vendor the set, do not edit the block.
+- **Enforcement:** \`brand-conformance.mjs\` (vendored beside the snapshot) checks generated output against this canon in CI. Re-vendor it with the rest — the rules are baked in at generation time.
 `
 
 /* ------------------------------------------------------------------ */
@@ -337,7 +359,7 @@ const routeLines = navigation
   })
   .join('\n')
 
-const llms = `${MD_HEADER}
+const llms = `${mdHeader('llms.txt')}
 # ${brand.name} Brand Guide
 
 > ${brand.positioning.category} — ${brand.positioning.promise.toLowerCase()}. This file is a generated ROUTER: it tells an AI tool which brand document to load, and in which order. Every document below derives from the same canonical data.
@@ -383,6 +405,21 @@ Standalone SVGs live in /brand-assets/ (regenerated by "npm run generate:assets"
 
 Generating illustrations: use the DNA block and register sentences at [/illustration-prompt.md](/illustration-prompt.md) (generated from brand.ts — the same doctrine is in this contract under "illustration").
 
+## What is deliberately not here (internal tier)
+
+${internalCanon.rule} Registered fields: ${internalCanon.fields.join(', ')}.
+
+${internalCanon.consumerRule}
+
+## Vendoring this into another repo
+
+Consumer repos (the ${brand.name} app and website) vendor a snapshot rather than importing canon. Take the set together — /brand-contract.json, /brand-checklist.md, /brand-few-shots.md, /brand-agent-rules.md, /llms.txt, /brand-guide.md — plus /brand-conformance.mjs, the generated checker that enforces this canon in a consumer CI. All of them are generated at the same canon version, so a partial re-vendor mixes versions.
+
+- **Current version:** ${meta.version} (${meta.lastUpdated}), published at ${meta.publishedAt}.
+- **Staleness test:** \`curl -s ${meta.publishedAt}/brand-contract.json\` and compare \`version\` with the vendored copy's.
+- **Never hand-edit a vendored file.** It is generated; the next re-vendor silently drops the edit. Changes go to src/data/brand.ts in the ${brand.name} branding repo and come back through regeneration.
+- **The checker is versioned too:** its rules are baked in at generation time, so an old copy enforces old canon. Re-vendor it with the snapshot.
+
 ## Live interactive pages (SPA — JavaScript-rendered)
 
 NOTE: the routes below are client-rendered React routes; most AI crawlers cannot execute them. Use the Markdown/JSON documents in the load order above instead — they carry the same canonical content. Routes listed for humans and browser-capable agents:
@@ -397,9 +434,11 @@ ${routeLines}
 // Illustration prompt (decision 36): COMPOSED FROM CANON. It used to be a
 // hand-maintained doc copied verbatim — a second source of truth for the one
 // artifact most likely to drift, since every generated image starts from it.
-const illustrationPrompt = `${MD_HEADER}
+const illustrationPrompt = `${mdHeader('illustration-prompt.md')}
 
 # Spectrea illustration prompt
+
+Generated from src/data/brand.ts (illustration) — canon v${meta.version}, ${meta.lastUpdated}.
 
 ${illustration.doctrine}
 

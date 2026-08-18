@@ -1,6 +1,6 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
-import { meta, ratificationLedger, retired } from '../../data/brand'
+import { meta, ratificationLedger, retired, internalCanon } from '../../data/brand'
 
 export default function Governance() {
   return (
@@ -26,6 +26,15 @@ export default function Governance() {
             <p className="text-xs font-semibold uppercase tracking-wider text-pewter mb-2">Changelog</p>
             <p className="text-sm text-iron leading-relaxed">{meta.changelog}</p>
           </div>
+        </div>
+        {/* The carve-out named in the render doctrine, shown where the doctrine
+            is: a reader who notices a field missing from the guide or the
+            machine formats finds the reason on the same page (2026-08-18). */}
+        <div className="bg-cloud rounded-xl p-5 border border-stone-200 mt-4">
+          <p className="text-xs font-semibold uppercase tracking-wider text-pewter mb-2">Internal tier</p>
+          <p className="text-sm text-iron leading-relaxed">{internalCanon.rule}</p>
+          <p className="text-xs font-mono text-pewter mt-3 mb-3 break-words">{internalCanon.fields.join(' · ')}</p>
+          <p className="text-sm text-iron leading-relaxed">{internalCanon.consumerRule}</p>
         </div>
       </Section>
 

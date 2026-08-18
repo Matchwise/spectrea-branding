@@ -48,7 +48,7 @@ async function importTsModule(tsPath) {
 }
 
 const canon = await importTsModule(join(root, 'src', 'data', 'brand.ts'))
-const { meta, brand, voice, brandTokens, accessibility, logo, selectedPalette, colorSystem, components, graphViz, illustration } = canon
+const { meta, brand, voice, brandTokens, accessibility, logo, selectedPalette, colorSystem, components, graphViz, illustration, internalCanon } = canon
 
 // Tailwind stone constants (the sanctioned border family per
 // colorSystem.tailwindMapping) — Tailwind values, not canon.
@@ -103,14 +103,30 @@ const noDot = s => s.replace(/\.$/, '')
 /* ---------------------------------------------------------------- */
 
 const blocks = {
+  // Carries provenance as well as the stamp (2026-08-18): this file is vendored
+  // into consumer repos, where the reader is usually an agent with no path back
+  // here and no way to tell an old copy from a current one.
   'version-header': () =>
-    `**Version:** ${meta.version} (${meta.lastUpdated}). Canonical data: \`src/data/brand.ts\` — this guide is a hybrid mirror: prose is hand-written; fenced data blocks are generated from canon (\`npm run generate:guide\`).`,
+    `**Version:** ${meta.version} (${meta.lastUpdated}). Canonical data: \`src/data/brand.ts\` — this guide is a hybrid mirror: prose is hand-written; fenced data blocks are generated from canon (\`npm run generate:guide\`).
+` +
+    `**Canonical copy:** ${meta.publishedAt}/brand-guide.md. Reading a vendored snapshot? It is stale when ${meta.publishedAt}/brand-contract.json reports a higher \`version\` — re-vendor the whole set rather than editing this file. Machine formats and the vendoring rules: ${meta.publishedAt}/llms.txt.`,
 
   // Was hand prose quoting meta.sourceOfTruth verbatim, which drifted the
   // moment canon was reworded (2026-08-13). A quotation of canon belongs to
   // the generator.
   'source-of-truth': () =>
     `Brand lead owns the brand system. "${meta.sourceOfTruth}" (\`meta.sourceOfTruth\`, quoted verbatim.)`,
+
+  // renderDoctrine's carve-out has to be legible IN the guide, not only in the
+  // artefacts it removes fields from: a reader who notices something missing
+  // should find out why here (2026-08-18). consumerRule is the half addressed
+  // to an agent in a consumer repo.
+  'internal-tier': () =>
+    `${internalCanon.rule}
+
+Registered fields: ${internalCanon.fields.map(f => `\`${f}\``).join(' · ')}.
+
+${internalCanon.consumerRule}`,
 
   'version-footer': () =>
     `*\`src/data/brand.ts\` is the canonical brand data (v${meta.version}, ${meta.lastUpdated}). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*`,

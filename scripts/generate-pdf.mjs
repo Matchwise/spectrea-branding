@@ -421,6 +421,13 @@ ${css}</style>
   // footer, and anything a future edit adds.
   {
     const canon = await importTsModule(join(root, 'src', 'data', 'brand.ts'))
+    // The link origin above is canon's (meta.publishedAt) — asserted rather
+    // than imported, since the rewrite runs before this block. Drift fails the
+    // build instead of printing links to an origin the brand no longer uses.
+    if (canon.meta.publishedAt !== SITE_ORIGIN) {
+      console.error(`PDF link origin ${SITE_ORIGIN} does not match meta.publishedAt ${canon.meta.publishedAt}`)
+      process.exit(1)
+    }
     const { probes, unprobed } = buildInternalProbes(canon)
     if (unprobed.length) {
       console.error('PDF internal-tier gate: registered field with nothing to probe:\n  ' + unprobed.join('\n  '))

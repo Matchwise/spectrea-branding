@@ -1,8 +1,9 @@
-<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-13) -->
+<!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-18)
+     Canonical copy: https://branding.spectrea.com/brand-checklist.md — canon v2.14.0 (2026-08-18). If you are reading a vendored snapshot, it is stale when https://branding.spectrea.com/brand-contract.json reports a higher "version"; re-vendor the whole set (brand-contract.json, brand-checklist.md, brand-few-shots.md, brand-agent-rules.md, llms.txt, brand-guide.md) rather than editing this file. -->
 # Spectrea brand pre-flight checklist
 
 Run this BEFORE generating any Spectrea-branded surface — copy, UI, slide, or image.
-Canonical data: src/data/brand.ts (v2.13.0, 2026-08-13). Hard values: /brand-contract.json.
+Canonical data: src/data/brand.ts (v2.14.0, 2026-08-18). Hard values: /brand-contract.json.
 
 ## Step 1 — classify the surface
 
@@ -48,6 +49,11 @@ Pick the closest context; it selects the tone and pattern you must match (exampl
 ## Step 4 — trust and legal surfaces
 
 STOP: never author trust, security, or compliance claims freehand, and never place them on a public page without the counsel read. The approved masters (privacy, AI use, retention, enterprise readiness) are internal-tier and counsel-gated — request them through the internal brand hand-off (internal/ artefacts); they are deliberately absent from this site and its machine formats.
+
+## Step 5 — if you are working from a vendored snapshot
+
+- [ ] Freshness: this checklist was generated from canon v2.14.0 (2026-08-18). Compare it against `https://branding.spectrea.com/brand-contract.json` → `version`; if that is higher, re-vendor the whole set before generating anything.
+- [ ] Missing canon: trustCopy, brand.positioning.fullShapeClaim, brand.differentiatorGuardrail, brand.antiBrands, brand.audienceMechanics render only to the internal artefacts. The internal-tier fields named with this rule are absent from every public artefact by design, not by omission. If you are working from a vendored snapshot, do not reconstruct them from an older snapshot, a cached copy, or memory, and never author replacements freehand — trust, security, and compliance wording is counsel-gated. When a surface genuinely needs one, request the internal brand hand-off (the internal/ artefacts, delivered locally) instead of inventing it.
 
 ## Executive voice
 

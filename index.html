@@ -12,6 +12,13 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Spectrea Brand Guide" />
     <title>Spectrea Brand Guide</title>
+    <!-- Machine-readable entry points. This page is a client-rendered SPA: an
+         agent that cannot execute JavaScript sees an empty shell, so the router
+         and the full guide are advertised here and repeated in the <noscript>
+         body below (2026-08-18). /llms.txt is the load-order router. -->
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt — AI load-order router for this guide" />
+    <link rel="alternate" type="text/markdown" href="/brand-guide.md" title="Spectrea Brand Guide (Markdown)" />
+    <link rel="alternate" type="application/json" href="/brand-contract.json" title="Spectrea brand contract (machine constraints)" />
     <!-- Brand faces are self-hosted from /fonts (declared in src/index.css).
          No third-party font request: a guide that says "private by default"
          should not hand every visitor's IP to a CDN to render its own type. -->
@@ -20,6 +27,23 @@
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <h1>Spectrea Brand Guide</h1>
+      <p>
+        This guide is a client-rendered application. Every page of it also exists as a
+        static document, and those documents — not the rendered pages — are the ones to
+        read if you are an AI tool or a crawler:
+      </p>
+      <ul>
+        <li><a href="/llms.txt">/llms.txt</a> — start here: load order, hard key facts, and the rules for vendoring this brand into another repository.</li>
+        <li><a href="/brand-contract.json">/brand-contract.json</a> — machine constraints: names, category noun, banned terms, palette, tokens, logo numerics.</li>
+        <li><a href="/brand-checklist.md">/brand-checklist.md</a> — pre-flight checks to run before generating any Spectrea-branded surface.</li>
+        <li><a href="/brand-few-shots.md">/brand-few-shots.md</a> — contrastive on-brand / off-brand copy pairs.</li>
+        <li><a href="/brand-agent-rules.md">/brand-agent-rules.md</a> — drop-in CLAUDE.md / AGENTS.md block.</li>
+        <li><a href="/brand-guide.md">/brand-guide.md</a> — the complete guide in Markdown (<a href="/brand-guide.pdf">PDF</a>).</li>
+      </ul>
+      <p>All of them are generated from the same canonical data; on any conflict, that data wins.</p>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
