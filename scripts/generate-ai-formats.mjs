@@ -347,6 +347,7 @@ it is regenerated from src/data/brand.ts.
 - **Trust, security, compliance copy:** never freehand, never on a public page without the counsel read. Approved masters arrive through the internal hand-off.
 - **Freshness:** this block was generated from canon v${meta.version} (${meta.lastUpdated}) and published at ${meta.publishedAt}/brand-agent-rules.md. It is stale when \`curl -s ${meta.publishedAt}/brand-contract.json\` reports a higher \`version\`; re-vendor the set, do not edit the block.
 - **Enforcement:** \`brand-conformance.mjs\` (vendored beside the snapshot) checks generated output against this canon in CI. Re-vendor it with the rest — the rules are baked in at generation time.
+- **Where to re-vendor from:** the latest release at ${meta.repository}/releases (selected versions, snapshot archive attached), or the live files under ${meta.publishedAt} for the newest canon.
 `
 
 /* ------------------------------------------------------------------ */
@@ -424,6 +425,7 @@ ${internalCanon.consumerRule}
 Consumer repos (the ${brand.name} app and website) vendor a snapshot rather than importing canon. Take the set together — /brand-contract.json, /brand-checklist.md, /brand-few-shots.md, /brand-agent-rules.md, /llms.txt, /brand-guide.md — plus /brand-conformance.mjs, the generated checker that enforces this canon in a consumer CI. All of them are generated at the same canon version, so a partial re-vendor mixes versions.
 
 - **Current version:** ${meta.version} (${meta.lastUpdated}), published at ${meta.publishedAt}.
+- **Pin to a release, not to a date.** Selected canon versions are cut as GitHub releases at ${meta.repository}/releases — each one is a version consumers are meant to adopt, with the whole set attached as a single snapshot archive. Not every version bump gets a release; the live files above always reflect the newest canon, released or not.
 - **Staleness test:** \`curl -s ${meta.publishedAt}/brand-contract.json\` and compare \`version\` with the vendored copy's.
 - **Never hand-edit a vendored file.** It is generated; the next re-vendor silently drops the edit. Changes go to src/data/brand.ts in the ${brand.name} branding repo and come back through regeneration.
 - **The checker is versioned too:** its rules are baked in at generation time, so an old copy enforces old canon. Re-vendor it with the snapshot.

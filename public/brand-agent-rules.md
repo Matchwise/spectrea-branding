@@ -35,3 +35,4 @@ it is regenerated from src/data/brand.ts.
 - **Trust, security, compliance copy:** never freehand, never on a public page without the counsel read. Approved masters arrive through the internal hand-off.
 - **Freshness:** this block was generated from canon v2.15.0 (2026-08-18) and published at https://branding.spectrea.com/brand-agent-rules.md. It is stale when `curl -s https://branding.spectrea.com/brand-contract.json` reports a higher `version`; re-vendor the set, do not edit the block.
 - **Enforcement:** `brand-conformance.mjs` (vendored beside the snapshot) checks generated output against this canon in CI. Re-vendor it with the rest — the rules are baked in at generation time.
+- **Where to re-vendor from:** the latest release at https://github.com/Matchwise/spectrea-branding/releases (selected versions, snapshot archive attached), or the live files under https://branding.spectrea.com for the newest canon.

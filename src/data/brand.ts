@@ -11,6 +11,8 @@ export const meta = {
   // copy has gone stale (added 2026-08-18); scripts/generate-pdf.mjs asserts
   // its link-rewrite origin against this field rather than keeping a second one.
   publishedAt: 'https://branding.spectrea.com',
+  // Where selected canon versions are cut as releases for consumers to pin to.
+  repository: 'https://github.com/Matchwise/spectrea-branding',
   sourceOfTruth:
     'brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Capability claims are anchored to the ratified product vision; every buyer-facing capability claim is checked against the product roadmap before it ships. Execution status is tracked there, never here — this file is the brand, not the release note.',
   renderDoctrine:

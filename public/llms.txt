@@ -56,6 +56,7 @@ The internal-tier fields named with this rule are absent from every public artef
 Consumer repos (the Spectrea app and website) vendor a snapshot rather than importing canon. Take the set together — /brand-contract.json, /brand-checklist.md, /brand-few-shots.md, /brand-agent-rules.md, /llms.txt, /brand-guide.md — plus /brand-conformance.mjs, the generated checker that enforces this canon in a consumer CI. All of them are generated at the same canon version, so a partial re-vendor mixes versions.
 
 - **Current version:** 2.15.0 (2026-08-18), published at https://branding.spectrea.com.
+- **Pin to a release, not to a date.** Selected canon versions are cut as GitHub releases at https://github.com/Matchwise/spectrea-branding/releases — each one is a version consumers are meant to adopt, with the whole set attached as a single snapshot archive. Not every version bump gets a release; the live files above always reflect the newest canon, released or not.
 - **Staleness test:** `curl -s https://branding.spectrea.com/brand-contract.json` and compare `version` with the vendored copy's.
 - **Never hand-edit a vendored file.** It is generated; the next re-vendor silently drops the edit. Changes go to src/data/brand.ts in the Spectrea branding repo and come back through regeneration.
 - **The checker is versioned too:** its rules are baked in at generation time, so an old copy enforces old canon. Re-vendor it with the snapshot.
