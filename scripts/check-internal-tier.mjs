@@ -72,7 +72,7 @@ if (unprobed.length) {
 // carried in an SVG or a built bundle. A gate nobody has watched fail is a
 // gate nobody knows works.
 if (process.argv.includes('--selftest')) {
-  const { brand, trustCopy } = canon
+  const { brand, trustCopy, ratificationLedger } = canon
   const claim = brand.positioning.fullShapeClaim.statement
   const hit = sample => {
     const haystack = norm(sample)
@@ -105,16 +105,18 @@ if (process.argv.includes('--selftest')) {
   // Scoping regression: the historical-doc exemption belongs to antiBrands and
   // to nothing else. Keying it off probe length let "Jira" through and held
   // "Microsoft 365" back, from the same field (gate round 3).
+  const EXPECTED_EXEMPT = new Set(['brand.antiBrands', 'ratificationLedger'])
   const exempt = probes.filter(p => p.brandSurfacesOnly)
-  const antiBrandProbes = probes.filter(p => p.field === 'brand.antiBrands')
+  const fromExpected = probes.filter(p => EXPECTED_EXEMPT.has(p.field))
   const scopeOk =
-    exempt.length === antiBrandProbes.length &&
-    antiBrandProbes.every(p => p.brandSurfacesOnly) &&
-    antiBrandProbes.length === brand.antiBrands.length
+    exempt.length === fromExpected.length &&
+    fromExpected.every(p => p.brandSurfacesOnly) &&
+    probes.filter(p => p.field === 'brand.antiBrands').length === brand.antiBrands.length &&
+    probes.filter(p => p.field === 'ratificationLedger').length === ratificationLedger.length
   if (!scopeOk) failed++
   console.log(
-    `${scopeOk ? 'ok   ' : 'FAIL '} docs exemption covers every antiBrand and nothing else — ` +
-      `${exempt.length} exempt, ${antiBrandProbes.length} antiBrand probes, ${brand.antiBrands.length} names`
+    `${scopeOk ? 'ok   ' : 'FAIL '} docs exemption covers exactly ${[...EXPECTED_EXEMPT].join(' + ')} — ` +
+      `${exempt.length} exempt probes, ${brand.antiBrands.length} antiBrand names, ${ratificationLedger.length} ledger entries`
   )
 
   // The print-time gate must actually be wired into generate-pdf.mjs; without

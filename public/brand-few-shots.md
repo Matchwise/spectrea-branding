@@ -1,9 +1,9 @@
 <!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-18)
-     Canonical copy: https://branding.spectrea.com/brand-few-shots.md — canon v2.14.0 (2026-08-18). If you are reading a vendored snapshot, it is stale when https://branding.spectrea.com/brand-contract.json reports a higher "version"; re-vendor the whole set (brand-contract.json, brand-checklist.md, brand-few-shots.md, brand-agent-rules.md, llms.txt, brand-guide.md) rather than editing this file. -->
+     Canonical copy: https://branding.spectrea.com/brand-few-shots.md — canon v2.15.0 (2026-08-18). If you are reading a vendored snapshot, it is stale when https://branding.spectrea.com/brand-contract.json reports a higher "version"; re-vendor the whole set (brand-contract.json, brand-checklist.md, brand-few-shots.md, brand-agent-rules.md, llms.txt, brand-guide.md) rather than editing this file. -->
 # Spectrea few-shots — on-brand vs off-brand
 
 Contrastive pairs derived from the canonical voice data (voice.toneExamples and
-voice.surfacePatterns in src/data/brand.ts, v2.14.0). Use these as few-shot
+voice.surfacePatterns in src/data/brand.ts, v2.15.0). Use these as few-shot
 examples when generating Spectrea copy: match the register of the ✅ versions.
 Voice formula: Plain words, real specifics, room to breathe. Tech earns its place by being checkable — shown once, where the reader looks for it.
 

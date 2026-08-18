@@ -44,12 +44,17 @@ async function importTsModule(tsPath) {
   }
 }
 
+// Keep the whole module: buildInternalProbes resolves registry paths against
+// it, and a hand-picked subset silently under-covers the registry — passing
+// { brand, trustCopy, internalCanon } made ratificationLedger unresolvable the
+// moment it was registered (caught by the gate, 2026-08-18).
+const canon = await importTsModule(join(root, 'src', 'data', 'brand.ts'))
 const {
   brand, voice, naming, brandTokens, accessibility, logo, graphViz,
   trustCopy, executiveVoice, originStance, meta, selectedPalette,
   colorSystem, components, ratificationLedger, retired, illustration,
   internalCanon,
-} = await importTsModule(join(root, 'src', 'data', 'brand.ts'))
+} = canon
 const { navigation } = await importTsModule(join(root, 'src', 'data', 'navigation.ts'))
 
 const TODAY = new Date().toISOString().slice(0, 10)
@@ -181,7 +186,10 @@ const contract = {
   internalCanon,
   executiveVoice,
   originStance,
-  ratificationLedger,
+  // ratificationLedger is internal-tier since 2026-08-18 (v2.15.0): the
+  // decision record is deliberation, not identity. The registry above is what
+  // this contract now says about it; the decisions stay traceable in the
+  // branding repo's public git history.
   // Decision 35b: canon's one history-keeping structure. Consumers' agents read
   // the contract, and a migration they cannot see is a migration they re-introduce.
   retired,
@@ -333,7 +341,7 @@ it is regenerated from src/data/brand.ts.
 - Typefaces: ${fonts}.
 - Accessibility floor: ${accessibility.floor}. Contrast ≥ ${accessibility.contrast.normalText} normal text / ${accessibility.contrast.largeTextAndUI} large+UI. On Canvas (computed): ${tokenLadderLine}.
 - Logo: exactly ${lc.dotCount} dots; ${lc.lockupForms} lockup forms; primary dots ${lc.primaryDotColor}; ${lc.container} Clear space: ${lc.clearSpace} Watermark ≤ ${watermarkPct} opacity.
-- Governance: brand decisions live in the ratification ledger (ratificationLedger in brand.ts; mirrored in /brand-contract.json). A decision recorded only in a consumer repo's AGENTS.md is not canon until it lands in the ledger.
+- Governance: brand decisions live in the ratification ledger (ratificationLedger in brand.ts). The ledger is internal-tier — not in this block, not in /brand-contract.json — but the rule stands: a decision recorded only in a consumer repo's AGENTS.md is not canon until it lands in the ledger. Propose it upstream; do not ratify brand canon locally.
 - Full machine data: /brand-contract.json · full guide: /brand-guide.md. Both are derived mirrors of src/data/brand.ts — on any conflict, brand.ts wins.
 - **Internal tier — read before filling a gap.** Some canon renders only to the internal artefacts and is deliberately missing from every file above: ${internalCanon.fields.join(', ')}. ${internalCanon.consumerRule}
 - **Trust, security, compliance copy:** never freehand, never on a public page without the counsel read. Approved masters arrive through the internal hand-off.
@@ -511,7 +519,7 @@ for (const [name, content] of outputs) {
 // probes from the registry, so registering a field is enough to enforce it:
 // the hand-listed version of this check silently left two of trustCopy's five
 // strings unprobed.
-const { probes: internalProbes, unprobed } = buildInternalProbes({ brand, trustCopy, internalCanon })
+const { probes: internalProbes, unprobed } = buildInternalProbes(canon)
 if (unprobed.length) failures.push(`internalCanon registers unprobed fields: ${unprobed.join(', ')}`)
 for (const [name, content] of outputs) {
   const haystack = norm(content)
@@ -549,6 +557,7 @@ const internalPayload = {
   differentiatorGuardrail: brand.differentiatorGuardrail,
   antiBrands: brand.antiBrands,
   audienceMechanics: brand.audienceMechanics,
+  ratificationLedger,
 }
 
 const internalMd = `<!-- ${INTERNAL_HEADER} -->
@@ -602,6 +611,15 @@ A design device — don't look or sound like this — never a public statement a
 ${brand.audienceMechanics}
 
 The public promise is the half that ships: "${brand.audienceBreadth}"
+
+## Ratification ledger
+
+Internal-tier since 2026-08-18. The decision record is deliberation, not identity, and it
+was the last long-form strategy text on a crawler-readable surface. It stays here, and the
+decisions stay traceable in the branding repo's public git history. The governance RULE is
+still public: a decision recorded only in a consumer repo is not canon until it lands here.
+
+${ratificationLedger.map(e => `- **${e.date}** — ${e.decision}`).join('\n')}
 `
 
 const internalDir = join(root, 'internal')

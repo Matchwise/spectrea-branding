@@ -1,6 +1,6 @@
 import PageShell, { Section } from '../../components/layout/PageShell'
 import Tooltip from '../../components/brand/Tooltip'
-import { meta, ratificationLedger, retired, internalCanon } from '../../data/brand'
+import { meta, retired, internalCanon } from '../../data/brand'
 
 export default function Governance() {
   return (
@@ -150,20 +150,23 @@ export default function Governance() {
         </div>
       </Section>
 
-      {/* Ratification ledger — the durable decision record */}
+      {/* Ratification ledger: the RULE stays public, the record does not
+          (internal-tier 2026-08-18). Rendering 40+ dated entries put the
+          deliberation on a crawler-readable page; the identity system is what
+          this guide is for. Decisions remain traceable in the branding repo's
+          public git history. */}
       <Section title="Ratification Ledger">
-        <p className="text-sm text-slate mb-4 leading-relaxed">
-          The single durable record of ratified brand decisions. Local per-repo ratifications are absorbed
-          here on sight — a decision recorded only in a consumer repo is not canon until it lands in this ledger.
+        <p className="text-sm text-slate leading-relaxed">
+          Every ratified brand decision is recorded, dated, and kept in one place — the ledger in{' '}
+          <code className="text-xs font-mono px-1.5 py-0.5 rounded bg-cloud text-iron border border-stone-200">brand.ts</code>.
+          Local per-repo ratifications are absorbed into it on sight: a decision recorded only in a consumer
+          repo is not canon until it lands here.
         </p>
-        <div className="border border-stone-200 rounded-xl overflow-hidden">
-          {ratificationLedger.map((entry, i) => (
-            <div key={i} className="px-5 py-4 border-b last:border-b-0 border-stone-100 flex gap-4">
-              <span className="text-xs font-mono text-pewter flex-shrink-0 mt-0.5 w-20">{entry.date}</span>
-              <p className="text-sm text-iron leading-relaxed">{entry.decision}</p>
-            </div>
-          ))}
-        </div>
+        <p className="text-sm text-slate leading-relaxed mt-3">
+          The record itself is internal-tier — it is the reasoning behind the brand rather than the brand,
+          so it renders to the internal artefacts and not to this page. The decisions stay traceable in the
+          commit history of the branding repository. Request the ledger through the internal brand hand-off.
+        </p>
       </Section>
 
       {/* Retired values — canon's one history-keeping structure (decision 35b) */}

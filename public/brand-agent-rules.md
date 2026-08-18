@@ -1,5 +1,5 @@
 <!-- DO NOT EDIT — generated from src/data/brand.ts by scripts/generate-ai-formats.mjs (2026-08-18)
-     Canonical copy: https://branding.spectrea.com/brand-agent-rules.md — canon v2.14.0 (2026-08-18). If you are reading a vendored snapshot, it is stale when https://branding.spectrea.com/brand-contract.json reports a higher "version"; re-vendor the whole set (brand-contract.json, brand-checklist.md, brand-few-shots.md, brand-agent-rules.md, llms.txt, brand-guide.md) rather than editing this file. -->
+     Canonical copy: https://branding.spectrea.com/brand-agent-rules.md — canon v2.15.0 (2026-08-18). If you are reading a vendored snapshot, it is stale when https://branding.spectrea.com/brand-contract.json reports a higher "version"; re-vendor the whole set (brand-contract.json, brand-checklist.md, brand-few-shots.md, brand-agent-rules.md, llms.txt, brand-guide.md) rather than editing this file. -->
 # Spectrea brand rules — agent drop-in
 
 Copy the block below into a repo's CLAUDE.md / AGENTS.md (or a system prompt)
@@ -8,7 +8,7 @@ it is regenerated from src/data/brand.ts.
 
 ---
 
-## Spectrea brand rules (generated 2026-08-18, brand.ts v2.14.0)
+## Spectrea brand rules (generated 2026-08-18, brand.ts v2.15.0)
 
 - Product: **Spectrea** (/spek-TREE-uh/). Tagline: "We connect the dots.". Category: **Composable intelligence platform**. The category noun is exactly "Composable intelligence platform" (lowercase in running prose) — never a substitute: "composable knowledge platform", "knowledge platform", "knowledge management", "AI assistant", "automation tool".
 - Company vs product: Matchwise Pte. Ltd. is the legal entity — it appears only where a legal entity is required: contracts, invoices, terms, privacy notices ("Spectrea is a product of Matchwise Pte. Ltd."). Spectrea is the product and brand name on every public surface. Never brand a surface "Matchwise"; never combine the two into one name.
@@ -29,9 +29,9 @@ it is regenerated from src/data/brand.ts.
 - Typefaces: Albert Sans (headings) · Lexend (body) · JetBrains Mono (code).
 - Accessibility floor: WCAG 2.2 AA. Contrast ≥ 4.5:1 normal text / 3:1 large+UI. On Canvas (computed): Ink 17.4:1 (AAA) · Iron 9.21:1 (AAA) · Slate 5.05:1 (AA) · Pewter 2.85:1 (supplementary only).
 - Logo: exactly 10 dots; 2 lockup forms; primary dots #A3A3A3; Circle when contained — never a squircle. Clear space: 0.5× the mark height on all sides. Watermark ≤ 20% opacity.
-- Governance: brand decisions live in the ratification ledger (ratificationLedger in brand.ts; mirrored in /brand-contract.json). A decision recorded only in a consumer repo's AGENTS.md is not canon until it lands in the ledger.
+- Governance: brand decisions live in the ratification ledger (ratificationLedger in brand.ts). The ledger is internal-tier — not in this block, not in /brand-contract.json — but the rule stands: a decision recorded only in a consumer repo's AGENTS.md is not canon until it lands in the ledger. Propose it upstream; do not ratify brand canon locally.
 - Full machine data: /brand-contract.json · full guide: /brand-guide.md. Both are derived mirrors of src/data/brand.ts — on any conflict, brand.ts wins.
-- **Internal tier — read before filling a gap.** Some canon renders only to the internal artefacts and is deliberately missing from every file above: trustCopy, brand.positioning.fullShapeClaim, brand.differentiatorGuardrail, brand.antiBrands, brand.audienceMechanics. The internal-tier fields named with this rule are absent from every public artefact by design, not by omission. If you are working from a vendored snapshot, do not reconstruct them from an older snapshot, a cached copy, or memory, and never author replacements freehand — trust, security, and compliance wording is counsel-gated. When a surface genuinely needs one, request the internal brand hand-off (the internal/ artefacts, delivered locally) instead of inventing it.
+- **Internal tier — read before filling a gap.** Some canon renders only to the internal artefacts and is deliberately missing from every file above: trustCopy, brand.positioning.fullShapeClaim, brand.differentiatorGuardrail, brand.antiBrands, brand.audienceMechanics, ratificationLedger. The internal-tier fields named with this rule are absent from every public artefact by design, not by omission. If you are working from a vendored snapshot, do not reconstruct them from an older snapshot, a cached copy, or memory, and never author replacements freehand — trust, security, and compliance wording is counsel-gated. When a surface genuinely needs one, request the internal brand hand-off (the internal/ artefacts, delivered locally) instead of inventing it.
 - **Trust, security, compliance copy:** never freehand, never on a public page without the counsel read. Approved masters arrive through the internal hand-off.
-- **Freshness:** this block was generated from canon v2.14.0 (2026-08-18) and published at https://branding.spectrea.com/brand-agent-rules.md. It is stale when `curl -s https://branding.spectrea.com/brand-contract.json` reports a higher `version`; re-vendor the set, do not edit the block.
+- **Freshness:** this block was generated from canon v2.15.0 (2026-08-18) and published at https://branding.spectrea.com/brand-agent-rules.md. It is stale when `curl -s https://branding.spectrea.com/brand-contract.json` reports a higher `version`; re-vendor the set, do not edit the block.
 - **Enforcement:** `brand-conformance.mjs` (vendored beside the snapshot) checks generated output against this canon in CI. Re-vendor it with the rest — the rules are baked in at generation time.

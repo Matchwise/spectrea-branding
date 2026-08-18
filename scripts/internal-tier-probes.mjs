@@ -41,14 +41,29 @@ function resolvePath(canon, dotted) {
 const SPAN = 70
 const MIN_PROBE = 12
 
-// The one field whose values are bare proper nouns. Naming a company only
-// means "leak" where the file speaks as the brand; in the pre-rename naming
-// analysis, naming a company is just naming a company. Scoped by FIELD
-// IDENTITY, not by probe length: keying off length made "Microsoft 365"
-// (13 chars) unexempt while "Jira" was, and would have handed the same
-// exemption to any future short string from an unrelated field
-// (gate round 3, 2026-08-13).
-const HISTORICAL_DOC_EXEMPT = new Set(['brand.antiBrands'])
+// Where a probe may fire. Naming a company only means "leak" where the file
+// speaks as the brand; in the pre-rename naming analysis, naming a company is
+// just naming a company. ratificationLedger joins for a related reason
+// (2026-08-18): docs/ is the historical record and quotes ledger entries by
+// design — the audit records, the hand-offs, the critical review all do. A
+// SERVED artefact carrying either is still a build defect. Scoped by FIELD
+// IDENTITY, never by probe length: keying off length made "Microsoft 365"
+// (13 chars) unexempt while "Jira" was (gate round 3, 2026-08-13).
+const BRAND_SURFACES_ONLY = new Set(['brand.antiBrands', 'ratificationLedger'])
+
+// What to do with a leaf too short to probe safely. These were one flag until
+// 2026-08-18, when registering the ledger showed they are two questions:
+//   ACCEPTED — the field IS a list of short names, so probe them anyway and
+//     accept that they only fire on brand surfaces. That is brand.antiBrands.
+//   DROPPED  — the short leaves carry nothing the tier withholds. A ledger
+//     entry's `date` is a date; the `decision` text is the record. Probing
+//     dates matched every other date in the contract, which is noise, not
+//     enforcement. Dropping them is safe ONLY because every entry still
+//     contributes its decision probe — check-internal-tier's selftest asserts
+//     one probe per entry, so a silently unenforced entry fails the build.
+// Anything in neither set escalates to `unprobed`: someone decides.
+const SHORT_LEAVES_ACCEPTED = new Set(['brand.antiBrands'])
+const SHORT_LEAVES_DROPPED = new Set(['ratificationLedger'])
 
 export function buildInternalProbes(canon) {
   const { internalCanon } = canon
@@ -66,10 +81,11 @@ export function buildInternalProbes(canon) {
       unprobed.push(`${field} (no string content)`)
       continue
     }
-    const exempt = HISTORICAL_DOC_EXEMPT.has(field)
+    const brandSurfacesOnly = BRAND_SURFACES_ONLY.has(field)
     for (const { path, text } of leaves) {
       const probe = norm(text.length > SPAN ? text.slice(0, SPAN) : text)
-      if (probe.length < MIN_PROBE && !exempt) {
+      if (probe.length < MIN_PROBE && SHORT_LEAVES_DROPPED.has(field)) continue
+      if (probe.length < MIN_PROBE && !SHORT_LEAVES_ACCEPTED.has(field)) {
         // Too short to match without firing on ordinary prose, and not from
         // the one field where short strings are expected. Silently skipping it
         // would leave a registered field unenforced; silently probing it would
@@ -79,7 +95,7 @@ export function buildInternalProbes(canon) {
         )
         continue
       }
-      probes.push({ field, path, probe, brandSurfacesOnly: exempt })
+      probes.push({ field, path, probe, brandSurfacesOnly })
     }
   }
 

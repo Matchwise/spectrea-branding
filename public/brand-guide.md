@@ -8,7 +8,7 @@
 **Category:** Composable intelligence platform.
 **Pronunciation:** /spek-TREE-uh/ (a coinage from *spectrum* — Latin, from *specere*, "to look"; the full range — with a second reading: *revealing*).
 <!-- generated:version-header -->
-**Version:** 2.14.0 (2026-08-18). Canonical data: `src/data/brand.ts` — this guide is a hybrid mirror: prose is hand-written; fenced data blocks are generated from canon (`npm run generate:guide`).
+**Version:** 2.15.0 (2026-08-18). Canonical data: `src/data/brand.ts` — this guide is a hybrid mirror: prose is hand-written; fenced data blocks are generated from canon (`npm run generate:guide`).
 **Canonical copy:** https://branding.spectrea.com/brand-guide.md. Reading a vendored snapshot? It is stale when https://branding.spectrea.com/brand-contract.json reports a higher `version` — re-vendor the whole set rather than editing this file. Machine formats and the vendoring rules: https://branding.spectrea.com/llms.txt.
 <!-- /generated:version-header -->
 
@@ -969,14 +969,14 @@ One canonical process (`meta.changeProcess`, merged 2026-08-09) — the Governan
 Brand lead owns the brand system. "brand.ts is the canonical brand data. The app renders it; the guide (brand-guide.md), llms.txt, the PDF, and generated assets are derived mirrors. On any conflict, brand.ts wins. Capability claims are anchored to the ratified product vision; every buyer-facing capability claim is checked against the product roadmap before it ships. Execution status is tracked there, never here — this file is the brand, not the release note." (`meta.sourceOfTruth`, quoted verbatim.)
 <!-- /generated:source-of-truth -->
 
-Brand decisions live in the **ratification ledger** (`ratificationLedger` in `brand.ts`): a decision recorded only in a consumer repo's AGENTS.md is not canon until it lands in the ledger.
+Brand decisions live in the **ratification ledger** (`ratificationLedger` in `brand.ts`): a decision recorded only in a consumer repo's AGENTS.md is not canon until it lands in the ledger. The ledger itself is internal-tier (see below) — it is the reasoning behind the brand rather than the brand — so the record renders to the internal artefacts, while the decisions stay traceable in the branding repo's commit history.
 
 ### Internal tier
 
 <!-- generated:internal-tier -->
 Fields listed here render only to internal/ artefacts. Adding a field is a ledger decision; generators must consult this registry, and a public artefact carrying an internal field is a build defect.
 
-Registered fields: `trustCopy` · `brand.positioning.fullShapeClaim` · `brand.differentiatorGuardrail` · `brand.antiBrands` · `brand.audienceMechanics`.
+Registered fields: `trustCopy` · `brand.positioning.fullShapeClaim` · `brand.differentiatorGuardrail` · `brand.antiBrands` · `brand.audienceMechanics` · `ratificationLedger`.
 
 The internal-tier fields named with this rule are absent from every public artefact by design, not by omission. If you are working from a vendored snapshot, do not reconstruct them from an older snapshot, a cached copy, or memory, and never author replacements freehand — trust, security, and compliance wording is counsel-gated. When a surface genuinely needs one, request the internal brand hand-off (the internal/ artefacts, delivered locally) instead of inventing it.
 <!-- /generated:internal-tier -->
@@ -990,7 +990,7 @@ The internal-tier fields named with this rule are absent from every public artef
 The complete generated token sheet — the same file served at [`/spectrea-tokens.css`](/spectrea-tokens.css) and on the Downloads page:
 
 ```css
-/* Spectrea design tokens — GENERATED from src/data/brand.ts v2.14.0 (2026-08-18) — do not hand-edit; regenerate with npm run generate:assets. */
+/* Spectrea design tokens — GENERATED from src/data/brand.ts v2.15.0 (2026-08-18) — do not hand-edit; regenerate with npm run generate:assets. */
 :root {
   /* Spectrum — first accent in canon order is the brand colour */
   --color-brand: #4271DF;
@@ -1175,5 +1175,5 @@ Three faces, all SIL Open Font License 1.1 — originally from Google Fonts, and
 ---
 
 <!-- generated:version-footer -->
-*`src/data/brand.ts` is the canonical brand data (v2.14.0, 2026-08-18). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
+*`src/data/brand.ts` is the canonical brand data (v2.15.0, 2026-08-18). The live app at [branding.spectrea.com](https://branding.spectrea.com/#/) renders it; this document, llms.txt, the PDF, and the generated assets are derived mirrors for offline and LLM-readable use. If surfaces ever disagree, brand.ts wins.*
 <!-- /generated:version-footer -->
